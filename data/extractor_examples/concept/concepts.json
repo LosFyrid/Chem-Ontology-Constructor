@@ -1,0 +1,37 @@
+[
+    {
+        "context": "Water is a compound that consists of hydrogen and oxygen. Elements like hydrogen and oxygen are fundamental to chemistry.",
+        "concepts": [
+            {
+                "name": "Compound",
+                "classification": "class",
+                "justification": "It can encompass various examples such as water, carbon dioxide, etc.",
+                "information": "Water is a compound."
+            },
+            {
+                "name": "Water",
+                "classification": "individual",
+                "justification": "It is a specific instance of a compound",
+                "information": "Water consists of hydrogen and oxygen."
+            },
+            {
+                "name": "Element",
+                "classification": "class",
+                "justification": "It includes examples like hydrogen, oxygen, etc.",
+                "information": "Elements like hydrogen and oxygen are fundamental to chemistry."
+            },
+            {
+                "name": "Hydrogen",
+                "classification": "individual",
+                "justification": "It is a specific element",
+                "information": "Hydrogen is a fundamental element in chemistry."
+            },
+            {
+                "name": "Oxygen",
+                "classification": "individual",
+                "justification": "It is a specific element",
+                "information": "Oxygen is a fundamental element in chemistry."
+            }
+        ]
+    }
+]

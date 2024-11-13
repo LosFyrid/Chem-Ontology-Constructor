@@ -45,7 +45,6 @@ with open(config_path, "r") as f:
     yaml_settings = resolve_key_references(yaml_settings)
 
 
-PDF_PARSER_CONFIG = yaml_settings["pdf_parser"]
 ONTOLOGY_CONFIG = yaml_settings["ontology"]
 LLM_CONFIG = yaml_settings["LLM"]
 EXTRACTOR_EXAMPLES_CONFIG = yaml_settings["extractor_examples"]
