@@ -1,0 +1,220 @@
+[
+    {
+        "name": "Colchicine",
+        "category": {
+            "name": "Specific Chemical Substances",
+            "description": "Specific Chemical Substances:\nImportant: A chemical substance must have specific conditions/parameters to be considered an individual instance. Generic chemical names without parameters (e.g., \"Schiff base\" alone) are not valid, but become valid when specified with conditions (e.g., \"Schiff base (3 mmol/L, 10°C)\").",
+            "examples": []
+        },
+        "parameters": {
+            "temperature": "50°C",
+            "concentration": "3 mmol/L"
+        },
+        "context": "Colchicine (50°C, 3 mmol/L)"
+    },
+    {
+        "name": "Bruker D8 Advance XRD",
+        "category": {
+            "name": "Specific Instruments with Parameters",
+            "description": "Specific Instruments with Parameters:",
+            "examples": []
+        },
+        "parameters": {
+            "voltage": "40kV",
+            "current": "40mA"
+        },
+        "context": "Bruker D8 Advance XRD operated at 40kV/40mA"
+    },
+    {
+        "name": "Solvothermal reaction",
+        "category": {
+            "name": "Specific Experimental Procedures",
+            "description": "Specific Experimental Procedures:",
+            "examples": []
+        },
+        "parameters": {
+            "solvent": "ethanol",
+            "temperature": "200°C",
+            "duration": "12h"
+        },
+        "context": "Solvothermal reaction in ethanol at 200°C for 12h"
+    },
+    {
+        "name": "Colchicine",
+        "category": {
+            "name": "Specific Chemical Substances",
+            "description": "Specific Chemical Substances:\nImportant: A chemical substance must have specific conditions/parameters to be considered an individual instance. Generic chemical names without parameters (e.g., \"Schiff base\" alone) are not valid, but become valid when specified with conditions (e.g., \"Schiff base (3 mmol/L, 10°C)\").",
+            "examples": []
+        },
+        "parameters": {
+            "temperature": "50°C",
+            "concentration": "3 mmol/L"
+        },
+        "context": "In the initial phase of the synthesis, a colchicine solution (3 mmol/L) was prepared and carefully maintained at 50°C using a temperature-controlled water bath. The solution was continuously stirred at 300 rpm for 2 hours while the pH was monitored and maintained at 7.4 using a phosphate buffer. This precise control of temperature and concentration was critical for the subsequent coupling reaction with the protein substrate, as previous studies have shown that deviations from these conditions significantly impact the binding efficiency and product yield"
+    },
+    {
+        "name": "Graphene oxide",
+        "category": {
+            "name": "Specific Chemical Substances",
+            "description": "Specific Chemical Substances:\nImportant: A chemical substance must have specific conditions/parameters to be considered an individual instance. Generic chemical names without parameters (e.g., \"Schiff base\" alone) are not valid, but become valid when specified with conditions (e.g., \"Schiff base (3 mmol/L, 10°C)\").",
+            "examples": []
+        },
+        "parameters": {
+            "oxygen content": "32 wt%",
+            "lateral size": "2.5 μm",
+            "thickness": "1.1 nm"
+        },
+        "context": "During the materials characterization phase, a batch of graphene oxide sheets (lateral size 2.5 μm, thickness 1.1 nm, oxygen content 32 wt%) was thoroughly analyzed using a combination of microscopy and spectroscopic techniques. High-resolution transmission electron microscopy revealed the distinctive wrinkled morphology of the nanosheets, while X-ray photoelectron spectroscopy confirmed the presence of various oxygen-containing functional groups distributed across the basal planes and edges. The relatively high oxygen content of 32 wt% and the large lateral dimensions proved crucial for the material's subsequent application in flexible electronics, where the sheets were successfully incorporated into a polymer matrix to create highly conductive and mechanically robust composite films. The unique structural parameters of this graphene oxide batch resulted in an exceptional electrical conductivity of 15,000 S/m after thermal reduction at 450°C under argon atmosphere"
+    },
+    {
+        "name": "Platinum nanoparticles",
+        "category": {
+            "name": "Specific Chemical Substances",
+            "description": "Specific Chemical Substances:\nImportant: A chemical substance must have specific conditions/parameters to be considered an individual instance. Generic chemical names without parameters (e.g., \"Schiff base\" alone) are not valid, but become valid when specified with conditions (e.g., \"Schiff base (3 mmol/L, 10°C)\").",
+            "examples": []
+        },
+        "parameters": {
+            "size": "5 nm",
+            "surface coating": "PVP",
+            "dispersion medium": "ethylene glycol"
+        },
+        "context": "The catalytic performance evaluation involved a sophisticated flow chemistry setup where PVP-coated platinum nanoparticles (uniform 5 nm size distribution) dispersed in ethylene glycol were integrated into a continuous-flow microreactor system. The reaction kinetics were monitored using in-situ Raman spectroscopy while maintaining precise temperature and pressure control. The unique combination of the nanoparticle size and surface coating enabled unprecedented selectivity in the hydrogenation of complex pharmaceutical intermediates, achieving a remarkable 98% conversion rate with minimal formation of undesired byproducts. The stability of the colloidal system was maintained throughout the 72-hour reaction period, demonstrating the robust nature of the carefully engineered catalytic system"
+    },
+    {
+        "name": "Dimethyl sulfoxide (DMSO)",
+        "category": {
+            "name": "Specific Chemical Substances",
+            "description": "Specific Chemical Substances:\nImportant: A chemical substance must have specific conditions/parameters to be considered an individual instance. Generic chemical names without parameters (e.g., \"Schiff base\" alone) are not valid, but become valid when specified with conditions (e.g., \"Schiff base (3 mmol/L, 10°C)\").",
+            "examples": []
+        },
+        "parameters": {
+            "purity": "99.9%",
+            "temperature": "25°C"
+        },
+        "context": "During the systematic investigation of reaction optimization parameters, various solvent systems were evaluated based on their polarity indices and solvation capabilities. After extensive screening and thermodynamic analysis, DMSO purified to 99.9% through molecular sieves emerged as the optimal choice. When maintained at precisely 25°C using a temperature-controlled circulation bath, this solvent system demonstrated remarkable efficacy in facilitating the dissolution kinetics while simultaneously promoting favorable reaction pathways. The exceptional purity level proved instrumental in suppressing undesired side reactions, while the stringent temperature control enabled the acquisition of highly reproducible kinetic data that formed the foundation for subsequent mechanistic studies."
+    },
+    {
+        "name": "Palladium on carbon (Pd/C)",
+        "category": {
+            "name": "Specific Chemical Substances",
+            "description": "Specific Chemical Substances:\nImportant: A chemical substance must have specific conditions/parameters to be considered an individual instance. Generic chemical names without parameters (e.g., \"Schiff base\" alone) are not valid, but become valid when specified with conditions (e.g., \"Schiff base (3 mmol/L, 10°C)\").",
+            "examples": []
+        },
+        "parameters": {
+            "loading": "10 wt%",
+            "particle size": "50 nm"
+        },
+        "context": "The rational design of the catalytic system proved pivotal in achieving unprecedented levels of stereo- and regioselectivity in the transformation process. Through comprehensive catalyst screening and optimization studies, Pd/C with a precisely controlled particle size of 50 nm and a loading of 10 wt% exhibited superior catalytic performance. Advanced characterization techniques, including high-resolution transmission electron microscopy and X-ray photoelectron spectroscopy, revealed a highly dispersed array of palladium nanoparticles across the carbon support matrix. This unique morphological architecture not only maximized the density of accessible active sites but also significantly enhanced the hydrogen activation efficiency. Long-term stability assessments conducted in a continuous flow reactor demonstrated remarkable catalytic durability, with negligible activity deterioration observed over a 100-hour reaction cycle."
+    },
+    {
+        "name": "Tetrahydrofuran (THF)",
+        "category": {
+            "name": "Specific Chemical Substances",
+            "description": "Specific Chemical Substances:\nImportant: A chemical substance must have specific conditions/parameters to be considered an individual instance. Generic chemical names without parameters (e.g., \"Schiff base\" alone) are not valid, but become valid when specified with conditions (e.g., \"Schiff base (3 mmol/L, 10°C)\").",
+            "examples": []
+        },
+        "parameters": {
+            "purity": "99.5%",
+            "temperature": "20°C"
+        },
+        "context": "The reaction was conducted in anhydrous THF (99.5% purity) at 20°C under nitrogen atmosphere, which provided optimal conditions for the organometallic transformation."
+    },
+    {
+        "name": "Platinum(IV) oxide",
+        "category": {
+            "name": "Specific Chemical Substances",
+            "description": "Specific Chemical Substances:\nImportant: A chemical substance must have specific conditions/parameters to be considered an individual instance. Generic chemical names without parameters (e.g., \"Schiff base\" alone) are not valid, but become valid when specified with conditions (e.g., \"Schiff base (3 mmol/L, 10°C)\").",
+            "examples": []
+        },
+        "parameters": {
+            "surface area": "50 m²/g",
+            "purity": "99.99%"
+        },
+        "context": "The hydrogenation reaction was catalyzed by high-purity platinum(IV) oxide with a specific surface area of 50 m²/g, which demonstrated excellent activity for selective reduction of the alkene bonds."
+    },
+    {
+        "name": "Bruker D8 Advance XRD",
+        "category": {
+            "name": "Specific Instruments with Parameters",
+            "description": "Specific Instruments with Parameters:",
+            "examples": []
+        },
+        "parameters": {
+            "voltage": "40kV",
+            "current": "40mA"
+        },
+        "context": "The X-ray diffraction measurements were conducted on a Bruker D8 Advance XRD instrument operated at 40kV/40mA"
+    },
+    {
+        "name": "Solvothermal reaction",
+        "category": {
+            "name": "Specific Experimental Procedures",
+            "description": "Specific Experimental Procedures:",
+            "examples": []
+        },
+        "parameters": {
+            "solvent": "ethanol",
+            "temperature": "200°C",
+            "duration": "12h",
+            "container": "100 mL Teflon-lined stainless steel autoclave"
+        },
+        "context": "The synthesis of the metal-organic framework (MOF) was carried out through a complex multi-step process. Initially, the metal precursor Cu(NO3)2·3H2O (2.5 mmol) was dissolved in 20 mL deionized water under vigorous stirring for 30 minutes. Simultaneously, the organic linker 1,4-benzenedicarboxylic acid (2.5 mmol) was dissolved in 30 mL N,N-dimethylformamide (DMF). The two solutions were combined and subjected to ultrasonic treatment for 15 minutes to ensure thorough mixing. The resulting blue solution was then transferred to a 100 mL Teflon-lined stainless steel autoclave for a solvothermal reaction in ethanol at 200°C for 12h. After natural cooling to room temperature, the product was collected by centrifugation at 8000 rpm for 10 minutes, washed three times with DMF and ethanol alternately, and finally dried under vacuum at 80°C for 24h to obtain the final crystalline MOF product."
+    },
+    {
+        "name": "Freeze-thaw cycling",
+        "category": {
+            "name": "Specific Experimental Procedures",
+            "description": "Specific Experimental Procedures:",
+            "examples": []
+        },
+        "parameters": {
+            "cycles": "5",
+            "low_temp": "-80°C",
+            "high_temp": "37°C",
+            "cycle_duration": "45 min",
+            "sample_state": "aqueous suspension"
+        },
+        "context": "To evaluate the stability of the liposomal formulation under extreme temperature fluctuations, the samples underwent a rigorous freeze-thaw cycling protocol. Each cycle consisted of rapid freezing at -80°C followed by controlled thawing at 37°C, with each temperature extreme maintained for 45 minutes. This process was repeated for a total of 5 cycles, during which the particle size distribution and encapsulation efficiency were monitored using dynamic light scattering and fluorescence spectroscopy. The aqueous suspension demonstrated remarkable resilience, with less than 5% change in the mean vesicle diameter and minimal cargo leakage, highlighting the robust nature of the optimized lipid composition. The maintenance of structural integrity was further confirmed through cryo-electron microscopy imaging performed after the completion of all cycles, revealing well-preserved bilayer structures and consistent morphological characteristics across the population."
+    },
+    {
+        "name": "Microwave irradiation",
+        "category": {
+            "name": "Specific Experimental Procedures",
+            "description": "Specific Experimental Procedures:",
+            "examples": []
+        },
+        "parameters": {
+            "power": "800W",
+            "duration": "90s",
+            "mode": "pulsed",
+            "duty_cycle": "30%"
+        },
+        "context": "The sample was subjected to pulsed microwave irradiation at 800W for 90s with a 30% duty cycle to achieve rapid and uniform heating."
+    },
+    {
+        "name": "Hydrogen gas",
+        "category": {
+            "name": "Specific Chemical Substances",
+            "description": "Specific Chemical Substances:\nImportant: A chemical substance must have specific conditions/parameters to be considered an individual instance. Generic chemical names without parameters (e.g., \"Schiff base\" alone) are not valid, but become valid when specified with conditions (e.g., \"Schiff base (3 mmol/L, 10°C)\").",
+            "examples": []
+        },
+        "parameters": {
+            "temperature": "room temperature",
+            "pressure": "1 atm"
+        },
+        "context": "Hydrogen gas was uset under room temperature and 1 atm pressure"
+    },
+    {
+        "name": "Hydrogen gas",
+        "category": {
+            "name": "Specific Chemical Substances",
+            "description": "Specific Chemical Substances:\nImportant: A chemical substance must have specific conditions/parameters to be considered an individual instance. Generic chemical names without parameters (e.g., \"Schiff base\" alone) are not valid, but become valid when specified with conditions (e.g., \"Schiff base (3 mmol/L, 10°C)\").",
+            "examples": []
+        },
+        "parameters": {
+            "temperature": "room temperature",
+            "pressure": "1 atm"
+        },
+        "context": "Hydrogen gas was used as a reducing reagent under room temperature and 1 atm pressure"
+    }
+]

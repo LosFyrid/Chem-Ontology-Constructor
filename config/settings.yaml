@@ -1,0 +1,19 @@
+pdf_parser:
+  input_directory: "data/pdfs"
+  output_directory: "data/processed_texts"
+
+ontology:
+  base_ontology_file: "${PROJECT_ROOT}/data/ontology/base.owl"
+  output_ontology_file: "${PROJECT_ROOT}/data/ontology/constructed.owl"
+
+LLM:
+  model: "gpt-4o"
+  streaming: false
+  temperature: 0
+
+extractor_examples:
+  individual_directory_path:  ${PROJECT_ROOT}data/extractor_examples/individual/
+  individual_categories_file_path: "{{individual_directory_path}}individual_categories.json"
+  individuals_file_path: "{{individual_directory_path}}individuals.json"
+  classes_directory_path: ${PROJECT_ROOT}data/extractor_examples/class/
+  classes_file_path: "{{classes_directory_path}}classes.json"

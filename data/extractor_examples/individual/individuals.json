@@ -1,0 +1,43 @@
+[
+    {
+        "name": "Colchicine",
+        "category": {
+            "name": "Specific Chemical Substances",
+            "description": "Specific Chemical Substances:\nImportant: A chemical substance must have specific conditions/parameters to be considered an individual instance. Generic chemical names without parameters (e.g., \"Schiff base\" alone) are not valid, but become valid when specified with conditions (e.g., \"Schiff base (3 mmol/L, 10°C)\").",
+            "examples": []
+        },
+        "parameters": {
+            "temperature": "50°C",
+            "concentration": "3 mmol/L"
+        },
+        "context": "In the initial phase of the synthesis, a colchicine solution (3 mmol/L) was prepared and carefully maintained at 50°C using a temperature-controlled water bath. The solution was continuously stirred at 300 rpm for 2 hours while the pH was monitored and maintained at 7.4 using a phosphate buffer. This precise control of temperature and concentration was critical for the subsequent coupling reaction with the protein substrate, as previous studies have shown that deviations from these conditions significantly impact the binding efficiency and product yield"
+    },
+    {
+        "name": "Bruker D8 Advance XRD",
+        "category": {
+            "name": "Specific Instruments with Parameters",
+            "description": "Specific Instruments with Parameters:",
+            "examples": []
+        },
+        "parameters": {
+            "voltage": "40kV",
+            "current": "40mA"
+        },
+        "context": "Bruker D8 Advance XRD operated at 40kV/40mA"
+    },
+    {
+        "name": "Solvothermal reaction",
+        "category": {
+            "name": "Specific Experimental Procedures",
+            "description": "Specific Experimental Procedures:",
+            "examples": []
+        },
+        "parameters": {
+            "solvent": "ethanol",
+            "temperature": "200°C",
+            "duration": "12h",
+            "container": "100 mL Teflon-lined stainless steel autoclave"
+        },
+        "context": "The synthesis of the metal-organic framework (MOF) was carried out through a complex multi-step process. Initially, the metal precursor Cu(NO3)2·3H2O (2.5 mmol) was dissolved in 20 mL deionized water under vigorous stirring for 30 minutes. Simultaneously, the organic linker 1,4-benzenedicarboxylic acid (2.5 mmol) was dissolved in 30 mL N,N-dimethylformamide (DMF). The two solutions were combined and subjected to ultrasonic treatment for 15 minutes to ensure thorough mixing. The resulting blue solution was then transferred to a 100 mL Teflon-lined stainless steel autoclave for a solvothermal reaction in ethanol at 200°C for 12h. After natural cooling to room temperature, the product was collected by centrifugation at 8000 rpm for 10 minutes, washed three times with DMF and ethanol alternately, and finally dried under vacuum at 80°C for 24h to obtain the final crystalline MOF product."
+    }
+]

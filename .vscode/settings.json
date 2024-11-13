@@ -1,0 +1,9 @@
+{
+    "files.autoSave": "afterDelay",
+    "workbench.commandPalette.experimental.askChatLocation": "chatView",
+    "terminal.integrated.env.windows": {
+        
+        "PROJECT_ROOT": "${workspaceFolder}/",
+        "PYTHONPATH": "${workspaceFolder}/",
+    }
+}
