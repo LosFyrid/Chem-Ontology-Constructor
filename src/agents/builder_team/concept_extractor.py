@@ -13,7 +13,6 @@ from langchain_core.prompts import PromptTemplate, PipelinePromptTemplate
 
 
 from config import settings
-from builder_team_graph import BuilderTeamState
 
 ontology = get_ontology(settings.ONTOLOGY_CONFIG["ontology_file_path"])
  
@@ -36,16 +35,16 @@ class Concept(BaseModel):
 
 class IndividualMetaData(BaseModel):
     name: str
-    embedding: List[float]
-    data_properties: Dict[str, str]
-    location: List[Tuple[str, str]]
-    information: List[str]
+    embedding: List[float] = Field(default_factory=list)
+    data_properties: Dict[str, str] = Field(default_factory=dict)
+    location: Tuple[str, str] = Field(default_factory=lambda: ("", ""))
+    information: str = ""
 
 class ClassMetaData(BaseModel):
     name: str
-    embedding: List[float]
-    location: List[Tuple[str, str]]
-    information: List[str]
+    embedding: List[float] = Field(default_factory=list)
+    location: Tuple[str, str] = Field(default_factory=lambda: ("", ""))
+    information: str = ""
 
 def save_examples_to_json(examples: List[Example], filepath: str = None):
     if not examples:
@@ -205,40 +204,6 @@ def parse_llm_output(response_content: str) -> Tuple[List[ClassMetaData], List[I
     return class_concepts, individual_concepts
 
 
-def create_classes(state: BuilderTeamState) -> BuilderTeamState:
-    """
-    将ClassMetaData列表中的类定义转换为本体中的实际类,并创建数据属性
-    
-    Args:
-        state: BuilderTeamState - 构建团队的当前状态
-        
-    Returns:
-        BuilderTeamState - 更新后的状态
-    """
-    ontology = state["ontology"]
-    
-    for class_meta in state["classes"]:
-        # 检查类是否已存在
-        if not class_meta.name in ontology.classes():
-            # 在本体中创建新类
-            with ontology:
-                new_class = types.new_class(class_meta.name, (Thing,))
-                
-                # 创建embedding注解属性
-                embedding_prop = types.new_class("embedding", (types.AnnotationProperty,))
-                setattr(new_class, "embedding", class_meta.embedding)
-                
-                # 创建location注解属性 
-                location_prop = types.new_class("location", (types.AnnotationProperty,))
-                location_str = ";".join([f"{loc[0]}:{loc[1]}" for loc in class_meta.location])
-                setattr(new_class, "location", location_str)
-                
-                # 创建information注解属性
-                info_prop = types.new_class("information", (types.AnnotationProperty,))
-                info_str = ";".join(class_meta.information)
-                setattr(new_class, "information", info_str)
-                
-    return state
 
 
 

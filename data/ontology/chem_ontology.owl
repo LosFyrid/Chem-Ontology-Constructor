@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://www.test.org/chem_ontologies/chem_ontology.owl"
+         xmlns="http://www.test.org/chem_ontologies/chem_ontology.owl#"
+         xmlns:meta="http://www.test.org/chem_ontologies/meta/">
+
+<owl:Ontology rdf:about="http://www.test.org/chem_ontologies/chem_ontology.owl"/>
+
+<owl:AnnotationProperty rdf:about="http://www.test.org/chem_ontologies/meta/embedding">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:AnnotationProperty>
+
+<owl:AnnotationProperty rdf:about="http://www.test.org/chem_ontologies/meta/location">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:AnnotationProperty>
+
+<owl:AnnotationProperty rdf:about="http://www.test.org/chem_ontologies/meta/information">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:AnnotationProperty>
+
+<owl:Class rdf:about="#electron_donation">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <meta:location rdf:datatype="http://www.w3.org/2001/XMLSchema#string">doi:  - page: </meta:location>
+  <meta:information rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dododo</meta:information>
+  <meta:information rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Electron donation affects chemical shifts by influencing electron distribution.</meta:information>
+  <meta:information rdf:datatype="http://www.w3.org/2001/XMLSchema#string">nonono</meta:information>
+</owl:Class>
+
+<owl:Class rdf:about="#electron_withdrawal">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <meta:location rdf:datatype="http://www.w3.org/2001/XMLSchema#string">doi:  - page: </meta:location>
+  <meta:information rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Electron withdrawal can occur through conjugation or inductive effects, impacting chemical shifts.</meta:information>
+</owl:Class>
+
+<owl:Class rdf:about="#chemical_shift">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <meta:location rdf:datatype="http://www.w3.org/2001/XMLSchema#string">doi:  - page: </meta:location>
+  <meta:information rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Chemical shifts are influenced by electron donation and withdrawal.</meta:information>
+</owl:Class>
+
+<owl:Class rdf:about="#benzene_ring">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <meta:location rdf:datatype="http://www.w3.org/2001/XMLSchema#string">doi:  - page: </meta:location>
+  <meta:information rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Benzene rings with substituents can show different chemical shifts.</meta:information>
+</owl:Class>
+
+<owl:Class rdf:about="#conjugation">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <meta:location rdf:datatype="http://www.w3.org/2001/XMLSchema#string">doi:  - page: </meta:location>
+  <meta:information rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Conjugation affects electron distribution through π bonds.</meta:information>
+</owl:Class>
+
+<owl:Class rdf:about="#inductive_effect">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <meta:location rdf:datatype="http://www.w3.org/2001/XMLSchema#string">doi:  - page: </meta:location>
+  <meta:information rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Inductive effects result from electron withdrawal or donation through σ bonds.</meta:information>
+</owl:Class>
+
+<owl:Class rdf:about="#carbonyl_group">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <meta:location rdf:datatype="http://www.w3.org/2001/XMLSchema#string">doi:  - page: </meta:location>
+  <meta:information rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Carbonyl groups can withdraw electrons by conjugation.</meta:information>
+</owl:Class>
+
+<owl:Class rdf:about="#nitrile_group">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <meta:location rdf:datatype="http://www.w3.org/2001/XMLSchema#string">doi:  - page: </meta:location>
+  <meta:information rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nitrile groups can withdraw electrons by conjugation.</meta:information>
+</owl:Class>
+
+<owl:Class rdf:about="#halogens">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <meta:location rdf:datatype="http://www.w3.org/2001/XMLSchema#string">doi:  - page: </meta:location>
+  <meta:information rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Halogens can balance electron withdrawal by inductive effect and donation of lone pairs by conjugation.</meta:information>
+</owl:Class>
+
+<owl:Class rdf:about="#alkyl_groups">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <meta:location rdf:datatype="http://www.w3.org/2001/XMLSchema#string">doi:  - page: </meta:location>
+  <meta:information rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Alkyl groups are weak inductive electron donors.</meta:information>
+</owl:Class>
+
+<owl:Class rdf:about="#lone_pairs">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <meta:location rdf:datatype="http://www.w3.org/2001/XMLSchema#string">doi:  - page: </meta:location>
+  <meta:information rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lone pairs on halogens, O, and N affect electron donation.</meta:information>
+</owl:Class>
+
+<owl:Class rdf:about="#p_block_elements">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <meta:location rdf:datatype="http://www.w3.org/2001/XMLSchema#string">doi:  - page: </meta:location>
+  <meta:information rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The p block elements have lone pairs in p orbitals affecting electron donation.</meta:information>
+</owl:Class>
+
+<owl:NamedIndividual rdf:about="#nitro_group">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <meta:location rdf:datatype="http://www.w3.org/2001/XMLSchema#string">doi:  - page: </meta:location>
+  <meta:information rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The nitro group is a powerful electron-withdrawing group by conjugation.</meta:information>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#cf3_group">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <meta:location rdf:datatype="http://www.w3.org/2001/XMLSchema#string">doi:  - page: </meta:location>
+  <meta:information rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The CF3 group is an important example of inductive electron withdrawal.</meta:information>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#amino_group">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <meta:location rdf:datatype="http://www.w3.org/2001/XMLSchema#string">doi:  - page: </meta:location>
+  <meta:information rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The amino group is the best electron donor by conjugation.</meta:information>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#no2_group">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <meta:location rdf:datatype="http://www.w3.org/2001/XMLSchema#string">doi:  - page: </meta:location>
+  <meta:information rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The NO2 group is the best electron withdrawer.</meta:information>
+  <meta:information rdf:datatype="http://www.w3.org/2001/XMLSchema#string">nonon.</meta:information>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#nh2_group">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <meta:location rdf:datatype="http://www.w3.org/2001/XMLSchema#string">doi:  - page: </meta:location>
+  <meta:information rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The NH2 group is the best electron donor.</meta:information>
+</owl:NamedIndividual>
+
+
+</rdf:RDF>
