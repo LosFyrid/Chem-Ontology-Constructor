@@ -1,9 +1,18 @@
 from owlready2 import *
 from config import settings
 
-print(settings.ONTOLOGY_CONFIG["ontology_directory_path"])
+ontology = settings.ONTOLOGY_CONFIG["ontology"]
 
-onto_path.append(settings.ONTOLOGY_CONFIG["ontology_directory_path"])
-ontology = get_ontology("http://www.test.org/chem_ontologies/chem_ontology.owl#").load(only_local=True)
+results = default_world.sparql_query("""
+    SELECT ?class
+    WHERE {
+      ?class a owl:Class .
+      FILTER NOT EXISTS { ?subclass rdfs:subClassOf ?class }
+    }
+""")
 
-print(type(ontology))
+list_results = list(results)
+
+print(list_results)
+
+# print(type(list_results[0][0]))

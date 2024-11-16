@@ -13,8 +13,6 @@ from langchain_core.prompts import PromptTemplate, PipelinePromptTemplate
 
 
 from config import settings
-
-ontology = get_ontology(settings.ONTOLOGY_CONFIG["ontology_file_path"])
  
 llm = ChatOpenAI(
     model=settings.LLM_CONFIG["model"],
@@ -29,8 +27,7 @@ class Example(BaseModel):
 
 class Concept(BaseModel):
     name: str
-    classification: str
-    justification: str
+    is_data_property: bool
     information: str
 
 class IndividualMetaData(BaseModel):
@@ -104,11 +101,10 @@ def generate_prompt() -> str:
     examples = _load_examples_from_json()
 
     task_prompt = PromptTemplate(
-        template = """# Ontology Classification in Chemistry
+        template = """# Ontology Entities Extraction in Chemistry
 
 ## Task Overview
-
-In the field of chemistry, we aim to classify concepts as either a **"class"** or an **"individual"** within an ontological framework.
+In the field of chemistry, we aim to find all concepts and entities including classes, individuals and data properties within an ontological framework. 
 
 ## Definitions
 
@@ -116,15 +112,15 @@ In the field of chemistry, we aim to classify concepts as either a **"class"** o
 
 - **Individual:** An individual is a distinct, singular entity or concept that does not include other entities. It is unique and cannot be subdivided into further examples or categories.
 
+- **Data Property:** A data property is a concept that describes the characteristics of an entity. It is a property describing an entity itself by a value which means ONLY ONE ENTITY exclude itself appears. Also, a property describing the relationship between two entities is not data property.
+
 ## Task Instructions
 
 1. **Analyze the Text:** Thoroughly read the provided text to understand the context.
-2. **Extract Concepts:** Identify and extract all relevant concepts and entities from the text.
-3. **Classify Each Concept:**
-   - If a concept can be associated with multiple examples or entities, classify it as a **"class."**
-   - If the concept is unique and specific, classify it as an **"individual."**
-4. **Justify Your Classification:** Provide a concise explanation for each classification to support your decision.
-5. **Extract Information about the Concept:** Extract information in one sentence about the concept in the text."""
+2. **Extract Entities:** Identify and extract all relevant entities and concepts from the text.
+3. **Find Data Properties:**
+   - If the concept describes an attribute of an entity or a concept, classify it as a **"data property."**
+4. **Extract Information about the Entity:** Extract information in one sentence about the entity or concept in the text."""
     )
     
     examples_prompt = ""
@@ -134,20 +130,18 @@ In the field of chemistry, we aim to classify concepts as either a **"class"** o
             examples_prompt += f"**Text:**\n    {example.context}\n\nOutput:\n"
             for concept in example.concepts:
                 examples_prompt += f"Name: {concept.name}\n"
-                examples_prompt += f"Classification: {concept.classification}\n"
-                examples_prompt += f"Justification: {concept.justification}\n"
+                examples_prompt += f"Is data property: {concept.is_data_property}\n"
                 examples_prompt += f"Information: {concept.information}\n\n"
     
     output_format_prompt = PromptTemplate(
-        template="""For each identified concept, output only:
-Name: [Specific concept name/identifier]
-Classification: [Class or Individual]
-Justification: [Explanation for the classification]
-Information: [Information about the concept in one sentence]
+        template="""For each identified entity, output only:
+Name: [Specific entity name/identifier]
+Is data property: [Yes or No]
+Information: [Information about the entity in one sentence]
 
-If the concept has abbreviations, format its Name [Full name]([Abbreviation]).
+If the entity has abbreviations, format its Name [Full name]([Abbreviation]).
 
-Apply this structured approach to analyze the text I offer later and accurately classify the concepts.
+Apply this structured approach to analyze the text I offer later and accurately extract the entities.
 """
     )
 

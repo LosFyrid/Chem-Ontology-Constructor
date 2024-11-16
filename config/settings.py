@@ -4,6 +4,8 @@ import yaml
 from pathlib import Path
 from dotenv import load_dotenv
 
+from owlready2 import onto_path, get_ontology
+
 load_dotenv()
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "default_api_key")
@@ -45,6 +47,18 @@ with open(config_path, "r") as f:
     yaml_settings = resolve_key_references(yaml_settings)
 
 
-ONTOLOGY_CONFIG = yaml_settings["ontology"]
+_ONTOLOGY_CONFIG = yaml_settings["ontology"]
+onto_path.append(_ONTOLOGY_CONFIG["ontology_directory_path"])
+ontology = get_ontology(_ONTOLOGY_CONFIG["ontology_iri"]).load(only_local=True)
+
 LLM_CONFIG = yaml_settings["LLM"]
 EXTRACTOR_EXAMPLES_CONFIG = yaml_settings["extractor_examples"]
+ONTOLOGY_CONFIG = {
+    "ontology": ontology,
+    "meta": ontology.get_namespace(_ONTOLOGY_CONFIG["namespace_meta_iri"]),
+    "classes": ontology.get_namespace(_ONTOLOGY_CONFIG["namespace_classes_iri"]),
+    "individuals": ontology.get_namespace(_ONTOLOGY_CONFIG["namespace_individuals_iri"]),
+    "data_properties": ontology.get_namespace(_ONTOLOGY_CONFIG["namespace_data_properties_iri"]),
+    "object_properties": ontology.get_namespace(_ONTOLOGY_CONFIG["namespace_object_properties_iri"]),
+    "axioms": ontology.get_namespace(_ONTOLOGY_CONFIG["namespace_axioms_iri"])
+}

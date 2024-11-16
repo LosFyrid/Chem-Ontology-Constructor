@@ -3,18 +3,15 @@ from owlready2 import *
 
 from config import settings
 
-onto_path.append(settings.ONTOLOGY_CONFIG["ontology_directory_path"])
-ontology = get_ontology("http://www.test.org/chem_ontologies/chem_ontology.owl").load(only_local=True)
-meta = ontology.get_namespace("http://www.test.org/chem_ontologies/meta/")
 
-
-def create_metadata_properties(ontology: owlready2.namespace.Ontology, meta: owlready2.namespace.Namespace):
+def create_metadata_properties(ontology: owlready2.namespace.Ontology):
     """
     在本体中创建必要的注释属性类别
     
     Args:
         ontology: owlready2.namespace.Ontology - 目标本体
     """
+    meta = settings.ONTOLOGY_CONFIG["meta"]
     with ontology:
         # 检查并创建embedding注释属性(值类型为浮点数列表)
         if meta.embedding in ontology.annotation_properties():

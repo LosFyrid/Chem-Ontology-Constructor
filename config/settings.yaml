@@ -1,11 +1,21 @@
 ontology:
   ontology_directory_path: ${PROJECT_ROOT}data/ontology/
   ontology_file_path: "{{ontology_directory_path}}chem_ontology.owl"
+  ontology_base_iri: "http://www.test.org/chem_ontologies/"
+  ontology_iri: "{{ontology_base_iri}}chem_ontology.owl"
+  namespace_meta_iri: "{{ontology_base_iri}}meta/"
+  namespace_classes_iri: "{{ontology_base_iri}}classes/"
+  namespace_individuals_iri: "{{ontology_base_iri}}individuals/"
+  namespace_data_properties_iri: "{{ontology_base_iri}}data_properties/"
+  namespace_object_properties_iri: "{{ontology_base_iri}}object_properties/"
+  namespace_axioms_iri: "{{ontology_base_iri}}axioms/"
+
 
 LLM:
-  model: "gpt-4o"
+  # model: "gpt-4o"
+  model: "o1-preview"
   streaming: false
-  temperature: 0
+  temperature: 1
 
 extractor_examples:
   individual_directory_path:  ${PROJECT_ROOT}data/extractor_examples/concept/
