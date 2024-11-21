@@ -12,10 +12,11 @@ ontology:
 
 
 LLM:
-  # model: "gpt-4o"
-  model: "o1-preview"
+  model: "gpt-4o"
+  # model: "o1-preview"
+  # model: "o1-mini"
   streaming: false
-  temperature: 1
+  temperature: 0
 
 extractor_examples:
   individual_directory_path:  ${PROJECT_ROOT}data/extractor_examples/concept/

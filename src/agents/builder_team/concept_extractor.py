@@ -7,6 +7,7 @@ import warnings
 
 
 from owlready2 import get_ontology, types, Thing
+from owlready2.namespace import Ontology
 
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate, PipelinePromptTemplate
@@ -30,18 +31,39 @@ class Concept(BaseModel):
     is_data_property: bool
     information: str
 
+class DataPropertyMetaData(BaseModel):
+    name: str
+    embedding: List[float] = Field(default_factory=list)
+    location: Tuple[str, str] = Field(default_factory=lambda: ("", ""))
+    information: str = ""
+    
+    def __eq__(self, other):
+        if not isinstance(other, DataPropertyMetaData):
+            return False
+        return self.name == other.name
+
 class IndividualMetaData(BaseModel):
     name: str
     embedding: List[float] = Field(default_factory=list)
     data_properties: Dict[str, str] = Field(default_factory=dict)
     location: Tuple[str, str] = Field(default_factory=lambda: ("", ""))
     information: str = ""
+    
+    def __eq__(self, other):
+        if not isinstance(other, IndividualMetaData):
+            return False
+        return self.name == other.name
 
 class ClassMetaData(BaseModel):
     name: str
     embedding: List[float] = Field(default_factory=list)
     location: Tuple[str, str] = Field(default_factory=lambda: ("", ""))
     information: str = ""
+    
+    def __eq__(self, other):
+        if not isinstance(other, ClassMetaData):
+            return False
+        return self.name == other.name
 
 def save_examples_to_json(examples: List[Example], filepath: str = None):
     if not examples:
@@ -119,7 +141,7 @@ In the field of chemistry, we aim to find all concepts and entities including cl
 1. **Analyze the Text:** Thoroughly read the provided text to understand the context.
 2. **Extract Entities:** Identify and extract all relevant entities and concepts from the text.
 3. **Find Data Properties:**
-   - If the concept describes an attribute of an entity or a concept, classify it as a **"data property."**
+   - If the concept describes an attribute of an entity or a concept, classify it as a **"data property"**.
 4. **Extract Information about the Entity:** Extract information in one sentence about the entity or concept in the text."""
     )
     
@@ -136,7 +158,7 @@ In the field of chemistry, we aim to find all concepts and entities including cl
     output_format_prompt = PromptTemplate(
         template="""For each identified entity, output only:
 Name: [Specific entity name/identifier]
-Is data property: [Yes or No]
+Is data property: [True or False]
 Information: [Information about the entity in one sentence]
 
 If the entity has abbreviations, format its Name [Full name]([Abbreviation]).
@@ -161,9 +183,9 @@ Apply this structured approach to analyze the text I offer later and accurately 
     return prompt_pipeline.format()
 
 
-def parse_llm_output(response_content: str) -> Tuple[List[ClassMetaData], List[IndividualMetaData]]:
+def parse_llm_output(response_content: str) -> Tuple[List[ClassMetaData], List[DataPropertyMetaData]]:
     class_concepts = []
-    individual_concepts = []
+    data_properties = []
     
     # 按空行分割每个概念块
     concept_blocks = [block.strip() for block in response_content.split('\n\n') if block.strip()]
@@ -178,28 +200,102 @@ def parse_llm_output(response_content: str) -> Tuple[List[ClassMetaData], List[I
                 
         # 提取关键信息
         name = properties.get('name', '')
-        classification = properties.get('classification', '').lower()
+        is_data_property_str = properties.get('is data property', '').lower()
+        if is_data_property_str == 'true':
+            is_data_property = True
+        elif is_data_property_str == 'false':
+            is_data_property = False
+        else:
+            raise ValueError(f"'Is data property' must be 'true' or 'false', got '{is_data_property_str}'")
+            
         information = properties.get('information', '')
         
-        # 根据classification创建对应的元数据对象
-        if classification == 'class':
+        # 根据is_data_property创建对应的元数据对象
+        if is_data_property:
+            data_property = DataPropertyMetaData(
+                name=name,
+                information=information
+            )
+            data_properties.append(data_property)
+        else:
             class_concept = ClassMetaData(
                 name=name,
                 information=information
             )
             class_concepts.append(class_concept)
-        elif classification == 'individual':
-            individual_concept = IndividualMetaData(
-                name=name,
-                information=information
-            )
-            individual_concepts.append(individual_concept)
             
-    return class_concepts, individual_concepts
+    return class_concepts, data_properties
 
+def create_classes(ontology: Ontology, classes: List[ClassMetaData]):
+    class_namespace = settings.ONTOLOGY_CONFIG["classes"]
 
+    for class_meta in classes:
+        # Check if class already exists
+        name = class_meta.name.replace(" ", "_").lower()
+        if not class_namespace[name] in ontology.classes():
+            print(f"Class: {name} does not exist, creating...")
+            # Create new class in ontology
+            with class_namespace:
+                new_class = types.new_class(name, (Thing,))
+                
+                new_class.embedding = class_meta.embedding
+                
+                new_class.location = [f"doi: {class_meta.location[0]} - page: {class_meta.location[1]}"]
+                
+                new_class.information = [class_meta.information]
+        else:
+            print(f"Class: {name} already exists")
+            with class_namespace:
+                class_to_update = class_namespace[name]
+                print(class_to_update)
+                class_to_update.location.append(f"doi: {class_meta.location[0]} - page: {class_meta.location[1]}")
+                class_to_update.information.append(class_meta.information)
 
+def create_individuals(ontology: Ontology, individuals: List[IndividualMetaData]):
+    individual_namespace = settings.ONTOLOGY_CONFIG["individuals"]
+    for individual_meta in individuals:
+        name = individual_meta.name.replace(" ", "_").lower()
+        if not individual_namespace[name] in ontology.individuals():
+            print(f"Individual: {name} does not exist, creating...")
+            with individual_namespace:
+                new_individual = Thing(name)
+                
+                # Create embedding annotation property
+                new_individual.embedding = individual_meta.embedding
+                
+                # Create location annotation property
+                new_individual.location = [f"doi: {individual_meta.location[0]} - page: {individual_meta.location[1]}"]
+                
+                # Create information annotation property
+                new_individual.information = [individual_meta.information]
+        else:
+            print(f"Individual: {name} already exists")
+            with individual_namespace:
+                individual_to_update = individual_namespace[name]
+                individual_to_update.location.append(f"doi: {individual_meta.location[0]} - page: {individual_meta.location[1]}")
+                individual_to_update.information.append(individual_meta.information)
 
+def create_data_properties(ontology: Ontology, data_properties: List[DataPropertyMetaData]):
+    data_property_namespace = settings.ONTOLOGY_CONFIG["data_properties"]
+    for data_property_meta in data_properties:
+        name = data_property_meta.name.replace(" ", "_").lower()
+        if not data_property_namespace[name] in ontology.data_properties():
+            print(f"Data property: {name} does not exist, creating...")
+            with data_property_namespace:
+                new_data_property = types.new_data_property(name)
+                
+                new_data_property.embedding = data_property_meta.embedding
+                
+                new_data_property.location = [f"doi: {data_property_meta.location[0]} - page: {data_property_meta.location[1]}"]
+                
+                new_data_property.information = [data_property_meta.information]
+        else:
+            print(f"Data property: {name} already exists")
+            with data_property_namespace:
+                data_property_to_update = data_property_namespace[name]
+                print(data_property_to_update)
+                data_property_to_update.location.append(f"doi: {data_property_meta.location[0]} - page: {data_property_meta.location[1]}")
+                data_property_to_update.information.append(data_property_meta.information)
 
 
 

@@ -4,9 +4,9 @@ from operator import add
 from owlready2 import *
 
 from config import settings
-from concept_extractor import IndividualMetaData, ClassMetaData,parse_llm_output, llm
+from concept_extractor import IndividualMetaData, ClassMetaData, DataPropertyMetaData, parse_llm_output, llm
 from src.ontology.preprocess import create_metadata_properties
-from src.agents.builder_team.individual_classifier import generate_prompt, generate_relationship_prompt
+from src.agents.builder_team.individual_classifier import generate_relationship_prompt, generate_relationship_prompt_all
 
 class BuilderTeamState(TypedDict):
     ontology: Annotated[owlready2.namespace.Ontology, settings.ONTOLOGY_CONFIG["ontology"]]
@@ -22,7 +22,7 @@ class BuilderTeamState(TypedDict):
     data_properties: Annotated[
         List[
             Tuple[
-                Union[IndividualMetaData, ClassMetaData],
+                DataPropertyMetaData,
                 Dict[str, str]
             ]
         ],
@@ -40,159 +40,98 @@ class BuilderTeamState(TypedDict):
     ]
 
 
-def create_classes(state: BuilderTeamState) -> BuilderTeamState:
-    """
-    Convert class definitions from ClassMetaData list into actual classes in the ontology and create data properties
-    
-    Args:
-        state: BuilderTeamState - Current state of the builder team
-        
-    Returns:
-        BuilderTeamState - Updated state
-    """
-    ontology = state["ontology"]
-    class_namespace = settings.ONTOLOGY_CONFIG["classes"]
-
-    for class_meta in state["classes"]:
-        # Check if class already exists
-        name = class_meta.name.replace(" ", "_").lower()
-        if not class_namespace[name] in ontology.classes():
-            print(f"Class: {name} does not exist, creating...")
-            # Create new class in ontology
-            with class_namespace:
-                new_class = types.new_class(name, (Thing,))
-                
-                new_class.embedding = class_meta.embedding
-                
-                new_class.location = [f"doi: {class_meta.location[0]} - page: {class_meta.location[1]}"]
-                
-                new_class.information = [class_meta.information]
-        else:
-            print(f"Class: {name} already exists")
-            with class_namespace:
-                class_to_update = class_namespace[name]
-                print(class_to_update)
-                class_to_update.location.append(f"doi: {class_meta.location[0]} - page: {class_meta.location[1]}")
-                class_to_update.information.append(class_meta.information)
-                
-                
-    return state
-
-def create_individuals(state: BuilderTeamState) -> BuilderTeamState:
-    ontology = state["ontology"]
-    individual_namespace = settings.ONTOLOGY_CONFIG["individuals"]
-    for individual_meta in state["individuals"]:
-        name = individual_meta.name.replace(" ", "_").lower()
-        if not individual_namespace[name] in ontology.individuals():
-            print(f"Individual: {name} does not exist, creating...")
-            with individual_namespace:
-                new_individual = Thing(name)
-                
-                # Create embedding annotation property
-                new_individual.embedding = individual_meta.embedding
-                
-                # Create location annotation property
-                new_individual.location = [f"doi: {individual_meta.location[0]} - page: {individual_meta.location[1]}"]
-                
-                # Create information annotation property
-                new_individual.information = [individual_meta.information]
-        else:
-            print(f"Individual: {name} already exists")
-            with individual_namespace:
-                individual_to_update = individual_namespace[name]
-                individual_to_update.location.append(f"doi: {individual_meta.location[0]} - page: {individual_meta.location[1]}")
-                individual_to_update.information.append(individual_meta.information)
-                
-    return state
-
-
-
-
 output = """
 Name: Electron donation
-Classification: class
-Justification: It refers to a process that can occur in various contexts and with different groups or atoms.
-Information: Electron donation affects chemical shifts by influencing electron distribution.
+Is data property: False
+Information: Electron donation affects chemical shifts by influencing electron distribution in benzene rings.
 
 Name: Electron withdrawal
-Classification: class
-Justification: It is a process that can occur with different groups or atoms, affecting chemical shifts.
-Information: Electron withdrawal can occur through conjugation or inductive effects, impacting chemical shifts.
+Is data property: False
+Information: Electron withdrawal affects chemical shifts through inductive effects and conjugation.
 
 Name: Chemical shift
-Classification: class
-Justification: It is a measurable property that can vary across different compounds and conditions.
-Information: Chemical shifts are influenced by electron donation and withdrawal.
+Is data property: True
+Information: Chemical shift is influenced by electron donation and withdrawal in benzene rings.
 
 Name: Benzene ring
-Classification: class
-Justification: It is a structural motif that can be part of various compounds.
-Information: Benzene rings with substituents can show different chemical shifts.
+Is data property: False
+Information: Benzene rings with substituents in the 1 and 4 positions have identical hydrogens affecting chemical shifts.
 
 Name: Conjugation
-Classification: class
-Justification: It is a process involving π bonds that can occur in various chemical contexts.
-Information: Conjugation affects electron distribution through π bonds.
+Is data property: False
+Information: Conjugation affects chemical shifts through π bonds and is discussed in Chapter 7.
 
 Name: Inductive effect
-Classification: class
-Justification: It is a process involving σ bonds that can occur in various chemical contexts.
-Information: Inductive effects result from electron withdrawal or donation through σ bonds.
+Is data property: False
+Information: Inductive effects result from electron withdrawal or donation through polarization of σ bonds.
 
 Name: Nitro group
-Classification: individual
-Justification: It is a specific functional group known for its electron-withdrawing properties.
-Information: The nitro group is a powerful electron-withdrawing group by conjugation.
+Is data property: False
+Information: The nitro group is the most powerful electron-withdrawing group by conjugation.
 
 Name: Carbonyl group
-Classification: class
-Justification: It is a functional group that can be part of various compounds.
-Information: Carbonyl groups can withdraw electrons by conjugation.
+Is data property: False
+Information: The carbonyl group follows the nitro group in electron-withdrawing power by conjugation.
 
 Name: Nitrile group
-Classification: class
-Justification: It is a functional group that can be part of various compounds.
-Information: Nitrile groups can withdraw electrons by conjugation.
+Is data property: False
+Information: The nitrile group is a strong electron-withdrawing group by conjugation.
 
 Name: CF3 group
-Classification: individual
-Justification: It is a specific functional group known for its inductive electron-withdrawing properties.
-Information: The CF3 group is an important example of inductive electron withdrawal.
+Is data property: False
+Information: The CF3 group is an important example of a group showing simple inductive withdrawal.
 
 Name: Halogens
-Classification: class
-Justification: It includes elements like F, Cl, Br, and I, which can participate in electron donation and withdrawal.
-Information: Halogens can balance electron withdrawal by inductive effect and donation of lone pairs by conjugation.
+Is data property: False
+Information: Halogens show a balance between inductive electron withdrawal and lone pair donation.
 
-Name: Alkyl groups
-Classification: class
-Justification: It refers to a category of groups that can donate electrons inductively.
+Name: Alkyl group
+Is data property: False
 Information: Alkyl groups are weak inductive electron donors.
 
 Name: Amino group
-Classification: individual
-Justification: It is a specific functional group known for its electron-donating properties.
-Information: The amino group is the best electron donor by conjugation.
+Is data property: False
+Information: Amino groups are the best electron donors by conjugation of lone pairs.
 
 Name: NO2 group
-Classification: individual
-Justification: It is a specific functional group known for its electron-withdrawing properties.
-Information: The NO2 group is the best electron withdrawer.
+Is data property: False
+Information: The NO2 group is the best electron withdrawer among nitrogen-based functional groups.
 
 Name: NH2 group
-Classification: individual
-Justification: It is a specific functional group known for its electron-donating properties.
-Information: The NH2 group is the best electron donor.
+Is data property: False
+Information: The NH2 group is the best electron donor among nitrogen-based functional groups.
 
-Name: Lone pairs
-Classification: class
-Justification: It refers to pairs of electrons that can be involved in electron donation.
-Information: Lone pairs on halogens, O, and N affect electron donation.
+Name: Lone pair
+Is data property: False
+Information: Lone pairs on halogens, O, and N affect electron donation and chemical shifts.
 
-Name: p block elements
-Classification: class
-Justification: It includes elements like F, Cl, Br, and I, which have lone pairs in p orbitals.
-Information: The p block elements have lone pairs in p orbitals affecting electron donation.
+Name: Electronegativity
+Is data property: True
+Information: Electronegativity influences the electron donation ability of elements with lone pairs.
+
+Name: Fluorine (F)
+Is data property: False
+Information: Fluorine is the most electronegative element and the weakest donor among first-row p block elements.
+
+Name: Oxygen (O)
+Is data property: False
+Information: Oxygen is an electronegative element with lone pairs affecting electron donation.
+
+Name: Nitrogen (N)
+Is data property: False
+Information: Nitrogen is an electronegative element with lone pairs affecting electron donation.
+
+Name: Chlorine (Cl)
+Is data property: False
+Information: Chlorine is a halogen with lone pairs in 3p orbitals affecting electron donation.
+
+Name: Bromine (Br)
+Is data property: False
+Information: Bromine is a halogen with lone pairs in 4p orbitals affecting electron donation.
+
+Name: Iodine (I)
+Is data property: False
+Information: Iodine is a halogen with lone pairs in 5p orbitals affecting electron donation.
 """
 
 context = """
@@ -203,22 +142,24 @@ context = """
 
 # create_metadata_properties(ontology)
 
-class_concepts, individual_concepts = parse_llm_output(output)
+class_concepts, data_properties = parse_llm_output(output)
 
 # test_state = BuilderTeamState(ontology=ontology, classes=class_concepts, individuals=individual_concepts, individual_classifications=[], data_properties=[], object_properties=[])
 
-prompt = generate_prompt(individual_concepts, class_concepts, context)
+# prompt = generate_prompt(individual_concepts, class_concepts, context)
 
 # print(prompt)
 
+# for object in class_concepts:
+#     print(llm.invoke(generate_relationship_prompt("Nitro group", object.name, context)).content)
 
-# print(llm.invoke(generate_relationship_prompt("Nitro group", "Electron withdrawal")).content)
+print(llm.invoke(generate_relationship_prompt_all("Nitro group", class_concepts, context)).content)
 
 # for individual in individual_concepts:
 #     for class_ in class_concepts:
 #         print(llm.invoke(generate_relationship_prompt(individual.name, class_.name)).content)
 
-print(llm.invoke(prompt).content)
+# print(llm.invoke(prompt).content)
 
 # create_classes(test_state)
 

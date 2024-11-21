@@ -3,190 +3,64 @@ from langchain_core.prompts import PromptTemplate, PipelinePromptTemplate
 from concept_extractor import IndividualMetaData, ClassMetaData
 
 
-def generate_relationship_prompt(subject: str, object: str) -> str:
-    return f"Please describe the relationship between {subject} and {object}. Your response must use {subject} as the subject and {object} as the object/predicate complement. Only the verb/linking verb can be changed and can be modified by adverbs or other modifiers. Use either subject-predicate-object or subject-linking verb-predicate complement structure. If there is no meaningful relationship between {subject} and {object}, output 'None'."
-
-def generate_prompt(individuals: List[IndividualMetaData], classes: List[ClassMetaData], text_content: str) -> str:
-    # Template for formatting class information
-    class_template = """Available Classes:
-{class_descriptions}"""
-
-    class_info_template = """{name}"""
-
-    # Template for formatting individual information  
-    individual_template = """Individuals to analyze:
-{individual_descriptions}"""
-
-    individual_info_template = """{name}"""
-
-    # Final template for relationship task
-    final_template = """# Relationship Analysis Task
+def generate_relationship_prompt(subject: str, object: str, text_content: str) -> str:
+    return f"""# Relationship Analysis Task
 
 ## Task Overview
-For each pair of individual and class, describe their relationship using a subject-predicate-object or subject-linking verb-predicate complement structure.
-
-## Input Information
-{class_info}
-
-{individual_info}
+Please give a property to describe the relationship based on the text below between {subject} and {object}.
 
 ## Text
 {text_content}
 
 ## Task Instructions
 1. Text Analysis: Read throughoutly and make sure you comprehensively understand the provided Text.
-2. BASED ON THE TEXT, for each individual-class pair:
-   - Use the INDIVIDUAL ITSELF (WITHOUT ANY MODIFICATION) as the SUBJECT
-   - Use the CLASS ITSELF (WITHOUT ANY MODIFICATION) as the OBJECT/PREDICATE COMPLEMENT
-   - ONLY modify the verb/linking verb with appropriate modifiers
-   - If the relationship is not clear from the text, output 'None'
-   - If "HAS", "IS" and words with similar meanings are used in the relationship, output "Data Property: [individual] [verb] [class]"
+2. BASED ON THE TEXT, offer a property to describe the relationship between {subject} and {object}:
+   - property should begin with "has_" or "is_"
+   - If the relationship is not meaningful from the text, output 'None'
+   - If the relationship contains other entities except {subject} and {object}, only output a sentence that clearly describe the relationship.
+3. Add a restriction:
+   - If the relationship implies that the subject MUST have the object as its ONLY value for this property, add "only" as restriction
+   - If the relationship implies that the subject MUST have AT LEAST the object as a value for this property, add "some" as restriction
+   - If no clear restriction is implied, omit the restriction
 
 ## Output Format
-For each individual-class pair, output a single sentence using either subject-predicate-object or subject-linking verb-predicate complement structure.
+{subject} [property_name] {object} [restriction]"""
 
-Please ensure all possible individual-class pairs are analyzed."""
 
-    # Create individual prompt templates
-    class_info_prompt = PromptTemplate(
-        input_variables=["name"],
-        template=class_info_template
-    )
+def generate_relationship_prompt_all(subject: str, object: List[ClassMetaData], text_content: str) -> str:
+    objects_str = "\n".join([obj.name for obj in object])
+    return f"""# Relationship Analysis Task
 
-    individual_info_prompt = PromptTemplate(
-        input_variables=["name"],
-        template=individual_info_template
-    )
+## Task Overview
+Please give properties to describe the relationship based on the text below between {subject} and [objects].
 
-    # Format class descriptions
-    class_descriptions = "\n".join([
-        class_info_prompt.format(name=cls.name)
-        for cls in classes
-    ])
+## Objects
+{objects_str}
 
-    # Format individual descriptions
-    individual_descriptions = "\n".join([
-        individual_info_prompt.format(name=ind.name)
-        for ind in individuals
-    ])
+## Text
+{text_content}
 
-    # Create intermediate prompts
-    class_prompt = PromptTemplate(
-        input_variables=["class_descriptions"],
-        template=class_template
-    )
+## Task Instructions
+1. Text Analysis: Thoroughly read and comprehensively understand the provided Text.
+2. BASED ON THE TEXT AND YOUR KNOWLEDGE, identify and describe relationships between {subject} and each [object]:
+   - Property names must:
+     * Start with "has" or "is" 
+     * Use underscores between words
+     * Be descriptive and meaningful both in and out of context
+     * Support multiple words if needed
+     * Prioritize reusing existing property names when applicable
+     * Follow similar naming patterns as related properties
+     * **MUST NOT** contain the [object] name
+   - The relationship should be:
+     * Logically valid when expressed as "{subject} [property_name] [object]"
+     * Clear and understandable when stated as "{subject} [property_name], that is [object]"
+     * Semantically accurate as a standalone statement without requiring the source text
+   - If no valid relationship exists in the text, output 'None'
 
-    individual_prompt = PromptTemplate(
-        input_variables=["individual_descriptions"],
-        template=individual_template
-    )
+3. Specify relationship restrictions:
+   - Use "only" if the subject MUST have exactly and exclusively this object for the property
+   - Use "some" if the subject MUST have at least this object among possible values
+   - Omit restriction if no clear cardinality is implied by the relationship
 
-    # Create final pipeline prompt
-    full_prompt = PipelinePromptTemplate(
-        final_prompt=PromptTemplate(
-            input_variables=["class_info", "individual_info", "text_content"],
-            template=final_template
-        ),
-        pipeline_prompts=[
-            ("class_info", class_prompt),
-            ("individual_info", individual_prompt),
-        ]
-    )
-
-    return full_prompt.format(
-        class_descriptions=class_descriptions,
-        individual_descriptions=individual_descriptions,
-        text_content=text_content
-    )
-
-# def generate_prompt(individuals: List[IndividualMetaData], classes: List[ClassMetaData], text_content: str) -> str:
-#     # Template for formatting class information
-#     class_template = """Available Classes and their descriptions:
-# {class_descriptions}"""
-
-#     class_info_template = """Class Name: {name}
-# Context: {information}"""
-
-#     # Template for formatting individual information  
-#     individual_template = """Individuals to be classified:
-# {individual_descriptions}"""
-
-#     individual_info_template = """Individual Name: {name}
-# Context: {information}"""
-
-#     # Final template for classification task
-#     final_template = """# Individual Classification Task
-
-# ## Task Overview
-# Determine the class membership of chemical individuals based on provided information and context.
-
-# ## Input Information
-# {class_info}
-
-# {individual_info}
-
-# ## Text
-# {text_content}
-
-# ## Task Instructions
-# 1. Text Analysis: Read and fully understand the provided Text
-# 2. Classify each individual into classes: If a class and individual can be expressed as "[individual] is a [class]", then the individual can be classified into that class. One individual can belong to multiple classes
-
-# ## Output Format
-# For each individual, output only:
-# Individual Name: [name]
-# Belongs to Classes: [class1], [class2], ...
-
-# Please ensure complete classification results for all individuals."""
-
-#     # Create individual prompt templates
-#     class_info_prompt = PromptTemplate(
-#         input_variables=["name", "information"],
-#         template=class_info_template
-#     )
-
-#     individual_info_prompt = PromptTemplate(
-#         input_variables=["name", "information"],
-#         template=individual_info_template
-#     )
-
-#     # Format class descriptions
-#     class_descriptions = "\n\n".join([
-#         class_info_prompt.format(name=cls.name, information=cls.information)
-#         for cls in classes
-#     ])
-
-#     # Format individual descriptions
-#     individual_descriptions = "\n\n".join([
-#         individual_info_prompt.format(name=ind.name, information=ind.information)
-#         for ind in individuals
-#     ])
-
-#     # Create intermediate prompts
-#     class_prompt = PromptTemplate(
-#         input_variables=["class_descriptions"],
-#         template=class_template
-#     )
-
-#     individual_prompt = PromptTemplate(
-#         input_variables=["individual_descriptions"],
-#         template=individual_template
-#     )
-
-#     # Create final pipeline prompt
-#     full_prompt = PipelinePromptTemplate(
-#         final_prompt=PromptTemplate(
-#             input_variables=["class_info", "individual_info", "text_content"],
-#             template=final_template
-#         ),
-#         pipeline_prompts=[
-#             ("class_info", class_prompt),
-#             ("individual_info", individual_prompt),
-#         ]
-#     )
-
-#     return full_prompt.format(
-#         class_descriptions=class_descriptions,
-#         individual_descriptions=individual_descriptions,
-#         text_content=text_content
-#     )
+## Output Format
+{subject} [property_name] [object] [restriction]"""
