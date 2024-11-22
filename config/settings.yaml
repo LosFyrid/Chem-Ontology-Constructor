@@ -22,3 +22,9 @@ extractor_examples:
   individual_directory_path:  ${PROJECT_ROOT}data/extractor_examples/concept/
   concept_file_path: "{{individual_directory_path}}concepts.json"
 
+dataset_construction:
+  folder_path: ${PROJECT_ROOT}data
+  raw_data_folder_path: "{{folder_path}}processed_texts"
+  devset_file_path: "{{folder_path}}datasets/devset.json"
+  trainset_file_path: "{{folder_path}}datasets/trainset.json"
+

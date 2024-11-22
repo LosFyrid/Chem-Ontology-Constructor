@@ -53,6 +53,8 @@ ontology = get_ontology(_ONTOLOGY_CONFIG["ontology_iri"]).load(only_local=True)
 
 LLM_CONFIG = yaml_settings["LLM"]
 EXTRACTOR_EXAMPLES_CONFIG = yaml_settings["extractor_examples"]
+DATASET_CONSTRUCTION_CONFIG = yaml_settings["dataset_construction"]
+
 ONTOLOGY_CONFIG = {
     "ontology": ontology,
     "meta": ontology.get_namespace(_ONTOLOGY_CONFIG["namespace_meta_iri"]),
