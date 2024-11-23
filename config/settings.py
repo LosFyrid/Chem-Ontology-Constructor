@@ -64,3 +64,92 @@ ONTOLOGY_CONFIG = {
     "object_properties": ontology.get_namespace(_ONTOLOGY_CONFIG["namespace_object_properties_iri"]),
     "axioms": ontology.get_namespace(_ONTOLOGY_CONFIG["namespace_axioms_iri"])
 }
+
+_ASSESSMENT_CRITERIA_SCORE_CONFIG = {
+    "entity_score": 6,
+    "hierachy_score": 7,
+    "disjointness_score": 5,
+    "data_property_score": 3,
+    "object_property_score": 5,
+    "ontology_structure_score": 4,
+    "overall_content_score": 24
+}
+ASSESSMENT_CRITERIA_CONFIG = {
+    "entity_score": _ASSESSMENT_CRITERIA_SCORE_CONFIG["entity_score"],
+    "entity": f"""Based on text, Entity Accuracy Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["entity_score"]} points):
+Award 1 point for each criterion met:
+- Entities capture concepts across all levels of abstraction, from highly abstract to highly specific mentioned in the text (1 point)
+- Entity names are specific and meaningful without being overly generic (1 point)
+- Entity definitions align with established chemical concepts (1 point)
+- Entities are properly consolidated without redundancy (1 point)
+- Entity design supports future expansion and integration with other ontologies (1 point)
+- Entities can be effectively applied across different chemical subdomains (1 point)""",
+    "hierachy_score": _ASSESSMENT_CRITERIA_SCORE_CONFIG["hierachy_score"],
+    "hierachy": f"""Based on text, Class Hierarchy Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["hierachy_score"]} points):
+Award 1 point for each criterion met:
+- Class hierarchies align with valid chemical taxonomies (1 point)
+- Subclass relationships are logically sound and chemically meaningful (1 point)
+- Multiple inheritance is used appropriately where needed (1 point)
+- Class hierarchies covers all granularity levels (1 point)
+- Hierarchical relationships are stated or implied in the text (1 point)
+- Superclass-subclass pairs maintain consistent semantic meaning (1 point)
+- No circular or contradictory hierarchical relationships (1 point)
+If the ontology has no subclass-superclass relationships, check if the text contains any hierarchical relationships. If there are no hierarchical relationships mentioned in the text, award full points. If hierarchical relationships exist in the text but are missing from the ontology, award 0 points.""",
+    "disjointness_score": _ASSESSMENT_CRITERIA_SCORE_CONFIG["disjointness_score"],
+    "disjointness": f"""Based on text, Disjoint Classes Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["disjointness_score"]} points):
+Award 1 point for each criterion met:
+- Correctly identifies mutually exclusive class relationships in chemical concepts (1 point)
+- Disjoint classes are comprehensive without missing key exclusions (1 point)
+- Disjoint classes reflect real chemical incompatibilities (1 point)
+- Disjoint class assertions do not create logical contradictions (1 point)
+- Disjoint relationships support chemical reasoning and inference (1 point)
+If the ontology has no disjoint class relationships, check if the text contains any disjoint class relationships. If there are no disjoint class relationships mentioned in the text, award full points. If disjoint class relationships exist in the text but are missing from the ontology, award 0 points.""",
+    "data_property_score": _ASSESSMENT_CRITERIA_SCORE_CONFIG["data_property_score"],
+    "data_property": f"""Based on text, Data Property Correctness Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["data_property_score"]} points):
+Award 1 point for each criterion met:
+- Data properties are truly value-based attributes (1 point)
+- Each data property describes a single measurable characteristic (1 point)
+- Values of each data property are explicitly stated in the text (1 point)
+If the ontology has no data properties, check if the text contains any data properties. If there are no data properties mentioned in the text, award full points. If data properties exist in the text but are missing from the ontology, award 0 points.""",
+    "object_property_score": _ASSESSMENT_CRITERIA_SCORE_CONFIG["object_property_score"],
+    "object_property": f"""Based on text, Object Property Completeness Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["object_property_score"]} points):
+Award 1 point for each criterion met:
+- Object properties capture all key chemical interactions (1 point)
+- Object properties reflect valid chemical principles (1 point)
+- Domain and range specifications only exist when necessary (1 point)
+- Existing domain and range specifications are chemically valid (1 point)
+- Relationship restrictions ('only'/'some') are properly applied (1 point)
+""",
+    "ontology_structure_score": _ASSESSMENT_CRITERIA_SCORE_CONFIG["ontology_structure_score"],
+    "ontology_structure": f"""Based on text, Ontology Structure Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["ontology_structure_score"]} points):
+Award 1 point for each criterion met:
+- Entities span all levels of chemical granularity mentioned in the text (1 point)
+- Properties and relationships form a coherent chemical knowledge graph (1 point)
+- The ontology maintains semantic clarity independent of source text (1 point)
+- Cross-references between concepts are meaningful and accurate (1 point)
+- Definitions and usage of entities are consistent throughout the ontology (1 point)""",
+    "overall_content_score": _ASSESSMENT_CRITERIA_SCORE_CONFIG["overall_content_score"],
+    "overall_content": f"""Based on text, Overall Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["overall_content_score"]} points):
+Each criterion is evaluated based on three levels - excellent (6 points), adequate (3 points), or medium (0 points). If you think the ontology is between levels, you can give it a intermediate score. 0 points means the ontology has medium quality rather than low quality in this criterion. More detailed criteria are as follows:
+
+- Extraction Accuracy (6 points):
+  * Excellent: No errors in entity and property extraction
+  * Adequate: Minor non-critical errors present 
+  * Medium: Some extraction errors exist
+
+- Professional Validity (6 points):
+  * Excellent: Extractions fully align with chemical expertise
+  * Adequate: Most extractions align with chemical knowledge
+  * Medium: Some deviations from chemical principles
+
+- Comprehensiveness (6 points):
+  * Excellent: Complete extraction of all relevant information
+  * Adequate: Most key information captured
+  * Medium: Some key information missing
+
+- Knowledge Independence (6 points):
+  * Excellent: Entities and properties can be accurately understood without source text context
+  * Adequate: Most entities and properties are clear without background text
+  * Medium: Some understanding requires source text context""",
+    "full_score": _ASSESSMENT_CRITERIA_SCORE_CONFIG["entity_score"] + _ASSESSMENT_CRITERIA_SCORE_CONFIG["hierachy_score"] + _ASSESSMENT_CRITERIA_SCORE_CONFIG["disjointness_score"] + _ASSESSMENT_CRITERIA_SCORE_CONFIG["data_property_score"] + _ASSESSMENT_CRITERIA_SCORE_CONFIG["object_property_score"] + _ASSESSMENT_CRITERIA_SCORE_CONFIG["ontology_structure_score"] + _ASSESSMENT_CRITERIA_SCORE_CONFIG["overall_content_score"]
+}
