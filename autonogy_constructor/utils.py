@@ -1,53 +1,69 @@
-from autonogy_constructor.base_data_structures import Ontology
+from autonogy_constructor.base_data_structures import OntologyElements, OntologyProperties
 
-def ontology_to_string(ontology: Ontology) -> str:
+def flatten_dict(d, parent_key=''):
+    items = []
+    for k, v in d.items():
+        new_key = f"{parent_key} with {k}" if parent_key else k
+        if isinstance(v, dict):
+            items.extend(flatten_dict(v, new_key).items())
+        else:
+            items.append((new_key, v))
+    return dict(items)
+
+def ontology_elements_to_string(ontology_elements: OntologyElements) -> str:
     result = []
     
     result.append("Entities:")
-    for entity in ontology.entities:
+    for entity in ontology_elements.entities:
         result.append(f"  - Name: {entity.name}")
         result.append(f"    Information: {entity.information}")
     
-    # result.append("\nEntity Hierarchy:")
-    # if ontology.hierarchy is not None:
-    #     for hierarchy in ontology.hierarchy:
-    #         result.append(f"  - Subclass: {hierarchy.subclass}")
-    #         result.append(f"    Superclass: {hierarchy.superclass}")
-    #         result.append(f"    Information: {hierarchy.information}")
+    result.append("\nEntity Hierarchy:")
+    if ontology_elements.hierarchy is not None:
+        for hierarchy in ontology_elements.hierarchy:
+            result.append(f"  - Subclass: {hierarchy.subclass}")
+            result.append(f"    Superclass: {hierarchy.superclass}")
+            result.append(f"    Information: {hierarchy.information}")
     
-    # result.append("\nDisjoint Classes:")
-    # if ontology.disjointness is not None:
-    #     for disjoint in ontology.disjointness:
-    #         result.append(f"  - Class 1: {disjoint.class1}")
-    #         result.append(f"    Class 2: {disjoint.class2}")
+    result.append("\nDisjoint Classes:")
+    if ontology_elements.disjointness is not None:
+        for disjoint in ontology_elements.disjointness:
+            result.append(f"  - Class 1: {disjoint.class1}")
+            result.append(f"    Class 2: {disjoint.class2}")
+            
+    return "\n".join(result)
+
+def ontology_properties_to_string(ontology_properties: OntologyProperties) -> str:
+    result = []
     
-    result.append("\nData Properties:")
-    if ontology.data_properties is not None:
-        for prop in ontology.data_properties:
+    result.append("Data Properties:")
+    if ontology_properties.data_properties is not None:
+        for prop in ontology_properties.data_properties:
             result.append(f"  - Name: {prop.name}")
             if prop.values is not None:
-                values_str = "; ".join(f"{k}: {v}" for k, v in prop.values.items())
+                values_str = "\n            ".join(f"{k}: {v}" for k, v in flatten_dict(prop.values).items())
                 result.append(f"    Values: {values_str}")
             result.append(f"    Information: {prop.information}")
-        
+    
     result.append("\nObject Properties:")
-    for prop in ontology.object_properties:
+    for prop in ontology_properties.object_properties:
         result.append(f"  - Name: {prop.name}")
-        if prop.domain is not None:
-            result.append(f"    Domain:")
-            result.append(f"      Existence: {prop.domain.existence}")
-            if prop.domain.entity is not None:
-                result.append(f"      Entity: {prop.domain.entity}")
-            if prop.domain.type is not None:
-                result.append(f"      Type: {prop.domain.type}")
-        if prop.range is not None:
-            result.append(f"    Range:")
-            result.append(f"      Existence: {prop.range.existence}")
-            if prop.range.entity is not None:
-                result.append(f"      Entity: {prop.range.entity}")
-            if prop.range.type is not None:
-                result.append(f"      Type: {prop.range.type}")
-        result.append(f"    Restriction: {prop.restriction}")
+        if prop.instances is not None:
+            for instance in prop.instances:
+                result.append("    Instance:")
+                if instance.domain is not None:
+                    result.append("      Domain:")
+                    if instance.domain.entity is not None:
+                        result.append(f"        Entity: {instance.domain.entity}")
+                    if instance.domain.type is not None:
+                        result.append(f"        Type: {instance.domain.type}")
+                if instance.range is not None:
+                    result.append("      Range:")
+                    if instance.range.entity is not None:
+                        result.append(f"        Entity: {instance.range.entity}")
+                    if instance.range.type is not None:
+                        result.append(f"        Type: {instance.range.type}")
+                result.append(f"      Restriction: {instance.restriction}")
         result.append(f"    Information: {prop.information}")
         
     return "\n".join(result)

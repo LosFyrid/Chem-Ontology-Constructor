@@ -15,56 +15,55 @@ class DataProperty(BaseModel):
 
 class Entity(BaseModel):
     """Extract entities from text for ontology creation, including classes and individuals, excluding data properties. Then regard all entities as classes. Do not miss any fields."""
-    name: str = Field(description="Provide a clear and concise name for the entity. Use the format [Full name]([Abbreviation]) if applicable.")
+    name: str = Field(description="Provide a clear and concise name for the entity. Use the format [Full Name]([Abbreviation]) if abbreviation is available, where [Full Name] should capitalize first letter of each word and separate words with spaces, and [Abbreviation] should keep its original format.")
     information: Union[str, None] = Field(
         default=None,
         description="Offer a complete and comprehensive sentence detailing the entity from the text."
     )
 
 class Domain(BaseModel):
-    """Describe the domain of an object property. Do not miss any fields."""
-    existence: Literal[True, False, ""] = Field(
-        default=False,
-        description="Specify 'True' if it need domain to clarify the object property, otherwise specify 'False'.'False' means entity field and type field are both filled with None"
-    )
+    """Describe the domain of an instance of an object property. The domain specifies the source class or classes that can have this property. It defines the valid types that can be the subject of the property."""
     entity: Union[str, None] = Field(
         default=None,
-        description="Domain entity name of the object property meaning the owner class of the property. It should be an existing entity in the Entity list with domain_type as 'single'. If one entity cannot describe the domain, use multiple entities combined with domain_type to specify their relationship. If the existence field is 'False', specify 'None'."
+        description="Domain entity name of the object property meaning the owner class of the property. It should be an existing entity in the Entity list with type field as 'single'. If one entity cannot describe the domain, use multiple entities formatted as 'entity1, entity2, ...' combined with type field to specify their relationship."
     )
     type: Union[Literal['union', 'intersection', 'single'], None] = Field(
         default=None,
-        description="Specify the domain type. 'union' means union of multiple domain entities, 'intersection' means intersection of multiple domain entities, and 'single' means single domain entity. If the existence field is 'False', specify 'None'."
+        description="Specify the domain type. 'union' means union of multiple domain entities, 'intersection' means intersection of multiple domain entities, and 'single' means single domain entity."
     )
 
 class Range(BaseModel):
-    """Describe the range of an object property. Do not miss any fields."""
-    existence: Literal[True, False, ""] = Field(
-        default=False,
-        description="Specify 'True' if the range need exist, otherwise specify 'False'."
-    )
+    """Describe the range of an instance of an object property. The range specifies the target class or classes that can be values for this property. It defines the valid types that the property value must belong to."""
     entity: Union[str, None] = Field(
         default=None,
-        description="Range entity name of the object property meaning the value class of the property, it should be existing entities in the Entity list with range_type as 'single'. If the range has multiple entities, use 'union' to indicate union and 'intersection' to indicate intersection. If the existence field is 'False', specify 'None'."
+        description="Range entity name of the object property meaning the value class of the property. It should be an existing entity in the Entity list with type field as 'single'. If one entity cannot describe the range, use multiple entities formatted as 'entity1, entity2, ...' combined with type field to specify their relationship."
     )
     type: Union[Literal['union', 'intersection', 'single'], None] = Field(
         default=None,
-        description="Specify the range type. 'union' means union of multiple range entities, 'intersection' means intersection of multiple range entities, and 'single' means single range entity. If the existence field is 'False', specify 'None'."
+        description="Specify the range type. 'union' means union of multiple range entities, 'intersection' means intersection of multiple range entities, and 'single' means single range entity."
     )
 
-class ObjectProperty(BaseModel):
-    """Extract object properties from text for ontology creation. Do not miss any fields."""
-    name: str = Field(description="Provide a clear and concise name for the object property. It should be separated by underscores between words.")
+class ObjectPropertyInstance(BaseModel):
+    """Describe the domain and range of an object property. Do not miss any fields."""
     domain: Union[Domain, None] = Field(
         default=None,
-        description="Describe the domain of the object property. If the domain existence field is 'False', specify 'None'."
+        description="Describe the domain of the instance of the object property."
     )
     range: Union[Range, None] = Field(
         default=None,
-        description="Describe the range of the object property. If the range existence field is 'False', specify 'None'."
+        description="Describe the range of the instance of the object property."
     )
     restriction: Literal['only', 'some', ""] = Field(
         default='some',
-        description="Specify 'only' to indicate a universal restriction (owl:allValuesFrom), meaning all possible values of the property must belong to the specified range. Specify 'some' to indicate an existential restriction (owl:someValuesFrom), meaning at least one value of the property must belong to the specified range."
+        description="Specify 'only' to indicate a universal restriction (owl:allValuesFrom), meaning all possible values of the domain class must belong to the specified range. Specify 'some' to indicate an existential restriction (owl:someValuesFrom), meaning at least one value of the domain class must belong to the specified range."
+    )
+
+class ObjectProperty(BaseModel):
+    """Extract object properties and their instances from text for ontology creation. Do not miss any fields."""
+    name: str = Field(description="Provide a clear and concise name for the object property. It should be separated by underscores between words.")
+    instances: Union[List[ObjectPropertyInstance], None] = Field(
+        default=None,
+        description="List of object property instances."
     )
     information: Union[str, None] = Field(
         default=None,
@@ -97,8 +96,8 @@ class Disjointness(BaseModel):
         description="Second class name, it should be an existing entity in the Entity list"
     )
 
-class Ontology(BaseModel):
-    """List representation of the ontology for text. In this context, entity means same as class."""
+class OntologyElements(BaseModel):
+    """List representation of the ontology entities and their hierarchy and disjointness for text. In this context, entity means same as class."""
 
     entities: List[Entity] = Field(
         description="List of entities in the knowledge graph"
@@ -111,6 +110,9 @@ class Ontology(BaseModel):
         default=None,
         description="List of disjoint class relationships in the ontology. If there is no disjoint class relationship, specify 'None'."
     )
+
+class OntologyProperties(BaseModel):
+    """List representation of the properties in ontology for text. In this context, entity means same as class."""
     data_properties: Union[List[DataProperty], None] = Field(
         default=None,
         description="List of data properties in the ontology. If there is no data property, specify 'None'."

@@ -1,7 +1,8 @@
 import dspy
 from numpy import mean
-from autonogy_constructor.signatures import ExtractOntologyElements, Assess
-from autonogy_constructor.utils import ontology_to_string
+from autonogy_constructor.base_data_structures import OntologyElements, OntologyProperties
+from autonogy_constructor.signatures import ExtractOntologyElements, ExtractOntologyProperties, Assess
+from autonogy_constructor.utils import ontology_elements_to_string, ontology_properties_to_string
 
 from config.settings import ASSESSMENT_CRITERIA_CONFIG
 
@@ -26,10 +27,13 @@ class ChemOntology(dspy.Module):
     def __init__(self):
         super().__init__()
 
-        self.extractor = dspy.ChainOfThought(ExtractOntologyElements)
+        self.elements_extractor = dspy.ChainOfThought(ExtractOntologyElements)
+        self.properties_extractor = dspy.ChainOfThought(ExtractOntologyProperties)
     
     def forward(self, context):
-        return self.extractor(text=context)
+        elements = self.elements_extractor(text=context)
+        properties = self.properties_extractor(text=context, existing_ontology_elements=elements.ontology_elements)
+        return dspy.Prediction(context=context, ontology_elements=elements.ontology_elements, ontology_properties=properties.ontology_properties)
 
 class Assessment(dspy.Module):
     def __init__(self, verbose=False, assertions=False):
@@ -41,67 +45,85 @@ class Assessment(dspy.Module):
     def forward(self, assessed_text, assessment_ontology):
         verbose = self.verbose
         assertions = self.assertions
-        score_list = [
-            self.assessor(assessed_text=assessed_text, assessment_ontology=ontology_to_string(assessment_ontology), assessment_criteria=criteria).assessment_score for criteria in [entity, data_property, object_property, ontology_structure, overall_content]
-        ]
-        print(score_list)
-        normalized_score_list = [
-            score_list[0]/entity_score,
-            score_list[1]/data_property_score,
-            score_list[2]/object_property_score,
-            score_list[3]/ontology_structure_score,
-            score_list[4]/overall_content_score
-        ]
-        if verbose or assertions:
-            print("reason_list")
-            reason_list = [
-                self.assessor(assessed_text=assessed_text, assessment_ontology=ontology_to_string(assessment_ontology), assessment_criteria=criteria).assessment_reason for criteria in [entity, data_property, object_property, ontology_structure, overall_content]
+        if isinstance(assessment_ontology, OntologyElements):
+            print("elements")
+            assessment_ontology = ontology_elements_to_string(assessment_ontology)
+            print(assessment_ontology)
+            criteria_list = [entity, hierachy, disjointness]
+            score_list = [
+                self.assessor(assessed_text=assessed_text, assessment_ontology=assessment_ontology, assessment_criteria=criteria).assessment_score for criteria in criteria_list
             ]
+            score_denominators = [entity_score, hierachy_score, disjointness_score]
+            normalized_score_list = [score/denom for score, denom in zip(score_list, score_denominators)]
+            if verbose or assertions:
+                reason_list = [
+                    self.assessor(assessed_text=assessed_text, assessment_ontology=assessment_ontology, assessment_criteria=criteria).assessment_reason for criteria in criteria_list
+                ]
+        elif isinstance(assessment_ontology, OntologyProperties):
+            print("properties")
+            assessment_ontology = ontology_properties_to_string(assessment_ontology)
+            print(assessment_ontology)
+            criteria_list = [data_property, object_property]
+            score_list = [
+                self.assessor(assessed_text=assessed_text, assessment_ontology=assessment_ontology, assessment_criteria=criteria).assessment_score for criteria in criteria_list
+            ]
+            score_denominators = [data_property_score, object_property_score]
+            normalized_score_list = [score/denom for score, denom in zip(score_list, score_denominators)]
+            if verbose or assertions:
+                reason_list = [
+                    self.assessor(assessed_text=assessed_text, assessment_ontology=assessment_ontology, assessment_criteria=criteria).assessment_reason for criteria in criteria_list
+                ]
+        elif isinstance(assessment_ontology, tuple) and len(assessment_ontology) == 2:
+            if isinstance(assessment_ontology[0], OntologyElements) and isinstance(assessment_ontology[1], OntologyProperties):
+                print("elements and properties")
+                assessment_ontology = ontology_elements_to_string(assessment_ontology[0].entities) + "\n" + ontology_properties_to_string(assessment_ontology[1])
+                criteria_list = [ontology_structure, overall_content]
+                score_list = [
+                    self.assessor(assessed_text=assessed_text, assessment_ontology=assessment_ontology, assessment_criteria=criteria).assessment_score for criteria in criteria_list
+                ]
+                score_denominators = [ontology_structure_score, overall_content_score]
+                normalized_score_list = [score/denom for score, denom in zip(score_list, score_denominators)]
+                if verbose or assertions:
+                    reason_list = [
+                        self.assessor(assessed_text=assessed_text, assessment_ontology=assessment_ontology, assessment_criteria=criteria).assessment_reason for criteria in criteria_list
+                    ]
+        else:
+            raise ValueError("assessment_ontology 必须是 OntologyElements、OntologyProperties 或者它们的元组类型")
         if assertions:
-            print("assertions")
-            return (
-                {
-                "entity": (score_list[0] >= (entity_score-0.5), reason_list[0]),
-                "data_property": (score_list[1] >= (data_property_score-0.5), reason_list[1]),
-                "object_property": (score_list[2] >= (object_property_score-0.5), reason_list[2]),
-                "ontology_structure": (score_list[3] >= (ontology_structure_score-0.5), reason_list[3]),
-                "overall_content": (score_list[4] >= (overall_content_score-4), reason_list[4]),
-                },
-                f"""
-Entity Score: {normalized_score_list[0]}
-Data Property Score: {normalized_score_list[1]}
-Object Property Score: {normalized_score_list[2]}
-Ontology Structure Score: {normalized_score_list[3]}
-Overall Content Score: {normalized_score_list[4]}
+            result_dict = {}
+            for i, criteria_name in enumerate(criteria_list):
+                name = criteria_name.split('\n')[0].split('(')[0].strip().lower().replace(' ', '_')
+                threshold = score_denominators[i] - (4 if name == 'overall_content' else 0.5)
+                result_dict[name] = (score_list[i] >= threshold, reason_list[i])
 
-Total Score: {sum(score_list)}/{full_score}
+            score_text = '\n'.join([f"{criteria.split('(')[0].strip()} Score: {score}" for criteria, score in zip(criteria_list, normalized_score_list)])
+            reason_text = '\n'.join([f"{criteria.split('(')[0].strip()}: {reason}" for criteria, reason in zip(criteria_list, reason_list)])
+
+            return (
+                result_dict,
+                f"""
+{score_text}
+
+Total Score: {sum(score_list)}/{sum(score_denominators)}
 Percentage Score: {mean(normalized_score_list)*100:.2f}%
 
 Reason:
-Entity: {reason_list[0]}
-Data Property: {reason_list[1]}
-Object Property: {reason_list[2]}
-Ontology Structure: {reason_list[3]}
-Overall Content: {reason_list[4]}
+{reason_text}
 """
             )
-        if verbose:
-            print("verbose")
-            return f"""
-Entity Score: {normalized_score_list[0]}
-Data Property Score: {normalized_score_list[1]}
-Object Property Score: {normalized_score_list[2]}
-Ontology Structure Score: {normalized_score_list[3]}
-Overall Content Score: {normalized_score_list[4]}
 
-Total Score: {sum(score_list)}/{full_score}
+        if verbose:
+            score_text = '\n'.join([f"{criteria.split('(')[0].strip()} Score: {score}" for criteria, score in zip(criteria_list, normalized_score_list)])
+            reason_text = '\n'.join([f"{criteria.split('(')[0].strip()}: {reason}" for criteria, reason in zip(criteria_list, reason_list)])
+
+            return f"""
+{score_text}
+
+Total Score: {sum(score_list)}/{sum(score_denominators)}
 Percentage Score: {mean(normalized_score_list)*100:.2f}%
 
 Reason:
-Entity: {reason_list[0]}
-Data Property: {reason_list[1]}
-Object Property: {reason_list[2]}
-Ontology Structure: {reason_list[3]}
-Overall Content: {reason_list[4]}
+{reason_text}
 """
+
         return mean(normalized_score_list)

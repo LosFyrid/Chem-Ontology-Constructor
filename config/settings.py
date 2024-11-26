@@ -72,9 +72,15 @@ _ASSESSMENT_CRITERIA_SCORE_CONFIG = {
     "data_property_score": 3,
     "object_property_score": 5,
     "ontology_structure_score": 4,
-    "overall_content_score": 24
+    "overall_content_score": 24,
+    "weights": {
+        "elements": 0.33,
+        "properties": 0.33,
+        "overall": 0.33
+    }
 }
 ASSESSMENT_CRITERIA_CONFIG = {
+    "element_property_split": 3,
     "entity_score": _ASSESSMENT_CRITERIA_SCORE_CONFIG["entity_score"],
     "entity": f"""Based on text, Entity Accuracy Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["entity_score"]} points):
 Award 1 point for each criterion met:
