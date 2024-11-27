@@ -2,8 +2,8 @@ from pydantic import BaseModel, Field
 from typing import List, Literal, Union
 
 class DataProperty(BaseModel):
-    """Extract data properties from text for ontology creation. These should be value-based properties, not entities. Do not miss any fields."""
-    name: str = Field(description="Provide a clear and concise name for the data property.")
+    """Extract data properties from text for ontology creation. These should be value-based properties, not entities. Do not miss any fields. If a data property has no value in context, ignore this property."""
+    name: str = Field(description="Provide a clear and concise name for the data property. It should be in lowercase and separate words with underscores. Don't use plural form.")
     values: Union[dict, None] = Field(
         default=None,
         description="A dictionary of values as values and their owner classes for the data property as keys. Owner classes should be existing entities in the Entity list. If the data property has no value in context, specify 'None'."
@@ -15,7 +15,7 @@ class DataProperty(BaseModel):
 
 class Entity(BaseModel):
     """Extract entities from text for ontology creation, including classes and individuals, excluding data properties. Then regard all entities as classes. Do not miss any fields."""
-    name: str = Field(description="Provide a clear and concise name for the entity. Use the format [Full Name]([Abbreviation]) if abbreviation is available, where [Full Name] should capitalize first letter of each word and separate words with spaces, and [Abbreviation] should keep its original format.")
+    name: str = Field(description="Provide a clear and concise name for the entity. Use the format [Full Name]([Abbreviation]) if abbreviation is available, where [Full Name] should be in lowercase and separate words with underscores, and [Abbreviation] should keep its original format. Don't use plural form.")
     information: Union[str, None] = Field(
         default=None,
         description="Offer a complete and comprehensive sentence detailing the entity from the text."
@@ -44,14 +44,14 @@ class Range(BaseModel):
     )
 
 class ObjectPropertyInstance(BaseModel):
-    """Describe the domain and range of an object property. Do not miss any fields."""
+    """Describe the domain and range of an object property. Use the exact entity sets from the original text without summarizing or inferring. Do not miss any fields."""
     domain: Union[Domain, None] = Field(
         default=None,
-        description="Describe the domain of the instance of the object property."
+        description="Describe the domain of the instance of the object property.It should be an existing entity in the Entity list"
     )
     range: Union[Range, None] = Field(
         default=None,
-        description="Describe the range of the instance of the object property."
+        description="Describe the range of the instance of the object property. It should be an existing entity in the Entity list"
     )
     restriction: Literal['only', 'some', ""] = Field(
         default='some',
@@ -60,7 +60,7 @@ class ObjectPropertyInstance(BaseModel):
 
 class ObjectProperty(BaseModel):
     """Extract object properties and their instances from text for ontology creation. Do not miss any fields."""
-    name: str = Field(description="Provide a clear and concise name for the object property. It should be separated by underscores between words.")
+    name: str = Field(description="Provide a clear and concise name for the object property. It should be in lowercase and separate words with underscores. It should start with is_ or has_ to indicate the property expresses a complex  subclass-superclass relationship or a property. Don't use plural form.")
     instances: Union[List[ObjectPropertyInstance], None] = Field(
         default=None,
         description="List of object property instances."
@@ -96,12 +96,15 @@ class Disjointness(BaseModel):
         description="Second class name, it should be an existing entity in the Entity list"
     )
 
-class OntologyElements(BaseModel):
-    """List representation of the ontology entities and their hierarchy and disjointness for text. In this context, entity means same as class."""
-
+class OntologyEntities(BaseModel):
+    """List representation of the ontology entities extracted from the text."""
     entities: List[Entity] = Field(
-        description="List of entities in the knowledge graph"
+        description="List of entities in the ontology"
     )
+
+class OntologyElements(BaseModel):
+    """List representation of the hierarchy and disjointness in the text about the ontology_entities. In this context, entity means same as class."""
+
     hierarchy: Union[List[Hierarchy], None] = Field(
         default=None,
         description="List of subclass-superclass relationships in the ontology. If there is no subclass-superclass relationship, specify 'None'."
@@ -111,12 +114,15 @@ class OntologyElements(BaseModel):
         description="List of disjoint class relationships in the ontology. If there is no disjoint class relationship, specify 'None'."
     )
 
-class OntologyProperties(BaseModel):
-    """List representation of the properties in ontology for text. In this context, entity means same as class."""
+class OntologyDataProperties(BaseModel):
+    """List representation of the data properties in ontology for text. In this context, entity means same as class."""
     data_properties: Union[List[DataProperty], None] = Field(
         default=None,
         description="List of data properties in the ontology. If there is no data property, specify 'None'."
     )
+
+class OntologyObjectProperties(BaseModel):
+    """List representation of the object properties in ontology for text. In this context, entity means same as class."""
     object_properties: List[ObjectProperty] = Field(
         description="List of object properties in the ontology"
     )

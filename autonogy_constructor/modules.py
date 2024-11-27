@@ -1,8 +1,8 @@
 import dspy
 from numpy import mean
-from autonogy_constructor.base_data_structures import OntologyElements, OntologyProperties
-from autonogy_constructor.signatures import ExtractOntologyElements, ExtractOntologyProperties, Assess
-from autonogy_constructor.utils import ontology_elements_to_string, ontology_properties_to_string
+from autonogy_constructor.base_data_structures import OntologyElements, OntologyDataProperties, OntologyObjectProperties, OntologyEntities
+from autonogy_constructor.signatures import ExtractOntologyElements, ExtractOntologyDataProperties, ExtractOntologyObjectProperties, ExtractOntologyEntities, Assess
+from autonogy_constructor.utils import ontology_entities_to_string, ontology_elements_to_string, ontology_data_properties_to_string, ontology_object_properties_to_string
 
 from config.settings import ASSESSMENT_CRITERIA_CONFIG
 
@@ -27,13 +27,17 @@ class ChemOntology(dspy.Module):
     def __init__(self):
         super().__init__()
 
+        self.entities_extractor = dspy.ChainOfThought(ExtractOntologyEntities)
         self.elements_extractor = dspy.ChainOfThought(ExtractOntologyElements)
-        self.properties_extractor = dspy.ChainOfThought(ExtractOntologyProperties)
+        self.data_properties_extractor = dspy.ChainOfThought(ExtractOntologyDataProperties)
+        self.object_properties_extractor = dspy.ChainOfThought(ExtractOntologyObjectProperties)
     
     def forward(self, context):
-        elements = self.elements_extractor(text=context)
-        properties = self.properties_extractor(text=context, existing_ontology_elements=elements.ontology_elements)
-        return dspy.Prediction(context=context, ontology_elements=elements.ontology_elements, ontology_properties=properties.ontology_properties)
+        entities = self.entities_extractor(text=context)
+        elements = self.elements_extractor(text=context, ontology_entities=entities.ontology_entities)
+        data_properties = self.data_properties_extractor(text=context, ontology_entities=entities.ontology_entities)
+        object_properties = self.object_properties_extractor(text=context, ontology_entities=entities.ontology_entities)
+        return dspy.Prediction(context=context, ontology_entities=entities.ontology_entities, ontology_elements=elements.ontology_elements, ontology_data_properties=data_properties.ontology_data_properties, ontology_object_properties=object_properties.ontology_object_properties)
 
 class Assessment(dspy.Module):
     def __init__(self, verbose=False, assertions=False):
@@ -45,38 +49,57 @@ class Assessment(dspy.Module):
     def forward(self, assessed_text, assessment_ontology):
         verbose = self.verbose
         assertions = self.assertions
-        if isinstance(assessment_ontology, OntologyElements):
+        if isinstance(assessment_ontology, OntologyEntities):
+            print("entities")
+            assessment_ontology = ontology_entities_to_string(assessment_ontology)
+            print(assessment_ontology)
+            criteria_list = [entity]
+            score_list = [
+                self.assessor(assessed_text=assessed_text, assessment_ontology=assessment_ontology, assessment_criteria=criteria).assessment_score for criteria in criteria_list
+            ]
+            score_denominators = [entity_score]
+            normalized_score_list = [score/denom for score, denom in zip(score_list, score_denominators)]
+            if verbose or assertions:
+                reason_list = [
+                    self.assessor(assessed_text=assessed_text, assessment_ontology=assessment_ontology, assessment_criteria=criteria).assessment_reason for criteria in criteria_list
+                ]
+        elif isinstance(assessment_ontology, OntologyElements):
             print("elements")
             assessment_ontology = ontology_elements_to_string(assessment_ontology)
             print(assessment_ontology)
-            criteria_list = [entity, hierachy, disjointness]
+            criteria_list = [hierachy, disjointness]
             score_list = [
                 self.assessor(assessed_text=assessed_text, assessment_ontology=assessment_ontology, assessment_criteria=criteria).assessment_score for criteria in criteria_list
             ]
-            score_denominators = [entity_score, hierachy_score, disjointness_score]
+            score_denominators = [hierachy_score, disjointness_score]
             normalized_score_list = [score/denom for score, denom in zip(score_list, score_denominators)]
             if verbose or assertions:
                 reason_list = [
                     self.assessor(assessed_text=assessed_text, assessment_ontology=assessment_ontology, assessment_criteria=criteria).assessment_reason for criteria in criteria_list
                 ]
-        elif isinstance(assessment_ontology, OntologyProperties):
+        elif isinstance(assessment_ontology, (OntologyDataProperties, OntologyObjectProperties)):
             print("properties")
-            assessment_ontology = ontology_properties_to_string(assessment_ontology)
+            if isinstance(assessment_ontology, OntologyDataProperties):
+                assessment_ontology = ontology_data_properties_to_string(assessment_ontology)
+                criteria_list = [data_property]
+                score_denominators = [data_property_score]
+            else:
+                assessment_ontology = ontology_object_properties_to_string(assessment_ontology)
+                criteria_list = [object_property]
+                score_denominators = [object_property_score]
             print(assessment_ontology)
-            criteria_list = [data_property, object_property]
             score_list = [
                 self.assessor(assessed_text=assessed_text, assessment_ontology=assessment_ontology, assessment_criteria=criteria).assessment_score for criteria in criteria_list
             ]
-            score_denominators = [data_property_score, object_property_score]
             normalized_score_list = [score/denom for score, denom in zip(score_list, score_denominators)]
             if verbose or assertions:
                 reason_list = [
                     self.assessor(assessed_text=assessed_text, assessment_ontology=assessment_ontology, assessment_criteria=criteria).assessment_reason for criteria in criteria_list
                 ]
-        elif isinstance(assessment_ontology, tuple) and len(assessment_ontology) == 2:
-            if isinstance(assessment_ontology[0], OntologyElements) and isinstance(assessment_ontology[1], OntologyProperties):
-                print("elements and properties")
-                assessment_ontology = ontology_elements_to_string(assessment_ontology[0].entities) + "\n" + ontology_properties_to_string(assessment_ontology[1])
+        elif isinstance(assessment_ontology, tuple) and len(assessment_ontology) == 4:
+            if isinstance(assessment_ontology[0], OntologyEntities) and isinstance(assessment_ontology[1], OntologyElements) and isinstance(assessment_ontology[2], OntologyDataProperties) and isinstance(assessment_ontology[3], OntologyObjectProperties):
+                print("entities, elements and properties")
+                assessment_ontology = ontology_entities_to_string(assessment_ontology[0]) + "\n" + ontology_elements_to_string(assessment_ontology[1]) + "\n" + ontology_data_properties_to_string(assessment_ontology[2]) + "\n" + ontology_object_properties_to_string(assessment_ontology[3])
                 criteria_list = [ontology_structure, overall_content]
                 score_list = [
                     self.assessor(assessed_text=assessed_text, assessment_ontology=assessment_ontology, assessment_criteria=criteria).assessment_score for criteria in criteria_list
@@ -88,7 +111,7 @@ class Assessment(dspy.Module):
                         self.assessor(assessed_text=assessed_text, assessment_ontology=assessment_ontology, assessment_criteria=criteria).assessment_reason for criteria in criteria_list
                     ]
         else:
-            raise ValueError("assessment_ontology 必须是 OntologyElements、OntologyProperties 或者它们的元组类型")
+            raise ValueError("assessment_ontology 必须是 OntologyEntities、OntologyElements、OntologyDataProperties、OntologyObjectProperties 或者它们的元组类型")
         if assertions:
             result_dict = {}
             for i, criteria_name in enumerate(criteria_list):

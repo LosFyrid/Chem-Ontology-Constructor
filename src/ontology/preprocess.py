@@ -4,13 +4,13 @@ from owlready2 import *
 from config import settings
 
 
-def create_metadata_properties(ontology: owlready2.namespace.Ontology):
+def create_metadata_properties():
     """
     在本体中创建必要的注释属性类别
     
-    Args:
-        ontology: owlready2.namespace.Ontology - 目标本体
+
     """
+    ontology = settings.ONTOLOGY_CONFIG["ontology"]
     meta = settings.ONTOLOGY_CONFIG["meta"]
     with ontology:
         # 检查并创建embedding注释属性(值类型为浮点数列表)
@@ -49,5 +49,19 @@ def create_metadata_properties(ontology: owlready2.namespace.Ontology):
             class information(AnnotationProperty):
                 range = [str]
                 namespace = meta
+        
+        # 检查并创建hierarchy_information注释属性(值类型为字符串列表)
+        if meta.hierarchy_information in ontology.annotation_properties():
+            hierarchy_info_prop = meta.hierarchy_information
+            if hierarchy_info_prop.range != [str]:
+                print("hierarchy_information range is not str, changing...")
+                hierarchy_info_prop.range = [str]
+        else:
+            print("hierarchy_information does not exist, creating...")
+            class hierarchy_information(AnnotationProperty):
+                range = [str]
+                namespace = meta
+    ontology.save()
+
 
 

@@ -1,12 +1,11 @@
 import dspy
 
-from autonogy_constructor.base_data_structures import OntologyElements, OntologyProperties
+from autonogy_constructor.base_data_structures import OntologyElements, OntologyDataProperties, OntologyObjectProperties, OntologyEntities
 
+class ExtractOntologyEntities(dspy.Signature):
+    """Analyze the provided text from research papers in the field of chemistry to identify all chemistry-related entities for the subsequent parts to construct an ontological framework together. And all the entities are regarded as classes in the ontology.
 
-class ExtractOntologyElements(dspy.Signature):
-    """Analyze the provided text from research papers in the field of chemistry to identify all chemistry-related entities, hierarchical relationships and disjoint relationships to construct an ontological framework.
-
-    You are an expert ontology engineer. Your task is to carefully analyze the text and extract key ontological elements following these steps:
+    You are an expert ontology engineer. Your task is to carefully analyze the text and extract key ontological entities following these steps:
 
     1. Extract Chemistry-Related Entities:
       - Identify all significant chemistry concepts that should be represented as entities
@@ -17,36 +16,52 @@ class ExtractOntologyElements(dspy.Signature):
         * Laboratory equipment and procedures
       - Ensure each entity name is specific and meaningful
       - Avoid redundancy by consolidating similar concepts
+      - Avoid concepts describing data properties.
 
-    2. Identify Hierarchical Relationships:
+    Remember: The final goal is to create a precise and well-structured ontological framework that accurately represents the chemistry domain knowledge in the text. In this part, the goal is to extract all the entities to be the ontology classes to be used in the subsequent parts and ontology."""
+    text: str = dspy.InputField(
+        desc="a paragraph of text to extract entities to form an ontology"
+    )
+    ontology_entities: OntologyEntities = dspy.OutputField(
+        desc="List representation of the ontology entities extracted from the text"
+    )
+
+class ExtractOntologyElements(dspy.Signature):
+    """Analyze the provided text from research papers in the field of chemistry to identify all hierarchical relationships and disjoint relationships about the ontology_entities to construct an ontological framework together with the subsequent parts. 
+
+    You are an expert ontology engineer. Your task is to carefully analyze the text and extract key ontological elements following these steps:
+
+    1. Identify Hierarchical Relationships:
       - Carefully analyze the text for "is-a" relationships between entities
       - Look for phrases indicating classification or categorization
       - Ensure the hierarchy is logically consistent
       - Document the evidence supporting each relationship
 
-    3. Determine Disjoint Relationships:
+    2. Determine Disjoint Relationships:
       - Identify mutually exclusive classes that cannot share instances
       - Look for explicit statements of incompatibility
       - Verify each disjoint relationship is properly justified
 
-    Remember: The goal is to create a precise and well-structured ontological framework that accurately represents the chemistry domain knowledge.
-    """
+    Remember: The final goal is to create a precise and well-structured ontological framework that accurately represents the chemistry domain knowledge in the text. In this part, the goal is to extract all the hierarchy and disjointness of the ontology classes to abound ontology."""
 
     text: str = dspy.InputField(
         desc="a paragraph of text to extract entities and their relationships to form an ontology"
     )
+    ontology_entities: OntologyEntities = dspy.InputField(
+        desc="List representation of entities extracted from the text. The entities in your extracted hierarchical and disjoint relationships should be in this list."
+    )
     ontology_elements: OntologyElements = dspy.OutputField(
-        desc="List representation of the ontology entities, their hierarchy and disjointness extracted from the text."
+        desc="List representation of the hierarchy and disjointness of entities extracted from the text."
     )
 
-class ExtractOntologyProperties(dspy.Signature):
-    """Analyze the provided text from research papers in the field of chemistry to identify data properties and object properties within an ontological framework.
+class ExtractOntologyDataProperties(dspy.Signature):
+    """Analyze the provided text from research papers in the field of chemistry to identify data properties about the ontology_entities to construct an ontological framework.
 
-    You are an expert ontology engineer. Your task is to carefully analyze the text and extract ontological properties following these steps:
+    You are an expert ontology engineer. Your task is to carefully analyze the text and extract data properties following these steps:
 
     1. Identify Data Properties:
       - Look for value-based attributes that describe entities:
-        * Numerical measurements and quantities
+        * Numerical measurements and quantities 
         * Descriptive characteristics
         * Physical or chemical properties
       - For each property:
@@ -56,7 +71,25 @@ class ExtractOntologyProperties(dspy.Signature):
         * Validate owner entity exists in the ontology
       - Ensure properties are attributes, not entities themselves
 
-    2. Establish Object Properties:
+    Remember: The goal is to create a comprehensive property structure that captures all meaningful characteristics in the chemistry domain while maintaining consistency with existing entities.
+    """
+
+    text: str = dspy.InputField(
+        desc="a paragraph of text to extract data properties for the ontology"
+    )
+    ontology_entities: OntologyEntities = dspy.InputField(
+        desc="List representation of the ontology entities extracted from the text. The entities in your extracted data properties should be in this list."
+    )
+    ontology_data_properties: OntologyDataProperties = dspy.OutputField(
+        desc="List representation of the data properties extracted from the text"
+    )
+
+class ExtractOntologyObjectProperties(dspy.Signature):
+    """Analyze the provided text from research papers in the field of chemistry to identify object properties about the ontology_entities to construct an ontological framework.
+
+    You are an expert ontology engineer. Your task is to carefully analyze the text and extract object properties following these steps:
+
+    1. Establish Object Properties:
       - Identify relationships between entities by looking for:
         * Verbs and action phrases
         * Structural relationships
@@ -69,17 +102,17 @@ class ExtractOntologyProperties(dspy.Signature):
         * Validate the relationship direction and semantics
         * Consider complex domain/range expressions using union/intersection
 
-    Remember: The goal is to create a comprehensive property structure that captures all meaningful relationships and characteristics in the chemistry domain while maintaining consistency with existing entities.
+    Remember: The goal is to create a comprehensive property structure that captures all meaningful relationships in the chemistry domain while maintaining consistency with existing entities.
     """
 
     text: str = dspy.InputField(
-        desc="a paragraph of text to extract data and object properties for the ontology"
+        desc="a paragraph of text to extract object properties for the ontology"
     )
-    existing_ontology_elements: OntologyElements = dspy.InputField(
-        desc="List representation of the ontology entities extracted from the text"
+    ontology_entities: OntologyEntities = dspy.InputField(
+        desc="List representation of the ontology entities extracted from the text. The entities in your extracted object properties should be in this list."
     )
-    ontology_properties: OntologyProperties = dspy.OutputField(
-        desc="List representation of the data and object properties extracted from the text"
+    ontology_object_properties: OntologyObjectProperties = dspy.OutputField(
+        desc="List representation of the object properties extracted from the text"
     )
 
 class Assess(dspy.Signature):
@@ -100,3 +133,6 @@ class Assess(dspy.Signature):
     assessment_reason: str = dspy.OutputField(
         desc="Leave this field empty if the ontology receives the full score for this criterion. Otherwise, explain what criteria are not met and propose improvements."
     )
+
+
+

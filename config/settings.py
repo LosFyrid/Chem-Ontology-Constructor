@@ -66,17 +66,19 @@ ONTOLOGY_CONFIG = {
 }
 
 _ASSESSMENT_CRITERIA_SCORE_CONFIG = {
-    "entity_score": 6,
+    "entity_score": 8,
     "hierachy_score": 7,
     "disjointness_score": 5,
-    "data_property_score": 3,
-    "object_property_score": 5,
+    "data_property_score": 4,
+    "object_property_score": 8,
     "ontology_structure_score": 4,
     "overall_content_score": 24,
     "weights": {
-        "elements": 0.33,
-        "properties": 0.33,
-        "overall": 0.33
+        "entities": 0.3,
+        "elements": 0.15,
+        "data_properties": 0.15,
+        "object_properties": 0.25,
+        "overall": 0.15
     }
 }
 ASSESSMENT_CRITERIA_CONFIG = {
@@ -84,19 +86,20 @@ ASSESSMENT_CRITERIA_CONFIG = {
     "entity_score": _ASSESSMENT_CRITERIA_SCORE_CONFIG["entity_score"],
     "entity": f"""Based on text, Entity Accuracy Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["entity_score"]} points):
 Award 1 point for each criterion met:
+- Classes cover all granularity levels (1 point)
 - Entities capture concepts across all levels of abstraction, from highly abstract to highly specific mentioned in the text (1 point)
 - Entity names are specific and meaningful without being overly generic (1 point)
 - Entity definitions align with established chemical concepts (1 point)
 - Entities are properly consolidated without redundancy (1 point)
 - Entity design supports future expansion and integration with other ontologies (1 point)
-- Entities can be effectively applied across different chemical subdomains (1 point)""",
+- Entities can be effectively applied across different chemical subdomains (1 point)
+- Entities have chemical meaning and accuracy even without the context of text and information fields (1 point)""",
     "hierachy_score": _ASSESSMENT_CRITERIA_SCORE_CONFIG["hierachy_score"],
     "hierachy": f"""Based on text, Class Hierarchy Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["hierachy_score"]} points):
 Award 1 point for each criterion met:
 - Class hierarchies align with valid chemical taxonomies (1 point)
-- Subclass relationships are logically sound and chemically meaningful (1 point)
-- Multiple inheritance is used appropriately where needed (1 point)
-- Class hierarchies covers all granularity levels (1 point)
+- Subclass relationships are logically sound, chemically meaningful and accurate even without the context of text and information fields (1 point)
+- Multiple inheritance is used appropriately when necessary (1 point)
 - Hierarchical relationships are stated or implied in the text (1 point)
 - Superclass-subclass pairs maintain consistent semantic meaning (1 point)
 - No circular or contradictory hierarchical relationships (1 point)
@@ -116,15 +119,19 @@ Award 1 point for each criterion met:
 - Data properties are truly value-based attributes (1 point)
 - Each data property describes a single measurable characteristic (1 point)
 - Values of each data property are explicitly stated in the text (1 point)
+- Data properties are chemically meaningful and accurate even without the context of text and information fields (1 point)
 If the ontology has no data properties, check if the text contains any data properties. If there are no data properties mentioned in the text, award full points. If data properties exist in the text but are missing from the ontology, award 0 points.""",
     "object_property_score": _ASSESSMENT_CRITERIA_SCORE_CONFIG["object_property_score"],
     "object_property": f"""Based on text, Object Property Completeness Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["object_property_score"]} points):
 Award 1 point for each criterion met:
-- Object properties capture all key chemical interactions (1 point)
-- Object properties reflect valid chemical principles (1 point)
-- Domain and range specifications only exist when necessary (1 point)
-- Existing domain and range specifications are chemically valid (1 point)
+- Object properties capture all key chemical knowledges and reflect valid chemical principles (1 point)
+- The words used in object property names are accurate, specific, and academic (1 point)
+- Object property names and instances are meaningful, specific and accurate even without the context of text and information fields (1 point)
+- Object property instances are aligned with the context of text (1 point)
+- Domain and range specifications are precise and accurate without loss of specificity from using overly broad classes (1 point)
 - Relationship restrictions ('only'/'some') are properly applied (1 point)
+- If multiple object properties describe symmetric aspects of the same chemical scope, their instances should be aligned in granularity (1 point)
+- Object properties names start with is_ or has_ to indicate the property expresses a complex subclass-superclass relationship or a property (1 point)
 """,
     "ontology_structure_score": _ASSESSMENT_CRITERIA_SCORE_CONFIG["ontology_structure_score"],
     "ontology_structure": f"""Based on text, Ontology Structure Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["ontology_structure_score"]} points):
