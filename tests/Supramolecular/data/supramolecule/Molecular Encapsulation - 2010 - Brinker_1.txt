@@ -1,0 +1,3879 @@
+Molecular Encapsulation
+Molecular Encapsulation: Organic Reactions in Constrained Systems        Edited by Udo H. Brinker and Jean-Luc Mieusset
+© 2010 John Wiley & Sons, Inc.  ISBN: 978-0-470-99807-6
+Molecular 
+Encapsulation
+Organic Reactions in 
+Constrained Systems
+Editors
+Udo H. Brinker
+Institute of Organic Chemistry, University of Vienna, 
+Vienna, Austria
+Jean-Luc Mieusset
+Institute of Organic Chemistry, University of Vienna, 
+Vienna, Austria
+A John Wiley & Sons, Ltd., Publication
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+This edition ﬁ rst published 2010
+© 2010 John Wiley & Sons, Ltd
+Registered ofﬁ ce
+John Wiley & Sons Ltd, The Atrium, Southern Gate, Chichester, West Sussex, PO19 8SQ, United Kingdom
+For details of our global editorial ofﬁ ces, for customer services and for information about how to apply for permission to 
+reuse the copyright material in this book please see our website at www.wiley.com.
+The right of the author to be identiﬁ ed as the author of this work has been asserted in accordance with the Copyright, 
+Designs and Patents Act 1988.
+All rights reserved. No part of this publication may be reproduced, stored in a retrieval system, or transmitted, in any form 
+or by any means, electronic, mechanical, photocopying, recording or otherwise, except as permitted by the UK Copyright, 
+Designs and Patents Act 1988, without the prior permission of the publisher.
+Wiley also publishes its books in a variety of electronic formats. Some content that appears in print may not be available in 
+electronic books.
+Designations used by companies to distinguish their products are often claimed as trademarks. All brand names and product 
+names used in this book are trade names, service marks, trademarks or registered trademarks of their respective owners. The 
+publisher is not associated with any product or vendor mentioned in this book. This publication is designed to provide 
+accurate and authoritative information in regard to the subject matter covered. It is sold on the understanding that the 
+publisher is not engaged in rendering professional services. If professional advice or other expert assistance is required, the 
+services of a competent professional should be sought.
+The publisher and the author make no representations or warranties with respect to the accuracy or completeness of the 
+contents of this work and speciﬁ cally disclaim all warranties, including without limitation any implied warranties of ﬁ tness 
+for a particular purpose. This work is sold with the understanding that the publisher is not engaged in rendering professional 
+services. The advice and strategies contained herein may not be suitable for every situation. In view of ongoing research, 
+equipment modiﬁ cations, changes in governmental regulations, and the constant ﬂ ow of information relating to the use of 
+experimental reagents, equipment, and devices, the reader is urged to review and evaluate the information provided in the 
+package insert or instructions for each chemical, piece of equipment, reagent, or device for, among other things, any changes 
+in the instructions or indication of usage and for added warnings and precautions. The fact that an organization or Website is 
+referred to in this work as a citation and/or a potential source of further information does not mean that the author or the 
+publisher endorses the information the organization or Website may provide or recommendations it may make. Further, 
+readers should be aware that Internet Websites listed in this work may have changed or disappeared between when this work 
+was written and when it is read. No warranty may be created or extended by any promotional statements for this work. 
+Neither the publisher nor the author shall be liable for any damages arising herefrom.
+Library of Congress Cataloging-in-Publication Data
+Molecular encapsulation : organic reactions in constrained systems / editors, Udo H. Brinker, Jean-Luc Mieusset.
+  p. cm.
+ Includes bibliographical references and index.
+ ISBN 978-0-470-99807-6 (cloth : alk. paper)
+ 1. Nanochemistry. 2. Microencapsulation. I. Brinker, Udo H. II. Mieusset, Jean-Luc.
+ QC176.8.N35M653 2010
+ 547′.2–dc22
+ 
+2010004249
+A catalogue record for this book is available from the British Library.
+ISBN 9780470998076
+Set in 10 on 12 pt Times by Toppan Best-set Premedia Limited.
+Printed in The United Kingdom by Antony Rowe Ltd, Chippenham, Wiltshire.
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Contents
+Preface 
+page xiii
+List of Contributors 
+xvii
+ 1 
+Reaction Control by Molecular Recognition – A Survey from the 
+Photochemical Perspective 
+1
+Cheng Yang, Chenfeng Ke, Yu Liu, and Yoshihisa Inoue
+ 1.1 Introduction 
+1
+ 1.2 Photochemical Reactions Mediated by Macrocyclic Compounds 
+2
+1.2.1 Supramolecular Photoreactions with Crown Ethers 
+2
+1.2.2 Supramolecular Photoreactions with Calixarenes 
+3
+1.2.3 Supramolecular Photoreactions with Cyclodextrins 
+6
+1.2.4 Supramolecular Photoreactions with Cucurbiturils 
+12
+ 1.3 Photochemical Reactions with Biomolecules 
+15
+1.3.1 Photochemical Reactions Templated by Deoxyribonucleic 
+Acid (DNA) 
+15
+1.3.2 Photochemical Reactions Mediated by Proteins 
+18
+ 1.4 Photochemical Reactions with Conﬁ ned Cages Based on Inorganic 
+and Organic–Inorganic Hybrid Materials 
+21
+1.4.1 Photochemical Reactions with Zeolites 
+21
+1.4.2 Photochemical Reactions in Mesoporous Materials 
+25
+1.4.3 Photochemical Reaction with Self-Assembled Molecular 
+Cages 
+26
+ 1.5 Photochemical Reactions with other Artiﬁ cial Hosts 
+28
+1.5.1 Photochemical Reactions with Dendrimers 
+28
+1.5.2 Photochemical Reactions with Hydrogen-Bonding Templates 
+30
+1.5.3 Photochemical Reactions Templated by Cationic Ion 
+32
+ 1.6 Photoreaction Control by External Variants 
+34
+ 1.7 Conclusions 
+36
+Acknowledgements 
+37
+References 
+37
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+vi 
+Contents
+ 2 
+Cyclodextrins 
+43
+Ronald Breslow
+ 2.1 Introduction 
+43
+ 2.2 Acylations of the Cyclodextrins by Bound Substrates 
+44
+ 2.3 Catalytic Reactions in Cyclodextrin Cavities: Aromatic 
+Substitution 
+46
+ 2.3.1 Catalytic Reactions in Cyclodextrin Cavities: 
+Diels–Alder Reactions 
+47
+ 2.4 Other Solvents than Water 
+47
+ 2.5 Catalytic Reactions Produced by Cyclodextrins With Covalently 
+Attached Catalytic Groups 
+48
+ 2.5.1 Catalysed Hydrolysis Reactions 
+48
+ 2.5.2 Ribonuclease Mimics 
+49
+ 2.6 Binding by Cyclodextrins and their Dimers and Trimers 
+53
+ 2.6.1 Transaminase Mimics 
+54
+ 2.7 Mimics of Enzymes that Use Thiamine Pyrophosphate 
+as a Co-Enzyme 
+57
+ 2.8 Aldol Condensations Catalysed by Cyclodextrin Derivatives 
+59
+ 2.9 Mimics of Enzymes Using Coenzyme B12 as a Cofactor 
+61
+2.10 Mimics of Cytochrome P-450 
+61
+Acknowledgements 
+65
+References 
+65
+ 3 
+Cyclodextrins as Molecular Reactors 
+71
+Christopher J. Easton and Hideki Onagi
+ 3.1 Introduction 
+71
+ 3.2 Regiocontrolled Electrophilic Aromatic Substitutions 
+73
+ 3.3 Catalysis of Hydrolytic Reactions 
+75
+ 3.4 A Molecular Reactor for the Synthesis of Indigoid Dyes 
+77
+ 3.5 Manipulation of Cycloadditions 
+80
+ 3.6 Conclusion 
+86
+Acknowledgements 
+87
+References 
+87
+ 4 
+Reactions Mediated by Cyclodextrins 
+91
+Keiko Takahashi
+ 4.1 Introduction 
+91
+ 4.2 The Inclusion Phenomena of Cyclodextrins 
+92
+ 4.3 Origin of Microvessels as Molecular Flasks 
+93
+ 4.3.1 Ternary Complex Formation with γ-CD 
+93
+ 4.3.2 Organic Reactions Mediated by γ-CD 
+93
+ 4.3.3 Ternary Complex Formation with β-CD 
+95
+ 4.4 Organic Reactions Mediated by CD in Water 
+99
+ 4.4.1 Catalytic Systems Based on Metal Complexes 
+99
+ 4.4.2 Ring Opening Reactions 
+101
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Contents 
+vii
+ 4.4.3 Addition 
+105
+ 4.4.4 Oxidation and Reduction 
+108
+ 4.5 Conclusion 
+110
+References 
+111
+ 5 
+Reactions in Zeolites 
+117
+Stéphane Walspurger and Jean Sommer
+ 5.1 The Conﬁ nement Effect 
+121
+ 5.2 Superelectrophilic Activation in Zeolites 
+127
+ 5.3 Huisgen [3+2]-Cycloadditions 
+130
+ 5.4 Multicomponent Reactions 
+132
+ 5.4.1 H/D Exchange Between Neopentane and Zeolites 
+134
+ 5.4.2 H/D Exchange Between Neopentane and Zirconia 
+135
+ 5.4.3 H/D Exchange and Acidity 
+135
+ 5.5 Conclusion 
+137
+References 
+138
+ 6 
+Chemistry in Self-Assembled Nanoreactors 
+145
+Jarl Ivar van der Vlugt, Tehila S. Koblenz, Jeroen Wassenaar, 
+and Joost N. H. Reek
+ 6.1 Introduction 
+145
+ 6.2 Self-Assembled Nanocapsules 
+146
+ 6.3 Encapsulation Effects in Catalysis 
+147
+ 6.3.1 Encapsulation Effects in Terms of Rate Equation 
+147
+ 6.3.2 New Reactivities and Selectivities 
+148
+ 6.3.3 Product Stabilization 
+149
+ 6.4 Hydrogen Bonded Capsules 
+150
+ 6.4.1 Stoichiometric 1,3-Dipolar Cycloaddition 
+151
+ 6.4.2 Catalytic Diels–Alder Reaction 
+152
+ 6.5 Capsules Based on Metal–Ligand Interactions 
+152
+ 6.6 Tetrahedral Cages Based on Octahedral M3+ Ions 
+153
+ 6.6.1 Hydrolysis 
+154
+ 6.6.2 Allylic Alcohol Isomerization 
+156
+ 6.7 Octahedral and Square Pyramidal Cages Based on Square-
+Planar M2+ Ions 
+157
+ 6.7.1 Diels–Alder Reaction 
+158
+ 6.7.2 Oleﬁ n Photodimerization 
+160
+ 6.8 Hydrophobic Effects as the Driving Force for the Self-Assembly 
+of Nanocapsules 
+161
+ 6.8.1 Photooxidation 
+162
+ 6.9 Ligand Template Approach Using Lewis Acid/Base Interactions 
+164
+ 6.9.1 Hydroformylation 
+165
+6.10 Virus Capsids, Proteins and Micellar Systems 
+168
+6.11 Micellar Systems 
+169
+6.12 Conclusions and Outlook 
+170
+Acknowledgements 
+171
+References 
+171
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+viii 
+Contents
+ 7 
+Concave Reagents 
+175
+Ulrich Lüning
+ 7.1 Introduction 
+175
+ 7.1.1 Supramolecular Chemistry and Enzymes 
+175
+ 7.1.2 Reagents and Catalysts 
+177
+ 7.2 Classes of Concave Reagents 
+180
+ 7.2.1 Strategies for the Construction of Bimacrocycles 
+181
+ 7.2.2 Ring-closure 
+182
+ 7.2.3 Concave Acids, Bases and Ligands 
+185
+ 7.3 Reactions and Catalyses 
+189
+ 7.3.1 Reagents 
+189
+ 7.3.2 Catalysts 
+190
+ 7.4 Summary and Outlook 
+193
+References 
+194
+ 8 
+Reactivity Control by Calixarenes 
+201
+Luigi Mandolini, Roberta Cacciapaglia, and Stefano Di Stefano
+ 8.1 Introduction 
+201
+ 8.2 Calixarenes as Hosts 
+202
+ 8.3 Calixarenes as Molecular Platforms 
+209
+ 8.3.1 Artiﬁ cial Esterases: Barium(II) Complexes 
+210
+ 8.3.2 Artiﬁ cial Esterases: Zinc(II) Complexes 
+212
+ 8.3.3 Artiﬁ cial Esterases: Trimetallic Complexes 
+215
+ 8.3.4 Artiﬁ cial Nucleases: Zinc(II) Complexes 
+216
+ 8.3.5 Artiﬁ cial Nucleases: Copper(II) Complexes 
+217
+ 8.4 Concluding Remarks 
+222
+References 
+223
+9 
+Reactions Inside Carcerands 
+227
+Ralf Warmuth
+ 9.1 Introduction 
+227
+ 9.2 Types of Inner Phase Reactions 
+230
+ 9.3 Probing the Properties of the Inner Phase 
+231
+ 9.3.1 Amide C−N Bond Rotation and Ring-Flip of 
+Cyclohexanes 
+231
+ 9.3.2 Spectroscopic Probes 
+232
+ 9.4 Through-Shell Reactions 
+233
+ 9.4.1 Proton Transfer Reactions 
+233
+ 9.4.2 Electron Transfer Reactions 
+234
+ 9.4.3 Nucleophilic Substitutions and Isotopic Exchanges 
+235
+ 9.4.4 Nucleophilic Additions 
+236
+ 9.5 Intramolecular Thermal Reactions 
+238
+ 9.5.1 Diazirine Fragmentation 
+238
+ 9.5.2 Fragmentation of 3-Sulfolene 
+240
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Contents 
+ix
+ 9.6 Inner Phase Photochemistry 
+241
+ 9.6.1 Inner Phase Stabilization of Reactive Intermediates: Concept 241
+ 9.6.2 Cyclobutadiene 
+241
+ 9.6.3 Anti-Bredt Bridgehead Oleﬁ ns 
+243
+ 9.6.4 o-Benzyne 
+243
+ 9.6.5 Phenylcarbene Rearrangement 
+246
+ 9.6.6 Carbenes 
+250
+ 9.6.7 Phenylnitrene 
+251
+ 9.6.8 Norrish Type II Photochemistry 
+253
+ 9.6.9 Incarcerated Excited States 
+254
+9.6.10 Photoelectron and Triplet Energy Transfer 
+256
+9.6.11 Hemicarcerand-based Photoactive Assemblies 
+259
+ 9.7 Conclusions and Outlook 
+260
+Acknowledgements 
+260
+References 
+261
+10 
+Encapsulation of Reactive Intermediates 
+269
+Jean-Luc Mieusset and Udo H. Brinker
+10.1 Introduction 
+269
+10.2 Encapsulation of Labile Species 
+270
+10.3 Isolation of Non-covalently Bonded Aggregates 
+275
+10.4 Inclusion of Reactive Intermediates 
+278
+10.4.1 Viologen Radical Cations 
+278
+10.4.2 Radicals 
+281
+10.4.3 Carbenes 
+283
+10.4.3.1 4-Oxocyclohexa-2,5-dienylidene 
+285
+10.4.3.2 2-Methylcyclohexylidene 
+286
+10.4.3.3 3-Nortricyclanylidene 
+288
+10.4.3.4 Adamantanylidene 
+289
+10.4.3.5 Arylcarbenes 
+292
+10.4.3.6 Chloro(phenyl)carbene 
+292
+10.4.3.7 Bicyclo[3.2.1]octan-8-ylidenes 
+293
+10.4.4 Nitrenes 
+295
+10.4.4.1 1-Adamantanyl nitrene 
+296
+10.4.4.2 2-Adamantanyl nitrene 
+296
+10.4.4.3 Ferrocenyl nitrene 
+297
+10.4.4.4 Phenylnitrene 
+301
+References 
+304
+11 
+Dye Encapsulation 
+309
+Jeremiah J. Gassensmith, Easwaran Arunkumar, and Bradley D. Smith
+11.1 Introduction 
+309
+11.2 Reversible Dye Encapsulation Inside Organic Container Molecules 
+311
+11.3 Reversible Dye Encapsulation by Biological Receptors 
+314
+11.4 Permanent Dye Encapsulation Inside Rotaxanes 
+315
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+x 
+Contents
+11.5 Permanent Encapsulation Inside Inorganic Matrices 
+320
+11.6 Conclusion 
+322
+Acknowledgements 
+322
+References 
+322
+12 
+Organic Cations in Constrained Systems 
+327
+Werner Abraham and Lutz Grubert
+12.1 Introduction 
+327
+12.1.1 Hosts 
+328
+12.1.2 Guests 
+329
+12.1.3 Structure–Interaction Relationships 
+330
+12.2 Host–guest Complexes with Organic Cations 
+330
+12.2.1 Cyclophanes 
+330
+12.2.2 Calix[n]arenes 
+332
+12.2.3 Charged Calixarenes 
+334
+12.2.4 Homooxacalixarenes 
+339
+12.2.5 Resorcinarenes 
+341
+12.3 Extended Hosts and Capsules 
+343
+12.4 Cucurbiturils 
+348
+12.5 Complex Systems and Applications 
+350
+12.5.1 Photoresponsive Hosts 
+353
+12.6 Conclusions 
+355
+References 
+357
+13 
+Proteins as Host for Enantioselective Catalysis: Artiﬁ cial 
+Metalloenzymes Based on the Biotin–Streptavidin Technology 
+361
+Jincheng Mao and Thomas R. Ward
+13.1 Introduction 
+361
+13.2 The Biotin–Avidin Technology 
+363
+13.2.1 The Chemical Optimization Dimension 
+364
+13.2.2 The Genetic Optimization Dimension 
+364
+13.3 Artiﬁ cial Hydrogenases 
+365
+13.4 Artiﬁ cial Allylic Alkylases 
+367
+13.5 Artiﬁ cial Transfer Hydrogenase 
+369
+13.6 Enantioselective Sulfoxidation Based on Vanadyl-loaded Streptavidin 
+372
+13.7 Conclusions and Outlook 
+373
+Acknowledgements 
+373
+References 
+374
+14 
+Chemical Reactions with RNA and DNA Enzymes 
+377
+Andres Jäschke
+14.1 Introduction 
+377
+14.2 Catalysis by Naturally Occurring Ribozymes 
+378
+14.3 How to Generate Artiﬁ cial RNA and DNA Catalysts 
+380
+14.4 The Catalytic Spectrum of Artiﬁ cial Ribozymes 
+383
+14.5 Deoxyribozymes – DNA Molecules with Catalytic Properties 
+386
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Contents 
+xi
+14.6 Catalysis of C−C Bond Formation by Diels–Alderase Ribozymes 
+387
+14.6.1 In Vitro Selection 
+387
+14.6.2 Overall Catalytic Properties 
+388
+14.6.3 Overall Structure of the Ribozyme 
+389
+14.6.4 Architecture of the Catalytic Pocket 
+390
+14.6.5 Interactions Between the Ribozyme and its Substrates and 
+Products 
+391
+14.6.6 Conformational Dynamics and the Roles of Metal Ions 
+392
+14.6.7 Mechanistic Considerations 
+393
+14.7 Conclusion 
+394
+References 
+394
+15 
+Reactions in Supramolecular Systems 
+397
+Lucia Zakharova, Alla Mirgorodskaya, Elena Zhiltsova, 
+Ludmila Kudryavtseva, and Alexander Konovalov
+15.1 Introduction 
+397
+15.2 The Single Micellar Systems: Factors of Concentration and 
+Micellar Microenvironment 
+398
+15.3 The Role of the Structural Factor in Supramolecular 
+Catalytic Systems 
+402
+15.3.1 The Inﬂ uence of the ‘Sphere–Rod’ Micellar Transition on 
+the Reactivity 
+402
+15.3.2 The Effect of the Clustering of Reverse Micelles on the 
+Reactivity 
+402
+15.3.3 The Hydrolysis of Carbonic Acid Esters in Microemulsions 
+under Phase Inversion Conditions 
+405
+15.4 Binary Surfactant Systems 
+405
+15.4.1 Aqueous Binary System Ionic–Nonionic Surfactants 
+405
+15.4.2 The Binary Surfactant Mixtures in Non-aqueous Media 
+407
+15.5 Polycomponent Catalytic Systems Based on Amphiphiles 
+and Polymers 
+408
+15.5.1 The Conventional Surfactant/Polyethyleneimine 
+Systems 
+408
+15.5.2 The Pyrimidinic Surfactant Based Systems 
+412
+15.5.3 The Calixarene Based Systems 
+413
+15.5.4 The Non-Aqueous Supramolecular Systems 
+414
+15.6 Conclusions 
+416
+Acknowledgements 
+417
+Dedication 
+417
+References 
+417
+16 
+Encapsulation Processes by Bilayer Vesicles 
+421
+Marc C. A. Stuart and Jan B. F. N. Engberts
+16.1 Introduction 
+421
+16.1.1 Vesicular Aggregates 
+421
+16.1.2 Solute Encapsulation by Vesicles 
+426
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+xii 
+Contents
+16.1.3 Binding Locations 
+427
+16.1.4 Experimental Techniques for Measuring Encapsulation 
+Processes 
+429
+16.2 Catalysis by Vesicles. Encapsulation of Reactants 
+430
+16.2.1 Unimolecular Decarboxylation of 6-NBIC 
+431
+16.2.2 The Kemp Elimination: Rate-limiting Proton Transfer 
+433
+16.2.3 Bimolecular Nucleophilic Substitution 
+434
+16.3 Liposomal Encapsulation in Drug Delivery 
+435
+16.3.1 Encapsulated Drugs 
+436
+16.4 Vesicle–Nucleic Acid Interactions: Gene Transfer Using 
+Lipoplexes 
+438
+16.4.1 Lipoplex Formation 
+439
+16.4.2 Lipoplex Structure 
+440
+16.4.3 Future Prospects 
+446
+References 
+446
+17 
+Reactions in Liposomes 
+455
+Pasquale Stano and Pier Luigi Luisi
+17.1 Introduction 
+455
+17.2 Lipid Vesicles (Liposomes) 
+456
+17.2.1 What are Liposomes (and Fatty Acid Vesicles) 
+456
+17.2.2 Morphology and Methods of Preparation 
+458
+17.2.3 Chemical Compatibility 
+461
+17.3 Experimental Strategies and Theoretical Aspects 
+462
+17.3.1 Basic Strategies 
+462
+17.3.2 Theoretical Aspects 
+466
+17.4 A Theoretical Framework for Complex Reactions in Liposomes 
+470
+17.5 Four Cases of Compartmentalized Reactions 
+473
+17.6 Conclusion 
+485
+Acknowledgements 
+485
+Abbreviations 
+486
+References 
+487
+Index 
+493
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+ Preface 
+  The inclusion of small guest molecules within suitable host compounds results in con-
+strained systems that imbue novel properties upon the incarcerated organic substrates. For 
+example, the chromophoric nature of dye molecules is considerably altered upon com-
+plexation. And the targeted delivery of active pharmaceutical ingredients can be facili-
+tated  in vivo . So, understandably, supramolecular tactics are becoming widely employed 
+and this treatise spotlights them. Indeed, the knowledge gleaned from constructing such 
+assemblies can be applied to develop innovative molecular devices. Insofar as molecular 
+constraint inﬂ uences chemical reactivity, including chemo - , regio - , and stereoselectivity, 
+new synthetic routes become plausible. Often, the impact of encapsulation on product 
+formation is substantial. Therefore, special attention must be paid to the stabilization and 
+chemistry of short - lived, high - energy intermediates, since they are key compounds that 
+govern the outcome of reactions. Common among these transient species is their ability 
+to subsequently undergo an array of reaction mechanisms that include the generation of 
+unusual or strained products. However, the conventional drawback has been that high 
+product yields are sacriﬁ ced due to a lack of selectivity across low - energy barriers. The 
+use of a constrained system, however, offers the means to solve this problem by steering 
+the reaction trajectory along a desired pathway. In general, we provide a broad overview 
+of many different approaches that aim to manipulate chemical reactions. We anticipate 
+that this endeavor will be thought provoking and ultimately facilitate the exchange of 
+ideas between various scientiﬁ c disciplines. 
+ This volume comprises 17 chapters. It is spearheaded by an account of molecular 
+recognition being used to precisely control photochemical reactions and foster enantio-
+meric excess. The supramolecular reaction proceeds under mild conditions, wherein a 
+highly reactive excited - state intermediate readily generates products that are difﬁ cult to 
+obtain thermally. Such inductions of enantioselectivity by chiral auxiliary are especially 
+appealing. The following three chapters expound upon the cyclodextrin macrocyclic 
+hosts, whose wide availability and ability to form inclusion complexes makes them mini-
+ature reaction vessels  par excellence . Chapter  2 deals with the use of natural and deriva-
+tized Schardinger dextrins to accelerate reactions, such as transesteriﬁ cations and 
+Diels – Alder reactions, and to mimic enzymes,  e.g. , ribonucleases and transaminases. 
+Chapter  3  focuses on the development of molecular reactors. The primary role of these 
+containers is to increase the selectivity of a chemical transformation, which also may 
+occur by decreasing the overall rate of the process. In chapter  4 , special cyclodextrin -
+ mediated reactions are discussed. Since guest complexation offers the possibility of 
+performing organic reactions in aqueous media, microsolvent effects are feasible, the 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+xiv 
+Preface
+protection of water - sensitive intermediates is achieved, and conformational control during 
+the reaction is realized. Indeed, this approach has great appeal for environmental chem-
+istry. Chapter  5  demonstrates the potential of nanoreactor technology, using zeolites as 
+an example. These inorganic inclusion compounds are widely used on an industrial scale 
+during petroleum reﬁ ning, for example, because they catalyze the isomerization and 
+oligomerization of alkenes. The utility of these materials is due to the presence of active 
+sites in well - deﬁ ned cavities that enable customized control of reaction selectivity. And 
+though these natural catalysts are readily available, easily reusable, and therefore cost -
+ effective, the facile preparation of a container of sufﬁ cient size suitable for the regulation 
+of a chemical reaction is an ongoing challenge. To fashion cages as appropriate nano -
+ reactors, a novel approach avoiding tedious multistep synthesis is becoming widespread. 
+It entails the self - assembly of noncovalent capsules. The results obtained using these 
+organized media are highlighted in chapter  6 . 
+ Another promising method to augment selectivity is described in chapter  7  and is based 
+on the concept of concave reagents whose reactive moiety is situated inside a cleft or 
+macrocycle and thereby sterically shielded. Another popular group of hosts used to control 
+reactions are the calixarenes (chapter  8 ). Their appeal derives from the ease of the mac-
+rocyclic ring - closure during their synthesis and the capability of performing selective 
+derivatization to both increase the size of the cavity and introduce functional groups. 
+Using this method, a cage can be built wherein the reacting guest is completely imprisoned 
+and may only escape at elevated temperatures. These hosts, known as hemicarcerands, 
+have allowed isolation and spectroscopic observation of traditionally ephemeral interme-
+diates. Remarkable results are presented in chapter  9 . In chapter  10 , an overview is given 
+regarding the generation and associated change in reactivity of highly reactive intermedi-
+ates, like radicals, carbenes, and nitrenes, within cavitands. This exposition is further 
+elaborated by a presentation of the actual developments in dye encapsulation where 
+improvements in the photoproperties and chemical stability are especially prized (chapter 
+ 11 ) and by a description of research on organic cations (chapter  12 ). 
+ The subsequent chapters concern methodologies that are not only inspired by biology 
+and enzyme mimicry, but actually employ modiﬁ ed biopolymers to achieve catalysis. In 
+the ﬁ rst approach, the goal is to improve the enantioselectivity of a classic organometallic 
+catalyst through its incorporation into a host protein that generates a secondary coordina-
+tion sphere environment responsible for a rise in selectivity. These artiﬁ cial metalloen-
+zymes are showcased in chapter  13 . The second technique is summarized in chapter  14  
+and details the generation of artiﬁ cial RNA enzymes that are able to catalyze various 
+chemical reactions, including the Diels – Alder reaction. 
+ Finally, the assembly of more complex systems requires that the exact supramolecular 
+reaction site be known. For this purpose, micelles and liposomes are very attractive due 
+to the sequestering of reagents, the possibility of conducting various reactions in a con-
+ﬁ ned space, and the similarity with living cells. These particular organized media are 
+examined in detail in chapter  15 , which describes the catalytic effect of micelles and 
+supramolecular systems based on cyclophanes. In addition, the encapsulation process of 
+vesicles and their catalytic effect on organic reactions is outlined in chapter  16 . And, 
+ﬁ nally, chapter  17 previews efforts to assemble a semi - synthetic cell. 
+ Many authors contributed chapters for this book, whose scope covers an expansive 
+interdisciplinary area. We are profoundly grateful for their input and expertise. Indeed, 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Preface 
+xv
+we expect that this monograph will be useful to students and researchers alike who want 
+to be informed about the latest developments in the burgeoning ﬁ eld of supramolecular 
+chemistry. Not only will it help them to master established reactions, but new synthetic 
+opportunities and exciting applications of these methodologies will surely arise. 
+ Vienna, January 2010 
+ Udo H. Brinker 
+ Jean - Luc Mieusset 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+ List of Contributors  
+ Werner Abraham,   Institut f ü r Chemie, Humboldt - Universit ä t zu Berlin, D - 12489 
+Berlin, Germany 
+ Easwaran Arunkumar,   Molecular Targeting Technologies Inc, PA 19380, USA 
+ Ronald Breslow,    Department of Chemistry, Columbia University, New York, NY 
+10027, USA 
+ Udo H. Brinker,  Institut f ü r Organische Chemie, Universit ä t Wien, A – 1090 Wien, 
+Austria 
+ Roberta Cacciapaglia,    IMC CNR Sezione Meccanisma di Reazione, c/o Dipartimento 
+di Chimica, Universit à La Sapienza, I-00185 Roma, Italy 
+ Stefano Di Stefano,    IMC CNR Sezione Meccanisma di Reazione, c/o Dipartimento di 
+Chimica, Universit à La Sapienza, I - 00185 Roma, Italy 
+ Christopher Easton,    Research School of Chemistry, Australian National University, 
+Canberra ACT 0200, Australia 
+ Jan B.F.N. Engberts,    Stratingh Institute of Chemistry, University of Groningen, 9747 
+AG Groningen, The Netherlands 
+ Jeremiah J. Gassensmith,    Department of Chemistry and Biochemistry, 251 Nieuwland 
+Science Hall, University of Notre Dame, Notre Dame, IN 46556, USA  
+ Lutz Grubert,    Institut f ü r Chemie, Humboldt - Universit ä t zu Berlin, D - 12489 Berlin, 
+Germany 
+ Yoshihisa Inoue,    Department of Applied Chemistry, Osaka University, Suita 565 - 0871, 
+Japan 
+ Andres J ä schke,   Institut f ü r Pharmazie und Molekulare Biotechnologie (IPMB), 
+Universit ä t Heidelberg, D - 69120 Heidelberg, Germany 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+xviii 
+List of Contributors
+ Chenfeng Ke,    Department of Chemistry, Nankai University, Tianjing, China  
+ Tehila S. Koblenz,    Supramolecular and Homogeneous Catalysis, Van  ‘ t Hoff 
+Institute for Molecular Sciences, University of Amsterdam, 1018 WV Amsterdam, 
+The Netherlands 
+ Alexander Konovalov,    A.E. Arbuzov Institute of Organic and Physical Chemistry of 
+the Russian Academy of Science, 420088 Kazan, Russia  
+ Ludmila Kudryavtseva,    A.E. Arbuzov Institute of Organic and Physical Chemistry of 
+the Russian Academy of Science, 420088 Kazan, Russia  
+ Yu Liu,  Department of Chemistry, Nankai University, Tianjing, China 
+ Pier Luigi Luisi,   Biology Department, University of Roma Tre, 00146 Rome, Italy 
+ Ulrich L ü ning,   Otto - Diels - Institut f ü r Organische Chemie, D - 24098 Kiel, Germany 
+ Luigi Mandolini,    IMC CNR Sezione Meccanisma di Reazione, c/o Dipartimento di 
+Chimica, Universit à La Sapienza, I - 00185 Roma, Italy 
+ Jincheng Mao,    Department of Chemistry, University of Basel, CH-4056, Basel 
+Switzerland 
+ Jean - Luc Mieusset,  Institut f ü r Organische Chemie, Universit ä t Wien, A – 1090 Wien, 
+Austria 
+ Alla Mirgorodskaya,    A.E. Arbuzov Institute of Organic and Physical Chemistry of the 
+Russian Academy of Science, 420088 Kazan, Russia 
+ Hideki Onagi,    Research School of Chemistry, Australian National University, Canberra 
+ACT 0200, Australia 
+ Joost N. H. Reek,    Supramolecular and Homogeneous Catalysis, van  ‘ t Hoff Institute for 
+Molecular Sciences, University of Amsterdam, 1018 WV Amsterdam, The Netherlands 
+ Bradley D. Smith,  Department of Chemistry and Biochemistry, 251 Nieuwland Science 
+Hall, University of Notre Dame, Notre Dame, IN 46556, USA  
+ Jean Sommer,    Facult é  de Chimie, Universit é  Louis Pasteur, Strasbourg, F - 67008 
+Strasbourg, France  
+ Pasquale Stano,  Biology Department, University of Roma Tre, 00146 Rome, Italy 
+ Marc C.A. Stuart,  Groningen Biomolecular Sciences and Biotechnology Institute and 
+Stratingh Institute of Chemistry, University of Groningen, 9747 AG Groningen, The 
+Netherlands 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+List of Contributors 
+xix
+ Keiko Takahashi,  Department of Nanochemistry, Faculty of Engineering, Tokyo 
+Polytechnic University, Atsugi, Kanagawa 243 - 0297, Japan 
+ Jarl Ivar van der Vlugt,    Supramolecular and Homogeneous Catalysis, Van  ‘ t Hoff 
+Institute for Molecular Sciences, University of Amsterdam, 1018 WV Amsterdam, The 
+Netherlands 
+ Thomas R. Ward,    Department of Chemistry, University of Basel, CH - 4056 Basel, 
+Switzerland 
+ Ralf Warmuth , Rutgers   The State University of New Jersey, Department of Chemistry 
+and Chemical Biology, Piscataway, NJ 08854, USA 
+ Jeroen Wassenaar,    Supramolecular and Homogeneous Catalysis, Van  ‘ t Hoff Institute 
+for Molecular Sciences, University of Amsterdam, 1018 WV Amsterdam, The Netherlands  
+ St é phane Walspurger,   Energy Research Centre of The Netherlands, Petter, The 
+Netherlands 
+ Cheng Yang,  PRESTO (JST) and Department of Applied Chemistry, Osaka University, 
+Suita 565 - 0871, Japan 
+ Lucia Zakharova,    A.E. Arbuzov Institute of Organic and Physical Chemistry of the 
+Russian Academy of Science, 420088 Kazan, Russia  
+ Elena Zhiltsova,   A.E. Arbuzov Institute of Organic and Physical Chemistry of the 
+Russian Academy of Science, 420088 Kazan, Russia  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+ 1 
+Reaction Control by Molecular 
+Recognition  –  A Survey from the 
+Photochemical Perspective  
+ Cheng  Yang 1 ,  Chenfeng  Ke 2 ,  Yu  Liu 2 , and  Yoshihisa  Inoue 1 
+ 1  PRESTO (JST) and Department of Applied Chemistry, Osaka University, Suita 565 - 0871, Japan 
+ 2  Department of Chemistry, Nankai University, Tianjing, China 
+ 1.1  Introduction 
+ Molecular recognition through non - covalent interactions between two or more molecules 
+has attracted much attention from a broad spectrum of chemists for a long period of time 
+and has already found many applications in various areas of science and technology. The 
+concept of molecular recognition was ﬁ rst developed for biomolecular systems such as 
+enzyme, antibody and DNA, which can selectively bind the speciﬁ c target molecules 
+through non - covalent weak interactions, including hydrogen bonding, van der Waals, 
+dipole – dipole, charge – dipole and hydrophobic interactions. 1 – 3   Recent studies on artiﬁ cial 
+host – guest systems have revealed that molecular recognition is the essential conceptual 
+basis for supramolecular chemistry and nanotechnology. 4,5 
+ Reaction control through complexation of substrate by supramolecular host is a rela-
+tively new idea compared to the conventional approaches that involve simple collisional 
+attack or coordination of substrate to metal. Multiple non - covalent interactions in supramo-
+lecular assembly bind and locate a site - speciﬁ c substrate in the right position, orientation 
+and conformation near the catalyst or active site, stabilize the high - energy transition state, 
+and eventually make the reaction faster and more selective. Typical examples are found 
+in enzymatic reactions, which proceed with high speciﬁ city and efﬁ ciency in aqueous 
+solutions under mild conditions. These observations in natural systems have inspired 
+Molecular Encapsulation: Organic Reactions in Constrained Systems        Edited by Udo H. Brinker and Jean-Luc Mieusset
+© 2010 John Wiley & Sons, Inc.  ISBN: 978-0-470-99807-6
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+2 
+Molecular Encapsulation
+researchers to develop novel research areas such as supramolecular chemistry, biomimetic 
+chemistry and bio - inspired materials science and technology. 6,7 
+ Contrary to the thermal counterpart, photochemical reactions in supramolecular system 
+have been less investigated and therefore of current interest. Photochemistry is a powerful 
+tool in synthetic chemistry as a complementary method for achieving compounds that are 
+difﬁ cult to obtain through thermal reactions due to high strain, low stability, and orbital 
+symmetry reasons. Unlike thermal reactions, photoreactions deal with excited - state mol-
+ecules that are usually short - lived but experience much lower energy barriers and exhibit 
+high reactivities even at low temperatures. As a consequence of these features, the precise 
+control of a photoreaction is more difﬁ cult to achieve than that of thermal one. This is 
+one of the reasons why most asymmetric photoreactions result in only relatively low 
+enantioselectivities. In this context, supramolecular approaches to the photochemical 
+asymmetric synthesis enable the more precise control of the orientation and conformation 
+of substrates and, as a result, the enantioselectivity of photoproducts, by utilizing the 
+non - covalent interactions in both ground and excited states. 
+ Supramolecular photochemistry is a relatively new interdisciplinary area of science and 
+may be tracked back to the work in early 1980s, where the spectroscopic properties of 
+ions were manipulated by crown ethers.  8 – 10 The rapid development of supramolecular 
+chemistry in the last two decades accelerated the application of supramolecular systems 
+to organic photochemistry  11,12   and more recently to asymmetric synthesis,  13,14 leading to 
+a great number of publications on reaction control by molecular recognition. Consequently, 
+not all of these areas will be covered, but the concentration will be rather on the repre-
+sentative supramolecular photoreactions conducted primarily in solution. This will help 
+idenitify the crucial concepts, strategies and conclusions as well as the major factors and 
+mechanisms that govern the supramolecular photochemistry in different systems, and also 
+provide the possible applications and future perspectives of this interesting area of 
+supramolecular chemistry. 
+ 1.2  Photochemical Reactions Mediated by Macrocyclic Compounds 
+ 1.2.1  Supramolecular Photoreactions with Crown Ethers 
+ Crown ethers, a family of cyclic oligomers of ethylene oxide, are artiﬁ cial macrocyclic 
+hosts which have been synthesized and utilized since the early days of supramolecular 
+chemistry. 15,16   Besides various metal ions that are complexed by crown ethers mainly 
+through ion – dipole interaction, primary and secondary organic ammonium ions also form 
+stable complexes with larger sized crown ethers through ion – dipole and hydrogen - bond-
+ing interactions. Stoddart and co - workers used crown ethers that can simultaneously bind 
+two organic ammonium guests to facilitate photodimerization. 17 As illustrated in Scheme 
+ 1.1 ,  trans - stilbene derivative  2  forms a doubly encircled, doubly threaded 2   :   2 complex 
+with bis - p - phenylene - 34 - crown - 10  1  to give a centrosymmetric [4]pseudorotaxane in the 
+solid state. In addition to the hydrogen - bonding interactions between  1  and  2 , the complex 
+is also stabilized by   π – π stacking interactions between the two  trans - stilbene units with 
+mean interplanar and centroid - centroid separations of 3.57 and 4.33    Å , respectively. The 
+close arrangement of stilbenes accelerates the photodimerization upon irradiation to 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reaction Control by Molecular Recognition 
+3
+exclusively give a single cyclobutane isomer  4  with a  syn – anti – syn  conformation, as 
+conﬁ rmed by X - ray crystallographic analysis. A control experiment showed that no pho-
+todimerization but only  trans - to - cis  isomerization took place in the absence of crown 
+ether  1 . 
+ The photochromic behavior of viologens is greatly affected upon complexion with 
+crown ether. Viologens show photoinduced colour change in the absence of any additional 
+reagents when dispersed in isotropic thin polymer ﬁ lms. 18   Irradiation of benzylviologen 
+ 5  (Scheme  1.2 ) incorporated in a polymer matrix caused a colour change from colourless 
+to blue as a result of the reduction of  5  from dication to radical cation, which was reverted 
+to dication within 2 h in the dark. Crown ether  1  forms a 1   :   1 complex with  5  and also 
+with  6 in acetone with association constants of  ca. 200  M  − 1 . The charge - transfer (CT) 
+interaction between viologen  5  or  6  and  1  led to the formation of yellow - coloured CT 
+complex with a CT absorption band at 453   nm and 421   nm for  5  and  6 , respectively. The 
+crown ether complexes of photoreduced viologens showed much accelerated bleaching 
+rates than the corresponding free viologen radical cations. A similar phenomenon was 
+observed also for  2  ⊂  1 complex in a polymer matrix. 
+ 1.2.2  Supramolecular Photoreactions with Calixarenes 
+ Calix[ n ]arenes are a class of macrocycles that are normally made up of phenol units linked 
+with methylene bridges and possess cavities of various sizes that can accommodate small 
+organic molecules primarily driven by hydrophobic interactions. 
+ Water soluble  p - sulfonatocalix[6]arene (SCA[6]) and [8]arene (SCA[8]) (Scheme  1.3 ) 
+have dimensions of 15.9    ×  11.8  Å  and 20.4    ×  16.7  Å  at the upper rim and 6.5    ×  3.3  Å and 
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+H2N
+NH2
+O
+O
+O
+O
+O
+O
+O
+N
+H2
+H2
+N
+N
+H2
+H2
+N
+O
+O
+O
+O
+O
+O
+O
+O
+O
+H2N
+NH2
+H2N
+NH2
+1
+2
+3
+4
+hv
+O
+O
+O
++
+ Scheme 1.1   
+N
+N
+N
+N
+2PF6
+2PF6
+N
+N
+N
+N
+hv
+2X
+X
+X
+5
+6
+dication form
+radical cation form
+ Scheme 1.2   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+4 
+Molecular Encapsulation
+8.6  ×  5.9  Å  at the lower rim, respectively,  19,20   and provide suitable cavities for accom-
+modating quaternary ammonium ions,  21,22   native amino acids,  23   and small neutral organic 
+molecules.  24   Using SCA[6] and SCA[8]  25   as supramolecular hosts, Ramamurthy  et al. 
+investigated the photochemistry of benzoin alkyl ethers  7a – c . 26 – 28 These SCAs formed 
+the corresponding 1   :   1 complexes with  7a – c  in aqueous solution, and  7a  showed modest 
+association constants of 137   M  − 1 and 386  M  − 1  with SCA[6] and SCA[8], respectively. 
+Upon photolysis, these benzoin alkyl ethers underwent both the Norrish type I (  α -
+ cleavage) and type II (  γ  - hydrogen abstraction) reactions to give photoproducts  8 – 12 
+(Scheme  1.3 ). In the absence of SCAs, pinacol ether  9  was obtained as in 92% relative 
+yield in aqueous solution at pH 7, along with deoxybenzoin  11  (8% relative yield), 
+for which the   α - cleavage ( k  α   ≈  10 10  s  − 1 ) faster than the   γ - hydrogen abstraction ( k  γ   ≈  
+10 9  s  − 1 ) is responsible. However, when the photoreaction was performed in the presence 
+of SCA, product  11  became the major product. The relative yield of the type II products 
+ 11 and  12 depends critically on the cavity size of hosts and association constants. 
+Photoirradiation of  7a  in the presence of an 8 - fold excess amount of SCA[8] or SCA[6] 
+gave  11  and  12  in 96% or 70% combined yield, respectively. The dominant formation of 
+type II products suggests that  7  adopts a conformation favourable for   γ - hydrogen absorp-
+tion in the cavity. Choosing a suitable substrate with higher binding afﬁ nity for SCA is 
+likely to be crucial in improving the stereoselectivity of photoreaction. 
+ Photoreaction of stilbazoles  13a – f  (Scheme  1.4 ) has also been investigated in the pres-
+ence of SCA[ n ]. Upon irradiation in dilute aqueous HCl solution without a host,  trans -
+ stilbazoles  13a – f  gave predominantly  cis - isomers  16a – f , along with only small amounts 
+of  anti - head - to - tail  (HT) dimers  14a – f  and  anti - head - to - head  (HH) dimers  15a – f . 29 In 
+aqueous solution, stilbazoles were found to form 2   :   1 complexes with SCA[8] and SCA[6], 
+irradiation of which afforded the corresponding  anti - HT dimer in 66 – 86% yield in the 
+presence of SCA[8] and in 60 – 76% yield in the presence of SCA[6]. The  anti - HH dimer 
+was given in only 16% yield, which was attributed to the electrostatic repulsion between 
+two pyridinium components. The hydrophobic nature of SCA cavity should be responsi-
+ble for the inclusion of stilbazoles. It is thus concluded that SCAs control the orientation 
+of stilbazoles through complex formation to eventually enhance the distribution of 
+HT dimer. 
+SO3Na
+OH
+n
+Ph
+O
+O
+Ph
+R1
+R2
+7a, R1 = R2 = H
+7b, R1 = H; R2 = CH3
+7c, R1 = R2 = CH3
+Ph
+O
+H
+Ph
+Ph
+Ph
+Ph
+OH
+O
+R2
+R1
+Ph
+O
+Ph
+O
+H
+OCHR1R2
+Ph
+R1R2HCO
+H
+Ph
+PhCHO
+Ph
+O
+Ph
+O
+HO
+Ph
+R2
+R1
+Ph
++
++
++
+SCA[n] (n = 6, 8)
+Type I
+Type II
+8
+9
+10
+11
+12
+hv
+ Scheme 1.3   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reaction Control by Molecular Recognition 
+5
+ Unlike water - soluble calixarenes that encapsulate guests by hydrophobic, electrostatic 
+and van der Waals interactions, amphiphilic calixarenes in solid state form container -  or 
+capsule - like structures and include guest molecules predominantly through van der Waals 
+interactions. Photochemical behavior of stilbenes included in amphiphilic molecular cap-
+sules of  p - hexanoylcalix[4]arene  19  (Scheme  1.5 ) in the solid state was studied by 
+Ananchenko  et al. 30   Possessing diverse uni -  and bimolecular reaction routes, including 
+geometrical isomerization, cyclization and cyclodimerization, stilbenes are good model 
+compounds for examining the effects of calixarene capsules on photoreactivity. In the 
+solid state, two molecules of  19 self - assemble in a head - to - head fashion to form a hydro-
+phobic capsule, which can accommodate two  cis - stilbene molecules to give a 2  :  2 complex. 
+This 2   :   2 complex is not very stable and can release one  cis - stilbene molecule. On the 
+other hand,  trans - stilbene  20  is co - included with an ethanol molecule in the capsule to 
+give a 1   :   1   :   2 complex. Irradiation of the complex of  cis - stilbene ﬁ rst gave rise to  trans -
+ stilbene, and then to [2+2] dimers  21  and  22  in 5   :   1 ratio upon prolonged irradiation. 
+Irradiation of  trans - stilbene complex gave  cis - and  trans - stilbene in 1  :  1 ratio, along with 
+a trace amount of dimers  21  and  22 , conﬁ rming that the initial capsule is occupied pri-
+marily by only one  trans - stilbene molecule. 
+ Notably, calixarene  19  readily forms solid lipid nanoparticles (SLNs), which can serve 
+as a potential carrier system.  31 2 - Ethylhexyl  trans - 4 - methoxycinnamate  23  can be loaded 
+Ar
+Py
+Ar
+Py
+Ar
+Py
+Ar
+Ar
+Py
+Py
+Ar
+Py
+N
+Z
+Y
+X
+R
+hn
+13a-f
+14a-f
+15a-f
+16a-f
+17a-c, 17e-f
+18d
++
++
++
++
+a: Ar = phenyl; Py = 4-pyridyl
+b: Ar = 4'Cl-phenyl; Py = 4-pyridyl
+c: Ar = 4'-OCH3-phenyl; Py = 4-pyridyl
+d: Ar = 1-naphthyl; Py = 4-pyridyl
+e: Ar = phenyl; Py = 2-pyridyl
+f: Ar = phenyl; Py = 3-pyridyl
+a: R = H, X = CH, Y = CH, Z = N
+b: R = Cl, X = CH, Y = CH, Z = N
+c: R = OCH3, X = CH, Y = CH, Z = N
+e: R = H, X = N, Y = CH, Z = CH
+f: R = H, X = CH, Y = N, Z = CH
+ Scheme 1.4   
+OH
+OH
+HO
+OH
+O
+O
+O
+O
+19
+20
+hv
+COOR
+COOR
++
++
+21
+22
+24
+25
+23
+O
+O
+COOR
+COOR
+O
+O
+O
+O
+O
+R
+hv
+hv
+X
+SLN 19
+SLN 192
+ Scheme 1.5   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+6 
+Molecular Encapsulation
+by a solvent displacement method into the SLNs based on  19 . Comparison of the powder 
+X - ray diffraction (XRD) patterns of unloaded SLN and SLN loaded with  23 ([ 23 ]/
+[ 19 ]   =   0.6) with that of crystalline complex  23   ⊂  19 2  revealed that the complexation 
+pattern of the SLN loaded with  23  is similar to that of the crystalline complex. No dimeri-
+zation product was obtained upon irradiation of  23  loaded in SLN of  19 , and only pho-
+toisomerization occurred to give a 4   :   6 mixture of  cis - and  trans - isomer. However, when 
+the stoichiometry was changed to [ 23 ]/[ 19 ]  =  1.2, photolysis of  23  loaded in SLN yielded 
+HH dimers  24  and  25  in a combined yield of  ca.  10%. This regioselectivity of cyclodimer-
+ization of  23  is attributed to the fact that two  23  molecules preferably align in the  19 ’ s 
+cavity in HH orientation. These results suggest that one can efﬁ ciently manipulate the 
+photochemical behavior of  23  by simply adjusting the molar ratio of  23  loaded to the 
+SLNs of amphiphilic  19 . 
+ 1.2.3  Supramolecular Photoreactions with Cyclodextrins 
+ Cyclodextrins (CDs) are most frequently employed hosts for supramolecular photoreac-
+tions by virtue of the fact that they are readily available, UV - transparent, water - soluble 
+and capable of accommodating a wide range of organic guests in their hydrophobic cavi-
+ties. Organic guests can form inclusion complexes with   α - ,   β - and   γ - CDs in various stoi-
+chiometries both in solution and in the solid state. 
+ Unimolecular Reactions    The cavity of   β  - CD is smaller than that of   γ - CD, and normally 
+includes one organic molecule of suitable size to form 1  :  1, 2  :  2 or 2  :  1 host – guest com-
+plexes. Asymmetric intramolecular  meta - photocycloaddition of phenoxyalkenes (Scheme 
+ 1.6 ) has been studied in the presence of   β - CD by Eycken and co - workers 32 . The inclusion 
+complexes of  26 ,  28 ,  30 and  32 with  β - CD were collected from the deposit formed in a 
+warm aqueous solution containing   β  - CD and substrates by centrifugation and decantation. 
+For the complexes of  26a ,  28b ,  30a  and  30b  with   β - CD, the host - guest stoichiometries 
+were determined as 2   :   1 by UV spectroscopy, while the rest of the substrates formed 1   :   1 
+complexes. Irradiation of the solid complexes for 24 h led to  ca. 55 – 82% conversion, 
+which are appreciably lower than that obtained in the solution - phase photoreactions. In 
+all cases,  meta  - photocycloaddition led exclusively to only one regioisomer of 1,5 - bridged 
+dihydrosemibullvalenes  27 ,  31  and  33  respectively from  26 ,  30  and  32 . On the contrary, 
+irradiation of complex  28  ⊂    CD afforded two  meta  adducts  29a,b  and  29c,d . The regi-
+oselectivity of adducts  29a and  29c is about 1  :  3 in the presence of   β - CD against 1  :  1 in 
+the absence of   β - CD. Photocyclization of  ‘ linear ’  photosubstrates  26a,b  gave insigniﬁ cant 
+enantiomeric excess (ee) of less than 3%, which is probably due to the less restricted 
+orientation of  p - substituted substrate in the cavity. Photocyclization of  28a afforded minor 
+product  29a  in much better 17% ee but the major product  29c  in only 2% ee. These results 
+may indicate the trade - off relationship between chemical and optical yield: thus, larger 
+steric hindrance leads to low chemical but high optical yield, and vice versa.   
+ It is well documented that direct or sensitized photolysis of ( Z ) - cyclooctene  34Z leads 
+to geometrical isomerization to planar chiral ( E ) - isomer  34E (Scheme  1.7 ). 33   Due to the 
+comprehensive work by Inoue  et al. , the enantiodifferentiating photoisomerization of  34Z 
+sensitized by optically active benzenecarboxylates has become a benchmark reaction for 
+evaluating chiral photosensitizing system.  34 – 36 The ﬁ rst supramolecular enantiodifferenti-
+ating photoisomerization of  34Z  was examined in direct photolysis of its   β - CD complex 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reaction Control by Molecular Recognition 
+7
+O
+O
+O
+O
+(CH2)nCOOMe
+(CH2)nCOOMe
+(CH2)nCOOMe
+hv
+hv
+hv
+hv
+MeOOCn(H2C)
+O
+O
+MeOOCn(H2C)
++
+O
+MeOOCn(H2C)
+O
+(CH2)nCOOMe
+O
+26a: n = 1
+26b: n = 2
+29a: n = 1
+29b: n = 2
+30a: n = 1
+30b: n = 2
+32
+27a: n = 1
+27b: n = 2
+33
+31a: n = 1
+31b: n = 2
+29c: n = 1
+29d: n = 2
+28a: n = 1
+28b: n = 2
+ Scheme 1.6   
++
+34Z
+(R)-34E
+(S)-34E
+O
+O
+R2
+R2
+O
+O
+R2
+R2
+R2
+O
+6
+a, R1 = H ; R2 = OH
+c, R1 = m-CO2Me; R2 = OH
+d, R1 = p-CO2Me; R2 = OH
+e, R1 = H ; R2 = OMe
+f, R1 = o-CO2Me; R2 = OMe
+g, R1 = m-CO2Me; R2 = OMe
+h, R1 = p-CO2Me; R2 = OMe
+i, R1 = o-Me; R2 = OH
+O
+R1
+35a-n
+j, R1 = m-Me; R2 = OH
+k, R1 = p-Me; R2 = OH
+l, R1 = o-OMe; R2 = OH
+m, R1 = m-OMe; R2 = OH
+n, R1 = p-OMe; R2 = OH
+ Scheme 1.7   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+8 
+Molecular Encapsulation
+in the solid state. Photoproduct obtained from this complex was almost racemic with only 
+0.24% ee, demonstrating that the cavity interior of native   β  - CD does not possess sufﬁ cient 
+enantiodifferentiating ability for the photoisomerization of  34Z . 
+ A more sophisticated strategy for achieving higher levels of enantiodifferentiation has 
+been established by performing the photolysis of  34Z  with sensitizing chiral hosts  35 
+(Scheme  1.7 ), in which a chromophore is introduced to the primary rim of   β - CD. A clear 
+merit of this supramolecular photosensitization system is that the energy of excited sen-
+sitizer can be efﬁ ciently transferred to  34Z  included in CD cavity, while the undesirable, 
+less - enantiodifferentiating sensitization outside the CD cavity can be prevented. 
+Furthermore, this sensitizing host strategy allows the asymmetric photoreaction to 
+occur with only a catalytic amount of chiral host, achieving photochemical chirality 
+ampliﬁ cation. 
+ In contrast to the small  E / Z  ratios around 0.25 reported for non - supramolecular 
+photosensitizations by conventional alkyl benzoates,  37 an  E / Z  ratio of up to 0.8 were 
+obtained at the photostationary state in 1   :   1 methanol – water mixture by using  35 . By 
+adjusting the solvent composition, good enantiomeric excesses of up to 24% were 
+obtained upon photosensitization with  35a – d . The enantioselectivity of  34E obtained 
+in the photoisomerization of  34Z  with non - methylated CD is in general insensitive to 
+the temperature variations as a result of the insigniﬁ cant role of entropy in the   β - 
+CD - based supramolecular photochirogenesis system. However, the photoisomerization 
+of  34Z  in permethylated CD derivatives  35e – h  turned out to be highly temperature 
+dependent, frequently leading to a switching of the product chirality by changing the 
+reaction temperature.  38 The more ﬂ exible skeleton of permethylated CD due to the lack 
+of hydrogen - bonding net at the secondary rim is responsible for the temperature - depend-
+ent enantioselectivity. 
+ Recently, further efforts were done to elucidate the effects of chromophore substitution 
+on the ee of  34E , 39   and much better enantiomeric excesses of up to 46% were reported 
+upon photosensitized isomerization mediated by  35m . Analogous hosts  35a ,  35l  and  35n 
+afforded only modest ee ’ s in a range of 4% – 10% under optimized conditions.  40 The ee 
+value falls drastically to 1.7% when the  meta  - substituent is altered from methoxy ( 35m ) 
+to methyl in  35j . This result reveals the critical dependence of the efﬁ ciency of chirality 
+transfer on the sensitizer structure in the supramolecular photosensitized isomerization 
+system. 
+ Bimolecular Reactions    β  - CD is known to hinder the [2+2] photodimerization of stil-
+benes through complexation within its cavity.  41   In contrast,   γ - CD can simultaneously 
+include two stilbenes in its larger cavity in both solution and solid phase to signiﬁ cantly 
+facilitate the [2+2] photodimerization reaction. 
+ Wenz and co - workers examined the complexation and photochemical behavior of 
+water - soluble stilbene  36g  with   γ - CD in aqueous solution. 41   γ - CD forms 1  :  2 host – guest 
+complex with  36g  in buffer solution (pH 5.7) at 25    ° C with stepwise association constants 
+of K 1  =  385  M  − 1  and K 2  =  2730  M  − 1 . Photoirradiation of this ternary complex gave 
+cyclobutanes  cis - 37g  in 19% and  trans - 39g  in 79% relative yield. The association con-
+stants of adducts  37g  and  39g  with   γ - CD were K  37g  ⊂ γ - CD  =  520  M  − 1  and K  39g  ⊂ γ - CD  =  18000  M  − 1 , 
+respectively, revealing a great difference in stability between the isomeric complexes of 
+[ 36g ] 2  ⊂  γ - CD. 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reaction Control by Molecular Recognition 
+9
+ The inclusion complexes of  36a – f  with   γ  - CD were prepared by the co - crystallization 
+method. 42   The host/guest ratio varies from 1   :   1.60 to 1   :   1.95, indicating that most of the 
+guests formed 1  :  2 host – guest complexes. However, the  cis - isomer  41a gave only 1  :  1 
+complex with   γ  - CD under the same condition. Photolysis of  36  ⊂   γ  - CD for 24 h gave 
+ syn - dimers  37a – f  and  38a – f  in 59 - 79% relative yield. This observation is in sharp contrast 
+to the results obtained in the solution - phase photolysis of  37g  mentioned above, and is 
+attributed to the rate - limiting diffusion process prior to the reaction. The large distance 
+and nonparallel orientation of the oleﬁ nic double bonds of the stilbenes in crystal lattices 
+prohibit the dimerization of  anti - isomers. 
+ Tamaki  et al.  reported that water - soluble anthracene derivatives, such as 2 - anthrace-
+nesulfonate and 2 - anthracenecarboxylate, form 2   :   1 complexes with   γ - CD in aqueous 
+solution. 43,44 The [4+4] photodimerization of 2 - anthracenecarboxylate (AC) accommo-
+dated in   γ  - CD and its derivatives was investigated in detail.  45 Inoue and co - workers 
+have recently reinvestigated the photodimerization of AC from the chiral point of view 
+by using a variety of chiral hosts.   γ - CD forms very stable 1  :  2 host - guest complex with 
+AC in aqueous buffer solution with association constants of K 1  =  160  M  − 1 and 
+K 2  =  38500  M  − 1 . 46 
+ Photolysis of AC gives four isomeric cyclodimers:  anti - and  syn - HT dimers  43  and  44 
+and  anti - and  syn - HH dimers  45  and  46 , of which  44  and  45  are chiral (Scheme  1.9 ). 
+Irradiation of   γ - CD complex of AC at 0  ° C gives the HT dimers  43  and  44  as major 
+products in 88% combined yield and HH dimers  45  and  46  as minor products in 12% 
+yield. HT dimer  44  is given in a moderate enantioselectivity of 37% ee, while poor enan-
+tioselectivity of less than 5% ee is given for HH dimer  45 . 
+ Further efforts to improve the HT/HH and enantioselectivity of the photoreaction were 
+carried out by using modiﬁ ed   γ - CDs. Ikeda  et al.  reported that, by using dipyridinio -
+ appended   γ - CDs  49a – d  (Scheme  1.10 ) as chiral hosts,  45  is given in enhanced ee of 13%, 
+which is signiﬁ cantly higher than that obtained with native   γ - CD. 47 
+R1
+R2
+hv
+R2
+R2
++
+R1
+R2
+R1
+R1
+R2
+R2
+R1
+R2
+R2
+R1
+R1
+R2
+R1
+R2
+R2
+R2
+R1
+R1
++
++
++
++
+36a: R1 = H, R2 = H
+36b: R1 = OMe, R2 = OMe
+36c: R1 = Me, R2 = H
+36d: R1 = Cl, R2 = H
+36e: R1 = OMe, R2 = H
+36f: R1 = CN, R2 = H
+36g: R1 = CH2NMe2, R2 = CH2NMe2
+36a-g
+37a-g
+38a-g
+39a-g
+40a-g
+41a-g
+42a-g
+syn-HH
+syn-HT
+anti-HH
+anti-HT
+g-CD
+major product in solution
+major product in solid state
+ Scheme 1.8   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+10 
+Molecular Encapsulation
+ γ - CD derivative  47  that tethered with a ﬂ exible dicationic sidearm on the primary rim 
+was also employed for the purpose to improve the chemical and optical yield of HH 
+dimers. 48   In aqueous solution, photoirradiation of AC with  47  gave the cyclodimers in 
+relative yield and ee similar to those obtained with native   γ - CD. However, when the 
+photoreaction was performed in a 1   :   1 mixture of water/methanol at  − 45  ° C, the chemical 
+yield of HH dimers was dramatically enhanced to 72% with ee of  45  being signiﬁ cantly 
+improved to 40%. The  anti / syn ( 45 / 46 ) ratio of HH dimers obtained in the photocy-
+clodimerization of AC mediated by regioisomeric 6A,6X - diamino -  γ - CDs  48a – d gradually 
+increased with increasing distance between the two ammonium groups, showing a nice 
+structure – function relationship in supramolecular chirogenesis system.  49 Furthermore, a 
+series of secondary - rim - substituted and skeleton - modiﬁ ed   γ - CDs  51 – 56  were synthesized 
+in order to examine the effect of modiﬁ cation of CD skeleton on the photocyclodimeriza-
+tion of AC.  50   The ee of HT dimer  44  was enhanced up to 71% and the combined yield of 
+HT dimers reached 93% by the use of  54 at 210  MPa and  − 21.5  ° C. 
+ Recently, the effects of ﬂ exible and rigid caps introduced to the primary rim of   γ - CD 
+( 50a – d ,  57a – c ) on the photodimerization of AC were investigated, as capping is known 
+to signiﬁ cantly modify the binding and reaction behavior of native CDs.  51,52 The chemical 
+CO2H
+HO2C
+CO2H
+HO2C
+CO2H
+CO2H
+CO2H
+CO2H
+43
+46
+44*
+45*
+syn-HT
+anti-HH
+syn-HH
+anti-HT
++
++
++
+CO2H
+h
+320
+>
+nm
+u
+ Scheme 1.9   
+O
+O
+OH
+HO
+OH
+O
+HN
+HO
+OH
+O
+7
+(CH2)2
+N
+O
+O
+OH
+HO
+OH
+O
+R
+HO
+OH
+O
+n
+O
+R
+HO
+OH
+O
+47
+48a-d, 49a-d, 50a-d
+48a: R = NH2; n = 0; AB
+48b: R = NH2; n = 1; AC
+48c: R = NH2; n = 2; AD
+48d: R = NH2; n = 3; AE
+49a: R = Py+; n = 0; AB
+49b: R = Py+; n = 1; AC
+49c: R = Py+; n = 2; AD
+49d: R = Py+; n = 3; AE
+50a: R = OTs; n = 0; AB
+50b: R = OTs; n = 1; AC
+50c: R = OTs; n = 2; AD
+50d: R = OTs; n = 3; AE
+O
+O
+OH
+HO
+OH
+6-n
+O
+HO
+OTs
+O
+(Glc)7
+OH
+O
+O
+(Glc)7
+OH
+O
+51
+52
+O
+O
+(Glc)7
+OH
+O
+H2N
+OH
+O
+(Glc)7
+OH
+O
+HO
+OH
+O
+(Glc)7
+OH
+O
+HO
+OH
+O
+(Glc)7
+NH2
+53
+54
+55
+56
+N3
+OH
+O
+O
+HO
+OH
+HO
+O
+OH
+HO
+O
+O
+OH
+HO
+OH
+O
+O
+O
+OH
+HO
+6-n
+O S
+R'
+O
+O
+O
+S
+O
+O
+n
+57a-c
+57a: n =2; AD; R' =
+57b: n =3; AE; R' =
+57c: n =2; AD; R' =
+O
+O
+ Scheme 1.10   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reaction Control by Molecular Recognition 
+11
+yield and ee of HH dimer  45  were considerably improved by using capped   γ - CDs  57a – c . 
+The enantioselectivity of HT dimer  44  was found to critically rely on the rigidity of the 
+capping moiety. Thus, ﬂ exibly capped   γ - CD  50a  afforded  44  in moderate ee around 40%, 
+whereas   γ - CD  57c that has a rigid biphenyl cap gave the antipodal  44 in 58% ee. 
+ The main motif in the photocyclodimerization of AC mentioned above is to enhance 
+the HT/HH and enantioselectivity through modiﬁ cation of   γ  - CD to provide an optimized 
+microenvironment. An interesting approach has recently been explored to inﬂ uence the 
+photoreaction inside a host by manipulating the moiety existing outside the cavity.  53 
+Instead of directly using AC as substrate, 6 -  O - (2 - anthracenecarbonyl) -  α - CD  58 was 
+employed as a photosubstrate that possesses a bulky   α  - CD to be located outside the host 
+cavity upon complexation. Two anthracene moieties of  58  can be included in   γ - CD cavity 
+to give the stepwise 1   :   1 and 1   :   2 association constants of 270 and 21700   M  − 1 , respectively. 
+Photoirradiation of  58  yielded dimerization products  59 – 62  in the absence of host, which 
+were hydrolyzed in alkaline solution to give  43 – 46  for evaluating the yield and enanti-
+oselectivity. Direct irradiation of  58  gave HT dimers in 76% combined yield, with low 
+ee ’ s for both HT dimer  44  (5% ee) and HH dimer  45  (16% ee). Photoirradiation of  58 in 
+the presence of   γ - CD afforded   α - CD - stopped rotaxanes  63  and  64  in a high combined 
+yield of 98%. Furthermore, the ee of HT dimer  44  was greatly enhanced to 91% under a 
+pressure of 210   MPa at  − 20  ° C, suggesting that the   α  - CD that locates outside the   γ - CD 
+ Scheme 1.11   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+12 
+Molecular Encapsulation
+cavity can critically affect the stereo -  and enantioselectivity of the [4   +   4] photocy-
+clodimerization of AC occurring inside the cavity. 
+ 1.2.4  Supramolecular Photoreactions with Cucurbiturils 
+ Cucurbit[ n ]urils (CB[ n ]s) are a family of macrocyclic compounds comprising 5 – 10 gly-
+coluril units. CB[6], CB[7] and CB[8] are similar in cavity volume to   α - CD,   β - CD and 
+ γ  - CD, respectively. Differing from CDs, CBs are achiral host molecules of D nh symmetry 
+and therefore cannot provide chiral microenvironment. 
+ Although the solubility of CB[7] in water is the highest in the CB family, the relative 
+small cavity, compared to that of CB[8], appears to have limited its application as a tem-
+plate in photochemistry. Up to now, only one work on [4   +   4] photodimerization of a 
+small cationic guest, i.e. protonated 2 - aminopyridine  65  (Scheme  1.12 ), by CB[7] in 
+aqueous solution has been reported by Macartney and co - workers.  54 The [4  +  4] photo-
+dimerization of  65  in acidic aqueous solution in the absence of CB[7] gave  anti - and 
+ syn - trans - 4,8 - diamino - 3,7 - diazatricyclo[4.2.2.2] - dodeca - 3,7,9,11 - tetraenes  66 and  67 in 
+4   :   1 ratio. CB[7] can form complex with  65 in 1  :  1 and 2  :  1 stoichiometries, depending 
+on the amount of  65  added. Irradiation of 2   :   1 complex showed a greatly improved reac-
+tion rate and gave exclusively  anti - trans - 66  in 90% yield without accompanying any other 
+products. Such a high stereoselectivity suggests that two  65  molecules in an  anti - trans 
+alignment are stabilized in CB[7] cavity. Interestingly, the inclusion of photoproduct  66 
+in the CB[7] cavity efﬁ ciently prohibits its thermal re - aromatization. 
+ Kim  et al.  reported that CB[8] could accommodate two aromatic guest molecules to 
+form 1  :  2 host - guest complexes or 1  :  1  :  1 ternary complexes. The solubility of CB[8] is 
+quite poor in water and organic solvents. Fortunately, by adding some metal cations, the 
+solubility of CB[8] could be considerably increased in water. This observation enabled 
+scientists to investigate intermolecular photoreactions in CB[8] cavity. 
+ Stilbene and its derivatives, which had been widely investigated in CDs and CAs, can 
+be included in CB[8] cavity to form 2   :   1 complexes.  55 Two ( E ) - diaminostilbene dihydro-
+chloride  68  (Scheme  1.13 ) can insert into CB[8] cavity to give a 2   :   1 host - guest complex 
+which has a good solubility in water. Photoirradiation of the complex gave [2+2] photo-
+dimerization product 1  α ,2 α ,3 β ,4 β - tetrakis(4 - aminophenyl)cyclobutane  69  as major 
+product, along with a trace amount of 1  α ,2 β ,3 α ,4 β - tetrakis(4 - aminophenyl)cyclobutane 
+ 70 . No formation of the isomerization product ( Z ) - 68  was observed, which is signiﬁ cantly 
+different from the photoreaction of ( E ) - 68  in the absence of CB[8]. The stereoselectivity 
+of photodimerization in the presence of CB[8] ( syn / anti    =   95/5) is much better than that 
+obtained with  γ - CD ( syn / anti  =  80/20). 
+H
+N
+NH2
+NH
+HN
+NH2
+H2N
+NH
+NH
+NH2
+NH2
++
+65
+66
+67
+ Scheme 1.12   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reaction Control by Molecular Recognition 
+13
+ Irradiation of  trans - 1,2 - bis(4 - pyridyl)ethylene dihydrochloride in the presence of 
+CB[8] also yields the  syn  - dimer as major product in 90% relative yield and  anti - dimer in 
+only 4% relative yield.  56   However, in the presence of CB[7], no [2+2] dimerization 
+product was obtained and only  cis - 1,2 - bis(4 - pyridyl)ethylene was formed. This result is 
+attributed to the different complexation stoichiometry of 1,2 - bis(4 - pyridyl)ethylene with 
+CB[7] (1  :  1) and CB[8] (2  :  1). 
+ Recently, photodimerization of unsymmetrical bispyridylethylenes  71  was investigated 
+in the cavity of CB[8].  57   Irradiation of  71  in the absence of CB[8] gave no [2+2] photo-
+dimer, and only  trans - to - cis  isomerization is observed for the photoreaction in the pres-
+ence of CB[7]. Interestingly, irradiation of  71  with CB[8] gave exclusively  anti - HT  74 
+and  syn - HH  72  dimers in 80% and 15% relative yield, respectively, among four possible 
+[2+2] dimers of  syn - HH  72 ,  syn - HT  73 ,  anti - HT  74 and  anti - HH  75 . 
+ Wu  et al.  investigated the photodimerization of alkyl 2 - naphthoates  76a,b (Scheme 
+ 1.14 ) in the presence of CB[8].  58   The solubility of  76a,b  in water was enhanced upon 
+addition of CB[8]. As a result of 1   :   2 host – guest complexation between CB[8] and  76 , 
+photodimerization reaction rate was greatly accelerated in aqueous solution to give 
+cubane - like photodimers  77a,b . 
+ Inoue and co - workers also examined the [4+4] photocyclodimerization of   α - CD 
+appended anthracene derivative  58  mediated by CB[8] (Scheme  1.11 ).  58 Photodimerization 
+H3N
+NH3
+H2N
+NH2
+H2N
+NH2
+H2N
+NH2
+NH2
+H2N
+HN
+NH
+NH
+NH
+N
+H
+N
+H
+NH
+NH
+N
+H
+N
+H
+H
+N
+NH
+HN
+N
+H
+H
+N
+NH
+N
+H
+NH
+hv
++
+68
+69
+70
+hv
++
++
++
+71
+72
+73
+74
+75
+ Scheme 1.13   
+COOR
+COOR
+COOR
+76a, R = Me
+76b, R = Et
+hv
+77a, R = Me
+77b, R = Et
+CB[8]
+ Scheme 1.14   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+14 
+Molecular Encapsulation
+of AC using CB[8] as template gave photodimers in relative yields similar to those 
+obtained in the absence of CB[8]. However, the use of CB[8] as a host for the photo-
+dimerization of  58  totally inverted the selectivity observed with   γ  - CD to give HH dimers 
+ 45  and  46  in 99% combined yield. The steric repulsion between two   α - CD does not appear 
+to play an important role in the determination of the HH/HT ratio but signiﬁ cantly affects 
+the  anti / syn  ratio of HH dimers, revealing a dual role of the bulky   α - CD in the stereodif-
+ferentiation step of the supramolecular photodimerization. On the other hand,   α - CD 
+located outside the cavity could even transfer its chiral information to the photodimeriza-
+tion occurring within the achiral cavity of CB[8] to yield  44  and  45  in modest 17% and 
+10% ee, respectively. 
+ Large - sized host molecules derived from calixarene and cyclotriveratrylenes have been 
+reported recently. Gibb and co - workers reported some nanoscale host molecules based 
+on resorcinarenes and studied their shape complementarities and the complexation behav-
+ior with guest molecules.  59 – 61 Host  78  (Scheme  1.15 ), which provides a well - deﬁ ned 
+hydrophobic environment in water, forms a capsular complex [ 78 ] 2  with a cavity dimen-
+sion of 1   nm wide and 2   nm long.  59 Ramamurthy  et al.  examined the cage effect of host 
+[ 78 ] 2 on the photoreaction of 1 - phenyl - 3 - p - tolyl - 2 - propanone, 62 which exhibit signiﬁ cant 
+cage effect comparable to that reported in the solid state. 63,64 
+ This host molecule can also form 2   :   2 complex with anthracene (Scheme  1.15 )  65 . 
+However, no anthracene dimer was observed even after 10 h irradiation of the complex. 
+O
+O
+O
+O
+O
+O
+O
+H
+H
+H
+H
+OH
+O
+HO
+O
+OH
+O
+OH
+O
+OH
+O
+O
+O
+OH
+O
+O
+O
+OH
+O
+O
+O
+O
+O
+O
+HO
+78
+syn-79
+hv
+78
+hv
+78
+no dimerization
+anti-80
+syn-79
+hv
+78
+triplet sensitizer
+100%
++
+40%
+60%
+H3C
+X
+H3C
+X
+H3C
+X
+trans-81a,b
+hv
+hv
+cis-81a,b
+82a,b
+a: X = CH3;
+b: X = H
+CH3
+hv
+H3C
+CH3
++
+CH3
+CH3
+CH3
+CH3
+CH3
+CH3
++
++
+83
+84
+85
+86
+87
+acenaphthylene
+anthracene
+ Scheme 1.15   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reaction Control by Molecular Recognition 
+15
+Steady - state ﬂ uorescence spectrum of anthracene without  78  was completely different 
+from that in the presence of  78 . Thus, anthracene in aqueous solution showed only 
+monomer ﬂ uorescence at 425   nm, but the complex with [ 78 ] 2  exhibited excimer emission 
+of anthracene with a maximum at 510   nm and a long lifetime of 263   ns. This suggests that 
+the capsule [ 78 ] 2 conﬁ nes two anthracene molecules in its cavity in staggered orientation. 
+ Similar to anthracene, acenaphthylene can also be encapsulated by [ 78 ] 2 to form a 2  :  2 
+complex. 66   NMR studies suggested that two acenaphthylene molecules are located in the 
+middle of the capsule cavity and oriented in a parallel fashion. Irradiation of acenaphth-
+ylene in the absence of any host yielded  syn - and  anti  - dimers, with the latter being the 
+major product. Within the [ 78 ] 2  cavity, only  syn - dimer  79  was obtained upon irradiation. 
+In the presence of triplet sensitizer eosin - Y, irradiation of the complex gave  syn - and 
+ anti - dimers in a ratio 60  :  40. 
+ Oleﬁ ns were also examined as guest substrates for this nanocapsule. 67   In borate buffer 
+solution,  trans - and  cis - 4,4 ′ - dimethylstilbene  81a formed 1  :  2 complex with [ 78 ] 2 . 
+Irradiation of  trans - 81a  ⊂  [ 78 ] 2  led to very slow isomerization, while  cis - 81a  ⊂  [ 78 ] 2 
+converted to  trans  - isomer very fast. For stilbene  81b  with a smaller size, the  trans - to - cis 
+isomerization became much easier and was almost unaffected by the capsule. Furthermore, 
+4 - methylstyrene  83 , which has a half size of  81a , was irradiated in the capsule to explore 
+its photochemical behavior. 4 - Methylstyrene  83 forms 2  :  2 complex with  78 . Irradiation 
+of this complex afforded  84 and  85 in 45% and 55% relative yield, respectively. 
+ 1.3  Photochemical Reactions with Biomolecules 
+ Biomolecules, such as protein, antibody and DNA, are macromolecules that possess 
+binding sites for organic guests with well - deﬁ ned three - dimensional geometries and pre-
+cisely arranged functional groups. As a result of their structural properties, biomolecules 
+are characterized by the signiﬁ cant speciﬁ city for complexing and catalyzing their sub-
+strates. For example, it is well known that enzyme can accelerate the reaction of its 
+substrate by a factor of one million or even more compared to the control reaction in the 
+absence of enzyme. Their binding sites are highly speciﬁ c to substrates and can usually 
+catalyze a set of closely related substrates or reactions, but are silent to those mismatched. 
+Since most biomolecules are water - soluble and heat - sensitive, performing a reaction with 
+biomolecules deﬁ nitely means the use of mild and environmentally benign conditions. 
+On the other hand, light energy is known to be environmentally benign and can be efﬁ -
+ciently converted into chemical energy through biophotochemical process, such as pho-
+tosynthesis. These properties are superior in many aspects to those of artiﬁ cial hosts and 
+have attracted chemists to pursue efﬁ cient and selective chemical reactions in binding 
+sites of biomolecules. 
+ 1.3.1  Photochemical Reactions Templated by Deoxyribonucleic Acid (DNA) 
+ DNAs are important molecules that carry the genetic information and are capable of self -
+ replication in living organism. The basic unit of DNA is nucleotide that comprises of a 
+nucleobase (adenine, thymine, cytosine and guanine), deoxyribose, and a phosphate tail 
+(Scheme  1.16 ). The precise complementarity between adenine and thymine and between 
+cytosine and guanine renders two long chains of nucleotides coiled to give rise to a twisted 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+16 
+Molecular Encapsulation
+double helix, which is driven predominantly by hydrogen bonding and   π  π stacking 
+interactions. It is therefore reasonable to anticipate that the DNA chain itself can serve 
+as a good template for precisely positioning the substrates linked to it. 
+ Photoaddition of substrates covalently - linked to DNA at its terminus has been studied 
+for the purpose of exploring photoinduced ligation of oligonucleotides. Photoligation has 
+evident advantages that the ligation can be conducted in water without adding any external 
+reagent in a non - enzymatic fashion and the original DNA can be recovered by wave-
+length - selective irradiation. 
+ Saito and co - workers investigated a series of photoligation reactions of DNA using 
+native and terminus - functionalized oligonucleotides.  68 – 76   As illustrated in Scheme  1.17 , 
+synthetic oligodeoxynucleotides  88a  and  88b , which bear a cytosine at the 3 ′ - end and a 
+5 - vinyldeoxyuridine at the 5 ″ - end, are complementary to an oligodeoxynucleotide tem-
+N
+N
+N
+N
+NH2
+NH
+N
+N
+N
+O
+NH2
+N
+N
+NH2
+O
+NH
+N
+O
+O
+Adenine (A)
+Guanine (G)
+R
+R
+R
+R
+Cytosine (C)
+Thymine (T)
+O
+H
+OH
+H
+H
+H
+H
+O
+P
+–O
+O–
+O
+R=
+ Scheme 1.16   
+N
+N
+O
+NH2
+N
+NH
+O
+O
+366 nm
+302 nm
+TGTGCC
+5'
+3'
+3'
+5'
+N
+N
+O
+NH2
+N
+NH
+O
+O
+5'
+3'
+3'
+5'
+5'
+3'
+VUGCGTG
+5'
+3'
+ACACGG
+ACGCAC
+366 nm
+302 nm
+TGTGCC
+5'
+VUGCGTG3'
+ACACGG
+ACGCAC
+5'
+3'
+5'
+3'
+N
+N
+O
+H2N
+N
+NH
+O
+O
+H
+H
+H
+H
+R
+R
+HN
+N
+O
+O
+R
+OH
+O
+HN
+N
+O
+O
+R
+N
+H
+O
+N
+H
+O
+N
+n
+HN
+N
+O
+O
+R
+CN
+88a
+89
+90
+92
+93
+91a-c
+90
+a: n=2
+b: n=4
+c: n=6
+88b
+ Scheme 1.17   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reaction Control by Molecular Recognition 
+17
+plate  89 . 68 In the absence of  89 , no photoadduct was given upon photoirradiation at 
+366   nm, at which  88b  has only weak absorption of   ε 366  =  3.3. However, photoligated 
+oligodeoxynucleotide  90  was obtained in up to 96% yield when photolysis was carried 
+out for 12 h in the presence of  89 . Only one [2+2] photoadduct that has a  cis - syn stere-
+ochemistry was afforded. The signiﬁ cantly enhanced reactivity and selectivity are attrib-
+uted to the well - arranged orientation of two oligodeoxynucleotides when complexed with 
+the template  89 . Vinyldeoxyuridine introduced at the 5 ′  - end underwent the same [2+2] 
+photoaddition with thymine at the 3 ″  - end but not with adenine and guanine. The ligated 
+oligodeoxynucleotide can be photodecomposed to give the original 6 - mers upon irradia-
+tion at 302   nm but better recovered by further irradiation at 366   nm, suggesting photo-
+chemical reversibility of the ligation process.   
+ However, the split of ligated DNA with light at 302   nm may also result in damage to 
+DNA due to the dimerization of thymine. To avoid this disadvantage, Fujimoto and co -
+ workers synthesized 3 ″ - terminus - modiﬁ ed oligodeoxynucleotide  91 (Scheme  1.17 ), in 
+which carbazole is tethered to the 5 - carboxyvinyluracil moiety as a sensitizer for photo-
+decomposition.  69   Photolysis of oligodeoxynucleotides with a template gave ligated oligo-
+deoxynucleotide with an efﬁ ciency order  91c  >  91b  >  91a . A  cis - syn  [2+2] adduct was 
+given in 89% yield after the photolysis of  91c  at 366   nm for 6 h at room temperature in 
+the presence of the template. The same reaction performed at 70    ° C, where  91c was 
+decomplexed from the template, afforded no photoligated product, indicative of the 
+importance of preorientation of photosubstrate by supramolecular host. On the other hand, 
+photoirradiation of the isolated adduct in the absence of the template at 366   nm for 6 h 
+afforded  91c in 90% yield as a result of the photosensitized split. 
+ In order to improve the photoreactivity of template - directed photochemical synthesis 
+of branched oligodeoxynucleotides, the 5 - vinyldeoxyuridine component was replaced by 
+5 - carboxyvinyldeoxyuridine  92 , which has a much higher extinction coefﬁ cient 
+( ε 366  =  76). 70   Photoirradiation of  92  for 1 h in the presence of a template gave a  cis - syn 
+[2+2] adduct in good yield of 93%. Similar [2+2] photocycloaddition between an   α - 5 -
+ cyanovinyldeoxyuridine  93  at the 3 ′  - end and a thymine at the 5 ′ - end also occurred 
+smoothly in the presence of a template.  71   A single mismatch in oligodeoxynucleotide 
+chain led to a great decrease of reaction rate, indicating a critical dependence of photoli-
+gation on sequence speciﬁ city. 
+ Using  94  as a template DNA, Ihara  et al.  investigated the photodimerization of anthra-
+cene tethered to complementary oligodeoxynucleotides  95  and  96 (Scheme  1.18 ). 77 The 
+reactivity of the photodimerization mediated by  94  was found to be dependent on the 
+distance between oligodeoxynucleotides and anthracene, and decrease in an order of 
+ 95a / 96a  >  95a / 95b  >  95b / 96b  >  96a / 96b . The reaction efﬁ ciency is also signiﬁ cantly 
+affected by the introduction of an additional or mismatched nucleotide, indicating that 
+this DNA - templated photoligation is highly position - and distance - dependent. 
+ Photodimerization of 1 - substituted anthracene derivatives  97a  and  97b (Scheme  1.19 ) 
+templated by a full - match DNA  98 selectively afforded only two isomeric dimers among 
+the eight dimers that are possibly formed from the dimerization of  97a  and  97b . 
+Photoreaction with the full - match template was found to be much more efﬁ cient than 
+those with mismatch templates. 78,79 
+ There are two kinds of grooves in DNA helixes, i.e. major and minor grooves, which 
+can interact with metal ions or organic guests. Since these grooves are well - structured 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+18 
+Molecular Encapsulation
+and chiral in nature, they can be used as ideal stereodifferentiating binding sites. Inoue 
+ et al.  performed the enantiodifferentiating photoisomerization of  34Z (Scheme  1.7 ) com-
+plexed and sensitized by calf thymus DNA (ctDNA).  80   Photosensitized isomerization of 
+ 34Z  with pyrimidine nucleosides as chiral sensitizers afforded  34E  in 5.2% ee at the 
+photostationary state. However, much better ee of up to 15.2% was obtained when the 
+photolysis was carried out in the presence of ctDNA in aqueous solution. Supramolecular 
+interaction of  34Z  with hydrophobic minor groove of ctDNA evidently plays an important 
+role in the photochirogenesis, as only negligible ee was obtained for  34E  when the pho-
+tosensitization was performed in 50% aqueous methanol, in which the supramolecular 
+interaction of  34E with ctDNA was signiﬁ cantly reduced. 
+ 1.3.2  Photochemical Reactions Mediated by Proteins 
+ Proteins, the most abundant and versatile macromolecules in living organisms, are poly-
+mers built from about twenty essential L -   α  - amino acids. Driven by a variety of non -
+O
+H
+N
+O
+P
+O
+O
+O
+H
+N
+O
+P
+O
+O
+O
+AATCGC
+3
+H
+N
+O
+P
+O
+O
+O
+CCCTAA
+3
+TTAGGGTTAGCG
+AATCGC
+OH
+5'
+3'
+5'
+3'
+5'
+3'
+H
+N
+O
+P
+O
+O
+O
+CCCTAA
+5'
+3'
+95a
+95b
+96a
+96b
+94
+ Scheme 1.18   
+O
+H
+N
+O
+P
+O
+O
+O
+CCCTGCATACGACTG
+O
+H
+N
+O
+P
+O
+O
+O
+CCCTGCATACGACTG
+5'
+3'
+3'
+5'
+5' CAGTCGTATGCAGGGGGGACGTATGCTGAC 3'
+97a
+97b
+98
+ Scheme 1.19   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reaction Control by Molecular Recognition 
+19
+ covalent interactions, such as ionic, hydrogen binding, van der Waals and hydrophobic 
+interaction, these biopolymers fold into speciﬁ c conformations to achieve various biologi-
+cal functions. The binding sites of deﬁ ned shape and size, as well as the chiral nature, 
+render proteins excellent supramolecular hosts for speciﬁ c binding and recognition. A 
+series of photochemical reactions have been investigated with various proteins, mainly 
+targeting the photochemical chiral discrimination and generation based on the inherently 
+chiral character of binding sites in protein. Serum albumin is the most abundant protein 
+in plasma which binds and transports not only endogenous but also exogenous com-
+pounds, and has therefore been most frequently employed as biosupramolecular host for 
+photochemical reactions. 
+ McDonagh and co - workers investigated the photoisomerization of bilirubin - IIIa  99a,b 
+(Scheme  1.20 ) in the presence of human serum albumin (HSA). The  E - Z photoisomeriza-
+tion between ( Z , Z ) - 99a  and ( E , Z ) - 99b  is not inhibited even in the binding cavity of HSA. 
+Bilirubin - IIIa shows intense bisignate circular dichroism spectra in the chiral pocket of 
+HSA. 81,82   The negative exciton coupling signal, which was observed upon irradiation of 
+( Z , Z ) - bilirubin - IIIa/HSA complex with a broad - band blue light of   λ max  =  430  nm, was 
+dramatically switched to a positive exciton coupling signal after irradiation with green 
+light at 544  nm. 83   This signal switching, which is controllable by changing the irradiation 
+wavelength, renders the system a potential chiroptical switch.   
+ Zandomeneghi  et al.  reported the enantioselective photoinduced decomposition of 
+1,1 ′ - binaphthol  100  (Scheme  1.21 ) included in bovine serum albumin (BSA). 
+Complexation of ( R ) - (+) - and ( S ) - ( – ) - 100 with BSA revealed a remarkable difference 
+in stability between the two diastereomeric complexes, and the BSA complex of ( S ) -
+ ( – ) - 100  exhibited a signiﬁ cantly bathochromic shift in the absorption spectrum. By 
+selectively irradiating the ( S ) - ( – ) - 100  complex at longer wavelengths, ( R ) - (+) - 100 of 
+up to 99.5% ee was obtained after 77% of the starting material (racemic  100 ) were 
+decomposed. 84 – 86 
+ Miranda  et al.  studied the excited - state behavior of chiral drugs bound to BSA and 
+HSA. 87 – 89   Inclusion of carprofen  101  (Scheme  1.22 ) in HSA signiﬁ cantly lengthened the 
+triplet - state lifetime of  101  as a result of more rigid surroundings and the suppression of 
+self - quenching of  101 . The complexation of enantiomeric  101  with HSA caused a sig-
+niﬁ cant difference in triplet lifetime, and the lifetime of ( S ) - 101  - HSA complex is 4 times 
+shorter than that of ( R ) - 101  - HSA complex. Irradiation of  101  alone in aqueous buffer 
+solution led to a polymerization of  101 . However, dechlorinated carprofen  102 was 
+NH
+N
+H
+N
+H
+NH
+O
+O
+COOHHOOC
+NH
+N
+H
+N
+H
+N
+H
+O
+O
+COOHHOOC
+Z
+Z
+Z
+E
+hu
+99a
+99b
+ Scheme 1.20   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+20 
+Molecular Encapsulation
+formed in the presence of HSA, and ( S ) - 101  was 1.5 times more efﬁ cient than ( R ) - 101 
+in producing the corresponding ( S ) - and ( R ) - 102 . 
+ The complexation behavior of organic substrates with proteins is usually very compli-
+cated as a consequence of the diversiﬁ ed binding sites with distinctive size, shape, hydro-
+phobicity and binding afﬁ nity. Since these binding sites differ in reactivity and selectivity, 
+elucidation of binding behaviour is essential for understanding and manipulating the 
+photoreaction performed in the binding sites of proteins. Inoue and co - workers have 
+comprehensively studied the binding behaviour of 2 - anthracenecarboxylate (AC) (Scheme 
+ 1.9 ) to the hydrophobic pockets of BSA and HSA by a combined use of spectroscopic 
+techniques, i.e. UV/Vis, ﬂ uorescence and circular dichroism spectroscopy.  90 – 92 Although 
+HSA and BSA share more than 95% of amino acid residues in common (i.e., 26 out of 
+ ca.  600 amino acids), the two albumins display entirely different binding, photophysical 
+and photochemical behavior. BSA possesses four binding sites, which accommodate 1, 
+3, 2 and 3 AC molecules with individual binding constants of 5.3    ×  10 7 ,1.3  ×  10 5 , 1.4  ×  10 4 
+and 3    ×  10 3  M  − 1 , respectively. In contrast, HSA provides ﬁ ve binding sites that accom-
+modate 1, 1, 3, 5 and  > 10 AC molecules in the order of reducing binding ability.  93 – 97 
+Although multiple AC molecules are bound to sites 2 – 4 of BSA and sites 3 – 5 of HSA, 
+they do not appear to be very closely located to each other, since no exciton coupling 
+was seen in the circular dichroism spectrum and no static quenching of ﬂ uorescence was 
+detected. AC bound to site 1 of BSA shows highly structured ﬂ uorescence with dual 
+lifetimes of 4.8 and 2.1   ns, which are assignable to two kinds of AC that differ in position 
+or orientation in highly hydrophobic environment. However, ACs in site 2 of BSA gave 
+a much longer lifetime of 13.3   ns and the ﬂ uorescence spectra became broader; the life-
+times of AC in sites 3 and 4 are practically indistinguishable from that in bulk water 
+(15.9   ns). Almost the same is true for HSA, except for the fact that not only the ﬁ rst but 
+also the second site bind only one AC and are highly hydrophobic. 
+OH
+OH
+BSA
++
+OH
+OH
+R-(+)-100
+hn
+OH
+OH
+R-(+)-100
+S-(–)-100
+ Scheme 1.21   
+H
+N
+COOH
+BSA or HSA
+H
+N
+COOH
+101
+102
+Cl
+hv
+ Scheme 1.22   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reaction Control by Molecular Recognition 
+21
+ Each binding site in BSA and HSA exhibits very different photochemical behaviour. 
+Thus, the HT/HH ratio and enantioselectivity obtained in albumin - mediated AC photo-
+cyclodimerization are dynamic functions of the AC/BSA or AC/HSA ratio. For example, 
+the HT dimers are produced as the major products in the photodimerization of AC in 
+host - free bulk water and also in the presence of HSA, whereas the HH dimers become 
+the dominant products in the BSA - mediated photodimerization. In the presence of BSA 
+(AC/BSA  =  1.3), chiral HT and HH dimers,  44  and  45 , were obtained in 29% and 41% 
+ee, respectively. Interestingly, the ee ’ s for  44  and  45  were further improved up to 38% 
+and 58% by adding nitromethane as a site - selective quencher of AC located in such 
+binding sites that are more accessible but less enantioselective. 
+ In the case of HSA, much higher 79% and 88% ee were reported for  44  and  45 , respec-
+tively, at 25    ° C and AC/HSA   =   3. Temperature was found to have a modest effect on the 
+enantioselectivity to give better ee ’ s of 82% and 90% for  44  and  45 , respectively, by 
+decreasing the temperature to 5  ° C. 
+ 1.4  Photochemical Reactions with Conﬁ ned Cages Based on Inorganic 
+and Organic – Inorganic Hybrid Materials 
+ 1.4.1  Photochemical Reactions with Zeolites 
+ Besides the natural and artiﬁ cial molecular hosts that are primarily based on organic 
+compounds, photochemical reactions have also been investigated in the conﬁ ned spaces 
+of inorganic nano -  or mesoarchitecture. Zeolites, which are porous crystalline alumino-
+silicates composed of tetrahedral AlO 4  and SiO 4  building blocks and usually possess 
+cages and channels of 4 – 14  Å , have been extensively used as hosts for mediating photo-
+chemical reactions. The ratio of SiO 4 to AlO 4  can be changed from 1 to inﬁ nite, and metal 
+cations are commonly introduced to balance the negative charge of AlO 4  units. The fau-
+jasite and pentasil family of zeolites, which form roughly spherical supercages of  ca. 13  Å 
+and tubular channels with lengths of  ca. 50  Å , are most commonly used zeolites for cata-
+lyzing chemical reactions. Zeolites have a wide UV/Vis transparent region as a result of 
+Al – O – Si framework that is similar to glass and quartz, and therefore are compatible with 
+most organic compounds. The size and free volume zeolite supercages are adjustable by 
+the number and sort of countercations. By virtue of these properties, zeolites have attracted 
+much attention of photochemist as conﬁ ning media in the last two decades. 
+Ph
+O
+R1
+R2
+R1
+O
+O
+R1
+R1
+OH
+H
+R2
+R1
+R1
+Ph
+OH
+R2
+H
+R1
+R1
++
+R2 +
++
+103
+104
+105
+106
+107
+108
+a: R1=H; R2= CH3
+b: R1=H; R2= (CH2)3CH3
+c: R1= CH3; R2= CH3
+ Scheme 1.23   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+22 
+Molecular Encapsulation
+ Studies on photochemical reactions within zeolites have already been summarized in 
+several reviews.  98 – 102   The earliest work in this ﬁ eld appeared in 1980s.  103 – 106 Turro and 
+co - workers investigated Norrish type I and type II photoreactions of phenyl alkyl ketones 
+ 103  in the supercage of faujasite - type zeolites. Photolysis of  103  in solution or solid state 
+was known to give a variety of photoproducts  104 – 108 , depending on the molecular 
+mobility, conformation and orbital overlap in the excited state. Inclusion of  103  in zeolites 
+can signiﬁ cantly modify the above factors and lead to a switching of reaction selectivity. 
+Photolysis of  103  in supercages of NaY zeolite gave a mixture of products with modest 
+selectivities;  105 /( 107  +  108 )  =  0.72 – 0.83. The ratio was improved to 3.2 – 3.8 by using 
+NaX zeolite, and was dramatically enhanced up to  > 50 by using silicalite (S - 115) zeolite,  105 
+suggesting that this photoreaction is highly dependent on the cavity size of zeolite. 
+ Photooxygenation of ( Z ) - enecarbamate  109  (Scheme  1.24 ) in solution gave methyl 
+deoxybenzoin  112  in only a modest enantioselectivity even at a very low temperature, 
+while a much better optical yield was obtained by starting from the ( E ) - isomer  110 . 107 – 111 
+The conﬁ nement in zeolite supercage greatly restricts the orientation and conformation 
+of photosubstrate and leads to a signiﬁ cant switching of reaction selectivity from that 
+observed in isotropic media. Thus, singlet oxygenation of ( Z ) - 109  in NaY zeolite loaded 
+with cationic dye sensitizer methylene blue (which is readily introduced into zeolite 
+supercage through cation exchange and generates  1 O 2  from  3 O 2  upon irradiation) gave 
+ 112  in up to 80% ee. This is possibly due to the restricted space of zeolite supercage that 
+aligns the substrate in an orientation suitable for   π - face - selective attack of the C = C bond 
+by  1 O 2 . Compared to the high ee obtained in methylene - blue - exchanged NaY, the same 
+reaction performed in LiY zeolite gave  112  in only 35% ee, for which the larger available 
+volume in the supercage of LiY zeolite is possibly responsible. 
+ Besides the well - conﬁ ned and rigid framework of zeolites, cation species also plays an 
+important role in manipulating photochemical reaction occurring in the cavity.  112 – 121 The 
+free volume in zeolite cavity relies on the number and sort of cations located in the cavity. 
+Differing from isotropic media, in which the direction and magnitude of electric ﬁ eld 
+ﬂ uctuate around a solvated molecule, cations in zeolite cavity generate a stronger, aniso-
+tropic and more stable electric ﬁ eld. Such an electric ﬁ eld can polarize the included 
+O
+N
+O
+*
+Ph
+Ph
+O
+N
+O
+*
+Ph
+Ph
+O
+N
+O
+*
+Ph
+Ph
+O
+O
+O
+N
+O
+*
+Ph
+Ph
+O
+O
+O
+N
+O
+*
+O
++
+Ph
+*
+O
+Ph
+109
+110
+111
+112
+1O2
+Dye-Exchanged
+MYzeolite
+Dye-Exchanged
+MYzeolite
+1O2
+ Scheme 1.24   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reaction Control by Molecular Recognition 
+23
+molecules, distort their electron density, and even facilitate heterolytic bond cleavage. 
+Indeed, it has been observed that the intensity and wavelength of absorption and emission 
+of included aromatic compounds were signiﬁ cantly changed in the cavity of zeolite.  122 – 125 
+Ramamurthy  et al.  reported that photoreaction of dibenzobarrelene  113 (Scheme  1.25 ) in 
+Li + and Na +  exchanged zeolites resulted in triplet photoproduct  115  in 67% and 62% 
+yield, respectively. This observation indicates that the intersystem crossing is signiﬁ cantly 
+accelerated even by light atoms. However, this effect disappeared when the zeolites were 
+equilibrated with water before use. The electric ﬁ eld of the cations in the cavity, which 
+perturbs the symmetric nature of photosubstrate and facilitates the intersystem crossing, 
+may be responsible for this  ‘ light atom ’  effect. On the other hand, the heavy atom effect 
+is clearly seen even for hydrated cations, and  > 99% triplet photoproduct was observed 
+with Tl + - incorporated zeolite. 126 – 129 
+ Photoreactivity of androstenedione  116  (Scheme  1.26 ) was demonstrated to be dramati-
+cally affected by the electric ﬁ eld of zeolite.  130   The epimerization of  116  to yield  117 is 
+the major reaction in isotropic solution such as hexane, methylene chloride, methanol and 
+cyclohexane. The reduction of the cyclohexenone A - ring can be observed in only propa-
+nol, with  118  and  119  being given in 14% combined yield. However, irradiation of  116 
+in NaY afforded exclusively the reduction products in  > 85% yield, and no product due 
+to the reaction at the D - ring was observed. This reactivity change observed for the andros-
+tenedione included in zeolite cavity was ascribed to the lowering of the   π , π  *   excited state 
+of the A - ring due to the electric ﬁ eld in zeolite cavity. 
+ Interactions between cation and photosubstrate, such as cation – π , cation – dipole and 
+cation – lone pair interactions, may restrict the mobility and conformation of photosub-
+strate, and therefore endow the cation with versatile roles in manipulating the reactivity 
+and selectivity of photoreaction in zeolite cavity.  131 – 142 Ramamurthy and co - workers have 
+studied stereoselective photoisomerization of diphenylcyclopropane derivatives in zeolite 
+supercage. It was found that the photoisomerization of  trans - diphenylcyclopropane  121a 
+occurred in the cavity of alkali cation - exchanged Y zeolite to give  cis - 120a  in high 
+hv
++
+113
+114
+115
+zeolite
+ Scheme 1.25   
+O
+O
++
+H
+hu
+O
+O
+O
+O
++
+119
+116
+117
+118
+O
+H
+O
+ Scheme 1.26   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+24 
+Molecular Encapsulation
+efﬁ ciency, while the photolysis of  cis - 120a  failed to give any  trans - isomer. 134 This is 
+ascribed to the formation of cation – π  complex in which two phenyl groups of  cis - 121a 
+sandwich an alkali metal ion. The  cis  - isomer is thus stabilized and the isomerization 
+reaction is inhibited. 
+ However,  trans - isomers can be given upon photoirradiation of zeolite - mediated  cis -
+ diphenylcyclopropane derivatives  120b – e due to the stronger cation – dipole interaction 
+between cation and carboxamide group than cation – π  interaction. Photolysis of amide 
+ 120b – e in hexane - methylene chloride solution afforded the corresponding  trans - isomers 
+in diastereomeric excess (de) less than 2%. In sharp contrast to the result obtained in 
+isotropic solution, photoreaction of  120b – e  adsorbed in zeolite MY gave  trans - isomers 
+in 20 – 83% de. The dramatic improvement of de is believed to occur as a result of cation –
+ carbonyl and cation – nitrogen dipolar interactions that ﬁ x the conformation of reactants, 
+with asymmetric centres of the chiral amide moiety being located closer to the chirogenic 
+center. 114,132,134,138,143 
+ Chiral photochemistry in zeolite is an intriguing topic that has attracted intensive atten-
+tion. Although theoretically zeolites can be chiral, until now no chiral zeolite has been 
+separated in an enantiomerically pure form. Chiral photochemistry in zeolite is conducted 
+primarily through two strategies: the ﬁ rst one is to introduce a chiral auxiliary to photo-
+substrate and the diastereodifferentiating photoreaction is conducted in intact zeolite, as 
+exempliﬁ ed in the diastereoselective photoisomerization of diphenylcyclopropane deriva-
+tives mentioned above, and the second one is to immobilize optically active compound 
+to chirally modify the zeolite supercage and the enantiodifferentiating photoreaction of 
+prochiral substrate is conducted in this chiral supercage. 
+ Zeolites modiﬁ ed with norephedrine, ephedrine and pseudoephedrine as chiral induc-
+tors have been employed for the enantioselective photocyclization of a series of tropolone 
+derivatives  122 . 113,144,145   Photocyclization of  122b  conducted in NaY zeolite modiﬁ ed with 
+( – ) - ephedrine gave  123b  in up to 78% ee. The enantioselectivity of the photoreaction was 
+found to be critically controlled by the cationic species and water content in zeolites. 
+ The optical yield of photoreaction in chirally modiﬁ ed zeolite relies on several factors 
+such as cation, chiral inductor and its loading level, which is usually kept at a high level 
+to maximize the number of chiral inductors located around the photosubstrate. An excep-
+tional example may be found in the enantiodifferentiating photoisomerization of  34Z 
+(Scheme  1.7 ) sensitized by optically active (poly)alkyl benzoate derivatives immobilized 
+R
+hu (or) Sens
+R
+R
++
+120
+121
+Ph
+Me
+H
+Me
+H
+COOEt
+H
+Ph
+COOMe
+H
+a: H
+b:
+c:
+d:
+N
+H
+O
+N
+H
+O
+N
+H
+O
+N
+H
+O
+e:
+ Scheme 1.27   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reaction Control by Molecular Recognition 
+25
+in NaY zeolite reported by Inoue and co - workers.  146   The photoreaction was allowed to 
+occur in the presence of a catalytic amount of sensitizer, and  34E  was obtained in a modest 
+ee of 4.5% upon photosensitization with ( – ) - methylheptyl benzoate - immobilized NaY 
+zeolite. In contrast, the same sensitizer gave racemic  34E in homogenous solution. 
+ 1.4.2  Photochemical Reactions in Mesoporous Materials 
+ Mesoporous materials have recently attracted considerable attention for the use in pho-
+tochemical reactions. As deﬁ ned by the IUPAC nomenclature rules, mesoporous materials 
+have a pore diameter in the range of 2.0 – 50.0   nm, which is much larger in general than 
+that of zeolite and is certainly beyond the size of normal organic substrates. Therefore, 
+photoreactions can freely proceed without suffering any restriction. In fact, studies on 
+photochemical reaction in mesoporous materials focus more on construction of functional 
+materials rather than the chemical selectivity. For example, azobenzene, which is structur-
+ally rigid and has a van der Waals volume of 144    Å 3 , 147   requires a large extra volume of 
+127  Å 3  for the photoisomerization to occur. Taking advantage of this property, azobenzene 
+was loaded into nanocomposite ﬁ lms to be used for and showed a potential application 
+in adjusting the cavity volume of mesoporous materials.  148 Mal  et al.  constructed a pho-
+tochemically controlled system by anchoring coumarin to the pore openings of MCM - 41 
+for taking up or releasing organic guests by controlling the reversible photodimerization 
+of coumarin. 149 
+ The size of mesoporous silica MCM - 41 can be adjusted by changing the number of 
+carbon atoms in surfactant micelles used in the hydrothermal synthesis. Iwamoto and 
+co - workers have reported photocyclization of diarylethenes  124 in different - sized MCM -
+ 41. Only the anti - parallel conformation of open form  124  can undergo cyclization upon 
+irradiation to give closed form  125 . The reaction rate of  124  was found to be remarkably 
+dependent on the amount of  124  loaded as well as the pore diameter of MCM - 41s, but 
+be independent of the organic groups on the surface of MCM - 41s. 150 
+ Recently, Inoue and co - workers studied the enantiodifferentiating photocyclodimeriza-
+tion of AC in the channel of mesoporous silica that is modiﬁ ed with   γ - CD. 151 
+Photocyclodimerization of AC with mesoporous without   γ - CD gave HH photodimers 
+OR
+O
+O
+OR
+hu
+122
+123
+a. R = CH3
+b. R = CH2CH2Ph
+c. R = CH2COOCH3
+d. R = CH2CH3
+e. R = CH2CH2CH3
+f. R = CH2Ph
+g. R= CH2CH2CH2Ph
+ Scheme 1.28   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+26 
+Molecular Encapsulation
+with a low conversion and enantioselectivity. In remarkable contrast to the   γ - CD - mediated 
+photoreaction performed in aqueous solution, the photocyclodimerization of AC in   γ - 
+CD - modiﬁ ed mesoporous silica led to the major formation of HH photodimers, in par-
+ticular  anti - HH dimer  45 in 45% yield and 24.1% ee. 
+ 1.4.3  Photochemical Reaction with Self - Assembled Molecular Cages 
+ Organic ligands bearing two or more coordinating sites can form well - structured aggre-
+gates upon coordination to metals. Some of these ligand – metal self - assemblies form 
+structurally well - conﬁ ned cavity that can accommodate organic guests of suitable size. 
+These cages generally have polyhedron structure with rigid skeleton, and the motion of 
+guest(s) included in the cavity is greatly inhibited. Thermal and photochemical reactions 
+conducted in these molecular cages often show remarkably accelerated rates and signiﬁ -
+cantly high selectivities. 152,153 
+ Compounds  126  and  127  shown in Scheme  1.30  represent two typical coordination 
+cages that are self - assembled from six palladium ions and four tridentate ligands. These 
+coordination cages are well soluble in water and can selectively encapsulate organic 
+substrates in the nano - sized cavity in a well - arranged fashion, mainly through hydropho-
+bic and aromatic interactions. So far, a number of different types of photoreactions have 
+been examined within the cavities of these molecular cages.  154 – 160   As shown in Scheme 
+ 1.31 , four stereoisomers  129a - d  are theoretically possible to be formed upon photocy-
+clodimerization of  128 . Strikingly, photocyclodimerization of 0.5   mM  128  in the cavity 
+of  126a  gave the HT  syn - isomer  129a  as a sole product in  > 98% yield after 3 h irradia-
+tion. On the contrary, photoirradiation of  128  in benzene in the absence of host  126a gave 
+no adducts even at a high concentration of 150   mM. In the presence of  127a  as a host, 
+photocyclodimerization of  130  in aqueous solution exclusively afforded  syn - dimer  131a . 
+This is in sharp contrast to the same photoreaction conducted in benzene without any 
+host, where  anti - dimer  131b  (21% yield) was favored over  syn - dimer  131a  (2% yield). 
+Me
+Me
+S
+S
+F2
+F2
+F2
+Me
+Me
+S
+S
+F2
+F2
+F2
+F2
+F2
+F2
+S
+S
+Me
+Me
+UV
+vis
+anti-parallel conformation
+parallel conformation
+UV
+closed-form
+124
+125
+ Scheme 1.29   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reaction Control by Molecular Recognition 
+27
+The remarkable reactivity and selectivity observed with these molecular vessels are 
+attributed to the greatly increased concentration and the strictly regulated orientation of 
+substrates in the well - conﬁ ned cavity. 
+ The cavity of molecular cage  126a  is achiral in origin. Interestingly, a chiral cavity 
+can be constructed simply by replacing the peripheral ethylenediamine with optically 
+active diamines, with the original electronic nature, size and T symmetry element being 
+Pd=
+H2
+N
+N
+H2
+Pd
+N
+N
+Pd
+Me Me
+Me Me
+N
+N
+Pd
+H Et
+H Et
+N
+N
+Pd
+H Me
+H Me
+H2
+N
+N
+H2
+Pd
+Pd=
+Pd=
+Pd=
+Pd=
+a:
+b:
+c:
+d:
+e:
+126
+127
+ Scheme 1.30   
++
++
++
+128
+129a
+129b
+129c
+129d
+O
+O
+hn
+hn
+O
+O
+O
+O
+O
+O
+O
+O
++
+130
+131a
+131b
+ Scheme 1.31   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+28 
+Molecular Encapsulation
+maintained on the whole. Cross addition of  132 and  133 (Scheme  1.32 ) in the cavity of 
+ 126b – e  (Scheme  1.30 ) gave a single product  134 , which is ascribed to steric control 
+arising from the conﬁ ned cavity rather than orbital control.  158   The optical yields of this 
+photoaddition reaction increased upon increasing the steric bulk of the  N - substituent on 
+the chiral diamine and ﬁ nally gave  134b  in 50% ee with  126c . This observation is indica-
+tive that peripheral chiral auxiliaries, which locate far away from the reaction center and 
+induce only a slight deformation of the triazine panel, are possible to produce considerable 
+asymmetric induction for the photoreaction occurring in the coordinated cages. 
+ 1.5  Photochemical Reactions with other Artiﬁ cial Hosts 
+ 1.5.1  Photochemical Reactions with Dendrimers 
+ Dendrimers are highly branched globular molecules which are generally well - deﬁ ned, 
+effectively monodispersed and highly symmetric.  161 – 163   A dendrimer is composed of three 
+architectural region: a core moiety, branched repeating units derived from the core and 
+end groups on the periphery of the molecule. Properly designed high - generation dendrim-
+ers possess a distinct interior space that is sterically protected from solvent molecules, 
+and therefore dendrimers can serve as container molecules. An elegant  ‘ dendritic box ’ 
+that can accommodate small organic molecules and control their release by modifying 
+the steric crowding of the dendritic periphery has been described by Meijer  et al. 164 
+ Poly(alky aryl ether) dendrimers  135  (Scheme  1.33 ), possessing carboxylic acid or 
+hydroxyl group at their periphery, were synthesized and used as hosts for several photo-
+reactions. 165 Both  135a  and  135b  are water soluble under the base condition and capable 
+of including organic molecules mainly through hydrophobic interaction. Photolysis of 
+1 - phenyl - 3 - p - tolyl - 2 - propanone  136  led to   α  - cleavage to form radical pairs, which after 
+decarbonylation recombine to give diarylethanes  137a ,  137b  and  137c . The photolysis of 
+ 136  in hexane solution gave the product  137a ,  137b  and  137c in a ratio 2.4  :  1.0  :  1.4, 
+indicating a zero  ‘ cage effect, ’  where the  ‘ cage effect ’  was deﬁ ned as ([ 137a ] – [ 137b ] –
+ [ 137c ])/([ 137a ]  +  [ 137b ]  +  [ 137c ]). Interestingly, photoreaction of  136  mediated by G1, 
+G2 and G3 acid dendrimers  135b  showed the gradually increasing cage effects of 0.09, 
+0.18 and 0.50, respectively, suggesting stronger conﬁ nement with increasing dendrimer 
+R
+N
+O
+O
+R
+N
++
+hn
+132
+133
+134
+a: R= H
+b: R=CH3
+ Scheme 1.32   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reaction Control by Molecular Recognition 
+29
+generation. Photolyses of  136  encapsulated by G3 of  135a  gave a larger cage effect of 
+0.77, revealing that the phenolic dendrimer  135a  is more strongly conﬁ ning than the acid 
+dendrimer  135b . 
+ Photolysis of benzoin ethyl ether  138  was demonstrated to be sensitive to the reaction 
+media employed. It affords Norrish type I products  139c  and  139d  in more than 94% 
+combined yield in hexane but type II products  139a  and  139b  in 73% yield in aqueous 
+alkaline solution. Photoreaction of  138  with dendrimer  135b  predominantly gave the type 
+II products, particularly  139a  in 95% yield. However, when the photoreaction was medi-
+ated by  135a ,  139a and  139b were produced in 21% and 57% yield, respectively, sug-
+gesting that the end group plays an important role in dictating the interior character of 
+the dendrimers. 
+O
+O
+O
+(CH2)5
+O
+(CH2)5
+O
+(H2C)5O
+O
+O
+O
+O
+O
+O
+(CH2)5
+O
+(H2C)5
+O
+(H2C)5
+O
+(CH2)5
+O
+(H2C)5
+O
+(CH2)5
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+(CH2)5
+O
+(CH2)5
+(H2C)5
+O
+(CH2)5
+O
+(CH2)5
+O
+(H2C)5
+O
+(CH2)5
+O
+(H2C)5
+O
+(CH2)5
+O
+(H2C)5
+O
+(CH2)5
+O
+(H2C)5
+O
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+R
+O
+O
+hn
++
++
+135
+136
+137a
+137b
+137c
+Ph
+O
+Ph
+O
+hn
+Ph
+Ph
+O
+Ph
+Ph
+O
+O
+Ph
+O
+Ph
+O
+Ph
+Ph
+O
+OH
+138
+139a
+139b
+139c
+139d
++
++
++
+a: R=OH, b: R=COOH
+ Scheme 1.33   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+30 
+Molecular Encapsulation
+ 1.5.2  Photochemical Reactions with Hydrogen - Bonding Templates 
+ Hydrogen bonding interaction plays vital roles in regulating biochemical processes of 
+proteins and deoxyribonucleic acids, and has been widely utilized for constructing 
+supramolecular architectures. This is due to the largest interaction energy (5 – 30  kJ  mol  − 1 ) 
+among the non - covalent weak interactions as well as the ability to assemble molecules 
+at right distance and angle. As a result of these advantages, a series of photochemical 
+reactions have been investigated using hydrogen - bonding templates.   
+ Bassani and co - workers investigated the complexation behavior of melamine and bar-
+bituric acid derivatives, and examined the photodimerization of styrene, stilbene and 
+cinnamate mediated by hydrogen bonding templates. 166 – 170 Melamine derivatives  140 
+(Scheme  1.34 ), which have a hydrogen - bonding motif complementary to barbituric acid 
+derivatives such as  141 , are possible to sequentially form 1  :  1 and 1  :  2 hydrogen - bonded 
+complexes with  141 . As illustrated in Scheme  1.35 ,  140  and  141  can form two kinds of 
+1   :   1 complexes and three kinds of 1   :   2 complexes, among which only complex C is 
+expected to accelerate the photodimerization of  140 . Each of the binding constants K 1 
+and K 2  should be a sum of these binding constants weighted by their population. A posi-
+tive cooperativity (K 2  >  K 1 ) was observed upon complexation of  141b  with  140a,b , 
+presumably as a combined result of allosteric and electronic effects. Photoirradiation of 
+ 140  without any template led to a fast  E - to - Z  isomerization to give the  Z / E  ratio of 1.1 – 5.5 
+at the photostationary state, although elongated irradiations resulted in a formation of 
+dimers. The existence of barbiturate  141  considerably improved the efﬁ ciency and selec-
+tivity of the photoreaction. The quantum yields of  142a  and  142b  were increased respec-
+tively from 0.7  ×  10  − 3 and 0.1  ×  10  − 3 in the absence of a template to 2.3  ×  10  − 3 and 
+0.8  ×  10  − 3  in the presence of  141a . 170   The same strategy was applied to a barbituric acid 
+derivative of fullerene to give a photodimer of fullerene, which could not been obtained 
+without the hydrogen - bonding template. 169 
+ Bach and co - workers investigated a series of chiral photoreactions that were mediated 
+by Kamp ’ s triacid derivatives  143  working as chiral hydrogen - bonding templates.  171 – 177 
+As illustrated in Scheme  1.37 , these chiral templates possess an amide (lactam) group to 
+bind an amide substrate through dual hydrogen bonds and also a bulky substituent to 
+shield one of the enantiofaces of substrate when bound to the template. Although these 
+N
+N
+N
+NH
+NH2
+O
+X
+HN
+NH
+O
+O
+O
+H2n+1Cn
+CnH2n+1
+N
+N
+N
+NH
+NH
+O
+MeO2C
+a: n=2
+b: n=6
+R
+a: R= Me, X=H
+b: R= Me, X=CO2Me
+c: R= Pri, X=C6H5
+140a-c
+140d
+141
+ Scheme 1.34   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reaction Control by Molecular Recognition 
+31
+templates can form hydrogen - bonded homodimers, the association constants are low in 
+general due to the steric repulsion between the bulky moieties. 
+ The intramolecular photocycloaddition of prochiral 2 - quinolone  144 (Scheme  1.38 ) 
+was examined in the presence of chiral templates  143a,b . 178   The amide group of chiral 
+templates forms dual hydrogen bonds with the quinolone moiety of  144 , with the bulky 
+tetrahydronaphthalene moiety preventing the approach of oleﬁ nic double bond from the 
+CO2Me
++
+K1
+CO2Me
+CO2Me
++
+K2
+CO2Me
+CO2Me
+CO2Me
+MeO2C
+CO2MeCO2Me
++
++
+A
+B
+C
+140
+141
+ Scheme 1.35   
+MeO2C
+CO2Me
+Ar
+Ar
+N
+N
+N
+NH
+O
+NH2
+N
+N
+N
+NH
+O
+NH
+142a,b
+Ar =
+a:
+b:Ar =
+ Scheme 1.36   
+N
+O
+NH
+O
+O
+NH
+O
+O
+143a
+143b
+N
+O
+NH
+O
+O
+143c
+ Scheme 1.37   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+32 
+Molecular Encapsulation
+facing side. Increasing the amount of chiral template or lowering the reaction temperature, 
+by which the ratio of bound photosubstrate is greatly increased, signiﬁ cantly improved 
+the enantioselectivity in the photocycloaddition of  144 . By performing the photoreaction 
+in the presence of  143b  at  − 60  ° C,  145  was given in up to 93% ee. In contrast, the same 
+reaction sensitized by a chiral sensitizer lacking the hydrogen - bonding site gave only 
+racemic photoproducts.  179 
+ Since photoexcitation of free substrate existing in the bulk solution will give racemic 
+photoproducts, at least an equimolar amount of chiral template is necessary in order to 
+obtain photoproduct with good enantioselectivity. A recent report by Bach  et al. presented 
+a good solution for this shortcoming by covalently grafting a sensitizer to a chiral tem-
+plate. Thus, sensitizing template  143c  (Scheme  1.37 ) bearing a photoinduced electron 
+transfer sensitizer was synthesized for the use in photosensitized cycloaddition of  146 . 
+Photolysis of  146  in the presence of 0.1 equivalent amount of  143c  afforded  147  in 52 -
+ 64% yield with up to 70% ee (Scheme  1.39 ). 180 
+ 1.5.3  Photochemical Reactions Templated by Cationic Ion 
+ Metal ion can form complex through coordination with unsaturated compounds such as 
+oleﬁ n. Through coordination with metal ion, two oleﬁ ns can be positioned in close prox-
+imity, and oleﬁ n photochemistry may be caused upon irradiation at longer wavelengths 
+by exciting the charge - transfer band of the resultant complex. Evers and Mackor inves-
+tigated the intramolecular [2+2] photocycloaddition of diene  148 , which is photochemi-
+cally catalyzed by copper(I) triﬂ uoromethanesulphonate. 181   In the presence of the copper 
+N
+H
+O
+O
+N
+H
+O
+O
+H
+H
+hn
+144
+145
+ Scheme 1.38   
+N
+H
+O
+N
+N
+H
+O
+N
+N
+H
+O
+N
++
+PET catalyst, hn
+146
+147
+ Scheme 1.39   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reaction Control by Molecular Recognition 
+33
+catalyst, irradiation of  148 efﬁ ciently gave the  exo - and  endo - 3 - bicyclo[3.2.0]heptanol 
+ 149 and  150 in a ratio of 3  :  2 (Scheme  1.40 ). 
+ Mattay  et al. examined the intramolecular [2+2] photocycloadditions of 1,6 - dienes  152 
+catalyzed by copper(I) coordinated to chiral ligands  151 (Scheme  1.41 ). 182 Photocycloaddition 
+of  152 catalyzed by  151c gave  153 in up to 5% ee. 
+ Bassani and co - workers studied the photodimerization of  154  using a synergistic effect 
+of hydrogen bonding and metal ion complexation.  183   Photodimerization of  154  was accel-
+erated by a factor of 2 in the presence of one equivalent of KPF 6 , and a factor of 5 in the 
+coexistence of KPF 6  and  155 . Among the metal ions examined, Ba 2+  showed the most 
+signiﬁ cant cooperative effect. While  155  enhanced the photodimerization by a factor of 
+1.4 – 1.8, a simultaneous use of  155 and Ba 2+ gave the quantum yield for the formation of 
+ 156  and  157  in more than three orders of magnitude greater than that obtained in the 
+absence of template, and the ratio of  156 / 157 was greatly improved from 1 to 3.7. 
+OH
+H
+H
+OH
+OH
+H
++
+148
+149
+150
+Cu(I)
+ Scheme 1.40   
+N
+O
+N
+O
+N
+O
+N
+O
+151b
+151c
+R
+hn
+R
+152
+153
+chiral copper(I) complex
+ Scheme 1.41   
+N
+N
+N
+NH
+H
+N
+O
+O
+O
+O
+O
+O
+O
+154
++ Ba2+
+HN
+NH
+O
+O
+O
+H2n+1Cn
+CnH2n+1
++
+hv
+155
+156
+157
+ Scheme 1.42   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+34 
+Molecular Encapsulation
+ 1.6  Photoreaction Control by External Variants 
+ While most studies on supramolecular photochemistry have focused on the design and 
+synthesis of suitable hosts that provide desirable interaction or environment for aimed 
+photosubstrates, recent studies by Inoue  et al.  suggest that the external factors, such as 
+temperature, solvent and pressure, may also play a crucial role in controlling the reactivity 
+and selectivity of photoreactions in supramolecular systems. Changing environmental 
+variants, which is much easier to practice than the optimization of host structure involving 
+tedious syntheses, can provide not only a convenient, yet useful, tool for controlling 
+photochemical outcomes, but also important information regarding the mechanism of 
+supramolecular photochemical reaction. 
+ The effect of temperature has been well established in the photosensitized isomerization 
+of cycloalkenes with conventional sensitizers.  184 – 187   The change of optical yield upon 
+temperature variation is ascribed to the non - zero differential entropy change for the for-
+mation of enantiomeric photoproducts. The entropy effect on supramolecular photochi-
+rogenesis systems was found to be closely related to the structural properties of 
+supramolecular hosts. The enantioselectivity shows only small changes with the variation 
+of temperature in photoisomerization of  34Z  sensitized by   β - CD - based chromophores. 37 
+This insigniﬁ cant effect of temperature is attributed to the low entropy environment in 
+the cavity of   β  - CD due to its rigid skeleton arising from the hydrogen - bonding network 
+at the secondary rim. 
+ On the contrary, photoisomerization of  158ZZ with sensitizer - appended   γ - CD, which 
+has a more ﬂ exible framework than   γ  - CD, is more sensitive to the temperature alternation. 
+An inversion of product chirality was observed by lowering the temperature in the pho-
+toisomerization of  158ZZ  mediated by  159 . 188   Similar phenomenon was observed in 
+photocyclodimerization of AC (Scheme  1.9 ) included in the cavity of   γ - CD derivatives. 189 
+The enantioselectivity for HH dimer in the photocyclodimerization of AC with diamino -    γ 
+ - CDs  48 in aqueous methanol solution decreased greatly by lowering the reaction tem-
+perature and even showed a dramatic inversion to give the antipodal product. When   γ - CD 
+derivatives  50a – d with ﬂ exible caps were used, the ee values obtained for  44  were highly 
+dependent on the temperature. However, in the presence of   γ - CD derivatives  57a – c , which 
+possess a rigid aryldisulfonate cap, the enantiodifferentiation become much less temper-
+ature - dependent. 52   On the other hand, when photoisomerization of  34Z  was carried out 
+O
+OH
+HO
+OH
+O
+O
+OH
+HO
+OH
+O
+O
+OH
+OH
+OH
+O
+O
+OH
+OH
+OH
+O
+O
+OH
+OH
+O
+OH
+OH
+HO
+O
+O
+OH
+HO
+HO
+O
+O
+OH
+OH
+HO
+O
+O
+O
+O
+O
++
+R-(–)-158EZ
+S-(+)-158EZ
+158ZZ
+hn
+Chiral sensitizer
+159
+ Scheme 1.43   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reaction Control by Molecular Recognition 
+35
+with permethylated   β - CD sensitizers  35e – h , in which the hydrogen bonding network is 
+broken by methylation to give a ﬂ exible skeleton, the temperature effect became pro-
+nounced to afford a chirality inversion by changing the temperature. 
+ These observations suggest that the entropy effect is a function of the ﬂ exibility/rigidity 
+of the skeleton of supramolecular hosts, and is signiﬁ cant for hosts with ﬂ exible frame-
+work but is insigniﬁ cant with rigid hosts. Indeed, works of the other research groups have 
+also demonstrated that hosts bearing rigid skeleton such as zeolite show only slight 
+temperature - dependence. 
+ Solvation and desolvation are of paramount importance for molecular recognition in 
+solution. Solvent inﬂ uences the binding strength of host – guest equilibrium in a diverse 
+way for various host – guest systems. For example, the complexation strength between 
+18 - crown - 6 and potassium ion decreases by a factor of  > 10 4  on going from propylene 
+carbonate to water.  190 This signiﬁ cant solvent dependence mainly comes from the differ-
+ence in desolvation energy of the metal cation in different solvent. In some cases, solvent 
+may play a role of ﬁ ller upon co - inclusion with the guest substrate to signiﬁ cantly modify 
+the orientation of substrate in the host cavity. It is known that CD bind organic guests 
+mainly through hydrophobic interactions, and addition of methanol to the aqueous solu-
+tion greatly reduces the binding constant as a result of increased solvation to both of 
+substrate and host. The plot of log Ks for the complexation of  35  and  34Z  against the 
+methanol content showed good straight lines, suggesting that no selective solvation by 
+water or methanol to CD derivatives occurs and water – methanol mixture behaves as a 
+bulk solvent of continuously changing hydrophilicity. The enantioselectivity in photo-
+isomerization of  34Z  with  35  decreases with increasing content of methanol, and appears 
+to be a nice function of host occupancy. On the other hand, addition of methanol decreases 
+the solvent polarity and thus increases the electrostatic interaction of ion pairs. In aqueous 
+solution, the photodimerization of AC mediated by  48a – d  shows only subtle effect of the 
+ammonium cations introduced to the primary rim of   γ  - CD, but the electrostatic interaction 
+dominates the photodimerization to give the chiral HH dimer as the major product with 
+a greatly enhanced enantioselectivity. 
+ Hydrostatic pressure is also known to play crucial roles in conventional chiral photo-
+sensitization of  34Z , as demonstrated by the fact that product chirality can be manipulated 
+or even inverted by simply changing the pressure when the differential activation volume 
+for the formation of the enantiomeric or diastereomeric pair is not equal to zero. Under 
+high pressure, less volume - demanding structures and processes are absolutely favoured 
+and hence the host - guest association process is advantageous in principle. If there are two 
+or more possible complex structures in a supramolecular system, dramatic equilibrium 
+and selectivity shifts may occur from a shallow, loose and/or bulky complex to a deeper, 
+tighter and compact ones under high pressure. In other words, we acquire an additional 
+tool, that is pressure as an environmental variant, for manipulating the recognition ability 
+and selectivity of a given guest. Another somewhat unexpected great advantage of high 
+pressure applied to supramolecular systems performed in aqueous solutions is the signiﬁ -
+cant lowering of the melting temperature of water, which goes down to  − 25  ° C at 210  MPa, 
+which enables us to perform photochemical reactions below zero Celsius even in water. 
+Thus, the chemical yield and ee of HT dimer  44  were greatly enhanced in the photocy-
+clodimerization of AC mediated by   γ  - CD derivatives to reach 53% yield and 71% ee by 
+using host  54 in water at  − 22  ° C at 210  MPa. 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+36 
+Molecular Encapsulation
+ More recently, the effect of pH was investigated in the supramolecular photochirogenic 
+dimerization of AC with  p - cresolbisbenzimidazole - capped   γ - CDs  160a,b . 191 Thus, pho-
+todimerization of AC with AE - capped   γ - CD  160b  gave  anti  - HH dimer in 5% ee at pH 
+11 but the antipodal product in 28% ee at pH 6. The conformational change of the ioniz-
+able capping moiety upon the pH variation is responsible for the pH - dependent 
+enantioselectivity. 
+ 1.7  Conclusions 
+ Controlling photochemistry through molecular recognition has drawn signiﬁ cant interest 
+from a broad spectrum of scientists and met great progress in recent decades. A number 
+of supramolecular hosts have been successfully exploited for conducting various types of 
+photochemical reactions to reveal the distinct advantages and disadvantages peculiar to 
+each supramolecular system. The multiple non - covalent interactions and the conﬁ nement 
+effect operating in host cavity are two major factors that control the supramolecular 
+photochemistry. Successful supramolecular photoreaction requires reasonable design and 
+synthesis of host molecules and a careful selection of suitable photoreaction and substrate. 
+The complementary ﬁ tting of size, shape and interaction motif between host and guest 
+substrate are crucially important in choosing a host – guest pair for speciﬁ c supramolecular 
+photochemistry. In general, supramolecular hosts that have more conﬁ ned binding sites 
+usually show speciﬁ c complexation ability and signiﬁ cant reaction selectivity, while those 
+with ﬂ exible binding sites are susceptive to the external control by environmental factors. 
+ The supramolecular approach to photochemistry is undoubted a smart efﬁ cient way to 
+manipulate and enhance its reactivity and selectivity. In addition to the electronic and 
+orbital properties governing the conventional photoreactions in isotropic media, the steric 
+and conformational effects play heavier roles in supramolecular photochemistry. As a 
+result, photoreactions in supramolecular systems often show unique behavior distinctively 
+different from that of conventional one. On the other hand, the conﬁ nement effect of 
+supramolecular hosts can hold two or more photosubstrates in close proximity and con-
+sequentially promote bi -  and multimolecular photoreactions that are silent in conventional 
+photochemistry under normal conditions. 
+N
+N
+N
+N
+OH
+CH3
+A
+D
+N
+N
+N
+N
+OH
+CH3
+A
+E
+g
+g
+-CD
+-CD
+160a
+160b
+ Scheme 1.44   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reaction Control by Molecular Recognition 
+37
+ Despite that supramolecular complexation can crucially affect the steric and/or elec-
+tronic properties of photosubstrates in both ground and excited state, the stereochemical 
+control of photochemical reaction in supramolecular systems is often considered to be 
+dominated by the prearrangement of photosubstrate in the ground state. A photosubstrate 
+is captured by a host for a period of time that is much longer than the excited - state life-
+time. It has been demonstrated that the rate constant for a photosubstrate to get into the 
+cavity of host with a sufﬁ ciently large opening is normally in the order 10  − 7 – 10  − 8  M  − 1  S  − 1 . 192 
+An organic guest may stay in the cavity for much longer than 1    µ s if it has a binding 
+constant of 1000   M  − 1  with the host, which is signiﬁ cantly longer than the lifetime of 
+excited molecules commonly encountered. Therefore, the complexation behaviour of 
+photosubstrate in the ground state is of signiﬁ cant importance in supramolecular 
+photochemistry. 
+ Optimizing the structure and interactions of a supramolecular system still requires 
+sophisticated design, synthesis, and experimental feedback even in the ground state, and 
+should be much more difﬁ cult for supramolecular photochemical reactions. In this context, 
+the combined use of external factors, such as temperature, solvent and pressure, provides 
+a versatile and convenient tool for manipulating photochemical reactions in supramolecu-
+lar system. The role of these external factors is closely correlated with the properties, in 
+particular rigidity, of supramolecular host employed, and the outcomes are often signiﬁ -
+cantly different from those observed in conventional photoreactions, which would be 
+another reason for performing photochemical reaction in supramolecular system. 
+ The number and quality of publications on supramolecular photochirogenesis are 
+rapidly growing in the last decade. Laying in the interdisciplinary area of supramolecular 
+chemistry, photochemistry and asymmetric synthesis, this new area of science is still 
+challenging but appears promising, proposing a novel concept and methodology for 
+overcoming the relatively weak and short - lived interactions in the excited state through 
+multiple supramolecular interactions in both ground and excited states. Indeed, the highest 
+enantioselectivity in solution - phase photoreaction has been achieved by supramolecular 
+photochirogenesis. 193 
+ In summary, the control of photochemical reactions by molecular recognition becomes 
+one of the most active topics in supramolecular chemistry in recent years. However, 
+supramolecular photochemistry is still conceptually less established, mechanistically less 
+understood, and experimentally less explored compared to the conventional supramolecu-
+lar chemistry in the ground state. We believe that further comprehensive studies in this 
+area will reveal more intriguing features of supramolecular photochemistry and strength 
+our capability to control photochemical reactions. 
+ Acknowledgements 
+ This work was supported by PRESTO, Japan Science and Technology Agency. 
+ References 
+  1.  M.  Mammen ,  S. - K.  Chio ,  G. M.  Whitesides ,  Angew. Chem., Int. Ed. ,  1998 ,  37 ,  2755 – 2794 . 
+  2.  E. R.  Jamieson ,  S. J.  Lippard ,  Chem. Rev. ,  1999 ,  99 ,  2467 – 2498 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+38 
+Molecular Encapsulation
+  3.  E. A.  Meyer ,  R. K.  Castellano ,  F.  Diederich ,  Angew. Chem., Int. Ed. ,  2003 ,  42 ,  1210 – 1250 . 
+  4.  E.  Di  Cera ,  Chem. Rev. ,  1998 ,  98 ,  1563 – 1591 . 
+  5.  M.  Lahav ,  L.  Leiserowitz ,  Angew. Chem., Int. Ed. ,  1999 ,  38 ,  2533 – 2536 . 
+  6.  R.  Breslow ,  Acc. Chem. Res. ,  1995 ,  28 ,  146 – 153 . 
+  7.  R.  Breslow , Ed,  Artiﬁ cial Enzymes ,  Wiley - VCH ,  Weinheim, Germany ,  2005 . 
+  8.  M. F.  Manfrin ,  L.  Moggi ,  V.  Castelvetro ,  V.  Balzani ,  M. W.  Hosseini ,  J. M.  Lehn ,  J. Am. 
+Chem. Soc. ,  1985 ,  107 ,  6888 – 6892 . 
+  9.  V.  Balzani ,  L.  Moggi ,  F.  Scandola ,  NATO ASI Ser., Ser. C ,  1987 ,  214 ,  1 – 28 . 
+  10.  J. M.  Lehn ,  NATO ASI Ser., Ser. C ,  1987 ,  214 ,  29 – 43 . 
+  11.  J.  Lehn ,  Supramolecular chemistry: concepts and perspectives ,  VCH  New York ,  1995 . 
+  12.  N.  Turro ,  Proc. Natl. Acad. Sci. USA ,  2002 ,  99 ,  4805 – 4809 . 
+  13.  C.  Yang ,  Y.  Inoue ,  Supramolecular Photochirogenesis with Cyclodextrin , in  Cyclodextrin 
+materials photochemistry, photophysics and photobiology ;  Douhal ,  A. , Ed.;  2006 . 
+  14.  Y.  Inoue ,  V.  Ramamurthy ,  Chiral Photochemistry ,  CRC Press ,  2004 . 
+  15.  C. J.  Pedersen ,  J. Am. Chem. Soc. ,  1967 ,  89 ,  2495 – 2496 . 
+  16.  C. J.  Pedersen ,  Science ,  1988 ,  241 ,  536 – 540 . 
+  17.  D. G.  Amirsakis ,  M. A.  Garcia - Garibay ,  S. J.  Rowan ,  J. F.  Stoddart ,  A. J. P.  White ,  D. J. 
+ Williams ,  Angew. Chem. Int. Ed. ,  2001 ,  40 ,  4256 – 4261 . 
+  18.  T.  Kuwabara ,  M.  Sugiyama ,  M.  Nanasawa ,  Photochem. Photobiol. ,  2001 ,  73 ,  469 – 472 . 
+  19.  S. J.  Dalgarno ,  M. J.  Hardie ,  J. L.  Atwood ,  J. E.  Warren ,  C. L.  Raston ,  New. J. Chem. ,  2005 , 
+ 29 ,  649 – 652 . 
+  20.  J. L.  Atwood ,  S. J.  Dalgarno ,  M. J.  Hardie ,  C. L.  Raston ,  Chem. Commun. ,  2005 ,  337 – 339 . 
+  21.  G.  Arena ,  A.  Casnati ,  A.  Contino ,  G. G.  Lombardo ,  D.  Sciotto ,  R.  Ungaro ,  Chem. Eur. J. , 
+ 1999 ,  5 ,  738 – 744 . 
+  22.  G.  Arena ,  A.  Casnati ,  L.  Mirone ,  D.  Sciotto ,  R.  Ungaro ,  Tetrahedron Lett. ,  1997 ,  38 , 
+ 1999 – 2002 . 
+  23.  G.  Arena ,  A.  Contino ,  F. G.  Gulino ,  A.  Magri ,  F.  Sansone ,  D.  Sciotto ,  R.  Ungaro ,  Tetrahedron 
+Lett. ,  1999 ,  40 ,  1597 – 1600 . 
+  24.  G.  Arena ,  A.  Contino ,  F. G.  Gulino ,  A.  Magri ,  D.  Sciotto ,  R.  Ungaro ,  Tetrahedron Lett. ,  2000 , 
+ 41 ,  9327 – 9330 . 
+  25.  R.  Kaliappan ,  L.  Kaanumalle ,  V.  Ramamurthy ,  Chem. Commun. ,  2005 ,  4056 . 
+  26.  L.  Kaanumalle ,  J.  Nithyanandhan ,  M.  Pattabiraman ,  J.  Narayanaswamy ,  V.  Ramamurthy , 
+ J. Am. Chem. Soc. ,  2004 ,  126 ,  8999 – 9006 . 
+  27.  R. T.  Lauterbach ,  H. G.  Heine ,  W.  Hartmann ,  H.  Rudolph ,  J. Am. Chem. Soc. ,  1975 ,  97 , 
+ 1519 – 1525 . 
+  28.  S. P.  Pappas ,  A.  Chattopadhyay ,  J. Am. Chem. Soc. ,  1973 ,  95 ,  6484 – 6485 . 
+  29.  R.  Kaliappan ,  L.  Kaanumalle ,  A.  Natarajan ,  V.  Ramamurthy ,  Photochem. Photobiol. Sci. , 
+ 2006 ,  5 ,  925 – 930 . 
+  30.  G.  Ananchenko ,  K.  Udachin ,  J.  Ripmeester ,  T.  Perrier ,  A.  Coleman ,  Chem. Eur. J. ,  2006 ,  12 , 
+ 2441 – 2447 . 
+  31.  M.  Pojarova ,  G.  Ananchenko ,  K.  Udachin ,  M.  Daroszewska ,  F.  Perret ,  A.  Coleman ,  J. 
+ Ripmeester ,  Chem. Mater. ,  2006 ,  18 ,  5817 – 5819 . 
+  32.  K.  V í zv á rdi ,  K.  Desmet ,  I.  Luyten ,  P.  Sandra ,  G.  Hoornaert ,  E.  Van der  Eycken ,  Org. Lett. , 
+ 2001 ,  3 ,  1173 – 1175 . 
+  33.  A. C. ,  Cope ,  C. R.  Ganellin ,  H. W. J.  Johnson ,  H.J.S.  Winkler ,  J. Am. Chem. Soc. ,  1963 ,  85 , 
+ 3276 – 3279 . 
+  34.  Y.  Inoue ,  Y.  Kunitomi ,  S.  Takamuku ,  H.  Sakurai ,  Chem. Commun. ,  1978 ,  1024 – 1025 . 
+  35.  Y.  Inoue ,  N.  Sugahara ,  T.  Wada ,  Pure. Appl. Chem. ,  2001 ,  73 ,  475 – 480 . 
+  36.  Y.  Inoue ,  T.  Wada ,  S.  Asaoka ,  H.  Sato ,  J. P.  Pete ,  Chem. Commun. ,  2000 ,  251 – 259 . 
+  37.  Y.  Inoue ,  T.  Wada ,  N.  Sugahara ,  K.  Yamamoto ,  K.  Kimura ,  L. H.  Tong ,  X. M.  Gao ,  Z. J. 
+ Hou ,  Y.  Liu ,  J.  Org. Chem. ,  2000 ,  65 ,  8041 – 8050 . 
+  38.  G.  Fukuhara ,  T.  Mori ,  T.  Wada ,  Y.  Inoue ,  J. Org. Chem. ,  2006 ,  71 ,  8233 – 8243 . 
+  39.  R.  Lu ,  C.  Yang ,  Y.  Cao ,  Z.  Wang ,  T.  Wada ,  W.  Jiao ,  Chem. Commun. ,  2008 ,  374 – 376 . 
+  40.  R.  Lu ,  C.  Yang ,  Y.  Cao ,  L.  Tong ,  W.  Jiao ,  T.  Wada ,  Z.  Wang ,  T.  Mori  ,  Y.  Inoue ,  J. Org. 
+Chem. ,  2008 ,  73 ,  7695 – 7701 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reaction Control by Molecular Recognition 
+39
+  41.  W.  Herrmann ,  S.  Wehrle ,  G.  Wenz ,  Chem. Commun. ,  1997 ,  1709 – 1710 . 
+  42.  K. S.  Rao ,  S. M.  Hubig ,  J. N.  Moorthy ,  J. K.  Kochi ,  J. Org. Chem. ,  1999 ,  64 ,  8098 – 8104 . 
+  43.  T.  Tamaki ,  T.  Kokubu ,  K.  Ichimura ,  Tetrahedron Lett. ,  1987 ,  43 ,  1485 – 1494 . 
+  44.  T.  Tamaki ,  T.  Kokubu ,  J. Incl. Phenom. Macro. ,  1984 ,  2 ,  815 – 822 . 
+  45.  Y.  Ishida ,  Y.  Kai ,  S. Y.  Kato ,  A.  Misawa ,  S.  Amano ,  Y.  Matsuoka ,  K.  Saigo  ,  Angew. Chem. 
+Int. Ed. ,  2008 ,  8421 – 8425 . 
+  46.  A.  Nakamura ,  Y.  Inoue ,  J. Am. Chem. Soc. ,  2003 ,  125 ,  966 – 972 . 
+  47.  H.  Ikeda ,  T.  Nihei ,  A.  Ueno ,  J. Org. Chem. ,  2005 ,  70 ,  1237 – 1242 . 
+  48.  A.  Nakamura ,  Y.  Inoue ,  J. Am. Chem. Soc. ,  2005 ,  127 ,  5338 – 5339 . 
+  49.  C.  Yang ,  G.  Fukuhara ,  A.  Nakamura ,  Y.  Origane ,  K.  Fujita ,  D.  Yuan ,  T.  Mori ,  T.  Wada ,  Y. 
+ Inoue ,  J. Photoch. Photobio. A ,  2005 ,  173 ,  375 – 383 . 
+  50.  C.  Yang ,  A.  Nakamura ,  G.  Fukuhara ,  Y.  Origane ,  T.  Mori ,  T.  Wada ,  Y.  Inoue  ,  J. Org. Chem. , 
+ 2006 ,  71 ,  3126 – 3136 . 
+  51.  C.  Yang ,  A.  Nakamura ,  T.  Wada ,  Y.  Inoue ,  Org. Lett. ,  2006 ,  8 ,  3005 – 3008 . 
+  52.  C.  Yang ,  T.  Mori ,  Y.  Inoue ,  J. Org. Chem. ,  2008 ,  73 ,  5786 – 5794 . 
+  53.  C.  Yang ,  T.  Mori ,  Y.  Origane ,  Y. H.  Ko ,  N.  Selvapalam ,  K.  Kim ,  Y.  Inoue ,  J. Am. Chem. 
+Soc. ,  2008 ,  130 ,  8574 – 8575 . 
+  54.  R.  Wang ,  L.  Yuan ,  D. H.  Macartney ,  J. Org. Chem. ,  2006 ,  71 ,  1237 – 1239 . 
+  55.  S.  Jon ,  Y.  Ko ,  S.  Park ,  H.  Kim ,  K.  Kim ,  Chem. Commun. ,  2001 ,  1938 – 1939 . 
+  56.  M.  Pattabiraman ,  A.  Natarajan ,  R.  Kaliappan ,  J. T.  Mague ,  V.  Ramamurthy ,  Chem. Commun. , 
+ 2005 ,  4542 – 4544 . 
+  57.  M. V.  Maddipatla ,  L. S.  Kaanumalle ,  A.  Natarajan ,  M.  Pattabiraman ,  V.  Ramamurthy , 
+ Langmuir ,  2007 ,  23 ,  7545 – 7554 . 
+  58.  L.  Lei ,  L.  Luo ,  X.  Wu ,  G.  Liao ,  L.  Wu ,  C.  Tung ,  Tetrahedron Lett. ,  2008 ,  49 ,  1502 – 1505 . 
+  59.  C. L.  Gibb ,  B. C.  Gibb ,  J. Am. Chem. Soc. ,  2004 ,  126 ,  11408 – 11409 . 
+  60.  Z. R.  Laughrey ,  C. L.  Gibb ,  T.  Senechal ,  B. C.  Gibb ,  Chem. Eur. J. ,  2003 ,  9 ,  130 – 139 . 
+  61.  C. L.  Gibb ,  E. D.  Stevens ,  B. C.  Gibb ,  J. Am. Chem. Soc. ,  2001 ,  123 ,  5849 – 5850 . 
+  62.  L. S.  Kaanumalle ,  C. L.  Gibb ,  B.  Gibb ,  V.  Ramamurthy ,  J. Am. Chem. Soc. ,  2004 ,  126 , 
+ 14366 – 14367 . 
+  63.  C. L.  Gibb ,  A. K.  Sundaresan ,  V.  Ramamurthy ,  B. C.  Gibb ,  J. Am. Chem. Soc. ,  2008 ,  130 , 
+ 4069 – 4080 . 
+  64.  A. K.  Sundaresan ,  V.  Ramamurthy ,  Org. Lett. ,  2007 ,  9 ,  3575 – 3578 . 
+  65.  L. S.  Kaanumalle ,  C. L.  Gibb ,  B.  Gibb ,  V.  Ramamurthy ,  J. Am. Chem. Soc. ,  2005 ,  127 , 
+ 3674 – 3675 . 
+  66.  L. S.  Kaanumalle ,  V.  Ramamurthy ,  Chem. Commun. ,  2007 ,  1062 – 1064 . 
+  67.  A.  Parthasarathy ,  L. S.  Kaanumalle ,  V.  Ramamurthy ,  Org. Lett. ,  2007 ,  9 ,  5059 – 5062 . 
+  68.  K.  Fujimoto ,  S.  Matsuda ,  N.  Takahashi ,  I.  Saito ,  J. Am. Chem. Soc. ,  2000 ,  122 ,  5646 – 5647 . 
+  69.  K.  Fujimoto ,  H.  Yoshino ,  T.  Ami ,  Y.  Yoshimura ,  I.  Saito ,  Org. Lett. ,  2008 ,  10 ,  397 – 400 . 
+  70.  K.  Fujimoto ,  N.  Ogawa ,  M.  Hayashi ,  S.  Matsuda ,  I.  Saito ,  Tetrahedron Lett. ,  2000 ,  41 , 
+ 9437 – 9440 . 
+  71.  M.  Ogino ,  Y.  Yoshimura ,  A.  Nakazawa ,  I.  Saito ,  K.  Fujimoto ,  Org. Lett. ,  2005 ,  7 , 
+ 2853 – 2856 . 
+  72.  K.  Fujimoto ,  S.  Matsuda ,  M.  Hayashi ,  I.  Saito ,  Tetrahedron Lett. ,  2000 ,  41 ,  7897 – 7900 . 
+  73.  K.  Fujimoto ,  Y.  Ikeda ,  S.  Ishihara ,  I.  Saito ,  Tetrahedron Lett. ,  2002 ,  43 ,  2243 – 2245 . 
+  74.  I.  Saito ,  Y.  Miyauchi ,  Y.  Saito ,  K.  Fujimoto ,  Tetrahedron Lett. ,  2004 ,  46 ,  97 – 99 . 
+  75.  K.  Fujimoto ,  S.  Matsuda ,  Y.  Yoshimura ,  T.  Ami ,  I.  Saito ,  Chem. Commun. ,  2007 , 
+ 2968 – 2970 . 
+  76.  Y.  Saito ,  K.  Matsumoto ,  S. S.  Bag ,  S.  Ogasawara ,  K.  Fujimoto ,  K.  Hanawa ,  I.   Saito , 
+ Tetrahedron ,  2008 ,  64 ,  3578 – 3588 . 
+  77.  T.  Ihara ,  T.  Fujii ,  M.  Mukae ,  Y.  Kitamura ,  A.  Jyo ,  J. Am. Chem. Soc. ,  2004 ,  126 , 
+ 8880 – 8881 . 
+  78.  P.  Arslan ,  T.  Ihara ,  M.  Mukae ,  A.  Jyo ,  Anal Sci ,  2008 ,  24 ,  173 – 176 . 
+  79.  P.  Arslan ,  T.  Ihara ,  M.  Mukae ,  A.  Jyo ,  Nucleic Acids Symp. Ser. ,  2007 ,  237 – 238 . 
+  80.  T.  Wada ,  N.  Sugahara ,  M.  Kawano ,  Y.  Inoue ,  Chem. Lett. ,  2000 ,  1174 – 1175 . 
+  81.  R. V.  Person ,  B. R.  Peterson ,  D. A.  Lightner ,  J. Am. Chem. Soc. ,  1994 ,  116 ,  42 – 59 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+40 
+Molecular Encapsulation
+  82.  D. A.  Lightner ,  J. K.  Gawronski ,  W. M. D.  Wijekoon ,  J. Am. Chem. Soc. ,  1987 ,  109 , 
+ 6354 – 6362 . 
+  83.  G.  Agati ,  A. F.  McDonagh ,  J. Am. Chem. Soc. ,  1995 ,  117 ,  4425 – 4426 . 
+  84.  C.  Festa ,  N.  Levi - Minzi ,  M.  Zandomeneghi ,  Gazz. Chim. Ital. ,  1996 ,  126 ,  599 – 603 . 
+  85.  N.  Levi - Minzi ,  M.  Zandomeneghi ,  J. Am. Chem. Soc. ,  1992 ,  114 ,  9300 – 9304 . 
+  86.  A.  Ouchi ,  G.  Zandomeneghi ,  M.  Zandomeneghi ,  Chirality ,  2002 ,  14 ,  1 – 11 . 
+  87.  V.  Lhiaubet - Vallet ,  S.  Encinas ,  M. A.  Miranda ,  J. Am. Chem. Soc. ,  2005 ,  127 ,  12774 – 12775 . 
+  88.  V.  Lhiaubet - Vallet ,  Z.  Sarabia ,  F.  Bosca ,  M. A.  Miranda ,  J. Am. Chem. Soc. ,  2004 ,  126 , 
+ 9538 – 9539 . 
+  89.  V.  Lhiaubet - Vallet ,  F.  Bosca ,  M. A.  Miranda ,  J. Phys. Chem. B ,  2007 ,  111 ,  423 – 431 . 
+  90.  T.  Wada ,  M.  Nishijima ,  T.  Fujisawa ,  N.  Sugahara ,  T.  Mori ,  A.  Nakamura ,  Y.  Inoue ,  J. Am. 
+Chem. Soc. ,  2003 ,  125 ,  7492 – 7493 . 
+  91.  M.  Nishijima ,  T. C. S.  Pace ,  A.  Nakamura ,  T.  Mori ,  T.  Wada ,  C.  Bohne ,  Y.  Inoue  ,  J. Org. 
+Chem. ,  2007 ,  72 ,  2707 – 2715 . 
+  92.  M.  Nishijima ,  T.  Wada ,  T.  Mori ,  T. C. S.  Pace ,  C.  Bohne ,  Y.  Inoue ,  J. Am. Chem. Soc. ,  2007 , 
+ 129 ,  3478 – 3479 . 
+  93.  U.  Kragh - Hansen ,  Pharmacol. Rev. ,  1981 ,  33 ,  17 – 53 . 
+  94.  T.  Peters ,  All About Albumin: Biochemistry, Genetics, and Medical Applications ,  Academic 
+Press ,  1996 . 
+  95.  S.  Asaoka ,  T.  Wada ,  Y.  Inoue ,  J. Am. Chem. Soc. ,  2003 ,  125 ,  3008 – 3027 . 
+  96.  T. C. S.  Pace ,  M.  Nishijima ,  T.  Wada ,  Y.  Inoue ,  C.  Bohne ,  J.  Phys ,  Chem. B. ,  2009 ,  113 , 
+ 10445 – 10453 . 
+  97.  M.  Nishijima ,  T.  Wada ,  K.  Nagamori ,  Y.  Inoue ,  Chem. Lett. ,  2009 ,  38 ,  726 – 727 . 
+  98.  V.  Ramamurthy ,  J.  Shailaja ,  L. S.  Kaanumalle ,  R. B.  Sunoj ,  J.  Chandrasekhar ,  Chem. 
+Commun. ,  2003 ,  1987 – 1999 . 
+  99.  S.  Hashimoto ,  J. Photochem. Photobiol., C ,  2003 ,  4 ,  19 – 49 . 
+ 100.  H.  Garcia ,  H. D.  Roth ,  Chem. Rev. ,  2002 ,  102 ,  3947 – 4007 . 
+ 101.  V.  Ramamurthy ,  J. Photochem. Photobiol., C ,  2000 ,  1 ,  145 – 166 . 
+ 102.  A.  Joy ,  V.  Ramamurthy ,  Chem. Eur. J. ,  2000 ,  6 ,  1287 – 1293 . 
+ 103.  N. J.  Turro ,  Pure Appl. Chem. ,  1986 ,  58 ,  1219 – 1228 . 
+ 104.  N. J.  Turro ,  P.  Wan ,  J. Am. Chem. Soc. ,  1985 ,  107 ,  678 – 682 . 
+ 105.  N. J.  Turro ,  P.  Wan ,  Tetrahedron Lett. ,  1984 ,  25 ,  3655 – 3658 . 
+ 106.  S. L.  Suib ,  A.  Kostapapas ,  D.  Psaras ,  J. Am. Chem. Soc. ,  1984 ,  106 ,  1614 – 1620 . 
+ 107.  T.  Poon ,  J.  Sivaguru ,  R.  Franz ,  S.  Jockusch ,  C.  Martinez ,  I.  Washington ,  W.  Adam ,  Y.  Inoue , 
+ N. J.  Turro ,  J. Am. Chem. Soc. ,  2004 ,  126 ,  10498 – 10499 . 
+ 108.  W.  Adam ,  S. G.  Bosio ,  N. J.  Turro ,  B. T.  Wolff ,  J. Org. Chem. ,  2004 ,  69 ,  1704 – 1715 . 
+ 109.  T.  Poon ,  N. J.  Turro ,  J.  Chapman ,  P.  Lakshminarasimhan ,  X.  Lei ,  W.  Adam ,  S. G.  Bosio , 
+ Org. Lett. ,  2003 ,  5 ,  2025 – 2028 . 
+ 110.  W.  Adam ,  S. G.  Bosio ,  N. J.  Turro ,  J. Am. Chem. Soc. ,  2002 ,  124 ,  8814 – 8815 . 
+ 111.  W.  Adam ,  S. G.  Bosio ,  N. J.  Turro ,  J. Am. Chem. Soc. ,  2002 ,  124 ,  14004 – 14005 . 
+ 112.  J.  Sivaguru ,  H.  Saito ,  M. R.  Solomon ,  L. S.  Kaanumalle ,  T.  Poon ,  S.  Jockusch ,  W.  Adam ,  V. 
+ Ramamurthy ,  Y.  Inoue ,  N. J.  Turro ,  Photochem. Photobiol. ,  2006 ,  82 ,  123 – 131 . 
+ 113.  A.  Joy ,  L. S.  Kaanumalle ,  V.  Ramamurthy ,  Org. Biomol. Chem. ,  2005 ,  3 ,  3045 – 3053 . 
+ 114.  J.  Sivaguru ,  R. B.  Sunoj ,  T.  Wada ,  Y.  Origane ,  Y.  Inoue ,  V.  Ramamurthy ,  J. Org. Chem. , 
+ 2004 ,  69 ,  6533 – 6547 . 
+ 115.  J.  Sivaguru ,  T.  Poon ,  R.  Franz ,  S.  Jockusch ,  W.  Adam ,  N. J.  Turro ,  J. Am. Chem. Soc. ,  2004 , 
+ 126 ,  10816 – 10817 . 
+ 116.  M.  Stratakis ,  D.  Kalaitzakis ,  D.  Stavroulakis ,  G.  Kosmas ,  C.  Tsangarakis ,  Org. Lett. ,  2003 , 
+ 5 ,  3471 – 3474 . 
+ 117.  J.  Sivaguru ,  J.  Shailaja ,  V.  Ramamurthy ,  Handb. Zeolite Sci. Technol. ,  2003 ,  515 – 589 . 
+ 118.  J.  Sivaguru ,  A.  Natarajan ,  L. S.  Kaanumalle ,  J.  Shailaja ,  S.  Uppili ,  A.  Joy ,  V.  Ramamurthy , 
+ Acc. Chem. Res. ,  2003 ,  36 ,  509 – 521 . 
+ 119.  M.  Stratakis ,  G.  Kosmas ,  Tetrahedron Lett. ,  2001 ,  42 ,  6007 – 6009 . 
+ 120.  J.  Shailaja ,  J.  Sivaguru ,  S.  Uppili ,  A.  Joy ,  V.  Ramamurthy ,  Microporous Mesoporous Mater. , 
+ 2001 ,  48 ,  319 – 328 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reaction Control by Molecular Recognition 
+41
+ 121.  A.  Joy ,  S.  Uppili ,  M. R.  Netherton ,  J. R.  Scheffer ,  V.  Ramamurthy ,  J. Am. Chem. Soc. ,  2000 , 
+ 122 ,  728 – 729 . 
+ 122.  B.  Coughlan ,  W.  Carroll ,  P. O ’ Malley ,  J.  Nunan ,  J. Chem. Soc. Faraday Trans.  1 ,  1981 ,  77 , 
+ 3037 – 3047 . 
+ 123.  I. V.  Matyash ,  M. A.  Piontkovskaya ,  G. I.  Denisenko ,  A. M.  Kalinichenko ,  Zh. Strukt. Khim. , 
+ 1971 ,  12 ,  13 – 18 . 
+ 124.  G. I.  Denisenko ,  M. A.  Piontkovskaya ,  I. E.  Neimark ,  Ukr. Khim. Zh. ,  1970 ,  36 ,  260 – 264 . 
+ 125.  G. I.  Denisenko ,  Zh. Prikl. Spektrosk. ,  1968 ,  9 ,  307 – 313 . 
+ 126.  K.  Pitchumani ,  M.  Warrier ,  L. S.  Kaanumalle ,  V.  Ramamurthy ,  Tetrahedron ,  2003 ,  59 , 
+ 5763 – 5772 . 
+ 127.  K.  Pitchumani ,  M.  Warrier ,  V.  Ramamurthy ,  J. R.  Scheffer ,  Chem. Commun. ,  1998 , 
+ 1197 – 1198 . 
+ 128.  A.  Joy ,  R. J.  Robbins ,  K.  Pitchumani ,  V.  Ramamurthy ,  Tetrahedron Lett. ,  1997 ,  38 ,  8825 – 
+8828 . 
+ 129.  K.  Pitchumani ,  V.  Ramamurthy ,  Tetrahedron Lett. ,  1996 ,  37 ,  5297 – 5300 . 
+ 130.  V. J.  Rao ,  S. R.  Uppili ,  D. R.  Corbin ,  S.  Schwarz ,  S. R.  Lustig ,  V.  Ramamurthy ,  J. Am. Chem. 
+Soc. ,  1998 ,  120 ,  2480 – 2481 . 
+ 131.  M.  Leibovitch ,  G.  Olovsson ,  G.  Sundarababu ,  V.  Ramamurthy ,  J. R.  Scheffer ,  J.  Trotter , 
+ J. Am. Chem. Soc. ,  1996 ,  118 ,  1219 – 1220 . 
+ 132.  E.  Cheung ,  K. C. W.  Chong ,  S.  Jayaraman ,  V.  Ramamurthy ,  J. R.  Scheffer ,  J.  Trotter ,  Org. 
+Lett. ,  2000 ,  2 ,  2801 – 2804 . 
+ 133.  A.  Joy ,  S.  Uppili ,  M. R.  Netherton ,  J. R.  Scheffer ,  V.  Ramamurthy ,  J. Am. Chem. Soc. ,  2000 , 
+ 122 ,  728 – 729 . 
+ 134.  P.  Lakshminarasimhan ,  R. B.  Sunoj ,  J.  Chandrasekhar ,  V.  Ramamurthy ,  J. Am. Chem. Soc. , 
+ 2000 ,  122 ,  4815 – 4816 . 
+ 135.  K. C. W.  Chong ,  J.  Sivaguru ,  T.  Shichi ,  Y.  Yoshimi ,  V.  Ramamurthy ,  J. R.  Scheffer  ,  J. Am. 
+Chem. Soc. ,  2002 ,  124 ,  2858 – 2859 . 
+ 136.  L. S.  Kaanumalle ,  J.  Sivaguru ,  R. B.  Sunoj ,  P. H.  Lakshminarasimhan ,  J.  Chandrasekhar ,  V. 
+ Ramamurthy ,  J. Org. Chem. ,  2002 ,  67 ,  8711 – 8720 . 
+ 137.  A.  Natarajan ,  A.  Joy ,  L. S.  Kaanumalle ,  J. R.  Scheffer ,  V.  Ramamurthy ,  J. Org. Chem. ,  2002 , 
+ 67 ,  8339 – 8350 . 
+ 138.  J.  Sivaguru ,  T.  Shichi ,  V.  Ramamurthy ,  Org. Lett. ,  2002 ,  4 ,  4221 – 4224 . 
+ 139.  S.  Uppili ,  V.  Ramamurthy ,  Org. Lett. ,  2002 ,  4 ,  87 – 90 . 
+ 140.  J.  Sivaguru ,  R. B.  Sunoj ,  T.  Wada ,  Y.  Origane ,  Y.  Inoue ,  V.  Ramamurthy ,  J. Org. Chem. , 
+ 2004 ,  69 ,  6533 – 6547 . 
+ 141.  J.  Shailaja ,  L. S.  Kaanumalle ,  K.  Sivasubramanian ,  A.  Natarajan ,  K. J.  Ponchot ,  A.  Pradhan , 
+ V.  Ramamurthy ,  Org. Biomol. Chem. ,  2006 ,  4 ,  1561 – 1571 . 
+ 142.  J.  Sivaguru ,  H.  Saito ,  M. R.  Solomon ,  L. S.  Kaanumalle ,  T.  Poon ,  S.  Jockusch ,  W.  Adam ,  V. 
+ Ramamurthy ,  Y.  Inoue ,  N. J.  Turro ,  Photochem. Photobiol. Sci. ,  2006 ,  82 ,  123 – 131 . 
+ 143.  J.  Sivaguru ,  R. B.  Sunoj ,  T.  Wada ,  Y.  Origane ,  Y.  Inoue ,  V.  Ramamurthy ,  J. Org. Chem. , 
+ 2004 ,  69 ,  5528 – 5536 . 
+ 144.  A.  Joy ,  L. S.  Kaanumalle ,  V.  Ramamurthy ,  Org. Biomol. Chem. ,  2005 ,  3 ,  3045 – 3053 . 
+ 145.  A.  Joy ,  J. R.  Scheffer ,  V.  Ramamurthy ,  Org. Lett. ,  2000 ,  2 ,  119 – 121 . 
+ 146.  T.  Wada ,  M.  Shikimi ,  Y.  Inoue ,  G.  Lem ,  N. J.  Turro ,  Chem. Commun. ,  2001 ,  1864 – 
+1865 . 
+ 147.  J. G.  Victor ,  J. M.  Torkelson ,  Macromolecules ,  1987 ,  20 ,  2241 – 2250 . 
+ 148.  N.  Liu ,  Z.  Chen ,  D.  Dunphy ,  Y.  Jiang ,  R.  Assink ,  C.  Brinker ,  Angew. Chem. ,  2003 ,  115 , 
+ 1773 – 1776 . 
+ 149.  N.  Mal ,  M.  Fujiwara ,  Y.  Tanaka ,  Nature ,  2003 ,  421 ,  350 – 353 . 
+ 150.  H.  Okada ,  N.  Nakajima ,  T.  Tanaka ,  M.  Iwamoto ,  Angew. Chem. Int. Ed. ,  2005 ,  44 , 
+ 7233 – 7236 . 
+ 151.  H.  Qiu ,  C.  Yang ,  Y.  Inoue ,  S.  Che ,  Org. Lett. ,  2009 ,  11 ,  1793 – 1796 . 
+ 152.  D.  Fiedler ,  D. H.  Leung ,  R. G.  Bergman ,  K. N.  Raymond ,  Acc. Chem. Res. ,  2005 ,  38 , 
+ 349 – 358 . 
+ 153.  M.  Fujita ,  M.  Tominaga ,  A.  Hori ,  B.  Therrien ,  Acc. Chem. Res. ,  2005 ,  38 ,  369 – 378 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+42 
+Molecular Encapsulation
+ 154.  T.  Furusawa ,  M.  Kawano ,  M.  Fujita ,  Angew. Chem. Int. Ed. ,  2007 ,  46 ,  5717 – 5719 . 
+ 155.  T.  Yamaguchi ,  M.  Fujita ,  Angew. Chem. Int. Ed. ,  2008 ,  47 ,  2067 – 2069 . 
+ 156.  M.  Yoshizawa ,  Y.  Takeyama ,  T.  Kusukawa ,  M.  Fujita ,  Angew. Chem. Int. Ed. ,  2002 ,  41 , 
+ 1347 – 1349 . 
+ 157.  K.  Takaoka ,  M.  Kawano ,  T.  Ozeki ,  M.  Fujita ,  Chem. Commun. ,  2006 ,  1625 – 1627 . 
+ 158.  Y.  Nishioka ,  T.  Yamaguchi ,  M.  Kawano ,  M.  Fujita ,  J. Am. Chem. Soc. ,  2008 ,  130 , 
+ 8160 – 8161 . 
+ 159.  M.  Yoshizawa ,  S.  Miyagi ,  M.  Kawano ,  K.  Ishiguro ,  M.  Fujita ,  J. Am. Chem. Soc. ,  2004 ,  126 , 
+ 9172 – 9173 . 
+ 160.  M.  Yoshizawa ,  Y.  Takeyama ,  T.  Okano ,  M.  Fujita ,  J. Am. Chem. Soc. ,  2003 ,  125 , 
+ 3243 – 3247 . 
+ 161.  A. W.  Bosman ,  H. M.  Janssen ,  E. W.  Meijer ,  Chem. Rev. ,  1999 ,  99 ,  1665 – 1688 . 
+ 162.  S. M.  Grayson ,  J. M. J.  Frechet ,  Chem. Rev. ,  2001 ,  101 ,  3819 – 3868 . 
+ 163.  F.  Zeng ,  S. C.  Zimmerman ,  Chem. Rev. ,  1997 ,  97 ,  1681 – 1712 . 
+ 164.  J.  Jansen ,  de  E.  Brabander - van den Berg ,  E.  Meijer ,  Science ,  1994 ,  266 ,  1226 – 1229 . 
+ 165.  L. S.  Kaanumalle ,  R.  Ramesh ,  V. S. N.  Murthy Maddipatla ,  J.  Nithyanandhan ,  N.  Jayaraman  , 
+ V.  Ramamurthy ,  J. Org. Chem. ,  2005 ,  70 ,  5062 – 5069 . 
+ 166.  D. M.  Bassani ,  X.  Sallenave ,  V.  Darcos ,  J. - P.  Desvergne ,  Chem. Commun. ,  2001 , 
+ 1446 – 1447 . 
+ 167.  F. - C.  Fang ,  C. - C.  Chu ,  C. - H.  Huang ,  G.  Raffy ,  A. D.  Guerzo ,  K. - T.  Wong ,  D. M.  Bassani , 
+ Chem. Commun. ,  2008 ,  6369 – 6371 . 
+ 168.  D. M.  Bassani ,  V.  Darcos ,  S.  Mahony ,  J. - P.  Desvergne ,  J. Am. Chem. Soc. ,  2000 ,  122 , 
+ 8795 – 8796 . 
+ 169.  N. D.  McClenaghan ,  C.  Absalon ,  D. M.  Bassani ,  J. Am. Chem. Soc. ,  2003 ,  125 , 
+ 13004 – 13005 . 
+ 170.  V.  Darcos ,  K.  Grifﬁ th ,  X.  Sallenave ,  J. - P.  Desvergne ,  C.  Guyard - Duhayon ,  B.  Hasenknopf  , 
+ D. M.  Bassani ,  Photochem. Photobiol. Sci. ,  2003 ,  2 ,  1152 – 1161 . 
+ 171.  T.  Bach ,  H.  Bergmann ,  K.  Harms ,  Angew. Chem. Int. Ed. ,  2000 ,  39 ,  2302 – 2304 . 
+ 172.  T.  Bach ,  T.  Aechtner ,  B.  Neumuller ,  Chem. Eur. J. ,  2002 ,  8 ,  2464 – 2475 . 
+ 173.  B.  Grosch ,  C. N.  Orlebar ,  E.  Herdtweck ,  M.  Kaneda ,  T.  Wada ,  Y.  Inoue ,  T.  Bach ,  Chem. Eur. 
+J. ,  2004 ,  10 ,  2179 – 2189 . 
+ 174.  T.  Bach ,  T.  Aechtner ,  B.  Neumuller ,  Chem. Commun. ,  2001 ,  607 – 608 . 
+ 175.  T.  Bach ,  H.  Bergmann ,  B.  Grosch ,  K.  Harms ,  J. Am. Chem. Soc. ,  2002 ,  124 ,  7982 – 7990 . 
+ 176.  T.  Bach ,  H.  Bergmann ,  K.  Harms ,  J. Am. Chem. Soc. ,  1999 ,  121 ,  10650 – 10651 . 
+ 177.  C.  Muller ,  A.  Bauer ,  T.  Bach ,  Angew. Chem. Int. Ed. ,  2009 ,  48 ,  6640 – 6642 . 
+ 178.  S.  Breitenlechner ,  T.  Bach ,  Angew. Chem. Int. Ed. ,  2008 ,  47 ,  7957 – 7959 . 
+ 179.  D. F.  Cauble ,  V.  Lynch ,  M. J.  Krische ,  J. Org. Chem. ,  2003 ,  68 ,  15 – 21 . 
+ 180.  A.  Bauer ,  F.  Westkaemper ,  S.  Grimme ,  T.  Bach ,  Nature ,  2005 ,  436 ,  1139 – 1140 . 
+ 181.  J. T. M.  Evers ,  A.  Mackor ,  Tetrahedron Lett. ,  1978 ,  821 – 824 . 
+ 182.  K.  Langer ,  J.  Mattay ,  J. Org. Chem. ,  1995 ,  60 ,  7256 – 7266 . 
+ 183.  Y.  Pol ,  R.  Suau ,  E.  Perez - Inestrosa ,  D.  Bassani ,  Chem. Commun. ,  2004 ,  1270 – 1271 . 
+ 184.  Y.  Inoue ,  E.  Matsushima ,  T.  Wada ,  J. Am. Chem. Soc. ,  1998 ,  120 ,  10687 – 10696 . 
+ 185.  Y.  Inoue ,  Chem. Rev. ,  1992 ,  92 ,  741 – 770 . 
+ 186.  Y.  Inoue ,  H.  Tsuneishi ,  T.  Hakushi ,  A.  Tai ,  J. Am. Chem. Soc. ,  1997 ,  119 ,  472 – 478 . 
+ 187.  T.  Inoue ,  K.  Matsuyama ,  Y.  Inoue ,  J. Am. Chem. Soc. ,  1999 ,  121 ,  9877 – 9878 . 
+ 188.  C.  Yang ,  T.  Mori ,  T.  Wada ,  Y.  Inoue ,  New J. Chem. ,  2007 ,  31 ,  697 – 702 . 
+ 189.  C. Ke, C.  Yang ,  T.  Mori ,  T.  Wada ,  Y.  Liu ,  Y.  Inoue ,  Angew. Chem. Int. Ed. ,  2009 ,  48 , 
+ 6675 – 6677 . 
+ 190.  V. P.  Solov ’ ev ,  N. N.  Strakhova ,  O. A.  Raevsky ,  V.  Rudiger ,  H. - J.  Schneider ,  J. Org. Chem. , 
+ 1996 ,  61 ,  5221 – 5226 . 
+ 191.  C.  Yang ,  C.  Ke ,  K.  Fujita ,  D. - Q.  Yuan ,  T.  Mori ,  Y.  Inoue ,  Austr. J. Chem. ,  2008 ,  61 , 
+ 565 – 568 . 
+ 192.  X.  Zhang ,  G.  Gramlich ,  X.  Wang ,  W. M.  Nau ,  J. Am. Chem. Soc. ,  2002 ,  124 ,  254 – 263 . 
+ 193.  C.  Muller ,  T.  Bach ,  Austr. J. Chem. ,  2008 ,  61 ,  557 – 564 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+ 2 
+Cyclodextrins  
+ Ronald  Breslow 
+ Department of Chemistry, Columbia University, New York, NY 10027 
+ 2.1  Introduction 
+ Cyclodextrins are cyclic oligomers of glucose (Figure  2.1 ). The most common are   α -
+ cyclodextrin with six glucoses in a ring ( 1 ),   β  - cyclodextrin with seven glucoses ( 2 ), and 
+ γ - cyclodextrin ( 3 ) with eight glucoses in the ring. Because of all the sugar hydroxyls these 
+compounds are reasonably soluble in water but the interior cavities are relatively non -
+ polar, with about the polarity of dioxane. Thus in water the cyclodextrins can reversibly 
+bind hydrophobic substrates into their cavities, and within the complexes chemical reac-
+tions can occur. 
+ Friedrich Cramer did the ﬁ rst work in this area,  1   and early work was done by Myron 
+Bender. 2,3   In Bender ’ s studies, a bound ester reacted with a hydroxyl group on the rim of 
+the cyclodextrin to undergo a transesteriﬁ cation, with reasonable geometric selectivity 
+and some rate acceleration. This was followed up with substrates better designed to be 
+accelerated by such a process, and this will be the ﬁ rst part of the review. Then there are 
+some reactions in which cyclodextrin promotes a process but is not itself transformed, 
+and the ﬁ rst example of this was work we reported on selective aromatic substitution, the 
+second section of this review. I also describe the use of cyclodextrins to catalyse Diels –
+ Alder reactions, in which both the diene and the dienophile can bind into the cyclodextrin 
+cavity in water and in  ‘ water - like ’ solvents. 
+Molecular Encapsulation: Organic Reactions in Constrained Systems        Edited by Udo H. Brinker and Jean-Luc Mieusset
+© 2010 John Wiley & Sons, Inc.  ISBN: 978-0-470-99807-6
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+44 
+Molecular Encapsulation
+ Then systems are described in which the cyclodextrin binding group has catalytic 
+groups attached to it, to mimic enzymes whose binding groups and catalytic groups are 
+not the same. The ﬁ rst section describes catalysed hydrolysis reactions with metal ions 
+bound to ligands that are attached to one or two cyclodextrins. Then mimics of ribonu-
+clease enzymes in which two catalytic groups are attached in well - deﬁ ned positions to a 
+cyclodextrin are described. There follows brief descriptions of studies on simple binding 
+by cyclodextrin dimers and trimers. 
+ Extensive studies on mimics of transaminase enzymes follow, and then mimics of 
+enzymes that use thiamine pyrophosphate as their coenzyme. Studies on mimics of 
+enzymes that perform aldol condensations are then described. After a brief section on 
+mimics of enzymes that use coenzyme B 12  as a coenzyme, there is a description of mimics 
+of cytochrome P - 450 oxidizing enzymes, in which as many as four cyclodextrins are 
+involved in binding. 
+ We have written a number of reviews of our work in this ﬁ eld. 4 – 16   Our chapter in 
+Chemical Reviews  14   was particularly comprehensive, and covered the work in many other 
+laboratories besides our own. There are actually two other chapters on reactions in cyclo-
+dextrins in this book.  17,18   It has been agreed that each of our laboratories will concentrate 
+chieﬂ y on the work that we ourselves have done. 
+ 2.2  Acylations of the Cyclodextrins by Bound Substrates 
+ Myron Bender had reported that a meta -  t - butylphenyl acetate ( 4 ) acetylated   β - cyclodextrin 
+in water with a rate 250 times as fast as that for hydrolysis of that same substrate at 
+the same pH.  2   We had shown that the same reaction was even faster in a mixed DMSO/
+water solvent, but still the acceleration was not what one would have hoped for.  19 
+Model - building suggested that in the acylation reaction the tetrahedral intermediate is 
+partly pulled out of the cavity, so cyclodextrin binding is to some extent ﬁ ghting against 
+the reaction rate. Thus we made a new substrate, the  p - nitrophenyl ester of ferrocene-
+acrylic acid ( 5 ), and saw that it acylated   β  - cyclodextrin with a rate acceleration of 
+51,000 compared with the hydrolysis rate in free solution.  20   With this substrate there 
+O
+H
+O
+H
+HO
+H
+OH
+H
+H
+HO
+n
+n = 1 alpha-cyclodextrin 1
+n = 2 beta-cyclodextrin 2
+n = 3 gamma-cyclodextrin 3
+ Figure 2.1   α ,  β , and   γ cyclodextrins in three representations  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Cyclodextrins 
+45
+was no need to pull the binding ferrocene group up relative to its preferred geometry 
+in the cavity. 
+ 

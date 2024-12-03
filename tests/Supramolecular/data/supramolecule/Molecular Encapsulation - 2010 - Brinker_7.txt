@@ -1,0 +1,3507 @@
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+ 12 
+Organic Cations in 
+Constrained Systems  
+ Werner  Abraham and  Lutz  Grubert 
+ Institut f ü r Chemie, Humboldt - Universit ä t zu Berlin, D - 12489 Berlin, Germany 
+ 12.1  Introduction 
+ There is growing interest in artiﬁ cial receptors that serve as sensors of charged species. 
+Studies of the interaction between hosts and organic cations can also advance our under-
+standing of the recognition properties of biological systems. Because many bioactive 
+molecules such as the neurotransmitters acetylcholine, serotonin, nicotine, or protonated 
+ γ  - aminobutyric acid are ammonium ions, the complexation of these organic cations is of 
+particular interest. Aliphatic biogenic amines are being monitored in several foodstuffs 
+like ﬁ sh, meat cheese and wine during ageing and storage. 1 
+ The design of selectively bound host – guest complexes is a challenge for supramolecu-
+lar chemistry. This chapter deals with host – guest systems including cyclophanes, calix-
+arenes, homocalixarenes, and cucurbiturils as hosts. Such molecular containers (cavitands) 
+should provide a cavity surrounded by rigid walls that enables close proximity of the 
+guest to the wall of the host. In order to take advantage of cation – π  interactions, aromatic 
+subunits are necessary. The inﬂ uences of shape, rigidity, and the chemical structure of 
+the host molecules as well as the nature of the organic cations will be reviewed. More 
+complex systems such as sensors and switchable host – guest complexes are applications 
+which will play a pronounced role in the development of new receptors developed from 
+base structures of the hosts. 
+Molecular Encapsulation: Organic Reactions in Constrained Systems        Edited by Udo H. Brinker and Jean-Luc Mieusset
+© 2010 John Wiley & Sons, Inc.  ISBN: 978-0-470-99807-6
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+328 
+Molecular Encapsulation
+ 12.1.1  Hosts 
+ For binding to occur, a host must possess suitable binding sites with favourable electronic 
+properties such as polarity and hydrogen bond donor/acceptor abilities that complement 
+those of the guest. Cyclophanes such as  I , calixarenes  II , homocalixarenes  III , and resor-
+cinarenes  IV fulﬁ l these requirements (Scheme  12.1 ). Cucurbiturils  V  are water soluble 
+container molecules without aromatic subunits. Therefore, both electrostatic interaction 
+other than cation – π interaction and hydrophobic interaction play a dominant role. 
+ The host molecules considered here possess a more or less rigid structure surrounding 
+a cavity that can form complexes with organic cations having various shapes. The strength 
+of binding depends on several parameters such as: 
+ •  The type of interaction between host and guest. 
+ •  The solvent used. 
+ •  The rigidity of the host. 
+ •  The anion. 
+ 1.  While cation – π interaction 2   plays an important role not only in biological systems as 
+illustrated by acetylcholine esterase,  3 artiﬁ cial receptors with sidewalls containing 
+aromatic groups also exhibit this type of interaction with organic cations. Hydrogen 
+bonds ( + N − H  …  X) between the guest ammonium ions, formed by protonation of 
+amines, and the functional groups (X   =   O, N) of the host molecule may be stronger 
+than other electrostatic forces such as cationic – π interaction. 
+OR
+O
+O
+OR
+OR
+O
+O
+RO
+O
+(CH2)n
+(CH2)n
+(CH2)n
+OR
+OR
+O
+O
+O
+O
+O
+H
+H
+H
+H
+N
+N
+N
+N
+O
+O
+N
+N
+N
+N
+O
+O
+N
+N
+N
+N
+O
+O
+N
+N
+N
+N
+O
+O
+N
+N
+N
+N
+O
+O
+N
+N
+N
+N
+O
+O
+OH
+HO
+OH
+OH
+OH
+OH
+OH
+X
+O
+O
+H
+H
+X
+O
+O
+H
+H
+O
+O
+OH
+R
+R
+R
+R
+hemicarcerand I
+calixarene II
+homooxacalix[4]arene III
+resorcinarene IV
+cucurbituril V (CB-6)
+n
+ Scheme 12.1   Host molecules  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Organic Cations in Constrained Systems 
+329
+ Charged groups such as sulfanyl substituents may serve as secondary binding sites 
+operating through salt bridges. 
+ 2.  The solvent strongly inﬂ uences the complexation of organic cations. The more fully 
+the cations are solvated, the lower will be the free energy gained by the interaction 
+between the host and the organic cation. Cationic – π  interaction has the greatest inﬂ u-
+ence in low polarity solvents such as chloroform. In more polar solvents, such as 
+acetonitrile, cation – π  interactions are distinctly diminished as compared with chloro-
+form or tetrachloroethane. Above all, hydrophobic interactions play the main role in 
+aqueous solution. Furthermore, CH – π  interaction may contribute to the overall binding 
+strength. 
+  3.     To bind guests effectively, a host must have binding sites which are complementary 
+to the properties of the guest molecule. The electronic character of the host must match 
+that of the guest. The conformation of the host must supply strong interactions at the 
+proper distances and angles. If a host does not undergo a signiﬁ cant conformational 
+change upon complexation, it is preorganized. On the other hand, a high ﬂ exibility of 
+the host consumes energy which is then not available for the binding process. The 
+overall free energy of complexation represents the difference between the unfavourable 
+reorganisation energy and the favourable binding energy. However, strongly preorgan-
+ized hosts may hinder the formation of the complexation transition state leading to 
+slower guest binding kinetics (slow exchange results). In contrast, conformationally 
+ﬂ exible hosts are able to adjust rapidly to complexation conditions, and both compl-
+exation and decomplexation are rapid (fast exchange). 
+  4.     Because ion pairs are formed in low polarity aprotic solvents, the anion of organic 
+cations also contributes to the complexation. It has been found that the stability of 
+complexes between aromatic receptors and ammonium and iminium ions is decreased 
+in the order picrate > triﬂ uoroacetate > I  −  > Br  −  > Cl  −  > tosylate > acetate. 4   Thus, the lower the 
+cation - anion attraction, the stronger is the cation – π interaction. 5 
+ Hosts must provide not only a sufﬁ cient interior concave surface, but also an opening 
+for accepting the guest. A large opening leads to a rapid in - out exchange and consequently 
+to small binding constants. A small opening may not provide a portal large enough for 
+the guest molecules to enter. Accordingly, gated (constrictive binding) and non - gated 
+hosts may result. 6 
+ 12.1.2  Guests 
+ The organic cations of the types  A  –  D are considered in this chapter (Scheme  12.2 ). 
+ Both the charge density and the shape of the cation will mainly govern the interaction 
+with the  π  - basic cavity of the hosts of types  I  –  IV  (Scheme  12.1 ). The accessibility of 
+the cavity of a particular host is controlled both by the size of the cavity and by the con-
+formational mobility of the host. 
+ Ammonium ions  A  represent a special guest class because the cation can be formed 
+by proton transfer in acidic solutions or by acidic functionalities such as the OH - groups 
+of the calixarenes. The N + H - bond allows formation of ionic hydrogen bonds with H - bond 
+acceptors such as oxygen (e.g., at the narrower rim of calixarenes  II  or at the wider rim 
+of resorcinarenes  IV ). In spherical tetraalkylammonium ions  B , the positive charge is 
+dispersed over the four alkyl groups. In contrast, the positive charge is non - symmetrically 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+330 
+Molecular Encapsulation
+distributed in the ﬂ at aromatic iminium ions of the type  C . The charge of aryltropylium 
+ions  D  (R   =   Ar) is strongly delocalized between the tropylium moiety and the aryl sub-
+stituent. Therefore, the question arises as to whether both parts of these guests are able 
+to orient toward the interior. Additionally, both  C  and  D  may interact with aromatic units 
+of the hosts by  π - stacking. 
+ 12.1.3  Structure – Interaction Relationships 
+ The quality of synthetic receptors toward binding of organic cations may be evaluated by 
+thermodynamic parameters such as binding constants, enthalpy (  ∆ H), entropy (  ∆ S) and 
+Gibbs free energy (  ∆ G) and also by structural parameters like complexation - induced shifts 
+of proton resonances (CIS) as determined from NMR - spectroscopy and crystal structures. 
+Determination of binding constants and binding energies can be determined with spec-
+troscopic methods (UV - Vis - , NMR, and Mass spectroscopy). In most cases, K is deter-
+mined with titration experiments followed by regression plot analysis of the observed 
+data based on suitable equations.  7   UV - Vis and NMR spectroscopy are complementary 
+methods, functioning in different concentration ranges. 
+ Compared with spectroscopic techniques, calorimetry is a universal methodology; it 
+functions independently of probe peculiarities, and has the advantage of yielding enthalpy 
+as a directly observable experimental result.  8   Depending on the extent of interaction 
+between the components from a single calorimetric experiment, the main state functions 
+of the binding process (  ∆ H,   ∆ S and   ∆ G) are accessible. Because in most cases the com-
+plete set of parameters is not available, different hosts related to the binding strength and 
+selectivity of various guests may be compared on the basis of binding constants. The CIS 
+values taken from  1 H NMR titration experiments provide valuable information about the 
+arrangement of the guest within the host. Protons deep inside the cavity of the host often 
+are strongly shifted up - ﬁ eld due to the shielding effect of the aromatic sidewalls. All 
+methods mentioned above also provide the stoichiometry of complexes. 
+ 12.2  Host – guest Complexes with Organic Cations 
+ 12.2.1  Cyclophanes 
+ The host  I - 1  (Scheme  12.3 ) possesses an opening that allows guests such as acetylcholine 
+variants  B - 1  and  B - 2  to enter the hydrophobic cavity. The receptor has a high afﬁ nity for 
+these ammonium ions (  ∆ G  =  − 5.3 and  − 5.2  kcal  mol  − 1 , respectively) in aqueous solution. 
+Probably hydrophobic interactions play the main role. Small changes in the size of the 
+host cavity signiﬁ cantly affect host – guest interaction. 9   CIS values revealed that a loose 
+association is required to achieve a strong binding of quaternary ammonium ions. 
+N+
+R1
+R2
+R3
+H
+X–
+A
+N+
+R1
+R2
+R3
+R4
+X–
+B
+N
+X–
+C
+R
+X–
+D
+ Scheme 12.2   Types of guest molecules  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Organic Cations in Constrained Systems 
+331
+ The cyclophanes  I - 2 – I - 4 (Scheme  12.4 ) were synthesized to improve the afﬁ nity for 
+protonated amines.  10   While tetraalkylated ammonium ions are strongly complexed by  I - 2 , 
+unmodiﬁ ed protonated amines are not well bound. Simple protonated amines are more 
+strongly solvated by water than alkylated ammonium ions.  10   Through the combination of 
+interactions between host and guest, including cation – π , hydrophobic, and salt bridge 
+interactions, the host  I - 4  (Scheme  12.4 ) can bind even well - solvated guests such as  A - 1 
+ –  A3 ,  B - 3 – B - 5 , and  C - 1 ,  C - 2 . Only the binding of  B - 6  is not improved by salt bridge 
+formation. Arginine - NH 2 ( A - 3 ) and arginine - containing dipeptides were strongly bound 
+OR
+O
+(CH2)n
+O
+OR
+OR
+O
+O
+(CH2)n
+RO
+O
+(CH2)n
+OR
+OR
+O
+I-1 n = 5, R = CH2COOH
+N+
+CH2-CH2-OR
+I–
+B-1: R = H B-2: R = COMe
+ Scheme 12.3   Complexes between the cyclophane  I - 1 and various organic cations  
+O
+O
+O
+COO–
+–OOC
+–OOC
+COO–
+R1
+R2
+R3
+I-2: R1= R2= R3 = H
+I-3: R1= COO–R2= R3= H
+I-4: R1= R2= R3 = COO–
+O
+N+
+N
+N+
+N
+H
+N
+N
+H
+N
+N
+N
+H
+N
+N
+N
+N+
+N+
+I–
+I– 
+N*
+H
+H
+Cl–
+H2N
+NH2
+N
+H
+CONH2
+NH2
+A-1
+B-3
+A-2
+A-3
+B-4
+B-5
+B-6
+C-1
+C-2
+ Scheme 12.4   Different types of organic cations forming complexes with the cyclophanes 
+ I - 2 – I - 4 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+332 
+Molecular Encapsulation
+in water solution ( ∆ G  =  − 6  kcal  mol  − 1 ). The effect of salt bridges in addition to cation – π 
+interactions can be estimated as  ∼ 1  kcal  mol  − 1 . The ﬂ at, delocalized   π systems such as in 
+ A - 3  and  C - 1  are well suited for stacking of aromatics of  I - 4 . Furthermore, the cation must 
+have a region of intense positive electrostatic potential for an electrostatic interaction to 
+occur with the carboxylate groups in an exposed aqueous environment. 
+ 12.2.2  Calix[n]arenes 
+ The calix[n]arenes, perhaps the major class of organic receptors in supramolecular chem-
+istry, are simple to synthesize and can be widely modiﬁ ed by substitutions at the aromatic 
+cores and the phenolic OH - groups. Therefore, they can easily be adapted for speciﬁ c 
+uses. 11 – 15   The vase - like conformation of calix[4] and, to a greater extent, the higher homo-
+logues calix[5], calix[6], or calix[8]arene is characterized by a high mobility due to ﬂ ip-
+ping of the aromatic units. However, the mobility of the calix[4] and calix[5]arenes in 
+particular can be restricted by substituents at the narrower rim of the cone conformation 
+(Scheme  12.5 ). Other conformations, such as the 1,3 - alternate arrangement of the aryl 
+groups, do not play a signiﬁ cant role in binding of organic cations. 
+ Calixarenes without ionisable substituents at the wider rim are not water soluble. Their 
+complexation behaviour towards organic cations, has, therefore, been studied mainly in 
+lipophilic solvents such as CDCl 3  and (CDCl 2 ) 2 . The cation – π  interaction is the main 
+contribution to the stability of complexes and the association constants are rather low, 
+ranging from 10 to 1000  M  − 1 (see Table  12.1 ). 
+ The role of the cavity size of calixarenes is heavily predictable. For example, there is 
+no signiﬁ cant hole - selectivity of hosts  II - 1 – II - 3  (Scheme  12.6 ) in complexes both with 
+the tetraalkylammonium ion  B - 7  and the iminium ion  C - 3  (Table  12.1 ). Surprisingly, the 
+ﬂ exible methylether  II - 1 , which exhibits interconversion between different conformers 
+(cone - partial cone, 1,3 alternate), binds  B - 7  whilst the ﬁ xed cone with propyl groups at 
+the narrower rim does not. 16 Also, the different cavity sizes of the calix[4]arene  II - 4 and 
+calix[5]arene  II - 5 ﬁ xed in their cone - conformation exhibit no selectivity with the iminium 
+OR
+OR
+OR
+RO
+R'
+R'
+R'
+R'
+OR
+OR
+OR
+OR
+R'
+R'
+R'
+R'
+Calix[4]arene II (n = 0)
+(cone conformation)
+Calix[4]arene II (n = 0)
+(1,3 alternate conformation)
+ Scheme 12.5   Conformations of calixarenes  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Organic Cations in Constrained Systems 
+333
+guest (compare Table  12.1 , entries 4 and 5, row  C - 4 ). In contrast, by restricting the acces-
+sibility of the cavity by a bridge such as in host  II - 7  (Scheme  12.6 ) only monomethylam-
+monium ion and not the larger di - , tri -  and tetramethylammonium ions are bound.  17 
+Substituents at the wider rim generally have a considerable inﬂ uence on the binding of 
+organic cations. The simplest and most often found inﬂ uence is the size of substituents 
+which hinder guest binding due to steric interference. The bulky  tert - butyl groups used 
+in the synthesis of calixarenes diminish the association constants (compare entries 5 and 
+6 of Table  12.1 ). On the other hand, substituents may enlarge the cavity, thus supporting 
+ Table 12.1   Association constants (M  − 1 ) of host – guest complexes in  CDCl 3 solution 
+ Host 
+ B - 2 
+ B - 7 
+ B - 8 
+ B - 9 
+ C - 3 
+ C - 4 
+ D - 1 
+ D - 2 
+ D - 3 
+ II - 1 [16] 
+ – 
+ 870  a  
+ – 
+ – 
+ 120  a  
+ – 
+ – 
+ – 
+ – 
+ II - 2 [16] 
+ – 
+ 870  a  
+ – 
+ – 
+ 79  a  
+ 363 
+ – 
+ – 
+ – 
+ II - 3 [16] 
+ – 
+ 650  a  
+ – 
+ – 
+ 200  a  
+ – 
+ – 
+ – 
+ – 
+ II - 4 [18] 
+ – 
+ – 
+ – 
+ – 
+ – 
+ 277 
+ – 
+ 360 
+ 92 
+ II - 5 [21] 
+ 210  
+ – 
+ – 
+ 210 
+ – 
+ 200 
+ – 
+ – 
+ – 
+ II - 6 [21] 
+ 52  
+ – 
+ – 
+ 39 
+ – 
+ 19 
+ – 
+ – 
+ – 
+ II - 8 [18] 
+ 52  
+ – 
+ 3 
+ 28 
+ 82 
+ 190 
+ 120 
+ 213 
+ 190 
+ – not determined,   a  solvent CDCl 3 /CD 3 CN 8/2. 
+OH
+O
+O
+O
+O
+R
+R
+R
+R
+N
+OC
+CO
+O
+O
+R = CH2CH2OCH2CH3
+II-7
+H3C
+NH3
+A-2
+O
+O
+O
+O
+n
+N+
+II-1: n = 1, II-2: n = 3, II-3: n = 5
+B-7
+OH
+O
+O
+OH
+O
+O
+O
+OH OH O
+O
+II-5: R = H, II-6: R = tert-Bu
+II-8
+B-2
+N+
+N+
+N+
+N+
+N+
+OCOCH3
+R
+R
+R
+R
+R
+B-8
+B-9
+C-3
+C-4
+O
+O
+Si
+N
+ClO4–
+ClO4–
+ClO4–
+I–
+D-1
+D-2
+D-3
+Cl–
+I–
+I–
+ClO4–
+O
+O
+O
+O
+II-9
+HO
+OHHO
+OH
+Br–
+OH OH O
+O
+II-4
+ Scheme 12.6   Calixarene as hosts for different guests  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+334 
+Molecular Encapsulation
+OH OH O
+O
+O
+Si
+H
+-350
+0
+H
+4.2
+7.5
+84
+52
+-6
+-6
+-1
+-8
+14
+-9
+ Scheme 12.7   CIS values (in Hz) observed for different protons in the complex  II - 8 / D - 2 18 
+binding. The cycloheptatrienyl substituents of host  II - 8 (Scheme  12.6 and Table  12.1 ) 
+seem to support the binding of ﬂ at iminium and aryl tropylium ions but hinder the com-
+plexation of spherical ammonium ions (see Table  12.1 , entry 7). The conformation of 
+host  II - 8  exhibits a ﬂ attened cone - conformation (see crystal structure in Scheme  12.6 ) 
+which is suitable in order to bind ﬂ at aryltropylium ions. According to the CIS values of 
+different protons in both the host and the guest, the guest is sandwiched between two 
+cycloheptatrienyl substituents of the host. The tropylium moiety is closely bound to the 
+cavity, whereas the aryl group is pointed towards the exterior (see Scheme  12.7 ).  18 A 
+comparison of the CIS values (Hz) observed for the cycloheptatrienyl substituents with 
+those of the protons of the aromatic rings indicates that the cationic guest is located in 
+the upper part of the calixarene cavity. Free horizontal rotation of the aryltropylium ion 
+is slow on the NMR time scale.   
+ The cone conformation of tetraalkoxy calix[4]arenes is not completely blocked in solu-
+tion but experiences residual mobility between two C 2v (ﬂ attened cone) structures.  19 The 
+residual mobility can be diminished by functionalization at the narrower rim such as the 
+introduction of crown bridges.  19   Also the alkylation of only two OH - groups at the nar-
+rower rim seems to immobilize the cone conformation due to hydrogen bonds. Accordingly, 
+tetraalkoxy derivatives of the host  II - 8  exhibit no or very low binding properties towards 
+ammonium and iminium ions.  18   However, a particularly high association constant of 
+K  =  3526 l  mol  − 1  was measured for the complex of the host  II - 9 (Scheme  12.6 ) with 
+tetramethylammonium chloride. 20 The anion was proposed to act as a hydrogen bonding 
+acceptor towards the phenolic OH - group of the substituents. 
+ 12.2.3  Charged Calixarenes 
+ Studies of water soluble calixarenes such as  II - 10  (Scheme  12.8 ) in complex with organic 
+cations in aqueous media have been most useful because this system represents a typical 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Organic Cations in Constrained Systems 
+335
+environment where most biological processes occur.  22  para - Sulfonated - calix[4]arene  II -
+ 10  is cone shaped with hydrophilic wide and narrow rims separated by a hydrophobic 
+region. This compound binds the basic amino acids lysine and arginine with association 
+constants of  ∼ 10 3  M  − 1  at pH 8.  23 Compounds  II - 11  and  II - 12 , in contrast, form only weak 
+complexes. Acetylcholine  B - 2 formed very stable complexes with association constants 
+of up to 4  ×  10 5 l  mol  − 1 with  II - 10 . 24 Notably, this afﬁ nity constant is comparable to the 
+values observed for natural biological receptors. 
+ A microcalorimetry study of the complexation of  II - 10  showed that the mobile host is 
+able to bind tetraalkylammonium and alkylammonium ions in water with association 
+constants up to 47000   M  − 1 . 25   The binding of all organic cations is enthalpy driven, but the 
+role of hydrophobic interaction is difﬁ cult to evaluate. The entropic term is small and 
+positive (except for the tetraethylammonium ion) and does not correspond to the expecta-
+tions of the classical hydrophobic effect. But recent studies have indicated that the  ‘ non-
+classical ’  hydrophobic effect is controlled by the enthalpy.  26   The positive sign of the 
+entropic term indicates that the solvation of the alkyl chain plays a role. In comparison 
+to  II - 10 , the host  II - 13 , locked in the cone conformation, binds the tetraethylammonium 
+ion with an afﬁ nity that is one order of magnitude weaker (3160  vs . 25100 l  mol  − 1 ). 27 The 
+binding is assisted by the charged sulfanyl groups at the wider rim. The host  II - 14 , which 
+lacks these charged groups, forms a complex with the tetraethylammonium ion with an 
+association constant of only 126 l   mol  − 1 . The ditopic guest  B - 9  (Scheme  12.6 ) is selec-
+tively complexed with the aromatic ring pointing toward the interior of the cavity while 
+the  II - 14  variant is able to recognise only the polar alkylammonium head group of  B - 9 
+(Scheme  12.9 ). The complex geometry was discerned from the CIS values observed for 
+protons of the aromatic ring and the protons of the methyl groups,  28   and indicates the 
+OH OH OH
+OH
+n
+–O3S
+– O3S
+SO3–
+SO3–
+II-10: n = 1, II-11: n = 3, II-12: n = 5
+O
+O
+O
+O
+R
+R
+R
+R
+HOOC
+COOH
+HOOC
+COOH
+II-13: R = SO3–, II-14: R = H
+B-2, B-8, B-9
+B-8, B-9
+ Scheme 12.8   Water soluble calix[4]arenes used for complexation studies with guests of 
+the type  B 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+336 
+Molecular Encapsulation
+relative importance of electrostatic cation – π  interaction. For both guests, the inclusion 
+process is enthalpy driven, but is entropically disfavoured. The negative entropic term 
+results from a favourable term due to the desolvation of host and guest upon complexation 
+and the unfavourable term is due to increased rigidity of the system upon inclusion of the 
+guest. The higher stability of the hosts bearing the sulfonyl groups results from a greater 
+desolvation of the host – guest complex. Surprisingly, the receptor  II - 10  is more efﬁ cient 
+than the rigidiﬁ ed hosts, which may be explained by the assumption that the host is more 
+adaptable to the shape of the guest due to its conformational mobility.   
+ The calix[4]arenes  II - 15  and  II - 16  (Scheme  12.10 ) are only soluble in lipophilic media 
+such as chloroform. Accordingly, the cation – π  interaction is expected to mainly control 
+the strength of complexation of acetylcholine iodide  B - 2 , chinolinium perchlorate  C - 2 , 
+and the tropylium hexaﬂ uorophosphates  D - 3  and  D - 4 (Scheme  12.10 ). Association con-
+stants determined with the help of NMR titration have revealed that the charged host  II - 16 
+binds organic cations more tightly than does the neutral host  II - 15  (compare column 3 in 
+Table  12.2 ). 29   This outcome is surprising and probably the result of complementary 
+cation – π  interaction, charge transfer interaction, and   π - stacking. 29   If the cationic host  II -
+ 16  binds organic cations, the question arises as to whether the cationic host interacts with 
+itself. Dimers have been formed with an association constant of 230   M  − 1 (Scheme  12.11 ), 
+which demonstrates that the attractive cation – π  interaction between each of the tropylium 
+groups with the  π  - basic walls of the calixarene cavity is stronger than the repulsive inter-
+action between the two positive charges. 
+ Other calix[4]arenes combine both a host and a guest unit, such as the pyridinium -
+ conjugated derivative  II - 17  (Scheme  12.12 ) which forms oligomers by cation – π interac-
+tion both in solution, in the solid state, and also in the gas phase, as revealed by  1 H NMR 
+spectroscopy, crystal structure determination, and crystallographic studies. 30 
+ A general problem in the determination of association constants with the help of 
+NMR titration appeared for the complexes  II - 16 / B - 2  and  II - 16 / D - 3 (Table  12.2 ). 
+Different association constants were obtained by using signals from different protons 
+(e.g., protons of the tropylium moiety and the dimethylamino group of guest  D - 3 ). 
+This ﬁ nding can be interpreted as the formation of isomeric complexes in which dif-
+ferent parts of the guest molecule are oriented into the interior of the host molecule 
+(see Scheme  12.13 ). In such cases, the determination of the microscopic association 
+constants of both complexes is not possible. Obviously the formation of isomeric 
+O
+O
+O
+O
+–O3S
+–O3S
+SO3–
+SO3–
+HOOC
+COOH
+HOOC
+COOH
+N+
+O
+O
+O
+O
+HOOC
+COOH
+HOOC
+COOH
+N+
+ Scheme 12.9   Structure of complexes between calixarenes and the anilinium ion  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Organic Cations in Constrained Systems 
+337
+O
+O
+OH
+O
+COOMe
+COOMe
+MeOOC
+B-2, C-2, D-3
+HN
+D-4
+O
+O
+OH
+O
+CO
+OC
+CO
+O
+O
+O
+C-2, D-3
+II-15
+II-16
+ Scheme 12.10  Modiﬁ ed calix[4]arene hosts and various guests studied  
+ Table 12.2   Association constants ( M  − 1 ) of   II  - 15 and  II  - 16 
+with different guests in  CDCl  3 solution 
+ Host 
+ Guests  
+ B - 2 
+ C - 4 
+ D - 3 
+ D - 4 
+ II - 15 
+ – 
+ 41  ±  3 
+ 21  ±  3 
+ 24  ±  1 
+ – 
+ II - 16 
+ 1090  ±  76  a  
+ 293  ±  24 
+ 540  ±  133 
+ 163  ±  20  a  
+ 446  ±  43 
+ 122  ±  6 
+ – not determined.  
+ a  association constants obtained with different proton signals of the guest  
+complexes is related to guests with a more elongated shape, such as acetylcholine and 
+the aryltropylium ions.  
+ With the help of mass spectroscopy (ESI), self - complexation of the charged host  II - 16 
+is detectable even in the gas phase.  29   Also the complexation between the hosts  II - 15 and 
+ II - 16 is monitored by the related mass peaks. 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+338 
+Molecular Encapsulation
+OH
+OH
+OH
+O
+II-17
+N+
+Br–
+OH
+OH
+OH
+O
+N+
+Br–
+OH
+OH
+OH
+O
+N+
+Br–
+n
+OH
+OH OH
+O
+N+
+Br–
+ Scheme 12.12   Oligomeric complexes of a calix[4]arene bearing an organic cation at the 
+narrow rim  
+ The binding of iminium ions by neutral calixarene hosts in the gas phase has also been 
+detected with the help of SIMS - mass spectroscopy, 31   and even binding constants have 
+been estimated. The peak intensities observed in mass spectrometry reﬂ ect the association 
+in a matrix and the stability of the complexes in the gas phase. Thus, mass spectrometry 
+is a suitable tool to detect charged complexes based on cation – π interaction. Because of 
+O O O
+O
+R
+R
+R
+R
+O O O
+O
+R
+R
+R
+R
+O
+O
+O
+O
+R
+R
+R
+R
+R = CH2COOMe
++
+=
+2
+ Scheme 12.11   Self complexation of the host  II - 16 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Organic Cations in Constrained Systems 
+339
+the absence of solvents, the selectivity of binding can be expected to be different from 
+those observed in solution. 
+ 12.2.4  Homooxacalixarenes 
+ The introduction of an additional atom such as oxygen into the methylene bridges has 
+two effects: 1) The variety of cyclophanes is considerably increased (two examples are 
+shown in Scheme  12.14 ). 2) Depending on the number and the distribution of the bridging 
+oxygens, the variety of isomers and conformers is strongly increased. 3) The size of the 
+cavity can be increased relative to the calix[4]arenes; enlarging the cavity may improve 
+the binding strength. 4) The mobility of the cyclophanes is considerably increased. 32 Two 
+effects may result  –  the higher mobility expends energy and the binding energy is dimin-
+ished or the higher mobility enables the cyclophane to form the most suitable geometry 
+of the host in the complex. 
+ The whole set of compounds methylated at the narrower rim  III - 1 – III - 7 (Scheme 
+ 12.14 ) has been synthesized and the binding of picrates of organic cations  B - 2 ,  B - 10 
+B - 11and  C - 3 (Scheme  12.6 , Scheme  12.14 ) was studied. 33 Despite having the same 
+macrocyclic structure of the hosts, there are remarkable differences in both the measured 
+association constants with different guests (see Table  12.3 ) and the CIS values extrapo-
+lated to indicate complete complexation of the guest. These results indicate that the 
+cavity must be somewhat differently arranged in the complexes with different cations 
+due to the balance between cation – π  interaction and the strain energy of the host. 
+NMe2
+NMe2
+NMe2
++
++
++
++
++
++
++
+ClO4−
+PF6−
+PF6−
+PF6−
+ClO4−
+K1
+K2
+ClO4−
+ Scheme 12.13   Complex isomers  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+340 
+Molecular Encapsulation
+R
+R
+OR1
+OR2
+R
+R
+OR4
+OR3
+O
+O
+[3.1,3.1]Homooxacalix[4]arene
+type III
+o
+o
+o
+o
+o
+o
+o
+o
+o
+o
+cone
+partial cone
+1,2-alternate
+1,3-alternate
+1,4-alternate
+R
+R
+OR'
+OR'
+R
+R
+OR'
+OR'
+O
+O
+O
+O
+octahomotetraoxacalix[4]arene
+type III
+R = tert-Bu, 
+III-1: R' =  R2 = R3 = R4 = H
+III-2: R' =  Me, R2 = R3 = R4 = H
+III-3: R' =  R2 = Me, R3 = R4 = H
+III-4: R' =  R3 = Me, R2 = R4 = H
+III-5: R' =  R4 = Me, R2 = R3 = H
+III-6: R' =  R2 = R4 = Me, R3 = H
+III-7: R' =  R2 = R3 = R4 = Me
+III-8: R' =  R2 = R3 = R4 = CH2COOi-Pr
+B-2
+N+
+B-10
+B-11
+N+
+C-3
+ Scheme 12.14   Homocalixarenes as guests for organic cations of the type B and C  
+ Table 12.3   Association constants of complexes in  CDC l 3 
+solution ( M  − 1 ) 
+ host  
+ Guests  
+ B - 2 
+ B - 10 
+ B - 11 
+ C - 3 
+ III - 1 
+ 10 
+ 15 
+ 15 
+ 30 
+ III - 2 
+ 60 
+ 110 
+ 40 
+ 120 
+ III - 3 
+ 55 
+ 130 
+ 11 
+ 90 
+ III - 4 
+  190 
+ 740 
+ 15 
+ 130 
+ III - 5 
+  110 
+ 410 
+ 7 
+ 80 
+ III - 6 
+  140 
+ 490 
+ 4 
+ 70 
+ III - 7 
+ 75 
+ 220 
+ 3 
+ 25 
+ III - 8 
+ 1000 
+ 3200  
+ – 
+ 650 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Organic Cations in Constrained Systems 
+341
+However, the differences in host geometry are much smaller in complexes than in free 
+hosts. 33,34 
+ If one assume that similar changes in solvation and in cation - anion attraction occur 
+through complexation of a given guest by  III - 1 – III - 7 , then the association constants 
+reﬂ ect the contributions of the reorganisation energy of the mobile host and the cation – π 
+interactions. The hydrogen bonds at the narrower rim, and therefore both the position and 
+the number of OH - substituents, help determine the shape of the host cavity in the host –
+ guest complex. 
+ 12.2.5  Resorcinarenes 
+ Resorcinarenes have some degrees of freedom for rotation around the C − C bonds of the 
+connecting CH 2 - groups, which results in ﬁ ve conformations, namely crown, boat, chair, 
+diamond and saddle.  35   The hydroxy groups at the wider rim must be linked in order to ﬁ x 
+the receptor in the speciﬁ c cavitand conformation and to improve binding properties. 
+ Phenolate resorcin[4]arenes of the type  IV - 1  (Scheme  12.15 ) are efﬁ cient hosts 
+for organic ammonium ions in protic solvents in strongly alkaline organic media by 
+simultaneous charge – charge and cation – π interaction. 36   A drawback of receptors such as 
+ IV - 2  is the low selectivity towards alkyltrimethylammonium and bulkier tetraalkylam-
+monium ions. 37 
+ Increasing the wall of the resorcinarenes, as in  IV - 3 , could improve the selectivity.  38 
+In protic solvents,  IV - 3  could combine the selectivity of cavitands with the high afﬁ nity 
+of the resorcin[4]arene. The cavitand is built up if the three diaminophenyl groups adopt 
+an axial conformation. The cavity with an open side binds selectively alkylammonium 
+ions complementary in size and shape (see Figure  12.1  and Table  12.4 ).     
+ The association constants were determined with the help of a competitive displacement 
+assay using  B - 17  as a ﬂ uorescence indicator 38   (see Figure  12.2 ). Small changes in size 
+have large consequences because the guest is inserted deeply in the cavity. The long 
+chains present in  B - 13  can protrude due to the top openings of the host  IV - 3 , resulting 
+in high afﬁ nity (Table  12.4 ). In contrast, tetraalkylated ammonium ions, and NH 4 + itself, 
+exhibit dramatically weaker complexation behaviour, indicating a bad ﬁ t with the cavity 
+of  IV - 3 . The host  IV - 4  exhibits selectivity in binding naturally occurring ammonium ions 
+in D 2 O - saturated CDCl 3 solution. 39 Choline  B - 1 (K  =  420  M  − 1 ) and carnitine  B - 16 
+(K  =  2050  M  − 1 ), compounds which are poorly soluble in water - saturated chloroform, are 
+taken up by this host, but acetylcholine  B - 2 is not. 
+ The four - wall water - soluble cavitand  IV - 5 (Scheme  12.16 ) forms a stable deep cavity 
+that has a high afﬁ nity towards choline  B - 1  and acetylcholine  B - 2  (association con-
+stants > 10 4 M  − 1 ) in D 2 O. 40   Interestingly, the trimethylammonium head of  B - 1 is pointed 
+inward into the cavity of the host. In contrast, the long chain trialkylammonium ions, 
+such as dodecyltrimethylammonium ion, are bound with the (helical folded) alkyl chain 
+in the cavity, but with an association constant of  > 10 4 M  − 1 . In addition to the favourable 
+electrostatic interaction between the tetracarboxylate wider rim and the tetraalkylam-
+monium core, hydrophobic interactions dominate the binding in this case and reveal 
+the bitopic character of both the host and the guest. Isothermal titration calorimetric 
+data have shown that the complex formation is both enthalpically and entropically 
+driven. 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+R1
+R1
+R1
+R1
+O
+O
+O
+O
+O
+O
+OH
+OH
+NH2
+H2N
+NH2
+NH2
+H2N
+H2N
+R1= Et
+IV-3
+R1
+R1
+R1
+R1
+O
+O
+O
+O
+O
+O
+OH
+OH
+R1= C11H23
+N
+HN
+N
+HN
+N
+NH
+EtOOC
+COOEt
+EtOOC
+IV-4
+R1
+R1
+R1
+R1
+HO
+HO
+OH
+OH
+HO
+HO
+OH
+OH
+R1= Et
+IV-1: R2 = H, IV-2: R2 = CN
+R2
+R2
+R2
+R2
+N+
+R1
+R1R1
+R1
+A-4: R1 = H
+B-10: R1 = Me
+B-11: R1 = Et
+B-12: R1 = Pr
+N+
+Me
+R4R3
+R2
+Cl–
+Br–
+B-13: R2 = Me, R3 = R4 = C18H37
+B-14: R2 = R3 = R4 = C8H17
+R5
+N+
+B-1: R5 = OH
+B-3: R5 = OAc
+B-15: R5 = OPO3Ca
+–OOC
+N+
+OH
+B-16
+N+
+I–
+B-17
+ Scheme 12.15   Resorcinarenes and organic cations studied in complexes  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Organic Cations in Constrained Systems 
+343
+ Figure 12.1   Front and side view of the optimized model of the  IV - 3 / B - 10 complex. 
+ Reprinted with permission from  [38] . Copyright 2006 American Chemical Society  
+ Table 12.4   Association constants of complexes in  CDCl 3 
+solution ( M  − 1 ) 
+ Guest 
+ K [10 5 M  − 1 ] 
+ Guest 
+ K [10 5 M  − 1 ] 
+ A - 4 
+ < 0.001  
+ B - 12 
+ < 0.001 
+ B - 1 
+ 3.2  ±  0.9 
+ B - 13 
+ 0.1  ±  0.001 
+ B - 3 
+ 1.0  ±  0.1 
+ B - 14 
+ < 0.001 
+ B - 10 
+ 5.1  ±  0.6 
+ B - 15 
+ 3.7  ±   0.2 
+ B - 11 
+ 1.4  ±  0.4 
+ B - 16 
+ 3.3  ±   0.8 
+ Chiral discrimination of the host – guest interaction can be measured in the gas phase. 
+Resorcin[4]arenes bearing chiral substituents are able to select chiral quaternary ammo-
+nium ions. In these cases, complexation experiments were conducted by means of elec-
+trospray ionization (ESI) mass spectrometry. 41 
+ 12.3  Extended Hosts and Capsules 
+ Complexation properties of calixarene hosts may be improved not only by enlarging the 
+wall of the host but also by connecting two host molecules by bridges (see Scheme  12.17 ). 
+Compared with the  ‘ mono ’ - calix[4]arene  II - 18 , the bridged hosts  II - 19  –  II - 22  exhibit a 
+clear increase of the association constants determined with the help of NMR titration in 
+CDCl 3  solution (see Figure  12.3 ).  42   In lipophilic media, ion pairs are complexed, and thus, 
+different salts of the guest molecules were studied in order to compare complexation 
+properties. As expected, both the charge distribution within the cation and the steric 
+requirements of the ion pair, in which the anion is tightly bound to the cation, control the 
+binding process. The spherical tetramethylammonium ion  B - 10  can bind with only minor 
+steric adjustments and no such large differences of the association constants of different 
+ion pairs are observed (Table  12.5 ). From CIS values, the structures given in Scheme 
+ 12.18 are proposed. 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+344 
+Molecular Encapsulation
+4
+3
+2
+1
+0
+i)
+iii)
+ii)
+1.7
+1.3
+0.9
+I/Io
+[choline]
+550
+600
+lexo = 430 nm
+650
+700
+Emission (nm)
+[Ammonium cation] (mM)
+0
+2
+4
+6
+8
+Fluorescence
+ Figure 12.2   (i) Fluorescence spectra in MeOH of  B - 17 (0.184   mM) in the presence of 
+ IV - 3 (0.17   mM) upon addition of incremental amounts of  B - 1 (0 - 2.5  mM). (ii) Plots of the 
+increase of the relative ﬂ uorescence intensity of  B - 17 in competitive binding experiments 
+with  B - 15 (circles),  B - 16 (squares),  B - 13 (triangles), and  B - 14 (diamonds) ﬁ tted to a 
+competitive binding scheme of two 1   :  1 complexes. (iii)Visual ﬂ uorescence regeneration of 
+ B - 17 : (a)  B - 17 (0.184   mM), (b) mixture of  B - 17 (0.17   mM) and  IV - 3 (2.5   mM), and (c) 
+mixture of  IV - 3 (0.15  mM),  B - 17 (0.17  mM), and  B - 15 (0.43   mM).  Reprinted with 
+permission from  [38] . Copyright 2006 American Chemical Society  
+ The examples shown above demonstrate the improved binding properties caused by 
+connecting two calixarene cavities by bridges at the wider rim. A different feature of 
+binding of type A ammonium ions was reported for calix[5]arenes connected by bridges 
+at the narrower rim (Scheme  12.19 ).  43 The  1 H NMR titration experiments with long chain 
+alkylammonium ions such as  A - 5  reveal the nearly exclusive presence of polycapsular 
+assemblies in CDCl 3 /CD 3 OD (9   :   1) solution. Another type of encapsulation of long - chain 
+dialkylammonium salts was observed with the heterotetratopic host  II - 24 (Scheme 
+ 12.19 ). 44 
+ Very high association constants ( > 10 6 M  − 1 ) for the formation of the capsular 1  :  1 
+complex in CD 2 Cl 2 /CD 3 OD (2   :   1) solution were estimated for alkyl chains of C 12 – C 16 . 
+The ureido functionality of the bridge at the wider rim of host  II - 24  supports the compl-
+exation in nonprotic solvents by binding with anions such as chloride, picrate, or car-
+boxylate (see Figure  12.4 ). Shorter alkyl chains are encapsulated by only a single cavity. 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Organic Cations in Constrained Systems 
+345
+R1
+R1
+R1
+R1
+O
+O
+O
+O
+O
+O
+O
+O
+R1= C11H23
+N
+HN
+N
+HN
+N
+NH
+NaOOC
+COONa
+NaOOC
+IV-5
+N
+H
+N
+COONa
+ Scheme 12.16   The four - wall water - soluble cavitand  IV - 5 
+The formation of capsular complexes is further corroborated by ESI mass spectra of 
+equimolar host – guest mixtures. 
+ While the capsules described above were formed by, at least, bitopic hosts with cova-
+lently connected calixarene moieties, capsules are also formed through noncovalent bonds 
+such as hydrogen bonds if suitable guests are present. The encapsulation of a guest such 
+as the tropylium ion  D - 5  is necessary since an empty cavity would be thermodynamically 
+disadvantageous. Dimeric hydrogen - bonded capsules are formed from resorcinarenes 
+bearing hydroxyl substituents at the wider rim both in the solid phase and in solution in 
+the presence  D - 5  (Scheme  12.20 ). The high thermodynamic and kinetic stability of the 
+complex  IV - 6 / D - 5 / IV - 6  arises from the cooperation of eight CO  …  HO hydrogen bonds 
+and the cation – π  interaction between the tropylium ion and the resorcinol units (Scheme 
+ 12.20 ). 45 
+ While the capsule  IV - 6 / D - 5 / IV - 6  is stabilized by hydrogen bonds, the cocrystallization 
+of resorcinarene  IV - 7  with the rigid diquaternary alkylammonium salt  B - 18  yields a 
+nanotubular structure held together by intratubular   π  …   π - interaction (see Figure  12.5 ). 46 
+Use of the bromide anion, a weaker hydrogen bond acceptor (compared with chloride), 
+drives the assembly process through weaker   π  …  π and cation – π interactions instead of 
+hydrogen bonding. In contrast, capsules can be formed from resorcinarenes with the 
+diethylammonium ion  B - 11 . 47 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+346 
+Molecular Encapsulation
+O
+O
+O
+O
+O
+O
+X
+O
+O
+O
+O
+O
+O
+II-19 X = CH2                 II-20: X =
+II-21: X =
+O
+O
+O
+O
+O
+O
+II-18
+II-22: X = N=N
+B-10, B-11, C-3
+N+
+N+
+C-5
+C-6
+ Scheme 12.17   The rigid calix[4]arene  II - 18 and its extended variants  
+(a)
+(b)
+1
+2
+7
+9
+0
+1
+2
+3
+4
+5
+6
+[H0]/[G0]
+d (ppm) 2-CH3
+3.5
+3.0
+2.5
+2.0
+1.5
+1.0
+0.5
+0.0
+1
+2
+8
+7
+9
+0
+1
+2
+3
+4
+5
+6
+[H0]/[G0]
+d (ppm) 2-CH3
+3.0
+2.5
+2.0
+1.5
+1.0
+0.5
+0.0
+–0.5
+–1.0
+–1.5
+–2.0
+ Figure 12.3   1 H NMR titrations of (a)  C - 6 iodide and (b)  C - 5 iodide with host  II - 18 (1), 
+ II - 19 (2),  II - 20 (7),  II - 21 (8), and  II - 22 (9) at  T  =  300  K in CDCl 3 ; symbols denote 
+experimental data points relative to the 4 - Me (a) and 2 - Me (b) signals, respectively, of the 
+guest; lines are best - ﬁ t curves calculated by non - linear regression.  Reprinted with 
+permission from  [42] . Copyright 2000 Wiley-VCH Verlag GmbH & Co. KGaA  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Organic Cations in Constrained Systems 
+347
+O
+O
+O
+O
+O
+O
+X
+O
+O
+O
+O
+O
+O
+N+
+H3C H3C
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+N+
+CH3
+CH3
+ Scheme 12.18   Proposed structures of the complexes between  II - 19 and  C - 6 iodide and 
+ II - 20 and  C - 5 
+ Table 12.5   Association constants  K ( M  − 1 ) of 1   :  1 
+complexes ( CDCl  3 ) 
+ Host  
+ Guests  
+ K 
+ II - 18 
+ B - 10 tosylate  
+ 33 
+ II - 18 
+ B - 10 chloride  
+ 80 
+ II - 18 
+ C - 3 iodide  
+ 418 
+ II - 18 
+ C - 3 tosylate 
+ 113 
+ II - 18 
+ C - 5 iodide  
+ 98 
+ II - 19 
+ B - 10 tosylate  
+ 101 
+ II - 19 
+ B - 10 chloride  
+  340 
+ II - 19 
+ C - 3 iodide  
+ > 10000 
+ II - 19 
+ C - 3 tosylate 
+ 1405 
+ II - 20 
+ B - 10 tosylate 
+ 1407 
+ II - 20 
+ C - 3 tosylate 
+ 1232 
+ II - 20 
+ C - 3 iodide  
+ 7260 
+ II - 22 
+ B - 10 tosylate  
+ 54 
+ II - 22 
+ C - 3 iodide  
+ 797 
+ II - 22 
+ C - 5 iodide  
+ 2450 
+ The calix[4]arene  II - 25  (Scheme  12.21 ) is able to form capsules because of ureidoyl 
+substituents at the wider rim. Tropylium salts form charge transfer complexes with both 
+the monomer and dimers of  II - 25  in nonpolar solvents.  48   Due to hydrogen bonds formed 
+in the equatorial region, the afﬁ nity of the tropylium ion towards the capsule formed by 
+the dimer is much greater than that of benzene.    
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+348 
+Molecular Encapsulation
+ 12.4  Cucurbiturils 
+ Cucurbiturils (CBs) are relatively poorly soluble in water, with only  CB - 5  and  CB - 7 
+possessing modest solubility.  49   However, the solubility of  CB - 5  and  CB - 8 increases 
+strongly in concentrated aqueous acid. Because of the negative electrostatic potential 
+both at the portals and within the cavity, interaction with cationic guests is preferred. 
+Accordingly, alkylammonium ions bind tightly in HCOOH/H 2 O 1  :  1 with association 
+OR
+OR
+O
+OR
+OR
+II-23
+R'
+R'
+R'
+R'
+OR
+OR
+O
+OR
+RO
+R'
+R'
+R'
+R'
+R'
+R = (CH2)3CH(CH3)2
+R' = tert-Bu
+H3N+
+NH3+
+n
+(CH2)10
+H3+N
+(CH2)10
+NH3+
+A-5
+RO
+RO
+RO
+RO
+RO
+II-24
+R'
+R'
+R'
+R'
+OR
+OR
+OR
+OR
+OR
+R'
+R'
+R'
+R'
+N
+H
+R = (CH2)3CH(CH3)2
+R' = tert-Bu
+R'
+N
+H
+O
+C
+O
+C
+H
+N
+H
+N
+ Scheme 12.19  Extended calixarene hosts which form complexes with ammonium ions  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Organic Cations in Constrained Systems 
+349
+1
+O
+O
+O
+O
+O
+O
+S-shaped complex
+C2h symmetry
+C-shaped complex
+Cs symmetry
+O
+n≥10
+n≥12
+n≤10
+n<10
+n=10
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+H
+H
+H
+H
+–Cl+NH3–(CH2)n–+NH3Cl–
+(CH2)n
+(CH2)n
+(CH2)n
+(CH2)n
+–Cl+NH3–(CH2)n–+NH3Cl–
+–Cl+NH3–(CH2)n–+NH3Cl–
+–Cl+NH3–(CH2)n–+NH3Cl–
++NH3
++NH3
++NH3
++NH3
+H3
+H3
+H3N+
+N+
+N+
+H
+H
+H
+H
+H
+H
+H
+H
+H
+H
+H
+H
+N
+N
+O
+Cl–
+Cl–
+Cl–
+Cl–
+Cl–
+Cl–
+Cl–
+Cl–
+N+
+H3
+ Figure 12.4.   Schematic representation of the inﬂ uence of the spanning of the guest 
+ α , ω  - alkanediyldiammonium ions on the complexation pathways leading to C - shaped and/
+or S - shaped inclusion complexes with host  II - 24 (= 1).  Reprinted with permission from 
+ [44] . Copyright 2005 Wiley-VCH Verlag GmbH & Co. KGaA  
+constants up to 10 6 M  − 1 for the complex  CB - 6 / A - 6 (Scheme  12.22 ). 50 The tight portals of 
+CBs can lead to a constrictive binding, 51 and, accordingly, the exchange of bound and 
+free guests is slow on the  1 H NMR timescale. The narrow portal also causes size selectiv-
+ity for alkylammonium guests. While  A - 7 (K  =  80  M  − 1 ) and  A - 9 (K  =  320  M  − 1 ) are readily 
+bound, the larger guest  A - 8 is not. 51 
+ The complexation of  A - 7  is enthalpy driven. The complexation entropy is negative, 
+indicating a tight complex with a well deﬁ ned geometry. According to the CIS values 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+350 
+Molecular Encapsulation
+ Scheme 12.20   Schematic picture of the complex  IV - 6 / D - 5 / IV - 6 
+HO
+OH
+R1
+R1
+R1
+R1
+OCOR2
+R2OCO
+OH
+HO
+OCOR2
+R2OCO
+OH
+HO
+R1
+R1
+R1
+R1
+R2OCO
+OCOR2
+HO
+OH
+R2OCO
+OCOR2
+ Figure 12.5   The structure of the nanotube showing resorcinarenes,  IV - 7 , in stick 
+representation and diquaternary cations  B - 18 , shown with Van der Waals radii. Anions, 
+water molecules, non - hydrogen bonding hydrogens of resorcinarenes, and disorder of the 
+cations are omitted for clarity. a) The asymmetric unit. b) A view of the tube along the 
+crystallographic a axis.  Reprinted with permission from  [46] . Copyright 2004 Wiley-VCH 
+Verlag GmbH & Co. KGaA 
+observed with  A - 7 , the ammonium group interacts with the carbonyl oxygens of  CB - 6 , 
+while the cyclohexyl part points towards the interior of the cavity (see Scheme  12.23 ).  51 
+ CB - 7  is also able to include bipyridinium ions  C - 7  (Scheme  12.24 ) in aqueous solution 
+with association constants of 10 5 M  − 1 . 52   Even the radical cation formed after reduction at 
+the electrode binds strongly to  CB - 7 with only a 2 - fold decrease as compared with  C - 7 . 
+ 12.5  Complex Systems and Applications 
+ At present, the association constants of single host – guest complexes may be measured 
+with the help of atomic force microscopy (AFM) force spectroscopy. For this purpose, 
+the host must be immobilized on a gold surface, and the guest must carry one additional 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Organic Cations in Constrained Systems 
+351
+R1
+R1
+R1
+R1
+HO
+O
+O
+OH
+O
+OH
+HO
+O
+IV-6: R1= C5H11, R2=
+IV-7: R1= Me, R2= H
+R2
+R2
+R2
+R2
+BF4
+D-5
+S
+O
+N+
+N+
+B-18
+2 Br–
+OR'
+OR'
+R'O
+OR'
+HN
+HN
+HN
+HN
+II-25: R=
+Me
+R' = C5H11
+CO
+CO
+CO
+CO
+RHN
+RHN
+RHN
+RHN
+ Scheme 12.21   Guests which support the formation of capsules  
+N
+N
+N
+N
+O
+O
+H
+H
+n
+n = 6: CB-6
+n = 7: CB-7
+NH3+
+N
+N
+H3+N
+NH3+
+A-6
+A-8
+A-9
+NH3+
++
+H3N
+A-7
+ Scheme 12.22   Studied complexes between cucurbituril host and ammonium ions  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+352 
+Molecular Encapsulation
+N+
+N+
+N
+N
+N
+N
+O
+O
+H
+H
+7
+CB-7
+C-7
+N+
+N+
+e–
+N+
+N
+ Scheme 12.24   Electrochemical reduction of the complex between  CB - 7 and the 
+bipyridinium ion  C - 7 
+NH3
+N
+N
+N
+N
+O
+O
+N
+N
+N
+N
+O
+O
+N
+N
+N
+N
+O
+O
+N
+N
+N
+N
+O
+O
+N
+N
+N
+N
+O
+O
+N
+N
+N
+N
+O
+O
+ Scheme 12.23   Structure of the complex  CB - 7 / A - 7 
+functional group to be covalently attached to the AFM tip (see Figure  12.6 ).  53 Using this 
+technology, the ammonium ion was shown to be more weakly bound than the trimethy-
+lammonium ion. 
+ The binding of  C - 3  by a simple calix[4]arene host in nonpolar media can be improved 
+by a factor of 25 by the formation of host clusters on the surfaces of gold nanoparticles. 54 
+ Applications of host – guest complexes are mainly directed towards the development of 
+sensors. For example, acetylcholine detection at micromolar concentration is based on 
+inclusion of a ﬂ uorophore containing the pyridinium unit ( trans - 4[4 - (dimethylamino)
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Organic Cations in Constrained Systems 
+353
+styryl] - 1 - methylpyridinium tosylate) in water soluble calixarenes  II - 1  –  II - 3 (Scheme 
+ 12.6 ). The ﬂ uorescence of the guest is both hypsochromically shifted and drastically 
+increased upon complexation. The presence of acetylcholine completely eliminates the 
+new emission band of the bound ﬂ uorophore because acetylcholine replaces the ﬂ uoro-
+phore within the cavity of the calixarene.  55   A sensor was developed by immobilizing the 
+receptor  II - 1  on an oxide - containing silicon surface. An analogous system working in 
+alcoholic solution was presented above in Figure  12.2 . 
+ As a second example, the coupling of an enzymatic transformation with a dynamic 
+host – guest exchange is also based on ﬂ uorescence switching. Combining the decarboxyla-
+tion of amino acids with a decarboxylase allows the unselective binding of  CB - 7  to be 
+used for highly selective amino acid sensing.  56  CB - 7  binds aliphatic amines and diamines 
+in their ammonium form (see above), but the selectivity is low. The neutral ﬂ uorophore 
+dapoxyl (Scheme  12.25 ) and the protonated amine, the product of the enzymatic reaction 
+under physiological conditions, compete for encapsulation. The emission of the ﬂ uoro-
+phore is strongly enhanced upon complexation. The replacement of the ﬂ uorophore by 
+the ammonium ion quenches or  ‘ switches off ’ the ﬂ uorescence (see Scheme  12.26 ). The 
+enantiospeciﬁ ty of the enzymatic reaction allows the enantioselective recognition of 
+analytes with an achiral host. 
+ 12.5.1  Photoresponsive Hosts 
+ Nature uses chemical signalling in sensory systems such as taste and smell. The most 
+important means for information processing in nature is based on information exchange 
+between DNA and RNA; our brain use signals relying on the behaviour of ions, etc. This 
+400
+300
+200
+100
+0
+–100
+(a)
+(b)
+–50
+0
+50
+100
+200
+Z-Piezo extension/nm
+150
+F/pN
+Fdiss
+ Figure 12.6   Force spectroscopy: a) schematic setup. The cavitand is immobilized 
+together with didecylsulﬁ de in a 1   :  40 mixture on a gold substrate. The (tetraorganyl) 
+ammonium residue (shaded circle), is attached to a Si 3 N 4 AFM tip by a ﬂ exible polymer 
+linker. b) Typical force – distance curve (only retractive trace shown). The stretching of the 
+PEG linker over a certain distance prior to bond rupture (tip detachment and relaxation of 
+the cantilever) indicates an unbinding event.  Reprinted with permission from  [53] . 
+Copyright 2005 Wiley-VCH Verlag GmbH & Co. KGaA  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+354 
+Molecular Encapsulation
+molecular chemionics is based on molecular recognition.  57   Therefore, hosts with binding 
+properties that can be tuned by an outer stimulus are of particular interest. The advantage 
+of light driven changes is that no chemical fuels are necessary and no waste products are 
+formed. 
+ The host cavity of a resorcin[4]arene bearing two anthracene moieties at the wider rim 
+can be switched by the known photodimerization of the two anthracene substituents 
+resulting in a closed cavity. The process can be reversed by heating of the solution. 
+Whereas the cavity of the open state is well suited to bind ammonium ions such as 2 - mer-
+captoethylamine hydrochloride, the closed form does not bind ammonium ions. The 
+afﬁ nity modulation has also been studied by single - molecule force spectroscopy (Figure 
+ 12.7 ). For this purpose, the host has been modiﬁ ed with four didecylsulﬁ de linkers in 
+order to immobilize the host on gold surfaces. 58 
+dye
+dye
+product
+product
+“switch-off”
+fluorescence response
+enzymatic reaction
+weak competitor
+strong competitor
+substrate
++
++
+substrate
+ Scheme 12.26   Working principle of a  ‘ switch - off ’ product - coupled tandem assay 
+ (reproduced by permission from  [56] ; copyright (2004) Wiley - VCH) 
+N
+N
+N
+N
+O
+O
+H
+H
+n
+CB-7
+N
+O
+Me2N
+SO3–
+dapoxyl
+ Scheme 12.25   The host  CB - 7 and its guest dapoxyl  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Organic Cations in Constrained Systems 
+355
+ The cavity of the calix[4]arene  II - 26  bearing two acridane substituents is open and 
+suitable to bind guests such as  C - 3 (K  =  1461  ±  458 l  mol  − 1  in CDCl 3  solution) and  C - 4 
+(K  =  117  ±  16 l  mol  − 1 ) (Scheme  12.27 and Figure  12.8 ). 59 In contrast, the cavity is blocked 
+by two acridinium substituents formed by photoheterolysis.  60   Therefore, the calixarene in 
+its acridinium state does not bind guests  C - 2  or  C - 4 . Thus, organic cations can be bound 
+and released depending on the state of the host. 
+ 12.6  Conclusions 
+ This chapter has covered some of the developments in the ﬁ eld of supramolecular host –
+ guest complexes with organic cations. Cation – π  interaction may play a signiﬁ cant role, 
+while charge - charge attraction often supports the binding process. The negative electro-
+static potential at the portals and within the cavity of cucurbiturils has important conse-
+quences for their recognition of cationic guests. However, a detailed understanding of 
+cause/effect relations is difﬁ cult to derive. We have seen the effects of host structure on 
+the stability and strength of the complexes through the examples given in this chapter. A 
+host should provide a suitable surface and chemical complementarity to the organic cation 
+to enable optimal interaction energy. Rigidiﬁ ed calixarenes and resorcinarenes as well as 
+(a)
+366 nm
+(b)
+S
+S
+S
+S
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+CH3
+H3C
+H3C
+H3C
+60 °C
+hn
+∆
+S
+S
+S
+S
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+H3C
+H3C
+ Figure 12.7   Resorcin[4]arene photoswitch for self - assembly (a) and a pictogram 
+visualizing the diluted self - assembled monolayer of this photoswitch for single - molecule 
+afﬁ nity studies by AFM (b).  Reprinted with permission from  [58] . Copyright 2007 
+American Chemical Society  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+356 
+Molecular Encapsulation
+N+
+N+
+O
+O OH
+OH
+II-27
+2 MeO–
+II-26
+HO
+O
+OH
+O
+N
+N
+OMe
+MeO
+hn
+∆
+N+
+N+
+C-3
+C-4
+I–
+ClO4–
+ Scheme 12.27   Photochemical and thermal switching between  II - 26 and the 
+corresponding  II - 27 
+extended structures may overcome the entropic losses that occur upon complexation and 
+may increase the enthalpic driving force through increased contacts between host and 
+guest. In recent years, the complexity of host systems has been considerably increased. 
+Modiﬁ ed calixarene and resorcinarene receptors for distinct functionalities are the focus 
+of much interest. Switchable receptors and host – guest complexes as sensory material hold 
+great promise and will emerge in the near future. In many cases, the physical properties 
+of guests (pK - values, ﬂ uorescence efﬁ ciency, chemical reactivity) are changed by com-
+plexation which can afford an increasing number of applications. Nevertheless, a greater 
+emphasis should be given to extending the understanding of the cause - effect relationships 
+of the binding properties in order to facilitate more rational approaches to receptor design.  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Organic Cations in Constrained Systems 
+357
+ References 
+  1.  A. R.  Shalaby ,  Signiﬁ cance of biogenic amines to food safety and human health ,  Food Res. 
+Int. ,  1996 ,  29 ,  675 – 690 . 
+  2.  J. C.  Ma ,  D. A.  Dougherty ,  The cation – π Interaction ,  Chem. Rev. ,  1997 ,  97 ,  1303 – 1324 . 
+  3.  J. L.  Sussman ,  M.  Harel ,  F.  Frolow ,  C.  Oefner ,  A.  Goldman ,  L.  Toker ,  I.  Silman ,  Atomic 
+structure of acetylcholinesterase from torpedo californica: a prototypic acetylcholine - binding 
+protein ,  Science ,  1991 ,  253 ,  872 – 879 . 
+  4.  a)  V.  B ö hmer ,  A.  Dalla Cort ,  L.  Mandolini ,  Counteranion effect on complexation of quats by 
+a neutral calix[5]arene receptor ,  J. Org. Chem. ,  2001 ,  66 ,  1990 – 1902 ;  b)  A.  Arduini ,  E. 
+ Brindani ,  G.  Giorgi ,  A.  Pochini ,  A.  Secchi ,  Ainion effects on the recognition of ion pairs by 
+calix[4]arene - based heteroditopic receptors ,  J. Org. Chem. ,  67 ,  2002 ,  6188 – 6194 . 
+  5.  S.  Bartoli ,  S.  Roelens ,  Electrostatic attraction of counterion dominates the cation – π interaction 
+of acetylcholine and tetramethylammonium with aromatics in chloroform ,  J. Am. Chem. Soc. , 
+ 1999 ,  121 ,  11908 – 11909 . 
+  6.  a)  M. L. C.  Quan ,  D. J.  Cram ,  Constrictive binding of large guests by a hemicarcerand contain-
+ing four portals ,  J. Am. Chem. Soc. ,  1991 ,  113 ,  2754 – 2755 ;  b)  K. N.  Houk ,  K.  Nakamura ,  C. 
+ Sheu  ,   A. E.   Keating  ,  Gating as a control element in constrictive binding and guest release by 
+hemicarcerands ,  Science ,  1996, 273 ,  627 – 629 . 
+  7.  K.  Hirose ,  Determination of binding constants, in  Analytical methods in Supramolecular 
+Chemistry  ,  C. A.  Schalley (Ed.),  Wiley - VCH ,  Weinheim ,  2007 . 
+  8.  F. P.  Schmidtchen ,  Isothermal titration calorimetry in supramolecular chemistry , in   Analytical 
+methods in Supramolecular Chemistry  ,  C. A.  Schalley (Ed.),  Wiley - VCH ,  Weinheim ,  2007 . 
+  9.  L. G.  Garel ,  B.  Lozach ,  J. - P.  Dutasta ,  A.  Collet ,  Remarkable effect of receptor size on the 
+binding of acetylcholione and related ammonium ions to water - soluble cryptophanes ,  J. Am. 
+Chem. Soc. ,  1993 ,  115 ,  11652 – 11653 . 
+ 10.  S. M.  Ngola ,  P. C.  Kearney ,  S.  Mecozzi ,  K.  Russell ,  D. A.  Doughrty ,  A selective receptor for 
+arginine derivatives in aqueous media. Energetic consequences of salt bridges that are highly 
+exposed to water ,  J. Am. Chem. Soc. ,  121 ,  1999 ,  1192 – 1201 . 
+ 11.  A.  Ikeda ,  S.  Shinkai ,  Novel cavity design using calix[n]arenes skeletons: toward molecular 
+recognition and metal binding ,  Chem. Rev. ,  1997 ,  97 ,  1713 – 1734 . 
+ 12.  C. D.  Gutsche ,  Calixarenes Revisited ,  The Royal Society of Chemistry ,  Cambridge ,  1998 . 
+ 13.  Z.  Asfari ,  V.  B ö hmer ,  J.  Harrowﬁ eld ,  J.  Vicens ,  Calixarenes 2001 ,  Kluwer Academic Publisher , 
+ Dordrecht ,  2001 . 
+ Figure 12.8   Molecular structure of the calixarene  II - 26 containing acetone as guest (H 
+atoms are omitted for clarity)  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+358 
+Molecular Encapsulation
+ 14.  W.  Abraham ,  Inclusion of organic cations by calix[n]arenes ,  J. Incl. Phenom. Macrocycl. 
+Chem. ,  2002 ,  43 ,  159 – 174 . 
+ 15.  A. W.  Coleman ,  S.  Jebors ,  P.  Shahgaldian ,  G. S.  Ananchenko ,  J. A.  Ripmeester, para -
+ Acylcalix[n]arenes : from molecular to macroscopic assemblies ,  Chem. Commun. ,  2008 , 
+ 2291 – 2303 . 
+ 16.  F.  Inokuchi ,  K.  Araki ,  S.  Shinkai ,  Facile detection of cation – π  interactions in calix[n]arenes 
+by mass spectrometry ,  Chem. Lett. ,  1994 ,  1383 – 1386 . 
+ 17.  A.  Arduni ,  W. M.  McGregor ,  A.  Pochini ,  A.  Secchi ,  F.  Ugozzoli ,  R.  Ungaro ,  New upper rim 
+pyridine - bridged calix[4]arenes: synthesis and complexation properties toward neutral mole-
+cules and ammonium ions in organic media ,  J. Org. Chem. ,  1996 ,  61 ,  6881 – 6887 . 
+ 18.  M.  Orda - Zgadzaj ,  V.  Wendel ,  M.  Fehlinger ,  B.  Ziemer ,  W.  Abraham ,  Inclusion of organic 
+cations by calix[4]arenes bearing cyclohepta - 2,4,6 - trienyl substituents ,  Eur. J. Org. Chem. , 
+ 2001 ,  1549 – 1561 . 
+ 19.  A.  Arduini ,  W. M.  McGregor ,  D.  Paganuzzi ,  A.  Pochini ,  A.  Secchi ,  F.  Ugozzoli ,  R.  Ungaro , 
+ Rigid cone calix[4]arenes as   π  - donor systems: complexation of organic molecules and ammo-
+nium ions in organic media ,  J. Chem. Soc., Perkin Trans. 2 ,  1996 ,  839 – 846 . 
+ 20.  A.  Arduini ,  G.  Giorgi ,  A.  Pochini ,  A.  Secchi ,  F.  Ugozzoli ,  Anion allosteric effect in the rec-
+ognition of tetramethylammonium salts by calix[4]arene  Cone conformers ,  J. Org. Chem. , 
+ 2001 ,  66 ,  8302 – 8308 . 
+ 21.  R.  Arnecke ,  V.  B ö hmer ,  R.  Cacciapaglia ,  A. Dalla  Cort ,  L.  Mandolini, cation – π Interactions 
+between neutral calix[5]arene hosts and cationic organic guests ,  Tetrahedron ,  1997 ,  53 , 
+ 4901 – 4908 . 
+ 22.  F.  Perret ,  A. N.  Lazar ,  A. W.  Coleman ,  Biochemistry of the  para -  sulfonatocalix[n]arenes , 
+ Chem. Commun. ,  2006 ,  2425 – 2438 . 
+ 23.  N. D.  Douteau - Gu é vel ,  A. W.  Coleman ,  J. - P.  Morel ,  N.  Morel - Desrosiers ,  Complexation of 
+the basic amino acids lysine and arginine by three sulfonatocalix[ n ]arenes ( n    =   4, 6 and 8) in 
+water: microcalorimetric determination of the Gibbs energies, enthalpies and entropies of 
+complexation ,  J. Chem. Soc., Perkin Trans. 2 ,  1999 ,  629 – 634 . 
+ 24.  J. M.  Lehn ,  R.  Meric ,  J. - P.  Vigneron ,  M.  Cesario ,  J.  Guilhem ,  C.  Pascard ,  Z.   Asfari ,  J.  Vicens , 
+ Binding of acetylcholine and other quaternary ammonium cations by sulfonated calixarenes. 
+Crystal structure of a [cholin - tetrasulfonated calix[4]arene] complex ,  Supramol. Chem. ,  1995 , 
+ 5 ,  97 – 103 . 
+ 25.  C.  Bonal ,  Y.  Isra ë li ,  J. - P.  Morel ,  N.  Morel - Desrosiers ,  Binding of inorganic and organic cations 
+by  p  - sulfonatocalix[4]arene in water: a thermodynamic study ,  J. Chem. Soc., Perkin Trans. 2 , 
+ 2001 ,  1075 – 1078 . 
+ 26.  E. A.  Meyer ,  R. K.  Castellano ,  F.  Diederich ,  Interactions with aromatic rings in chemical and 
+biological recognition ,  Angew. Chem. Int. Ed. ,  2003 ,  42 ,  1210 – 1250 . 
+ 27.  G.  Arena ,  A.  Casnati ,  A.  Contino ,  F. G.  Gulino ,  D.  Sciotto ,  R.  Ungaro ,  Entropic origin of the 
+sulfonate groups ’  electrostatic assistance in the complexation of quaternary ammonium cations 
+by water soluble calix[4]arenes ,  J. Chem. Soc., Perkin Trans. 2 ,  2000 ,  419 – 423 . 
+ 28.  G.  Arena ,  A.  Casnati ,  A.  Contino ,  G. G.  Lombardo ,  D.  Sciotto ,  R.  Ungaro ,  Water - soluble 
+calixarene hosts that speciﬁ cally recognize the trimethylammonium group or the benzene ring 
+of aromatic ammonium cations: a combined  1 H NMR, calorimetric, and molecular mechanics 
+investigation ,  Chem. Eur. J. ,  1999 ,  5 ,  738 – 744 . 
+ 29.  M.  Fehlinger ,  W.  Abraham ,  Calix[4]arenes bearing a tropylium substituent as hosts for organic 
+cations ,  J. Incl. Phenom. Macrocycl. Chem. ,  2007 ,  58 ,  263 – 274 . 
+ 30.  S.  Ishihara ,  S.  Takeoka ,  Host – guest assembly of pyridinium - conjugated calix[4]arene via 
+cation – π interaction ,  Tetrahedron Lett. ,  2006 ,  47 ,  181 – 184 . 
+ 31.  F.  Inokuchi ,  K.  Araki ,  S.  Shinkai ,  Facile detection of cation – π  interactions in calix[n]arenes 
+by mass spectroscopy ,  Chem. Lett. ,  1994 ,  1383 – 1386 . 
+ 32.  B.  Masci ,  M.  Finelli ,  M.  Varrone ,  Fine tuning of the cavity size in calixarene - like cyclophanes: 
+a complete series of homooxacalix[4]arene ligands for quaternary ammonium ions ,  Chem. Eur. 
+J. ,  1998 ,  4 ,  2018 – 2030 . 
+ 33.  B.  Masci ,  S. L.  Mortera ,  D.  Persiani ,  P.  Thu é ry  ,  Methyl ether derivatives of  p - tert - butyl[3.1.3.1]
+homooxacalixarene. Formation, structure, and complexes with quaternary ammonium ions , 
+ J. Org. Chem. ,  2006 ,  71 ,  504 – 511 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Organic Cations in Constrained Systems 
+359
+ 34.  B.  Masci ,  D.  Persiani ,  P.  Thu é ry  ,  Complexation of quaternary ammonium ions by tetraester 
+derivatives of [3.1.3.1]homooxacalixarene in mobile and in ﬁ xed conformation ,  J. Org. Chem. , 
+ 2006 ,  71 ,  9784 – 9790 . 
+ 35.  P.  Timmerman ,  W.  Verboom ,  D. N.  Reinhoudt ,  Resorcinarenes ,  Tetrahedron ,  1996 ,  52 , 
+ 2663 – 2704 . 
+ 36.  H. J.  Schneider ,  D.  Guettes ,  U.  Schneider ,  Host – guest complexes with water - soluble macro-
+cyclic polyphenolates including induced ﬁ t and simple elements of a proton pump ,  J. Am. 
+Chem. Soc. ,  1988 ,  110 ,  6449 – 6454 . 
+ 37.  W. - H.  Chen ,  Y.  Wei ,  S. - D.  Tan ,  B.  Wang ,  Z. - L. X u,  Spectrometric study of the size discrimi-
+nation of quaternary ammonium cations by tetracyanoresorcin[4]arene ,  Supramol. Chem. , 
+ 2005 ,  17 ,  469 – 473 . 
+ 38.  P.  Ballester ,  M. A.  Sarmentero ,  Hybrid cavitand - resorcin[4]arene receptor for the selective 
+binding of choline and related compounds in protic media ,  Org. Lett. ,  2006 ,  8 ,  3477 – 
+3480 . 
+ 39.  A.  Lled ó ,  R. J.  Hooley ,  J .  Rebek Jr., Recognition of guests by water - stabilized cavitand hosts , 
+ Org. Lett. ,  2008 ,  10 ,  3669 – 3671 . 
+ 40.  S. M.  Biros ,  E. C.  Ullrich ,  F.  Hof ,  L.  Trembleau ,  J .  Rebek Jr., Kinetically stable complexes 
+in water: the role of hydration and hydrophobicity ,  J. Am. Chem. Soc. ,  2004 ,  126 ,  2870 – 
+2876 . 
+ 41.  A.  Mehdizadeh ,  M. C.  Letzel ,  M.  Klaes ,  C.  Agena ,  J.  Mattay ,  Chiral discrimination on the 
+host – guest complexation of resorcin[4]arenes with quaternary amines ,  Eur. J. Mass Spectrom. , 
+ 2004 ,  10 ,  649 – 655 . 
+ 42.  A.  Arduini ,  A.  Pochini ,  A.  Secchi ,  Rigid calix[4]arene as a building block for the synthesis of 
+new quaternary ammonium cation receptors ,  Eur. J. Org. Chem. ,  2000 ,  2325 – 2334 . 
+ 43.  D.  Garozzo ,  G.  Gattuso ,  F. H.  Kohnke ,  A.  Notti ,  S.  Pappalardo ,  M. F.  Parisi ,  I.  Pisagatti ,  A. 
+J. P.  White ,  D. J.  Williams ,  Inclusion networks of a calix[5]arene - based exoditopic receptor 
+and long - chain alkylammonium ions ,  Org. Lett. ,  2003 ,  5 ,  4025 – 4028 . 
+ 44.  D.  Garozzo ,  G.  Gattuso ,  A.  Notti ,  A.  Pappalardo ,  S.  Pappalardo ,  M. F.  Parisi ,  M.  Perez ,  I. 
+ Pisagatti  ,  A calix[5]arene based heterotetratopic host for molecular recognition of long - chain, 
+ion - paired - α , ω - alkanediylammonium salts ,  Angew. Chem. Int. Ed. ,  2005 ,  44 ,  4892 – 4896 . 
+ 45.  A.  Shivanyuk ,  E. F.  Paulis ,  V.  B ö hmer ,  Guest - controlled formation of a hydrogen - bonded 
+molecular capsule ,  Angew. Chem. Int. Ed. ,  1999 ,  38 ,  2906 – 2909 . 
+ 46.  H.  Mansikkam ä ki ,  M.  Nissinen ,  K.  Rissanen ,  Noncovalent   π  …   π - stacked exo - functional nano-
+tubes : subtle control of resorcinarene self - assembly ,  Angew. Chem. Int. Ed. ,  2004 ,  43 , 
+ 1243 – 1246 . 
+ 47.  L.  Avram ,  Y.  Cohen ,  Self - assembly of resorcin[4]arene in the presence of small alkylammo-
+nium guests in solution ,  Org. Lett. ,  2008 ,  10 ,  1505 – 1508 . 
+ 48.  L.  Frish ,  M. O.  Vysotsky ,  S. E.  Matthews ,  V.  B ö hmer ,  Y.  Cohen ,  Tropylium cation capsule of 
+hydrogen - bonded tetraurea calix[4]arene dimers ,  J. Chem. Soc., Perkin Trans. 2 ,  2002 , 
+ 88 – 93 . 
+ 49.  J.  Lagona ,  P.  Mukhopadhyay ,  S.  Chakrabarti ,  L.  Isaacs ,  The cucurbit[n]uril family ,  Angew. 
+Chem. Int. Ed. ,  2005 ,  44 ,  4844 – 4870 . 
+ 50.  W. L.  Mock ,  N. Y.  Shih ,  Structure and selectivity in host – guest complexes of cucurbituril , 
+ J. Org. Chem. ,  1986 ,  51 ,  4440 – 4446 . 
+ 51.  C.  M á rquez ,  R. R.  Hudgins ,  W. M.  Nau ,  Mechanism of host – guest complexation by cucurbi-
+turil ,  J. Am. Chem. Soc. ,  2004 ,  126 ,  5806 – 5816 . 
+ 52.  W.  Ong ,  M.  G ó mez - Kaifer ,  A. E.  Kaifer ,  Cucurbit[7]uril: a very effective host for viologens 
+and their cation radicals ,  Org. Lett. ,  2002 ,  4 ,  1791 – 1794 . 
+ 53.  R.  Eckel ,  R.  Ros ,  B.  Decker ,  J.  Mattay ,  D.  Anselmetti ,  Supramolecular chemistry at the single -
+ molecule level ,  Angew. Chem. Int. Ed. ,  2005 ,  44 ,  484 – 488 . 
+ 54.  A.  Arduini ,  D.  Demuru ,  A.  Pochini ,  A.  Secchi ,  Recognition of quaternary ammonium cations 
+by calix[4]arene derivatives supported on gold nanoparticles ,  Chem. Commun. ,  2005 , 
+ 645 – 647 . 
+ 55.  N.  Korbakov ,  P.  Timmerman ,  N.  Lidich ,  B.  Urbach ,  A.  Sa ’ ar ,  S.  Yitzchaik ,  Acetylcholine 
+detection at micromolar concentrations with the use of an artiﬁ cial receptor - based ﬂ uorescence 
+switch ,  Langmuir ,  2008 ,  24 ,  2580 – 2587 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+360 
+Molecular Encapsulation
+ 56.  D. M.  Bailey ,  A.  Hennig ,  V. D.  Uzunova ,  W. M.  Nau ,  Supramolecular tandem enzyme assays 
+for multiparameter sensor arrays and enantiomeric excess determination of amino acids ,  Chem. 
+Eur. J. ,  2008 ,  14 ,  6069 – 6077 . 
+ 57.  V.  Balzani ,  A.  Credi ,  M.  Venturi ,  Adressing energy and signals by processing molecular and 
+supramolecular systems ,  Chem. Eur. J. ,  2008 ,  14 ,  26 – 39 . 
+ 58.  a)  C.  Sch ä fer ,  R.  Eckel ,  R.  Ros ,  J.  Mattay ,  D.  Anselmetti ,  Photochemical single - molecule afﬁ n-
+ity switch ,  J. Am. Chem. Soc. ,  2007 ,  129 ,  1488 – 1489 ;  b)  D.  Anselmetti ,  F. W.  Bartels ,  A. 
+ Becker ,  B.  Decker ,  R.  Eckel ,  M.  McIntosh ,  J.  Mattay ,  P.  Plattner ,  R.  Ros ,  C.  Sch ä fer ,  N. 
+ Sewald  ,  Reverse engineering of an afﬁ nity - switchable molecular interaction characterized by 
+atomic force microscopy single - molecule force spectroscopy ,  Langmuir ,  2008 ,  24 , 
+ 1365 – 1370 . 
+ 59.  L.  Grubert ,  W.  Abraham , unpublished results. 
+ 60.  L.  Grubert ,  W.  Abraham ,  Photoswitchable calix[4]arenes bearing dihydroacridine substituents 
+at the upper rim ,  Tetrahedron ,  2007 ,  63 ,  10778 – 10787 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+ 13 
+Proteins as Host for 
+Enantioselective Catalysis: Artiﬁ cial 
+Metalloenzymes Based on the 
+Biotin – Streptavidin Technology 
+ Jincheng  Mao and  Thomas R.  Ward 
+ Department of Chemistry, University of Basel, CH - 4056 Basel 
+ 13.1  Introduction 
+ In order to meet the ever increasing demand for enantiopure compounds, heterogeneous - , 
+homogeneous -  and enzymatic catalysis have evolved independently in the past.  1,2 Although 
+all three approaches have yielded industrially viable processes, the latter two are the most 
+widely used and can be regarded as complementary in many respects. 3 
+ From the viewpoint of molecular encapsulation, enzymes have evolved to accommo-
+date and orient their substrate within a well - deﬁ ned environment provided by the protein, 
+Figure  13.1 a. In many cases, the substrate is embedded within the enzyme. In contrast, 
+homogeneous catalysts typically possess a (chelating) ligand which occupies one hemi-
+sphere around the metal, while the substrate occupies the other hemisphere. The main 
+effort in catalyst optimization has thus been to extend the reach of the selectivity - orienting 
+ligand, Figure  13.1 b. 
+ With the aim of complementing the well established ﬁ elds of homogeneous and enzy-
+matic catalysis, organocatalysis and artiﬁ cial metalloenzymes have witnessed a recent 
+revival. 4,5 Artiﬁ cial metalloenzymes, result from combining an active but unselective 
+organometallic moiety with a macromolecular host (protein or DNA), Figure  13.2 . 
+ Both Kaiser and Whitesides suggested the possibility of creating artiﬁ cial metalloen-
+zymes in the late 1970s already.  6,7   However, there existed a widespread belief that proteins 
+Molecular Encapsulation: Organic Reactions in Constrained Systems        Edited by Udo H. Brinker and Jean-Luc Mieusset
+© 2010 John Wiley & Sons, Inc.  ISBN: 978-0-470-99807-6
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+362 
+Molecular Encapsulation
+ Figure 13.1   Structure of cytochrome P450 cam with its substrate (camphor, yellow), 
+emphasizing the  ‘ lock and key ’ complementarity between the enzyme and its substrate 
+(pdb ref. code: 2CPP) (a); Structure of Knowles ’ s {Rh(dipamp)} + bound to its substrate 
+(yellow), emphasizing the limited space (hemisphere) occupied by the enantiopure 
+dipamp ligand (CSD ref. code: VERYAS) (b)  
+*
+anchor
+host protein
+spacer
+M
+R
+R'
+X
+R
+R'
+X
+Y
+enantioenriched
+artificial metalloenzyme
+H
+L
+L
++ HY
+ Figure 13.2   Anchoring a catalytically active but unselective organometallic catalyst within 
+a host protein affords artiﬁ cial metalloenzymes for enantioselective catalysis. Chemical 
+optimization can be achieved either by varying the spacer (oval) or the chelating ligand. 
+Site - directed or random mutagenesis at a position close to the metal moiety ( * ) can be 
+used for the genetic optimisation.  Reprinted with permission of Swiss Chemical Society  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Proteins as Host for Enantioselective Catalysis 
+363
+and organometallic catalysts are incompatible with each other. This severely hampered 
+research in this area at the interface between homogeneous and enzymatic catalysis. 8 
+Since 2000 however, there has been an increasing interest in the ﬁ eld of artiﬁ cial metal-
+loenzymes for enantioselective catalysis. 9 – 13 
+ For the localization of an organometallic moiety within a macromolecular host, three 
+anchoring strategies can be envisaged: covalent, dative or supramolecular.  5 Using such 
+approaches, enantioselective artiﬁ cial metalloenzymes have been created for hydrolysis, 12 
+hydrogenation,  14 – 17 transfer hydrogenation, 18 allylic alkylation, 19 sulfoxidation, 20 – 24 epoxi-
+dation, 25,26 dihydroxylation, 27 Diels – Alder, 28,29 trans - amination, 30 Michael addition 31 and 
+ﬂ uorination. 32   Comparatively, supramolecular anchoring appears as the most appealing, 
+since its allows separate variation of both biological and chemical components, followed 
+by straightforward combination of the organometallic moiety and the macromolecular 
+host. In addition, no chemical modiﬁ cation step is required after the incorporation of the 
+catalyst precursor, thus ensuring the integrity of the organometallic species. In recent 
+years, we have been exploiting the biotin – avidin technology for the creation of artiﬁ cial 
+metalloenzymes for enantioselective catalysis. Herein we summarize the challenges and 
+our progress in this area. 
+ 13.2  The Biotin – Avidin Technology 
+ The biotin – avidin technology, often referred to as molecular Velcro, relies on the very 
+high afﬁ nity of biotin for either avidin or streptavidin  –  (strept)avidin hereafter.  33 The 
+versatility of this technology can be traced back to the following features: 
+  i)   
+  The nearly irreversible interaction between biotin and (strept)avidin relies solely on 
+hydrogen bonds and hydrophobic interactions and thus can reliably take place in a 
+variety of environments (cell, blood, surfaces, etc.) under mild conditions. 
+  ii)     A straightforward amide bond - forming reaction allows to append a biotin moiety to 
+nearly any probe. This derivatization of the valeric acid side chain of biotin does not 
+signiﬁ cantly affect the high afﬁ nity of the biotin – avidin couple. 34 
+ iii)  (Strept)avidin possesses a homotetrameric   β  - barrel structure with four equivalent 
+biotin - binding sites. This allows to bring into proximity different moieties via the 
+biotin – avidin technology. 
+  iv)     (Strept)avidin is a very robust protein scaffold which can be easily handled by unex-
+perienced chemists without the risk of loosing biotin - binding activity. 
+ In the past four decades, this versatile tool has found numerous applications in afﬁ nity 
+chromatography, signal ampliﬁ cation, drug delivery, immunoassays, immobilization etc.  35 
+ Inspired by the pioneering work of Whitesides,  7,17   we reasoned that we could exploit 
+the biotin – avidin technology for the creation and optimization of artiﬁ cial metalloen-
+zymes. Introduction of a biotin anchor on a chelating ligand ensures the localization of 
+an organometallic moiety within a chiral environment provided by (strept)avidin. We 
+endeavored to use the modern tools of genetic and chemical optimization to ﬁ ne - tune the 
+second coordination sphere of the resulting artiﬁ cial metalloenzymes. The main stages 
+include (i) mutation and overexpression of the (strept)avidin isoform in a suitable host, 
+(ii) isolation, puriﬁ cation and quantiﬁ cation of the activity of the mutated (strept)avidin, 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+364 
+Molecular Encapsulation
+(iii) synthesis of the biotinylated catalyst precursor and incorporation within (strept)
+avidin, (iv) catalysis, and (v) product isolation and analysis. 
+ One of the most attractive feature of this approach is the diversity generated by com-
+bining both chemical and genetic optimization strategies. 36 Following this approach, we 
+have been able to develop artiﬁ cial metalloenzymes for the hydrogenation, the allylic 
+alkylation and the transfer hydrogenation reaction. 
+ 13.2.1  The Chemical Optimization Dimension 
+ In the spirit of homogeneous catalyst optimization, variation of the ﬁ rst coordination 
+sphere provided by a chelating ligand often has a signiﬁ cant impact on the performance 
+of the resulting catalyst. Inspired by some of the best homogeneous catalysts, a series of 
+aminodiphosphines and amidosulfonamides were synthesized and coupled with the 
+biotin - anchor. We reasonned that introduction of a spacer between the biotin and the 
+chelating ligand would project a different chiral environment for each biotin – spacer –
+ ligand combination, thus offering a straightforward optimization strategy. The most 
+versatile ligands and spacers are sketched in Figure  13.3 . 
+ 13.2.2  The Genetic Optimization Dimension 
+ Considering the ease of recombinant protein production in various hosts, we set out to 
+produce streptavidin (Sav hereafter) in  Escherichia coli  and avidin (Avi hereafter) in 
+ Pichia pastoris . 37,38   Although in our hands both proteins could be overexpressed to high 
+levels (230  mg  l  − 1 cell culture and 330  mg  l  − 1  cell culture respectively) streptavidin was 
+eventually preferred over avidin for the following reasons: 
+  i)   
+  In contrast to streptavidin, avidin is glycosylated. This is a source of inhomogeneity 
+and thus may cause reproducibility concerns. In addition, the inhomogeneity renders 
+crystallization more challenging. 
+  ii)     Each avidin monomer possesses a single intramolecular disulﬁ de bridge. As a con-
+sequence, the protein cannot be denatured and renatured, which is a limitation for 
+puriﬁ cation purposes. 
+ iii)  E. coli  is a well behaved and a very easy to handle organism for the overexpression 
+of recombinant proteins. However, it should be emphasized that  P. pastoris secretes 
+the recombinant proteins in the culture medium, which could be a major asset for 
+future directed evolution studies. 
+ In light of the above reasons and considering that our initial success was obtained with 
+streptavidin rather than avidin,  14   we rapidly focused on streptavidin and mutants thereof 
+as host for artiﬁ cial metalloenzymes. 
+ Docking studies performed with either [Rh(COD)(Biot – 1 )] +  or [Ru(  η 6 - arene)H(Biot –
+ IIIp – 2 )] within WT - Sav revealed that the potential energy surface describing the localiza-
+tion of the metal within the protein environment was ﬂ at and the metal adopted different 
+positions within a very small energy window.  39,40   Analysis of the C  α  – M distances revealed 
+that the asymmetric carbon (C  α  ) of residue S112 Sav lied systematically closest to the 
+metal center. Based on these  in silico  studies, we set out to produce all twenty Sav iso-
+forms resulting from saturation mutagenesis at position S112X Sav.  41   Except for S112P 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Proteins as Host for Enantioselective Catalysis 
+365
+Sav (which afforded low levels of pure protein), all mutants could be produced in high 
+yield and puriﬁ ed from 10 litre  E. coli fermentations. 
+ 13.3  Artiﬁ cial Hydrogenases 
+ Having synthesized a library of biotinylated diphosphine ligands, these were 
+reacted with [Rh(COD)] +  and combined with a Sav isoform. The resulting artiﬁ cial 
+metalloenzymes were screened for the reduction of  N - acetamidodehydroalanine 
+and  N - acetamidodehydrophenylalanine to afford  N - acetamidoalanine ( N - AcAla) and 
+(+)-Biotin
+spacer:
+n = 1-5
+In
+IIq
+IIIq
+IV
+V
+q = o,m,p
+q = o,m,p
+Biot-spacer-1
+Biot-spacer-2H
+NH
+HN
+O
+S
+H
+H
+O
+Biot
+spacer
+N
+PPh2
+PPh2
+Biot
+spacer
+NH
+NH2
+Biot
+H
+N
+ligand (1)
+O
+n
+ligand (1)
+O
+NH
+Biot
+SO2
+NH
+Biot
+ligand (2H)
+N
+Biot
+O
+ligand (1)
+Biot
+H
+N
+Ph
+O
+ligand (1)
+ Figure 13.3   Chemical diversity generated by combining different biotinylated spacers 
+and ligands. After addition of a suitable metal source, the resulting biotinylated 
+organometallic catalyst precursors are combined with (strept)avidin to afford artiﬁ cial 
+metalloenzymes.  Reprinted with permission of Swiss Chemical Society  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+366 
+Molecular Encapsulation
+ N - acetamidophenylalanine ( N  - AcPh) respectively, Figure  13.4 . Overall, twenty two 
+ligands were screened in the presence of the twenty Sav isoforms and WT Avi. Noteworthy 
+results are collected in Table  13.1 .  14,41 – 45   Based on these data, the following trends can be 
+identiﬁ ed: 
+ i) 
+ both ( R ) - and ( S ) - enantiomers of the product can be obtained in good enantioselectivi-
+ties ( > 90% ee, Table  13.1 entries 1 – 6) 
+  ii)     chemical diversity (e.g. variation of the spacer) is a more versatile means for optimi-
+zation that genetic diversity. This latter can be regarded as a ﬁ ne tuning step. 
+NHAc
+COOH
+Biot-spacer-1 (1.0 mol%)
+[Rh(COD)2]BF4 (0.9 mol%)
+(strept)avidin (0.33 mol%)
+0.1 M MES buffer
+H2 (5 bar), RT, 15 h
+Ph
+NHAc
+COOH
+(N-AcAla)
+(N-AcPhe)
++
+NHAc
+COOH
+Ph
+NHAc
+COOH
++
+H
+H
+Biot-1
+Biot-(R)-IV-1
+94% ee
+93% ee
+-94% ee
+-94% ee
+NH
+HN
+O
+S
+H
+H
+O
+N
+PPh2
+PPh2
+NH
+HN
+O
+S
+H
+H
+O
+N
+O
+N
+PPh2
+PPh2
+ Figure 13.4   Substrates and operating conditions used for the hydrogenation reaction 
+catalyzed by artiﬁ cial metalloenzymes based on the biotin – avidin technology 
+ Table 13.1    Selected results from the asymmetric hydrogenation reactions   a  
+ Entry 
+ Protein 
+ Ligand 
+ ee% (Conv.%) 
+ N - AcAla 
+ ee% (Conv.%) 
+ N - AcPhe 
+ 1 
+ WT Sav 
+ Biot - 1 
+ 94 (quant.)  
+ 93 (84)  
+ 2 
+ S112A 
+ Biot - 1 
+ 93 (quant.)  
+ 94 (94)  
+ 3  b  
+ S112W 
+ Biot - ( R ) - IV - 1 
+ − 94 (98)  
+ − 94 (86)  
+ 4  c  
+ WT Sav  
+ Biot - ( R ) - IV - 1 
+ − 87 (quant.)  
+ − 91 (quant.)  
+ 5  d  
+ WT Sav 
+ Biot - ( R ) - IV - 1 
+ − 87 (quant.)  
+ − 86 (94)  
+ 6 
+ S112E 
+ Biot - ( R ) - IV - 1 
+ − 79 (quant.)  
+ − 55 (16)  
+ a   Positive  ee values in favour of the ( R ) - enantiomer, negative  ee values in favour of the ( S ) - enantiomer, 
+quant.   =  Quantitative. 
+ b  Biphasic;  
+ c  27% DMSO;  
+ d  45% DMSO.  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Proteins as Host for Enantioselective Catalysis 
+367
+  iii)     introduction of conformationally constrained spacers (eg. proline  IV ) confers signiﬁ -
+cant organic solvent tolerance to the systems. Both biphasic and DMSO/water mix-
+tures yield good conversions and selections (Table  13.1 entries 3 – 5). 45 
+ iv)  the artiﬁ cial hydrogenases follow Michaelis - Menten kinetics. Introduction of the 
+catalyst within streptavidin contributes to improve both the activity (eg. phenomenon 
+of protein accelerated catalysis, compare [Rh(COD)(Biot – 1 )] +  k cat 3.06  min  − 1 ,  K M 
+7.38  mM, with [Rh(COD)(Biot – ( R ) - IV – 1 )] +  ⊂  WT Sav  k cat 12.30  min  − 1 ,  K M 4.36  mM) 
+and the selectivity. 42 
+ v)  although most ligand – protein combinations afford comparable levels of conversion 
+and enantioselectivity for both substrates, certain combinations yield substrate spe-
+ciﬁ c artiﬁ cial hydrogenases (Table  13.1 entry 6). 
+ Having demonstrated the potential of artiﬁ cial metalloenzymes for the reduction of 
+ N  - protected dehydroaminoacids, we turned our attention towards organometallic - 
+catalyzed reactions where the enantiodiscrimination step occurs without coordination of 
+one of the reactants to the metal centre. We anticipated that incorporation of the metal 
+complex within a protein environment may steer the enantioselection without requiring 
+transient coordination to the metal. In this context, we selected the palladium - catalyzed 
+asymmetric allylic alkylation, the ruthenium - catalyzed transfer hydrogenation as well as 
+the vanadyl - catalyzed sulfoxidation reaction. Indeed, these reactions are believed to 
+proceed without prior coordination of the soft nucleophile, the prochiral ketone or the 
+prochiral sulﬁ de respectively, Figure  13.5 . 
+ 13.4  Artiﬁ cial Allylic Alkylases 
+ In the ﬁ eld of C − C bond forming reactions, palladium occupies a privileged position.  46 
+In this context, the asymmetric allylic alkylation attracted our interest due to its unique 
+outersphere attack of the malonate on the   η 3 - coordinated 1,3 - diphenylallyl moiety. 47 
+ Following the above - described chemogenetic optimization procedure, we screened 
+twenty one biotinylated ligands in conjunction with twenty two (strept)avidin isoforms 
+for the allylic alkylation of 1,3 - diphenylallyl acetate. Addition of didodecyldimethylam-
+Ph
+Ph
+Pd
+X
+X
+Nu–
+Ru
+R
+N
+N
+H
+Tos
+H
+O
+H
+H
+V
+O
+O
+O
+(Ln)
+S
+Ar
+R
+(a)
+(b)
+(c)
+ Figure 13.5   Postulated transition states of homogeneous enantioselective reactions which 
+proceed without coordination of one of the substrates to the metal centre: allylic alkylation 
+(a), transfer hydrogenation (b) and sulfoxidation (c).  Reprinted with permission of Swiss 
+Chemical Society  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+368 
+Molecular Encapsulation
+monium bromide (DMB) allowed to signiﬁ cantly improve the yield of alkylation product 
+ –  over the hydrolysis product, 1,3 - diphenylallylalcohol, formed predominantly in the 
+absence of DMB (Figure  13.6 ). This screening revealed the following trends:  19 
+   i)   
+  The nature of the spacer plays a critical role in conferring activity to the artiﬁ cial 
+alkylase. In most cases and despite the addition of DMB, hydrolysis product was 
+formed predominantly. The best spacers are conformationally constrained: either 
+proline  IV or  o - aminobenzoate  IIo , Table  13.2 , entries 1 – 3. 
+  ii)     Despite the presence of chaotropic agents (surfactant and basic pH), the artiﬁ cial 
+metalloenzyme behave remarkably well. While the high pH is required for the reac-
+tion to proceed, the reaction carried out in the absence of DMB leads to a signiﬁ cant 
+erosion of the conversion, with only a modest increase in selectivity, Table  13.2 , 
+entries 3, 4. 
+  iii)     As previously observed for the hydrogenation reaction, conformationally constrained 
+ligands confer improved organic solvent tolerance. Reactions with [Pd(  η 3 - allyl)(Biot –
+ IIo – 1 )] +  ⊂    S112A Sav can be performed in 45% DMSO without addition of DMB, 
+Table  13.2 , entry 5. 48 
+  iv)     Again here, the versatility of the chemical optimization allowed to rapidly identify 
+an active biotinylated ligand. The genetic optimization can be regarded as a ﬁ ne 
+tuning step: whereas most streptavidin isoforms yielded ( R ) - alkylation products in 
+K2CO3 (5 equiv)
+DMB (2 equiv)
+H2O/DMSO (10/1), RT,16 h
+Biot-spacer-1 (0.048 equiv)
+[Pd(R2allyl)Cl]2 (0.02 equiv)
+(strept)avidin (0.014 equiv)
+1 equiv
+CO2Me
+CO2Me
++
+5 equiv
+Biot-IIo-1
+-82% ee
+88% ee
+Biot-(R)-IV-1
+NH
+HN
+O
+S
+H
+H
+O
+N
+O
+N
+PPh2
+PPh2
+NH
+HN
+O
+S
+H
+H
+O
+H
+N
+O
+N
+PPh2
+PPh2
+OAc
+MeO2C
+CO2Me
+ Figure 13.6   Operating conditions used for the asymmetric allylic alkylation catalyzed by 
+artiﬁ cial metalloenzymes based on the biotin – avidin technology.  Reprinted with permission 
+of Swiss Chemical Society  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Proteins as Host for Enantioselective Catalysis 
+369
+conjunction with [Pd( η 3 - allyl)(Biot – IIo – 1 )] + , S112Q clearly stands out as it affords 
+( S ) - alkylation product, Table  13.2 entry 6. 
+ 13.5  Artiﬁ cial Transfer Hydrogenase 
+ The asymmetric transfer hydrogenation of ketones is an effective way to prepare enan-
+tiopure alcohols.  49   We were attracted to this reaction as we anticipated that one could 
+exploit the reversibility of the reaction to perform either for the enantioselective reduc-
+tion or for the kinetic resolution of racemic alcohols via oxidation.  50 This behaviour 
+is reminiscent of alcohol dehydrogenases which can operate either as oxidases or 
+reductases. 2 
+ Incorporation of a biotinylated d6 - piano - stool complex bearing a biotinylated amino-
+sulfonamide ligand into streptavidin afforded artiﬁ cial transfer hydrogenases for the 
+reduction of acetophenone derivatives. A buffered solution (pH 6.25) containing sodium 
+formate as a hydrogen source proved best in terms of conversion and of selectivity. 
+Unexpectedly, the performance of the artiﬁ cial metalloenzyme was improved by raising 
+the temperature to 55  ° C. 18,39,51   A combined chemogenetic procedure combining 21 piano 
+stool complexes with the twenty S112X Sav isoforms allowed to optimize the activity 
+and the selectivity of these hybrid catalysts for the reduction of prochiral ketones, Figure 
+ 13.7 . The following trends were identiﬁ ed: 52 
+ i) 
+ Only catalysts bearing the  para - substituted spacer biot – III p – 2  afforded any signiﬁ -
+cant level of conversion. 
+ ii)  Ruthenium - based catalysts [Ru(  η 6 - arene)H(Biot – III p – 2 )] outperformed either 
+rhodium or iridium based systems [M(  η 5 - C 5 Me 5 )H(Biot – III p – 2 )]. 
+ iii)  Under otherwise identical conditions, the benzene [Ru(  η 6 - p - benzene)H(Biot – III p – 2 )] 
+and the  p - cymene [Ru(  η 6 - p - cymene)H(Biot – III p – 2 )] complexes afforded opposite 
+enantiomers, Table  13.3 , entries 1, 2. 
+  iv)     Various acetophenone derivatives could be reduced with good enantioselectivities up 
+to 92% ee for ( S ) - products and 97% ee for ( R ) - products, Table  13.3 , entries 3, 4. 
+  v)     In contrast, the selectivities obtained for the reduction of dialkylketones remained 
+modest, Table  13.3 , entries 5, 6. 
+ Table 13.2   Selected results from the asymmetric allylic alkylations 
+ Entry 
+ Protein 
+ Ligand 
+ Conv. (%)  
+ ee (%)  a  
+ 1  
+ S112G V47G 
+ Biot - ( R ) - IV - 1 
+ 92 
+ − 82 
+ 2  
+ S112G 
+ Biot - IIo - 1 
+ 95 
+ 88 
+ 3  
+ S112A 
+ Biot - IIo - 1 
+ 95 
+ 90 
+ 4  b  
+ S112A 
+ Biot - IIo - 1 
+ 20 
+ 93 
+ 5  b,c  
+ S112A 
+ Biot - IIo - 1 
+ 90 
+ 95 
+ 6  
+ S112Q 
+ Biot - IIo - 1 
+ 96 
+ - 31 
+ a  Positive  ee values in favour of the ( R ) - enantiomer, negative  ee values in favour of the ( S ) - enantiomer.  
+ b  No DMB was added.  
+ c  The reaction was performed in 45% DMSO.  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+370 
+Molecular Encapsulation
+ In the context of transfer - hydrogenation, dialkylketones are challenging substrates as 
+the major contribution to the enantiodiscrimination event is believed to be C − H · · · · · · π 
+interactions between the   η 6  - bound arene and the phenyl moiety on the prochiral substrate, 
+Figure  13.5 . 53 – 55   We anticipated that the introduction of additional sites of mutation in the 
+proximity of the piano - stool moiety may allow to address this challenge. For this purpose, 
+we invested considerable effort into crystallizing the most promising ( R ) - and ( S ) - selective 
+artiﬁ cial metalloenzymes: [Ru( η 6 - benzene)Cl(Biot – III p – 2 )]  ⊂    S112K Sav and [Ru(  η 6 - p -
+ cymene)Cl(Biot – III p – 2 )]  ⊂    S112A Sav. We were fortunate to succeed in crystallizing the 
+HCOONa, B(OH)3
+MOPS buffer (pHinitial 6.25)
+55 oC, 64 h
+Ar
+R
+O
+Ar
+R
+OH
+5: 92% ee
+6: 97% ee
+7: 90% ee
+ 3: 55% ee
+8: 88% ee
+[Ru(h6-arene)H(Biot-IIIp-2)] (1%)
+(strept)avidin (0.33%)
+h6-arene: h6-p-cymene; h6-benzene
+4: 91% ee
+OH
+Br
+OH
+Me
+N
+OH
+OH
+O
+OH
+OH
+ Figure 13.7   Substrates and operating conditions used for the transfer hydrogenation 
+catalyzed by artiﬁ cial metalloenzymes based on the biotin – avidin technology.  Reprinted 
+with permission of Swiss Chemical Society  
+ Table 13.3   Selected results from the asymmetric transfer hydrogenation using {Ru(  η 6 -
+ arene)Cl(Biot – III p – 2 )} 
+ Entry 
+ η 6 - Arene 
+ Protein  
+ Product 
+ Conv. (%)  
+ ee (%)  a  
+ 1 
+ benzene 
+ S112T  
+ 3 
+ 90 
+ − 55 
+ 2 
+ p - cymene  
+ S112A 
+ 4 
+ 98 
+ 91 
+ 3 
+ p - cymene  
+ S112A K121N  
+ 5 
+ quant.  b  
+ − 92 
+ 4 
+ p - cymene  
+ S112Y  
+ 6 
+ 79 
+ 97 
+ 5 
+ p - cymene  
+ S112A 
+ 7 
+ 97 
+ 69 
+ 6 
+ p - cymene  
+ S112A 
+ 8 
+ 98 
+ 48 
+ 7 
+ p - cymene  
+ S112A K121T  
+ 7 
+ quant.  b  
+ 90 
+ 8 
+ p - cymene  
+ S112A K121T  
+ 8 
+ 99 
+ 88 
+ a  Positive and negative  ee values correspond to the  R and  S enantiomers, respectively.  
+ b  Quantitative.  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Proteins as Host for Enantioselective Catalysis 
+371
+former and its structure is depicted in Figure  13.8 .  51   Based on this structure, we performed 
+an additional round of mutations, concentrating on the close lying K121 and L124 resi-
+dues and using WT Sav, S112K and S112A as background, thus affording a total 120 Sav 
+isoforms. In order to speed up the optimization process, a straightforward Sav immobili-
+zation procedure was implemented.  51 For this purpose, commercially available bioti-
+nylated sepharose was added to the supernatant of the  E. coli  lysed cell cultures. After 
+centrifugation, the immobilized Sav mutants, which on average possessed three remaining 
+biotin - binding sites, are treated with an excess of [Ru(  η 6 - arene)Cl(Biot – III p – 2 )], and 
+washed and tested in the presence of Sav. This second optimization round allowed to 
+identify artiﬁ cial transfer hydrogenases which displayed much improved selectivities 
+towards dialkylketones, Table  13.3 , entries 7, 8. 
+ Having developed an efﬁ cient artiﬁ cial transfer hydrogenase, we attempted to apply 
+the same methodology to the reverse reaction: the kinetic resolution of racemic alcohols. 
+To our disappointment, we were forced to use strong oxidizing agents (eg.  t - BuOOH 
+rather than acetone, in the spirit of an Oppenauer - type mechanism) to drive the reaction 
+to completion.  56   We speculate that, in the presence of water, the ruthenium is unable to 
+abstract the   β - hydrogen on the prochiral alcohol. 
+ Despite the excitement generated by the X - ray structure, the localization of the bioti-
+nylated metal complex within the protein environment was a source of disappointment. 
+Indeed, we anticipated that the active catalyst would be encapsulated within the biotin -
+ binding pocket of Sav rather than on the surface of the protein. To overcome this problem 
+we tested whether the polar residues present within the biotin - binding pocket itself may 
+be capable of binding a polar coordination complex. With this goal in mind, we tested 
+the catalytic potential of vanadyl as a catalyst.  57 
+ Figure 13.8   Close - up view of the X - ray crystal structure of [Ru(  η 6 - p - benzene)Cl(Biot –
+ IIIp – 2)]   ⊂  S112K Sav. The closest lying residues to the ruthenium are highlighted in yellow 
+(K112A, B and K121A, B ) and orange (L124) respectively. The ruthenium position is partially 
+occupied (20%). The absolute conﬁ guration at Ru is ( S ) 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+372 
+Molecular Encapsulation
+ 13.6  Enantioselective Sulfoxidation Based on Vanadyl - loaded Streptavidin 
+ Addition of vanadyl sulfate to Sav affords an artiﬁ cial oxidase for the sulfoxidation of 
+prochiral sulﬁ des. The system is most efﬁ cient at low pH (2.2) and organic peroxides are 
+required for efﬁ cient catalysis, Figure  13.9 . From the screening, the following trends 
+emerge: 21 
+ i) 
+ A variety of prochiral sulﬁ des are oxidized to the corresponding sulfoxides with no 
+overoxidation.  
+  ii)     At room temperature and relying on 0.02 equivalents vanadium, the conversions are 
+complete in most cases and the ( R ) - selectivities often exceed 90%, Table  13.4 , entries 
+1 - 5. 
+ iii)  Since there is no ligand, the system cannot be optimized chemically. 
+ iv)  In the presence of biotin - loaded Sav, the sulfoxidation with VOSO 4  affords racemic 
+product, suggesting that vanadium cannot compete for binding with biotin, Table 
+ 13.4 , entry 6. 
+HCl / KCl 0.05 M, pH 2.2
+[Substrate] = 0.01 M
+t-BuOOH 5 equiv, RT
+VOSO4 (2%), (strept)avidin (1%)
+Ar
+S
+R
+Ar
+S
+R
+O
+:
+S
+S
+S
+O
+O
+O
+:
+:
+:
+11: 93% ee
+12: 90% ee
+13: 90% ee
+S
+O
+:
+:
+:
+R' = Me,      9: 87% ee
+R' = OMe, 10: 90% ee
+R'
+ Figure 13.9   Substrates and operating conditions used for sulfoxidation catalyzed by 
+artiﬁ cial metalloenzymes based on vanadyl - loaded streptavidin.  Reprinted with permission 
+of Swiss Chemical Society  
+ Table 13.4   Selected results from the asymmetric 
+sulfoxidation reactions based on  VOSO 4 – loaded streptavidin 
+ Entry  
+ protein  
+ Product 
+ Conv. (%)  
+ ee (%)  a  
+ 1 
+ WT Sav  
+ 9 
+ 96 
+ 87 
+ 2 
+  WT Sav  
+  10 
+ quant.  b  
+ 90 
+ 3 
+  WT Sav  
+  11 
+ 53 
+ 93 
+ 4 
+  WT Sav  
+  12 
+ 96 
+ 90 
+ 5 
+  WT Sav  
+  13 
+ 61 
+ 86 
+ 6 
+  WT Sav   +  biotin  
+ 10 
+ 96 
+ 0 
+ 7 
+  D128A 
+ 10 
+ 97 
+ 0 
+ 8 
+ Aviloop  c  
+ 13 
+ 54 
+ 90 
+ a  ( R ) - enantiomer produced preferentially.  
+ b  Quantitative.  
+ c  see reference  [59] . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Proteins as Host for Enantioselective Catalysis 
+373
+  v)     It is widely recognized that residue D128 Sav is most important in biotin - binding.  58 
+The mutant D128A Sav affords racemic sulfoxide, thus suggesting that the vanadyl 
+moiety is located within the biotin - binding site, Table  13.4 , entry 7.  
+ vi)  Replacement of the L3,4 - loop of Sav by the corresponding L3,4 - loop of Avi affords 
+a chimaeric protein (Aviloop)  59   with improved properties for the sulfoxidation of 
+dialkylsulﬁ des, Table  13.4 entries 8. 
+ 13.7  Conclusions and Outlook 
+ As summarized here, artiﬁ cial metalloenzymes based on the biotin – avidin technology 
+have developed into a versatile approach to enantioselective catalysis. In many cases, 
+selectivities exceeding 92% ee could be obtained, relying on a chemogenetic optimization 
+strategy. Such hybrid catalysts display features which are reminiscent of both homogene-
+ous and enzymatic catalysis. 
+ Comparing alternative anchoring strategies (i.e. dative, covalent or supramolecular),  5 
+we speculate that a dative anchoring between an amino acid side chain and the catalyti-
+cally active metal moiety may provide an attractive means to ensure a better encapsula-
+tion. In this context, one should mention the interesting results recently disclosed by the 
+groups of Kazlauskas and Soumillon.  25,26   Substitution of Zn by Mn in carbonic anhydrase 
+yields an artiﬁ cial epoxidase (up to 55% ee ( R )). Along similar lines, Sheldon and co -
+ workers investigated the sulfoxidation properties of a vanadium - incorporated phytase. 
+After incorporation of vanadate into phytase from  A .  ﬁ cuum , the resulting semisynthetic 
+peroxidase displayed moderate enantioselectivity (up to 66% ee ( S )) for the sulfoxidation 
+of thioanisole derivatives in the presence of hydrogen peroxide, with very little detectable 
+overoxidation.  20   In contrast to our systems, the above two examples of artiﬁ cial metal-
+loenzymes display a very narrow substrate scope. This suggests that the dative anchoring 
+strategy provides a more  ‘ enzyme - like ’  second coordination sphere environment (i.e. 
+Lock - and - Key) for the substrate. 
+ Although the reactions implemented so far are limited to model systems, we believe 
+that artiﬁ cial metalloenzymes will reveal their full potential for transformations for 
+which there exists to date no good homogeneous catalyst. In this context, our current 
+efforts are directed towards the hydroxylation of alkanes (where overoxidation is dif-
+ﬁ cult to prevent with homogeneous systems) as well as highly sequence - speciﬁ c DNA 
+hydrolysis. 
+ Acknowledgements 
+ This work was funded by the Swiss National Science Foundation (Grants FN 200021 -
+ 105192 and 200020 - 113348), the Roche Foundation as well as the FP6 Marie Curie 
+Research Training Network (MRTN - CT - 2003 - 505020) and the Canton of Neuch â tel. We 
+thank Umicore Precious Metals Chemistry for a loan of ruthenium as well as C. R. Cantor 
+for the streptavidin gene. 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+374 
+Molecular Encapsulation
+ References 
+  1.  Comprehensive Asymmetric Catalysis ,  E. N.  Jacobsen ,  A.  Pfaltz ,  H.  Yamamoto (Eds.),  Springer , 
+ Berlin ,  1999 . 
+  2.  K.  Faber ,  Biotransformations in Organic Chemistry ,  5th ed. ,  Springer ,  Berlin ,  2004 . 
+  3.  M.  Breuer ,  K.  Ditrich ,  T.  Habicher ,  B.  Hauer ,  M.  Kesseler ,  R.  St ü rmer ,  T.  Zelinski ,  Industrial 
+methods for the production of optically active intermediates ,  Angew. Chem. Int. Ed. ,  2004 ,  43 , 
+ 788 – 824 . 
+  4.  R.  Berkessel ,  H.  Gr ö ger ,  Asymmetric Organocatalysis: From Biomimetic Concepts to 
+Applications in Asymmetric Synthesis ,  Wiley - VCH ,  Weinheim ,  2005 . 
+  5.  C.  Letondor ,  T. R.  Ward ,  Artiﬁ cial metalloenzymes for enantioselective catalysis: recent 
+advances ,  ChemBioChem ,  2006 ,  7 ,  1845 – 1852 . 
+  6.  E. T.  Kaiser ,  D. S.  Lawrence ,  Chemical mutation of enzyme active sites ,  Science ,  1984 ,  226 , 
+ 505 – 511 . 
+  7.  M. E.  Wilson ,  G. M.  Whitesides ,  Conversion of a protein to a homogeneous asymmetric hydro-
+genation catalyst by site - speciﬁ c modiﬁ cation with a diphosphinerhodium(I) moiety , 
+ J. Am. Chem. Soc. ,  1978 ,  100 ,  306 – 307 . 
+  8.  O.  P à mies ,  J. - E.  B ä ckvall ,  Combination of enzymes and metal catalysts. A powerful approach 
+in asymmetric catalysis ,  Chem. Rev. ,  2003 ,  103 ,  3247 – 3262 . 
+  9.  T.  Ueno ,  T.  Koshiyama ,  S.  Abe ,  N.  Yokoi ,  M.  Ohashi ,  H.  Nakajima ,  Y.  Watanabe ,  Design of 
+artiﬁ cial metalloenzymes using non - covalent insertion of a metal complex into a protein scaf-
+fold ,  J. Organomet. Chem. ,  2007 ,  692 ,  142 – 147 . 
+ 10.  Y.  Lu ,  Biosynthetic inorganic chemistry ,  Angew. Chem. Int. Ed. ,  2006 ,  45 ,  5588 – 5601 . 
+ 11.  G.  Roelfes ,  DNA and RNA induced enantioselectivity in chemical synthesis ,  Mol. Biosyst. , 
+ 2007 ,  3 ,  126 – 135 . 
+ 12.  D.  Qi ,  C. - M.  Tann ,  D.  Haring ,  M. D.  Distefano ,  Generation of new enzymes via covalent 
+modiﬁ cation of existing proteins ,  Chem. Rev. ,  2001 ,  101 ,  3081 – 3112 . 
+ 13.  C. M.  Thomas ,  T. R.  Ward ,  Artiﬁ cial metalloenzymes: proteins as hosts for enantioselective 
+catalysis ,  Chem. Soc. Rev. ,  2005 ,  34 ,  337 – 346 . 
+ 14.  J.  Collot ,  J.  Gradinaru ,  N.  Humbert ,  M.  Skander ,  A.  Zocchi ,  T. R.  Ward ,  Artiﬁ cial metalloen-
+zymes for enantioselective catalysis based on biotin − avidin ,  J. Am. Chem. Soc. ,  2003 ,  125 , 
+ 9030 – 9031 . 
+  15.       M. T.   Reetz  ,   J. J. - P.   Peyeralans  ,   A.   Maichele  ,   Y. F u,  M.   Maywald  ,  Directed evolution of hybrid 
+enzymes: evolving enantioselectivity of an achiral Rh - complex anchored to a protein ,  Chem. 
+Commun. ,  2006 ,  4318 – 4320 . 
+ 16.  H.  Yamaguchi ,  T.  Hirano ,  H.  Kiminami ,  D.  Taura ,  A.  Harada ,  Asymmetric hydrogenation with 
+antibody - achiral rhodium complex ,  Org. Biomol. Chem. ,  2006 ,  4 ,  3571 – 3573 . 
+ 17.  C. - C.  Lin ,  C. - W.  Lin ,  A. S. C.  Chan ,  Catalytic hydrogenation of itaconic acid in a biotinylated 
+Pyrphos – rhodium(I) system in a protein cavity ,  Tetrahedron Asymmetry ,  1999 ,  10 ,  1887 – 
+1893 . 
+ 18.  C.  Letondor ,  N.  Humbert ,  T. R.  Ward ,  Artiﬁ cial metalloenzymes based on biotin – avidin tech-
+nology for the enantioselective reduction of ketones by transfer hydrogenation ,  Proc. Natl. 
+Acad. Sci. USA ,  2005 ,  102 ,  4683 – 4687 . 
+ 19.  J.  Pierron ,  C.  Malan ,  M.  Creus ,  J.  Gradinaru ,  I.  Hafner ,  A.  Ivanova ,  A.  Sardo ,  T. R.  Ward , 
+ Artiﬁ cial metalloenzymes for asymmetric allylic alkylation on the basis of the biotin – avidin 
+technology ,  Angew. Chem. Int. Ed. ,  2008 ,  47 ,  701 – 705 . 
+ 20.  F.  van de  Velde ,  L.  K ö nemann ,  F. v.  Rantwijk ,  R. A.  Sheldon ,  Enantioselective sulfoxidation 
+mediated by vanadium - incorporated phytase: a hydrolase acting as a peroxidase ,  Chem. 
+Commun. ,  1998 ,  1891 – 1892 . 
+ 21.  A.  Pordea ,  M.  Creus ,  J.  Panek ,  C.  Duboc ,  M.  Novic ,  D.  Mathis ,  T. R.  Ward ,  Artiﬁ cial metal-
+loenzyme for enantioselective sulfoxidation based on vanadyl - loaded streptavidin ,  J. Am. 
+Chem. Soc. ,  2008 ,  130 ,  8085 – 8088 . 
+ 22.  A.  Mahammed ,  Z.  Gross ,  Albumin - conjugated corrole metal complexes: extremely simple yet 
+very efﬁ cient biomimetic oxidation systems ,  J. Am. Chem. Soc. ,  2005 ,  127 ,  2883 – 2887 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Proteins as Host for Enantioselective Catalysis 
+375
+ 23.  M.  Ohashi ,  T.  Koshiyama ,  T.  Ueno ,  M.  Yanase ,  H.  Fujii ,  Y.  Watanabe ,  Preparation of artiﬁ cial 
+metalloenzymes by insertion of chromium(III) schiff base complexes into apomyoglobin 
+mutants ,  Angew. Chem. Int. Ed. ,  2003 ,  42 ,  1005 – 1008 . 
+ 24.  J. R.  Carey ,  S. K.  Ma ,  T. D.  Pﬁ ster ,  D. K.  Garner ,  H. K.  Kim ,  J. A.  Abramite ,  Z.  Wang ,  Z. 
+ Guo ,  Y. L u,  A site - selective dual anchoring strategy for artiﬁ cial metalloprotein design ,  J. Am. 
+Chem. Soc. ,  2004 ,  126 ,  10812 – 10813 . 
+ 25.  K.  Okrasa ,  R. J.  Kazlauskas ,  Manganese - substituted carbonic anhydrase as a new peroxidase , 
+ Chem. Eur. J. ,  2006 ,  12 ,  1587 – 1596 . 
+ 26.  A.  Fernandez - Gacio ,  A.  Codina ,  J.  Fastrez ,  O.  Riant ,  P.  Soumillon ,  Transforming carbonic 
+anhydrase into epoxide synthase by metal exchange ,  ChemBioChem ,  2006 ,  7 ,  1013 – 1016 . 
+ 27.  T.  Kokubo ,  T.Sugimoto ,  T.  Uchida ,  S.  Tanimoto ,  M.  Okano ,  The bovine serum albumin – 2 -
+ phenylpropane - 1,2 - diolatodioxo - somium(VI) complex as an enantioselective catalyst for cis -
+ hydroxylation of alkenes ,  J. Chem. Soc., Chem. Commun. ,  1983 ,  769 – 770 . 
+  28.       M. T.   Reetz  ,   N.   Jiao  ,  Copper - phthalocyanine conjugates of serum albumins as enantioselective 
+catalysts in Diels – Alder reactions ,  Angew. Chem. Int. Ed. ,  2006 ,  45 ,  2416 – 2419 . 
+ 29.  A. J.  Boersma ,  J. E.  Klijn ,  B. L.  Feringa ,  G.  Roelfes ,  DN A - based asymmetric catalysis: 
+sequence - dependent rate acceleration and enantioselectivity ,  J. Am Chem. Soc. ,  2008 ,  130 , 
+ 11783 – 11790 . 
+ 30.  R. S.  Roy ,  B.  Imperiali ,  Pyridoxamine - amino acid chimeras in semisynthetic aminotransferase 
+mimics ,  Prot. Engineering ,  1997 ,  10 ,  691 – 698 . 
+ 31.  D.  Coqui è re ,  B. L.  Feringa ,  G.  Roelfes ,  DN A - based catalytic enantioselective Michael reac-
+tions in water ,  Angew. Chem. Int. Ed. ,  2008 ,  46 ,  9308 – 9311 . 
+ 32.  N.  Shibata ,  H.  Yasui ,  S.  Nakamura ,  T.  Toru ,  DN A - mediated enantioselective carbon - ﬂ uorine 
+bond formation ,  Synlett ,  2007 ,  1153 – 1157 . 
+ 33.  M.  Wilchek ,  E. A.  Bayer ,  Methods in Enzymology , Vol.  184 ,  Academic Press ,  San Diego ,  1990 . 
+ 34.  A.  Loosli ,  U. E.  Rusbandi ,  J.  Gradinaru ,  K.  Bernauer ,  C. W.  Schl ä pfer ,  M.  Meyer ,  S.  Mazurek , 
+ M.  Novic ,  T. R.  Ward , ( Strept)avidin as host for biotinylated coordination complexes: stability, 
+chiral discrimination, and cooperativity ,  Inorg. Chem. ,  2006 ,  45 ,  660 – 668 . 
+ 35.  R. J.  McMahon ,  Methods in Molecular Biology , Vol.  418 ,  J. M.  Walker (Ed.),  Humana Press , 
+ Totowa ,  2008 . 
+ 36.  M.  Creus ,  T. R.  Ward ,  Designed evolution of artiﬁ cial metalloenzymes: protein catalysts made 
+to order ,  Org. Biomol. Chem. ,  2007 ,  5 ,  1835 – 1844 . 
+ 37.  N.  Humbert ,  A.  Zocchi ,  T. R.  Ward ,  Electrophoretic behavior of streptavidin complexed to a 
+biotinylated probe: a functional screening assay for biotin - binding proteins ,  Electrophoresis , 
+ 2005 ,  26 ,  47 – 52 . 
+ 38.  A.  Zocchi ,  A. M.  Job é ,  J. - M.  Neuhaus ,  T. R.  Ward ,  Expression and puriﬁ cation of a recom-
+binant avidin with a lowered isoelectric point in Pichia pastoris ,  Prot. Expr. Purif. ,  2003 ,  32 , 
+ 167 – 174 . 
+ 39.  C.  Letondor ,  A.  Pordea ,  N.  Humbert ,  A.  Ivanova ,  S.  Mazurek ,  M.  Novic ,  T. R.  Ward  , 
+ Artiﬁ cial transfer hydrogenases based on the biotin - (strept)avidin technology: ﬁ ne tuning the 
+selectivity by saturation mutagenesis of the host protein ,  J. Am. Chem. Soc. ,  2006 ,  128 , 
+ 8320 – 8328 . 
+ 40.  S.  Mazurek ,  T. R.  Ward ,  M.  Novic ,  Counter propagation artiﬁ cial neural networks modeling 
+of an enantioselectivity of artiﬁ cial metalloenzymes ,  Mol. Divers. ,  2007 ,  11 ,  141 – 152 . 
+ 41.  G.  Klein ,  N.  Humbert ,  J.  Gradinaru ,  A.  Ivanova ,  F.  Gilardoni ,  U. E.  Rusbandi ,  T. R.  Ward , 
+ Tailoring the active site of chemzymes by using a chemogenetic - optimization procedure: 
+towards substrate - speciﬁ c artiﬁ cial hydrogenases based on the biotin − avidin technology , 
+ Angew. Chem. Int. Ed. ,  2005 ,  44 ,  7764 – 7767 . 
+ 42.  U. E.  Rusbandi ,  C. L o,  M.  Skander ,  A.  Ivanova ,  M.  Creus ,  N.  Humbert ,  T. R.  Ward ,  Second 
+generation artiﬁ cial hydrogenases based on the biotin – avidin technology: improving activity, 
+stability and selectivity by introduction of enantiopure amino acid spacers ,  Adv. Synth. Catal. , 
+ 2007 ,  349 ,  1923 – 1930 . 
+ 43.  J.  Collot ,  N.  Humbert ,  M.  Skander ,  G.  Klein ,  T. R.  Ward ,  Artiﬁ cial metalloenzymes for enan-
+tioselective catalysis: the phenomenon of protein accelerated catalysis ,  J. Organomet. Chem. , 
+ 2004 ,  689 ,  4868 – 4871 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+376 
+Molecular Encapsulation
+ 44.  T. R.  Ward ,  Artiﬁ cial metalloenzymes for enantioselective catalysis based on the noncovalent 
+incorporation of organometallic moieties in a host protein ,  Chem. Eur. J. ,  2005 ,  11 , 
+ 3798 – 3804 . 
+ 45.  M.  Skander ,  C.  Malan ,  A.  Ivanova ,  T. R.  Ward ,  Chemical optimization of artiﬁ cial metalloen-
+zymes based on the biotin – avidin technology: ( S ) - Selective and solvent - tolerant hydrogenation 
+catalysts via the introduction of chiral amino acid spacers ,  Chem. Commun. ,  2005 , 
+ 4815 – 4817 . 
+ 46.  J.  Tsuji ,  Topics in Organometallic Synthesis , Vol.  14 ,  Springer, Berlin ,  Heidelberg and New 
+York ,  2005 . 
+ 47.  B. M.  Trost ,  M. L.  Crawley ,  Asymmetric transition - metal - catalyzed allylic alkylations: applica-
+tions in total synthesis ,  Chem. Rev. ,  2003 ,  103 ,  2921 – 2944 . 
+ 48.  C.  Lo ,  T. R.  Ward,  unpublished results ,  2009 . 
+ 49.  K. - J.  Haack ,  S.  Hashiguchi ,  A.  Fujii ,  T.  Ikariya ,  R.  Noyori ,  The catalyst precursor, catalyst, 
+and intermediate in the Ru(II) - promoted asymmetric hydrogen transfer between alcohols and 
+ketones ,  Angew. Chem. Int. Ed. Engl. ,  1997 ,  36 ,  285 – 288 . 
+ 50.  S.  Hashiguchi ,  A.  Fujii ,  K. - J.  Haack ,  K.  Matsumura ,  T.  Ikariya ,  R.  Noyori ,  Kinetic resolution 
+of racemic secondary alcohols by Ru - catalyzed hydrogen transfer ,  Angew. Chem. Int. Ed. Engl. , 
+ 1997 ,  36 ,  288 – 290 . 
+ 51.  M.  Creus ,  A.  Pordea ,  T.  Rossel ,  A.  Sardo ,  C.  Letondor ,  A.  Ivanova ,  I. Le  Trong ,  R. E. 
+ Stenkamp ,  T. R.  Ward ,  X - ray structure and designed evolution of an artiﬁ cial transfer hydro-
+genase ,  Angew. Chem. Int. Ed. ,  2008 ,  47 ,  1400 – 1404 . 
+ 52.  A.  Pordea ,  T. R.  Ward ,  Chemogenetic protein engineering: an efﬁ cient tool for the optimization 
+of artiﬁ cial metalloenzymes ,  Chem. Commun. ,  2008 ,  4239 – 4349 . 
+ 53.  M.  Yamakawa ,  I.  Yamada ,  R.  Noyori ,  CH/  π  Attraction: the origin of enantioselectivity in 
+transfer hydrogenation of aromatic carbonyl compounds catalyzed by chiral   η 6 - arene -
+ ruthenium(II) complexes ,  Angew. Chem. Int. Ed. ,  2001 ,  40 ,  2818 – 2821 . 
+ 54.  A.  Schlatter ,  M. K.  Kundu ,  W. - D.  Woggon ,  Enantioselective reduction of aromatic and aliphatic 
+ketones catalyzed by ruthenium complexes attached to   β - cyclodextrin ,  Angew. Chem. Int. Ed. , 
+ 2004 ,  43 ,  6731 – 6734 . 
+ 55.  A.  Schlatter ,  W. - D.  Woggon ,  Enantioselective transfer hydrogenation of aliphatic ketones cata-
+lyzed by ruthenium complexes linked to the secondary face of   β - cyclodextrin ,  Adv. Synth. 
+Catal. ,  2008 ,  350 ,  995 – 1000 . 
+ 56.  C. M.  Thomas ,  C.  Letondor ,  N.  Humbert ,  T. R.  Ward ,  Aqueous oxidation of alcohols catalyzed 
+by artiﬁ cial metalloenzymes based on the biotin – avidin technology ,  J. Organomet. Chem. , 
+ 2005 ,  690 ,  4488 – 4491 . 
+ 57.  K. A.  Jorgensen ,  Transition - metal - catalyzed epoxidations ,  Chem. Rev. ,  1989 ,  89 ,  431 – 458 . 
+ 58.  J.  DeChancie ,  K. N.  Houk ,  The origins of femtomolar protein − ligand binding: hydrogen - bond 
+cooperativity and desolvation energetics in the biotin − (strept)avidin binding site ,  J. Am Chem. 
+Soc. ,  2007 ,  129 ,  5419 – 5429 . 
+ 59.  Y.  Eisenberg - Domovich ,  Y.  Pazy ,  O.  Nir ,  B.  Raboy ,  E. A.  Bayer ,  M.  Wilchek ,  O.  Livnah , 
+ Structural elements responsible for conversion of streptavidin to a pseudoenzyme ,  Proc. Natl. 
+Acad. Sci. USA ,  2004 ,  101 ,  5916 – 5921 . 
+ 
+ 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+ 14 
+Chemical Reactions with  RNA  and 
+ DNA Enzymes 
+ Andres  J ä schke 
+ Institut f ü r Pharmazie und Molekulare Biotechnologie (IPMB), Universit ä t Heidelberg, 
+Im Neuenheimer Feld 364, D - 69120 Heidelberg, Germany 
+ 14.1  Introduction 
+ One of the most fascinating questions at the interface of chemistry and biology is how 
+enzymes achieve the catalysis of chemical reactions. These biocatalysts bring about 
+tremendous rate accelerations under mild conditions with often extreme chemo - , regio -  
+and stereoselectivities. For decades, generations of biochemists, enzymologists and struc-
+tural biologists have been attracted to this phenomenon, and consequently, a rather 
+thorough understanding has been achieved regarding the catalytic mechanisms of protein 
+enzymes. 
+ As enzymes encapsulate multiple functionalities within their catalytic cavity, they have 
+also served as a major source of inspiration for the ﬁ elds of biomimetic chemistry and 
+supramolecular catalysis. Early mechanistic theories about how enzymes work have 
+prompted scientists from various ﬁ elds to explore similar approaches for synthetic 
+systems. One of these approaches is host - guest catalysis, where one or more substrates 
+are bound in a cavity next to the catalytically active site. 
+ Enzymes are, however, much more than just a combination of substrate binding site 
+and the catalytically active site. Important contributions to enzymatic catalysis arise from 
+substrate preorganization, restriction of substrate motion, catalyst dynamics, transition 
+state binding, and desolvation of the substrates, and natural evolution has used these 
+Molecular Encapsulation: Organic Reactions in Constrained Systems        Edited by Udo H. Brinker and Jean-Luc Mieusset
+© 2010 John Wiley & Sons, Inc.  ISBN: 978-0-470-99807-6
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+378 
+Molecular Encapsulation
+strategies over long periods of time to ﬁ ne - tune catalytic properties. In synthetic systems, 
+such effects could so far only be utilized to a lesser extent. 
+ Since the early 1980s it has become clear that the exclusive assignment of enzymatic 
+activity to the chemical substance class of proteins in incorrect, as ribonucleic acids were 
+discovered that possess such activities. Most of these naturally occurring  ‘ ribozymes ’ 
+(shortened for  ‘ ribo nucleic acid en zymes ’  catalyse (at least to our present - day knowledge) 
+the hydrolysis and formation of phosphodiester bonds, and for some of these systems, 
+high - resolution crystal structures and mechanistic investigations provide a basis for an 
+understanding of how these ribozymes work. 1,2 Combinatorial chemistry on the other hand 
+has allowed to isolate (or generate) RNA and also DNA catalysts with activities not 
+known to exist in biology. It turns out that  –  although equipped with a much less varied 
+arsenal of chemically different building blocks  –  nucleic acids can form tertiary structures 
+with binding pockets and catalytic centres very much like proteins. 
+ The history of ribozymes, in the true sense of the word, is connected to the so - called 
+RNA world,  3,4   a hypothetic prebiotic stage in the evolution of life, where the majority of 
+catalytic functions were effected by RNA, and proteins not yet existed. The idea of an 
+RNA world alone implies that RNA should be practically omnipotent in the diversity of 
+its catalytic potential, despite having been outperformed by proteins later on. The inves-
+tigation of RNA catalysis provides a simpliﬁ ed and contrasting perspective on macro-
+molecular catalytic mechanisms compared with protein enzymes, and an improved 
+understanding of the chemical origins of ribozyme catalysis may add to our knowledge 
+on macromolecular catalysis in general. 
+ While enzymological research over several decades has provided a rather detailed 
+understanding of how certain enzymes accelerate chemical reactions, knowledge about 
+ribozyme mechanisms and catalytic strategies is scarce in comparison. For some natural 
+ribozymes, mechanistic and structural studies were carried out, but artiﬁ cial ribozymes 
+remain largely uncharacterized. Therefore it is unclear in many cases whether these cata-
+lysts are passive containers working solely by substrate pre - organization, or whether there 
+are speciﬁ c effects on the activation parameters of the reaction. 
+ In this review, I will ﬁ rst give a brief overview on the types of chemical reactions cata-
+lysed by naturally occurring ribozymes, including some mechanistic considerations. This 
+is followed by a discussion of the methods used for generating new nucleic acid enzymes, 
+and a compilation of artiﬁ cial ribozymes and deoxyribozymes. Finally, I will discuss the 
+current knowledge on the arguably best - characterized artiﬁ cial ribozymes, namely RNA 
+enzymes that catalyse the formation of C − C bonds by Diels – Alder reaction, with special 
+emphasis on crystallographic and complementary mechanistic investigations. 
+ 14.2  Catalysis by Naturally Occurring Ribozymes 
+ In the contemporary biosphere, ribozymes carry out a limited range of chemical reactions, 
+mostly involving phosphoryl transfer, and in particular transesteriﬁ cation and hydrolysis 
+reactions at internucleotide phosphodiester bonds (Table  14.1 ). They are widespread in 
+nature, from bacteria and their phages, archaea, to yeasts and fungi and higher eukaryotes, 
+and are used by these organisms mostly for processing of certain ribonucleic acids. They 
+either cut oligomeric replication products to unity length, a crucial process in viral repli-
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Chemical Reactions with RNA and DNA Enzymes 
+379
+cation, they trim the ends of the precursors of tRNA, they remove an internal sequence 
+fragment (intron) from a precursor transcript, or they destroy an mRNA in response to a 
+signal. All these reactions are highly site - and sequence - speciﬁ c. In some cases, these 
+ribozymes act on themselves (self - cleavage or  in - cis  cleavage, i.e., they are enzyme and 
+substrate at the same time), in others they act as true enzymes on external RNA substrates 
+( in - trans  cleavage). The RNA - cleaving enzymes can be grouped by the nature of the 
+nucleophile they use for RNA cleavage (Table  14.1 ): They either utilize the 2 ′ - hydroxyl 
+group of the ribose adjacent to the phosphodiester bond to be cleaved (small viral 
+and viroidal RNAs), or a distant 2 ′  - OH group (in splicing, group II introns), a water 
+molecule (Ribonuclease P), or a small organic molecule (group I introns). Finally, 
+the peptidyl transferase activity of the ribosome is also ribozyme - based and catalyses 
+what is arguably the most important reaction of the cell, the condensation of amino acids 
+into polypeptides. 
+ Just as protein enzymes must be correctly folded into the conformation required for 
+catalytic activity, so must RNA. In general, the precise nature of Watson – Crick base 
+pairing leads to the relatively easy formation of secondary structure. Most critical for 
+catalysis and substrate binding is, however, the formation of the tertiary structure. The 
+negatively charged phosphate backbone of RNA results in a strong electrostatic contribu-
+tion to this process, and therefore metal ions play important roles in RNA structure for-
+mation. The folded RNA structure can bind metal ions, either site - speciﬁ cally or diffusely, 
+and these bound ions can play a direct role in catalysis. 1,2 
+ Compared to proteins, RNA has only very limited resources to build a catalytic site. 
+Only four monomeric building blocks with low structural and chemical diversity can be 
+utilized. The nucleobases have hydrogen bond donors and acceptors that can be used to 
+bind the substrate, and potentially to stabilize a transition state. In principle they could 
+also act as general acids and bases, but their p K a  values are either too high or too low to 
+make them signiﬁ cant contributors at physiological pH values. This situation can, however, 
+be changed by neighbouring phosphate groups or metal ions. The second potential players 
+are metal ions, and their associated water molecules. Metal ions can act as Lewis acids, 
+or provide electrostatic stabilization of negative charge in a transition state. Water mol-
+ecules contained within the inner coordination sphere may participate in general acid – base 
+catalysis. In addition to chemical participants, RNA can also potentially exploit its struc-
+ture to contribute to catalysis. Substrate binding can result in acceleration of 
+ Table 14.1   Classes of natural ribozymes 
+ Ribozyme 
+ Reaction  
+ Mechanism  
+ Hammerhead 
+ viral RNA cleavage  
+ Transesteriﬁ cation (adjacent 2 ′ - OH)  
+ Hairpin  
+ viral RNA cleavage  
+ Transesteriﬁ cation (adjacent 2 ′ - OH)  
+ Hepatitis Delta Virus  
+ viral RNA cleavage  
+ Transesteriﬁ cation (adjacent 2 ′ - OH)  
+ Varkud Satellite  
+ viral RNA cleavage  
+ Transesteriﬁ cation (adjacent 2 ′ - OH)  
+ glmS 
+ mRNA cleavage  
+ Transesteriﬁ cation (adjacent 2 ′ - OH)  
+ Group I Intron  
+ RNA self - splicing 
+ Nucleotidyl transfer (external guanosine)  
+ Group II Intron  
+ RNA self - splicing 
+ Nucleotidyl transfer (remote 2 ′ - OH)  
+ RNase P  
+ tRNA processing 
+ Hydrolysis  
+ Ribosome 
+ Peptide biosynthesis 
+ Peptidyl transfer  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+380 
+Molecular Encapsulation
+reaction velocity due to proximity and orientation, together with structural stabilization 
+of the transition state. 
+ Given the relative paucity of potential catalytic groups present in RNA molecules, 
+ribozymes achieve some impressive rate accelerations. Typical values for the RNA -
+ cleaving ribozymes reach about 10 6  - fold over the background reaction, with rates of 
+ ∼ 1  min  − 1 , and some variants were reported to reach over 10  s  − 1 . 
+ The ﬁ eld of natural ribozymes has been extensively reviewed. 1,2 
+ 14.3  How to Generate Artiﬁ cial  RNA and  DNA Catalysts 
+ RNA molecules with new catalytic activities were ﬁ rst reported in the 1990s. These were 
+isolated by a technique termed  in vitro  selection or SELEX (systematic evolution of 
+ligands by exponential enrichment), starting from synthetic combinatorial RNA libraries 
+(pools), which typically contain 10 14 – 10 15  different sequences, i.e., 10 14 – 10 15 chemically 
+different compounds. These enormous complexities can only be handled since nucleic 
+acid molecules are genetically encoded, i.e., they carry the information for their own 
+replication. This property allows for an iterative deconvolution of the libraries over 
+several rounds. Such SELEX experiments have led to nucleic acids that catalyse a broad 
+range of chemical transformations, ranging from cleavage of amide - or carboxylic ester 
+bonds to amide - bond - , C − C - and C − S - bond forming reactions to the catalysis of redox 
+reactions (see below). 
+ The vast majority of in vitro selection experiments, however, did not focus on catalysts 
+but on RNA molecules that speciﬁ cally bind a given target molecule, so - called aptamers.  5 
+The most crucial step in any variant of this technique is selection, meaning an effective 
+distinction between desired and undesired species. It is in the selection step that the most 
+decisive advances in ribozyme discovery were made, as will become clear in the discus-
+sion below. The standard selection event in aptamer SELEX is a binding event, and 
+consequently the desired molecules can be distinguished from the rest by physical separa-
+tion, namely by afﬁ nity chromatography. 
+ The basic (aptamer) SELEX protocol starts with a chemically synthesized DNA library 
+(Figure  14.1 ). By using monomer (phosphoramidite) mixtures in solid phase oligonucle-
+otide synthesis, huge complexities can be easily achieved. If, for example, a stretch of 20 
+nucleotides is synthesized completely random by using a mixture of the four standard 
+monomers, a mixture of 4  20 or 10 12   different DNA sequences is generated. In the second 
+step, the single - stranded DNA is made double - stranded, and several copies are made by 
+using polymerase chain reaction (PCR). Using a DNA - dependent RNA polymerase, a 
+single - stranded RNA library is ﬁ nally generated from the double - stranded DNA library 
+that is used as input for the ﬁ rst round of selection. The target that the RNA molecules 
+are expected to bind is immobilized on a solid support, and the RNA library is added and 
+allowed to interact for a certain period of time. Non - binding RNAs are removed by 
+washing, while binders are recovered. They are then converted into cDNA by reverse 
+transcription, ampliﬁ ed by PCR, and this cycle is repeated several times until a signiﬁ cant 
+fraction of the RNA binds to the immobilized target with high afﬁ nity. The enzymatic 
+steps require the incorporation of certain constant sequence elements (primer binding 
+sites, promoters) into the design of the starting library.   
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Chemical Reactions with RNA and DNA Enzymes 
+381
+ Conceptually starting from this basic SELEX protocol, several strategies to create 
+RNAs with catalytic properties were developed. The ﬁ rst one relies on transition state 
+analogues (TSAs) and had been emulated from the catalytic antibodies ﬁ eld. Aptamers 
+against transition state analogs of different reactions were raised and tested for catalytic 
+activity. The Schultz group reported catalysis of a biphenyl isomerisation  6 and porphyrin 
+metalation reaction.  7   Cholesterol esterase activity of yet another RNA isolated by the TSA 
+approach was found by Chun  et al . 8   While all these RNAs act as catalysts, the rate accel-
+eration was rather low (below 500 - fold in most cases), as compared to 10 3 – 10 5  for most 
+TSA antibodies and up to 10 18  for natural enzymes. Other attempts to isolate catalytic 
+RNAs via TSAs, for example for Diels – Alder reactions, have thus far remained at the 
+stage of aptamer binding. 9 
+ Better acceleration rates and catalysis of more complex reactions were obtained by 
+direct selection. In this strategy, selection is not based on a binding event; rather it is 
+based directly on the desired catalytic event. For example, if the to - be - catalysed reaction 
+is phosphodiester hydrolysis, the RNA library is immobilized on solid support. The selec-
+tion event is thus directly tailored to hydrolysis: active molecules cleave their covalent 
+linkage to the solid support and thus dissociate from it. The catalytic event thus enables 
+spatial separation of active and inactive molecules. Direct selection has therefore allowed 
+to isolate catalysts for numerous RNA - modifying reactions, from hydrolysis and ligation 
+to RNA alkylation, acylation, phosphorylation and many others (see below). 
+ The use of reactants other than RNA in direct selection allows targeting of more 
+complex reactions. An essential prerequisite is the attachment of a (non - RNA) reactant 
+X to the RNA molecules, i.e., conversion of the RNA library into a RNA - reactant library. 
+Assuming a desired RNA catalyst of the chemical reaction X    →    Z, which may include 
+simple addition as in X  +  Y  →    Z, the selection has to be designed in a way to isolate 
+RNA library
+RNA pool enriched
+in binding molecules
+chemical synthesis of a DNA library
+and transcription into RNA
+isolation, sequencing,
+characterization
+discard
+unbound RNA
+affinity chromatography with
+immobilized target molecule
+elution of
+binding ligands
+enzymatic
+amplification
+ Figure 14.1   General scheme for the in vitro selection of RNA aptamers  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+382 
+Molecular Encapsulation
+all RNA library members carrying the target reaction product Z. This can be through 
+chemical trapping or afﬁ nity puriﬁ cation of Z directly, or by designing Y in a way that 
+the ﬁ nal product contains a functional moiety of Y which allows facile afﬁ nity 
+puriﬁ cation. 
+ An exciting example for the former case is the ribocatalytic oxidation of benzyl alcohol 
+to benzaldehyde using NAD +  as a cofactor: the desired aldehyde product was chemically 
+trapped by a biotin - conjugated hydrazine derivative.  10   This case will be more explicitly 
+discussed below. The latter case has been successfully demonstrated by several labs 
+employing a biotin - conjugated reactant Y thus allowing puriﬁ cation of the reactive species 
+by immobilized streptavidin, a biotin - binding protein. A variant of direct selection uses 
+tethered reactants. This design, tailored to ﬁ nd catalysts for the chemical addition of 
+compound Y to compound X to yield the addition product Z, is depicted in Figure  14.2 . 
+Reactant X is now attached to the RNA via a long poly(ethylene glycol) tether, allowing 
+it to interact with potential catalytic pockets in the RNA that are spatially remote from 
+either extremity. In our lab, using tethered reactants, a ribozyme was selected that cataly-
+ses a Diels – Alder reaction. Anthracene tethered to RNA via a PEG - linker corresponds to 
+reactant X, in this case a diene, and biotin - maleimide was employed as reactant Y, the 
+free dienophile.  11   This design allowed easy isolation of the reaction product Z by strepta-
+vidin agarose. 
+ Depending on the reactivity of reactant Y towards the functional groups contained in 
+RNA, its conjugation to species of the RNA library will occur with more or less site -
+ speciﬁ city to the conjugated X - reactant. More reactive Ys may add to RNA at positions 
+chemical synthesis of a DNA library
+transcription into RNA, conjugation
+enzymatic
+amplification
+conjugation
+isolation, sequencing,
+characterization
+reaction
+affinity purification
++ Y
+RNA
+RNA
+X
+X
+RNA
+Z
+library
+Reaction:
+RNA pool enriched
+in catalytic molecules
+X + Y
+Z
+Z
+RNAcat
+discard
+unbound RNA
+ Figure 14.2   Direct selection with tethered reactants for the isolation of RNA catalysts  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Chemical Reactions with RNA and DNA Enzymes 
+383
+other than the desired reactant X, thus also fulﬁ lling the practical requirements for selec-
+tion and ampliﬁ cation. Results of such selections were occasionally reported in the litera-
+ture. 12   A strategy to circumvent non - speciﬁ c addition involves the incorporation of a 
+chemically orthogonal cleavage site between reactant X and the RNA library. After 
+immobilization as a primary selection event, a secondary selection event is created by a 
+treatment targeted speciﬁ cally to the cleavage site. If immobilization of a given RNA 
+sequence is based on addition of reactant Y to reactant X with correct site speciﬁ city, the 
+cleavage will release the desired sequence into solution for ampliﬁ cation. However, addi-
+tion of Y to sites other than X anywhere in the RNA will result in persistent immobiliza-
+tion during the secondary selection event, thus effectively removing unwanted species 
+from the ampliﬁ cation cycle. The chemistry used for the cleavage event in the secondary 
+selection step should not interact in any way with the rest of the conjugated library. 
+Orthogonal approaches described to - date include a disulﬁ de bridge embedded within the 
+tether, and photocleavable  o - nitrobenzyl groups. 
+ The strategies to generate catalytic DNA molecules are almost identical and start with 
+the same type of libraries. While one would intuitively expect that these selections are 
+easier to perform since transcription and reverse transcription are eliminated from the 
+selection cycles, in practice they are not, since the double - stranded DNA libraries result-
+ing from PCR - type ampliﬁ cations are catalytically incompetent, and their conversion into 
+high - quality single - stranded DNA libraries is not trivial. 
+ 14.4  The Catalytic Spectrum of Artiﬁ cial Ribozymes 
+ In the following the scope of  in vitro  selected ribozymes will be described with special 
+regard to organic chemistry. Several highlights will be discussed in detail. In Table  14.2  
+the variety of reactions catalysed by ribozymes is summarized. 
+ The catalytic spectrum of RNA can not be discussed without the background of a 
+hypothetical prebiotic RNA world. As stated in the introduction, the concept of an RNA 
+world means that RNA, at one point, may have performed almost all catalytic functions 
+necessary for survival. As Woese points out,  25   the term survival does not necessarily apply 
+to a discrete, living entity or even to distinct species, be they single molecules or single 
+cells. Therefore, and because it is unclear which chemical reactions exactly might have 
+been catalysed by RNA or other matter like catalytic surfaces, a complete picture of the 
+RNA ’ s catalytic potential does not come with the RNA world hypothesis. Yet, there is a 
+high number of chemical reactions and properties which have been predicted to occur in 
+an RNA world. For a large number of the most important reactions, proof of the catalytic 
+potential has meanwhile been given, including for example ribonucleotide polymeriza-
+tion, aminoacylation, and peptide bond formation. 26 
+ Although the RNA world presumably existed almost four billion years ago, X - ray -
+ structures of the ribosome seem to exhibit fragments of this ancestral era. The structures 
+revealed that RNA - mediated catalysis plays an important role in the peptide synthesis of 
+the ribosome. The key step in translation is catalysed only by the ribonucleic acid com-
+ponent of the ribosome, without any direct contribution of proteins from the spatial vicin-
+ity. That impressively demonstrates the catalytic potential of RNA in a biochemical 
+reaction that may arguably be called the most important ever. 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+384 
+Molecular Encapsulation
+ An artiﬁ cial ribozyme mimics this translation step of the ribosome.  27 The speciﬁ ty of 
+this selected ribozyme is based on the recognition of an adenosine moiety of the amino 
+acid ester and allows the utilization of leucine -  and phenylalanine -  as well as methionine -
+ derivatized substrates. This tolerance for various amino acids indicates the possibility of 
+selecting more general ribozymes for protein synthesis. Furthermore, a related ribozyme 
+efﬁ ciently catalyses the synthesis of  ∼ 30 different dipeptides from an aminoacyl - adenylate 
+substrate. Ribozyme - mediated synthesis of uncoded peptides might have been an impor-
+tant step in the transition from a RNA to a peptide world before the emergence of the 
+ribosome.  28 
+ Another important development was the isolation of a ribozyme which performs nucle-
+otide synthesis by forming a glycosidic linkage from activated ribose (pRpp)  17 in a way 
+similar to the modern biosynthesis of nucleotides. 
+ Before the discovery of catalytic RNA, the principal indications of a possible RNA 
+world had been the role of tRNA and ribosomal RNA in translation, the use of RNA as 
+genetic material in retroviruses, and the ubiquitous occurrence of RNA - related enzymatic 
+co - substrates like GTP, ATP, AMP, cAMP, SAM, FADH 2  and NAD +  in all major meta-
+bolic pathways. Clearly, the capability of RNA to employ these and other ubiquitous 
+co - substrates in catalysis must be expected. 26 
+ Deﬁ nitively a highlight in ribozyme research is the  in vitro  evolution of a ribozyme 
+that oxidizes an alcohol in a NAD +  dependent manner. The resulting RNA - aldehyde was 
+ Table 14.2   Catalytic activities of artiﬁ cial ribozymes 
+(selected examples) 
+ Reaction type  
+ References  
+ C − C bonds 
+ Diels - Alder reaction  
+ [11, 13]  
+ Aldol reaction  
+ [14] 
+ Claisen condensation  
+ [15] 
+ biphenyl isomerization  
+ [6]  
+ C − N bonds 
+ amide bond formation  
+ [16] 
+ N - glycosidic bond formation  
+ [17] 
+ N - alkylation  
+ [12] 
+ C − S bonds 
+ Michael addition  
+ [18] 
+ S - acylation  
+ [19] 
+ S - alkylation  
+ [20] 
+ C − O bonds 
+ transesteriﬁ cation  
+ [21] 
+ carbonate ester hydrolysis  
+ [8]  
+ P − O bonds 
+ RNA polymerization  
+ 

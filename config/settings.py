@@ -84,7 +84,7 @@ _ASSESSMENT_CRITERIA_SCORE_CONFIG = {
 ASSESSMENT_CRITERIA_CONFIG = {
     "element_property_split": 3,
     "entity_score": _ASSESSMENT_CRITERIA_SCORE_CONFIG["entity_score"],
-    "entity": f"""Based on text, Entity Accuracy Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["entity_score"]} points):
+    "entity": f"""You are an expert chemist. Based on text, Entity Accuracy Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["entity_score"]} points):
 Award 1 point for each criterion met:
 - Classes cover all granularity levels (1 point)
 - Entities capture concepts across all levels of abstraction, from highly abstract to highly specific mentioned in the text (1 point)
@@ -95,7 +95,7 @@ Award 1 point for each criterion met:
 - Entities can be effectively applied across different chemical subdomains (1 point)
 - Entities have chemical meaning and accuracy even without the context of text and information fields (1 point)""",
     "hierachy_score": _ASSESSMENT_CRITERIA_SCORE_CONFIG["hierachy_score"],
-    "hierachy": f"""Based on text, Class Hierarchy Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["hierachy_score"]} points):
+    "hierachy": f"""You are an expert chemist. Based on text, Class Hierarchy Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["hierachy_score"]} points):
 Award 1 point for each criterion met:
 - Class hierarchies align with valid chemical taxonomies (1 point)
 - Subclass relationships are logically sound, chemically meaningful and accurate even without the context of text and information fields (1 point)
@@ -105,7 +105,7 @@ Award 1 point for each criterion met:
 - No circular or contradictory hierarchical relationships (1 point)
 If the ontology has no subclass-superclass relationships, check if the text contains any hierarchical relationships. If there are no hierarchical relationships mentioned in the text, award full points. If hierarchical relationships exist in the text but are missing from the ontology, award 0 points.""",
     "disjointness_score": _ASSESSMENT_CRITERIA_SCORE_CONFIG["disjointness_score"],
-    "disjointness": f"""Based on text, Disjoint Classes Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["disjointness_score"]} points):
+    "disjointness": f"""You are an expert chemist. Based on text, Disjoint Classes Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["disjointness_score"]} points):
 Award 1 point for each criterion met:
 - Correctly identifies mutually exclusive class relationships in chemical concepts (1 point)
 - Disjoint classes are comprehensive without missing key exclusions (1 point)
@@ -114,7 +114,7 @@ Award 1 point for each criterion met:
 - Disjoint relationships support chemical reasoning and inference (1 point)
 If the ontology has no disjoint class relationships, check if the text contains any disjoint class relationships. If there are no disjoint class relationships mentioned in the text, award full points. If disjoint class relationships exist in the text but are missing from the ontology, award 0 points.""",
     "data_property_score": _ASSESSMENT_CRITERIA_SCORE_CONFIG["data_property_score"],
-    "data_property": f"""Based on text, Data Property Correctness Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["data_property_score"]} points):
+    "data_property": f"""You are an expert chemist. Based on text, Data Property Correctness Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["data_property_score"]} points):
 Award 1 point for each criterion met:
 - Data properties are truly value-based attributes (1 point)
 - Each data property describes a single measurable characteristic (1 point)
@@ -122,7 +122,7 @@ Award 1 point for each criterion met:
 - Data properties are chemically meaningful and accurate even without the context of text and information fields (1 point)
 If the ontology has no data properties, check if the text contains any data properties. If there are no data properties mentioned in the text, award full points. If data properties exist in the text but are missing from the ontology, award 0 points.""",
     "object_property_score": _ASSESSMENT_CRITERIA_SCORE_CONFIG["object_property_score"],
-    "object_property": f"""Based on text, Object Property Completeness Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["object_property_score"]} points):
+    "object_property": f"""You are an expert chemist. Based on text, Object Property Completeness Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["object_property_score"]} points):
 Award 1 point for each criterion met:
 - Object properties capture all key chemical knowledges and reflect valid chemical principles (1 point)
 - The words used in object property names are accurate, specific, and academic (1 point)
@@ -134,7 +134,7 @@ Award 1 point for each criterion met:
 - Object properties names start with is_ or has_ to indicate the property expresses a complex subclass-superclass relationship or a property (1 point)
 """,
     "ontology_structure_score": _ASSESSMENT_CRITERIA_SCORE_CONFIG["ontology_structure_score"],
-    "ontology_structure": f"""Based on text, Ontology Structure Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["ontology_structure_score"]} points):
+    "ontology_structure": f"""You are an expert chemist. Based on text, Ontology Structure Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["ontology_structure_score"]} points):
 Award 1 point for each criterion met:
 - Entities span all levels of chemical granularity mentioned in the text (1 point)
 - Properties and relationships form a coherent chemical knowledge graph (1 point)
@@ -142,7 +142,7 @@ Award 1 point for each criterion met:
 - Cross-references between concepts are meaningful and accurate (1 point)
 - Definitions and usage of entities are consistent throughout the ontology (1 point)""",
     "overall_content_score": _ASSESSMENT_CRITERIA_SCORE_CONFIG["overall_content_score"],
-    "overall_content": f"""Based on text, Overall Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["overall_content_score"]} points):
+    "overall_content": f"""You are an expert chemist. Based on text, Overall Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["overall_content_score"]} points):
 Each criterion is evaluated based on three levels - excellent (6 points), adequate (3 points), or medium (0 points). If you think the ontology is between levels, you can give it a intermediate score. 0 points means the ontology has medium quality rather than low quality in this criterion. More detailed criteria are as follows:
 
 - Extraction Accuracy (6 points):

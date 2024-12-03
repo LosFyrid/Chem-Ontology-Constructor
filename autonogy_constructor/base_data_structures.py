@@ -60,7 +60,7 @@ class ObjectPropertyInstance(BaseModel):
 
 class ObjectProperty(BaseModel):
     """Extract object properties and their instances from text for ontology creation. Do not miss any fields."""
-    name: str = Field(description="Provide a clear and concise name for the object property. It should be in lowercase and separate words with underscores. It should start with is_ or has_ to indicate the property expresses a complex  subclass-superclass relationship or a property. Don't use plural form.")
+    name: str = Field(description="Provide a clear and concise name for the object property. It should be in lowercase and separate words with underscores. It should start with is_ or has_ to indicate the property expresses a complex subclass-superclass relationship or a property. Don't use plural form. The name should not contain any entity name to avoid redundancy and improve the reusability in the ontology.")
     instances: Union[List[ObjectPropertyInstance], None] = Field(
         default=None,
         description="List of object property instances."

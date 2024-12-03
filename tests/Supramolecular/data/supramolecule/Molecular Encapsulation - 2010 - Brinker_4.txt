@@ -1,0 +1,2187 @@
+ 
+ Entry  
+ Substrate 
+ Catalyst  
+ Yield  
+ 1a  
+ 
+ 
+ 6 
+ 95% 
+ 1b  
+ [C  ⊃  6] 
+ 95% 
+ 2a  
+ 
+ 
+ 6 
+ 95% 
+ 2b  
+ [C  ⊃  6] 
+ n.r.  
+ 3a  
+ 
+ 
+ 6 
+ 95% 
+ 3b  
+ [C  ⊃  6] 
+ n.r.  
+ 4a  
+ 
+ 
+ 6 
+ n.r.  
+ 4b  
+ [C  ⊃  6] 
+ n.r.  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+158 
+Molecular Encapsulation
+Fujita and co - workers (Figure  6.5 ). 40,41 By a slight adjustment in the architecture of the 
+linking unit, i.e. employing 2,4,6 - tris(3 - pyridyl) - 1,3,5 - triazine, and using the same rela-
+tive ratio of 6  :  4 (M  :  L) the related half - open, square - pyramidal cage  E was formed. 
+ Within these aggregates, the corners of the octahedron are deﬁ ned by the metal com-
+plexes, whereas the faces of the octahedron are occupied by the planar tripodal ligand 
+scaffolds. As a consequence of the use of neutral donor ligands, the resulting hexanuclear 
+complex carries a high overall positive charge and thus shows appreciable solubility in 
+aqueous media, featuring a hydrophobic inner environment. As a result, these cages are 
+very suitable hosts to accommodate a range of neutral and anionic guest molecules, 
+including ferrocene and adamantane. Guest exchange can take place via the relatively 
+large pores of the host. The large inner cavity has a diameter of approx. 2.2   nm and allows 
+encapsulation of one to four guest molecules per cage, depending on the guest size. The 
+coordination cage  D  can selectively recognize two different guests, such as one anthra-
+cene - type molecule and one maleimide - type molecule, in a pair - wise manner. Remarkably, 
+no external guests are needed in order to selectively form the Pd - based octahedral cage 
+and the cage can be prepared at large scale (up to 50 g). This indicates that also polar 
+solvents such as water can be included under judicious conditions. The Fujita group has 
+reported many other types of cage structures, but cage  D  has been mostly used as reaction 
+vessel. 
+ 6.7.1  Diels – Alder Reaction 
+ The octahedral coordination cage  D  described by Fujita and co - workers has been applied 
+as a nanoreactor for bimolecular Diels – Alder reactions in water.  17 Suspending 
+9 - (hydroxymethyl)anthracene  7  and  N - cyclohexylmaleimide  8a  in an aqueous solution of 
+ Figure 6.5   Octahedral M 6 L 4 coordination cage  D .   [6]  Reproduced by permission of The 
+Royal Society of Chemistry (RSC)  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Chemistry in Self-Assembled Nanoreactors 
+159
+near - stoichiometric quantities of  D resulted in the selective formation of [ D  ⊃  7  •  8a ] 
+(Scheme  6.4 a). Upon warming the reaction mixture, the Diels – Alder product  9a formed 
+in excess of 98% and could be subsequently isolated by extraction with chloroform. The 
+nanoreactor induces unusual regioselectivity by promoting reaction at the terminal anthra-
+cene ring to give the syn - 1,4 - Diels – Alder adduct  9a , while reaction in the bulk solvent 
+yields the product bridging at the central anthracene ring, the 1,9 - Diels – Alder adduct, in 
+44%. The unusual stereo -  and regioselectivity observed for the encapsulated Diels – Alder 
+reaction are explained by the ﬁ xed orientation of the two substrates within  D , preventing 
+interaction at the 9,10 position of the anthracene  7 . This is an example where preorganiza-
+tion within the nanoreactor prevents the energetically most favoured product. However, 
+product inhibition by strong complexation of  9a within  D prevents catalytic turnover. 
+ Interestingly, the Diels – Alder reaction of the anthracene  7  and  N - phenylmaleimide  8b 
+could be performed in a catalytic fashion using 10 mol % of a square - pyramidal bowl  E . 
+In this reaction the conventional regiochemistry of the 1,9 - Diels – Alder adduct  9b (Scheme 
+ 6.4 b) was obtained, but in excellent yield (99%), whereas without the nanoreactor present, 
+only 3% conversion was observed under the same conditions.  17 Bowl  E  does not suffer 
+from product inhibition because its open structure allows facile guest exchange (no kinetic 
+traps), and the afﬁ nity for the substrate and product is based on aromatic stacking, which 
+is more pronounced for the substrate than for product  9b . It is unknown if the rate 
+acceleration is caused by effective concentration and/or transition - state stabilization. 
+Remarkably, nanoreactor  D  can also efﬁ ciently promote the Diels – Alder reaction of 
+highly stable and relative inert aromatic molecules such as triphenylene and perylene with 
+ 8a  to give the corresponding  endo Diels – Alder adduct with  syn  stereochemistry in high 
+ Scheme 6.4   a) Diels – Alder reaction between the anthracene  7 and  N -
+ cyclohexylmaleimide  8a within nanoreactor  D . b) Catalytic Diels – Alder reaction between 
+the anthracene  7 and  N - phenylmaleimide  8b within square - pyramidal nanoreactor  E . 
+Reproduced in part with permission from Science  17 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+160 
+Molecular Encapsulation
+yields. 42   The steric demand of the  N - cyclohexyl group on  8a  is important as it directs the 
+orientation of the substrate within the cavity of  D . 
+ 6.7.2  Oleﬁ n Photodimerization 
+ The octahedral coordination cage  D  has been used by Fujita and co - workers as a 
+nanoreactor for the bimolecular [2+2] photodimerization of oleﬁ ns. 43 Suspending bulky 
+oleﬁ ns such as acenaphthylenes  10a  or  10b  in an aqueous solution of  D  resulted in 
+complexes [ D  ⊃  ( 10a ) 2 ] and [ D  ⊃  ( 10b ) 2 ], respectively (Scheme  6.5 a). Isolation and 
+irradiation of these complexes yielded the encapsulated  syn - dimers [ D  ⊃  11a ] and 
+[ D  ⊃  11b ] in  > 98%. The products were isolated by extraction with chloroform. Compared 
+to the non - encapsulated photodimerization of  10a  in benzene, the nanoreactor acceler-
+ated the reaction and improved the stereoselectivity for the  syn - dimer  11a  from 53% 
+to 100%. In addition, the nanoreactor protected the encapsulated product  11a against 
+photodissociation. Photodimerization of the non - symmetrically substituted 1 - methyla-
+cenaphthylene  10b  can yield up to four different isomers. Under standard conditions, 
+however, no dimerization occurs due to the steric hindrance of the methyl group, but 
+photodimerization of  10b  within nanoreactor  D  does occur with a high stereo -  and 
+regioselectivity, as is demonstrated by the exclusive formation of the head - to - tail 
+ syn - dimer  11b . 
+ The cross - photodimerization reaction represents a great challenge because it requires 
+ D  to selectively recognize two different oleﬁ ns in a pair - wise fashion prior to irradiation, 
+whereas the cross - coupling reaction under standard conditions shows no preference over 
+the homo - coupling. The cross - photodimerization of acenaphthylene with substituted 
+naphthoquinones within  D  resulted in exclusive formation of the cross syn - dimer only 
+ Scheme 6.5   a) Photodimerization of acenaphthylenes  10a or  10b within nanoreactor  D . 
+b) Cross - photodimerization between acenaphthylene and substituted 1,4 - naphthoquinone 
+within nanoreactor  D (product distribution)  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Chemistry in Self-Assembled Nanoreactors 
+161
+for 5 - ethoxynaphthoquinone, while the less steric oleﬁ ns, having no substituent or a 
+5 - methoxy group, yielded mixtures of homo -  and heterodimers (Scheme  6.5 b).  44 In addi-
+tion, even relatively inert polycyclic aromatic compounds such as pyrene, phenanthrene 
+and ﬂ uoranthene were selectively [2+2] cross - photodimerized with  N - cyclohexylmaleimide 
+within  D , resulting in high stereo -  and regioselectivity.  42   Again, the steric demand of the 
+ N  - cyclohexyl group of the maleimide is essential, as less sterically demanding groups 
+were not reactive in the photodimerization with pyrene. 
+ Subsequent work has established the formation of chiral derivatives of nanoreactor  D 
+through the use of chiral diamine end - capping groups instead of ethylenediamine as ligand 
+on the Pd building blocks and subsequent self - assembly with functionalized triazine 
+frameworks. These chiral nanocages are able to remotely control the chiral [2+2] photo 
+addition of ﬂ uoranthenes and several maleimides, a reaction previously unknown to be 
+performed in an asymmetric fashion, in up to 50% ee. 45 
+ Substrate desolvation and the hydrophobic environment within the cavity create a  new 
+inner phase  for new applications. Indeed, the water - soluble nanoreactor  D  with a hydro-
+phobic cavity has been used as phase - transfer catalyst for Wacker oxidation of styrene in 
+an aqueous phase.  46   Another interesting feature of nanoreactors is their molecular frame 
+that can play an active role during reaction of encapsulated molecules. For example, the 
+triazine ligands of Fujita octahedral cage  D  can be photochemically excited; subsequent 
+electron transfer from an encapsulated alkane (i.e. adamantane) to the cage induces sub-
+strate oxidation by O 2  (or H 2 O, depending on reaction conditions), via the intermediacy 
+of an adamantyl radical and the triazine - based radical anion of cage  D . 47 Also, the pho-
+tochemical cyclization of diphenylethanedione, concomitant with effective suppression 
+of photolytic cleavage of the substrate was reported to be enhanced by nanoreactor  D . 48 
+Photomediated 1,4 - radical additions to quinones are another example where the con-
+strained enclathration of substrate molecules in  D  enforces unusual reactivity.  49 No 
+mention was made on the potential interaction or involvement of the photoactive cage -
+ faces (the triazine scaffolds) in the latter two cases. 
+ As mentioned previously, nanoreactors can also stabilize  in - situ  generated reactive 
+intermediates and labile products like in the oligomerization of trialkoxysilanes within  D , 
+which could not be isolated in the absence of this nanoreactor.  26 
+ 6.8  Hydrophobic Effects as the Driving Force for the Self - Assembly 
+of Nanocapsules 
+ Gibb and co - workers have used water - soluble cavitands that self - assemble into capsule 
+ F . The assembly process is based on hydrophobic effects (and possibly on non - directional 
+ π – π  stacking between the two building blocks) and the capsule formation occurred only 
+in the presence of hydrophobic guests that function as template. 50 
+ The template plays an important role in the formation of capsule  F  because no direc-
+tional non - covalent bonds such as H - bonding and M – L interactions are involved in the 
+self - assembly process. In addition, an external hydrophobic template is necessary because 
+aqueous solvent does not template the formation of  F . Capsule  F  consists of two octa -
+ acid, deep - cavity cavitands with a pseudo - conical hydrophobic cavity (Figure  6.6 a). The 
+eight carboxylic acid groups are located at the periphery of the cavitand, thereby inducing 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+162 
+Molecular Encapsulation
+high water - solubility under basic conditions. The cavitands dimerize upon encapsulation 
+of complementary hydrophobic templates, e.g. a rigid steroid or two smaller alkanes 
+(Figure  6.6 b). As mentioned above, the capsule is also held together by non - directional 
+ π – π  stacking interactions between the aromatic rings on the wide hydrophobic rim of the 
+two cavitands; therefore the structural integrity of these capsules is not ﬁ xed. Capsule  F 
+has a calculated internal cavity of approx. 500  Å 3 . 
+ 6.8.1  Photooxidation 
+ The cavitand - based capsule  F  has been applied by Gibb and Ramamurthy as a nanoreactor 
+for the oxidation of methyl cycloalkenes by singlet oxygen to give allylic hydroperox-
+ides. 50,51   Addition of a stoichiometric amount of ethyl cyclohexene  12  to the deep - cavity 
+cavitand in a basic aqueous solution (which is necessary for capsule formation) resulted 
+in formation of the host – guest complex, wherein nanoreactor  F  encapsulates two substrate 
+molecules, i.e. [ F  ⊃    122] (Scheme  6.4 a). In the photooxidation reaction a singlet oxygen 
+( 1 O 2 ) is added to the alkene bond and simultaneously one of the allylic hydrogens is 
+abstracted, which can result in three different allylic hydroperoxides  13a ,  13b  and  13c 
+(Scheme  6.6 a). Two different photosensitizers were used to generate singlet oxygen, 
+namely the water soluble Rose Bengal (RB) or the water insoluble dimethyl benzil 
+(DMB). In the later case, DMB was itself encapsulated within nanoreactor  F [ F  ⊃  DMB], 
+ vide infra . Irradiation of [ F  ⊃    122] in the presence of photosensitizer RB or [ F  ⊃  DMB] 
+yielded the allylic hydroperoxides  13a  and  13c  in 60 – 70% with 90 – 95% selectivity 
+towards the regioisomer  13c . The products were isolated by extraction with chloroform. 
+As can be seen in Scheme  6.4 a, in the absence of nanoreactor  E  (in acetonitrile with 
+OH
+HO
+HO
+HO
+HO
+H
+H
+H
+H
+H
+Hexo
+OH
+Cavitand
+Cavitand
+2
++
+(b)
+(a)
+Capsule F
+Template(s)
+Template(s)
+OH
+OH
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+H
+H
+H
+ Figure 6.6   a) Deep - cavity cavitand. b) Self - assembly of capsule  F .   [6]  Reproduced by 
+permission of The Royal Society of Chemistry (RSC)  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Chemistry in Self-Assembled Nanoreactors 
+163
+photosensitizer RB) three hydroperoxides are formed,  13a (44%),  13b (20%) and  13c 
+(36%). Thus, nanoreactor E exhibits very high regioselectivity in this particular oxidation 
+reaction. NMR studies suggested that the methyl groups of the encapsulated substrates 
+are anchored at the narrowest parts of the nanoreactor (Scheme  6.4 a). Hence, the encap-
+sulated substrate is oriented such that singlet oxygen is prevented from approaching the 
+methyl group. It is important to note that it is very difﬁ cult to control selectivity in reac-
+tions with singlet oxygen. In addition, the NMR studies also support the observations that 
+the allylic hydrogen H 3  of  12  is the most accessible of the three allylic hydrogen sets (H 3 , 
+H 6  and H 7 ). Interestingly, nanoreactor  F  also stabilizes the product because the encapsu-
+lated hydroperoxides [ F  ⊃  132] remained stable for weeks. 
+ A very interesting aspect of this study is the use of the photosensitizer dimethyl benzil 
+(DMB). This photosensitizer does not dissolve in water, unless it is encapsulated within 
+nanoreactor  F , [ F  ⊃    DMB] (Scheme  6.6 b). It is important to notice that when [ F  ⊃  DMB] 
+and [ F  ⊃    122] were mixed no guest exchange was observed and the capsules remained 
+independent. The oxidation reaction of  12  involving [ F  ⊃    DMB] starts with the generation 
+of excited DMB, i.e. [ F  ⊃     * DMB]. Next, the former nanoreactor opens and allows contact 
+between oxygen and  * DMB, resulting in the formation of singlet oxygen ( 1 O 2 ). In a 
+subsequent step, the singlet oxygen diffuses from [ F  ⊃  DMB] to [ F  ⊃  122], resulting in 
+regioselective oxidation of  12 . This system has properties related to those important for 
+biological signaling. 52 
+ Scheme 6.6   a) Photooxidation of 1 - methyl cyclohexene  12 within nanoreactor  F . b)  1. 
+Excitation of an encapsulated photosensitizer [ F  ⊃  DMB]. b) Excitation of triplet oxygen by 
+an encapsulated photosensitizer [ F  ⊃  * DMB]. c) Photooxidation of encapsulated  12 
+[ F  ⊃  12 2 ] by singlet oxygen  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+164 
+Molecular Encapsulation
+ 6.9  Ligand Template Approach Using Lewis Acid/Base Interactions 
+ Our own work in the area of supramolecular self - assembly and the application of cap-
+sular structures for catalytic conversions has dealt mainly with the introduction and 
+application of ligand - template approaches as a new strategy for the encapsulation of 
+transition metal catalysts.  21 – 24,53   The template ligands have a bifunctional character in 
+that they contain functional groups for capsule assembly as well as a donor - atom site 
+for metal coordination. This results in the encapsulation of the metal within the ligand -
+ template capsule. Tris(pyridyl)phosphines, P(Py) 3 , are privileged template ligands as the 
+nitrogen atoms of the pyridyl groups selectively and strongly coordinate to Zn(II) -
+ porphyrins or Zn(II) - salphens, [Zn], resulting in the ligand - template capsule  G , i.e. 
+P(Py) 3  •  [Zn] 3 (Figure  6.7 a). 
+ The zinc building blocks create a hemispherical capsule around the tris(pyridyl)phos-
+phine. Subsequently, the phosphorus atom can coordinate to a transition metal such as 
+Rh or Pd, resulting in selective encapsulation, i.e. [ G  ⊃    Rh or Pd] (this notation denotes 
+that  G  encapsulates Rh or Pd). Addition of the zinc building blocks to the rhodium - 
+bis - tris( meta - pyridyl)phosphine - complex, Rh(P( m - Py) 3 ) 2 (CO)(acac), creates sterical hin-
+drance around the encapsulated metal and results in the facile dissociation of one of the 
+two pyridylphosphine ligands to give [P( m - Py) 3  •  [Zn] 3  ⊃  Rh(CO)(acac)] i.e. [ G  ⊃  Rh(CO)
+ Figure 6.7   a) Self - assembly of ligand – template capsule  G . b) Encapsulation of a Rh -
+ species within capsule  G , i.e. [ G  ⊃  Rh(CO)(acac)] (modelling picture on the 
+right). Reproduced with permission from  [21] Copyright 2002 Wiley-VCH Verlag GmbH & 
+Co. KGaA  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Chemistry in Self-Assembled Nanoreactors 
+165
+(acac)] (Figure  6.7 b). The encapsulated rhodium catalysts were shown to have unusual 
+reactivity and regioselectivity in the hydroformylation reaction ( vide infra ). 
+ We have also reported a ligand - template approach for metal encapsulation in which the 
+ligand - template is an integrated part of the capsule.  54   This example involves a concave 
+shaped bifunctional diphosphine ligand which can complexate a transition metal and also 
+contains functional groups for capsule formation. Self - assembly of the tetracationic 
+diphosphine ligand with a tetraanionic calix[4]arene leads to the formation of a reversible 
+heterocapsule based on ionic interactions ( H ). Coordination of palladium to the template -
+ ligand results in metal encapsulation [ H  ⊃  Pd – Ar] (Figure  6.8 ). 
+ 6.9.1  Hydroformylation 
+ Transition metal catalysts encapsulated within the ligand - template nanoreactor  G , 
+P(Py) 3  •  [Zn] 3 , have been applied to catalyze industrially relevant processes such as 
+hydroformylation and Heck reaction. 22 – 24 Nanoreactor [ G  ⊃  Rh(CO)(acac)] encapsulates 
+a Rh - species that contains only one tris( meta - pyridyl)phosphine ligand, P( m - Py) 3 , sur-
+rounded by three Zn - porphyrins or Zn - salphens. Under syngas pressure (H 2 /CO), rhodium 
+species like Rh(CO)(acac)P(Py) 3  transform into a complex of type HRh(CO) 3 P(Py) 3 , 
+which is the active species for the hydroformylation reaction. In this reaction terminal 
+alkenes are converted into linear and/or branched aldehydes, and the ratio of these prod-
+ucts strongly depends on the speciﬁ c catalyst applied. Hydroformylation of 1 - octene by 
+encapsulated rhodium, [ G  ⊃  HRh(CO) 3 ], resulted in a 10 - fold rate enhancement compared 
+ Figure 6.8   Bisphosphine based heterocapsule  H encapsulating a transition metal, 
+[ H  ⊃  Pd - Ar], (modeling picture on the right). In the modeled structure, some substituents 
+and hydrogen atoms have been omitted for clarity.   [6] Reproduced by permission of The 
+Royal Society of Chemistry (RSC)  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+166 
+Molecular Encapsulation
+to the non - encapsulated rhodium catalyst (Scheme  6.7 a).  23,24   In addition, the selectivity 
+for the product has reversed; nanoreactor [ G  ⊃  HRh(CO) 3 ] containing Zn(II) - porphyrins 
+provides 63% of the branched aldehyde compared to 26% observed for the non - encapsu-
+lated species. The unusual selectivity and increased rate can only partly be explained by 
+modiﬁ cation of the catalytically active species upon encapsulation. Indeed, upon encap-
+sulation the rhodium complex goes from bisphosphine to monophosphine, which gener-
+ally produces more branched aldehydes along with higher rates compared to the 
+bisphosphine species. In addition, a part of the effect was ascribed to complete encapsula-
+tion of the catalyst, as open cage analogues containing only two porphyrins instead of 
+three, and which were shown to also have only one phosphine ligand coordinated to the 
+rhodium, proved less active and less selective toward branched aldehyde.   
+ An advantage of the ligand - template approach for capsule assembly is the possibility 
+to modify the shape of the capsule by only minor changes of the template - ligand, as 
+demonstrated by using either tris( meta - pyridyl) - or tris( para - pyridyl)phosphine. Addition 
+of Zn(II) - salphen scaffolds to these two ligand templates resulted in selective formation 
+of nanoreactors  G and  I , respectively (Scheme  6.7 ). 23 Hydroformylation of 1 - octene by 
+the tris( meta - pyridyl)phosphine based nanoreactor [ G  ⊃    Rh] gave a preference for the 
+branched aldehyde (Scheme  6.7 a), whereas the tris( para - pyridyl)phosphine based nano-
+reactor [ I  ⊃    Rh] predominantly gave the linear aldehyde, as with the non - encapsulated 
+Rh – bisphosphine complex (Scheme  6.7 b). These selectivities imply that nanoreactor 
+[ G  ⊃    Rh] corresponds to a Rh – monophosphine complex whereas the more open structure 
+of nanoreactor [ I  ⊃  Rh] allows the formation of Rh – bisphosphine species. 
+ More recently, nanoreactor [ G  ⊃    Rh] has operated as a high - precision catalyst for the 
+regioselective hydroformylation of internal alkenes.  22 The non - encapsulated complex 
+HRh(P( m - Py) 3 ) 2 (CO) 2  yields a near statistical mixture of the two expected internal alde-
+hydes 2 - methyloctanal and 2 - ethylheptanal. However, nanoreactor [ G  ⊃  Rh], encapsulat-
+ing the Rh - catalyst, exhibits a strong preference to form 2 - ethylheptanal in 88% (Scheme 
+ 6.8 ). This outstanding selectivity is unprecedented in the hydroformylation of internal 
+alkenes. A similar selectivity was found in the hydroformylation of 3 - octene. Experiments 
+using various partial H 2  and CO pressures resulted to the proposition that the hydride 
+migration is the selectivity - determining step. This step requires a rotation of the coordi-
+nated alkene which is hampered by the steric restrictions imposed by the interior of the 
+ Scheme 6.7   Hydroformylation of 1 - octene a) within nanoreactor [ G  ⊃  Rh] and b) within 
+nanoreactor [ I  ⊃  Rh]. Product distribution of the aldehyde products  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Chemistry in Self-Assembled Nanoreactors 
+167
+capsule. Apparently, rotation of the intermediate oleﬁ n complex leading to the 2 - 
+ethylheptanal product is more facile, explaining the observed regioselectivity. Therefore 
+it can be concluded that the nanoreactor determines the regiochemical outcome of the 
+reaction by imposing its sterical restrictions during a speciﬁ c step in the catalytic sequence. 
+It is interesting to note that there are no other reactions that can distinguish between the 
+two carbon atoms of 3 - octene, demonstrating that reactions carried out in nanoreactors 
+can result in unprecedented selective reactions. 
+ In related work, we have employed   α  - diimine ligands with pyridine functionalities in 
+conjunction with our Zn - porphyrin self - assembly protocol to arrive at supramolecular 
+ligands for the Pd - catalyzed copolymerization of styrene and CO.  55   It was shown that 
+both the reactivity of the catalyst and the stereoregularity of the polymer formed can be 
+controlled in a supramolecular fashion, by subtle changes of the building blocks involved 
+in the catalyst assembly. These supramolecular catalysts among the most active and selec-
+tive catalysts for this reaction, and the origin of the selectivity is currently being studied. 
+It is hypothesized that the effective encapsulation of the metal center by the porphyrin 
+units has a signiﬁ cant impact on the overall dynamics of the system. 
+ So far we have not used the chromophoric character of the porphyrin building blocks, 
+but we recently studied systems in which we capitalize on these light capturing devices. 
+We reported a catalyst system that is formed by assembly, which is able to use light as 
+primary energy source to generate molecular hydrogen (Scheme  6.9 ).  56 The primary bio-
+mimetic [2Fe2S] hydrogenase catalyst is utilized with supramolecular handles to assem-
+ble the light capturing chromophore in close proximity of the active diiron centre to 
+facilitate the photo - induced electron transfer. Importantly, closely related [2Fe2S] com-
+plexes with very similar electrocatalytic properties show a distinctively different behavior 
+upon (photo)reduction. For this reason the supramolecular approach has been important 
+as it enables the easy modular variation of complexes. In addition, we found an active 
+ Scheme 6.8   Hydroformylation of  trans - 2 - octene by nanoreactor [ G  ⊃  Rh]. Product 
+distribution of the aldehyde products  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+168 
+Molecular Encapsulation
+catalyst that is difﬁ cult to prepare by traditional strategies and which we did not predict 
+in advance. Detailed studies show that in both experiments with complexes  14  the assem-
+bly  14  •  ( 15a )( 15b ) is the active species formed, either directly or via light induced dis-
+proportionation. The hydrogen producing system requires two different chromophores 
+( 15a  and  15b ) present in solution, suggesting that  14  •  ( 15a )( 15b ) is an active species. 
+This study reconﬁ rms the observation that small changes in the parent [2Fe2S] complex 
+can result in different and unpredictable reaction pathways upon reduction. The supramo-
+lecular approach is highly promising for further development in this important area, as 
+the modular nature of the building blocks applied also facilitates rapid optimization. 
+ 6.10  Virus Capsids, Proteins and Micellar Systems 
+ Several approaches have recently been developed that directly apply natural architectures 
+for artiﬁ cial chemical reactions, some of which are detailed in different chapters of this 
+book. Although not classiﬁ ed as homogeneous catalysis, the reduction of metal salts 
+inside nanoreactors could be the ﬁ rst step on the way to reactivity with the corresponding 
+metal colloids or nanoparticles in e.g. hydrogenation reactions. A variety of carrier 
+systems have been studied lately, including virus capsids, polymeric micelles, mini -
+ emulsions and hollow core - shell particles, as nanoreactors and hosts for the synthesis and 
+encapsulation of well - deﬁ ned, stable nanoparticles. 57 
+ Viruses and proteins such as ferritin or streptavidin 58 are large self - assembled micellar 
+aggregates of bio - amphiphiles that naturally function as carriers for RNA. Removal of 
+this RNA core yields the corresponding  apo  - capsids that can be further functionalized. 
+Hence, apoferritin has been used as a container for the formation of Cu and Ag nanopar-
+ticles, by reduction of corresponding metal salts inside the virus capsid interior.  59 Also 
+Fe - nanoparticles have been synthesized in a controlled manner within the cavity of geneti-
+cally engineered human H - chain ferritin protein.  60   The groups of Nolte and Cornelissen 
+have published initial results on the use of virus capsids as nanoreactors for single enzyme 
+catalysis. 61 
+ Scheme 6.9   Photocatalytic reduction of protons using self - assembled, bio - mimetic 
+Fe 2 S 2 - diphosphine complex  14  •  ( 15a )( 15b ) 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Chemistry in Self-Assembled Nanoreactors 
+169
+ 6.11  Micellar Systems 
+ Catalysis inside micellar systems is an attractive approach that might also ﬁ nd application 
+in recycling and recovery of homogeneous catalysts, which would enable introduction to 
+continuous catalysis. Besides covalent approaches, using crosslinked, unimolecular 
+micelles or latex particles and electrostatic interactions between the surfactant head 
+groups and the cationic metal species,  62 non - covalent, dynamic micelles charged with 
+catalytically active transition metal complexes have also been employed. Recent examples 
+include the work by Weberskirch on the dual - catalyst hydroaminomethylation of 1 - octene 
+in aqueous media through the use of phosphane - functionalized macromonomers. 63 
+Reasonable n/iso ratios of up to 11 and turnover frequencies of up to  ∼ 600 h  − 1 were 
+obtained. In a similar fashion, micellar systems derived from 2 - oxaline based amphiphilic 
+block - copolymers, partially functionalized with Co – salen complex at the hydrophobic 
+interior, were used for the hydrolytic kinetic resolution of epoxides in water.  64 Excellent 
+ee ’ s for both the epoxide and the diol product were obtained, but catalyst recycling experi-
+ments showed loss in selectivity after a few runs. The droplets present in speciﬁ c inverted 
+(water - in - oil) mini - emulsions have been employed as nanoreactors to perform a polymer-
+ase chain reaction (PCR).  65   Micelles built - up in part from amphiphilic dendrons have been 
+exploited as vessels for the aqueous - phase Diels – Alder addition reaction between C 60 and 
+polycyclic hydrocarbons.  66   Inverted block - copolymeric micelles, featuring a poly(4 - vinyl-
+benzoic acid) interior and a polystyrene corona in toluene, were utilized as hosts for 
+Fe - bis(imino)pyridine based single - site alkene polymerization catalysis of ethene.  67 Rod -
+ coil based amphiphiles, wherein the rod - fragment consisted of linear polyphenylene 
+moieties and the coil - tail was represented by poly(ethylene glycol) chains, were shown 
+to aggregate into micellar structures in water. The speciﬁ c architecture as well as the 
+strict hydrophobic interior were shown to provide a good platform to perform the Suzuki 
+coupling with standard aryl boronic acids and halides in water at room temperature 
+at low catalyst loadings.  68   Our own group reported on functionalized, xanthene based 
+diphosphine ligands that were decorated with surface - active pendant groups 
+(i.e. - 4 - C 6 H 4 O(CH 2 ) n C 6 H 4 (SO 3 Na)), which spontaneously self - assembled into vesicular 
+aggregates in water. These supramolecular structures proved stable even at elevated tem-
+perature (90  ° C), so upon introduction of a suitable Rh - precursor, the selective aqueous 
+biphasic hydroformylation of higher alkenes (e.g. octene), which typically show very low 
+solubility in water, could be carried out, coupled with repetitive recycling of the catalyst 
+system. 69 
+ The groups of Rowan and van Hest have jointly reported on the use of polymersomes 
+ –  enlarged liposomes with a vesicular structure containing a hydrophobic bilayer  – as 
+nanoreactor vessels for a three - step cascade reaction.  70   The stepwise, controlled incorpo-
+ration of horseradish peroxidase (HRP) and glucose oxidase (GO) in separate inner -
+ domains of the polymersome structure was conﬁ rmed by ﬂ uorescence microscopy. More 
+speciﬁ cally, GO was selectively located inside the hydrophilic core enclosed by the 
+bilayer, which itself contained HRP, whilst a third enzyme,  Candida antarctica  lipase B 
+(CALB), was not encapsulated but was added to the bulk solvent surrounding the reactors. 
+The following reaction sequence was studied as a proof - of - principle: i) conversion of 
+1,2,3,4 - tetra - O - acetyl - β  - glucopyranoseglucose into glucose by CALB, ii) oxidation of 
+glucose to the corresponding lactone concomitant with formation of H 2 O 2  by GO and iii) 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+170 
+Molecular Encapsulation
+the conversion of 2,2 ′ - azinobis(3 - ethylbenzothiazoline - 6 - sulfonic acid (ABTS) into 
+ABTS  • +  with consumption of H 2 O 2  by HRP. For earlier results in the area of macromo-
+lecular micelles, polymers and biomacromolecules the reader is referred to the recent 
+review literature. 11 
+ 6.12  Conclusions and Outlook 
+ A wide array of self - assembled molecular capsules based on various building blocks and 
+non - covalent interactions has been developed in the last decade. The nanospace within 
+these supramolecular capsules is generally in the range of 300 – 500  Å 3  (although larger 
+examples are known as well), which is sufﬁ cient for the selective encapsulation of appro-
+priately sized guest molecule(s). A number of distinctly different capsule architectures 
+have been characterized, highly dependent on the speciﬁ c type of non - covalent interac-
+tion, building block structure and templating agent, and as a result guest shielding and 
+guest exchange rates can strongly vary. A diversity of chemical processes has been carried 
+out within molecular capsules and the effects observed so far are, although academic, 
+very interesting. Reactions can be  accelerated  and the  selectivity  of a chemical process 
+can be changed completely. These observations can be explained by stabilization of the 
+reaction transition state by the capsule (based on enthalpic and entropic contributions) or 
+by concentration effects in the case of bimolecular reactions, such as Diels – Alder reac-
+tions. More important are the unique reaction  selectivities  induced by the novel ﬁ nite 
+microenvironment within the capsule. The size and shape of the nanoreactor ’ s cavity and 
+that of the nanoreactor ’ s gates can control the substrate selectivity by controlling the 
+access to the cavity. Similarly, a nanoreactor can protect an  active site  located in the 
+cavity that otherwise would be poisoned by chemicals present in solution. The  regio - and 
+chemoselectivities can also be changed by the capsule, through a change in the relative 
+reaction rates of competing pathways. This was for example observed for encapsulated 
+rhodium complexes that were used as hydroformylation catalysts. In addition to these 
+effects, reaction  intermediates , that otherwise exhibit too short lifetimes for identiﬁ cation, 
+have been observed as stable species in nanoreactors. In these cases the reaction rate of 
+the subsequent step after the formation of the intermediate is slowed down by the nano-
+capsule.  Product inhibition , which is a frequently encountered problem in bimolecular 
+coupling reactions carried out within enclosed cavities, is fundamentally related to the 
+former. The coupling product might have a higher afﬁ nity for the capsule than the sub-
+strates, and consequently product release from the nanoreactor becomes the slowest step 
+in the reaction. Also entropic factors might be important, as a unimolecular product has 
+to exchange with two substrate molecules. Product inhibition can prohibit the utility of 
+nanoreactors as true catalysts. 
+ In addition to the nanoreactors discussed in this review, which are formed by assembly 
+of at least two building blocks, capsules based on covalent bonds have also been applied 
+as nanoreactors.  11   Such covalent nanoreactors were beyond the scope of the current 
+review, but similar effects in catalysis are observed. However, self - assembled capsules 
+also have guest exchange mechanisms via partial disassembly of the capsule, whereas 
+exchange for the covalent analogues is restricted to portal slippage. It is this unique 
+property that enables the combination of complete encapsulation with sufﬁ ciently rapid 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Chemistry in Self-Assembled Nanoreactors 
+171
+in – out exchange, which might proof to be very advantageous for potential catalytic 
+applications. 
+ Although the research ﬁ eld is still in its infancy, several examples of reactions, wherein 
+self - assembled nanoreactors are applied and are shown to dramatic enhance or alter reac-
+tivity, have appeared, thereby demonstrating the power of the supramolecular concept. 
+Detailed studies are required to fully understand the mechanisms behind the effects 
+observed when carrying out reactions in nanoreactors. The results obtained so far sketch 
+a bright prospective, as reactions have been observed that are unique to those carried out 
+in capsules. In this review we have focussed on reactions that take place  inside  the cap-
+sules. However, molecular capsules have also been used to control reactions that take 
+place  outside  the capsule for example by controlling the release of reagents, making the 
+nanoreactor applications virtually unlimited. 71 
+ Acknowledgements 
+ We thank the Netherlands Organization of Scientiﬁ c Research NWO (VENI grant to 
+J.I.v.d.V.; VICI grant to J.N.H.R.) and the University of Amsterdam for ﬁ nancial support, 
+and all co - workers, whose names appear in the references, for their contributions. 
+ References 
+  1.  J. M.  Lehn ,  Supramolecular chemistry: receptors, catalysts, and carriers ,  Science ,  1985 ,  227 , 
+ 849 . 
+  2.  J. M.  Lehn ,  Supramolecular Chemistry: Concepts and Perspectives ,  WILEY - VCH ,  1995 . 
+  3.  D. J.  Cram ,  Cavitands: orgnaic hosts with enforced cavities ,  Science ,  1983 ,  219 ,  1177 . 
+  4.  D. J.  Cram ,  Molecular Container Compounds ,  Nature ,  1992 ,  356 ,  29 . 
+  5.  D. J.  Cram ,  J. M.  Cram ,  Container Molecules and Their Guests , ( Monographs in Supramolecular 
+Chemistry , No.  4 , Series Editor  J. F.  Stoddart )  The Royal Society of Chemistry ,  Cambridge, 
+U.K. ,  1997 . 
+  6.  T. S.  Koblenz ,  J.  Wassenaar ,  J. N. H.  Reek ,  Reactivity within a conﬁ ned self - assembled nano-
+space ,  Chem. Soc. Rev. ,  2008 ,  37 ,  247 . 
+  7  a)  J. K. M.  Sanders ,  Supramolecular catalysis in transition ,   Chem. Eur. J.  ,  1998 ,  4 ,  1378 ;  b)  A. 
+J.   Kirby  ,  Enzyme mechanisms, models, and mimics ,  Angew. Chem. Int. Ed. ,  1996 ,  35 ,  707 ;  c) 
+ W. B.  Motherwell ,  M. J.  Bingham ,  Y.  Six ,  Recent progress in the design and synthesis of 
+artiﬁ cial enzymes ,  Tetrahedron ,  2001 ,  57 ,  4663 ;  d)  J. I.  van der  Vlugt ,  F.  Meyer ,  Homogeneous 
+copper - catalyzed oxidations ,  Top. Organomet. Chem. ,  2007 ,  22 ,  191 ;  e)  J. I.  van der  Vlugt ,  F. 
+ Meyer  ,  Synthetic models for the active sites of nickel - containing enzymes ,  Met. Ions Life Sci. , 
+ 2007 ,  2 ,  181 . 
+  8.  J.  Gao ,  S. M a,  D. T.  Major ,  K.  Nam ,  J. P u,  D. G.  Truhlar ,  Mechanisms and free energies of 
+enzymatic reactions ,  Chem. Rev. ,  2006 ,  106 ,  3188 ;  M. J. S.  Dewar ,  D. M.  Storch ,  Alternative 
+view of enzyme reactions ,  Proc. Natl. Acad. Sci. USA ,  1985 ,  82 ,  2225 ;  X.  Zhang ,  K. N.  Houk , 
+ Why enzymes are proﬁ cient catalysts: beyond the Pauling paradigm ,  Acc. Chem. Res. ,  2005 , 
+ 38 ,  379 . 
+  9.  L. R.  MacGillivray ,  J. L.  Atwood ,  Structural classiﬁ cation and general principles for the design 
+of spherical molecular hosts ,  Angew. Chem. Int. Ed. ,  1999 ,  38 ,  1018 . 
+ 10.  In the early days of this research ﬁ eld also covalent based capsules were assigned as  ‘ supramo-
+lecular capsules ’  because of their encapsulation properties. However, because of the develop-
+ments of the last decade we designate here only non - covalent based capsules as  ‘ supramolecular 
+capsules ’ . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+172 
+Molecular Encapsulation
+ 11.  D. M.  Vriezema ,  M. C.  Aragones ,  J. A. A. W.  Elemans ,  J. J. L. M.  Cornelissen ,  A. E.  Rowan , 
+ R. J. M.  Nolte ,  Self - assembled nanoreactors ,  Chem. Rev. ,  2005 ,  105 ,  1445 . 
+ 12.  A.  L ü tzen ,  Self - assembled molecular capsules  - even more than nano - sized reaction vessels , 
+ Angew. Chem. Int. Ed. ,  2005 ,  44 ,  1000 . 
+ 13.  An important difference between enzymes and nanoreactors is product release from the cavity. 
+The Michaelis – Menten kinetics assumes that product release occurs rapidly (this assumption 
+is also done in equation 4). However, this assumption does not always counts for nanoreactors 
+because they can display product inhibition ( vide infra ). 
+  14.      For an alternative analysis of supramolecular effects in bimolecular reactions using the  ‘ effec-
+tive molarity ’ approach , see:  S.  Di  Stefano ,  L.  Mandolini ,  Effective molarities in supramolecu-
+lar catalysis of two - substrate reactions ,  Acc. Chem. Res. ,  2004 ,  37 ,  113 . 
+ 15.  D.  Fiedler ,  H.  van  Halbeek ,  R. G.  Bergman ,  K. N.  Raymond ,  Supramolecular catalysis of 
+unimolecular rearrangements: substrate scope and mechanistic insights ,  J. Am. Chem. Soc. , 
+ 2006 ,  128 ,  10240 and references therein. 
+ 16.  K.  Takaoka ,  M.  Kawano ,  T.  Ozeki ,  M.  Fujita ,  Crystallographic observation of an oleﬁ n pho-
+todimerization reaction that takes place via thermal molecular tumbling within a self - assembled 
+host ,  Chem. Commun. ,  2006 ,  1625 . 
+ 17.  M.  Yoshizawa ,  M.  Tamura ,  M.  Fujita ,  Diels - alder in aqueous molecular host: unusual regiose-
+lectivity and efﬁ cient catalysis ,  Science ,  2006 ,  312 ,  251 . 
+ 18.  A. V.  Davis ,  R. M.  Yeh ,  K. N.  Raymond ,  Supramolecular assembly dynamics ,  Proc. Natl. 
+Acad. Sci. USA ,  2002 ,  99 ,  4793 . 
+ 19.  D.  Fiedler ,  D. H.  Leung ,  R. G.  Bergman ,  K. N.  Raymond ,  Selective molecular recognition, 
+C - H bond activation, and catalysis in nanoscale reaction vessels ,  Acc. Chem. Res. ,  2005 ,  38 , 
+ 351 and references therein. 
+ 20.  M. L.  Merlau ,  M.  Del  Pilar Mejia ,  S. T.  Nguyen ,  J. T.  Hupp ,  Artiﬁ cial enzymes formed through 
+directed assembly of molecular square encapsulated epoxidation catalysis ,  Angew. Chem. Int. 
+Ed. ,  2001 ,  40 ,  4239 . 
+ 21.  A. W.  Kleij ,  J. N. H.  Reek ,  Ligand - template directed assembly: an efﬁ cient approach for the 
+supramolecular encapsulation of transition - metal catalysts ,  Chem. Eur. J. ,  2006 ,  12 ,  4218 . 
+ 22.  M.  Kuil ,  T.  Soltner ,  P. W. N. M. Van  Leeuwen ,  J. N. H.  Reek ,  High - precision catalysts: regi-
+oselective hydroformylation of internal alkenes by encapsulated rhodium complexes ,  J. Am. 
+Chem. Soc. ,  2006 ,  128 ,  11344 . 
+ 23.  A. W.  Kleij ,  M.  Lutz ,  A. L.  Spek ,  P. W. N. M.  van Leeuwen ,  J. N. H.  Reek ,  Encapsulated 
+transition metal catalysts comprising peripheral Zn(II)salen building blocks: template - control-
+led reactivity and selectivity in hydroformylation catalysis ,  Chem. Commun. ,  2005 ,  3661 . 
+ 24.  V. F.  Slagt ,  P. C. J.  Kamer ,  P. W. N. M.  van  Leeuwen ,  J. N. H.  Reek ,  Encapsulation of transi-
+tion metal catalysts by ligand - template directed assembly ,  J. Am. Chem. Soc. ,  2004 ,  126 ,  1526 
+and references therein.  
+ 25.  J.  Kang ,  J.  Santamaria ,  G.  Hilmersson ,  J .  Rebek  Jr. ,  Self - assembled molecular capsule catalyzes 
+a Diels - Alder reaction ,  J. Am. Chem. Soc. ,  1998 ,  120 ,  7389 . 
+ 26.  M.  Yoshizawa ,  T.  Kusukawa ,  M.  Fujita ,  S.  Sakamoto ,  K.  Yamaguchi ,  Cavity - directed synthesis 
+of labile silanol oligomers within self - assembled coordination cages ,  J. Am. Chem. Soc. ,  2001 , 
+ 123 ,  10454 . 
+ 27.  J.  Rebek  Jr. ,  Simultaneous encapsulation: molecules held at close range ,  Angew. Chem. Int. 
+Ed. ,  2005 ,  44 ,  2068 and references therein. 
+ 28.  L. C.  Palmer ,  J .  Rebek  Jr. ,  The ins and outs of molecular encapsulation ,  Org. Biomol. Chem. , 
+ 2004 ,  2 ,  3051 and references therein. 
+ 29.  F.  Hof ,  S. L.  Craig ,  C.  Nuckolls ,  J.  Rebek  Jr. ,  Molecular encapsulation ,  Angew. Chem. Int. Ed. , 
+ 2002 ,  41 ,  1488 and references therein. 
+ 30.  S.  Mecozzi ,  J.  Rebek  Jr. ,  The 55% solution: a formula for molecular recognition in the liquid 
+state ,  Chem. Eur. J. ,  1998 ,  4 ,  1016 . 
+ 31.  J.  Chen ,  J.  Rebek  Jr. ,  Selectivity in an encapsulated cycloaddition reaction ,  Org. Lett. ,  2002 , 
+ 4 ,  327 . 
+ 32.  C. H. M.  Amijs ,  G. P. M.  van  Klink ,  G.  van  Koten ,  Metallasupramolecular architectures, an 
+overview of functional properties and applications ,  Dalton Trans. ,  2006 ,  308 . 
+ 33.  M. D.  Pluth ,  K. N.  Raymond ,  Reversible guest exchange mechanisms in supramolecular host -
+ guest assemblies ,  Chem. Soc. Rev. ,  2007 ,  36 ,  161 and references therein. 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Chemistry in Self-Assembled Nanoreactors 
+173
+ 34.  A. V.  Davis ,  D.  Fiedler ,  M.  Ziegler ,  A.  Terpin ,  K. N.  Raymond ,  Resolution of chiral, tetrahedral 
+M 4 L 6 metal - ligand hosts ,  J. Am. Chem. Soc. ,  2007 ,  129 ,  15354 . 
+ 35.  S. M.  Biros ,  R. M.  Yeh ,  K. N.  Raymond ,  Design and formation of a large tetrahedral cluster 
+using 1,1 - ‘ binaphthyl ligands ’ ,  Angew. Chem. Int. Ed. ,  2008 ,  47 ,  6062 . 
+ 36.  a)  M. D.  Pluth ,  R. G.  Bergman ,  K. N.  Raymond ,  Acid catalysis in basic solution: a supramo-
+lecular host promotes orthoformate ,  Science ,  2007 ,  316 ,  85 ;  b)  M. D.  Pluth ,  R. G.  Bergman , 
+  K. N.   Raymond  ,  Catalytic deprotection of acetals in basic solution with a self - assembled 
+supramolecular nanozyme ,  Angew. Chem. Int. Ed. ,  2007 ,  46 ,  8587 ;  c)  M. D.  Pluth ,  R. G. 
+ Bergman ,  K. N.  Raymond ,  Supramolecular catalysis of orthoformate hydrolysis in basic solu-
+tion: an enzyme - like mechanism ,  J. Am. Chem. Soc. ,  2008 ,  130 ,  11423 . 
+ 37.  C. J.  Hastings ,  D.  Fiedler ,  R. G.  Bergman ,  K. N.  Raymond ,  Aza Cope rearrangement of prop-
+argyl enammonium cations catalyzed by a self - assembled  ‘ nanozyme ’ ,  J. Am. Chem. Soc. , 
+ 2008 ,  130 ,  10977 . 
+ 38.  D. H.  Leung ,  R. G.  Bergman ,  K. N.  Raymond ,  Scope and mechanism of the C - H bond activa-
+tion reactivity within a supramolecular host by an iridium guest: a stepwise ion pair guest 
+dissociation mechanism ,  J. Am. Chem. Soc. ,  2006 ,  128 ,  9781 and references therein. 
+ 39.  D. H.  Leung ,  R. G.  Bergman ,  K. N.  Raymond ,  Highly selective supramolecular catalyzed 
+allylic alcohol isomerization ,  J. Am. Chem. Soc. ,  2007 ,  129 ,  2746 . 
+  40.       M.   Fujita  ,   M.   Tominaga  ,   A.   Hori  ,   B.   Therrien  ,  Coordination assemblies from a Pd(II) - cornered 
+square complex ,  Acc. Chem. Res. ,  2005 ,  38 ,  371 . 
+ 41.  M.  Fujita ,  K.  Umemoto ,  M.  Yoshizawa ,  N.  Fujita ,  T.  Kusukawa ,  K.  Biradha ,  Molecular pan-
+eling via coordination ,  Chem. Commun. ,  2001 ,  509 . 
+ 42.  Y.  Nishioka ,  T.  Yamaguchi ,  M.  Yoshizawa ,  M.  Fujita ,  Unusual [2 + 4] and [2 + 2] cycloadditions 
+of arenes in the conﬁ ned cavity of self - assembled cages ,  J. Am. Chem. Soc. ,  2007 ,  129 ,  7000 . 
+ 43.  M.  Yoshizawa ,  Y.  Takeyama ,  T.  Kusukawa ,  M.  Fujita ,  Cavity - directed, highly stereoselective 
+[2 + 2] photodimerization of oleﬁ ns within self - assembled coordination cages ,  Angew. Chem., 
+Int. Ed. ,  2002 ,  41 ,  1347 . 
+ 44.  M.  Yoshizawa ,  Y.  Takeyama ,  T.  Okano ,  M.  Fujita ,  Cavity - directed synthesis within a self -
+ assembled coordination cage: highly selective [2 + 2] cross - photodimerization of oleﬁ ns ,  J. Am. 
+Chem. Soc. ,  2003 ,  125 ,  3243 . 
+ 45.  Y.  Nishioka ,  T.  Yamaguchi ,  M.  Kawano ,  M.  Fujita ,  Asymmetric [2 + 2] oleﬁ n cross photoad-
+dition in a self - assembled host with remote chiral auxiliaries , J. Am. Chem. Soc. ,  2008 ,  130 , 
+ 8160 . 
+ 46.  H.  Ito ,  T.  Kusukawa ,  M.  Fujita ,  Wacker oxidation in an aqueous phase through the reverse 
+phase - transfer catalysis of a self - assembled nanocage ,  Chem. Lett. ,  2000 ,  598 . 
+ 47.  M.  Yoshizawa ,  S.  Miyagi ,  M.  Kawano ,  K.  Ishiguro ,  M.  Fujita ,  Alkane oxidation via 
+photochemical excitation of a self - assembled molecular cage ,  J. Am. Chem. Soc. ,  2004 ,  126 , 
+ 9172 . 
+ 48.  T.  Furusawa ,  M.  Kawano ,  M.  Fujita ,  The conﬁ ned cavity of a coordination cage suppresses 
+the photocleavage of  α  - diketones to give cyclization products through kinetically unfavorable 
+pathways ,  Angew. Chem. Int. Ed. ,  2007 ,  46 ,  5717 . 
+ 49.  T.  Yamaguchi ,  M.  Fujita ,  High selective photomediated 1,4 - radical addition to  o - quinones 
+controlled by a self - assembled cage ,  Angew. Chem. Int. Ed. ,  2008 ,  47 ,  2067 . 
+ 50.  C. L. D.  Gibb ,  B. C.  Gibb ,  Well - deﬁ ned, organic nanoenvironments in water: the hydrophobic 
+effect drives a capsular assembly ,  J. Am. Chem. Soc. ,  2004 ,  126 ,  11408 . 
+ 51.  A.  Natarajan ,  L. S.  Kaanumalle ,  S.  Jockusch ,  C. L. D.  Gibb ,  B. C.  Gibb ,  N. J.  Turro ,  V. 
+ Ramamurthy  ,  Controlling photoreactions with restricted spaces and weak intermolecular 
+forces: exquisite selectivity during oxidation of oleﬁ ns by singlet oxygen ,  J. Am. Chem. Soc ., 
+ 2007 ,  129 ,  4132 . For a second application of nanocapsule E, see:     L. S.   Kaanumalle  ,   C. L. D.  
+ Gibb ,  B. C.  Gibb ,  V.  Ramamurthy ,  Photo - Fries reaction in water made selective with a capsule , 
+ Org. Biomol. Chem. ,  2007 ,  5 ,  236 . 
+ 52.  A.  Greer ,  Organic chemistry: molecular cross - talk ,  Nature ,  2007 ,  447 ,  273 . 
+ 53.  M. J.  Wilkinson ,  P. W. N. M.  van  Leeuwen ,  J. N. H.  Reek ,  New directions in supramolecular 
+transition metal catalysis ,  Org. Biomol. Chem. ,  2005 ,  3 ,  2371 . 
+ 54.  T. S.  Koblenz ,  H. L.  Dekker ,  C. G.  De  Koster ,  P. W. N. M.  Van  Leeuwen ,  J. N. H.  Reek  , 
+ Bisphosphine base hetero - capsules for the encapsulation of transition metals ,  Chem. Commun. , 
+ 2006 ,  1700 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+174 
+Molecular Encapsulation
+ 55.  J.  Flapper ,  J. N. H.  Reek ,  Templated encapsulation of pyridyl - bian palladium complexes: 
+tunable catalysts for CO/4 -  tert - butylstyrene copolymerization ,  Angew. Chem. Int. Ed. ,  2007 , 
+ 46 ,  8590 . 
+ 56.  A. M.  Kluwer ,  R.  Kapre ,  F.  Hartl ,  M.  Lutz ,  A. L.  Spek ,  A. M.  Brouwer ,  P. W. N. M.  van 
+ Leeuwen ,  J. N. H.  Reek ,  Self - assembled biomimetic [2Fe2S] - hydrogenase - based photocatalyst 
+for molecular hydrogen evolution ,  Proc. Natl. Acad. Sci. USA ,  2009 ,  106 ,  10460 . 
+ 57.  A. D.  Crespy ,  M.  Stark ,  C.  Hoffmann - Richter ,  U.  Ziener ,  K.  Landfester ,  Polymeric nanoreac-
+tors for hydrophilic reagents synthesized by interfacial polycondensation on miniemulsion 
+droplets ,  Macromolecules ,  2007 ,  40 ,  3122 ; b)  O.  Gazit ,  R.  Khalﬁ n ,  Y.  Cohen ,  R.  Tannenbaum , 
+ Self - assembled diblock copolymer  ‘ nanoreactors ’  as  ‘ catalysts ’  for metal nanoparticle synthe-
+sis ,  J. Phys. Chem. C ,  2009 ,  113 ,  576 . 
+  58.     We will not discuss the recent applications of the coupled streptavidin – biotin motif in bio -
+ inspired asymmetric catalysis, as an entire chapter is dedicated to  ‘ Artiﬁ cial Metalloenzymes ’ , 
+written by Prof. Thomas Ward. 
+ 59.  N.  G á lvez ,  B.  Fernandez ,  E.  Valero ,  P.  S á nchez ,  R.  Cuesta ,  J. M.  Dom í nguez - Vera ,  Aproferritin 
+as a nanoreactor for preparing metallic nanoparticles ,  C. R. Chimie ,  2008 ,  11 ,  1207 . 
+ 60.  M.  Uchida ,  M. L.  Flenniken ,  M.  Allen ,  D. A.  Willits ,  B. E.  Crowley ,  S.  Brumﬁ eld ,  A. F.  Willis , 
+ L.  Jackiw ,  M.  Jutila ,  M. J.  Young ,  T.  Douglas ,  Targeting of cancer cells with ferrimagnetic 
+ferritin cage nanoparticles ,  J. Am. Chem. Soc. ,  2006 ,  128 ,  16626 . 
+ 61.  M.  Comellas - Aragon è s ,  H.  Engelkamp ,  V. I.  Claessen ,  N. A. J. M.  Sommerdijk ,  A. E.  Rowan  , 
+ P. C. M.  Christianen ,  J. C.  Maan ,  B. J. M.  Verduin ,  J. J. L. M.  Cornelissen ,  R. J. M.  Nolte ,  A 
+virus - based single - enzyme nanoreactor ,  Nature Nanotech. ,  2007 ,  2 ,  635 . 
+ 62.  R.  Sablong ,  J. I.  van der  Vlugt ,  R.  Thomann ,  S.  Mecking ,  D.  Vogt ,  Disperse amphiphilic 
+submicron particles as non - covalent supports for cationic homogeneous catalysts ,  Adv. Synth. 
+Catal. ,  2005 ,  347 ,  633 ;  K.  Kunna ,  J.  Loos ,  C.  M ü ller ,  D.  Vogt ,  Aqueous - phase hydroformyla-
+tion of 1 - octene: styrene latices a phase - transfer agents ,  Angew. Chem. Int. Ed. ,  2006 ,  45 ,  7289 . 
+ 63.  B.  Gall ,  M.  Bortenschlager ,  O.  Nuyken ,  R.  Weberskirch ,  Cascade reactions in polymeric 
+nanoreactors: mono (Rh) -  and bimetallic (Rh/Ir) micellar catalysis in the hydroaminomethyla-
+tion of 1 - octene ,  Macromol. Chem. Phys. ,  2008 ,  209 ,  1152 . 
+ 64.  B. M.  Rossbach ,  K.  Leopold ,  R.  Weberskirch ,  Self - assembled nanoreactors as highly active 
+catalysts in the hydrolytic kinetic resolution (HKR) of epoxides in water ,  Angew. Chem. Int. 
+Ed. ,  2006 ,  45 ,  1309 . 
+ 65.  A.  Musyanovych ,  V.  Mail ä nder ,  K.  Landfester ,  Miniemulsion droplets as single molecule 
+nanoreactors for polymerase chain reaction ,  Biomacromolecules ,  2005 ,  6 ,  1824 . 
+ 66.  A.  Simonyan ,  I.  Gitsov ,  Linear - dendritic supramolecular complexes as nanoscale reaction 
+vessels for  ‘ green ’  chemistry. Diels - Alder reactions between fullerene C 60 and polycycilic 
+aromatic hydrocarbons in aqueous medium ,  Langmuir ,  2008 ,  24 ,  11431 . 
+ 67.  C.  Bouilhac ,  E.  Cloutet ,  D.  Taton ,  A.  Defﬁ eux ,  R.  Bosali ,  H.  Cramail ,  Block copolymer 
+micelles as nanoreactors for single - site polymerization catalysts ,  J. Polym. Sci. A: Polym. 
+Chem. ,  2009 ,  47 ,  197 . 
+ 68.  J. - H.  Ryu ,  C. - J.  Jang ,  Y. - S.  Yoo ,  S. - G.  Lim ,  M.  Lee ,  Supramolecular reactor in an aqueous 
+environment: aromatic cross Suzuki coupling reaction at room temperature ,  J. Org. Chem. , 
+ 2005 ,  70 ,  8956 . 
+ 69.  M.  Schreuder  Goedheijt ,  B. E.  Hanson ,  J. N. H.  Reek ,  P. C. J.  Kamer ,  P. W. N. M.  van 
+ Leeuwen  ,  Accelerated biphasic hydroformylation by vesicle formation of amphiphilic diphos-
+phines ,  J. Am. Chem. Soc. ,  2000 ,  122 ,  1650 . 
+ 70  a)  D. M.  Vriezema ,  P. M. L.  Garcia ,  N.  Sancho  Oltra ,  N. S.  Hatzakis ,  S. M.  Kuiper ,  R. J. M.  
+ Nolte ,  A. E.  Rowan ,  J. C. M.  van  Hest ,  Positional assembly of enzymes in polymersome 
+nanoreactors for cascade reactions ,  Angew. Chem. Int. Ed. ,  2007 ,  46 ,  7378 ;  b)  S. M.  Kuiper , 
+ M.  Nallani ,  D. M.  Vriezema ,  J. J. L. M.  Cornelissen ,  J. C. M.  van  Hest ,  R. J. M.  Nolte ,  A. E. 
+ Rowan  ,  Enzymes containing porous polymersomes as nano reaction vessels for cascade reac-
+tions ,  Org. Biomol. Chem. ,  2008 ,  6 ,  4315 . 
+ 71.  J.  Chen ,  S.  K ö rner ,  S. L.  Craig ,  D. M.  Rudkevich ,  J .  Rebek  Jr. ,  Chemistry: ampliﬁ cation by 
+compartmentalization ,  Nature ,  2002 ,  415 ,  385 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+ 7 
+Concave Reagents  
+ Ulrich  L ü ning 
+ Otto - Diels - Institut f ü r Organische Chemie, D - 24098 Kiel, Germany 
+ 7.1  Introduction 
+ 7.1.1  Supramolecular Chemistry and Enzymes 
+ Supramolecular Chemistry has been deﬁ ned as the chemistry beyond the molecule.  1 If 
+you wish, any reaction, and especially catalysis, is a supramolecular phenomenon. The 
+term supramolecular catalysis,  2   however, is used in a much more narrow sense. A good 
+approach to avoid endless discussions on deﬁ nitions is to observe Mother Nature and look 
+for supramolecular chemistry there. The molecular recognition of enzymes and their 
+ability to catalyse numerous reactions with outstanding selectivities is a challenge for the 
+(supramolecular) chemist. 
+ What is so special about the enzymes? Which elements have to be copied if one wanted 
+to construct an enzyme - like molecule? And what are the reasons to attempt a construction 
+of an enzyme - like molecule? 
+ Enzymes have been brought to perfection by billions of years of evolution. Nevertheless, 
+enzymes for every conceivable reaction do not exist. A Diels – Alderase for instance has 
+long been sought after, and even today there is dispute about its existence.  3 In addition, 
+enzymes have been perfected in aqueous media, and usually only little variation in the 
+solvent composition is possible. It is therefore attractive to copy the features of enzymes 
+Molecular Encapsulation: Organic Reactions in Constrained Systems        Edited by Udo H. Brinker and Jean-Luc Mieusset
+© 2010 John Wiley & Sons, Inc.  ISBN: 978-0-470-99807-6
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+176 
+Molecular Encapsulation
+and to construct artiﬁ cial molecules which may operate in any solvent and which may 
+carry out reactions Nature has not taken into her reservoir of techniques. 
+ For such enzyme - like molecules, two central features of an enzyme have to be imitated. 
+First, there is a reactive site  –  the active site. This active site consists of one or more 
+functional groups which, in many cases, may also carry out the same type of reaction if 
+they are not part of an enzyme. But the selectivity, and also often the reactivity, will not 
+be the same. Responsible for this aspect is the second important feature of enzymes, the 
+embedding of the active site in the three - dimensional structure of the protein. The polypep-
+tide backbone forms helices, sheets and other suprastructures which usually build up 
+clefts, caves or niches in which the active site is located. This sterical shielding usually 
+is responsible for the fascinating selectivities of enzymatic reactions. 
+ The active site itself may just consist of the functional groups of the proteinogenic 
+amino acids, or additional co - enzymes can be embedded. Many of them contain metal 
+ions, and thus the enzymes can be divided into metallo - enzymes and metal - free ones. In 
+the laboratory, bio - inorganic chemistry and organocatalysis try to understand and repro-
+duce these two classes. 
+ In this chapter, the geometric features will be the guide to enzyme - inspired artiﬁ cial 
+systems. The vast majority of substrates have a shape which resembles that of a potato. 
+In other words, their overall shape is convex and irregular. For a selective recognition of 
+a surface, a multipoint interaction is necessary. Because the substrate is convex, the rec-
+ognition region of the enzyme has to be concave which is ensured by a cleft or cave type 
+geometry (see above). Host – guest recognition has been discussed since Emil Fischer  4,5 
+established the lock - and - key principle. More elaborate models discuss ﬂ exible ﬁ t and 
+induced ﬁ t, and conformational ﬂ exibility is essential in this context. But adaptability 
+does not result in a loss of the concave shape. One way to ensure a general concave 
+structure is the use of macrocycles, and another approach is to employ stiff subunits. The 
+latter is realized in cleft molecules, also termed pincers, and within the group of macro-
+cycles, especially bimacrocycles ensure concavity because they enclose the void in three 
+dimensions. 
+ For a reagent or a catalyst, a reactive functional group is needed. Inspired by the struc-
+ture of enzymes, the functional group must be located in the concave region. The chal-
+lenge is an  endo - functionalization. In 1987, 6   we presented the concept of concave reagents 
+FG
+concave shielding
+ Figure 7.1   Schematic drawing of a molecule with a functional group FG in a concave 
+environment. The functional group FG is placed in an  endo - position the same way the 
+active site is located in an enzyme  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Concave Reagents 
+177
+in which we compared the geometry of a concave reagent with that of a light bulb in a 
+lamp shade (Figure  7.2 ). The lamp shade represents the concave shielding, the light bulb 
+the functional reactive group within this concave conﬁ nement. Next, the macroscopic 
+features have to be translated into the nano - world. The rim of the lamp shade is a cycle, 
+and in order to let molecules or part of a molecule pass, it must be macrocyclic. Then, 
+the functional group must be placed above this entry which means that the macrocycle 
+must be spanned by an additional bridge carrying the functional group. The last task is 
+to ensure that the functional group remains in an  endo - position, and a lamp - like molecule 
+is completed. 
+ By turning the bimacrocycle upside - down, our concave concept was termed some years 
+later as reaction bowls.  7   Functional groups including less stable ones such as a sulfenic 
+acid, a selenenic acid, and a monosubstituted simple enol have been incorporated in 
+cyclophanes and bridged calixarenes 8 (for an example see Figure  7.15 ). 
+ 7.1.2  Reagents and Catalysts 
+ Over the past decades, numerous reactions have been carried out inside supramolecular 
+complexes. In a large number of examples, no additional functional group was present in 
+the cavity but the conﬁ nement and often the electrostatic potential was responsible for 
+reactivity and selectivity. In contrast,  endo  - functionalized reagents and catalysts are active 
+due to the embedded functional group. 
+ Early examples for the ﬁ rst group of reactions are those in which a charge is developing 
+or a charge is redistributed. Schmidtchen ’ s 9   tetrahedral trimacrocyclic tetracationic recep-
+tors for instance accelerate the decarboxylation and ring opening of a benzisoxazole 
+ Figure 7.2   The geometry of a concave reagent resembles that of a light bulb in a lamp 
+shade. The shade is the concave shielding. The (re)active site, the light bulb, is located on 
+its inside and can only be touched by a molecule with matching size and shape  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+178 
+Molecular Encapsulation
+(Figure  7.3 ) while Dougherty ’ s 10 anionic,   π  - rich macrocycles catalyse the alkylation of 
+quinoline by stabilizing the charge in the transition state (Figure  7.4 ). 
+ In the past decade, self - assembled cages have been made accessible for instance in the 
+groups of Raymond,  11 Fujita 12 or Stang 13  . The resulting host molecules have now been 
+used to catalyse reactions related to the ones mentioned above (Diels – Alder, 12 see Figure 
+ 7.5 , 3,3 - sigmatropic rearrangement, 11 see Figure  7.6 ). 
+ In other host molecules, binding sites are located in such a way that the substrates or 
+reagent and substrate are bound in proper proximity within a host molecule. The proximity 
+is entropically favorable for a reaction and thus rate accelerations have been observed. In 
+addition, the proper placement of the reactants leads to altered selectivities. For instance 
+Sanders 14   described a macrocyclic trimeric porphyrin in which two substrates are preor-
+ganized in such a way that the stereochemistry of a Diels – Alder reaction is governed by 
+the inclusion (see Figure  7.7 ). 
+ But most related to enzymes are those concave entities in which reactive functional 
+groups are pointing inwards. Several subclasses can be identiﬁ ed: there are reagents and 
+catalysts, and these can be divided into metal - containing and metal - free compounds. 
+O N
+O2N
+COO–
+O–
+O2N
+CN
+N
+N
+N
+N
+CH3
+CH3
+H3C
+H3C
+X
+X
+X
+X
+X
+X
++
++
++
++
+ Figure 7.3   Ring opening and decarboxylation of a benzisoxazole, catalysed by a 
+macrotricyclic tetracationic host molecule [X   =  (CH 2 ) 6,8 ] 9 
+O
+O
+COO–
+–OOC
+O
+O
+–OOC
+COO–
+X
+X
++
+ MeI
+N
+N+
+Me
+I–
+N
+ Figure 7.4   π - Rich tetraanionic macrocycles (X   =  p - phenylene, 
+1,4 - cyclohexanebismethylene) catalyse the quaternization of quinoline with methyl 
+iodide  10 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Concave Reagents 
+179
+N
+O
+O
+cHex
+HO
+HO
+N
+N
+N
+N
+N
+N
+PdL
+LPd
+PdL
+N
+O
+O
+cHex
++
+ Figure 7.5   An octahedral self - assembled hexapalladium cluster (abbreviated as an 
+octahedron) catalyzes a Diels – Alder reaction with unusual selectivity. The octahedron 
+consists of tripyridinetriazine units which are connected by palladium ions bearing 
+tetramethylethylene - 1,2 - diamine ligands L  12 
+Me2N
+i Pr
+Me2N
+i Pr
++
++
+ Figure 7.6   A tetrahedral self - assembled cluster consisting of four gallium ions and six 
+1,5 - bis(2 ′ ,3 ′ - dihydroxybenzamido)naphthalene bridges (abbreviated above as a 
+tetrahedron) accelerates a 3,3 - sigmatropic rearrangement by almost three orders of 
+magnitude 11 
+N
+N
+N
+N
+Zn
+(
+Et
+Et
+Et
+Et
+Me
+Me
+Me
+Me
+N
+O
+O
+N
+N
+O
+N
+O
+O
+N
+N
+O
++
+)3
+ Figure 7.7   A trimeric zinc - porphyrin macrocycle catalyzes a Diels - Alder reaction with 
+ exo - selectivity 14 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+180 
+Molecular Encapsulation
+ In the case of a reagent, a functional group is altered in the course of the reaction. An 
+acid for instance can carry out a protonation which results in the corresponding base at 
+the end of the reaction. Or a redox - reagent oxidizes or reduces a substrate and alters its 
+redox state. This is a problem for expensive reagents like concave ones, and therefore 
+recycling is essential in these cases (but easy to carry out in case of protonations/depro-
+tonations or redox - reactions). 
+ In catalysis, however, the catalyst is unaltered after each catalytic cycle. This means 
+that much less material is needed if the catalysis has a good turn - over and that a recovery 
+is possible, at least in principle. 
+ Concave reagents have been employed in many reactions but for the reasons mentioned 
+above, most of the reactions were catalyses. Besides acid or base catalyses, especially 
+transition metal ion catalysed reactions are of interest and have been investigated. The 
+following chapters will ﬁ rst present major classes of concave reagents and will then 
+discuss some reactions and catalyses and the inﬂ uence of the concave shielding on rate 
+and especially selectivity. 
+ 7.2  Classes of Concave Reagents 
+ The ﬁ rst 6   examples for concave reagents were bimacrocyclic concave pyridines with the 
+general structure shown in Figure  7.8 . A 2,6 - disubstitution of the pyridine was chosen in 
+order to ensure the  endo  - position of the pyridine nitrogen atom ’ s lone pair. Later, the 
+framework of the bimacrocycle has been changed,  15   and in principle, several approaches 
+to concave pyridines, and to concave reagents in general, can be envisioned. 
+R
+N
+N
+N
+O
+O
+Y
+X
+ Figure 7.8   The ﬁ rst class of concave reagents  6 were bimacrocyclic 2,6 - disubstituted 
+pyridines with amide bridgeheads building up the bimacrocycle. The bridges X and Y were 
+polymethylene but also polyethylene glycol chains, the basicity of the pyridine could be 
+tuned by respective substituents R in 4 - position  16 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Concave Reagents 
+181
+ 7.2.1  Strategies for the Construction of Bimacrocycles 
+ For a concave reagent with a lamp - like geometry, at least a bimacrocycle has to be con-
+structed. Let us discuss a pyridine - containing bimacrocycle (see Figure  7.9 ). The synthetic 
+task can be accomplished by two subsequent macrocyclizations with a monomacrocyclic 
+intermediate (see Figure  7.9 , left and right), or in a double macrocyclization which gives 
+the desired bimacrocycle from a non - macrocyclic starting material in one reaction step 
+(see Figure  7.9 , middle). The two step reaction can be subdivided into two approaches. 
+Either the pyridine is part of the starting material from the very beginning (Figure  7.9 , 
+right), or a pyridine - free macrocycle is spanned by a pyridine - containing bridge (Figure 
+ 7.9 , left). 
+ Although at ﬁ rst glance, the one - pot reaction may seem to be advantageous, all three 
+methods have their pros and cons. In a double macrocyclization, two reactive ends are 
+needed for the closure of each bridge, i.e. a total of four reactive ends exist in the precur-
+sor. This implies a selectivity problem in the macrocyclization, because not only the 
+desired bimacrocycle may be formed, also a  bis - monomacrocycle whose structure resem-
+bles that of an earmuff is conceivable (see Figure  7.10 ). For several different classes of 
+concave reagents, this problem has been investigated, but fortunately, only in the case of 
+very long chains, the formation of an  ‘ earmuff ’  is a problem.  17 Therefore, many concave 
+reagents may efﬁ ciently be built up using this strategy. 
+ If the two - step syntheses for bimacrocyclic concave reagents are compared with one 
+another, the use of a pyridine - free macrocycle as the starting material seems to be attrac-
+tive because numerous macrocycles are easily available, some of which can even be 
+purchased. Consequently, for instance calixarenes  18   have been spanned with pyridine (and 
+other) bridges.  19   Although a very powerful ligand for a copper(I) catalyst has been found 
+Y
+X
+N
+Y
+X
+N
+Y
+X
+N
+Y
+X
+N
+ Figure 7.9   A bimacrocyclic pyridine can be constructed following three different 
+approaches: (a) a non - macrocyclic precursor is doubly cyclized to give the bimacrocycle, 
+shown in the middle, or (b) it can be built up stepwise. The left retrosynthesis represents 
+the bridging of a X and Y containing macrocycle by a pyridine bridge while the right 
+retro - synthesis starts from a pyridine - containing macrocycle 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+182 
+Molecular Encapsulation
+using this approach (see below),  20   the strategy is limited because the size of the starting 
+macrocycle is preassigned in cases such as calixarenes or cyclodextrins. In the case of 
+the bridged calixarenes, only the calix[6]arene derivative could be synthesized in good 
+yield. 19   The respective calix[4] derivative did not form at all,  19   the calix[5] one was 
+formed in low yield,  21   and with calix[8]arene, regioisomers were formed.  21 Furthermore, 
+a ﬁ ne - tuning of the size of the macrocycle is not possible. 
+ Therefore, also the third approach is useful. By synthesizing macrocyclic diamines ﬁ rst 
+which were then bridged by a pyridine (or other) bridge, a large variety of bimacrocycles 
+were formed and minute changes in the length and composition of the bridges were pos-
+sible (see Figure  7.8 ). 6,16 
+ Thus a pool of concave reagents has been made available using one or another of these 
+three general strategies. Some of these molecules have been attached to dendrimers or 
+polymers to allow easier recovery.  22,23 
+ 7.2.2  Ring - closure 
+ The formation of macrocycles is well established but not as straightforward as the syn-
+thesis of a ﬁ ve - or six - membered ring. 24 The latter ones possess almost no strain and are 
+therefore formed much more easily than strained three -  or four - membered rings or 
+medium size rings. However, macrocycles which contain more than twelve atoms usually 
+are unstrained, too, still their synthesis is more difﬁ cult. The major competition to mac-
+rocyclization is oligo -  and polymerization, and thus a number of methods had to be elabo-
+rated to produce macrocycles in good yields. Two classes of syntheses must be 
+distinguished: syntheses under thermodynamic control, and kinetically controlled ones. 
+In a kinetically controlled macrocyclization, the rate of polymerization and cyclization 
+differ in the reaction order. While (macro)cyclization is a unimolecular, ﬁ rst - order reac-
+ Figure 7.10   The ﬁ rst concave 1,10 - phenanthrolines with aryl bridgeheads were 
+synthesized from a tetraphenolic precursor applying a quadruple Williamson ether 
+synthesis (X   =  polymethylene or polyethylene glycol). The alternative product, a bis -
+ metacyclophane (sometimes called  ‘ earmuff ’ , shown on the right), was not formed. The 
+bimacrocyclic structure of the concave 1,10 - phenanthroline was conﬁ rmed by X - ray 
+analyses  17 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Concave Reagents 
+183
+tion, oligo -  or polymerization take place between  two  molecules and thus these reactions 
+are second - order in concentration of the precursors (see Figure  7.11 ). The latter reactions 
+are therefore slowed down proportional to the square of the dilution while the macrocy-
+clization of a single molecule is dilution independent. The respective rate only decreases 
+linearly with dilution. This has been exploited by the high - dilution principles,  25 and 
+several modiﬁ cations thereof have been worked out [e.g. one - component, two - component 
+dilution, syringe pump technique]. The strong point of the kinetic control is the fact that 
+a macrocycle, once it is formed, remains a macrocycle. 
+ This is not the case in a thermodynamically controlled reaction. Thermodynamic 
+control means that all compounds in the reaction mixture are in equilibrium, they con-
+stantly are interconverted into one another. The relative ratio of the products depends on 
+the relative thermodynamic stability of each compound. If the desired macrocycle is the 
+most stable compound, ﬁ ne, but how can the concentration of a macrocycle be increased 
+when it is not the global most stable product? It has to be forced to be a more stable 
+compound. This can be done by adding an additional component which interacts with the 
+desired macrocycle in such a way that the resulting complex is the most stable 
+compound. 
+ Such an approach uses the template effect, and by carefully adjusting the template to 
+the macrocycle, the number of stabilizing interactions between the template and the 
+desired product can be maximized while the number of interactions with starting materials 
+or oligo -  and polymers is smaller due to a lesser amount of complementarity (see Figures 
+ 7.12 and  7.13 ). 
+ The ﬁ eld of dynamic combinatorial chemistry  26   takes advantage of the template effect,  27 
+and numerous macrocycles have been stabilized by a proper template.  28,29 Also for the 
+construction of macrocycles for concave reagents, the template effect is very valuable. 
+uni-
+molecular
+bimolecular
+bimolecular
+ Figure 7.11   The cyclization of a non - macrocyclic precursor is a unimolecular process 
+while the competing processes, the elongation to bi - , oligo - or polymeric material is 
+bimolecular. Please note that the ﬁ nal macrocyclization to an oligomeric macrocycle 
+(indicated by a dashed line in the drawing) is again unimolecular  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+ Figure 7.12   In a thermodynamically controlled macrocyclization, all products are in 
+equilibrium: desired macrocycle (left), oligomers (middle) and polymers (right). By adding 
+a template which is complementary to the desired macrocycle, the interactions between 
+these two particles are maximized and the equilibrium will shift towards the complex 
+formed from the template and the macrocycle  
+O
+O
+H2N
+O
+NH2
+(
+)0–2
+(     )0–2
+N
+R
+O
+O
+H
+H
+ Figure 7.13   The reaction of a pyridine dialdehyde with several diamines forms a dynamic 
+combinatorial library. From this library, several diimine macrocycles can be obtained in 
+good yield when template ions (symbolized by polygons) of proper size are added. 
+Magnesium ions give a ring size of 15, calcium ions one of 18, and barium ions stabilize 
+the 21 - membered ring  29 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Concave Reagents 
+185
+Already in the beginning of the history of concave reagents, the template effect of metal 
+cations was utilized,  6   but also organic molecules can be applied. Sanders  30 for instance 
+used the interaction of pyridines with zinc porphyrins in the construction of macrocyclic 
+oligomeric porphyrins, and recently, the interaction between polyols and boronic acids 
+has been used in order to synthesize new  endo - functionalized macrocycles (Figure  7.14 ). 31 
+ Which reactions are useful for a ring - closing reaction? In principle, all reactions can 
+be used. All irreversible reactions may be used in kinetically controlled cyclizations. 
+However, it is advisable to use reactions which possess a decent reaction rate because the 
+dilution and the potentially slow addition of one or more starting material to the reaction 
+mixture lead to long reaction times anyway. Prominent reactions used for kinetically 
+controlled macrocyclizations are nucleophilic substitutions as for instance found in 
+Williamson ether syntheses (for an example see the product shown in Figure  7.10 ) or the 
+formation of amides from acid chlorides and amines (see Figure  7.8 ). 
+ For a dynamic combinatorial templated reaction, a reversible reaction is needed. 
+Preferentially, a reaction is chosen whose reversibility can be switched on and off at wish, 
+for instance by temperature or pH change or by the addition (and later removal or inhibi-
+tion) of a catalyst. Also subsequent fast reactions can scavenge the macrocyclic reaction 
+products. Prominent examples  26   for reversible reactions in macrocycle syntheses are 
+disulﬁ de exchange, ester exchange, both pH controlled, ruthenium catalysed ring - closing 
+metatheses or the formation of hydrazones and imines, the latter one usually being scav-
+enged by reduction of the imines to respective amines. 
+ 7.2.3  Concave Acids, Bases and Ligands 
+ Bimacrocycles synthesized by one of the strategies described above may contain func-
+tional groups of different nature. First, basic centres were introduced,  6,15 – 17,19,32,33 next, 
+complementary concave acids  34,35   were realized, and third, the lone pairs of the bases were 
+utilized to coordinate a catalytically active metal ion.  17,36,37   But in principle, any kind of 
+reactive group can be placed into the concave environment.  38   Just recently, the ﬁ rst 
+concave N - heterocyclic carbenes have been realized. 39,40 Figures  7.15 – 7.21 summarize 
+several classes of concave reagents and catalysts. As can be seen easily from the ﬁ nal 
+structures, the different strategies yield products of different complexity. When a calix-
+arene is spanned by a bridged or a tetrafunctionalized non - macrocyclic precursor is 
+doubly cyclized, products with higher symmetry are formed than in the case of a stepwise 
+O
+O
+O
+O
+B
+B
+O
+O
+O
+O
+()6
+()6
+()6
+()6
+Grubbs
+CH2Cl2
+O
+O
+O
+O
+B
+B
+O
+O
+O
+O
+()6
+()6
+()6
+()6
+ Figure 7.14   The boronic ester formation can be used to prearrange appropriate building 
+blocks. By ring closing metathesis, the non - macrocyclic precursor is turned into a 
+bimacrocycle. When the norbornane template is removed (by ester hydrolysis or carbon -
+ boron bond cleavage),  endo - functionalized macrocycles are produced  31 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+186 
+Molecular Encapsulation
+synthesis which starts from the building block containing the reagent. In addition, isomers 
+may be formed such as conformers (in the case of carboxamides  6,16 ),  cis / trans - mixtures 
+(when ring - closing metathesis 31,41   is used) or even regioisomers (when a larger calixarene 
+such as calix[8]arene 21 is bridged). 
+ As mentioned above, the objective of the concave shielding of a functional group in 
+a concave reagent is selectivity: chemo - , regio - , diastereo -  and especially enantioselec-
+tivity have to be controlled. To inﬂ uence the latter, chiral concave reagents are necessary. 
+The usual way to turn a non - chiral compound into a chiral one is to add a stereogenic 
+center, typically an asymmetrically substituted carbon atom. If applied to concave mol-
+ecules there are two possible regions to attach it to. If attached to the inside of the 
+cavity, the void becomes chiral but is ﬁ lled to a large part by this chiral substituent. But 
+if attached to the outside, the concave inside remains mostly unaltered. Therefore axial 
+chirality has been envisioned because it desymmetrizes the cavity without ﬁ lling it up. 
+Biaryls are conﬁ gurationally stable if they are unsymmetrically substituted with 
+N N
+t Bu
+OH
+t Bu
+t Bu
+t Bu
+HO
+tBu
+OH O
+HO
+O
+X
+O
+O
+HO
+OH
+HO
+OH
+R
+R
+R
+R
+R
+R
+HO
+OH
+O
+OH
+O
+N
+Br
+t Bu
+ Figure 7.15   Three selected concave reagents obtained by spanning calixarenes with a 
+bridge which contains a functional group. 8,19,21,33,42,43 For the 1,10 - phenanthroline bridged 
+calix[6]arene, the predominant conformation is shown in which the bridge is tilted towards 
+one side of the calixarene rim.  42 For its importance, see the catalysis chapter below. 
+Calix[6]arene has been A,D - bridged with numerous bridges, e.g. with an aniline  33 (R  =  t Bu, 
+X  =  NH 2 ) or with a sulfenic acid  7,8 (R  =  H, X  =  SOH). Also pyridines  19 may be used as 
+bridges as shown here with a calix[5]arene  21 example  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Concave Reagents 
+187
+O
+O
+O
+O
+N
+X
+ Figure 7.16   Concave pyridines can be obtained in one - step or two - step 
+macrocyclizations starting from appropriately 2,6 - disubstituted pyridines. This ﬁ gure 
+displays a concave pyridine obtained by a one - step macrocyclization [ring - closing 
+metathesis, followed by hydrogenation: X   =  (CH 2 ) 10 ]. For the products of the two - step 
+macrocyclizations see Figure  7.8 and Figure  7.15 
+N
+N
+X
+N
+N
+O
+O
+Z, Z
+Y
+ Figure 7.17   Concave 1,10 - phenanthrolines can also be obtained in one - step or two - step 
+macrocyclizations starting from appropriately 2,9 - disubstituted 1,10 - phenanthrolines. Here 
+the  ZZ conformer (X, Y   =  polyethylene glycol or Y  =  polymethylene) of a two step 
+macrocyclization starting from a 1,10 - phenanthroline containing monomacrocycle is 
+shown. For a one - step macrocyclization see Figure  7.10 , and for a bridged calixarene see 
+Figure  7.15  
+O
+OR
+S
+S
+S
+ Figure 7.18   Concave ester and acid obtained from an appropriately tetrafunctionalized 
+ m - terphenyl (R   =  Me, H) 34,35 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+188 
+Molecular Encapsulation
+N
+N
+O
+OX
+O
+O
+X
+··
+ Figure 7.19   Concave N - heterocyclic carbene (X   =  polymethylene) 39 
+ Figure 7.20   Concave 1,10 - phenanthrolines (X  =  polymethylene or polyether) are 
+bidentate ligands and form stable complexes with transition metal ions  17,36 
+Pd
+N
+N
+O
+O
+O
+O
+Cl
+ Figure 7.21   The allyl palladium complex of a concave N - heterocyclic carbene is one 
+example for concave NHC - metal complexes (the bimacrocycle forming decamethylene 
+chains are abbreviated as arc of a circle).  
+appropriate substituents in their  ortho  - positions, and additional stability will be introduced 
+by the bimacrocyclic structure. In many of the concave reagents, biaryl substructures 
+exist (see Figure  7.16 , Figures  7.18 – 7.21 ), usually two. If both were axially chiral, 
+diastereomers would be formed, one of which is chiral but the other one a  meso - 
+compound.  44,45   Therefore, only one unsymmetrical bridgehead has been used (Figure 
+ 7.22 ). 40,44   The resulting bimacrocyclic concave imidazolinium ion was then reacted with 
+a chiral counter ion (TRISPHAT or BINPHAT 46 ) and resulting diastereomeric ion pairs 
+could be observed by NMR. 40   Unfortunately, the barrier of rotation is yet too low to 
+separate the enantiomers.     
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Concave Reagents 
+189
+ Figure 7.22   X - ray structure of a chiral version (only one enantiomer shown) of a concave 
+imidazolinium ion,  39 precursor to a chiral concave NHC. Hydrogen atoms are omitted for 
+clarity, the single atom represents the chloride counter ion  
+ 7.3  Reactions and Catalyses 
+ As presented in the introduction, concave reagents can be used as reagents or as catalysts. 
+As reagents they will be  ‘ used up ’  with the need of recycling, as catalysts they can carry 
+out numerous catalytic cycles and can be recovered from the mixture. 
+ 7.3.1  Reagents 
+ Due to the simple recycling, acid - base reactions, i.e. protonations or deprotonations, have 
+been carried out successfully with concave reagents. There is no need to differentiate 
+between acids and bases because for instance a protonated pyridine can transfer a proton 
+in the same way as for example a carboxylic acid can. Much more important is the acidity 
+of the corresponding acids. Respective p K a  values for the deprotonation have been deter-
+mined in water (per deﬁ nition) but many reactions are carried out in various organic 
+solvents (which is a strong point of concave reagents, see introduction).  47 The inﬂ uence 
+of the solvent on acidity very often is enormous but at the same time this difference is 
+frequently underestimated. If for instance the solvent water is exchanged by ethanol, the 
+p K a  - analogous values of pyridines in ethanol hardly differ from the p K a  values in water.  16 
+But for carboxylic acids, a drastic drop of several orders of magnitude can be observed 
+when exchanging water by ethanol.  35   Consequently, less polar or even non - protic solvents 
+may have an even more drastic effect on the relative acidities. In the pyridinium - carbox-
+ylic acid comparison,  16,35   the discrepancy is extreme because for a pyridinium ion a charge 
+is lost upon deprotonation while a carboxylic acid develops a charge when the anion is 
+formed. And the less polar a solvent is, the more is the equilibrium shifted towards the 
+uncharged particles, the base in the case of pyridine, the acid for carboxylic acids. 
+ In protonations and deprotonations there are two fundamentally different pathways 
+by which the proton can be transferred: the general and the speciﬁ c protonation. 48,49 The 
+terms general and speciﬁ c have been coined for acid - catalysis  48   but they can be used 
+for proton - transfers in the same sense.  49  General  means that generally (i.e. always) the 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+190 
+Molecular Encapsulation
+proton is transferred by the same particle, explicitly the protonated solvent. In contrast, 
+a  speciﬁ c  protonation is carried out by a speciﬁ c proton donor, for instance a pyridinium 
+ion or a carboxylic acid. A change in the proton source will therefore only have an 
+inﬂ uence on the outcome of a protonation if the general protonation pathway is avoided. 
+At ﬁ rst glance, the solution to this problem is the use of a hardly basic solvent and an 
+acid of moderate acidity. However, there is a second problem in selective protonations. 
+If the proton source shall have an inﬂ uence on the selectivity, the protonation must be 
+kinetically controlled. A thermodynamic control would produce the more stable protona-
+tion product and the protonating acid will ﬁ nally have no inﬂ uence on the product 
+distribution. Unfortunately, the chance for a thermodynamically controlled protonation, 
+an equilibrium, rises with increasing basicity of the corresponding base, and therefore 
+a ﬁ ne balance must be found between acidities and basicities of all involved compounds. 
+This may be the reason why only few examples exist for selective protonations, includ-
+ing enantioselective ones.  50   In the case of concave reagents, concave proton donors have 
+been used to carry out the Nef reaction under mild conditions  51   and for some stereose-
+lective protonations. 52 
+ 7.3.2  Catalysts 
+ Besides the use as a reagent, concave reagents can be used in a catalytic fashion. From 
+the vast possibility of potential reactions, so far nucleophilic catalyses and metal catalyses 
+have been investigated with several types of concave catalysts. 
+ 7.3.2.1  Organocatalysis 
+ For nucleophilic catalyses, concave pyridines, concave 1,10 - phenanthrolines and concave 
+NHC can be used. However, the substitution pattern which ensures the  endo - placement 
+of the nucleophilic lone pair does not allow all kinds of nucleophilic catalyses. Pyridine 
+and especially its more basic sibling DMAP [4 - (dimethylamino)pyridine] are excellent 
+catalysts for acyl transfers. However the pyridine ’ s catalytic power drops enormously 
+when substituents are added to the 2 -  and 6 - position.  53   A reaction which demands less 
+space is the formation of a hydrogen bond to the lone pair of the nitrogen, and thus 
+catalyses via hydrogen - bond formation are easily possible with concave pyridines. 
+Speciﬁ cally, the activation of an alcohol by the formation of a hydrogen bond to the lone 
+pair of a pyridine nitrogen atom in a concave environment has proven to be very valuable 
+for selective acylations of these OH groups. An activated alcohol adds much faster to a 
+Substrate–
+H-A
++
+Solv
+A–
++
+Solv-H
+Substrate-H
++
+A–
+Substrate–
++
+Substrate-H
+(
+)
+ Figure 7.23   The proton delivering agent for the protonation of a substrate can either be 
+the acid H - A (speciﬁ c protonation) or the protonated solvent Solv - H + (general 
+protonation). Only in the case of a speciﬁ c protonation can the acid inﬂ uence selectivity 
+in the protonation step. But even in this case, a reversibility of the protonation, due to the 
+basicity of the conjugate base of the acid, can ruin the controlled speciﬁ c protonation. In 
+this latter case, the thermodynamically most stable protonation products will be observed  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Concave Reagents 
+191
+ketene than a free alcohol. Thus the use of pyridine, or related bases, can speed up the 
+addition of alcohols to for instance diphenylketene. This ketene has been chosen because 
+it is reactive enough in this addition reaction but still stable enough to be handled in 
+normal laboratory practice.  54   This reaction allows to distinguish numerous alcohols,    17b,23,54 – 56 
+and in the case of a glucose derivative with two very similar OH groups, one of them 
+may be acylated in high yield exclusively. The concave shielding of the pyridine allows 
+to discriminate between two secondary axial OH - groups (Figure  7.24 ). 56 
+ More recently, concave NHC have been investigated as nucleophilic catalysts.  57 The 
+catalytic potential of NHC is well known since Breslow  58   elucidated the mechanism of 
+thiamine dependent enzymes.  59   With aldehydes, NHC may catalyse the benzoin condensa-
+tion in the same way, a cyanide ion can. But when additional substrates are added, the 
+nature of the NHC becomes important.  60   Thus, in a mixture of aldehydes and enals, two 
+competing pathways may be catalysed and either so called Stetter products (for instance 
+1,4 - diones) or   γ  - lactones can be formed (Figure  7.25 ). Using one particular concave NHC, 
+OMe
+N
+N
+N
+O
+O
+O
+O
+O
+(H2C)10
+1 eq. Ph2C=C=O
+2d, 80% conversion
+O
+O
+O
+HO
+Ph
+H
+HOOMe
+O
+O
+O
+HO
+Ph
+H
+OOMe
+O
+O
+O
+Ph
+H
+HOOMe
+O
+O
+O
+Ph
+H
+OMe
+O
+CHPh2
+O
+O
+CHPh2
+O
+O
+CHPh2
+O
+O
+Ph2HC
+1%
+ Figure 7.24   Using diphenylketene as acylating agent and a concave pyridine as catalyst, 
+the 2 - position of a glucose derivative can be acylated exclusively  56 
+Ar
+O
+O
+Ar
++
+Ar
+O
+O
+Ar
+O
+Ar
+Ar
+O
+Ar
+Ar
+O
+Ar
+or
+O
+or
+NHC
+OH
+ Figure 7.25   N - Heterocyclic carbenes catalyze reactions between aryl aldehydes and 
+enals. Depending on the nature of the catalysts,  57,60 1,4 - diones (Stetter products),   γ -
+ lactones or even a 2+1 adduct (a hemiacetal) can be formed  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+192 
+Molecular Encapsulation
+even a fourth product, a hemiacetal from a 2+1 addition was found  57   but its formation is 
+not yet mechanistically completely understood. 
+ 7.3.2.2  Metal Catalysis 
+ Probably the largest catalytic potential lies in the metal complexes of concave reagents. 
+Two sub - structures are well established as metal ligands: 1,10 - phenanthroline and NHC. 
+Numerous transition metal complexes have been synthesized  36,37,61,62   and some of them 
+have been investigated in metal catalysed reactions such as Lewis - acid catalysed Diels –
+ Alder reactions, 36 palladium - catalysed allylations, 63 and copper(I) - catalysed cyclopropa-
+nations. 20,41,64   In the latter reaction, the full potential of concave reagents and the 
+importance of the ﬁ ne structure of the concave shielding has become obvious. With two 
+different types of concave ligands, two complementary stereoselectivities have been 
+found. 
+ When copper(I) catalysed, indene for instance reacts with diazoacetates to give either 
+ exo - or  endo - cyclopropanes (see Figure  7.26 ). 20 The distinct difference in the selectivities 
+achieved by using different concave 1,10 - phenanthrolines lies in the different geometry 
+of the ligands. 
+ In 2,9 - diaryl - 1,10 - phenanthrolines (see Figures  7.10 and  7.20 ), bridgeheads and 
+1,10 - phenanthroline unit are connected directly, leading to a rather stiff entity. The active 
+centre, the copper ion bound to the nitrogen atoms of the 1,10 - phenanthroline can only 
+be reached from  ‘ below ’  through the bimacrocycle. In the cyclopropanation, the active 
+species is a copper - carbenoid. When the alkene approaches it, the substituents of the 
+alkene and the carboxylate of the carbenoid try to avoid sterical compression within the 
+cavity and take up maximal distance to one another. Thus, the  exo - product is formed with 
+high selectivity. 
+ In contrast in the bridged calixarene (see Figure  7.15 ), the methyleneoxy units between 
+the 1,10 - phenanthroline and the calixarene act as ﬂ exible joints and this leads to a differ-
+ent geometry in which the 1,10 - phenanthroline bridge is tilted towards one chain of the 
+calixarene rim. The calixarene macrocycle is too small to accommodate the carboxylate 
+or to let an alkene approach the carbenoid. This results in an orientation in which both, 
+the alkene and the carboxylate residue of the carbene moiety, have to be squeezed in the 
+gap between the 1,10 - phenanthroline and part of calixarene rim. By this sterical shielding 
+of the calixarene, the carboxylate and the residues of the alkene are oriented next to each 
+other, and thus the predominant formation of the  endo - product is observed. 64b 
+N2CH-COOR
+COOR
+  Cu(I)-cat.
+ Figure 7.26   When concave 1,10 - phenanthrolines are used as ligands for copper(I) ions 
+in the cyclopropanation of indene by diazoacetates, the  exo / endo - selectivities can be 
+controlled by the choice of the ligand. The concave 1,10 - phenanthroline from Figure  7.10 
+[X  =  (CH 2 ) 10 ] in combination with  tert - butyl diazoacetate is highly  exo - selective 
+( exo / endo  =  140  :  1) while the 1,10 - phenanthroline bridged calix[6]arene from Figure  7.15 
+is  endo - selective (best results for N 2 CHCOOMe,  exo / endo  =  14  :  86) 20 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Concave Reagents 
+193
+ The last decade has shown the increasing importance of N - heterocyclic carbenes as 
+ligands for transition metals. In many complexes, the stabilization of special oxidation 
+states of a transition metal is even better by a NHC than by phosphines, 65 the second 
+generation of Grubbs ’  catalyst being a prominent example.  66   Also with concave NHC, 
+many complexes can easily be prepared,  37,62   and some of them have been applied to 
+catalyses. 62 Copper complexes may be used for cyclopropanations, too, but yet with 
+smaller selectivities than 1,10 - phenanthrolines exhibit. With palladium however (see 
+Figure  7.21 ), cross - coupling reactions such as Heck or Suzuki couplings can be carried 
+out with good efﬁ ciency (Figure  7.27 ). 62 
+ 7.4  Summary and Outlook 
+ The features of enzymes  –  active centre and concave shielding  –  have been combined 
+in (usually) bimacrocyclic synthetic molecules. The resulting concave reagents can be 
+used as reagents or preferentially as catalysts. In several reactions as for instance acyla-
+tions or cyclopropanations, the concave reagents have demonstrated their selectivity -
+ determining power. In current research, ﬁ rst chiral concave reagents have been 
+synthesized and it is the task for the future to optimize the structures and to establish 
+enantioselective reactions and catalyses. The similarity between concave reagents and 
+enzymes, besides all advantages, produces one drawback. Indeed, by optimizing the 
+concave geometry, selectivities can be tailored, but as with enzymes, a perfect reagent -
+ substrate match leads to the problem that the optimized catalyst is only perfect for the 
+substrate it was optimized for. In enzyme chemistry there exists an exaggerated saying: 
+ ‘ one enzyme, one substrate ’ . In this respect, concave reagents cannot surpass enzymes. 
+The higher the selectivity, the smaller is the substrate tolerance. But concave reagents 
+can be made from any starting material. The backbone of the bimacrocyclic structure 
+is not restricted to amino acids. And thus concave reagents can be made more robust, 
+for any solvent, for higher temperatures. In addition, also the functional groups are not 
+restricted to those found in enzymes. The guideline for the future is therefore: try to 
+ Figure 7.27   Palladium complexes of concave NHC (see Figure  7.19 , Figure  7.21 ) are 
+good catalysts in Heck and Suzuki couplings  62 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+194 
+Molecular Encapsulation
+copy the excellency of enzymes as much as possible but try to use optimized backbones 
+and any functional group. 
+ So far, most approaches to enzyme - like activity have used just one of the functional 
+groups which are present in enzymes. However, many enzymes only operate by a coop-
+eration of functional groups (see for instance the catalytic triade in peptidases). There, 
+the enzyme ’ s functional groups perform a multifunctional catalysis. Therefore in (organo)
+catalysis, bifunctional catalysis has been developed, too.  67 In the ﬁ eld of concave reagents, 
+ﬁ rst bifunctional catalysts have been constructed (Figure  7.28 ),  41e   and future will tell how 
+capable they are to catalyse reactions with their acidic  and basic functionalities. 
+ References 
+  1.  a)  J. - M.  Lehn ,  Supramolecular Chemistry: Concepts and Perspectives ,  VCH ,  Weinheim, New 
+York, Basel, Cambridge, Tokyo ,  1995 ;  b)  G. R.  Desiraju ,  Chemistry beyond the molecule , 
+ Nature ,  2001 ,  412 ,  397 – 400 . 
+  2.  P. W. N. M.  van  Leeuwen (Ed.),  Supramolecular Catalysis ,  Wiley - VCH ,  Weinheim ,  2008 . 
+  3.  a)  Suggestion of a Diels – Alderase: E. M. Stocking, R. M. Williams, Chemie und Biologie 
+nat ü rlicher Diels – Alder - Reaktionen ,  Angew. Chem. ,  2003 ,  115 ,  3186 – 3223 ;  Angew. Chem. Int. 
+Ed. ,  2003 ,  42 ,  3078 – 3115 ;  b) Put into question:  J. M.  Seraﬁ mov ,  D.  Gillingham ,  S.  Kuster ,  D. 
+ Hilvert ,  The putative Diels – Alderase macrophomate synthase is an efﬁ cient aldolase ,  J. Am. 
+Chem. Soc. ,  2008 ,  130 ,  7798 – 7799 . 
+  4.  E.  Fischer ,  Einﬂ uss der Conﬁ guration auf die Wirkung der Enzyme ,  Ber. Dtsch. Chem. Ges. , 
+ 1894 ,  27 ,  2985 – 2993 . 
+  5.  100 years of lock and key principle:  a)  A.  Eschenmoser ,  Hundert Jahre Schl ü ssel - Schlo ß -
+ Prinzip ,  Angew. Chem. ,  1994 ,  106 ,  2455 ;  Angew. Chem. Int. Ed. Engl. ,  1994 ,  33 ,  2363 ;  b)  F. 
+W.  Lichtenthaler ,  Hundert Jahre Schl ü ssel - Schlo ß - Prinzip: Was f ü hrte Emil Fischer zu dieser 
+Analogie?  Angew. Chem. ,  1994 ,  106 ,  2456 – 2467 ;  Angew. Chem. Int. Ed. Engl. ,  1994 ,  33 , 
+ 2364 – 2374 ;  c)  D. E.  Koshland  Jr. ,  Das Sch ü ssel - Schlo ß - Prinzip und die Induced - ﬁ t - Theorie , 
+ Angew. Chem. ,  1994 ,  106 ,  2468 – 2472 ;  Angew. Chem. Int. Ed. Engl. ,  1994 ,  33 ,  2408 – 2412 . 
+  6.  U.  L ü ning  ,  Concave reagents: synthesis of macrobicyclic pyridines ,  Liebigs Ann. Chem. ,  1987 , 
+ 949 – 955 . 
+  7.  K.  Goto ,  N.  Tokitoh ,  R.  Okazaki ,  Synthese einer stabilen Arensulfens ä ure mit einem sch ü s-
+self ö rmigen makrobicyclischen Cyclophanger ü st ,  Angew. Chem. ,  1995 ,  107 ,  1202 – 1203 ; 
+ Angew. Chem. Int. Ed. Engl. ,  1995 ,  34 ,  1124 – 1126 . 
+  8.  a)  K.  Goto ,  M.  Holler ,  R.  Okazaki ,  Synthesis, structure, and reactions of a sulfenic acid bearing 
+a novel bowl - type substituent: the ﬁ rst synthesis of a stable sulfenic acid by direct oxidation 
+of a thiol ,  J. Am. Chem. Soc. ,  1997 ,  119 ,  1460 – 1461 ;  b)  K.  Goto ,  R.  Okazaki ,  Molecular bowls 
+ Figure 7.28   To allow bifunctional acid - base catalysis with concave reagents, an acid 
+function has been attached to a concave pyridine [X   =  (CH 2 ) 10 ] 41e 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Concave Reagents 
+195
+and capsules with an endohedral functionality. The stabilization of highly reactive species in 
+their inner phase ,  Liebigs Annalen/Recueil ,  1997 ,  2393 – 2407 . 
+  9.  F. P.  Schmidtchen ,  Host – guest interactions. The binding mode of 6 – nitrobenzisoxazole - 
+3 – carboxylate to quaternary ammonium macrocycles ,  J. Chem. Soc., Perkin Trans. 2 ,  1986 , 
+ 135 – 141 . 
+ 10.  a)  D. A.  Stauffer ,  A.  David ,  R. E .  Barrans  Jr. ,  D. A.  Dougherty ,  Biomimetische Katalyse einer 
+S N 2 – Reaktion als Folge einer neuartigen  Ü bergangszustandsstabilisierung ,  Angew. Chem. , 
+ 1990 ,  102 ,  953 – 956 ;  Angew. Chem. Int. Ed. ,  1990 ,  29 ,  915 – 918 ;  b)  A.  McCurdy ,  L.  Jimenez , 
+ D. A.  Stauffer ,  D. A.  Dougherty ,  Biomimetic catalysis of S N 2 reactions through cation – π 
+interactions. The role of polarizability in catalysis ,  J. Am. Chem. Soc. ,  1992 ,  114 , 
+ 10314 – 10321 . 
+ 11.  D.  Fiedler ,  H.  van  Halbeek ,  R. G.  Bergman ,  K. N.  Raymond ,  Supramolecular catalysis of 
+unimolecular rearrangements: substrate scope and mechanistic insights ,  J. Am. Chem. Soc. , 
+ 2006 ,  128 ,  10240 – 10252 . 
+ 12.  M.  Yoshizawa ,  M.  Tamura ,  M.  Fujita ,  Diels – Alder in aqueous molecular hosts: unusual 
+regioselectivity and efﬁ cient catalysis ,  Science ,  2006 ,  312 ,  251 – 254 . 
+ 13.  S. R.  Seidel ,  P. J.  Stang ,  High symmetry coordination cages via self - assembly ,  Acc. Chem. 
+Res. ,  2002 ,  35 ,  972 – 983 . 
+ 14.  C. J.  Walker ,  H. L.  Anderson ,  J. K. M.  Sanders ,  exo - Selective acceleration of an intermolecular 
+Diels – Alder reaction by a trimeric porphyrin host ,  Chem. Commun. ,  1993 ,  458 – 460 . 
+ 15.  U.  L ü ning ,  R.  Baumstark ,  W.  Schyja ,  Concave reagents, 14: concave pyridines with a 2,6 – 
+diarylpyridine core ,  Tetrahedron Lett. ,  1993 ,  34 ,  5063 – 5066 . 
+ 16.  a)  U.  L ü ning ,  R.  Baumstark ,  K.  Peters ,  H. G. v.  Schnering ,  Concave reagents, 3: synthesis, 
+basicity and conformation of new concave pyridines ,  Liebigs Ann. Chem. ,  1990 ,  129 – 143 ;  b) 
+ U.  L ü ning ,  R.  Baumstark ,  M.  M ü ller  ,  Concave reagents, 8: concave pyridines and 1,10 – 
+phenanthrolines with sulfonamide bridgeheads. Increased basicity by 4 – diethylamino substitu-
+tion of the pyridine unit ,  Liebigs Ann. Chem. ,  1991 ,  987 – 998 ;  c)  O.  Storm ,  U.  L ü ning ,  Concave 
+reagents, 38: concave pyridines with extended   π - systems ,  Eur. J. Org. Chem. ,  2002 ,  3680 –
+ 3685 ;  d)  O.  Storm ,  U.  L ü ning  ,  Concave reagents, 39: basicity and solvatochromism of concave 
+pyridines with extended   π  - systems in protic and nonprotic solvents ,  Eur. J. Org. Chem. ,  2003 , 
+ 3109 – 3116 . 
+ 17.  The bimacrocycle/bismetacyclophane problem is discussed in: a)  U.  L ü ning ,  M.  M ü ller , 
+ Concave reagents, 5: bimacrocyclic 1,10 – phenanthroline cyclophanes ,  Chem. Ber. ,  1990 ,  123 , 
+ 643 –  645 . Since then, numerous X - ray structures prove the lamp geometry e.g.;   b)   U.   L ü ning , 
+ M.  M ü ller ,  M.  Gelbert ,  K.  Peters ,  H. G.  von  Schnering ,  M.  Keller ,  Concave reagents, 15: new 
+concave 1,10 – phenanthrolines: catalysts for the alcohol addition to ketenes, and ligands in 
+transition metal complexes ,  Chem. Ber. ,  1994 ,  127 ,  2297 –  2306 . Only in one case has a biscy-
+clophane been found when extremely long chains were used:  c)  O.  Winkelmann ,  diploma 
+thesis ,  Kiel ,  2005 . 
+ 18.  a)  C. D.  Gutsche ,  Calixarenes ,  The Royal Society of Chemistry ,  Cambridge ,  1989 and 1992 ; 
+ b)  C. D.  Gutsche ,  Calixarenes Revisited ,  The Royal Society of Chemistry ,  Cambridge ,  1998 . 
+ 19.  a)  H.  Ross ,  U.  L ü ning  ,  Konkave Reagenzien, 16: Konkave Reagenzien auf Calixarenbasis , 
+ Angew. Chem .,  1995 ,  107 ,  2723 – 2725 ;  Angew. Chem. Int. Ed. Engl. ,  1995 ,  34 ,  2555 – 2557 ;  b) 
+ H.  Ross ,  U.  L ü ning  ,  Concave reagents, 18: synthesis, conformational behaviour, and basicity 
+of new pyridine - bridged calix[6]arenes ,  Liebigs Ann. ,  1996 ,  1367 – 1373 . 
+ 20.  F.  L ö fﬂ er ,  M.  Hagen ,  U.  L ü ning ,  Concave reagents, 32:  Syn - and  anti - selective cyclopropana-
+tion of alkenes with diazoacetates catalysed by copper(I) complexes of concave 1,10 – 
+phenanthrolines ,  Synlett ,  1999 ,  1826 – 1828 . 
+ 21.  S.  Konrad ,  C.  N ä ther ,  U.  L ü ning  ,  Concave reagents, 44: calix[5] -  and calix[8]arenes bridged 
+with heterocycles ,  Eur. J. Org. Chem. ,  2005 ,  2330 – 2337 . 
+ 22.  a)  U.  L ü ning ,  M.  Gerst ,  Concave reagents, 12: polymerﬁ xation of concave pyridines ,  J. Prakt. 
+Chem./Chem. - Ztg. ,  1992 ,  334 ,  656 – 660 ;  b)  T.  Marquardt ,  U.  L ü ning ,  Towards golf ball shaped 
+reagents: dendrimer ﬁ xed concave pyridines (Concave reagents 24) ,  Chem. Commun. ,  1997 , 
+ 1681 – 1682 ;  c)  U.  L ü ning ,  T.  Marquardt ,  Concave reagents, 29: dendrimer ﬁ xed concave pyri-
+dines ,  J. Prakt. Chem. ,  1999 ,  341 ,  222 – 227 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+196 
+Molecular Encapsulation
+ 23.  U.  L ü ning ,  W.  Hacker ,  Concave reagents, 31: a Merriﬁ eld bound concave Pyridine for the 
+selective acylation of polyols ,  J. Prakt. Chem. ,  1999 ,  341 ,  662 – 667 . 
+ 24.  Third Schiemenz  ‘ law ’  of organic chemistry:  ‘ whenever ﬁ ve -  or six - membered rings may be 
+formed they will ’ . For an illustration of the three  ‘ laws ’ see:  U.  L ü ning ,  Organische Reaktionen. 
+Eine Einf ü hrung in Reaktionswege und Mechanismen ,  Elsevier  – Spektrum ,  Spektrum 
+Akademischer Verlag ,  2007 and 2010 . 
+ 25.  See e.g.  F.  V ö gtle ,  Verd ü nnungsprinzip - Reaktionen  –  Einteilung und Durchf ü hrung ,  Chem. -
+ Ztg. ,  1972 ,  96 ,  396 – 403 . 
+ 26.  a)  I.  Huc ,  J. - M.  Lehn ,  Virtual combinatorial libraries: dynamic generation of molecular and 
+supramolecular diversity by self - assembly ,  Proc. Natl. Acad. Sci. USA ,  1997 ,  94 ,  2106 – 2110 ; 
+ b)  P. A.  Brady ,  J. K. M.  Sanders ,  Thermodynamically - controlled cyclisation and interconver-
+sion of oligocholates: metal ion templated  ‘ living ’ macrolactonisation ,  J. Chem. Soc., Perkin 
+Trans. 1 ,  1997 ,  3237 – 3253 ;  c)  S. J.  Rowan ,  S. J.  Cantrill ,  G. R. L.  Cousins ,  J. K. M.  Sanders , 
+ J. F.  Stoddart ,  Dynamische kovalente Chemie ,  Angew. Chem. ,  2002 ,  114 ,  938 – 993 ;  Angew. 
+Chem. Int. Ed. ,  2002 ,  41 ,  898 – 952 ;  d)  P. T.  Corbett ,  J.  Leclaire ,  L.  Vial ,  K. R.  West ,  J. - L. 
+ Wietor ,  J. K. M.  Sanders ,  S.  Otto ,  Dynamic combinatorial chemistry ,  Chem. Rev. ,  2006 ,  106 , 
+ 3652 – 3711 . 
+  27.     Although the term dynamical combinatorial chemistry has only been coined at the end of the 
+last century, the template effect has been used for a much longer time. Some of the best 
+known macrocyclic ligands such as cyclam probably would not have been known so well if 
+their synthesis had not implied the template effect. Probably the ﬁ rst example of a metal ion 
+template for the formation of imino - macrocycles:  N. F.  Curtis ,  D. A.  House ,  Structure of 
+some aliphatic Schiff - base complexes of nickel (II) and copper (II) ,  Chem. and Ind. ,  1961 , 
+ 42 ,  1708 – 1709 . 
+ 28.  F.  Diederich ,  P. J.  Stang (eds.),  Templated Organic Synthesis ,  Wiley - VCH ,  Weinheim, New 
+York, Chichester, Brisbane, Singapore, Toronto ,  2000 . 
+ 29.  O.  Storm ,  U.  L ü ning ,  How to synthesize macrocycles efﬁ ciently using virtual combinatorial 
+libraries ,  Chem. Eur. J. ,  2002 ,  8 ,  793 – 798 . 
+ 30.  H. L.  Anderson ,  J. K. M.  Sanders ,  Synthesis of cyclic porphyrin oligomers with amines as 
+templates ,  Angew. Chem .,  1990 ,  102 ,  1478 – 1480 ;  Angew. Chem., Int. Ed. Engl. ,  1990 ,  29 , 
+ 1400 – 1403 . 
+ 31.  S.  L ü thje ,  C.  Bornholt ,  U.  L ü ning  ,  Concave reagents, 46: polyols as templates for the synthesis 
+of macrocycles from boronic acid building blocks ,  Eur. J. Org. Chem. ,  2006 ,  909 – 915 . 
+ 32.  U.  L ü ning ,  M.  M ü ller  ,  Concave reagents, 2: macrobicyclic 1,10 – phenanthrolines ,  Liebigs Ann. 
+Chem. ,  1989 ,  367 – 374 . 
+ 33.  H.  Ross ,  U.  L ü ning  ,  Concave reagents, 19: synthesis, structure and basicity of a calix[6]arene 
+bridged by an aniline ,  Tetrahedron ,  1996 ,  52 ,  10879 – 10882 . 
+ 34.  a)  U.  L ü ning ,  C.  Wangnick ,  K.  Peters ,  H. G. v.  Schnering ,  Concave reagents, 7: concave 
+benzoic acids ,  Chem. Ber. ,  1991 ,  124 ,  397 – 402 ;  b)  U.  L ü ning ,  C.  Wangnick ,  Concave reagents, 
+11: concave benzoates, sterically extremely shielded esters ,  Liebigs Ann. Chem. ,  1992 , 
+ 481 – 484 . 
+ 35.  U.  L ü ning ,  H.  Baumgartner ,  C.  Wangnick ,  Concave reagents, 17: steric effects on the acidity 
+of concave sulﬁ nic acids and concave benzoic acids ,  Tetrahedron ,  1996 ,  52 ,  599 – 604 . 
+ 36.  a)  M.  Gelbert ,  U.  L ü ning  ,  Concave reagents, 25: transition metal complexes of concave 
+1,10 – phenanthrolines as catalysts for [4+2] - cycloadditions. Ligand effects on the  exo/endo -
+ selectivity ,  Supramolecular Chem. ,  2001 ,  12 ,  435 – 444 ;  b)  M.  Gelbert ,  C.  K ö rber ,  O.  Friedrich , 
+  F.   Fahrenkrug  ,   M.   Keller  ,   U.   L ü ning  ,  Concave reagents, 36: transition metal complexes with 
+concave 1,10 – phenanthrolines ,  Supramolecular Chem. ,  2002 ,  14 ,  199 – 210 ;  c)  R.  Cacciapaglia , 
+ S.  Di  Stefano ,  F.  Fahrenkrug ,  U.  L ü ning ,  L.  Mandolini ,  Concave reagents, 40: the copper(II) 
+complex of a concave reagent as a selective catalyst for ester methanolysis ,  J. Phys. Org. Chem. , 
+ 2004 ,  17 ,  350 – 355 . 
+ 37.  O.  Winkelmann ,  C.  N ä ther ,  U.  L ü ning  ,  Concave reagents, 55: bimacrocyclic NHC transition 
+metal complexes ,  J. Organomet. Chem. ,  2008 ,  693 ,  923 – 932 . 
+ 38.  a)  U.  L ü ning ,  H.  Baumgartner ,  Concave reagents, 13: 2 ′ - Substituted  m - terphenyls as building 
+blocks. Synthesis of a concave thiol acetate ,  Synlett ,  1993 ,  571 – 572 ;  b)  M.  Abbass ,  C.  K ü hl , 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Concave Reagents 
+197
+ C.  Manthey ,  A.  M ü ller ,  U.  L ü ning  ,  Concave reagents, 42: new 2 ′ - substituted  m - terphenyls , 
+ Collect. Czech. Chem. Commun. ,  2004 ,  69 ,  1325 – 1344 . 
+ 39.  O.  Winkelmann ,  C.  N ä ther ,  U.  L ü ning  ,  Concave reagents, 52: concave imidazolinium salts as 
+precursors to concave N - heterocyclic carbenes ,  Eur. J. Org. Chem. ,  2007 ,  981 – 987 . 
+ 40.  O.  Winkelmann ,  D.  Linder ,  J.  Lacour ,  C.  N ä ther ,  U.  L ü ning ,  Concave reagents, 53: chiral 
+concave imidazolinium salts as precursors to chiral concave N - heterocyclic carbenes ,  Eur. J. 
+Org. Chem. ,  2007 ,  3687 – 3697 . 
+ 41.  a) U.  L ü ning ,  F.  Fahrenkrug ,  M.  Hagen ,  Concave reagents, 35: concave 1,10 – phenanthro-
+lines via ring - closing metathesis ,  Eur. J. Org. Chem. ,  2001 ,  2161 – 2163 ;  b)  U.  L ü ning ,  F. 
+ Fahrenkrug  ,  Concave reagents, 47: concave 1,10 – phenanthrolines as tailored ligands for 
+copper(I) - catalysed diastereoselective cyclopropanations ,  Eur. J. Org. Chem. ,  2006 ,  916 – 
+923 ;  c)  U.  L ü ning ,  M.  Abbass ,  F.  Fahrenkrug ,  Concave reagents, 37: a facile route to 
+aryl - substituted 1,10 – phenanthrolines by means of Suzuki coupling reactions between sub-
+stituted areneboronic acids and halogeno - 1,10 – phenanthrolines ,  Eur. J. Org. Chem. ,  2002 , 
+ 3294 – 3303 ;  d)  U.  L ü ning ,  F.  Fahrenkrug ,  Concave reagents, 41: synthesis of concave 1,10 – 
+phenanthrolines by a combination of Suzuki coupling, ring closing metathesis and 
+hydrogenation ,  Eur. J. Org. Chem. ,  2004 ,  3119 – 3127 ;  e)  T.  Liebig ,  M.  Abbass ,  U.  L ü ning , 
+ Concave reagents, 51: concave pyridines for bifunctional acid - base catalysis ,  Eur. J. Org. 
+Chem. ,  2007 ,  972 – 980 . 
+ 42.  a) H.  Ross ,  U.  L ü ning  ,  Concave reagents, 23: Synthesis of calix[6]arene bridged by a 
+1,10 - phenanthroline ,  Tetrahedron Lett. ,  1997 ,  38 ,  4539 – 4542 ;  b)  J. P. W.  Eggert ,  J. 
+ Harrowﬁ eld ,  U.  L ü ning ,  B. W.  Skelton ,  A. H.  White ,  F.  L ö fﬂ er ,  S.  Konrad ,  Concave 
+reagents, 43: Improved synthesis and conformational analysis of an A,D - 1,10 - phenanthroline 
+bridged calix[6]arene ,  Eur. J. Org. Chem. ,  2005 ,  1348 – 1353 . 
+ 43.  a) U.  L ü ning ,  H.  Ross ,  I.  Thondorf ,  Concave reagents, 27: Steric requirements of intraan-
+nular subtituents in A,D - bridged calix[6]arene ,  J. Chem. Soc. Perkin Trans. 2 ,  1998 ,  1313 –
+ 1317 ;  b)  S.  Konrad ,  C.  N ä ther ,  U.  L ü ning ,  Concave reagents, 49: Calix[6]arenes carrying 
+camphorsulfonyl substituents ,  Synthesis ,  2006 ,  2097 – 2099 ;  c)  S.  Konrad ,  M.  Bolte ,  C. 
+ N ä ther ,  U.  L ü ning ,  Concave reagents, 50: Chiral 1,10 - phenanthroline - bridged calix[6]arene 
+dendrimers ,  Eur. J. Org. Chem. ,  2006 ,  4717 – 4730 ;  d)  J. P. W.  Eggert ,  U.  L ü ning ,  Concave 
+reagents, 54: Towards A,D - (1,10 - phenanthroline) - bridged calix[6]arene dendrimers ,  Eur. J. 
+Org. Chem. ,  2007 ,  6046 – 6052 . 
+ 44.  Obeying  ‘ Murphy ’ s law ’ , the  meso - compound was prefered in preliminary experiments:   M.  
+ Hagen ,  dissertation ,  Christian - Albrechts - Universit ä t zu Kiel ,  1999 . 
+ 45.  The problem of diastereomers of dinaphthylsubstituted NHC has been investigated:  X.  Luan , 
+ R.  Mariz ,  M.  Gatti ,  C.  Costabile ,  A.  Poater ,  L.  Cavallo ,  A.  Linden ,  R.  Dorta ,  Identiﬁ cation and 
+characterization of a new family of catalytically highly active imidazolin - 2 – ylidenes ,  J. Am. 
+Chem. Soc. ,  2008 ,  130 ,  6848 – 6858 . 
+ 46.  Tris(tetrachlorobenzenediolato)phosphate(V) anion: a)  J.  Lacour ,  C.  Ginglinger ,  C.  Grivet ,  G. 
+ Bernardinelli ,  Synthese und Trennung der Enantiomere des konﬁ gurationsstabilen 
+Tris(tetrachlorbenzo1diolato)phosphat(V) - Ions ,  Angew. Chem. ,  1997 ,  109 ,  660 – 662 ;  Angew. 
+Chem. Int. Ed. Engl. ,  1997 ,  36 ,  608 – 609 ;  b) Bis(tetrachlorobenzenediolato)mono([1,1 ′ ]
+binaphthalenyl - 2,2 ′ - diolato) phosphate(V) anion:  J.  Lacour ,  A.  Londez ,  C.  Goujon - Ginglinger , 
+ V.  Bu ß ,  G.  Bernardinelli ,  Conﬁ gurational ordering of cationic chiral dyes using a novel C2 –
+ symmetric hexacoordinated phosphate anion ,  Org. Lett. ,  2000 ,  2 ,  4185 – 4188 . 
+ 47.  Although by deﬁ nition, a p K a   value is determined in water, analogous  ‘ p K a ’  values have been 
+determined in other solvents, too. See for instance:  K.  Izutsu (Ed.),  Acid - base dissociation 
+constants in dipolar aprotic solvents , Chemical Data Series No. 35, International Union of Pure 
+and Applied Chemistry, published by  Blackwell Scientiﬁ c Publications ,  Oxford, London, 
+Edinburgh, Boston, Melbourne ,  1990 . 
+ 48.  For the deﬁ nition of general and speciﬁ c acid catalysis see:  H.  Maskill ,  The physical basis of 
+organic chemistry ,  Oxford University Press ,  New York ,  1993 . 
+ 49.  General and speciﬁ c protonations are discussed in:   U.   L ü ning ,  C.  Wangnick ,  M.  K ü mmerlin , 
+ Regioselective protonation of allyllithium compounds ,  Chem. Ber. ,  1994 ,  127 ,  2431 –
+ 2433 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+198 
+Molecular Encapsulation
+ 50.  B.  Sch ä fer ,  Enantioselektive Protonierungen: Kinetische Racematspaltung ,  Chem. i. uns. Zeit , 
+ 2002 ,  36 ,  382 – 389 . 
+ 51.  a)  U.  L ü ning ,  R.  Baumstark ,  M.  M ü ller ,  C.  Wangnick ,  F.  Schillinger ,  Concave reagents, 4: 
+protonation of nitronate anions via concave pyridines. Stereoselective C - protonation versus Nef 
+reaction ,  Chem. Ber. ,  1990 ,  123 ,  221 – 223 ;  b)  U.  L ü ning ,  F.  Schillinger ,  Concave reagents, 6: 
+can the structure of concave reagents determine selectivities?   Chem. Ber. ,  1990 ,  123 , 
+ 2073 – 2075 . 
+ 52.  a)  U.  L ü ning ,  M.  M ü ller  ,  Konkave Reagenzien, 10: Konkav verpackte Protonen: Reagenzien 
+f ü r kontra - thermodynamische Protonierungen ,  Angew. Chem. ,  1992 ,  104 ,  99 – 102 ;  Angew. 
+Chem. Int. Ed. Engl. ,  1992 ,  31 ,  80 – 82 ;  b)  U.  L ü ning ,  H.  Baumgartner ,  C.  Manthey ,  B. 
+ Meynhardt  ,  Concave reagents, 20: sterically shielded  m - terphenyls as selective agents in 
+general protonations ,  J. Org. Chem. ,  1996 ,  61 ,  7922 – 7926 . 
+ 53.  a)  A. R.  Butler ,  V.  Gold ,  The hydrolysis of acetic anhydride. Part VII. Catalysis by pyridine 
+and methylpyridines in acetate buffers ,  J. Chem. Soc. ,  1961 ,  4362 – 4367 ;  b)  L. W.  Deady , 
+ W. L.  Finlayson ,  Catalysis by   α  - substituted pyridines in the hydrolysis of aryl acetates and 
+acetic anhydride ,  Aust. J. Chem. ,  1983 ,  36 ,  1951 – 1956 . 
+ 54.  U.  L ü ning ,  R.  Baumstark ,  W.  Schyja ,  Concave reagents, 9: alcoholysis of diphenylketene 
+catalysed by concave pyridines and open - chain analogs ,  Liebigs Ann. Chem. ,  1991 ,  999 – 
+1002 . 
+ 55.  a)  W.  Schyja ,  S.  Petersen ,  U.  L ü ning  ,  Concave reagents, 21: selective acylations of primary 
+and secondary alcohols by ketenes ,  Liebigs Ann. ,  1996 ,  2099 – 2105 ;  b)  U.  L ü ning ,  S.  Petersen , 
+ W.  Schyja ,  W.  Hacker ,  T.  Marquardt ,  K.  Wagner ,  M.  Bolte ,  Concave reagents, 26: concave 
+pyridines for selective acylations of polyols ,  Eur. J. Org. Chem. ,  1998 ,  1077 – 1084 . 
+ 56.  S.  Petersen ,  U.  L ü ning  ,  Concave reagents, 28: comparison of bimacrocyclic, monomacrocyclic 
+and non - macrocyclic bis(amidomethyl)pyridines as catalysts in the base catalysed addition of 
+alcohols to ketenes ,  Eur. J. Org. Chem. ,  1999 ,  847 – 854 . 
+ 57.  O.  Winkelmann ,  C.  N ä ther ,  U.  L ü ning  ,  Organocatalysis by bimacrocyclic NHC: unexpected 
+formation of a cyclic hemiacetal instead of a   γ - butyrolactone ,  Org. Biomol. Chem. ,  2009 , 
+ 553 – 556 . 
+ 58.  R.  Breslow ,  On the mechanism of thiamine action. Evidence from studies on model systems , 
+ J. Am. Chem. Soc. ,  1958 ,  80 ,  3719 – 3726 . 
+ 59.  Reviews on thiamine - dependent enzymes: a)  G. A.  Sprenger ,  M.  Pohl ,  Synthetic potential of 
+thiamin diphosphate - dependent enzymes ,  J. Mol. Catal. B ,  1999 ,  6 ,  145 – 159 ;  b)  R.  Duggleby , 
+ Domain relationships in thiamine diphosphate - dependent enzymes ,  Acc. Chem. Res. ,  2006 ,  39 , 
+ 550 – 557 . 
+ 60.  a)  H.  Stetter ,  Die katalysierte Addition von Aldehyden an aktivierte Doppelbindungen  – Ein 
+neues Syntheseprinzip ,  Angew. Chem. ,  1976 ,  88 ,  695 – 704 ;  Angew. Chem. Int. Ed. Engl. ,  1976 , 
+ 15 ,  639 – 647 ;  b)  C.  Burstein ,  F.  Glorius ,  Organokatalysierte konjugierte Umpolung von   α , β -
+ unges ä ttigten Aldehyden zur Synthese von   γ - Butyrolactonen ,  Angew. Chem. ,  2004 ,  116 ,  6331 –
+ 6334 ;  Angew. Chem., Int. Ed. ,  2004 ,  43 ,  6205 – 6208 ;  c)  S. S.  Sohn ,  E. L.  Rosen ,  J. W.  Bode , 
+ N - Heterocyclic carbene - catalysed generation of homoenolates:   γ - butyrolactones by direct 
+annulations of enals and aldehydes ,  J. Am. Chem. Soc. ,  2004 ,  126 ,  14370 – 14371 ;  d)  D.  Enders , 
+ O.  Niemeier ,  A.  Henseler ,  Organocatalysis by N - heterocyclic carbenes ,  Chem. Rev. ,  2007 ,  107 , 
+ 5606 – 5655 ;  e)  N.  Marion ,  S.  Diez - Gonz á les ,  S. P.  Nolan ,  N - heterocyclische Carbene als 
+Organokatalysatoren ,  Angew. Chem. ,  2007 ,  119 ,  3046 – 3058 ;  Angew. Chem. Int. Ed. ,  2007 ,  46 , 
+ 2988 – 3000 ;  f)  K.  Hirano ,  I.  Piel ,  F.  Glorius ,  Diastereoselective synthesis of triﬂ uoromethylated 
+ γ - butyrolactones via N - heterocyclic carbene - catalysed conjugated umpolung of   α , β - unsaturated 
+aldehydes ,  Adv. Synth. Catal. ,  2008 ,  350 ,  984 – 988 . 
+ 61.  a) F.  L ö fﬂ er ,  U.  L ü ning ,  G.  Gohar ,  Concave reagents, 33: transition metal complexes of 
+1,10 – phenanthroline bridged calix[6]arenes ,  New J. Chem. ,  2000 ,  24 ,  935 – 938 ;  b)  J. P. W. 
+ Eggert ,  J. M.  Harrowﬁ eld ,  U.  L ü ning ,  B. W.  Skelton ,  A. H.  White ,  Lanthanide(III) ion coor-
+dination by a concave reagent ,  Polyhedron ,  2006 ,  910 – 914 . 
+  62.       O.   Winkelmann  ,   C.   N ä ther ,  U.  L ü ning  ,  Concave reagents, 56: synthesis, structure and catalytic 
+activity of a bimacrocylic NHC palladium allyl complex ,  J. Organomet. Chem. ,  2008 ,  693 , 
+ 2784 – 2788 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Concave Reagents 
+199
+ 63.  B.  Meynhardt ,  U.  L ü ning ,  C.  Wolff ,  C.  N ä ther ,  Concave reagents, 30: diastereoselective gen-
+eration of quarternary stereocenters by ligand controlled palladium catalysed allylations ,  Eur. 
+J. Org. Chem. ,  1999 ,  2327 – 2335 . 
+ 64.  a)  M.  Hagen ,  U.  L ü ning  ,  Concave reagents, 22: cyclopropanation of alkenes with ethyl diazoa-
+cetate: copper (I) complexes of concave 1,10 – phenanthrolines as diastereoselective catalysts , 
+ Chem. Ber./Recueil ,  1997 ,  130 ,  231 – 234 ;  b)  M.  B ü hl ,  F.  Terstegen ,  F.  L ö fﬂ er ,  B.  Meynhardt , 
+ S.  Kierse ,  M.  M ü ller ,  C.  N ä ther ,  U.  L ü ning  ,  Concave reagents, 34: on the mechanism and 
+stereoselectivity of the copper(I) catalysed cyclopropanation of oleﬁ ns. A combined experi-
+mental and density - functional study ,  Eur. J. Org. Chem. ,  2001 ,  2151 – 2160 . 
+ 65.  As ligands, the nucleophilic NHC are strong two - electron   σ - donors, displaying similar ligand 
+properties as trialkylphosphines:  K.  Ö fele ,  W. A.  Herrmann ,  D.  Mihalios ,  M.  Elison ,  E. 
+ Herdtweck ,  W.  Scherer ,  J.  Mink ,  Mehrfachbindungen zwischen Hauptgruppenelementen und 
+ Ü bergangsmetallen CXXVI. Heterocyclen - Carbene als phosphananaloge Liganden in 
+Metallkomplexen ,  J. Organomet. Chem. ,  1993 ,  459 ,  177 – 184 . 
+ 66.  a)  T.  Weskamp ,  F. J.  Kohl ,  W.  Hieringer ,  D.  Gleich ,  W. A.  Herrmann ,  Hochaktive 
+Rutheniumkatalysatoren f ü r die Oleﬁ nmetathese: die Synergie N - heterocyclischer Carbene und 
+koordinativ labiler Liganden ,  Angew. Chem. ,  1999 ,  111 ,  2573 – 2576 ,  Angew. Chem. Int. Ed. , 
+ 1999 ,  38 ,  2416 – 2419 ;  b)  M.  Scholl ,  S.  Ding ,  C. W.  Lee ,  R. H.  Grubbs ,  Synthesis and activity 
+of a new generation of ruthenium - based oleﬁ n metathesis catalysts coordinated with 1,3 – dimes-
+ityl - 4,5 – dihydroimidazol - 2 – ylidene ligands ,  Org. Lett. ,  1999 ,  1 ,  953 – 956 ;  c)  J.  Huang ,  E. D. 
+ Stevens ,  S. P.  Nolan ,  J. L.  Petersen ,  Oleﬁ n metathesis - active ruthenium complexes bearing a 
+nucleophilic carbene ligand ,  J. Am. Chem. Soc. ,  1999 ,  121 ,  2674 – 2678 . 
+  67.     Just a few reviews on this quickly developping ﬁ eld: a)  D. H.  Paull ,  C. J.  Abraham ,  M. T. 
+ Scerba ,  E.  Alden - Danforth ,  T.  Lectka ,  Bifunctional asymmetric catalysis: cooperative lewis 
+acid/base systems ,  Acc. Chem. Res. ,  2008 ,  41 ,  655 – 663 ;  b)  M.  Kanai ,  N.  Katob ,  E.  Ichikawab , 
+ M.  Shibasaki ,  Power of cooperativity: Lewis acid - Lewis base bifunctional asymmetric cataly-
+sis ,  Synlett ,  2005 ,  1491 – 1508 ,;  c)  M.  Shibasaki ,  M.  Kanai  K.  Funabashi, Recent progress in 
+asymmetric two - center catalysis ,  Chem. Commun. ,  2002 ,  1989 – 1999 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+ 8 
+Reactivity Control by Calixarenes  
+ Luigi  Mandolini ,  Roberta  Cacciapaglia , and  Stefano  Di  Stefano  
+ IMC CNR Sezione Meccanismi di Reazione, c/o Dipartimento di Chimica, 
+Universit à La Sapienza, 00185 Roma, Italy 
+ 8.1  Introduction 
+ Calixarenes are oligomeric cyclophanes derived from the condensation of phenols with 
+formaldehyde. They became popular in the late seventies and have played a very impor-
+tant role in Supramolecular Chemistry ever since, as witnessed by numerous books 1 and 
+review articles  2   on the subject. Calixarenes are important building blocks for the prepara-
+tion of a large variety of supramolecular complexes and materials, thanks to their ability 
+to act as hosts, and the possibility of introducing a large number of functions at either 
+rim by means of selective derivatization. 
+ This chapter focuses on reactivity control in stoichiometric and catalytic reactions 
+taking place in the conﬁ nes of supramolecular complexes of reactants with calixarene 
+receptors. Earlier work on the subject was reviewed by us in 2000.  3 Quite recently, 
+Homden and Redshaw have published an extensive review on the use of calixarenes in 
+metal - based catalysis. 2i   Because of space limitations and, even more importantly, to avoid 
+extensive overlap with the already reviewed material, the scope of this chapter is restricted 
+to works treated only marginally, or not treated at all, in the above review article. The 
+ﬁ rst section deals with examples in which reactivity control takes place via substrate 
+inclusion into the calixarene cavity. The other section illustrates the use of the calix[4]
+arene upper rim in the construction of di -  and trimetallic complexes capable of esterase 
+and nuclease activity. 
+Molecular Encapsulation: Organic Reactions in Constrained Systems        Edited by Udo H. Brinker and Jean-Luc Mieusset
+© 2010 John Wiley & Sons, Inc.  ISBN: 978-0-470-99807-6
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+202 
+Molecular Encapsulation
+ 8.2  Calixarenes as Hosts 
+ The limited size of the calix[4]arene backbone allows deep penetration within its cavity 
+of only small guests. Notably, Rathore, Kochi and co - workers  4   reported that the tetra -  O -
+ methylated  p - tert - butylcalix[4]arene  1 (R − Me), upon oxidation in CH 2 Cl 2  followed by 
+exposure to gaseous NO, or upon treatment with NOSbCl 6 , forms a dark purple, highly 
+stable 1  :  1 complex ( K  >  5  ×  10 8  M  − 1 ), that shows no sign of decomposition for several 
+months, both in solution and in the solid state. The X - ray structure showed that NO + is 
+completely entombed in the cylindrical cavity of the 1,3 -  alternate  conformation.  1 H NMR 
+spectroscopic evidence was obtained that in solution all four conformers ( cone ,  partial 
+cone , 1,2 - alternate , 1,3 - alternate ) of the calix[4]arene host form complexes of deﬁ nite 
+stability with NO + . The preference of 1,3 -  alternate  in the solid state indicates a crystal-
+lization induced drainage of the equilibria in solution. Rudkevich  et al . 5,6 subsequently 
+discovered that caged NO +  complexes of the same kind are reversibly formed upon bub-
+bling NO 2 /N 2 O 4  through a chloroform solution of a tetra -  O - alkylated calix[4]arene ( 1 , 
+R − Hex) ﬁ xed in the 1,3 - alternate conformation, in the presence of SnCl 4 (Equation  8.1 ). 
+Quite remarkably, encapsulated NO +  was found to act as a highly selective nitrosating 
+agent towards secondary amides. The reaction mechanism outlined in Scheme  8.1 is 
+consistent with the observed size - shape selectivity and with the ﬁ nding that the chemical 
+properties of encapsulated NO +  are different from those in bulk solution, and are control-
+led by the calix[4]arene cavity. The reaction proved to be quite sensitive to the size of 
+ – Alk, but not to that of  – Alk ′ . Fair to good yields (50 – 95%) of  N - nitrosated products 
+were obtained only with  N  - methylated amides, independent of the size of  – Alk ′ from 
+ethyl to heptyl. No reaction occurred with amides alkylated with  – Alk bulkier than methyl, 
+on account of the hindered approach to the encapsulated NO + species. 
+ 
+ 1
+1
+NO
+N O
+SnCl
+CHCl
+NO
+NO SnCl
+2
+2
+4
+4
+3
+3
+4
+,
+
+→
+
+⋅
+[
+]
++
+− 
+ (8.1) 
+ 
+ 
+ The wider cavity of calix[6]arene has been masterfully exploited by the group of 
+Reinaud in the design of ligands that mimic the coordination sphere of the metal ion of 
+copper enzymes.  7   A calix[6]arene functionalized at the smaller rim by three independent 
+ N  - donor groups, upon binding to copper is constrained in a  cone  conformation. The free 
+coordination site of the metal situated inside the calix[6]arene cavity is available for 
+coordination to small donor molecules to afford the so - called  ‘ funnel complexes ’ . 8 
+Structure  2  shows a funnel complex featuring a tris(pyridine) coordination site, a perfectly 
+tetrahedral geometry for cuprous ion, and a CH 3 CN ligand embedded in the calix[6]arene 
+cavity. A preliminary investigation of the electrochemical behaviour of a tris(pyridine) –
+ calix[6]arene – Cu complex 9a   was extended to additional families of Cu – N 3 – calix[6]arene 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reactivity Control by Calixarenes 
+203
+complexes including tertiary amine and  N - alkylimidazole ligands. 9b The important dis-
+covery was made that the electrochemical behaviour of the complexes could be resolved 
+and analyzed in CH 3 CN, but not in non - coordinating solvents such as CH 2 Cl 2 and THF. 
+The beneﬁ cial action of CH 3 CN was obviously ascribed to its ability to form funnel 
+complexes. The supramolecular concept of the  ‘ shoetree ’  molecule guest was proposed. 
+The  ‘ shoetree ’ CH 3 CN guest in the calix[6]arene cavity ensures the overall ﬁ xation of the 
+coordination at every stage of the Cu(II)/Cu(I) reorganization process. As such, the  ‘ shoe-
+tree ’ guest is a prerequisite for a dynamic redox behaviour. 
+ Another family of calix[6]arene funnel complexes is provided by the calixtren ligand 
+ 3 . 10   Here a calix[6]arene is capped by a tren unit, thereby presenting a  N 4 coordination 
+site at the end of a concave calix[6]arene core. Calixtren – Cu complexes are endowed with 
+unique properties, when compared to all previously described tren – Cu complexes. The 
+ 3 – Cu(I) complex does not disproportionate in concentrated solution, and is stable in 
+chlorinated solvents for days. Furthermore the  3 – Cu(II) complex is a strong receptor for 
+neutral ligands, such as nitriles, alcohols and amides, but not for anionic ligands. This 
+was ascribed to the strong electrostatic repulsion exerted by the lone pairs of the six 
+oxygen atoms of the calix[6]arene core. Unlike the Cu(I) complexes of the calix[6]arene -
+ based ligands equipped with tris(imidazole) or tris(pyridine) coordination sites, the cal-
+ixtren - complexed Cu(I) centre in  3 – Cu(I), was found to be very sensitive towards O 2 
+(Scheme  8.2 ), leading to a transient (CuO 2 ) +  species, whose nature was assigned as a 
+reactive Cu(II) – superoxide adduct. In the presence of CH 3 CN, well suited for penetrating 
+the calix[6]arene cavity and for stabilizing the Cu(II) centre,   O2
+− is ejected from the 
+complex into the reaction medium. Even more importantly, in a non coordinating solvent 
+such as CH 2 Cl 2  the metal - bound superoxide species directly oxidizes a CH bond of the 
+tren backbone, a result that has important implications for the modes of action of copper 
+monooxygenases. 
+ Scheme 8.1   Proposed mechanism of  N - nitrosation of secondary amides with 
+encapsulated NO + 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+204 
+Molecular Encapsulation
+ The  p - sulfonatocalix[n]arenes  4 , originally synthesized by Shinkai  et al . 11 as water 
+soluble calixarenes for catalytic studies in water solution, were more recently used by 
+Ueoka  et al . 12   as catalysts in the speciﬁ c acid catalyzed methanolysis of  N - Ac - l - amino 
+acids (Phe, Tyr, Trp, His, Lys, Arg). Rates of methanolysis in the presence of the calix[n]
+arene catalysts, normalized per sulfonic group, were compared with rates obtained in the 
+presence of the noncyclic analogue  p - hydroxybenzenesulfonic acid. Rate enhancements 
+ –  ranging from 12 -  to 86 - fold  –  relative to control were recorded only in the methanolysis 
+of basic amino acid derivatives (His, Lys, Arg), but neutral amino acid derivatives (Phe, 
+Tyr, Trp) responded virtually in the same way to the presence of cyclic and non - cyclic 
+catalyst. Michaelis – Menten kinetics and  1 H NMR spectral evidence pointed to the inter-
+mediacy of inclusion complexes of  4  with the protonated form of basic amino acid deriva-
+tives, as shown in  5 for the His – 4 (n  =  4) combination. 
+ 
+ 
+ Ditopic receptors  6  were designed and synthesized by de Mendoza  et al . 13a as mimics 
+of the phosphocholine binding site of McPC603 antibody. Receptors  6  bind strongly to 
+dioctanoyl -  l - α - phosphatidylcholine ( K  =  73000  M  − 1  for  6a and 95000  M  − 1  for  6b  in chlo-
+ Scheme 8.2   Reactions of the proposed superoxide transient adduct [ 3 · Cu · O 2 ] + in the 
+presence and absence of acetonitrile  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reactivity Control by Calixarenes 
+205
+roform, 25  ° C), as a result of a combined binding of the choline trimethylammonium head 
+to the calix[6]arene subunit through cation – π  interactions, and of the anionic phosphate 
+to the guanidinium subunit through ion pairing and hydrogen bonding. Since phosphate 
+diesters are well known transition state analogues for the basic hydrolysis of esters, it was 
+reasoned that receptors  6  would catalyze a B Ac 2 - type cleavage of choline esters. Indeed, 
+the methanolysis of choline  p  - nitrophenyl carbonate (PNPCC), in CHCl 3 /MeOH 99  :  1 in 
+the presence of diisopropylethylamine – perchlorate salt buffer at 25    ° C (Equation  8.2 ) was 
+effectively catalyzed with turnover by  6 . 13b   A rate enhancement of 76 - fold relative to 
+background was recorded in the presence of 1   mM  6a , and one of 149 - fold in the presence 
+of 1  mM  6b . Kinetic analysis yielded maximum rate accelerations at saturation of 600 
+and 1000 for  6a  and  6b , respectively. Much lower rate enhancements were brought about 
+by equimolar mixtures of the disconnected subunits, showing that the two subunits in  6 
+bind to the transition state  7 with considerable degree of synergism.
+ 
+ 
+  (8.2) 
+ A similar strategy of catalyst design based on ditopic receptors composed of distinct 
+recognition elements for the reacting and non - reacting parts of the substrates, was adopted 
+by the group of Rebek in a number of works involving reactions of choline or choline 
+derivatives. In these studies, the recognition subunit for the choline trimethylammonium 
+head is a cavitand derived from resorcinol.  14 Receptor  8  features a zinc(II) salophen unit 
+fused to a resorcinarene. As suggested by an energy minimized structure, the trimethylam-
+monium group of a PNPCC guest is well positioned deep within the cavity, whereas the 
+ester carbonyl is simultaneously coordinated to the metal electrophile. In accordance with 
+this picture, PNPCC has a very high afﬁ nity for  8 , much higher than that of choline. The 
+complexed PNPCC undergoes basic hydrolysis in buffered CH 2 Cl 2  containing 0.01% 
+water (Equation  8.3 ) no less than 50 times more rapidly than uncomplexed PNPCC. 
+Consistent with a complexation catalysis scheme, the much less reactive acetylcholine 
+acts as a competitive inhibitor in the hydrolysis of PNPCC. Complex cavitand  8  is also 
+an effective catalyst for the acylation of choline. 15 Here the salophen - complexed metal 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+206 
+Molecular Encapsulation
+ion is believed to activate the incoming acylating agent toward nucleophilic attack from 
+the cavitand - complexed choline hydroxyl. In the presence of 2   mol% of  8 , the reaction 
+with acetic anhydride (Equation  8.4 ) takes place 1900 times faster than the background 
+reaction. Acetylation is an order of magnitude slower when the zinc(II) – salophen complex 
+and the cavitand unit are not covalently connected.
+ 
+ PNPCC
+HO
+PNPO
+HOCH CH N CH
+CH Cl
+H O
+RT
++
+
+→
+
++
+(
+) +
+−
+(
+)
+−
++
+2
+2
+2
+0 01
+2
+2
+3 3
+.
+%
+CO2  
+ (8.3) 
+ 
+ HOCH CH N CH
+Ac O
+AcOCH CH N CH
+AcO
+DMSO-
+C
+2
+2
+3 3
+2
+25
+2
+2
+3 3
+6
++
+°
++
+(
+) +
+
+→
+
+(
+) +
+d
+H   (8.4) 
+ As a variation on the theme, instead of a zinc(II) – salophen unit, receptor  9 16 features 
+a 2 - pyridone unit, that is a known bifunctional catalyst for the rate limiting breakdown 
+of the tetrahedral intermediate involved in the aminolysis of active esters in aprotic sol-
+vents. Turnover catalysis was indeed observed when the reaction between propylamine 
+and PNPCC (Equation  8.5 ) was carried out in CH 2 Cl 2 /CH 3 CN 99  :  1 in the presence of 
+receptor  9 . It was estimated that the reaction inside  9  is  ca . 6000 times faster than the 
+reaction in the bulk solvent.
+ 
+ 
+  (8.5) 
+ In mesitylene - d 12  cavitand  10  exhibits moderate to high binding afﬁ nity for maleimides 
+ N  - substituted with medium sized alkyl groups, such as adamantyl and cyclooctyl.  17 These 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reactivity Control by Calixarenes 
+207
+groups, when deeply hosted in the cavity of  10 , position the maleimide carbonyl group 
+in close proximity to the organized  H  - bonding network, whereas the double bond remains 
+exposed above the receptor. The Diels – Alder reaction of the complexed maleimide with 
+9 - anthracenemethanol (Equation  8.6 ) is strongly accelerated relative to the reaction of the 
+uncomplexed reactant. This is believed to arise from interaction of the dienophile with 
+the hydrogen bonding network at the cavitand rim. The hydroxyl of 9 - anthracenemethanol 
+plays a role, because anthracenes lacking a hydroxyl group do not react. The increase in 
+steric bulk of the reaction product causes fast release from its complex with  10 , thus 
+ensuring high turnover efﬁ ciency with little or no product inhibition.
+ 
+ 
+ 
+ (8.6) 
+ Cavitand  10  was also found to stabilize the Meisenheimer complexes of S N Ar reactions 
+of 2 - nitro - 4 - triﬂ uoromethylchlorobenzene with piperidine and its next higher homologues 
+azepane (7 - ring) and azocane (8 - ring) in the non - polar solvent  p - xylene - d 10 (Equation 
+ 8.7 ). 18 The afﬁ nity for the host is low with piperidine ( K  =  14  M  − 1 ) and is somewhat higher 
+with the larger rings ( K  =  40  M  − 1 ). When carried out in the presence of stoichiometric  10 , 
+the reaction of piperidine with the activated aryl chloride shows a 12 - fold rate enhance-
+ment relative to the control reaction. Seven -  and eight - membered cyclic amines, whose 
+afﬁ nity for the host is somewhat higher, show accelerations of 67 - and 35 - fold, respec-
+tively. These were proposed to arise from the ability of the polar amide groups at the 
+upper rim to stabilize the anionic portion of the dipolar transition state, possibly combined 
+with cation – π  interactions between the aromatic walls of  10  and the developing positive 
+charge of the nucleophilic nitrogen.
+ 

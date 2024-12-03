@@ -1,5 +1,10 @@
-import dspy
 from numpy import mean
+
+import dspy
+from dspy.primitives.assertions import assert_transform_module, backtrack_handler
+from dspy.predict import Retry
+
+
 from autonogy_constructor.base_data_structures import OntologyElements, OntologyDataProperties, OntologyObjectProperties, OntologyEntities
 from autonogy_constructor.signatures import ExtractOntologyElements, ExtractOntologyDataProperties, ExtractOntologyObjectProperties, ExtractOntologyEntities, Assess
 from autonogy_constructor.utils import ontology_entities_to_string, ontology_elements_to_string, ontology_data_properties_to_string, ontology_object_properties_to_string
@@ -22,6 +27,9 @@ ontology_structure_score = ASSESSMENT_CRITERIA_CONFIG["ontology_structure_score"
 overall_content = ASSESSMENT_CRITERIA_CONFIG["overall_content"]
 overall_content_score = ASSESSMENT_CRITERIA_CONFIG["overall_content_score"]
 full_score = ASSESSMENT_CRITERIA_CONFIG["full_score"]
+
+def my_backtrack_handler(func):
+    return backtrack_handler(func, max_backtracks=5)
 
 class ChemOntology(dspy.Module):
     def __init__(self):
@@ -150,3 +158,70 @@ Reason:
 """
 
         return mean(normalized_score_list)
+
+class ChemOntologyWithEntitiesAssertions(dspy.Module):
+    def __init__(self):
+        super().__init__()
+
+        self.entities_extractor = dspy.ChainOfThought(ExtractOntologyEntities)
+        self.assessor = Assessment(assertions=True)
+    
+    def forward(self, context):
+        entities = self.entities_extractor(text=context)
+        assertions, score_info = self.assessor(assessed_text=context, assessment_ontology=entities.ontology_entities)
+        qualified = [x[0] for x in assertions.values()]
+        suggestion = [x[1] for x in assertions.values()]
+        dspy.Suggest(all(qualified),"".join(suggestion),target_module=self.entities_extractor)
+        return dspy.Prediction(context=context, ontology_entities=entities.ontology_entities, score_info=score_info)
+
+class ChemOntologyWithElementsAssertions(dspy.Module):
+    def __init__(self):
+        super().__init__()
+
+        self.elements_extractor = dspy.ChainOfThought(ExtractOntologyElements)
+        self.assessor = Assessment(assertions=True)
+    
+    def forward(self, context, entities):
+        elements = self.elements_extractor(text=context, ontology_entities=entities.ontology_entities)
+        assertions, score_info = self.assessor(assessed_text=context, assessment_ontology=elements.ontology_elements)
+        qualified = [x[0] for x in assertions.values()]
+        suggestion = [x[1] for x in assertions.values()]
+        dspy.Suggest(all(qualified),"".join(suggestion),target_module=self.elements_extractor)
+
+        return dspy.Prediction(context=context, ontology_elements=elements.ontology_elements, score_info=score_info)
+
+class ChemOntologyWithDataPropertiesAssertions(dspy.Module):
+    def __init__(self):
+        super().__init__()
+
+        self.data_properties_extractor = dspy.ChainOfThought(ExtractOntologyDataProperties)
+        self.assessor = Assessment(assertions=True)
+
+    def forward(self, context, entities):
+        data_properties = self.data_properties_extractor(text=context, ontology_entities=entities.ontology_entities)
+        assertions, score_info = self.assessor(assessed_text=context, assessment_ontology=data_properties.ontology_data_properties)
+        qualified = [x[0] for x in assertions.values()]
+        suggestion = [x[1] for x in assertions.values()]
+        dspy.Suggest(all(qualified),"".join(suggestion),target_module=self.data_properties_extractor)
+        return dspy.Prediction(context=context, ontology_entities=entities.ontology_entities, ontology_data_properties=data_properties.ontology_data_properties, score_info=score_info)
+
+class ChemOntologyWithObjectPropertiesAssertions(dspy.Module):
+    def __init__(self):
+        super().__init__()
+
+        self.object_properties_extractor = dspy.ChainOfThought(ExtractOntologyObjectProperties)
+        self.assessor = Assessment(assertions=True)
+
+    def forward(self, context, entities):
+        object_properties = self.object_properties_extractor(text=context, ontology_entities=entities.ontology_entities)
+        assertions, score_info = self.assessor(assessed_text=context, assessment_ontology=object_properties.ontology_object_properties)
+        qualified = [x[0] for x in assertions.values()]
+        suggestion = [x[1] for x in assertions.values()]
+        dspy.Suggest(all(qualified),"".join(suggestion),target_module=self.object_properties_extractor)
+        return dspy.Prediction(context=context, ontology_entities=entities.ontology_entities, ontology_object_properties=object_properties.ontology_object_properties, score_info=score_info)
+
+
+chemonto_with_entities_assertions = assert_transform_module(ChemOntologyWithEntitiesAssertions().map_named_predictors(Retry), backtrack_handler) 
+chemonto_with_elements_assertions = assert_transform_module(ChemOntologyWithElementsAssertions().map_named_predictors(Retry), backtrack_handler) 
+chemonto_with_data_properties_assertions = assert_transform_module(ChemOntologyWithDataPropertiesAssertions().map_named_predictors(Retry), backtrack_handler) 
+chemonto_with_object_properties_assertions = assert_transform_module(ChemOntologyWithObjectPropertiesAssertions().map_named_predictors(Retry), backtrack_handler) 

@@ -29,13 +29,17 @@ class ExtractOntologyEntities(dspy.Signature):
 class ExtractOntologyElements(dspy.Signature):
     """Analyze the provided text from research papers in the field of chemistry to identify all hierarchical relationships and disjoint relationships about the ontology_entities to construct an ontological framework together with the subsequent parts. 
 
-    You are an expert ontology engineer. Your task is to carefully analyze the text and extract key ontological elements following these steps:
+    You are an expert chemist. Your task is to carefully analyze the text and extract key relationships between the ontology_entities following these steps:
 
-    1. Identify Hierarchical Relationships:
+    1. Identify Superclass-Subclass Relationships:
+      - If a class is another class with more specific meaning or modifiers, it should be classified as a subclass of the other class even if the text does not explicitly mention their relationships.
       - Carefully analyze the text for "is-a" relationships between entities
       - Look for phrases indicating classification or categorization
       - Ensure the hierarchy is logically consistent
       - Document the evidence supporting each relationship
+      - Verify that subclass-superclass relationship remains valid after removing modifiers and context
+      - Avoid misclassification due to other entities appearing in modifiers of parent/child classes
+      - 
 
     2. Determine Disjoint Relationships:
       - Identify mutually exclusive classes that cannot share instances

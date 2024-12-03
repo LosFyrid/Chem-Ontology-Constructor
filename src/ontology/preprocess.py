@@ -1,5 +1,5 @@
 from owlready2 import *
-
+import numpy as np
 
 from config import settings
 
@@ -13,18 +13,18 @@ def create_metadata_properties():
     ontology = settings.ONTOLOGY_CONFIG["ontology"]
     meta = settings.ONTOLOGY_CONFIG["meta"]
     with ontology:
-        # 检查并创建embedding注释属性(值类型为浮点数列表)
-        if meta.embedding in ontology.annotation_properties():
-            print("embedding exists")
-            embedding_prop = meta.embedding
-            if embedding_prop.range != [float]:
-                print("embedding range is not float, changing...")
-                embedding_prop.range = [float]
-        else:
-            print("embedding does not exist, creating...")
-            class embedding(AnnotationProperty):
-                range = [float]
-                namespace = meta
+        # # 检查并创建embedding注释属性(值类型为ndarray) 缺乏合适的数据类型类
+        # if meta.embedding in ontology.annotation_properties():
+        #     print("embedding exists")
+        #     embedding_prop = meta.embedding
+        #     if embedding_prop.range != np.ndarray:
+        #         print("embedding range is not ndarray, changing...")
+        #         embedding_prop.range = np.ndarray
+        # else:
+        #     print("embedding does not exist, creating...")
+        #     class embedding(AnnotationProperty):
+        #         range = [np.ndarray]
+        #         namespace = meta
             
         # 检查并创建location注释属性(值类型为元组列表,每个元组包含两个字符串)  
         if meta.location in ontology.annotation_properties():

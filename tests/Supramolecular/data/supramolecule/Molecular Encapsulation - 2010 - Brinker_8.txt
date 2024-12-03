@@ -1,0 +1,2748 @@
+ phosphorylation  
+ [22] 
+ RNA ligation 
+ [23] 
+ C - metal bonds 
+ porphyrin metallation  
+ [7]  
+ Redox reactions 
+ oxidation and reduction  
+ [10, 24]  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Chemical Reactions with RNA and DNA Enzymes 
+385
+trapped via a chemoselective modiﬁ cation with biotin hydrazide. The function of this 
+ribozyme is analogous to the natural alcohol dehydrogenase enzyme (ADH) and depends 
+also on the same cofactors. 10   Furthermore this ribozyme was coupled with an electron 
+transfer process between NADH and FAD. Thus a NAD +  regeneration system is consti-
+tuted. Interestingly, the reverse reaction, the RNA - catalysed reduction of the aldehyde, is 
+also possible in presence of NADH.  24 This is the ﬁ rst clear - cut demonstration of a typical 
+redox reaction catalysed by RNA. 
+ Further artiﬁ cial ribozymes are known to react with cosubstrates, for example acylating 
+the thiol group of tethered Co - enzyme A with the AMP - activated biotin. These ribozymes 
+also produce the crucial metabolic intermediates acetyl - CoA and butyryl - CoA at substan-
+tial reaction rates. For the selection of this ribozyme, the employed RNA pool had been 
+coupled at its 5 ′  - end to CoA by a previously isolated capping ribozyme.  19 Ribozymes for 
+a number of related reactions were isolated, and the reader is referred to an excellent 
+review discussing in detail the current knowledge on ribozyme catalysis in the context of 
+the RNA world hypothesis. 26 
+ The current hypothesis predicts evolution of the RNA world into the modern DNA −
+ RNA − protein world, thereby DNA taking over the storage of genomic information. One 
+advantage of DNA over RNA as genetic material is the better chemical and enzymatic 
+stability of deoxynucleic acids. That same advantage also comes to bear as a property 
+of deoxyribozymes, of which a wide range has been selected by now. Despite this, there 
+is little evidence that ribozymes from the RNA world might have been replaced by 
+deoxyribozymes. Rather, proteins have taken over the vast majority of catalytic 
+functions. 
+ The intrinsically restricted functionality of nucleic acids as compared to proteins is a 
+serious shortcoming for the expression of catalytic potential. A possible remedy is the 
+introduction of additional, non - natural functional groups  via  the incorporation of modiﬁ ed 
+nucleotides. 29   The tolerance of the employed RNA polymerase towards the modiﬁ cations 
+limits the general use of this technique for the generation of modiﬁ ed ribozymes. Many 
+such ribozymes with modiﬁ ed bases catalyse RNA cleavage or ligation. Further catalytic 
+activities concern metalation of  N  - methylmesoporphyrin, formation of a phosphodiester 
+bond with a deoxynucleotide, and cleavage of phosphodiester  in trans  under simulated 
+physiological conditions. 
+ The incorporation by T7 RNA polymerase and successful use in SELEX of a number 
+of uridine derivatives was reported by Eaton ’ s laboratory, resulting in the development 
+of a cupric ion - dependent modiﬁ ed ribozyme with Diels – Alderase activity. 13 To current 
+knowledge, the Diels – Alder reaction does not play a major role in any biochemical 
+pathway, and the use of modiﬁ ed nucleotides to expand the catalytic repertoire of RNA 
+was certainly not undertaken with the RNA world as principal motivation. Rather, these 
+approaches underscore the potential for application of catalytic RNA in modern ﬁ elds of 
+biotechnology and organic synthesis. The use of proteic enzymes in organic synthesis has 
+become a commonplace strategy where applicable, the limiting factor being the choice 
+of suitable enzymes and their respective substrate speciﬁ cities. From this perspective, 
+several ribozymes display catalytic activity of high interest to the organic chemist (see 
+Table  14.2 ). Importantly, most of these ribozymes have been obtained using a direct 
+selection protocol, where the choice of reactants has dictated the substrate speciﬁ city of 
+the resulting ribozymes. 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+386 
+Molecular Encapsulation
+ Thus, the direct selection method holds the alluring possibility to engineer substrate -
+ speciﬁ c ribozymes which are tailored to the particular reaction an organic chemist might 
+wish to carry out. Since nucleic acids are chiral, one can even anticipate stereoselectivity 
+in the would - be custom - made catalysts. Although this remains a vision yet to be accom-
+plished, several cases of ribozymes with promising properties have been reported, accel-
+erating certain redox reactions, Michael additions and cycloadditions. Already mentioned 
+was the oxidation of a benzyl alcohol to the corresponding aldehyde, and the reverse 
+reaction from Suga`s laboratory. The redox ribozymes still require their substrate to be 
+covalently bound, meaning they act  in cis , thus performing neither true catalysis nor 
+multiple turnover. 10 
+ In the Famulok laboratory, a ribozyme was isolated which promotes a reaction corre-
+sponding to the ﬁ rst step of the formation of dTMP from dUMP in proteic thymidylate 
+synthases. This ribozyme mediates Michael - adduct formation at a Michael - acceptor sub-
+strate. The reaction is accelerated by a factor of nearly 10 5 . The selected ribozyme could 
+be engineered to act in an intermolecular reaction on a substrate tethered to an RNA 
+oligomer. The demonstration of RNA catalysis of this reaction has bearings on the RNA 
+world hypothesis, as well as implications for possible synthetic applications. 18 
+ 14.5  Deoxyribozymes  –  DNA Molecules with Catalytic Properties 
+ While there is still no demonstration that DNA carries out catalytic functions in present -
+ day biology, numerous DNAzymes have been developed by in vitro selection. While the 
+spectrum is not as wide as for ribozymes, it clearly goes far beyond what was imagined 
+a few years back (Table  14.3 ). 30 
+ One class of deoxyribozymes has found routine practical applications in molecular 
+biology. These are deoxyribozymes that cleave target RNAs in a highly predicable, 
+sequence - speciﬁ c manner, thereby acting as designer nucleases. These DNAzymes gener-
+ally utilize as nucleophile the 2 ′  - OH group on the RNA substrate adjacent to the phos-
+phodiester bond to be cleaved and generate cleavage products with a 5 ′ - OH and a 
+2 ′ ,3 ′ - cyclophosphate terminus, respectively, which can be easily processed by other 
+enzymes. 
+ Table 14.3   Representative deoxyribozymes 
+ Reaction type  
+ Reference 
+ RNA cleavage  
+ [32] 
+ DNA cleavage (oxidative)  
+ [33] 
+ RNA ligation  
+ [30] 
+ DNA ligation  
+ [34] 
+ DNA phosphorylation  
+ [35] 
+ DNA adenylation  
+ [36] 
+ DNA depurination  
+ [37] 
+ Thymine dimer photoreversion  
+ [38] 
+ Porphyrin metalation  
+ [39] 
+ Diels - Alder reaction  
+ [40] 
+ Nucleopeptide formation  
+ [41] 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Chemical Reactions with RNA and DNA Enzymes 
+387
+ DNAzymes can also cleave DNA. This is, however, achieved by an oxidative mecha-
+nism involving freely diffusible hydroxyl radicals. The site and sequence speciﬁ city of 
+cleavage is low, limiting the synthetic utility of these enzymes. 
+ Many DNAzymes catalyse RNA ligation reactions to yield linear, branched, and 
+lariat - type reaction products. The ligation of DNA strands as well as the phosphoryla-
+tion of DNA or RNA oligonucleotides was described. Some notable extensions beyond 
+phosphodiester chemistry include a photoreversion reaction, a deglycosylation, porphyrin 
+metalation, nucleopeptide bond formation, and ﬁ nally a Diels – Alder reaction. This latter 
+reaction is essentially the same studied by the J ä schke lab with RNA as a catalyst (as 
+discussed below in more detail), and the information published to - date indicates that 
+the catalytic proﬁ ciency of DNA and RNA enzymes for Diels – Alder reactions is very 
+similar. 
+ Like in the case of RNA, DNAzymes were created with a variety of  ‘ side chains ’ , 
+ranging from imidazol groups to primary amines and imidines. 31 
+ 14.6  Catalysis of  C − C Bond Formation by Diels – Alderase Ribozymes 
+ In this last section, I will discuss structure and mechanism of one artiﬁ cial ribozyme in 
+more detail. This ribozyme, selected in my laboratory, is the only RNA catalyst for small -
+ molecule chemistry with a known spatial structure, and due to extensive studies, it is 
+arguably the best - characterized artiﬁ cial ribozyme known to - date. These data provide for 
+the ﬁ rst time an insight into how a small RNA can accelerate reactions different from 
+phosphodiester chemistry, and what structural prerequisites are required. 
+ 14.6.1  In Vitro Selection 
+ The selection started with an RNA library of  ∼ 2  ×  10 14  sequences of 160 nucleotide 
+length. 11   After tethering the RNA to anthracene via long ﬂ exible PEG chains, this library 
+was allowed to react for with an excess of biotinylated maleimide. Biotinylated RNA was 
+recovered using immobilized strepavidin, and selection pressure was gradually increased 
+by reducing reaction time and maleimide concentration. After 10 iterations of selection 
+and ampliﬁ cation, the enriched library showed  ∼ 6,500 - fold rate acceleration, compared 
+to the starting library. Individual members of this enriched library were sequenced and 
+assayed for activity. 
+ 32 of the 35 catalytically active RNAs were found to share a common motif (Figure 
+ 14.3 ): Central element is an asymmetric internal bubble comprised of the two consensus 
+sequences UGCCA and AAUACU, framed by two helices (helix II and III, light and dark 
+gray, respectively). From helix II, another helix (helix I) continues in which one strand 
+is formed by nucleotides from the conserved 5 ′  - primer binding site. In all sequences 
+containing the motif, the 5 ′  - terminal GGAG is left (formally) unpaired. The ﬁ rst G is the 
+site where the tethered anthracene is attached, suggesting an important structural role of 
+this tetranucleotide. The respective ends of helix I and III are connected by loops L1 and 
+L2 of varying size and sequence. A small 49 - mer RNA containing this motif only (with 
+the ends of helix I and III closed by stabilizing tetranucleotide loops) accelerated the 
+reaction between the tethered anthracene and biotin maleimide about 18,500 - fold, con-
+ﬁ rming the ﬁ ndings of sequence analysis.  11   All characterization studies that follow have 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+388 
+Molecular Encapsulation
+been performed on the minimal 49 - mer derived from the conserved motif, or on variants 
+of this minimal ribozyme. 
+ 14.6.2  Overall Catalytic Properties 
+ The ribozymes were selected to catalyse the Diels – Alder reaction between a covalently 
+tethered anthracene and a biotinylated maleimide, which is a single - turnover format. 
+However, the selected Diels – Alderase ribozymes and the minimal 49 - mer could be 
+shown to accelerate C − C bond formation in a true bimolecular fashion ( in trans reac-
+tion, Figure  14.4 ). 42   Substrate molecules as small as 9 - hydroxymethylanthracene and 
+N - ethylmaleimide are speciﬁ cally recognized by the ribozymes, followed by conversion 
+to the respective Diels – Alder products and product dissociation from the catalyst. The 
+49 - mer ribozyme performs the reaction with fast multiple turnovers, and a k cat of 21  min  − 1 
+was measured. Saturation type kinetics with respect to both reactants (K M,Diene  =  370  µ M, 
+K M,Dienophile    =   8   mM) as well as product inhibition were observed. The  ‘ effective molar-
+ity ’  as a measure for the entropic gain of the ribozyme - catalysed reaction was determined 
+from the ratio k cat /k uncat  to be 6.6   M, giving a lower estimate for the rate acceleration of 
+1,100 - fold. 42 
+ Another characteristic feature of enzymatic catalysis was demonstrated for the Diels –
+ Alderase ribozymes, namely enantioselective bond formation. While the uncatalysed 
+ Figure 14.3   ( a ) RNA - catalyzed Diels – Alder reactions utilizing a tethered diene; ( b ) 
+Secondary structure motif responsible for catalysis and numbering scheme  11 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Chemical Reactions with RNA and DNA Enzymes 
+389
+reaction produces racemic product mixtures, the ribozyme - catalysed conversion shows 
+an enantioselectivity of over 95%  ee . The enantioselectivity was shown to be primarily 
+dependent on the size of the substituent at the anthracene ring system, and the enantiomer 
+of this ribozyme (chemically synthesized from the unnatural L - ribonucleotides) showed 
+the opposite stereoselectivity (Figure  14.4 ). 42 
+ 14.6.3  Overall Structure of the Ribozyme 
+ The three - dimensional structure of the Diels – Alderase ribozyme could be solved both in 
+form of the Apo - enzyme and in complex with the Diels – Alder cycloaddition product.  43 
+The molecule adopts an overall topology that resembles the greek letter lambda   λ (Figure 
+ 14.5 ), featuring a special kind of three - way junction. Stems II and III are co - linearly 
+stacked (best seen in panel b), bridged by a zippered - up asymmetric bubble, while stem 
+I is extended by two base pairs and branches off at the bubble at  ∼ 60  °  angle. In the centre 
+of the molecule there is extra electron density that is not related to nucleotides and can 
+be traced back to the  S ,  S  stereoisomer of the Diels – Alder product, tightly bound into a 
+pocked as a single, well - deﬁ ned conformer (Figure  14.5 c). 
+ The 5 ′  - GGAG tetranucleotide plays a critical role in shaping both the RNA scaffold 
+and the catalytic pocket. G1 and G2 form Watson - Crick pairs with C11 and C10, while 
+A3 and G4 pair with U20 and C19, thereby generating the nested pseudoknot topology 
+within the RNA scaffold (dotted lines in Figure  14.5 A,  14.5 B).  ‘ Pseudoknot ’  denotes a 
+secondary structure resulting from nucleotides in the loop of an RNA stem - loop structure 
+with nucleotides outside of the stem - loop. The 5 ′  - terminal GGAG serves to clamp together 
+the opposite sites of the asymmetric internal bubble, and the direct connection of four 
+helices without interjecting spacers can impose severe strain on the system. Such an 
+OR1
+OR1
+R1O
+R2
+R2
+R2
+O
+O
+N
+N
+O
+O
+O
++
++
+Ribozyme
+ribozyme
+background
+reaction
+90 100
+time in min
+110
+mirror image
+ribozyme
+(b)
+(a)
+O
+N
+ Figure 14.4   Ribozyme catalysis of a Diels – Alder reaction.  a: Chemistry of the reaction.  b: 
+Chiral HPLC analysis of products obtained in reactions either without catalyst (background 
+reaction), with the catalytic 49mer minimum ribozyme or its synthetic mirror - image L - RNA 
+version (R 1  =  (C 2 H 4 O) 6 - H; R 2  =  (CH 2 ) 5 COOCH 3 ) 42 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+390 
+Molecular Encapsulation
+architecture appears to be an efﬁ cient way to achieve a rather dense and stable packing 
+of helical elements. 
+ 14.6.4  Architecture of the Catalytic Pocket 
+ The catalytic pocket is wedge - shaped and bracketed by the Watson - Crick A 3 • U 20 pair 
+(bottom), the U 17 • (G 2 • C 10 ) triple (upper right), and the U 8 • A 18 reverse Hoogsteen pair (left, 
+Figure  14.6 ), and is lined by an intricate network of hydrogen bonds (dotted lines). The 
+(former) maleimide ring is stacked over C 10 , and apparently oriented through a pair of 
+hydrogen bonds involving one of its two carbonyl oxygens, while its side chain runs inside 
+a hydrophobic canyon. One of the aromatic rings of the Diels – Alder product is sand-
+wiched between purines G 2 and A 3 , while the other is wedged between the base and sugar 
+components of A 18  and U 20  (Figure  14.5 ). The catalytic pocket, which is primarily formed 
+by base edges with minimal contribution by the sugar - phosphate backbone, is accessible 
+to the product from the front while a narrow oriﬁ ce is visible in the back. It should be 
+noted that the catalytic pocket contains not only a cavity to accommodate the cycloaddi-
+tion product but also a direction - speciﬁ c surface channel to accommodate the maleimide 
+side chain, which provides a convenient explanation for the observed stereoselectivity. 
+There are no Mg 2+  cations positioned within the immediate vicinity of the pocket that 
+could participate in the catalytic process. 
+ The structure of the free Diels – Alderase ribozyme was found to be virtually identical 
+to the structure of the product complex, providing strong support for the concept of a 
+preformed catalytic pocket, established by chemical probing. 44 The anthracene - RNA 
+conjugate could also be crystallized, however, the anthracene module and its linker were 
+found to be disordered in the crystal. The RNA mapped well with the other crystal 
+structures.  
+ Figure 14.5   Crystal structure of the Diels – Alderase ribozyme.  a ) Ribozyme secondary 
+structure with helices I, II and III, the asymmetric bubble, and the conserved 5 ’ end. 
+Dotted lines represent pseudoknot Watson - Crick type interactions.  b ) Tertiary fold and  c ) 
+three - dimensional topology in the crystal structure of the ribozyme  – product complex. 
+One enantiomer of the Diels – Alder product (sticks with transparent spheres) is bound into 
+the catalytic pocket of the ribozyme  43 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Chemical Reactions with RNA and DNA Enzymes 
+391
+ 14.6.5  Interactions Between the Ribozyme and its Substrates and Products 
+ The crystallographic information about the architecture of the catalytic pocket could be 
+compared with an earlier study that elucidated the interactions of the ribozyme with its 
+substrates and products by chemical substitution analysis using 44 different, systemati-
+cally varied analogues.  45   In that study, RNA - diene interaction was found to be governed 
+by stacking interactions, while hydrogen bonding and metal ion coordination appeared to 
+be less important. The diene has to be an anthracene derivative, and substituents at deﬁ ned 
+positions are permitted, thereby shedding light on the geometry of the binding site (Figure 
+ 14.7 ). The crystal structure shows that there in no space to accommodate substituents at 
+positions 2, 3, 6 and 7 (shown in outline letters), as these would clash into the walls of 
+the catalytic pocket. Some space for small substituents is found at positions 4, 5 and 10, 
+pointing towards the back of the pocket. Large substituents are tolerated at positions 1, 
+8, and 9, pointing out of the pocket. Interestingly, the polyethylene glycol tether used in 
+the selection does not make any contribution to binding and can be removed or shifted 
+to another position (e.g., position 1) without penalty. 
+ The dienophile must be a ﬁ ve - membered maleimidyl ring with an unsubstituted reac-
+tive double bond. Substituents would again collide with the walls of the catalytic pocket. 
+A hydrophobic side chain (alkyl or aryl) makes a major contribution to RNA binding. 
+Branching is not allowed at the alpha position (next to the maleimide ring), due to steric 
+clash with the walls. The ribozyme distinguishes between different enantiomers of chiral 
+substrates and accelerates cycloadditions with both enantio -  and diastereoselectivity. 
+ Figure 14.6   Surface representation of the catalytic pocket with stick representations 
+of the nucleotides. Dotted lines indicate conﬁ rmed interactions.  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+392 
+Molecular Encapsulation
+The stereochemistry of the reaction is controlled by RNA - diene interactions. The 
+RNA interacts strongly and stereoselectively with the cycloaddition products, requiring 
+several structural features to be present. Strong and stereoselective product inhibition is 
+observed. 45 
+ The crystal structure shows three H - bonds between the reaction product and RNA. One 
+that involves an ether oxygen of the polyethylene glycol tether is irrelevant for catalysis 
+as the tether can be removed entirely without effect on catalysis. The other two involve 
+the maleimide ’ s carbonyl oxygen and could be mechanistically meaningful. The impor-
+tance of these bonds is, however, not yet completely established, and atomic mutagenesis 
+is currently used to probe these interactions.  
+ 14.6.6  Conformational Dynamics and the Roles of Metal Ions 
+ The investigation of this ribozyme ’ s kinetics, reaction mechanism and folding by con-
+ventional chemical and biochemical methods revealed quite early complex relationships 
+and suggested the existence of various conformational forms of this RNA molecule. 
+Single - molecule ﬂ uorescence resonance energy transfer (FRET) experiments were carried 
+out using dye - labeled ribozyme molecules.  46   The results show that the DAse ribozyme 
+possesses three structurally different states that are distinguishable by their FRET efﬁ -
+ciency distributions, the unfolded (U), intermediate (I) and folded (F) states. Mg 2+ titration 
+allowed to measure changes in their equilibrium populations and to observe the collapse 
+of the intermediate state. Both effects were described with a thermodynamic model, 
+revealing how the F state is stabilized by successive binding of Mg 2+  ions. Furthermore, 
+continuous ﬂ uctuations were observed between the I and F states on the 100   ms 
+timescale. 
+ To further elucidate the interactions of the Diels – Alderase ribozyme with divalent 
+metal ions in solution, electron paramagnetic resonance (EPR) spectroscopy was applied 
+using paramagnetic manganese instead of magnesium ions.  47   Manganese ion titrations 
+revealed ﬁ ve high - afﬁ nity Mn 2+  binding sites with an upper K d of 0.6  µ M. In order to 
+characterize each binding site individually, EPR - silent Cd 2+  ions were used to saturate 
+the other binding sites. This cadmium - induced EPR silencing showed that the Mn 2+ 
+binding sites possess different afﬁ nities. In addition, these binding sites could be assigned 
+to three different types, including innersphere, outersphere, and a Mn 2+ dimer. 
+CH3
+CH3
+CH3
+R
+R
+S
+O
+N
+O
+∆
+OR
+R = Aryl
+R = Alkyl
+R = (CH2)4-COOH
+R = (CH2)2-COOCH3
+R = (CH2)2-COOH
+R = H
+SR
+H3C
+H3C
+CH2OH
+CH2R
+ Figure 14.7   Summarized structural requirements of dienes and dienophiles for 
+acceptance by the Diels – Alderase ribozyme. Substitutions shown in black are tolerated, 
+while those in outline letters are deleterious.   ∆ : removal of whole substituent.  45 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Chemical Reactions with RNA and DNA Enzymes 
+393
+ 14.6.7  Mechanistic Considerations 
+ The X - ray crystal structure of the ribozyme - product complex,  43   coupled with chemical  45 
+and biochemical  44   experiments, suggests that the ribozyme should bind the diene and 
+dienophile in a precisely deﬁ ned steric orientation within a wedge - shaped catalytic pocket, 
+thereby facilitating the reaction by reducing translational and rotational degrees of 
+freedom. The anthracene substrate could be bound by stacking interactions between G2 
+and the A3 - U20 pair. The reaction requires that the maleimide substrate be stacked on 
+top of the anthracene, and parallel to it, at a distance of about 3.5  Å . In this position, 
+maleimide can form hydrogen bonds between its carbonyl - oxygen and the exocyclic 
+amino group of G9 and the 2 ′  - OH of U17. The N - alkyl side chain can be placed within 
+the hydrophobic canyon (Figure  14.8 ), which would allow the approach of the maleimide 
+to the bound anthracene only from one direction, thereby providing the stereoselectivity 
+of the reaction. In the transition state of the reaction, two new single - bonds are partly 
+formed (bond lengths  ∼ 2.2  Å ), and the anthracene ring system is bent out of planarity to 
+(a)
+(b)
+(c)
+(d)
+ Figure 14.8   Proposed model for the catalytic mechanism of the Diels – Alderase ribozyme. 
+a. Empty catalytic pocket. b. Michaelis complex with both substrates bound. c. Transition 
+state inside the catalytic pocket, d. Ribozyme - bound product. Panels a and d are derived 
+directly from the crystallographic data, panels b and c were obtained by manually docking 
+the two substrates and the transition state, respectively, into the pocket.  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+394 
+Molecular Encapsulation
+yield an angle of about 154    ° (Figure  14.8 ), therefore further reducing the minimal unoc-
+cupied space underneath the bridgehead carbons seen in the structure of the ribozyme -
+ product complex. Remarkably, the transition state has near - perfect shape complementarity 
+with the catalytic pocket, a feature of prime importance in antibody catalysis of the 
+Diels – Alder reactions. 48,49   In addition to steric factors, both stacking and hydrogen 
+bonding may contribute the energetics of the reaction. Stacking of the anthracene with 
+nucleotides A3 and U20 could accelerate the reaction by increasing the diene ’ s electron 
+density, while hydrogen bonding of the maleimide would make it more electron - deﬁ cient, 
+thereby increasing catalytic reactivity. Thus, it appears that ribozyme - based catalysis of 
+Diels – Alder reactions reﬂ ects a combination of proximity, shape complementarity, and 
+energetic contributions to the catalytic process. 
+ The catalytic parameters of the Diels – Alderase ribozymes were analyzed by Houk 
+and coworkers and were found to compare favorably with those of catalytic Diels –
+ Alderase antibodies, cyclodextrins, and synthetic capsules.  50   From the measured param-
+eters, these authors concluded that most of the rate acceleration arises from the conversion 
+of a second - order reaction of diene and dienophile into a ﬁ rst - order reaction of the 
+termolecular complex ribozyme, diene, and dienophile, and calculated an extra transi-
+tion state stabilization (relative to the ground state) of only  − 1.1  kcal  mol  − 1 , which is 
+an order of magnitude lower than typical values for natural (protein) enzymes. 
+Computational analysis of the ribozyme - catalysed Diels – Alder reaction by Zhang and 
+Bruice using QM/MM methods conﬁ rmed the concerted nature of the cycloaddition 
+and found that the proﬁ ciency of the RNA - catalysed reaction originates from the active 
+site holding the two reactants in reactive conformations, in which the reacting atoms 
+are brought together in van der Waals distances and reactants approach each other at 
+an appropriate angle.  51 
+ 14.7  Conclusion 
+ Despite their limited set of functional groups, ribozymes can accelerate complex organic 
+transformations like Diels – Alder reactions between small molecules in a way similar to 
+protein enzymes or supramolecular catalysts featuring multiple turnover, substrate 
+speciﬁ city and stereoselectivity. The three - dimensional structure shows striking similari-
+ties with proteins evolved for similar reactions, and the catalytic strategies used appear 
+to be similar as well.  
+ References 
+  1.  J. C.  Cochrane ,  S. A.  Strobel ,  Catalytic strategies of self - cleaving ribozymes ,  Acc. Chem. Res. , 
+ 2008 ,  41 ,  1027 – 1035 . 
+  2.  D. M. J.  Lilley ,  F.  Eckstein (Ed.)  Ribozymes and RNA catalysis ,  RSC Publishing ,  Cambridge , 
+ 2008 . 
+  3.  W.  Gilbert ,  The RNA world ,  Nature ,  1986 ,  319 ,  618 . 
+     4.       C. R.   Woese  ,  The Genetic Code: The Molecular Basis for Genetic Expression ,  Harper  & Row , 
+ New York ,  1967 . 
+  5.  S.  Klussmann (Ed.)  The Aptamer Handbook  –  Functional Oligonucleotides and Their 
+Applications ,  Wiley VCH ,  Weinheim ,  2006 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Chemical Reactions with RNA and DNA Enzymes 
+395
+  6.  J. R.  Prudent ,  T.  Uno ,  P. G.  Schultz ,  Expanding the scope of RNA catalysis ,  Science ,  1994 , 
+ 264 ,  1924 – 1927 . 
+  7.  M. M.  Conn ,  J. R.  Prudent ,  P. G.  Schultz ,  Porphyrin metalation catalysed by a small RNA 
+molecule ,  J. Am. Chem. Soc. ,  1996 ,  118 ,  7012 – 7013 . 
+  8.  S. - M.  Chun ,  S.  Jeong ,  J. - M.  Kim ,  B. - O.  Chong ,  Y. - K.  Park ,  H.  Park ,  J.  Yu ,  Cholesterol esterase 
+activity by in vitro selection of RNA against a phospate transition - state analogue ,  J. Am. Chem. 
+Soc. ,  1999 ,  121 ,  10844 – 10845 . 
+  9.  K. N.  Morris ,  T. M.  Tarasow ,  C. M.  Julin ,  S. L.  Simons ,  D.  Hilvert ,  L.  Gold ,  Enrichment for 
+RNA molecules that bind a Diels – Alder transition state analog ,  Proc. Natl. Acad. Sci. USA , 
+ 1994 ,  91 ,  13028 – 13032 . 
+ 10.  S.  Tsukiji ,  S. B.  Pattnaik ,  H.  Suga ,  An alcohol dehydrogenase ribozyme ,  Nat. Struct. Biol. , 
+ 2003 ,  10 ,  713 – 717 . 
+ 11.  B.  Seelig ,  A.  J ä schke  ,  A small catalytic RNA motif with Diels – Alderase activity ,  Chem. Biol. , 
+ 1999 ,  6 ,  167 – 176 . 
+ 12.  C.  Wilson ,  J. W.  Szostak ,  In vitro evolution of a self - alkylating ribozyme ,  Nature ,  1995 ,  374 , 
+ 777 – 782 . 
+ 13.  T. M.  Tarasow ,  S. L.  Tarasow ,  B. E.  Eaton ,  RNA - catalysed carbon - carbon bond formation , 
+ Nature ,  1997 ,  389 ,  54 – 57 . 
+ 14.  S.  Fusz ,  A.  Eisenfuhr ,  S. G.  Srivatsan ,  A.  Heckel ,  M.  Famulok ,  A ribozyme for the aldol reac-
+tion ,  Chem. Biol. ,  2005 ,  12 ,  941 – 950 . 
+ 15.  Y.  Ryu ,  K. J.  Kim ,  C. A.  Roessner ,  A. I.  Scott ,  Decarboxylative Claisen condensation catalysed 
+by in vitro selected ribozymes ,  Chem. Commun. ,  2006 ,  1439 – 1441 . 
+ 16.  T. W.  Wiegand ,  R. C.  Janssen ,  B. E.  Eaton ,  Selection of RNA amide synthases ,  Chem. Biol. , 
+ 1997 ,  4 ,  675 – 683 . 
+ 17.  P. J.  Unrau ,  D. P.  Bartel ,  RNA - catalysed nucleotide synthesis ,  Nature ,  1998 ,  395 ,  260 – 
+263 . 
+ 18.  G.  Sengle ,  A.  Eisenfuhr ,  P. S.  Arora ,  J. S.  Nowick ,  M.  Famulok ,  Novel RNA catalysts for the 
+Michael reaction ,  Chem. Biol. ,  2001 ,  8 ,  459 – 473 . 
+ 19.  V. R.  Jadhav ,  M.  Yarus ,  Acyl - CoAs from coenzyme ribozymes ,  Biochemistry ,  2002 ,  41 , 
+ 723 – 729 . 
+ 20.  M.  Wecker ,  D.  Smith ,  L.  Gold ,  In vitro selection of a novel catalytic RNA: characterization of 
+a sulfur alkylation reaction and interaction with a small peptide ,  RNA ,  1996 ,  2 ,  982 – 994 . 
+ 21.  M.  Illangasekare ,  G.  Sanchez ,  T.  Nickles ,  M.  Yarus ,  Aminoacyl - RNA synthesis catalysed by 
+an RNA ,  Science ,  1995 ,  267 ,  643 – 647 . 
+ 22.  J. R.  Lorsch ,  J. W.  Szostak ,  In vitro evolution of new ribozymes with polynucleotide kinase 
+activity ,  Nature ,  1994 ,  371 ,  31 – 36 . 
+ 23.  E. H.  Ekland ,  J. W.  Szostak ,  D. P.  Bartel ,  Structurally complex and highly active RNA ligases 
+derived from random RNA sequences ,  Science ,  1995 ,  269 ,  364 – 370 . 
+ 24.  S.  Tsukiji ,  S. B.  Pattnaik ,  H.  Suga ,  Reduction of an aldehyde by a NADH/Zn 2+  - dependent 
+redox active ribozyme ,  J. Am. Chem. Soc. ,  2004 ,  126 ,  5044 – 5045 . 
+ 25.  C. R.  Woese ,  On the evolution of cells ,  Proc. Natl. Acad. Sci. USA ,  2002 ,  99 ,  8742 – 8747 . 
+ 26.  X.  Chen ,  N.  Li ,  A. D.  Ellington ,  Ribozyme catalysis of metabolism in the RNA world ,  Chem. 
+Biodivers. ,  2007 ,  4 ,  633 – 655 . 
+ 27.  B.  Zhang ,  T. R.  Cech ,  Peptide bond formation by in vitro selected ribozymes ,  Nature ,  1997 , 
+ 390 ,  96 – 100 . 
+ 28.  L.  Sun ,  Z.  Cui ,  R. L.  Gottlieb ,  B.  Zhang ,  A selected ribozyme catalyzing diverse dipeptide 
+synthesis ,  Chem. Biol. ,  2002 ,  9 ,  619 – 628 . 
+ 29.  S.  Verma ,  S.  Jager ,  O.  Thum ,  M.  Famulok ,  Functional tuning of nucleic acids by chemical 
+modiﬁ cations: tailored oligonucleotides as drugs, devices, and diagnostics ,  Chem. Rec. ,  2003 , 
+ 3 ,  51 – 60 . 
+ 30.  S. K.  Silverman ,  Catalytic DNA (deoxyribozymes) for synthetic applications - current abilities 
+and future prospects ,  Chem. Commun. ,  2008 ,  3467 – 3485 . 
+ 31.  M.  Hollenstein ,  C. J.  Hipolito ,  C. H.  Lam ,  D. M.  Perrin ,  A self - cleaving DNA enzyme modiﬁ ed 
+with amines, guanidines and imidazoles operates independently of divalent metal cations (M 2+ ) , 
+ Nucleic Acids Res. ,  2009 ,  37 ,  1638 – 1649 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+396 
+Molecular Encapsulation
+ 32.  R. R.  Breaker ,  G. F.  Joyce ,  A DNA enzyme that cleaves RNA ,  Chem. Biol. ,  1994 ,  1 , 
+ 223 – 229 . 
+ 33.  N.  Carmi ,  L. A.  Shultz ,  R. R.  Breaker ,  In vitro selection of selfcleaving DNAs ,  Chem. Biol. , 
+ 1996 ,  3 ,  1039 – 1046 . 
+ 34.  B.  Cuenoud ,  J. W.  Szostak ,  A DNA metalloenzyme with DNA ligase activity ,  Nature ,  1995 , 
+ 375 ,  611 – 614 . 
+ 35.  Y.  Li ,  R. R.  Breaker ,  Phosphorylating DNA with DNA ,  Proc. Natl. Acad. Sci. USA ,  1999 ,  96 , 
+ 2746 – 2751 . 
+ 36.  Y.  Li ,  Y.  Liu ,  R. R.  Breaker ,  Capping DNA with DNA ,  Biochemistry ,  2000 ,  39 ,  3106 – 3114 . 
+ 37.  T. L.  Sheppard ,  P.  Ordoukhanian ,  G. F.  Joyce ,  A DNA enzyme with N - glycosylase activity , 
+ Proc. Natl. Acad. Sci. USA ,  2000 ,  97 ,  7802 – 7807 . 
+ 38.  D. J.  Chinnapen ,  D.  Sen ,  A deoxyribozyme that harnesses light to repair thymine dimers in 
+DNA ,  Proc. Natl. Acad. Sci. USA ,  2004 ,  101 ,  65 – 69 . 
+ 39.  Y.  Li ,  D.  Sen ,  A catalytic DNA for porphyrin metallation ,  Nat. Struct. Biol. ,  1996 ,  3 , 
+ 743 – 747 . 
+ 40.  M.  Chandra ,  S. K.  Silverman ,  DNA and RNA can be equally efﬁ cient catalysts for carbon -
+ carbon bond formation ,  J. Am. Chem. Soc. ,  2008 ,  130 ,  2936 – 2937 . 
+ 41.  S. M.  Knudsen ,  A. D.  Ellington .  Aptazymes: Allosteric Ribozymes and Deoxyribozymes as 
+Biosensors , in  The Aptamer Handbook ,  S.  Klussmann (Ed.),  Wiley - VCH ,  Weinheim ,  290 – 310 , 
+ 2006 . 
+ 42.  B.  Seelig ,  S.  Keiper ,  F.  Stuhlmann ,  A.  J ä schke  ,  Enantioselective ribozyme catalysis of a bimo-
+lecular cycloaddition reaction ,  Angew. Chem. Int. Ed. Engl. ,  2000 ,  39 ,  4576 – 4579 . 
+ 43.  A.  Serganov ,  S.  Keiper ,  L.  Malinina ,  V.  Tereshko ,  E.  Skripkin ,  C.  Hobartner ,  A.  Polonskaia , 
+ A. T.  Phan ,  R.  Wombacher ,  R.  Micura ,  Z.  Dauter ,  A.  J ä schke ,  D. J.  Patel ,  Structural basis for 
+Diels – Alder ribozyme - catalysed carbon - carbon bond formation ,  Nat. Struct. Mol. Biol. ,  2005 , 
+ 12 ,  218 – 224 . 
+ 44.  S.  Keiper ,  D.  Bebenroth ,  B.  Seelig ,  E.  Westhof ,  A.  J ä schke ,  Architecture of a Diels – Alderase 
+ribozyme with a preformed catalytic pocket ,  Chem. Biol. ,  2004 ,  11 ,  1217 – 1227 . 
+ 45.  F.  Stuhlmann ,  A.  J ä schke  ,  Characterization of an RNA active site: interactions between a 
+Diels – Alderase ribozyme and its substrates and products ,  J. Am. Chem. Soc. ,  2002 ,  124 , 
+ 3238 – 3244 . 
+ 46.  A. Y.  Kobitski ,  A.  Nierth ,  M.  Helm ,  A.  J ä schke ,  G. U.  Nienhaus ,  Mg 2+ - dependent folding of 
+a Diels – Alderase ribozyme probed by single - molecule FRET analysis ,  Nucleic Acids Res. , 
+ 2007 ,  35 ,  2047 – 2059 . 
+ 47.  N.  Kisseleva ,  S.  Kraut ,  A.  J ä schke ,  O.  Schiemann ,  Characterizing multiple metal ion binding 
+sites within a ribozyme by cadmium - induced EPR silencing ,  HFSP J. ,  2007 ,  1 ,  127 – 136 . 
+ 48.  J.  Chen ,  Q.  Deng ,  R.  Wang ,  K.  Houk ,  D.  Hilvert ,  Shape complementarity, binding - site dynam-
+ics, and transition state stabilization: a theoretical study of Diels – Alder catalysis by antibody 
+1E9 ,  Chembiochem ,  2000 ,  1 ,  255 – 261 . 
+ 49.  J.  Xu ,  Q.  Deng ,  J.  Chen ,  K. N.  Houk ,  J.  Bartek ,  D.  Hilvert ,  I. A.  Wilson ,  Evolution of shape 
+complementarity and catalytic efﬁ ciency from a primordial antibody template ,  Science ,  1999 , 
+ 286 ,  2345 – 2348 . 
+ 50.  S. P.  Kim ,  A. G.  Leach ,  K. N.  Houk ,  The origins of noncovalent catalysis of intermolecular 
+Diels – Alder reactions by cyclodextrins, self - assembling capsules, antibodies, and RNAses , 
+ J. Org. Chem. ,  2002 ,  67 ,  4250 – 4260 . 
+ 51.  X.  Zhang ,  T. C.  Bruice ,  Diels – Alder ribozyme catalysis: a computational approach ,  J. Am. 
+Chem. Soc. ,  2007 ,  129 ,  1001 – 1007 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+ 15 
+Reactions in Supramolecular Systems  
+ Lucia  Zakharova ,  Alla  Mirgorodskaya ,  Elena  Zhiltsova ,  Ludmila  Kudryavtseva , 
+and  Alexander  Konovalov 
+ A.E. Arbuzov Institute of Organic and Physical Chemistry of the Russian Academy of Science, 
+ul. Akad. Arbuzov 8, 420088 Kazan (Russia) 
+ 15.1  Introduction 
+ The catalysis of reactions in organized media is of current interest.  1 – 5 The compartmen-
+talization of reagents within nanosized aggregates results in a sharp increase in their local 
+concentrations (the concentration factor) and affects their microenvironment (the micro-
+environment factor), thereby inﬂ uencing their reactivity. Since 1980 we have been study-
+ing nucleophilic substitution at phosphorus and carbon in organized solutions based on 
+surfactants. The transfer of phosphoryl and carbonyl groups is one of the most fundamen-
+tal chemical and biochemical reactions.  6   Phosphorus acid esters are compounds with 
+interesting biological and pharmacological properties and are widely used as pesticides, 
+drugs, and nerve gases.  7   Their accumulation and their impact on the environment are of 
+paramount importance, therefore chemical decontamination of toxic compounds is of 
+increasing interest. 
+ At ﬁ rst, the catalytic effect of the single micellar solutions based on surfactants of dif-
+ferent structure was studied. The data covering this period are reviewed in refs.  8,9 The 
+regularities when generalized made it possible to proceed with the more complicated 
+systems, in particular, the binary surfactant solutions, the polymer - surfactant and 
+polymer - cyclophane (calixarene, pyrimidinophane, and etc.) systems. For these systems, 
+the terms supramolecular systems (ensembles, compositions, complexes) are further used, 
+Molecular Encapsulation: Organic Reactions in Constrained Systems        Edited by Udo H. Brinker and Jean-Luc Mieusset
+© 2010 John Wiley & Sons, Inc.  ISBN: 978-0-470-99807-6
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+398 
+Molecular Encapsulation
+since they can cover ensembles of different morphology formed through diverse noncova-
+lent interactions of both intra -  and intermolecular nature, as well as through inclusion 
+interactions involving the cyclophane cavity. In these systems structural transitions 
+induced by changes in solution conditions (concentration, temperature, ionic force, pH, 
+and etc.) are observed. Along with the above factors of concentration and microenviron-
+ment these structural transitions can affect the reaction rate. Therefore the investigation 
+of the catalytic effect of the polycomponent systems requires knowledge of the structural 
+behaviour of the systems, in particular, packing modes, morphology of aggregates, surface 
+potential, etc. 
+ 15.2  The Single Micellar Systems: Factors of Concentration and 
+Micellar Microenvironment 
+ The physico - chemical fundamentals of micellar catalysis and quantitative evaluation of 
+basic factors responsible for rate alteration in organized media were developed by Berezin 
+et al.  1,10   Within the frame of pseudo phase approach, the micellar solution is assumed to 
+consist of micellar and bulk pseudo phases, with reagents partitioned between them. In 
+general, reaction occurs in both pseudo phases simultaneously. For the case of bimolecu-
+lar reactions the observed rate constant can be expressed as follows:
+ 
+ ′
+=
++
++
+(
+)
++
+(
+)
+k
+k
+k
+V K K
+C
+K C
+K
+C
+obs
+m
+S
+Nu
+S
+Nu
+2 0
+2
+1
+1
+,
+,
+ 
+ (15.1) 
+where   ′
+kobs is the second order rate constant obtained by the division of the observed 
+pseudo ﬁ rst rate constant (k obs ) by the total nucleophile concentration; k 2,0  is the second 
+order rate constant of the reaction in the water; k m (=  k 2,m /V) represents the reactivity 
+in the micellar phase where the reaction occurs; K s  and K Nu  are binding constants of 
+substrate and nucleophile; C is the total surfactant concentration minus the critical 
+micelle concentration (cmc) of the surfactant mixture. The approach developed by 
+Berezin makes it possible to differentiate the factors responsible for the micellar effects, 
+i.e. the micellar microenvironment factor (F m ) and the factor of the concentrating of 
+reagents in micelles (F c ). 
+ Different modiﬁ cations of the pseudo phase model and their applications for quantita-
+tive treatment of kinetics of bimolecular reactions are reviewed by Bunton and Romsted.  2,3 
+A wide variety of ion - molecular reactions has been covered in these comprehensive 
+reviews, and a generalization was drawn on the prevalent contribution of the concentrating 
+of reagents to the rate effect and negative inﬂ uence of micellar microenvironment on 
+reactivity. Our systematic investigations of the kinetics of basic hydrolyses of phosphorus 
+acid esters in aqueous and organic solutions of ionic surfactants of different structure 
+showed that the above tendency of a decrease in the reactivity on the transfer of the reac-
+tion from the bulk pseudo phase to the micellar interior is only typical for the systems 
+with effective binding of reagents. In fact, this is observed for the reactions involving 
+hydrophobic compounds and occurring in aqueous solutions of surfactants with effective 
+micellization capacity. In this case, the k obs – [surfactant] kinetic dependences demonstrate 
+a marked maximum. Most kinetic data reviewed in ref.  2,3   are related to these systems. 
+Indeed, investigations of the basic hydrolyses of phosphonates  1 – 11 (Scheme  15.1 ) in 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reactions in Supramolecular Systems 
+399
+aqueous solutions of cationic surfactants, in particular cetyltrimethylammonium bromide 
+(CTAB) 11   and cetylpyridinium bromide (CPB)  12   have revealed that the factor of concen-
+tration reached two orders of magnitude, while the transfer of the reaction to the micellar 
+microenvironment resulted in a marked decrease in the reactivity of the phosphonates 
+(Table  15.1 ). 
+ The transfer from CTAB and CPB (cmc 0.00085   M) to dodecylpyridinium bromide 
+(DDPB; cmc 0.018   M) results in a marked increase in the F m  value for substrate  1 , fol-
+lowed by changes from the extremum type of kinetic dependences to S - shaped curves.  11 
+While in the case of the more hydrophobic substrate  3  in the DDPB micellar solution, 
+the maximum type kinetic curve and the negative effect of the micellar microenvironment 
+(F m  <  1) are preserved (Table  15.1 ). 
+ The investigation of the kinetics of the solvolysis of  p - nitrophenyl bis(chloromethyl)
+phosphinate  12  in the direct micelles of sodium dodecylsulfate (SDS) in ethylene glycol 
+have demonstrated that the ratio of the factors F c  and F m  in this system differ from that 
+in aqueous micelles, namely, the positive predominant contribution of the factor of micro-
+environment to the micellar rate effect is observed (Table  15.1 ).  13   In the solution of 
+ethylene glycol the micellization is much less effective as compared to the aqueous solu-
+tion (cmc of SDS in ethylene glycol is equal to 0.18   M, while in water it is 0.0085   M) 
+and the micelles formed have low aggregation numbers, a loose structure and a weak 
+solubilization capacity (the binding constants of substrates are lower by two orders of 
+magnitude as compared to those in aqueous micellar solutions). 13 
+ The tendency of decreasing the contribution of the concentration factor and increasing 
+the contribution of the factor of the micellar microenvironment is also observed for the 
+reverse nonaqueous micellar solutions. For the case of aminolysis of phosphonates  1 – 4 
+in the polyethylene glycol - 600 - monolaurate (PM) reverse micelles, both factors are 
+shown to contribute positively to the micellar rate effect, with F m  higher than F c (Table 
+ 15.1 ). 14,15   In nonaqueous systems micellization is mainly contributed by dispersion inter-
+actions and results in the formation of small aggregates with a low solubilization capacity 
+towards the substrates. 16 
+ In work, 11   the mechanism of the alteration of the reactivity in direct micelles is inves-
+tigated. The kinetics of hydrolyses of phosphonates  1  and  3  in the DDPB micellar solution 
+is measured at different temperatures and the activation parameters of the reaction, the 
+enthalpy of activation and the entropy of activation in water in the absence of a surfactant 
+( ∆H0
+≠,   ∆S0
+≠) and in the micellar pseudo phase (  ∆H0
+≠,   ∆S0
+≠) are estimated. The transfer of 
+the ion - molecular reactions from water to the less polar pseudo phase is shown to result 
+in some decrease in the enthalpy of activation (from 46.2 to 39. 3   kJ   mol  − 1  for  1  and from 
+40.8 to 30.0  kJ  mol  − 1  for  3 ). This is in line with the Ingold – Hughes principle postulating 
+H2O
++
+_
+_
+_
+O
+P
+O
+ClCH2
+RO
+X
+O
+2 OH
++
+X
+O
+P
+O
+ClCH2
+RO
++
+X=NO2: R=C2H5 (1); n-C4H9 (2); n-C6H13 (3); n-C8H17 (4)
+R=C2H5: X=Br (5); H (6); C2H5 (7); n-C4H9 (8); n-C8H17 (9); i-C12H25 (10)
+X=H, R=n-C6H13 (11);
+ Scheme 15.1   The schematic representation of hydrolyses of phosphonic acid esters  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+400 
+Molecular Encapsulation
+ Table 15.1    The results of quantitative treatment of kinetic data for nucleophilic substitution in phosphorus acid esters in terms of equation 
+ 15.1   a     
+ Substrate 
+ System parameters  
+ k 2,m /M  − 1   s − 1  
+ K S /M  − 1   
+ K Nu /M  − 1   
+ (k obs /k 0 ) g  max  
+ F c  f   
+ F m f   
+ Ref. 
+ CPB/water 
+   
+1   
+ 0.0005M NaOH  
+ 0.78 
+ 2020 
+ 80 
+ 35 
+ 187  
+ 0.19  
+ 12 
+   
+2   
+ 0.0005M NaOH 
+ 1.07 
+ 3000 
+ 115 
+ 75 
+ 265  
+ 0.30  
+ 12 
+   
+3   
+ 0.0005M NaOH 
+ 0.62 
+ 4720 
+ 307 
+ 105 
+ 650  
+ 0.19  
+ 12 
+   
+4   
+ 0.0005M NaOH 
+ 0.38 
+ 7600 
+ 337 
+ 95 
+ 766  
+ 0.14  
+ 12 
+ CTAB/water 
+   
+1   
+ 0.0005M NaOH 
+ 0.10 
+ 1190 
+ 145 
+ 7.0 
+ 266  
+ 0.026  
+ 11 
+   
+1   
+ 0.001M NaOH  
+ 0.055 
+ 1780 
+ 240 
+ 7.5 
+ 432  
+ 0.014  
+ 11 
+   
+5   
+ 0.001M NaOH  
+ 0.016 
+ 945 
+ 135 
+ 5.5 
+ 240  
+ 0.028  
+ 11 
+   
+6   
+ 0.001M NaOH  
+ 0.010 
+ 400 
+ 90 
+ 5.0 
+ 144  
+ 0.042  
+ 11 
+   
+7   
+ 0.001M NaOH  
+ 0.0098 
+ 800 
+ 75 
+ 7.0 
+ 146  
+ 0.053  
+ 11 
+   
+8   
+ 0.001M NaOH  
+ 0.0082 
+ 1680 
+ 87 
+ 9.0 
+ 190  
+ 0.051  
+ 11 
+   
+9   
+ 0.001M NaOH  
+ 0.0043 
+ 2350 
+ 350 
+ 22 
+ 604  
+ 0.037  
+ 11 
+   
+10   
+ 0.001M NaOH  
+ 0.0031 
+ 1490 
+ 470 
+ 24 
+ 640  
+ 0.039  
+ 11 
+   
+11   
+ 0.001M NaOH  
+ 0.014 
+ 2800 
+ 365 
+ 74.2 
+ 657  
+ 0.120  
+ 11 
+ DDPB/water 
+   
+1   
+ 0.001M NaOH  
+ 4.0 
+ 219 
+ 4.2 
+ 9.5 
+ 10.8  
+ 1.0  
+ 11 
+   
+3   
+ 0.001M NaOH  
+ 0.90 
+ 527 
+ 24 
+ 20 
+ 55  
+ 0.36  
+ 11 
+ SDS/ethylene glycol 
+   
+12 b   
+ pH 6.5  
+ 3  ×  10 − 5   
+ 6.70 
+ 2.3 
+ 31.5 
+ 3.1  
+ 10.4  
+ 13 
+ PM/nucleophile/toluene 
+   
+1 d   
+ 0.05M hexylamine 
+ 0.029 
+ 5.2 
+ 2.3 
+ 11.5 
+ 2.7  
+ 4.2  
+ 14 
+   
+2 d   
+ 0.05M hexylamine 
+ 0.020 
+ 6.7 
+ 2.4 
+ 11.6 
+ 3.1  
+ 3.7  
+ 14 
+   
+3 d   
+ 0.05M hexylamine 
+ 0.033 
+ 8.2 
+ 1.2 
+ 13.3 
+ 2.1  
+ 6.7  
+ 14 
+   
+4 d   
+ 0.05M hexylamine 
+ 0.025 
+ 21.0 
+ 1.2 
+ 17.6 
+ 2.5  
+ 6.3  
+ 14 
+   
+12   
+ 0.00725   M PEI 5   
+ 0.16  
+ 97 
+ 19 
+ 1.8 
+ 31  
+ 0.05  
+ 61 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reactions in Supramolecular Systems 
+401
+ Substrate 
+ System parameters  
+ k 2,m /M  − 1   s − 1  
+ K S /M  − 1   
+ K Nu /M  − 1   
+ (k obs /k 0 ) g  max  
+ F c  f   
+ F m f   
+ Ref. 
+ CTAB/C 14 E 9 /0.001M NaOH 
+   
+1   
+    
+α   
+1  =  1.0 
+ 0.62 
+ 593 
+ 69 
+ 20.3 
+ 128  
+ 0.16  
+ 34 
+   
+1   
+    
+α   
+1  =  0.83 
+ 2.90 
+ 398 
+ 15.8 
+ 32.4 
+ 36.7  
+ 0.76  
+ 34 
+   
+1   
+    
+α   
+1  =  0.67 
+ 2.10 
+ 494 
+ 21.9 
+ 30.0 
+ 49.8  
+ 0.54  
+ 34 
+   
+1   
+    
+α   
+1  =  0.60 
+ 0.75 
+ 600 
+ 50 
+ 19.0 
+ 100  
+ 0.19  
+ 34 
+   
+1   
+    
+α   
+1  =  0.50 
+ 0.20 
+ 1280 
+ 149 
+ 14.4 
+ 276  
+ 0.052  
+ 34 
+   
+1   
+    
+α   
+1  =  0.33 
+ 0.07 
+ 1840 
+ 265 
+ 8.2 
+ 464  
+ 0.018  
+ 34 
+ SDS/PEI/water 
+   
+1   
+ 0.1M PEI - 30  
+ 0.0005 
+ 3630 
+ 73 
+ 25 
+  187  
+ 0.130  
+ 44 
+   
+1  b   
+ 0.1M PEI - 30 
+ 0.0014 
+ 1800 
+ 56 
+ 17 
+ 134  
+ 0.130  
+ 44 
+   
+1  e   
+ 0.1M PEI - 30 
+ 0.0023 
+ 935 
+ 83 
+ 21 
+  163  
+ 0.130  
+ 44 
+   
+1  f   
+ 0.1M PEI - 30  
+ 0.0047 
+ 254 
+ 82 
+ 14 
+  111  
+ 0.125  
+ 44 
+   
+3  e   
+ 0.1M PEI - 30 
+ 0.0006 
+ 629 
+ 183 
+ 13 
+  257  
+ 0.051  
+ 44 
+   
+5  e   
+ 0.1M PEI - 30 
+ 0.0003 
+ 424 
+ 117 
+ 8 
+  168  
+ 0.049  
+ 44 
+ CTAB/PEI/water 
+   
+1  c   
+ 0.02   M PEI - 10 
+ 0.0070 
+ 250 
+ 220 
+ 626 
+  195  
+ 2.86  
+ 48 
+   
+3  c   
+ 0.02   M PEI - 10 
+ 0.0043 
+ 950 
+ 320 
+ 1500 
+  590  
+ 1.77  
+ 48 
+   
+5  c   
+ 0.02   M PEI - 10 
+ 0.0005 
+ 4600 
+ 90 
+ 420 
+  230  
+ 1.8  
+ 48 
+   
+6  c   
+ 0.02   M PEI - 10 
+ 0.0040 
+ 1690 
+ 30 
+ 4 
+ 75  
+ 0.06  
+ 48 
+   
+1   
+ 0.02M PEI - 30 
+ 0.0011 
+ 1920 
+ 251 
+ 21 
+  451  
+ 0.05  
+ 47 
+   
+3   
+ 0.02M PEI - 30 
+ 0.0004 
+ 3070 
+ 270 
+ 11.5 
+ 535  
+ 0.01  
+ 47 
+   
+16   
+ 0.02M PEI - 30 
+ 0.00006 
+ 2700 
+ 430 
+ 14.3 
+ 900  
+ 0.013  
+ 47 
+ CDAB/PEI/water 
+   
+1   
+ 0.02M PEI - 30 
+ 0.0008 
+ 1040 
+ 460 
+ 24.7 
+ 554  
+ 0.03  
+ 47 
+   
+3   
+ 0.02M PEI - 30 
+ 0.0008 
+ 2290 
+ 535 
+ 36.5 
+ 811  
+ 0.03  
+ 47 
+   
+16   
+ 0.02M PEI - 30 
+ 0.00014 
+ 5420 
+ 260 
+ 16.6 
+ 580  
+ 0.03  
+ 47 
+     
+a  for 25  ° C, b for 35   ° C , c  for 30   ° C, d for 40   ° C,  e for 45   ° C,  f for 55   ° C,  g ; The second order rate constants of the basic hydrolysis of substrates (k 2,0 , M  − 1    s  − 1 ) at 25   ° C are equal to 4.0 
+( 1 ), 3.6 ( 2 ), 3.3 ( 3 ), 2.7 ( 4 ), 0.55 ( 5 ), 0.24 ( 6 ), 0.19 ( 7 ), 0.16 ( 8 ), 0.12 ( 9 ), 0.08 ( 10 ), 0.12 ( 11 ). 
+ f  – calculated with the use of the equation:  k
+k
+k
+k
+K K
+V
+K
+K
+obs
+m
+S
+Nu
+S
+Nu
+0
+2
+2 0
+2
+(
+)
+=
+×
++
+(
+)
+max
+,
+,
+; the term on the left expressed as the ratio between the pseudo ﬁ rst rate constants in the micellar 
+system and water describes the maximum acceleration of the reaction. The ﬁ rst term on the right is associated with the inﬂ uence of the micellar microenvironment (F m ) and the 
+second term reﬂ ects the concentrating of reagents in micelles (F c ). 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+402 
+Molecular Encapsulation
+that a decrease in the polarity, in particular on transfer from water to the micellar micro-
+environment should favour ion - molecular reactions since they are characterized by some 
+delocalization of the charge in the transition state as compared to the initial state. 
+Concurrently the transfer from the dilute aqueous solution of reagents to the concentrated 
+micellar pseudo phase is followed by a decrease in the entropy of activation by 
+22.0  J  mol  − 1  K  − 1  for  1 and by 45.6  J  mol  − 1  K  − 1  for  3 , which is probably due to losses in the 
+entropy of mixing, the decrease in the degree of the freedom of reagents, and the altera-
+tion of their orientation. In the case of substrate  1 , changes in enthalpy and entropy of 
+activation compensate each other, so that the reactivity is practically identical in both 
+pseudo - phases (F m    =   1, Table  15.1 ). An increase in the concentration effect for substrate 
+ 3  results in greater losses in the entropy of activation exceeding the gain in the enthalpy 
+of activation, which is expressed in the apparent failure of the Ingold – Hughes principle 
+(F m  <    1, Table  15.1 ). Therefore, one can conclude that the reactivity in the micellar 
+systems is controlled by changes in the entropy of activation on the transfer of the reac-
+tion from the bulk solution to the micellar interior.  
+ 15.3  The Role of the Structural Factor in Supramolecular 
+Catalytic Systems 
+ 15.3.1  The Inﬂ uence of the  ‘ Sphere – Rod ’ Micellar Transition on the Reactivity 
+ The addition of electrolytes to the ionic micellar systems decreases the surface potential 
+of micelles thereby decreasing the catalytic effect.  1 – 3,8,9   Besides such  ‘ trivial ’ inhibition, 
+electrolytes may exert an indirect inﬂ uence on the reaction rate in micellar systems. At a 
+certain concentration of counterions there occurs the  ‘ sphere – rod ’  micellar transition, 
+which is analytically indicated by the break in the  ‘ property ’  versus  ‘ logarithm of the 
+counterion concentration ’ plot (Figure  15.1 ) 17 – 19  . Changes in the structural characteristics 
+as a result of this transition may also affect the reactivity of compounds in micelles. To 
+verify this assumption, the catalytic properties in parallel with the structural behaviour 
+are studied for the DDPB micelles in the presence of sodium salicylate.  19 The treatment 
+of the kinetic data of basic hydrolysis of  1  in semi - logarithmic coordinates provides the 
+critical concentration of sodium salicylate (NaSal)  ∼ 0.05  M deﬁ ned as a break point in 
+the  k obs  –  lg C Sal  plot. The size and shape of the micelles are estimated by the methods of 
+ 1 H NMR spectroscopy based on the self - diffusion coefﬁ cients of DDPB and EPR spec-
+troscopy based on the correlation time of spin - label rotation. Near the concentration of 
+0.05   M a change is shown to occur from a spherical to a rod - like shape of aggregates.  19 
+This provides evidence for the correlation between the above break points on the kinetic 
+plot and the micellar  ‘ sphere – rod ’  transitions, and hence, for the inﬂ uence of these struc-
+tural rearrangements on the reactivity. This approach is used for the treatment of the salt 
+effect on the structural behaviour and catalytic effect of the conventional cationic sur-
+factants CTAB and CPB, as well as gemini cationic surfactants and the hydroxyalkylated 
+single - head cationic surfactants. 18,20,21 
+ 15.3.2  The Effect of the Clustering of Reverse Micelles on the Reactivity 
+ For reverse micellar systems, the phenomenon of electrical percolation is observed. This 
+is manifested by the sharp increase in the conductivity of the systems by three - four 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reactions in Supramolecular Systems 
+403
+orders of magnitude with an increase in the temperature or in volume fraction of the 
+dispersed phase.  22 In works, 23 – 25 the inﬂ uence of this phenomenon on the reactivity of 
+ 1 in the sodium bis(2 - ethylhexyl)sulfosuccinate (AOT) - n - alkane - water reverse micellar 
+system was studied with different parameters Z   =   [alkane]/[AOT] (mol) and W = [H 2 O]/
+[AOT] (mol) (Figure  15.2 ). Based on the data of the conductivity of solutions, the values 
+of the temperature of the percolation threshold are estimated and the experimental condi-
+tions for the kinetic runs below and above the temperature induced percolation are 
+chosen. 
+ Unlike aqueous solutions, a typical Arrhenius dependence for the reverse systems is 
+maintained only before a certain critical temperature (T cr ), while above this temperature 
+a decrease in  k obs  occurs with temperature. The value of T cr  is found to coincide with the 
+percolation threshold temperature. 24 We assume that the same temperature induced struc-
+tural changes of the reverse micelles are responsible for the clustering of the reverse 
+0.15
+0.10
+0.05
+0.00
+A
+–2.0
+–1.5
+–0.5
+0.0
+0.5
+–1.0
+B
+C
+0.10
+0.05
+0.00
+A
+–3
+–1
+lg Csalt
+kobs/s–1
+0
+–2
+B
+C
+0.15
+0.10
+0.05
+0.00
+A
+–5
+–4
+–3
+–2
+–1
+0
+B
+(b)
+(a)
+(c)
+C
+ Figure 15.1   The dependence of the observed rate constant of basic hydrolysis of  1 on the 
+logarithm of the concentration of electrolytes in the micellar solutions of cationic 
+surfactants; a  – in the decylpyridinium chloride system and b  – in the CPB system in the 
+presence of NaCl (A), NaBr (B), NaSal (C); c  – in the decylpyridinium chloride system in 
+the presence of NaBr (A), NaSal (B); and in the CTAB micelles in the presence of NaSal (C)  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+404 
+Molecular Encapsulation
+micelles as well as for the change in the slope of the Arrhenius plot. Probably, the above 
+structural changes can be accompanied by the alteration in the properties of the micellar 
+microenvironment of reagents, such as micropolarity, the surface potential, and etc., 
+which can affect the reactivity. The investigation of the absorption spectra of substrate  1 
+and the products of its hydrolysis validated that the relocation of these compounds towards 
+the less polar microenvironment occurred above the percolation threshold. Granting this, 
+the effect of the temperature on the chemical kinetics in the reverse micellar systems can 
+be divided into two contributions. One is responsible for the standard temperature activa-
+tion of chemical processes, while the other accounts for the change in the localization of 
+reagents and their partition between phases due to modiﬁ cation of the properties of aggre-
+gates. The typical trend of the Arrhenius dependence below the percolation threshold T cr 
+(Figure  15.2 ) provides evidence that the ﬁ rst contribution is prevalent. In this case the 
+slope of the lg  k obs  vs . 1/T plot is determined by the energy of the activation (E a ) of basic 
+hydrolysis of  1 . Above the T cr  value the competitive tendency is probably predominant. 
+Therefore the trend of the Arrhenius dependence is determined by the change in the local 
+0.01
+A
+D
+3.1
+3.2
+3.3
+103 T–1 / K–1
+3.4
+3.5
+B
+C
+kobs/s–1
+ Figure 15.2   The arrhenius dependence of the observed rate constant of the basic 
+hydrolysis of  1 in the AOT  – nonane  – water reverse micellar system at different values of 
+W: 9.8 (A), 15.1 (B), 20.0 (C) and in water (D); 0.01   M NaOH; 0.40   M AOT  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reactions in Supramolecular Systems 
+405
+properties of the microenvironment of reagents with temperature. In this range, a decrease 
+in  k obs occurs with temperature. 
+ 15.3.3  The Hydrolysis of Carbonic Acid Esters in Microemulsions under 
+Phase Inversion Conditions 
+ Microemulsions with high surfactant concentrations provide a wide - range variation in the 
+component ratio, which can result in essential changes in their structural behaviour and 
+properties, in rearrangements of the interface, and in phase inversions. As a result, transi-
+tions become possible between three different phases: (i) reverse microemulsions (water/
+oil; w/o) composed of water microdroplets dispersed in a continuous oil phase and sta-
+bilized by the surfactant monolayer including a co - surfactant if necessary; (ii) bicontinu-
+ous systems with both water and oil as continuous phases and surfactant molecules 
+intertwined in a three - dimensional network; (iii) direct microemulsions (oil/water; o/w) 
+composed of the oil microdroplets dispersed in a continuous aqueous phase. 26 
+ Basic hydrolyses of  p - nitrophenyl acetate  13  and laurate  14  are studied in the CTAB/
+butanol/hexane/water system under the phase transitions induced by changes in the water/
+oil ratio.  27 – 30   The structural behaviour of the systems is examined by methods of conduc-
+tometry, NMR self - diffusion, EPR spine probe spectroscopy, UV - Vis solvatochromic 
+probe E T (30) spectroscopy. This makes it possible to characterize some micro -  and mac-
+roscopic properties of the systems and to deﬁ ne the points of phase transitions in the series 
+w/o - bicontinuous - o/w microemulsions. The dependence of the observed rate constant on 
+the volume fraction of water in microemulsions also demonstrated three different regions 
+with boundaries coinciding with the above structural transitions in the systems.  28 The 
+character of the  k obs  vs .  ‘ water fraction ’  dependence is mainly inﬂ uenced by the local 
+medium polarity and the activity of hydroxide - ions. In the w/o microemulsion at low 
+water content, the bound water (hydrated water) is predominantly present in the micellar 
+core. When the water core increases, there appears the bulk water with a higher polarity, 
+which favors the dissociation processes and increases the activity of hydroxide ions. This 
+results in the increase in the  k obs  value. In a bicontinuous system an increase in  k obs  is less 
+pronounced, since the aqueous phase is concentrated in narrow channels thereby prevent-
+ing the growth of the volume fraction of water. Besides, the considerable increase in 
+microviscosity also contributes to the observed rate constants of the hydrolysis as a dif-
+fusion term. Further, the transition  ‘ bicontinuous  – o/w ’  system results once again in a 
+sharp increase in the reaction rate with the dispersion phase volume. Water is assumed 
+to regulate the partition of butanol between phases, retaining constant its concentration 
+in the dispersion phase, which is supported by the data of NMR self - diffusion. 27 This 
+decreases the content of butanol at the interface increasing the positive charge density of 
+aggregates and the surface concentration of hydroxide - ions.   
+ 15.4  Binary Surfactant Systems 
+ 15.4.1  Aqueous Binary System Ionic – Nonionic Surfactants 
+ In works, 31 – 35   the hydrolysis of  1  is studied in the binary systems based on CTAB and 
+a series of nonionic surfactants: i.e. polyoxyethylene(10)monooleinic ether (Brij - 97), 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+406 
+Molecular Encapsulation
+polyoxyethylene(23)monododecyl ether (Brij - 35), polyoxyethylene(9)monotetradecyl 
+ether (C 14 E 9 ), polyoxyethylene(9.5)mono - 4 - isooctylphenyl ether (Triton - X - 100) exhibit-
+ing a wide range of hydrophilic - lipophilic balance and micellizating properties (cmc of 
+the surfactants above are equal to 0.000017, 0.00031, 0.000052, 0.00022  M). 
+ The micellization of binary surfactant solutions is studied by the method of tensiometry 
+at the variation of the fraction of ionic surfactant   α 1  within the range 0 – 1.0. The quantita-
+tive treatment of the surface tension isotherms within the framework of the phase separa-
+tion model  36   showed that the values of the interaction parameter   β  in these systems lay 
+within the range ( − 0.85) – ( − 4.6). This indicates that in these systems synergetic behaviour 
+occurs, i.e. the mixed aggregates are formed. The surface potential is calculated for all 
+the systems. A decrease in the potential is shown to occur with a decrease in   α 1 . 31,32,34 In 
+the single CTAB micelles, up to a 20 - fold acceleration of the hydrolysis of  1  is observed. 
+The nonionic Brij - 97 31 and C 14 E 9 34   micelles do not inﬂ uence the reaction rate, while the 
+Brij - 35 35 and Triton - X - 100 33 micelles retard the reaction by 3 – 5 times. 
+ Figure  15.3 shows that a decrease in the fraction of ionic surfactant   α 1 results in a 
+decrease in the catalytic effect. In the case of the Brij - 35 and Triton - X - 100 micelles 
+0.1
+1
+10
+A
+0.8
+1.0
+0.6
+0.4
+a1
+0.2
+0.0
+B
+C
+D
+catalytic effect
+ Figure 15.3   The catalytic effect of the binary surfactant solutions CTAB/C 14 E 9 (A), CTAB/
+Brij - 97 (B), CTAB/Triton - X - 100 (C), CTAB/Brij - 35 (D) on the basic hydrolysis of 
+phosphonate  1 as function of the molar fraction of CTAB   α 1 ; 0.001   M NaOH, 25   ° C 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reactions in Supramolecular Systems 
+407
+X
+X
+N
+N
+O
+O
+CH3
+N
+N
+R2
+R1
+R1
+DPS-1: X=Br; R1=Decyl; R2=H
+DPS-2: X=Br; R1=Ethyl; R2=H
+APB: X=Br; R1=Ethyl; R2=Cetyl
+APT: X=OTos; R1=Methyl; R2=Cetyl 
+APM-2:R1=R2=n-C10H21;
+APM-1:R1=n-C10H21; R2=H
+N
+N
+O
+O
+CH3
+m = 5, n = 4 (PPh-1) ;
+m = 6, n = 4 (PPh-2), 6 (PPh-3), 10 (PPh-4).
+(CH2)n
+(CH2)n
+N
+N
+NH
+S
+CH3
+N
+N
+HN
+S
+H3C
+(CH2)m
+N
+N
+O
+H3C
+O
+R2
+N
+N
+R1
+R1
+N
+N
+O
+H3C
+O
+R2
+N
+N
+Br
+Br
+ Scheme 15.2   The structures of pyrimidinophanes and their acyclic analogues  
+an inversion from the catalysis to the inhibition of the processes occurs. At a certain 
+concentration of Brij - 35 in the mixture actually an absolute termination of the reaction 
+is observed. The elucidation of the main factors responsible for the alteration of the 
+reaction rate in micelles, i.e. the factor of concentration (F c ) and the factor of micro-
+environment (F m ) (Table 1, the data are exempliﬁ ed by the CTAB/C 14 E 9 system 34 ) makes 
+it possible to derive the driving force of the catalysis in binary systems. The compensa-
+tory change of the F c  and F m  values occurs within the whole range of the surfactant 
+ratio. However, with small additives of nonionic surfactants, an increase in the factor 
+of the micellar microenvironment is a prevalent tendency, controlling the increase of 
+the resulting catalytic effect. Further decrease in   α 1  results in the inversion of the trend, 
+so that an increase in F c  is accompanied by a decrease in F m  (Table  15.1 ). In these 
+surfactant mixtures, the contribution of the negative inﬂ uence of the factor of micellar 
+microenvironment remains dominating, which provides reasons for the reduction of the 
+catalytic efﬁ ciency. Thus, the catalytic effect of the binary surfactant systems is deter-
+mined by the tendency of changing the factor of micellar microenvironment throughout 
+the 
+whole 
+surfactant 
+proportions. 
+This 
+indicates 
+that 
+unlike 
+surfactant - 
+electrolyte systems,  17 – 19   the surface potential controlling the concentration factor plays 
+only an auxiliary role in mixed micelles. 
+ 15.4.2  The Binary Surfactant Mixtures in Non - aqueous Media 
+ In works, 37 – 39   the catalytic effect of the CTAB and PM reverse micelles on the reaction 
+of pyrimidinophanes (PPh) (Scheme  15.2 ) and their acyclic analogue  N , N ′ - bis(2 -
+ methylthio) - 6 - methylpyrimidin - 4 - yl)hexamethylenediamine with phosphinate  12  in chlo-
+roform is studied. The formation of the CTAB − PM mixed aggregates is proved by the 
+NMR self - diffusion, by dielcometric titration, and by dynamic light scattering.  37,39 The 
+micellar catalytic effect is shown to change with the size of macrocycle in the series PPh -
+ 4  <  PPh - 3  <  PPh - 2  <    PPh - 1. The maximum acceleration of the reaction observed at a 5   :   1 
+CTAB/PM molar ratio exceeds ﬁ ve orders of magnitude. 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+408 
+Molecular Encapsulation
+ 15.5  Polycomponent Catalytic Systems Based on Amphiphiles 
+and Polymers 
+ 15.5.1  The Conventional Surfactant/Polyethyleneimine Systems 
+ Since the self - organized catalytic systems are considered to be the simplest models of 
+enzyme catalysts,  1 – 3   we made an effort to model one of the basic principles of biocatalysis, 
+namely, the polyfunctional mechanism of the enzyme action. Therefore, the main idea is 
+to design the polycomponent catalytic ensembles by including ingredients with their own 
+catalytic, sorption or solubilizing activities. For this purpose the step - by - step complication 
+of supramolecular systems is carried out beginning with the aqueous polyethyleneimine 
+(PEI) solution. The components of supramolecular systems were chosen in accordance 
+with the following: PEI is known to accelerate the hydrolysis of phosphorus acid esters 
+via the general basic catalysis.  40   Besides, it contributes to the catalysis of the reaction due 
+to the sorption of reagents and to the formation of the catalytic complex substrate - 
+polymer. The addition of a surfactant or other self - assembling amphiphiles to the systems 
+opens up additional opportunities for binding the reagent due to the solubilization mecha-
+nism together with the sorption pattern. The modiﬁ cation of the system with metal ions 
+makes possible the contribution of the electrophilic catalysis to the catalytic mechanism, 
+since a considerable acceleration of nucleophilic substitution at phosphorus by metal ions 
+is well known. 6,41 
+ 15.5.1.1  The Single  PEI Solution 
+ There is much evidence that the amines including polyamines accelerate hydrolyses of 
+phosphorus acid esters via the general basic catalysis.  40,42   In the unbuffered solution, a 
+small amount of protonated amino groups are present in the PEI molecules ( < 0.5 – 5.0% 
+depending on the PEI molecular mass  43  ; PEI with the molecular mass from 800 (PEI - 800) 
+to 60000 (PEI - 60) were studied). This means that under these conditions PEIs behave as 
+neutral polymers rather than polyelectrolytes. The pH kinetic proﬁ le demonstrates that 
+up to pH 9.2 the observed rate constant of hydrolyses of  1  and  3  in 0.05   M solution of 
+PEI - 50 does not exceed the limits of 5    ×  10  − 5 s  − 1 , while a further increase in the pH results 
+in a  ca . tenfold increase in the hydrolysis rate of both phosphonates.  43 This pH depend-
+ence is rather typical and reﬂ ects the growth of the rate constant in the ﬁ eld of accumula-
+tion of catalytic species, namely nonprotonated amino groups. In addition, the contribution 
+of basic hydrolysis to  k obs values at high pH should also be taken into account. 
+ To elucidate the inﬂ uence of the molecular mass of the polymer on reactivity, the 
+kinetics of the hydrolyses of phosphonates  1  and  3  was measured in the presence of 
+ethylenediamine (ED), tetraethylenetetramine (TETA), PEI - 800, PEI - 25, and PEI - 50 at 
+spontaneous solution pH equal to 10.0 – 10.8 depending on the molecular mass of the 
+PEI. 43   For all the systems studied, an increase in  k obs  with the amine concentration occurs 
+due to general basic catalysis. Starting from TETA the curves are S - shaped, which is in 
+line with the preliminary equilibrium process such as the formation of the catalytic 
+complex substrate - polymer. Therefore, the reagent binding by oligomerous and polymeric 
+amines provides an additional contribution to the rate effect. An increase in molecular 
+mass of amines results in a slight increase in the catalytic effect per amino group. The 
+nature of substrate does not strongly affect the reactivity. Some higher  k obs  values were 
+found for the less hydrophobic phosphonate  1 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reactions in Supramolecular Systems 
+409
+ 15.5.1.2  The  SDS / PEI Supramolecular Systems 
+ In works, 43,44   the self - organization is studied in the binary SDS/PEI systems by methods 
+of tensiometry, conductometry, viscosimetry, potentiometry and dynamic light scattering. 
+A marked decrease in cmc is observed when transferred from the single SDS solution 
+(cmc 0.0085   M) to the SDS/PEI system (critical aggregation concentration (cac) 
+0.00065  M, the data for PEI - 25 43 ), which provides evidence for the formation of the 
+mixed surfactant - polymer ensembles. In the SDS/PEI - 30 systems the kinetics of hydro-
+lyses of phosphonates  1 ,  3 ,  5  is studied under the variation of the molecular mass of 
+polymer. 44   The acceleration of the reactions is observed as compared to the aqueous 
+PEI solution. The reactivity of substrates decreases in the series  1  >  3  >  5 . The same 
+tendency occurs in the alkali water solution and in the single PEI system. The  k obs  vs . 
+[SDS] kinetic curves demonstrate an extreme type dependence unlike those in single 
+PEI solutions. The kinetic curves with a maximum are typical for micellar catalysis 
+and indicate the essential contribution of the solubilization pattern to the mechanism 
+of reagent binding together with the sorption pattern involved in the single PEI solution. 
+In the SDS/PEI system the higher reactivity is observed for the less hydrophobic sub-
+strate  1  as compared to  3 . The rate effect is shown to be due to concentrating the 
+reagents in the polymer - colloid complexes for all the systems studied (Table  15.1 ). To 
+elucidate the structuring role of PEI and contribution of the polymer catalysis to the 
+summary rate effect, the kinetics of the hydrolyses of phosphonates  1  and  3  was exam-
+ined in the micellar SDS solution in the presence of ED. In this case, a more than 
+2 - fold retardation of the reaction occurs. Such a difference in the catalytic effect of 
+monomeric and polymeric amines supports the above assumption that both the general 
+basic catalysis and binding the substrates by the PEI molecules contribute to the accel-
+eration of the reaction. 
+ For substrate  1  the kinetics of hydrolysis is measured in the SDS/PEI - 30 system at 
+different temperatures,  44   and then the activation parameters for the reaction in different 
+pseudo phases are calculated. For micellar pseudo - phase the enthalpy of activation 
+ ∆H
+kJ mol
+m
+≠
+−
+= 55 2
+1
+.
+ and entropy of activation   ∆S
+J mol
+K
+m
+≠
+−
+−
+= −121 7
+1
+1
+.
+ are calculated, 
+which are in agreement with the bimolecular mechanism of the reaction. These values 
+differ little from the activation parameters obtained for the reaction in the aqueous pseudo -
+ phase ( ∆H
+kJ mol
+0
+1
+56 6
+≠
+−
+=
+.
+,   ∆S
+J mol
+K
+0
+1
+1
+100 3
+≠
+−
+−
+= −
+.
+). This probably provides evidence 
+that the mechanism of catalysis remains unchanged when the process is transferred from 
+water to aggregates, i.e. the general basic catalysis occurs in both cases. 
+ The next stage of the study was on the kinetics of hydrolyses of  1 ,  3 and di - p - 
+nitrophenyl phosphate  15  in the ternary SDS/PEI/La(III) system at spontaneous solution 
+pH (pH  ≈ 8.7). 43   In this system there occurs a high performance in the reactivity of phos-
+phonates and its growth. The maximum catalytic effect exceeding four orders of magni-
+tude is found for the substrate  15  as compared to the single PEI solution. Comparison 
+with the basic hydrolysis of  15 reveals the rate effect over six orders of magnitude. 
+ 15.5.1.3  The NonIonic - Surfactant/ PEI System 
+ Unlike the SDS/PEI system the cmc value does not decrease markedly in the solutions 
+of nonionic surfactant C 12 E 10  and Triton - X - 100 when the polymer is added. This is in line 
+with the assumption on the weak afﬁ nity between the nonionic surfactant and polymers.  45 
+However, as will be shown below a rather high probability occurs that the mixed nonionic 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+410 
+Molecular Encapsulation
+surfactant/PEI aggregation does take place. In work,  46 a step - by - step investigation of the 
+aggregation and catalytic effect towards the cleavage of phosphorus acid esters  1  and  3 
+has been performed in the following series: the single nonionic surfactant micelles    →  the 
+binary nonionic surfactant/PEI micellar system    →    the ternary nonionic surfactant/PEI/
+La(III) micellar system. The single C 12 E 10  micelles do not inﬂ uence the hydrolysis rate, 
+while Triton - X - 100 solutions slightly retard the reaction.  33   In the binary nonionic/PEI 
+solutions there occurs the rate enhancement of hydrolyses of phosphonates  1  and  3 . For 
+example, in the C 12 E 10 /PEI - 60 system 3.6 - fold and 4.7 - fold accelerations of the hydrolyses 
+of  1  and  3  respectively occur as compared to the single PEI solution (Figure  15.4 a). When 
+the low molecular mass amines are used instead of PEI, the  k obs  versus  surfactant concen-
+tration dependence assume quite a different shape (Figure  15.4 b). Thus, provided that 
+there occurs only the general basic catalysis of the hydrolysis of the phosphonates due to 
+aminogroups of PEI, the inhibition of the reaction might be observed. These data provide 
+evidence for the formation of a new type of aggregates as compared to the single C 12 E 10 
+micelles, i.e. they are indirect arguments in favor of the fact that mixed aggregation occurs 
+2.5
+2.0
+1.5
+1.0
+0.5
+A
+A
+0.000
+0.002
+0.004
+0.006
+0.008
+[surfactant] / M
+103 kobs / s–1
+B
+B
+b
+a
+4
+3
+2
+1
+0.000
+0.005
+0.010
+0.015
+[surfactant] / M
+103 kobs / s–1
+ Figure 15.4   The observed rate constants of hydrolyses of  1 (A) and  3 (B) as functions of 
+the surfactant concentration in the C 12 E 10 /PEI - 60/water (a) and C 12 E 10 /ethylenediamine/
+water (b) ternary systems at ﬁ xed amine concentration of 0.05   M; 25   ° C.  Reprinted with 
+permission from  [46] . Copyright 2007 American Chemical Society  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reactions in Supramolecular Systems 
+411
+in the nonionic surfactant/polymer system. The examination of the C 12 E 10 /PEI/La(III) 
+ternary system with a polarizing microscope revealed the lyotropic mesomorphism with 
+fan texture typical for the hexagonal packing. The concentration and temperature ranges 
+of the hexagonal phase were determined. The ternary system is found to be an effective 
+nanosized catalyst in both micellar and mesophase regions. It demonstrates the complex 
+mechanism of the catalytic effect under mild conditions (25    ° C, pH  ∼ 8.0) and the substrate 
+speciﬁ city towards the more hydrophobic phosphonate. A marked ( ca. 10 3 - fold) accelera-
+tion of the reaction studied as compared to the basic hydrolysis of the substrates has been 
+attained. 46 
+ 15.5.1.4  The Cationic Surfactants/ PEI Supramolecular Catalytic Systems 
+ The cationic surfactant - polymer systems are much less studied than those based on 
+anionic or nonionic surfactants. In works,  47,48   the catalytic effect of the cationic surfactant/
+PEI systems towards hydrolyses of  1 ,  3 ,  5  and  6  is studied, in cases when the molecular 
+mass of PEI and the structure of the head group of surfactants experience changes. In the 
+CTAB/PEI - 10 system the acceleration of hydrolyses of all the substrates studied is 
+observed. The catalytic effect depends to a great extent on the structure of phosphonates 
+and varies within the interval 4 – 1500 (Table  15.1 ), with the maximum acceleration occur-
+ring for phosphonate  3 . 48   The observed rate constant in the binary CTAB/PEI - 10 system 
+decreases in the series  3  >  1  >  6  >  5 . In the water alkali solutions in the absence of the 
+surfactant and PEI the k obs  of the basic hydrolysis changes as follows:  1  >  3  >  5  >  6 , while 
+in the CTAB micellar solution with no PEI added the order is  3  >  1  >  5  >  6 . 11 These dif-
+ferences in the reactivity are due to the fact that the basic factors controlling the reactivity 
+in the surfactant free solutions are the electronic and steric effects of substituents at the 
+reaction centre, while in the organized solutions a marked contribution to the catalytic 
+effect is made by binding the reagent in nanoaggregates, which correlates with the hydro-
+phobicity of compounds. The above inversion of reactivity in the pairs of substrates  1 ,  3 
+and  5 ,  6  in the mixed polymer - surfactant systems as compared to aqueous basic hydrolysis 
+is due to (i) the change in the mechanism of the hydrolysis in the presence of PEI, i.e. 
+the transfer from the speciﬁ c to general basic catalysis and (ii) the peculiarity of the 
+catalysis in constrained systems, in which the main contributor is the concentrating of 
+reagents due to their binding by supramolecular ensembles. For the substrates  1 and  3 the 
+inﬂ uence of substituents in aqueous and micellar pseudo phase is similar, which is evident 
+from the decrease of  k 2,m  with the length of the alkyl radical at reaction centre (Table 
+ 15.1 ). However, there occurs a considerable increase in the binding constant of the more 
+hydrophobic substrate ( k 2,m  =  0.0070 and 0.0043  M  − 1  s  − 1 ; K S  =  250 and 950  M  − 1  for  1 and 
+ 3  respectively), which is just responsible for the higher observed rate constants for 
+phosphonate  3 . 
+ In work, 47   the hydrolyses of phosphonates  1 ,  3  and  p - nitrophenyldiphenyl phosphate 
+( 16 ) in the systems based on PEI - 30 and two cationic surfactants CTAB and cetyldimeth-
+ylethylammonium bromide (CDAB) are studied. The nature of substrate and the structure 
+of the head group is found to markedly inﬂ uence the reaction rate in these systems. The 
+maximum value of the observed rate constant of  1  in the CTAB/PEI - 30 system is twofold 
+higher than that in the CDAB based system, while for the phosphonate  3  k obs  is threefold 
+higher in the CDAB/PEI system. These differences are controlled by the  k 2,m  values for 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+412 
+Molecular Encapsulation
+the substrates in both systems (Table  15.1 ). The observed rate constants of  16  are much 
+lower than those for  1 and  3 , which is due to the low k 2,m value (Table  15.1 ). Unlike the 
+phosphonates  1 ,  3  a little difference in the reactivity of  16  in CTAB and CDAB is 
+observed. In the CDAB aqueous solutions the hexagonal liquid crystalline mesophase 
+(E - phase) is formed above the concentration of 0.4   M. The kinetic study of the reactions 
+when the E - phase is formed demonstrates a decrease in the observed rate constant of the 
+hydrolyses of the substrates with the ordering of solution. 
+ In works, 49,50   the formation of the supramolecular systems based on branched and 
+hydrophobized (alkyl - substituted) PEIs is revealed in both the absence and presence 
+of cationic surfactants including those with hydroxyalkylated head groups. The latter 
+are capable of speciﬁ c interactions with other components of the systems, in particular, 
+polymer and reagents. Hydrophobization of PEIs is found to result in a sharp increase 
+in their solubilizing and catalytic efﬁ ciency. Besides, a marked increase in the catalysis 
+occurs on transfer from conventional cationic surfactants to hydroxyalkylated ana-
+logues. By means of the optimization of the catalytic composition and reaction con-
+ditions a substantial 700 – 2000 - fold acceleration of the phosphonate  1  is reached at 
+neutral pH. 50 
+ 15.5.2  The Pyrimidinic Surfactant Based Systems 
+ In works, 51 – 53   the above step - by - step approach was extended to a new type of building 
+blocks, namely pyrimidinic dimeric surfactants. The self - organization of new amphiphilic 
+pyrimidinic macrocycles of dimeric structure APM - 1 and APM - 2 (Scheme  15.2 ) has been 
+studied in aqueous solutions.  51   The complex examination of the APM based systems with 
+the help of tensiometry, conductometry, dynamic light scattering, UV - , and NMR -
+ spectroscopy provides evidence for their aggregation. Calculations based on the surface 
+tension isotherms and on the packing parameter considerations (P  ∼ 1) make it possible 
+to assume a lamellar packing of macrocycles when aggregating. Marked differences in 
+the aggregation behaviour of APM - 1 and APM - 2 have been found. In the tensiometry 
+study, the lower cmc and higher cross - section area per molecule are found for APM - 2 as 
+compared to APM - 1. The additives of PEI do not exert much inﬂ uence on the cmc of 
+APM - 1. A pronounced decrease in cmc and also a ca. twofold decrease in the surface 
+area per molecule occur in the APM - 2/PEI systems. This can indicate the transition from 
+the folded to the extended packing mode. The APM ensembles are explored as nanoreac-
+tors for the hydrolyses of phosphonic acid esters. The kinetic study reveals a minor rate 
+effect of the APM - 1 based systems on hydrolyses of phosphonates  1  and  3 . Opposite to 
+this the acceleration of the hydrolyses of both phosphonates occurs in the APM - 2 based 
+systems as compared to the uncatalyzed process. The dramatic differences in the catalytic 
+activity of the two macrocycles are assumed to be underlain by the different morphology 
+of aggregates. Within the APM - 2 → APM - 2/PEI → APM - 2/PEI/La(III) series, due to the 
+cooperative contributions of the micellar, polymer and homogeneous catalysis an increase 
+in the catalytic effect is observed from 30 times to three orders of magnitude as compared 
+to the basic hydrolysis. 
+ In work, 52   two dimeric pyrimidinic surfactants (DPS), acyclic analogues of APM - 1 
+were synthesized: a gemini surfactant DPS - 1, and a typical bolaform surfactant DPS - 2 
+(Scheme  15.2 ). The catalytic effect of the single surfactant solutions and their mixtures 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reactions in Supramolecular Systems 
+413
+with PEI towards hydrolyses of  1  and  3  was studied. They exhibit speciﬁ c aggregation 
+and catalytic properties. The more hydrophobic surfactant DPS - 1 demonstrates behaviour 
+typical for cationic surfactants, in particular, it shows catalytic activity towards hydrolyses 
+of phosphonates, which increases with the substrate hydrophobicity. In the DPS - 2 based 
+systems, a 25 - fold inhibition of the reaction occurs, with no substrate speciﬁ city. Such 
+behaviour is rather unusual for a cationic surfactant. The differences in the aggregation 
+and catalytic properties can be due to the differences in the packing mode between the 
+DPS - 1 and DPS - 2 molecules when self - assembling. 
+ Recently, new amphiphilic pyrimidinic compounds with different kinds of counterions, 
+inorganic bromide anions (APB) and hydrophobic tosylate anions (APT) were synthe-
+sized, 53   which showed intermediate hydrophobicity between DPS - 1 and DPS - 2. The cata-
+lytic effect towards basic hydrolyses of  1  and  3  is examined. For comparison, the rate 
+effect of conventional surfactants CTAB and cetyltrimethylammonium tosylate (CTAT) 
+with similar counterions is studied as well. Both CTAB and APB solutions accelerate 
+hydrolyses of phosphonates  1  and  3 . Surfactants with hydrophobic anions demonstrate a 
+different behaviour, namely, hydrolysis of phosphonate  3 is accelerated by CTAT and 
+APT micelles, while the less hydrophobic substrate  1  is retarded by the APT micelles 
+unless alkali excess is used. This deviation from the typical behaviour for cationic sur-
+factants is due to the decrease in solution pH with APT concentration above the cmc. 
+Detailed self - organization studies by methods of tensiometry, conductometry, potentiom-
+etry and NMR spectroscopy were conducted. A marked difference in the structural 
+behaviour between the AP - type and conventional CTA surfactants is found: (i) for both 
+pairs APB/CTAB and APT/CTAT studied the counterion binding is stronger for the 
+conventional cationic surfactants as compared to dimeric pyrimidinic surfactants; (ii) 
+although a structural transition is probably observed in the APT micelles at C    ≥  0.01  M, 
+no sharp micellar growth occurs with the APT concentration, as distinct from the CTAT 
+micelles; (iii) the cmc ’ s of dimeric surfactants are only a little lower than those of CTA 
+analogues. The geometry of AP compounds may be assumed to be mainly responsible 
+for the above result. A branched molecular architecture prevents the close packing of the 
+monomers in the bulk solution and at the interface and produces a steric hindrance around 
+the head groups. This effect can be responsible for the high surface potential, and hence 
+for the decrease in solution pH due to the polarization of the hydrated water molecules 
+and their further deprotonation. 
+ 15.5.3  The Calixarene Based Systems 
+ Recently, new building blocks, in particular, amphiphilic calixarenes were explored for 
+the design of polycomponent catalysts.  54 – 57   We intended testing the contribution of the 
+inclusive interactions to the self - assembling of components. In works,  54,55 the aggregation 
+behaviour and catalytic activity of PEI and sulfonatomethylated calix[4]resorcinarene 
+(SCA) (Scheme  15.3 ) based systems are studied by methods of the NMR and UV - vis 
+spectroscopy. The mixed PEI − SCA assembling is shown to occur in the concentration 
+range lower than the cmc indicated by the tensiometry data (cmc   =  0.011  M) due to the 
+inclusive type of the PEI − SCA interactions. Different modes of self - organization assum-
+ing the PEI inclusion into the calixarene cavity are discussed: (i) the layered ensembles 
+separated by the PEI chains dipped into the cavity, and (ii) the SCA molecules penetrated 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+414 
+Molecular Encapsulation
+with PEI of the pseudorotaxane type. The latter is in good agreement with the extensive 
+NMR and calculating data for this system.  
+ In the kinetic studies the step - by - step investigation of the catalytic activity towards the 
+hydrolytic cleavage of phosphonate  1  and  p - nitrophenyl dimethyl phosphate ( 17 ) has been 
+carried out in the single PEI system, the binary PEI/SCA system and the ternary PEI/
+SCA/La(III) system. Two reaction routes of hydrolysis of  17  (the leaving of aromatic 
+versus alcohol fragment) are revealed in the single PEI solution and the binary PEI/SCA 
+systems by both NMR and UV - vis studies, while in the presence of La(III) only the 
+departure of  p  - nitrophenolate group occurs. The addition of noncatalytic SCA to the PEI 
+solution is shown to result in a tenfold acceleration of the reaction below the cmc due to 
+the catalytic action of the PEI/SCA inclusive type ensembles. The ternary PEI/SCA/
+La(III) system demonstrates a marked catalytic activity attaining two (for  1 ) and four (for 
+ 17 ) orders of magnitude due to superposition of several factors of catalysis. 
+ In work, 56 the aggregation behaviour and catalytic activity of supramolecular systems 
+composed of three basic components in different combinations are investigated. They are 
+amphiphilic calix[4]resorcinarene CR - 1 (Scheme  15.3 ), anionic surfactant SDS and PEI -
+ 25, either of which is capable of self - assembling in solution and interacting through a 
+ ‘ guest – host ’  mechanism. The evaluations of the size of aggregates, cloud points and cata-
+lytic properties are in agreement with the assumption on the mixed aggregation in the 
+systems studied. The step - by - step investigation of the catalytic effect towards hydrolyses 
+of phosphonates  1  and  3  is performed in the series of supramolecular systems CR - 1/SDS; 
+CR - 1/PEI; SDS/PEI; CR - 1/SDS/PEI. The change from ca. 20 - fold inhibition of the reac-
+tion in ensembles of anionic amphiphiles CR - 1 and SDS to the tenfold catalysis occurs 
+due to the immobilization of anionic nanoreactors at the catalytically active polymer 
+matrix, PEI. The possibility for the transfer from the microheterogeneous to the hetero-
+geneous system and for the separation of the catalyst and products by the cloud point 
+strategy is presented. 
+ 15.5.4  The Non - Aqueous Supramolecular Systems 
+ In works, 58 – 60 the inﬂ uence of cationic and nonionic surfactants, CTAB and PM on the 
+reaction of phosphinate  12  with branched PEI - 10 bearing  o - hydroxybenzyl groups at the 
+tertiary and secondary nitrogen (Scheme  15.3 ) in chloroform is investigated. The average 
+OH
+HO
+R
+SO3Na
+4
+R = C5H11 . 
+   SCA
+OH
+HO
+R
+4
+R = CnH2n+1 , n=5 (CR-1)
+n=9 (CR-2), n=11 (CR-3) ;
+R = CH2P(O)(OC7H15)2 (CR-4) 
+R = H            (PEI1) ;
+R = i-C9H19 (PEI2 , PEI3 , PEI4) .
+-CH2CH2NH-CH2CH2N-
+CH2
+OH
+R
+ Scheme 15.3   The chemical structures of calixarenes and substituted PEIs  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reactions in Supramolecular Systems 
+415
+ratio between unsubstituted and hydroxybenzylated fragments amounts to 0.3; 0.12; 0.16 
+and 0.3 for PEI 1 , PEI 2 , PEI 3  and PEI 4  respectively. The formation of the mixed PEI/CTAB 
+and PEI/PM ensembles are supported by dielcometric titration, dynamic light scattering, 
+viscosimetry and the solubilization of  p - nitrophenol measurements. The character and 
+extent of their inﬂ uence on the phosphorylation of PEIs is found to depend on the PEI/
+surfactants ratio, on the component structure, and on the temperature. In the case of 
+CTAB an acceleration of the reaction occurs throughout the whole concentration range 
+studied, 58   while in the PEI/PM system an increase in the surfactant concentration at ﬁ rst 
+results in the increase in the observed rate constant and then in its decrease.  59 The inver-
+sion of the rate effect is probably due to the rearrangement of the supramolecular ensem-
+bles. Indeed, the concentration range corresponding to the inhibition of the processes 
+coincides with the formation of the lager aggregates (Figure  15.5 ).  59 The surfactant rate 
+effects on the phosphorylation of PEI equal the ca. 6 – 7 - fold acceleration (for CTAB) or 
+the inhibition of the same magnitude (for PM).  58,59   The use of the CTAB/PM mixture 
+provides a marked increase in the catalytic effect, which depends on the molar ratio of 
+the surfactant, reaching ca. 24 - fold acceleration.  60   The rate enhancement increases in the 
+70
+60
+50
+40
+30
+20
+10
+0
+70
+60
+50
+40
+30
+20
+10
+0
+0.0
+0.1
+0.2
+R / nm
+B
+A
+0.3
+0.4
+CPM/M
+103 kobs / s–1
+ Figure 15.5   The dependence of the observed rate constant of the reaction of PEI 2 with 
+phosphinate  12 (A) and the effective radius (R) of the PEI 2 - PM ensembles in chloroform 
+(B) on the PM concentration; 25   ° C; 0.01   M PEI 2  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+416 
+Molecular Encapsulation
+series PEI 1  <  PEI 4  <  PEI 3  <  PEI 2 . The quantitative treatment of the kinetic data in terms 
+of pseudo phase model demonstrates that small as it is the factor of concentration of 
+reagents mainly contributes to the rate effect. Indeed, the microenvironment factor may 
+vary from the negative inﬂ uence (F m  =  0.32 for PEI 1 ) to 1.0 for PEI 4 , while the concen-
+tration factor F c > 1 in all cases, thereby provides the acceleration of the reaction.   
+ In work, 61   the reaction of alkylated branched PEI - 10 (APEI - 10) bearing tetradecyl 
+substituents (PEI 5 ) with phosphinate  12  is studied in the presence of PM in toluene. The 
+ k obs  versus C PM  dependence has an extremum. A maximum twofold acceleration of 
+the reaction is observed, followed by a  ca. 5 – 7 - fold inhibition with the further increase 
+in the surfactant concentration. Similar to the above phosphorylation reaction, the unfa-
+vorable inﬂ uence of the microenvironment and the prevalent positive contribution of the 
+concentration factor occur in this system. In particular, the values F m  =  0.55 and F c  =  31.0 
+are obtained when ﬁ tting the kinetic data in terms of Equation  15.1 (Table  15.1 ). 
+ In work, 62   the complexation of APEI - 10 bearing  n - tetradecyl (PEI 5 , PEI 6 ) and  n - nonyl 
+(PEI 7 ) radicals (the extent of substitution of 0.3; 0.6 and 0.26 respectively) with function-
+alized calix[4]resorcinarenes (CR) in chloroform is revealed by methods of UV - Vis 
+spectrophotometry, dielcometric titration and dynamic light scattering. The CRs alkylated 
+or phosphorylated at low rim are studied (Scheme  15.3 ). The complexation of PEI and 
+CR is shown to change the nucleophilicity of the polymer, which is exempliﬁ ed by the 
+reaction between APEI and phosphinate  12 . 63   Based on the NMR   31  P data a conclusion 
+is drawn that PEI rather than CR functions as a nucleophile towards the substrate in the 
+PEI/CR/chloroform system. CR mediates this reaction as a catalytic species involved in 
+the mixed aggregation. The rate effect depends on the ratio of components and their 
+structure. A decrease in the hydrophobicity and increase in the extent of substitution of 
+PEI result in the enhancement of the catalysis. The highest  ca.  35 - fold acceleration of the 
+phosphorylation occurs at the low CR and polymer concentrations. An additional 6 – 7 - fold 
+increase in the catalytic effect can be attained by the addition of surfactants. For example, 
+the PEI 5 /CR - 2/CTAB - chloroform system demonstrates a 45 - fold acceleration of the reac-
+tion under study. 64 
+ 15.6  Conclusions 
+ The catalytic effect of supramolecular systems based on amphiphilic compounds of dif-
+ferent structure (surfactants, hydrophobized polymers, calixarenes, pyrimidinophanes) on 
+the nucleophilic substitution at phosphorus and carbon has been investigated in both 
+aqueous and nonaqueous media. They demonstrate a wide - range catalytic activity from 
+the deep retardation of the reactions to the multiple accelerations to the point of several 
+orders of magnitude. The factors determining the rate effect have been analyzed. Two 
+main points should be emphasized, i.e. (i) the crucial role of the structural factors in the 
+catalysis has been revealed; (ii) the catalytic effect of polycomponent ensembles is mark-
+edly inﬂ uenced by the nature of components and their ratio. This indicates that reactivity 
+in supramolecular systems can be controlled by the purposeful selection of catalytic 
+species and by inducing structural transition in the systems. Besides, such kind of control 
+requires knowledge of the structural behaviour of the systems, in particular, packing 
+modes, morphology of aggregates, surface potential, etc. 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reactions in Supramolecular Systems 
+417
+ Acknowledgements 
+ We thank the Russian Academy of Sciences (Chemistry and Material Science Division) 
+and the Russian Foundation for Basic Researches (grant 09 - 03 - 00572) for their 
+ﬁ nancial support. 
+ Dedication 
+ This work is dedicated to the memory of Lyudmila Andreevna Kudryavtseva who had 
+made an important contribution to the development of catalysis in organized systems. 
+ References 
+  1.  I. V.  Berezin ,  K.  Martinek ,  A. K.  Yatsimirskii ,  Physicochemical foundations of micellar cataly-
+sis ,  Russ. Chem. Rev. ,  1973 ,  42 ,  787 – 802 . 
+  2.  C. A.  Bunton ,  G.  Savelli ,  Organic reactivity in aqueous micelles and similar assemblies ,  Adv. 
+Phys. Org. Chem. ,  1986 ,  22 ,  213 – 309 . 
+  3.  L. S.  Romsted ,  Micellar effects on reaction rates and equilibria ,  Surfactants in Solution , Vol. 
+ 2 ,  K. L.  Mittal ,  B.  Lindman (Eds.),  Plenum Press ,  New - York - London ,  1984 . 
+  4.  K.  Holmberg ,  Organic reactions in microemulsions ,  Curr. Opin. Colloid Interface Sci. ,  2003 , 
+ 8 ,  187 – 196 . 
+     5.       T.   Dwars  ,   E.   Paetzold  ,   G.   Oehme  ,  Reactions in micellar systems ,  Angew. Chem. Int. Ed. ,  2005 , 
+ 44 ,  7174 – 7199 . 
+  6.  W.  Jencks ,  Catalysis in Chemistry and Enzymology  ,  Courier Dover Publications ,  New - York , 
+ 1987 . 
+  7.  Y. C.  Yang ,  J. A.  Bakker ,  J. R.  Ward ,  Decontamination of chemical warfare agents ,  Chem. 
+Rev. ,  1992 ,  92 ,  1729 – 1743 . 
+  8.  E. P.  Tishkova ,  L. A.  Kudryavtseva ,  Reactions of esters of tetracoordinated phosphorus acids 
+with nucleophilic reagents in highly organized media ,  Russ. Chem. Bull. ,  1996 ,  45 ,  284 – 299 . 
+  9.  L. Ya.  Zakharova ,  A. B.  Mirgorodskaya ,  E. P.  Zhil ’ tsova ,  L. A.  Kudryavtseva ,  A. I.  Konovalov , 
+ Catalysis of nucleophilic substitution reactions in supramolecular systems ,  Russ. Chem. Bull. , 
+ 2004 ,  53 ,  1385 – 1401 . 
+ 10.  Yu. L.  Khmel ’ nitskii ,  A. V.  Levashov ,  N. L.  Klyachko ,  K.  Martinek ,  Microheterogeneous 
+medium for chemical (enzymic) reactions based on a colloidal solution of water in an organic 
+solvent ,  Russ. Chem. Rev. ,  1984 ,  53 ,  319 – 331 . 
+ 11.  R. A.  Shagidullina ,  L. Ya.  Zakharova ,  F. G.  Valeeva ,  L. A.  Kudryavtseva ,  The reactivity of 
+phosphonic esters in aqueous micellar solutions of cationic surfactants ,  Russ. Chem. Bull. , 
+ 2001 ,  50 ,  1181 – 1186 . 
+ 12.  R. A.  Shagidullina ,  L. Ya.  Zakharova ,  L. A.  Kudryavtseva ,  The effects of cetylpyridinium 
+bromide micelles on the kinetics of alkaline hydrolysis of alkyl  p - nitrophenyl chloromethyl-
+phosphonate ,  Russ. Chem. Bull. ,  1999 ,  48 ,  278 – 283 . 
+ 13.  L. Ya.  Zakharova ,  F. G.  Valeeva ,  L. A.  Kudryavtseva ,  Yu. F.  Zuev ,  Micelle forming properties 
+and catalytic effect of the system sodium dodecyl sulfate – ethylene glycol in solvolysis of 
+ p - nitrophenyl bis(chloromethyl)phosphinate ,  Russ. J. Gen. Chem. ,  2002 ,  72 ,  1367 – 1372 . 
+ 14.  R. A.  Shagidullina ,  E. P.  Zhil ’ tsova ,  L. A.  Kudryavtseva ,  Aminolysis of O - alkyl - O – 4 -
+ nitrophenyl chloromethylphosphonates in reverse micellar solutions of the nonionic surfactant , 
+ Russ. Chem. Bull. ,  1998 ,  47 ,  1686 – 1690 . 
+ 15.  L. Ya.  Zakharova ,  R. A.  Shagidullina ,  F. G.  Valeeva ,  E. P.  Zhil ’ tsova ,  L. A.  Kudryavtseva , 
+ Kinetics of nucleophilic substitution reactions in ordered media ,  Russ. J. Phys. Chem. ,  2000 , 
+ 74 ,  1821 – 1824 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+418 
+Molecular Encapsulation
+ 16.  E. P.  Zhil ’ tsova ,  A. P.  Timosheva ,  L. A.  Kudryavtseva ,  Yu. I.  Sal ’ nikov ,  I. S.  Ryzhkina  ,  V. E. 
+ Kataev ,  R. A.  Shagidullina ,  Micellization and catalytic properties of polyethylene glycol – 600 -
+ monolaurate ,  Russ. J. Gen. Chem . ,  2002 ,  72 ,  1017 – 1022 . 
+ 17.  L. Ya.  Zakharova ,  L. A.  Kudryavtseva ,  A. I.  Konovalov ,  Mechanism of the inhibiting action 
+of electrolytes on the micellar effect in alkaline hydrolysis of  p - nitrophenyl ethyl chlorometh-
+ylphosphonate ,  Mendeleev Commun. ,  1998 ,  8 ,  163 – 165 . 
+ 18.  L. Ya.  Zakharova ,  D. B.  Kudryavtsev ,  F. G.  Valeeva ,  L. A.  Kudryavtseva ,  Inhibition of alkaline 
+hydrolysis of ethyl  p  - nitrophenyl (chloromethyl)phosphonate in the system cationic surfactant -
+ water - electrolyte ,   Russ. J. Gen. Chem . ,  2002 ,  72 ,  1215 – 1221 . 
+ 19.  L. Ya.  Zakharova ,  D. B.  Kudryavtsev ,  L. A.  Kudryavtseva ,  Yu. F.  Zuev ,  N. L.  Zakhartchenko , 
+ N. N.  Vylegzhanina ,  Z. Sh.  Idiyatullin ,  V. D.  Fedotov ,  Effect of electrolytes on the catalytic 
+properties and structural characteristics of dodecylpyridinium bromide micelles ,  Russ. J. Gen. 
+Chem. ,  2002 ,  72 ,  426 – 431 . 
+ 20.  A. B.  Mirgorodskaya ,  L. R.  Bogdanova ,  L. A.  Kudryavtseva ,  S. S.  Lukashenko ,  A. I.  Konovalov , 
+ Role of surface potential in the catalytic action of micelles of cationic surfactant with a 
+hydroxyalkyl fragment in the head group ,   Russ. J. Gen. Chem . ,  2008 ,  78 ,  163 – 170 . 
+ 21.  A. B.  Mirgorodskaya ,  L. A.  Kudryavtseva ,  V. A.  Pankratov ,  S. S.  Lukashenko ,  L. Z.  Rizvanova , 
+  A. I.   Konovalov  ,  Geminal alkylammonium surfactants: aggregation properties and catalytic 
+activities ,  Russ. J. Gen. Chem. ,  2006 ,  76 ,  1625 – 1631 . 
+ 22.  Yu.  Feldman ,  N.  Kozlovich ,  I.  Nir ,  N.  Garti ,  V.  Archipov ,  Z.  Idiyatullin ,  Yu.  Zuev ,  V.  Fedotov , 
+ Mechanism of transport of charge carriers in the sodium bis(2 - ethylhexyl) sulfosuccinate -
+ water - decane microemulsion near the percolation temperature threshold ,   J. Phys. Chem . ,  1996 , 
+ 100 ,  3745 – 3748 . 
+ 23.  L. Ya.  Zakharova ,  F. G.  Valeeva ,  L. A.  Kudryavtseva ,  A. I.  Konovalov ,  N. L.  Zakharchenko  , 
+ Yu. F.  Zuev ,  V. D.  Fedotov ,  Alkaline hydrolysis of ethyl  p - nitrophenyl chloromethylphospho-
+nate in the reverse micellar AOT  –  decane  –  water system ,  Russ. Chem. Bull. ,  1999 ,  48 , 
+ 2240 – 2244 . 
+ 24.  L. Ya.  Zakharova ,  A. R.  Ibragimova ,  F. G.  Valeeva ,  V. M.  Zakharov ,  L. A.  Kudryavtseva , 
+ A. I.  Konovalov ,  N. L.  Zakharchenko ,  Yu. F.  Zuev ,  Inﬂ uence of temperature on the reactivity 
+of phosphorus acid esters in reverse micellar systems based on sodium bis(2 - ethylhexyl)sulfo-
+succinate ,  Russ. Chem. Bull. ,  2005 ,  54 ,  1449 – 1557 . 
+ 25.  L. Ya.  Zakharova ,  F. G.  Valeeva ,  L. A.  Kudryavtseva ,  Yu. F.  Zuev ,  Factors determining the 
+micellar effect in nucleophilic substitution reactions ,  Russ. J. Phys. Chem. ,  2000 ,  74 , 
+ 1825 – 1829 . 
+ 26.  Microemulsions: Structure and Dynamics .  S. E.  Friberg ,  P.  Bothorel (Eds.).  CRC Press, Inc. , 
+ Boca Raton, Florida ,  1987 . 
+ 27.  Yu .  F.  Zuev ,  A. B.  Mirgorodskaya ,  B. Z.  Idiatullin ,  Structural properties of microheterogeneous 
+surfactant - based catalytic system . Multicomponent self - diffusion NMR approach,  Appl. mag-
+netic resonance ,  2004 ,  27 ,  489 – 500 . 
+ 28.  Yu .  F.  Zuev ,  A. B.  Mirgorodskaya ,  L. A.  Kudryavtseva ,  B. Z.  Idiyatullin ,  R. N.  Khamidullin , 
+ Inﬂ uence of the structure of cetyltrimethylammonium bromide based microemulsions on base 
+hydrolysis of carboxylic acid esters ,     Russ. J. Gen. Chem . ,  2004 ,  74 ,  1051 – 1056 . 
+ 29.  A. B.  Mirgorodskaya ,  L. A.  Kudryavtseva ,  L. S.  Shtykova ,  I. V.  Bogomolova ,  S. N.  Shtykov  , 
+ Aminolysis of carboxylic acid esters in direct, bicontinual, and inverse microemulsions based 
+on cetyltrimethylammonium bromide ,  Russ. J. Gen. Chem . ,  2005 ,  75 ,  1108 – 1112 . 
+ 30.  A. B.  Mirgorodskaya ,  L. A.  Kudryavtseva ,  Yu. F.  Zuev ,  B. Z.  Idiyatullin ,  V. D.  Fedotov , 
+ Structure and properties of water - oil microemulsions ,   Russ. J. Gen. Chem . ,  2002 ,  72 ,  1007 – 1011 . 
+ 31.  L.  Zakharova ,  F.  Valeeva ,  A.  Zakharov ,  A.  Ibragimova ,  L.  Kudryavtseva ,  H.  Harlampidi , 
+ Micellization and catalytic activity of the cetyltrimethylammonium bromide - Brij – 97 - water 
+mixed micellar system ,  J. Colloid Interface Sci . ,  2003 ,  263 ,  597 – 605 . 
+ 32.  L. Ya.  Zakharova ,  F. G.  Valeeva ,  A. V.  Zakharov ,  A. B.  Mirgorodskaya ,  L. A.  Kudryavtseva  , 
+ A. I.  Konovalov ,  Micellization properties and the catalytic effect of the aqueous cetyltrimethyl-
+ammonium bromide - Triton - X – 100 binary system in nucleophilic substitution in esters of phos-
+phorous acids ,  Kin. Catal. ,  2007 ,  48 ,  221 – 227 . 
+ 33.  A. B.  Mirgorodskaya ,  L. Ya.  Zakharova ,  F. G.  Valeeva ,  A. V.  Zakharov ,  L. Z.  Rizvanova , 
+ L. A.  Kudryavtseva ,  H. E.  Harlampidi ,  A. I.  Konovalov ,  The regulation of the catalytic effect 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Reactions in Supramolecular Systems 
+419
+of the cetyltrimethylammonium bromide micelles with the addition of the background electro-
+lyte and nonionic surfactant ,  Russ. Chem. Bull. ,  2007 ,  56 ,  2000 – 2007 . 
+ 34.  L. Ya.  Zakharova ,  F. G.  Valeeva ,  A. R.  Ibragimova ,  L. A.  Kudryavtseva ,  N. N.  Valeev ,  T. L.  
+ Didenko ,  V. I.  Kovalenko ,  A. I.  Konovalov ,  Micelle - forming, liquid - crystalline properties and 
+catalytic effect of the mixed cetyltrimethylammonium bromide  –  polyethylene glycol( ∼ 9) 
+monoalkanoate( ∼ 14)  – water micellar system ,  Russ. Chem. Bull. ,  2002 ,  51 ,  2176 – 2182 . 
+ 35.  L. Ya.  Zakharova ,  F. G.  Valeeva ,  A. R.  Ibragimova ,  V. M.  Zakharov ,  L. A.  Kudryavtseva ,  Yu. 
+G.  Elistratova ,  A. R.  Mustaﬁ na ,  A. I.  Konovalov ,  S. N.  Shtykov ,  I. V.  Bogomolova ,  Properties 
+of a sodium dodecyl sulfate - Brij – 35 binary micellar system and their effect on the alkaline 
+hydrolysis of O - ethyl - O - p - nitrophenylchloromethylphosphonate ,  Colloid J. ,  2007 ,  69 , 
+ 718 – 725 . 
+ 36.  D. N.  Rubingh ,  Mixed micelle solutions , in  Solution Chemistry of Surfactants , Vol.  1 ,  K. L. 
+ Mittal (Ed.),  Plenum Press ,  New York ,  1979 . 
+ 37.  E. P.  Zhil ’ tsova ,  L. A.  Kudryavtseva ,  G. A.  Gainanova ,  A. P.  Timosheva ,  A. S.  Mikhailov , 
+ R. H.  Giniyatullin ,  A. A.  Naﬁ cova ,  V. S.  Reznik ,  A. I.  Konovalov ,  Phosphorylation of pyri-
+midinophane in the reversed micelles of cationic and nonionogenic surfactants ,   Russ. J. Gen. 
+Chem . ,  2005 ,  75 ,  1729 – 1734 . 
+ 38.  E. P.  Zhil ’ tsova ,  L. A.  Kudryavtseva ,  A. S.  Mikhailov ,  V. E.  Semenov ,  V. S.  Reznik ,  A. I. 
+ Konovalov  ,  Reverse micellar catalysis of phosphorylation of pyrimidinophane ,   Russ. J. Gen. 
+Chem . ,  2008 ,  78 ,  50 – 56 . 
+ 39.  S. V.  Kharlamov ,  E. P.  Zhil ’ tsova ,  G. A.  Gainanova ,  L. A.  Kudryavtseva ,  A. P.  Timosheva , 
+ A. V.  Aganov ,  Sh. K.  Latypov ,  Aggregation in a mixture of cetyltrimethylammonium bromide 
+and polyoxyethylene – 600 - monolaurate solutions ,  Colloid Journal ,  2006 ,  68 ,  504 – 510 . 
+ 40.  R. F.  Bakeeva ,  L. A.  Kudryavtseva ,  V. E.  Belskii ,  B. E.  Ivanov ,  Hydrolysis of di( p - nitrophenyl) 
+methylphosphonate in presence of polyethyleneimine ,   Zhurn. Obshch. Khim . ,  1983 ,  43 ,  1058 – 
+1061 . 
+ 41.  J.  Chin ,  Developing artiﬁ cial hydrolytic metalloenzymes by a uniﬁ ed mechanistic approach , 
+ Acc. Chem. Res. ,  1991 ,  24 ,  145 – 152 . 
+ 42.  M. L.  Bender ,  Mechanisms of homogeneous catalysis from protons to proteins .  Wiley -
+ Interscience ,  New York ,  1971 . 
+ 43.  L. Ya.  Zakharova ,  A. R.  Ibragimova ,  F. G.  Valeeva ,  A. V.  Zakharov ,  A. R.  Mustaﬁ na ,  L. A. 
+ Kudryavtseva ,  H. E.  Harlampidi ,  A. I.  Konovalov ,  Nanosized reactors based on polyethylene-
+imines: from microheterogeneous systems to immobilized catalysts ,  Langmuir ,  2007 ,  23 , 
+ 3214 – 3224 . 
+ 44.  L. Ya.  Zakharova ,  F. G.  Valeeva ,  D. B.  Kudryavtsev ,  A. V.  Bilalov ,  A. Ya.  Tret ’ yakova , 
+ L. A.  Kudryavtseva ,  A. I.  Konovalov ,  V. P.  Barabanov ,  Sodium dodecyl sulfate - 
+polyethyleneimine - water system. Self - organization and catalytic activity ,  Russ. Chem. Bull. , 
+ 2005 ,  54 ,  641 – 649 . 
+ 45.  K.  Holmberg ,  B.  J ö nsson ,  B.  Kronberg ,  B.  Lindman ,  Surfactants and Polymers in Aqueous 
+Solution ,  John Wiley and Sons Ltd ,  London ,  2002 . 
+ 46.  L. Ya.  Zakharova ,  A. R.  Ibragimova ,  F. G.  Valeeva ,  L. A.  Kudryavtseva ,  A. I.  Konovalov , 
+ A. V.  Zakharov ,  N. M.  Selivanova ,  V. V.  Osipova ,  M. V.  Strelkov ,  Y. G.  Galyametdinov ,  The 
+self - organization and the catalytic activity of the polyethyleneglycol(10)monododecyl ether/
+polyethyleneimine/lanthanum nitrate system ,   J. Phys. Chem .  C  ,  2007 ,  111 ,  13839 – 13845 . 
+ 47.  R. F.  Bakeeva ,  D. B.  Kudryavtsev ,  L. Ya.  Zakharova ,  A.  Raevska ,  V. F.  Sophin ,  Micellar, 
+liquid crystalline and polymer systems based on surfactant and polyethyleneimine as nanoreac-
+tors for the transfer of phosphoryl group ,  Mol. Cryst. Liq. Cryst. ,  2001 ,  367 ,  585 – 597 . 
+ 48.  L. Ya.  Zakharova ,  F. G.  Valeeva ,  D. B.  Kudryavtsev ,  A. R.  Ibragimova ,  L. A.  Kudryavtseva  , 
+ A. P.  Timosheva ,  V. E.  Kataev ,  Catalytic effect of multicomponent supramolecular systems in 
+phosphoryl - group transfer reactions ,  Kin. Catal. ,  2003 ,  44 ,  547 – 551 . 
+ 49.  E. M.  Kosacheva ,  D. B.  Kudryavtsev ,  R. F.  Bakeeva ,  A. I.  Kuklin ,  A. Kh.  Islamov ,  L. A. 
+ Kudryavtseva ,  V. F.  Sopin ,  A. I.  Konovalov ,  The aggregation of branched polyethyleneimine 
+and cationic surfactants in aqueous systems ,  Colloid J. ,  2006 ,  68 ,  713 – 720 . 
+ 50.  S. S.  Lukashenko ,  A. V.  Yurina ,  T. N.  Pashirova ,  D. B.  Kudryavtsev ,  E. M.  Kosacheva ,  L. A.  
+ Kudryavtseva ,  A. I.  Konovalov ,  Systems based on the hydrophobically modiﬁ ed polyethylene-
+imines and surfactants: aggregation and catalysis ,  Colloid J. ,  2008 ,  70 ,  317 – 326 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+420 
+Molecular Encapsulation
+ 51.  L. Ya.  Zakharova ,  V. E.  Semenov ,  M. A.  Voronin ,  F. G.  Valeeva ,  A. R.  Ibragimova ,  R. Kh. 
+ Giniatullin ,  A. V.  Chernova ,  S. V.  Kharlamov ,  L. A.  Kudryavtseva ,  Sh. K.  Latypov ,  V. S. 
+ Reznik ,  A. I.  Konovalov ,  Nanoreactors based on amphiphilic uracilophanes: the self - 
+organization and the reactivity study ,   J. Phys. Chem. B . ,  2007 ,  111 ,  14152 – 14162 . 
+ 52.  L. Ya.  Zakharova ,  V. E.  Semenov ,  M. A.  Voronin ,  F. G.  Valeeva ,  R. Kh.  Giniatullin ,  L. A.  
+ Kudryavtseva ,  V. S.  Reznik ,  A. I.  Konovalov ,  Supramolecular catalytic systems based on dimeric 
+pyrimidinic surfactants and polyethyleneimine ,   Mendeleev Commun . ,  2008 ,  18 ,  158 – 160 . 
+ 53.  L. Ya.  Zakharova ,  V. V.  Syakaev ,  M. A.  Voronin ,  V. E.  Semenov ,  F. G.  Valeeva ,  A. R. 
+ Ibragimova ,  A. V.  Bilalov ,  R. Kh.  Giniyatullin ,  Sh. K.  Latypov ,  V. S.  Reznik ,  A. I.  Konovalov , 
+ New self - assembling systems based on bola - type pyrimidinic surfactants ,  J. Colloid Interface 
+Sci. ,  2010 ,  342 ,  119 – 127 . 
+ 54.  L. Ya.  Zakharova ,  F. G.  Valeeva ,  A. R.  Ibragimova ,  M. A.  Voronin ,  L. A.  Kudryavtseva , 
+ V. V.  Syakaev ,  E. Kh.  Kazakova ,  N. A.  Makarova ,  Yu. E.  Morozova ,  N. B.  Mel ’ nicova ,  O. E. 
+ Zemniakova ,  A. I.  Konovalov ,  Supramolecular catalytic systems based on anionic amphiphiles 
+and polyethyleneimine for hydrolytic cleavage of phosphorus ester bonds ,  Izvestia Academii 
+Nauk, Seria Khimicheskaya ,  2008 ,  366 – 373 . 
+ 55.  L. Ya.  Zakharova ,  V. V.  Syakaev ,  M. A.  Voronin ,  F. G.  Valeeva ,  A. R.  Ibragimova ,  Yu. R.  
+ Ablakova ,  E. Kh.  Kazakova ,  Sh. K.  Latypov ,  A. I.  Konovalov ,  The NMR and spectrophotom-
+etry study of the supramolecular catalytic system based on polyethyleneimine and amphiphilic 
+sulfonatomethylated calix[4]resorcinarene ,  J. Phys. Chem. C. ,  2009 ,  113 ,  6182 – 6190 . 
+ 56.  L. Ya.  Zakharova ,  A. R.  Mustaﬁ na ,  F. G.  Valeeva ,  A. R.  Ibragimova ,  Yu. R.  Ablakova , 
+ Yu. G.  Elistratova ,  V. V.  Syakaev ,  L. A.  Kudryavtseva ,  A. I.  Konovalov ,  Supramolecular cata-
+lytic systems based on calix[4]resorcinarene for nucleophilic substitution in phosphorous acid 
+esters ,  Colloid J. ,  2008 ,  70 ,  444 – 454 . 
+ 57.  T. N.  Pashirova ,  S. S.  Lukashenko ,  E. M.  Kosacheva ,  M. V.  Leonova ,  L. I.  Vagapova ,  A. R.  
+ Burilov ,  M. A.  Pudovik ,  L. A.  Kudryavtseva ,  A. I.  Konovalov ,  Aggregation behavior and cata-
+lytic properties of systems based on aminomethylated calix[4]resorcinarenes and polyethylene-
+imines ,  Russ. J. Gen. Chem. ,  2008 ,  78 ,  202 – 209 . 
+ 58.  E. P.  Zhil ’ tsova ,  L. A.  Kudryavtseva ,  G. A.  Gainanova ,  A. P.  Timosheva ,  S. S.  Lukashenko , 
+  A. I.   Konovalov  ,  Inverse micellar catalysis of phosphorylation of hydroxybenzilated polyeth-
+yleneimines ,  Russ. J. Gen. Chem . ,  2005 ,  75 ,  1603 – 1609 . 
+ 59.  G. A.  Gainanova ,  E. P.  Zhil ’ tsova ,  L. A.  Kudryavtseva ,  S. S.  Lukashenko ,  A. P.  Timosheva , 
+ V. E.  Kataev ,  A. I.  Konovalov ,  Aggregation and catalysis in a nonionic surfactant – 
+polyethyleneimine – chloroform system ,  Colloid J. ,  2006 ,  68 ,  533 – 540 . 
+ 60.  G. A.  Gainanova ,  E. P.  Zhil ′ tsova ,  L. A.  Kudryavtseva ,  S. V.  Kharlamov ,  Sh. K.  Latypov , 
+ A. P.  Timosheva ,  A. I.  Konovalov ,  Mixed micelles of cetyltrimethylammonium bromide and 
+poly(ethylene glycol) – 600 - monolaurate as catalysts of polyethyleneimine phosphorylation in 
+chloroform ,  Russ. Chem. Bull . ,  2006 ,  57 ,  1411 – 1418 . 
+ 61.  E. P.  Zhil ’ tsova ,  D. B.  Kudryavtsev ,  L. Ya.  Zakharova ,  S. S.  Lukashenko ,  I. S.  Ryzhkina , 
+  L. A.   Kudryavtseva  ,  Reactivity of polyethyleneimines in reversed and normal micellar solu-
+tions of surfactants ,  Russ. J. Phys. Chem. ,  2002 ,  76 ,  1853  – 1857 . 
+ 62.  G. A.  Gainanova ,  E. P.  Zhil ’ tsova ,  L. A.  Kudryavtseva ,  S. S.  Lukashenko ,  A. P.  Timosheva , 
+ I. R.  Knyazeva ,  A. R.  Burilov ,  A. I.  Konovalov ,  Complex formation and self - association in 
+alkylated polyethyleneimine - calix[4]resorcinarene – chloroform system ,   Russ. J. Gen. Chem . , 
+ 2006 ,  76 ,  1788 – 1794 . 
+ 63.  G. A.  Gainanova ,  E. P.  Zhil ’ tsova ,  L. A.  Kudryavtseva ,  S. S.  Lukashenko ,  I. R.  Knyazeva , 
+ A. R.  Burilov ,  V. I.  Kovalenko ,  L. V.  Avvakumova ,  A. I.  Konovalov ,  Phosphorylation of poly-
+ethyleneimines in chloroform in the presence of calix[4]resorcinarenes ,  Russ. J. Gen. Chem . , 
+ 2007 ,  77 ,  40 – 46 . 
+ 64.  G. A.  Gainanova ,  E. P.  Zhil ’ tsova ,  L. A.  Kudryavtseva ,  S. S.  Lukashenko ,  A. P.  Timosheva , 
+  A. I.   Konovalov  ,  Phosphorylation of alkylated polyethyleneimine in chloroform in the presence 
+of cetyltrimethylammonium bromide and calix[4]resorcinarene ,  Russ. Chem. Bull. ,  2007 ,  56 , 
+ 953 – 958 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+ 16 
+Encapsulation Processes by 
+Bilayer Vesicles  
+ Marc C. A.  Stuart and  Jan B. F. N.  Engberts 
+ Groningen Biomolecular Sciences and Biotechnology Institute and Stratingh Institute of 
+Chemistry, University of Groningen, Nijenborgh 4, 9747 AG Groningen, The Netherlands 
+ 16.1  Introduction 
+ 16.1.1  Vesicular Aggregates 
+ Surfactants, or amphiphiles, comprise a large class of compounds, characterized by one 
+(or more) ionic or highly polar headgroups and one, two, or rarely more, hydrophobic 
+alkyl tails (usually  n - C 8 to  n - C 22 , the most common being C 12 , C 14 , C 16 , C 18 , and C 20 ). In 
+aqueous media, above a critical concentration, these systems cope with their dual struc-
+tural properties by forming aggregates in which the headgroups are in contact with water 
+while the alkyl chains reside in the core of the aggregate, avoiding interactions with the 
+aqueous medium. 
+ A variety of different morphologies are possible for these aggregates, depending on 
+the molecular structure of the single amphiphilic molecule, including their size and shape. 
+But other factors like ionic strength, temperature, pressure and pH also play a role. 1 
+ Vesicles (from the Latin vesicula, small bubble) belong to the most extensively studied 
+amphiphilic aggregates.  2   Not only because the bilayer membrane is the building block of 
+cell membranes, but also because vesicles or liposomes offer the unique possibility for 
+solutes to bind to the outer -  and inner leaﬂ ets of the bilayer whereas the hydrophobic 
+interior of the bilayer can be used to entrap hydrophobic solutes and also membrane 
+proteins. 
+Molecular Encapsulation: Organic Reactions in Constrained Systems        Edited by Udo H. Brinker and Jean-Luc Mieusset
+© 2010 John Wiley & Sons, Inc.  ISBN: 978-0-470-99807-6
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+422 
+Molecular Encapsulation
+ The Gibbs energy of a vesicle depends on a compromise of attractive and repulsive 
+interactions. The main contributions come from hydrophobic interactions between the 
+tails, the major driving force for aggregation, and from repulsive interactions between the 
+headgroups at the aqueous interface, which, in case of ionic surfactants, are in part com-
+pensated by counterion binding. This counterion binding is usually stronger for vesicles 
+than for micelles.  3   Other factors also play a role, one of them being the loss of confor-
+mational entropy of the hydrocarbon tails in the vesicular core. 
+ Water is the essential medium for surfactant aggregation, although association can 
+occasionally also occur in polar solvents with a high cohesive energy density.  4 
+ Which factors determine the packing efﬁ ciency of the amphiphiles in the aggregate? 
+The dimensionless shape factor or packing parameter (P) provides a relation between the 
+molecular shape of the amphiphile and the preferred morphology of the aggregate in dilute 
+aqueous solution at low ionic strength and at ambient temperatures:  5 
+ 
+ P
+V a
+lc
+=
+×
+0
+ 
+ Herein, V is the volume of the hydrophobic chain, a 0  the optimal cross - sectional surface 
+area of the headgroup, and l c  the length of the all -  trans  alkyl tails. It will be clear that the 
+curvature of the hydrophilic/hydrophobic interface is related to the value of P. The rela-
+tion between the aggregate morphology and P is given in Figure  16.1 . The packing 
+parameter concept provides a reasonable and useful rationalization of the rich polymor-
+phism of surfactant aggregates, but it has also been criticized. A signiﬁ cant issue is, of 
+course, that the values of a 0  and l c  are not independent of each other.  6 Nevertheless, 
+extensive studies of a large series of amphiphiles in which the structure was gradually 
+modiﬁ ed showed that the approach worked satisfactorily. 7,8 
+ It was Bangham who, in the sixties of the past century discovered that liposomes could 
+be made from egg yolk.  9   But phospholipids are by no means unique in this behaviour. 
+Kunitake 10   showed that bilayer vesicles can be obtained from synthetic surfactants in case 
+0.5  <  P  <  1.0, while for P  =  1.0 a ﬂ at bilayer is formed.  11   Bilayer morphologies, usually 
+preferred by double - tailed amphiphiles, are shown in Figure  16.2  and are called lamellar 
+phases. The bilayer consists of two opposing layers of amphiphiles, with the aligned tails 
+facing each other and the headgroups situated at the aqueous interface. In case the two 
+ends of the bilayer close to form a global structure with an aqueous inner compartment, 
+the aggregate is called a vesicle, or a liposome if the amphiphilic constituent is a phos-
+pholipid molecule. Mammalian cell membranes may contain microdomains ( ‘ rafts ’ ) 
+which can also be formed in multicomponent liposomes.  12,13   For the structures of the most 
+common phospholipids in cell membranes, the reader is referred to appropriate biochem-
+istry textbooks. 
+ Vesicles and particularly liposomes are highly useful, although severely simpliﬁ ed, 
+models for biological membranes. 
+ Conventional molecular dynamic (MD) simulations of the formation of small dipalmi-
+toylphosphatidylcholine (DPPC) liposomes in atomistic detail (1017 DPPC molecules in 
+106.563 waters) have provided mechanistic insights into some general features of lipo-
+some formation.  14   In the very rapid initial stages of the aggregation process micellar - like 
+structures are formed. Lipid bridging between these micelles leads to larger, lamellar 
+morphologies, which are, in fact, curved bilayers. Spontaneous development of curvature, 
+resulting from minimization of edge energy, is then claimed to induce formation of 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Encapsulation Processes by Bilayer Vesicles 
+423
+Expected
+Phase
+Molecular
+Shape
+Mean Curvature
+0
+Aggregate
+Structure in 
+Dilute
+Dispersions
+Packing
+Parameter (P)
+>1
+1/2–1
+1/3–1/2
+HI
+LI
+Lα
+II
+QI
+QII
+HII
+III LII
+<1/3
+ Figure 16.1   Relationship between molecular shape, aggregate structure in dilute 
+dispersions, phase behavior and packing parameter. Micellar phase (L 1 ), cubic micellar 
+phase (I), hexagonal phase (H), bicontinuous cubic phase (Q), L   α   lamellar phase. 
+Subscripts I and II indicate normal and inverted phases, respectively. From: M. Scarzello, 
+Aggregation Properties of Amphiphilic DNA - Carriers for Gene Delivery, Ph. D. Thesis 
+University of Groningen, p 6, 2006  
+ Figure 16.2   Schematic representation of two possible morphologies of L   α   : ﬂ at bilayer (a) 
+and a vesicle (b).  From: M. Scarzello, Aggregation Properties of Amphiphilic DNA - Carriers 
+for Gene Delivery, Ph. D. Thesis, University of Groningen, p 8, 2006  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+424 
+Molecular Encapsulation
+liposome - like shapes. These contain water pores with diameters of 1 – 4  nm, allowing rela-
+tively slow equilibration of lipid molecules between the inner and outer leaﬂ ets by diffu-
+sion. This so - called  ‘ ﬂ ip - ﬂ op ’  has also been studied in mature vesicles already many years 
+ago. 15   Finally these processes result in collapse of the water pores and formation of the 
+most stable liposomal aggregate. 16,17 Spontaneous formation of vesicles from mixed 
+amphiphiles as well as the interaction of vesicles with other molecules (including choles-
+terol 18 ) has also been investigated using MD techniques. 19 
+ With a few exceptions (catanionic vesicles, for example  20,21  ), vesicles are metastable 
+aggregates and posses a tendency to undergo aggregation followed by merging of the 
+bilayers and eventually precipitation. Therefore vesicles can be best coined as  ‘ colloidal 
+structures ’ . 22   Apart from catanionic vesicles and contrary to the suggestion by some MD 
+simulations,  14   closed vesicle formation from single amphiphilic molecules is not sponta-
+neous but requires input of mechanical energy such as shaking, stirring, extrusion or 
+sonication, inducing formation of closed vesicles from bilayer sheets and increasing the 
+bilayer curvature and reducing the vesicular size. In fact, the method of vesicle prepara-
+tion has an effect on the exact lamellar structure and on the vesicular size.  23,24 A bending 
+energy can be deﬁ ned for formation of a closed vesicle from a bilayer sheet. The curvature 
+stress energy for a bilayer can be calculated with the (simpliﬁ ed) Helfrich Gibbs energy 
+equation. 25   In contrast to micelles, vesicles tend to separate from their dispersions, but 
+this process may take a considerable time span (ranging from seconds to months). 
+ To prove the formation of vesicles a number of indirect techniques can be used such 
+as dynamic light scattering, the use of ﬂ uorescent probes and pulsed ﬁ eld gradient NMR 
+self - diffusion measurements. Some more direct techniques such as freeze - fracture and 
+negative staining electron microscopy are less biased by the interpretation of the scientist, 
+but also these methods have their limitations. Cryo - electron microscopy, as introduced 
+by Dubochet in the 80s,   26   is the method of choice when it comes to visualization of small 
+colloidal structures.  27   Recent developments in the vitriﬁ cation of specimens make it now 
+possible to observe vesicles and other aggregated structures artifact free. 
+ Vesicles with sizes varying from nanometers to micrometers usually contain large 
+numbers of surfactant molecules. Large unilamellar vesicles (LUVs) possess diameters 
+which may vary considerably (50 – 500   nm) and have a large encapsulation efﬁ ciency 
+(5 – 20  l  mol  − 1 ). Small unilamellar vesicles (SUVs) with diameters of 20 – 50  nm encapsulate 
+smaller volumes (0.5 – 1.0  l  mol  − 1 ) Under special conditions, giant vesicles may be formed 
+(diameter in the order of 1 – 500  µ m) with a low bilayer curvature, akin to that of a ﬂ at 
+bilayer. 28,29   These giant vesicles are able to eject smaller vesicles by a budding process.  30 
+ In vesicles, the ﬂ uidity of the bilayer  31   and the associated stiffness and order of the 
+alkyl tails can vary signiﬁ cantly as a function of temperature, but, of course, also depend-
+ing on the detailed structure (straight or branched), size, and the presence of one or more 
+double or triple carbon – carbon bonds in the tails. At lower temperatures, the bilayers 
+reside in the gel phase (L  β  ) with the strongest packing of the all -  trans  alkyl chains and 
+with the largest order and rigidity. Upon increasing the temperature, a cooperative phase 
+transition occurs to the L  α   or liquid crystalline phase with a more liquid - like core, allow-
+ing fast diffusion of the amphiphilic components, and in which gauche conformations 
+of the alkyl tails are allowed. As expected this main phase transition temperature 
+(T c ) becomes lower if the alkyl chains are shortened or if unsaturation is introduced into 
+the tails. 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Encapsulation Processes by Bilayer Vesicles 
+425
+ Sometimes an intermediate  ‘ rippled ’  phase (  P ′
+β ) 32 is ﬁ rst formed from the L  β  phase, 
+which transforms to the L  α   phase at higher temperatures. At still more elevated tempera-
+tures, the lamellar phase may change into inverted cubic (I  β  ) or related isotropic phases.  33,34 
+These highly complex aggregates have been proposed as intermediates during membrane 
+fusion. A further temperature increase may lead to formation of inverted hexagonal phases 
+(H II ), in which the weakly hydrated amphiphiles are packed in inverted micellar - like 
+cylinders, with the headgroups facing inside and in contact with water in the enclosed 
+compartment. 
+ Vesicles possess many interesting potentials for applications, one of the most important 
+being encapsulation of solutes, a phenomenon that has been investigated in detail and has 
+been utilized in different ways. To get insight into the possibilities for encapsulation, 
+unavoidably involving disturbances of the bilayer structuring and to predict which binding 
+sites are available for solubilizates of different chemical composition, we can have a look 
+at the lateral pressure proﬁ le, extensively investigated by Cantor. 35,36 The lateral pressure 
+(LP) is deﬁ ned as d  π (z) acting within a thin slice of the bilayer with thickness dz. Positive 
+values of the LP indicate repulsion, negative values stand for attraction. The lateral pres-
+sure density is then given by p(z)   =   d  π /dz, with dimensions of bulk pressures. At the 
+aqueous interface of the membrane, the headgroups repel each other (positive LP), 
+whereas at the interface somewhat deeper into the bilayer, the tails attract each other 
+through hydrophobic interactions leading to a large, negative LP. Still deeper in the 
+membrane, there is little or no water and the enforced partial ordening of the tails is 
+accompanied by a considerable loss of entropy due to their reduced conformational 
+freedom. This means repulsion and a positive LP in the central part of the core of the 
+bilayer. The variation of the LP with the depth in the membrane is an important issue and 
+has been applied in detail in the ﬁ eld of bilayer - protein interactions. 37 
+ Figure  16.3  shows a LP proﬁ le for one mono - layer, the proﬁ le for the opposite mono-
+layer is the same. We see how the LP varies with depth in the membrane. Since the 
+formation of a vesicular membrane is associated with a favorable Gibbs energy, the total 
+lateral pressure in the membrane is zero (or nearly so).   
+ The lateral pressure concept provides useful insight into the spatial distribution of 
+forces and is a sum over terms corresponding to layers of ﬁ nite thickness (dz).  38 Quantitative 
+measurements of the LP remain difﬁ cult and even the concept has been criticized. 39 
+ Chain order parameters, measured by  2 H - NMR studies on amphiphiles with speciﬁ cally 
+deuterium - labelled methylene units in the tails,  40 – 42   gave a similar view of the distribution 
+of the chain attractions/repulsions as a function of position in the tails. Increasing quad-
+rupole splittings, indicated by an increasing distance between the two peaks in the  2 H -
+ NMR spectrum, are associated with increasing chain order. 
+ In sum, a larger repulsion between speciﬁ c parts of the alkyl chains in a bilayer is 
+reﬂ ected in a higher lateral pressure, a decrease in chain order and more area available 
+for that part of the tails. Such changes can be induced by, for example, a higher tempera-
+ture or introduction of a  cis C = C bond into the tail or via  trans – cis  isomerization of 
+double - tailed, azobenzene - substituted amphihiles. 43 
+ In recent years, several computational methods have been developed to calculate LP 
+proﬁ les in membranes. Among them, molecular dynamics (MD) simulations have been 
+particularly successful. Timescales extending to hundreds of nanoseconds are now com-
+putationally feasible, but the simulations are still restricted to relatively small system 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+426 
+Molecular Encapsulation
+sizes. MD is also useful in studies of undulatory and thickness ﬂ uctuation modes of 
+bilayers. 44 
+ Finally we note that, apart from double - tailed surfactant molecules, vesicular aggre-
+gates can also be formed from a number of other building blocks, including nonionic 
+amphiphiles to form niosomes,  45 single - tailed surfactants 46,47   and complex (co)polymers, 
+polypeptides, and dendrimers.  48   In this chapter we restrict our discussion to encapsulation 
+processes by vesicles formed from synthetic surfactants and phospholipids.  
+ 16.1.2  Solute Encapsulation by Vesicles 
+ It will be obvious that the encapsulation of a solute molecule into a vesicular membrane 
+will affect the interchain interactions in the bilayer.  49   Overall, the Gibbs energy for 
+binding should be negative, otherwise the solute would remain in bulk solution. Therefore, 
+partitioning of a relatively apolar solute into the membrane will be most favorable at a 
+location with the best balance between solubilizate - tail and solubilizate - headgroup inter-
+actions on one hand and changes in tail - tail interactions on the other hand. These coun-
+teracting contributions will also signiﬁ cantly depend on hydration changes. On the other 
+hand, the (solvation) properties of the solubilizate are also different from those in dilute 
+aqueous solution as a result of binding in the vesicular bilayer. 
+ In this brief review we will describe some important encapsulation processes by vesicu-
+lar aggregates. Encapsulation will be broadly interpreted. Apart from solubilization in the 
+aqueous pool inside the vesicle, the term will also encompass binding of solubilizates to 
+all binding sites available in the vesicular system. We will not discuss bilayer vesicles 
+formed from amphiphiles further functionalized by receptor molecules, such as amphiphilic 
+cyclodextrins.  50 
+ Instead of a comprehensive review of the vast literature on solute encapsulation, a 
+selection will be made of various illustrative binding possibilities in or at the bilayer. 
+Headgroup repulsion
+Attractive interfacial tensiion or
+hydrophobic interactions
+Repulsions among the
+hydrocarbon tails
+z
+–
++
+Lateral pressure p(z)
+ Figure 16.3   Schematic representation of a lateral pressure proﬁ le in a vesicular bilayer. 
+Only one monolayer is shown here, the same proﬁ le applies for the other monolayer. The 
+lateral pressure   π depends on the depth (Z) in the monolayer.  From: M. Kuiper, 
+Azobenzene - substituted Phosphate Amphiphiles : Effect of Light - induced  trans  – cis  
+Isomerisation on Vesicular Properties and the Channel Protein MscL, Ph. D. Thesis, 
+University of Groningen, p 12, 2005  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Encapsulation Processes by Bilayer Vesicles 
+427
+Although binding to vesicles has been less extensively studied than binding to micelles, 
+attempts will be made to rationalize why speciﬁ c solute molecules bind to particular 
+binding locations. 
+ 16.1.3  Binding Locations 
+ Let us now look at the different locations for spontaneous encapsulation of solutes of 
+different chemical composition. First of all, it goes without saying that encapsulation 
+experiments should be carried out under well - deﬁ ned conditions. Often vesicles, after 
+their preparation, and subsequently after binding of the solubilizate, need time to arrive 
+at their most stable conﬁ gurations (size, tail ordering) and adequate attention should be 
+given to this issue. This process may sometimes take days at room temperature. Also the 
+method used for their preparation may exert a deﬁ nite effect on the vesicular properties. 
+Thus, for a honest comparison of encapsulation abilities, it is recommended that the vesi-
+cles are prepared under exactly the same conditions and that their properties are checked 
+by a proper physical technique, such as cryo - electron microscopy. Also temperature 
+control needs attention since the gel and liquid - crystalline phase exhibit different binding 
+efﬁ ciencies of solutes. 
+ The binding locations can be charaterized as follows: 
+  (a)     In the outer Stern region, where the solute interacts almost exclusively with the polar 
+or ionic headgroups. In case of ionic headgroups, relatively hydrophilic solutes, car-
+rying opposite charges (preferably double - charged) are the best candidates for strong 
+binding. Interaction is mainly governed by electrostatic forces. Close approach 
+between oppositely charged ionic moieties is necessarily accompanied by partial 
+dehydration of the ions, an effect that may in part counteract the attractive 
+interactions. 
+ Hydrophilic solutes like carbohydrates, i.e. glucose, sucrose, and trehalose also 
+bind close to the charged headgroups, replacing hydration water, as laid down in the 
+ ‘ water - replacement hypothesis ’ . 51   They act as cryoprotectants and help to stabilize 
+the bilayer in case of insufﬁ cient water. 
+ There is now compelling evidence that selective hydrogen - bonding interactions 
+between functional groups of hydrophobically - buried molecules residing near the 
+vesicle - water interface are able to overcome the otherwise dominant hydrogen 
+bonding to water molecules, present in high excess. A recent example is the self -
+ adhesion among phospholipid vesicles carrying adhesive agents.  52 Such associations 
+in the aqueous interface are largely governed by entropic factors, as discussed in a 
+beautiful review.  53   The entropic costs for association of ligands tethered to the surface 
+of vesicles are smaller than those for interaction of similar species diffusing independ-
+ently in three dimensions in an aqueous medium. 
+ A highly unexpected result, ﬁ rst reported in 2003, was the efﬁ cient adsorption of 
+hydroxide ions at pH values slightly above 7.5 to (almost) uncharged hydrophobic 
+surfaces 54   and vesicular surfaces formed by reduced - sugar based gemini surfactants.  55,56 
+The origin of this phenomenon has been investigated in some detail. 57 
+ (b)  In the  ‘ inner ’  Stern layer, that is at binding locations with negative LP values, at a 
+few methylene units from the headgroups. These are the most frequently encountered 
+binding sites where relatively hydrophobic solutes preferably interact with the partly 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+428 
+Molecular Encapsulation
+hydrated alkyl tails through hydrophobic interactions. Often these solutes also possess 
+a hydrophilic substituent, necessary for sufﬁ cient water solubility, and this substituent 
+will be preferentially directed towards the more aqueous region of a bilayer for ben-
+eﬁ cial contact with water. Incorporation of solutes may disturb the tail – tail interac-
+tions to some extent. An example is provided by the anchoring of hydrophobically 
+modiﬁ ed poly(sodium acrylate)s into di -  n  - dodecylphosphate (DDP) vesicles. In case 
+the polymer contains  n  - dodecyl chains, the bilayer is hardly affected as indicated by 
+detailed DSC measurements. By contrast, for  n - nonyl and  n - octadecyl chains the 
+hydrophobic mismatch leads to lower main phase transition temperatures and reduced 
+enthalpies of transition per mole of DDP monomer. Another notable consequence of 
+binding of the hydrophobically modiﬁ ed polymer into the vesicle bilayer is the 
+increase of the cooperativity of the melting process, probably resulting from the pres-
+ence of larger  ‘ patches ’  with a lower curvature.  58   Another interesting effect induced 
+by hydrophobic mismatching is the clustering of membrane proteins in case their 
+hydrophobic transmembrane domains do not match with the surrounding lipid 
+bilayer. 59 
+ Interestingly, transvesicular reactions between substrates bound in the exovesicular 
+and endovesicular leaﬂ ets have been studied, particularly at relatively low vesicular 
+ﬂ uidities. 60 
+  (c)     Deep in the interior of the bilayer. These are the preferred binding locations for 
+strongly hydrophobic molecules. The chain order is relatively low in this region and 
+the LP is positive. There is also more free volume available for incoming hydrophobic 
+solutes. These binding processes will affect bilayer dynamics. 
+ It has recently been shown that introduction of a small, hydrophobic molecule like 
+isoprene may lead to a more ordered and better packed lipid membrane as revealed 
+by MD simulations. The stabilized membrane is then protected against temperature -
+ induced disordering of the tails.  61   Similar thermoprotective effects are induced by 
+cholesterol which also increases the molecular packing of the tails and, in contrast to 
+isoprene, affects the dynamics of the lipids in the bilayer. 62 
+  (d)     In the aqueous inner compartment of the vesicle. Sufﬁ ciently hydrophilic solutes can 
+be entrapped in the aqueous medium inside the vesicular system and may favourably 
+interact with the headgroups stacking into this medium.  63   In contrast to the protocols 
+used for binding at the sides labelled (a) – (c), binding in the water pool is realized by 
+preparation of the vesicle dispersion in a medium already containing the solute. 
+During the formation of the vesicular aggregate, the solute becomes entrapped in the 
+inner aqueous compartment. Of course, a prerequisite for this type of encapsulation 
+is that leakage over the bilayer is slow. Carboxyﬂ uorescein, a highly water - soluble 
+ﬂ uorescent dye, has been extensively used to probe leakage over vesicular bilayers. 63 
+Strong bilayer packing, as induced by encapsulated cholesterol, slows down leakage 
+processes. 
+ Finally, we stress that the bound solutes are often certainly not localized at a single, 
+precisely deﬁ ned, position but may exchange rapidly between various positions of 
+similar binding characteristics and partition coefﬁ cients. 
+ As we will discuss below, microencapsulation offers interesting possibilities for reac-
+tivity control. 64 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Encapsulation Processes by Bilayer Vesicles 
+429
+ 16.1.4  Experimental Techniques for Measuring Encapsulation Processes 
+ It is obvious that binding of a solute to a vesicle will induce changes in the physical 
+properties of both solute and the amphiphilic molecules that make up the bilayer aggre-
+gate. Two sorts of information can be obtained from these changes. First, the strength of 
+the interaction, which can be quantiﬁ ed by the solvent/bilayer partition coefﬁ cient of the 
+solute. Second, in many cases information can be obtained regarding the location of the 
+binding site although the exact interpretation of the experimental data can be quite chal-
+lenging. Both types of data are of immediate importance for applications of the particular 
+vesicular aggregates. 
+ A brief summary will now follow of some of the most frequently employed experi-
+mental techniques. Several of these have been particularly applied for micellar aggregates, 
+but their usage can often be easily extended to vesicles. 
+ 16.1.4.1  Microcalorimetry 
+ The greatly improved sensitivity of the modern microcalorimeters for both differential 
+scanning microcalorimetry (DSC) and isothermal titration microcalorimetry (ITC) has 
+made their application highly useful. Titration microcalorimetry yields binding constants 
+and, when applied as a function of temperature, full thermodynamic details for the binding 
+process. 65   DSC provides details about the disturbance of the bilayer system by the solu-
+bilized guest from which conclusions may be drawn about the preferred binding 
+locations. 
+ 16.1.4.2  NMR Spectroscopy 
+ Ring current effects have already been examined more than twenty years ago and indi-
+cated which groups are in close proximity to an aromatic ring in the solute or in the 
+amphiphile. This is useful information but the exact positioning of these interaction sites 
+within the bilayer may remain a problem.  66,67   Nuclear Overhauser effects have also been 
+employed frequently. 
+ Paramagnetic relaxation enhancement experiments measure the distribution coefﬁ -
+cients of solubilizates.  68,69   A comparison is made between the proton spin – lattice relaxa-
+tion rates of the solubilizate in the absence and presence of noncomplexing paramagnetic 
+ions of the same sign of charge as the headgoups. Such paramagnetic ions reside neces-
+sarily in the bulk solvent and their effect on the nuclei of the solubilizate depend on the 
+efﬁ ciency of penetration of the solubilizate into the core of the bilayer. The method is 
+applicable for a variety of NMR - active nuclei in the guest molecule. These results can be 
+compared with those obtained from Fourier transform pulsed gradient spin - echo NMR 
+self - diffusion measurements. 
+ 16.1.4.3  Phosphorescence, Fluorescence and Steady - state Absorption Techniques 
+ These techniques can be employed for quantitative studies of the distribution constants 
+of solubilizates as well as for measuring the kinetics of solubilization. Binding at the 
+surface or in the core of the aggregate can be distinguished under favorable conditions 
+by ﬂ uorescence probing. 70 – 72 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+430 
+Molecular Encapsulation
+ Solvatochromic probes like Nile Red allow characterization of temperature - dependent 
+phase transitions. This is possible due to the large difference in polarity between the 
+ground and excited state of the probe.  73   At binding sites of signiﬁ cantly different polarity 
+the probe exhibits selective excitation properties and excitation - dependent emission 
+maxima. 
+ 16.1.4.4  Combined Fluorescence Quenching Experiments and 
+Paramagnetic Resonance 
+ Data obtained by this technique allow rather detailed conclusions about the location of 
+the solubilizate in the aggregate. Fluorescence quenching rate constants vary with tem-
+perature, local microviscosity and quencher concentration.  74 – 76   Encapsulation of spin 
+probes has been examined in detail by EPR spectroscopy.  77 
+ 16.1.4.5  Cryo - Electron Microscopy 
+ Apart from (bio - )chemical data, direct structural information of vesicles and micelles can 
+be obtained by cryo - electron microscopy. Cryo - electron microscopy as introduced by 
+Jaques Dubochet, 26 has now become a standard technique to gain artifact - free structural 
+information within the natural solvent. In most cases water   78   is used but also other sol-
+vents like polar organic solvents  79   and apolar solvents  80   can be employed. Thin layers of 
+solvent with colloidal suspended material can be vitriﬁ ed by rapid cooling in liquid 
+ethane. By remaining at low temperature inside an electron microscope the solvent will 
+not evaporate in the high vacuum. This allows to gain high resolution structural 
+information.  
+ 16.1.4.6  Miscellaneous Techniques 
+ Other techniques that can be used to measure distribution coefﬁ cients of a guest molecule 
+between the bulk aqueous phase and a micellar or vesicular aggregate include gel ﬁ ltra-
+tion, electromotive force measurements, solubility and vapor pressure measurements, 
+muon spin rotation experiments and headspace gas chromatography.  81 Theoretical models 
+are, of course, also helpful, as, for example, in studies of the enveloping of charged pro-
+teins by lipid bilayers. 25 
+ 16.2  Catalysis by Vesicles. Encapsulation of Reactants 
+ Micellar catalysis and inhibition of organic reactions has been studied in great detail.  82 
+Much less work has been performed on vesicular catalysis and inhibition. The fact that 
+most vesicles are meta - stable aggregates is a reason for this lack of popularity. In order 
+to obtain satisfactory reproducibility of the rate constants, adequate methods for vesicle 
+formation are required and kinetic measurements have to be performed with special care. 
+On the other hand, if the reaction is strongly medium dependent and rate constants can 
+be measured accurately, rather subtle changes in substrate binding location can be nicely 
+revealed. We note here that vesicular catalysis in water can be performed at lower sur-
+factant concentrations than in case of micellar catalysis, which is a signiﬁ cant advantage 
+from the view point of green chemistry. 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Encapsulation Processes by Bilayer Vesicles 
+431
+ It will be clear that encapsulation of the reactant(s) is a prerequisite for vesicle - induced 
+rate effects. In case of unimolecular organic reactions, the change in rate constant relative 
+to the rate constant in bulk aqueous solution, is determined by the change in reaction 
+environment going from water to the reactant binding sites in the vesicle. Several studies 
+have suggested that the reaction environment in the vesicular phase is often less polar 
+than that in micelles.  83   Of course, the kinetic effect is a function of the distribution of the 
+reactant over the aqueous and vesicular pseudophases. If the medium effects on the reac-
+tion are understood in some detail, the vesicle - induced rate effects provide information 
+about the nature of the reactant encapsulation process. 
+ For bimolecular organic reactions the situation is more complicated. We have now two 
+reactants that bind to the vesicle (sometimes one may stay in the aqueous phase), not 
+necessarily at similar sites in the aggregate. Vesicular catalysis/inhibition now depends 
+on the same environmental factors as described for unimolecular reactions, but also on 
+the binding efﬁ ciency, determining the reactant concentrations in the vesicular reaction 
+volume. If reactant binding is sufﬁ ciently strong, the local reactant concentrations in the 
+vesicular reaction volume may become greater than those in water, with the concominant 
+higher rate resulting from this  ‘ concentration effect ’ . Even in the case of a vesicular rate 
+constant smaller than the one in water, catalysis may nevertheless be observed due to the 
+overruling effect of the higher reactant concentrations. 
+ Encapsulation of the reactants in the vesicle can affect rate constants in a number of 
+ways. These include the following: (a) a reduced medium polarity in the Stern region and 
+particularly deeper in the bilayer; (b) a lower water concentration; (c) for charged vesicles: 
+a local electric charge at the surface of the vesicle due to an incomplete counterion binding 
+and a signiﬁ cant ionic strength in the Stern region; (d) rates may respond to the bilayer 
+ﬂ uidity which is different below and above the main phase transiton temperature, and 
+ﬁ nally, the vesicle size  84   may also play a role. We also note that giant vesicles provide 
+interesting microchemical vessels for various types of reactions, including decontamina-
+tion of mustard - like compounds and polymerization processes. 82 
+ 16.2.1  Unimolecular Decarboxylation of 6 - NBIC 
+ The strongly solvent - dependent, unimolecular decarboxylation of sodium 6 - 
+nitrobenzisoxazole - 3 - carboxylate (6 - NBIC, Figure  16.4 ) has been a popular kinetic 
+probe for aqueous media containing surfactant aggregates. 
+ After pioneering work by Kemp and Paul,  85   the main noncovalent interactions which 
+govern the medium effects have been elucidated in some detail by Hilvert  et al . 86 
+O
+O
+N
+N
+O2N
+O2N
+O2N
++ CO2
+–
+–
+‡
+O
+O
+O
+O
+CN
+O–
+ Figure 16.4   The unimolecular decarboxylation of 6 - NBIC 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+432 
+Molecular Encapsulation
+Hydrogen - bonding stabilization of the carboxylate group as well as ion - pair formation 
+(particularly in apolar, aprotic solvents) retard the reaction by reactant stabilization. 
+Breaking - up these interactions and stabilization of the highly polarizable activated 
+complex (AC) by London dispersion interactions dramatically accelerate the decarboxyla-
+tion. As anticipated, 6 - NBIC binds to positively charged surfaces of surfactant aggregates 
+with the aromatic part of the molecule engaging in hydrophobic interactions with meth-
+ylene groups of the alkyl tails residing near or at the aggregate ’ s surface. 87,88 
+ Reaction rates in the presence of cationic surfactant aggregates can be successfully 
+analyzed using the pseudophase model, providing the rate constants for reaction within 
+the aggregate (for vesicles,  k ves , taking into account ion exchange processes  89 ). Generally, 
+reaction rates increase with decreasing water penetration into the aggregate and with 
+decreasing ﬂ uid - like character of the surface of the aggregate:
+ 

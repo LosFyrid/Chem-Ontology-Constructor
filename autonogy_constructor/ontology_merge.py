@@ -1,6 +1,7 @@
 from owlready2 import *
 from typing import List
 from autonogy_constructor import base_data_structures 
+from autonogy_constructor.utils import flatten_dict
 
 from config.settings import ONTOLOGY_CONFIG
 
@@ -130,10 +131,24 @@ def _merge_data_properties(data_properties: List[base_data_structures.DataProper
                     new_dp.information.append(dp.information)
                 
             if dp.values:
-                for owner, value in dp.values.items():
-                    if _class_exists(owner):
-                        owner_class = class_namespace[owner]
+                flattened_values = flatten_dict(dp.values)
+                for owner_path, value in flattened_values.items():
+                    # 从路径中提取所有实体名称
+                    entity_names = owner_path.split(" with ")
+                    
+                    # 检查所有实体是否存在
+                    if all(_class_exists(name) for name in entity_names):
                         try:
+                            # 获取所有实体类
+                            entity_classes = [class_namespace[name] for name in entity_names]
+                            
+                            # 如果只有一个实体
+                            if len(entity_classes) == 1:
+                                owner_class = entity_classes[0]
+                            # 如果有多个实体，创建它们的交集类
+                            else:
+                                owner_class = And(entity_classes)
+                            
                             # 获取当前值，如果不存在则初始化为空列表
                             current_values = getattr(owner_class, dp.name, [])
                             
@@ -148,7 +163,7 @@ def _merge_data_properties(data_properties: List[base_data_structures.DataProper
                             # 更新属性值
                             setattr(owner_class, dp.name, current_values)
                         except Exception as e:
-                            print(f"为类 {owner} 添加数据属性值失败: {e}")
+                            print(f"为类 {owner_path} 添加数据属性值失败: {e}")
         except Exception as e:
             print(f"添加数据属性 {dp.name} 失败: {e}")
 

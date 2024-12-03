@@ -1,0 +1,3312 @@
+ 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+ 10 
+Encapsulation of Reactive 
+Intermediates  
+ Jean - Luc  Mieusset and  Udo H.  Brinker 
+ Institut f ü r Organische Chemie, Universit ä t Wien, A – 1090 Wien, Austria 
+ 10.1  Introduction 
+ The inclusion of molecules is a very common technique in the pharmaceutical sciences 
+to protect sensitive compounds and increase their usability and their storage time. For 
+example, drugs were enclosed in host molecules like cyclodextrins. This topic has been 
+previously reviewed. 1 
+ The same approach can be applied to organic chemistry where very labile species can 
+be encapsulated. In this way, species that usually would rapidly decompose or polymerize 
+even at low temperatures can be stored at room temperature, especially when the guest 
+has no chance to escape from its host. To achieve this goal, hemicarcerands have been 
+mostly used, leading to the preparation of cages containing highly reactive species such 
+as 1,3 - cyclobutadiene, cycloheptatetraene, or benzyne. This subject is presented in detail 
+in a specially dedicated chapter (Reactions inside Carcerands, Ralf Warmuth). 
+ Similarly, very useful results can be obtained if the labile species is not incarcerated 
+but can easily be released from its cage. Obviously, this property is signiﬁ cant in order 
+to have a chance to use the guest or its products. In this section, we will ﬁ rst present what 
+can be done to increase the thermodynamic and kinetic stability of a labile species with 
+the aim to increase its relative concentration during the reaction or to make it more per-
+sistent. Second, we will show a few examples to demonstrate how to stabilize some 
+Molecular Encapsulation: Organic Reactions in Constrained Systems        Edited by Udo H. Brinker and Jean-Luc Mieusset
+© 2010 John Wiley & Sons, Inc.  ISBN: 978-0-470-99807-6
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+270 
+Molecular Encapsulation
+speciﬁ c noncovalent assemblies and to enforce a change in the conformation of the guest. 
+Finally, the focus will be put on highly reactive intermediates (radicals, radical cations, 
+carbenes, and nitrenes) showing how to protect them from the surroundings in order to 
+prevent their trapping but also to modify their reactivity to be able to obtain products that 
+would not be found otherwise. Taking examples from the supramolecular chemistry of 
+carbenes and nitrenes, more details will be given about the methodology used in these 
+studies. 
+ 10.2  Encapsulation of Labile Species 
+ The following results show some recent improvements toward the possibility to carry out 
+water sensitive reactions in aqueous solution using hydrophobic catalysts. 
+ The ﬁ rst example concerns the attempt to isolate a common reactive intermediate. An 
+ordinary easily occurring reaction is the addition of primary amines to carbonyl groups 
+to form imines. The main intermediate of this condensation reaction is a hemiaminal 
+which can be observed only in special cases because the release of water proceeds very 
+rapidly. A cavitand could be built which is able to increase the concentration of hemi-
+aminal during the reaction and allows its observation by NMR spectroscopy (Scheme 
+ 10.1 ). 2 Cavitand  1a  is based on a resorcinarene - based bowl, a macrocycle easily available 
+O
+O
+N
+H
+N
+O
+O
+O
+O
+O
+O
+NH
+HN
+O
+NH
+NH O
+O
+O
+HN
+O HN
+O
+O
+R
+1
+open form
+R´
+R´
+R´
+R´
+H
+O
+1a
+NH2
+H
+O
+2@1a
+H2N
+HO
+NH
+3
+H
+N
+4
+– H2O
++
+R
+O
+1
+vase conformation
+1a: R = H
+1b: R = OH
+ Scheme 10.1  Stabilization of a hemiaminal in a resorcinarene - based cavitand  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Encapsulation of Reactive Intermediates 
+271
+by condensation of resorcinol with aldehydes under acidic conditions. Usually, long chain 
+aldehydes are used to improve the solubility of the container. The hydroxy groups on the 
+upper rim offer the possibility to deepen the cavity and to introduce a large variety of 
+functionalities. In the case of  la , the upper rim has been functionalized with an anthracene 
+arm bearing an aldehyde group and with amido groups to obtain a rigid vase conformation 
+ﬁ rmly maintained by intramolecular hydrogen bonds. In mesitylene, a solvent too large 
+to be accommodated in the cavity and therefore not competiting for inclusion, various 
+small amines  2  can be complexed. Formation of the hemiaminal  3  is relatively fast but 
+the elimination of water to afford imine  4  is slowed. In solution, dehydration is induced 
+by a second amine molecule. Due to the conﬁ nement in a limited space, this step is ham-
+pered. Thus, the hemiaminal accumulates and its concentration declines only slowly over 
+time with a half life of 30 to 90  min. 
+ This strategy has been expanded to the observation of isoimide intermediates  5 . 
+Isoimides are obtained by a formal insertion of isonitriles into the OH bond of carboxylic 
+acids. Usually, high temperatures are required and the addition product is rapidly stabi-
+lized by a 1,3 -  O → N  acyl transfer to form  N - acylformamide  6 . 3   Under these conditions, 
+no signiﬁ cant amounts of isoimide  5  are present in the solution during the reaction. 
+However, the previously described cavitand  1a , after oxidation to carboxylic acid  1b , can 
+be used to reveal the intermediacy of the isoimide (Scheme  10.2 ).  4 Addition of isopropyl 
+isonitrile to a solution of cavitand  1b in mesitylene - d 12  induces the folding of the host to 
+its vase conformation and inclusion of the guest in direct proximity to the acidic group. 
+In this conﬁ ned space, addition occurs at room temperature and the isoimide intermediate 
+ 5  can be observed by NMR and IR spectroscopy at millimolar concentrations before 
+completion of the rearrangement to acylformamide  6 . 
+ One of the most remarkable contributions is the generation of iminium ions in water 
+in good yields combined with the ability to conserve these ions for months in this solu-
+tion. Iminium ions are easily formed by the condensation of secondary amines with 
+carbonyl groups in an equilibrium reaction. However, they are very sensitive to hydro-
+lyses and are not viable in water except if they are suitably encapsulated. The water 
+soluble self - assembled  Ga L
+4
+6
+12− complex  5   is a suitable container for this purpose (Scheme 
+ 10.3 ). 6   The four gallium ions are bridged by six bis - bidentate catecholamide ligands L 
+forming a 12 - fold negatively charged tetrahedron. This assembly is a perfect host for 
+organic cations. Indeed, stirring a mixture of ketone, pyrrolidine ( 7 ), and   Ga L
+4
+6
+12− leads 
+to the inclusion of the corresponding iminium ions  8 . Obviously, the generation of a suit-
+able guest and its inclusion constitute a sufﬁ cient driving force to shift the equilibrium 
+R
+O
+OH
+R
+O
+O
+N
+H
+R
+O
+N
+O
+H
++
+C
+N
+1b
+R = cavitand
+5
+6
+ Scheme 10.2   Stabilization of the isoimide intermediate  5 generated by the reaction of an 
+isonitrile with a carboxylic acid  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+272 
+Molecular Encapsulation
+toward the iminium product. The best yields are obtained with pentanones and hexanones 
+(80 – 90%) due to an optimal ﬁ t of the size of the guest in the hydrophobic cavity. 
+ An analogous approach is the stabilization of phosphonium ions by addition of phos-
+phanes (PMe 3 , PEt 3 , PPhMe 2 , and PPh 2 Me) to methyl ketones (acetone, methyl ethyl 
+ketone, 1,1,1 - triﬂ uoroacetone, and ﬂ uoroacetone) in an aqueous solution of   Ga L
+4
+6
+12− 
+(Scheme  10.4 ). 7   These cations decompose in water but they are persistent for weeks in 
+the nanovessel. However, this stability is pH - dependant. The pH should be low because 
+the guest should be protonated and is regularly exposed to the bulk of water as a conse-
+quence of the dynamic behavior of the assembly, but the pH should not be too low because 
+in that case the host would disassemble. Therefore, the optimal value is 5.2. The exact 
+mechanism is still unknown; it has been ascertained that the protonated phosphane can 
+be encapsulated but it is not possible to determine where the addition to the ketone occurs, 
+inside or outside the cavity. Due to the chirality of the   Ga L
+4
+6
+12− tetrahedron, a kinetic 
+diastereoselectivity is also obtained with chiral ions leading to diastereomeric excesses 
+of 30 – 50%. 
+ The effect of encapsulation can be quite impressive. White phosphorus (P 4 tetrahe-
+drons), a strongly pyrophoric compound, spontaneously burns when exposed to air releas-
+ing considerable amounts of energy deriving from the release of strain and the replacement 
+of the weak P − P bonds by strong P − O bonds. Under inclusion in the self - assembled 
+tetrahedral cage   Fe L
+4
+6
+4−, the hydrophobic P 4  becomes air - stable and can be handled in 
+water in the presence of oxygen (Scheme  10.5 ).  8   The cage is formed by stirring 2 - formylpy-
+ridine ( 9 ) with 4,4 ′ - diaminobiphenyl - 2,2 ′ - disulfonic acid ( 10 ) in the presence of iron(II) 
+sulfate; the bis - bidentate imine ligand is formed  in situ . 9 The water - soluble  Fe L
+4
+6
+4− cage 
+R
+O
+R´
++
+7
+8
+8@Ga4L612–
+NH
+R
+N
+R´
++    OH–
++    OH–
+R
+N
+R´
+HN
+NH
+O
+O
+O
+O
+O
+O
+4  Ga(acac)3     +     6
+Ga3+
+Ga3+
+Ga3+
+Ga3+
+Ga3+
+Ga3+
+Ga3+
+Ga3+
+=
+A
+B
+MeOH
+D2O
+–12 acac
+ Scheme 10.3   A) Self - assembly of the  Ga L
+4 6
+12− tetrahedron. B) Encapsulation of iminium 
+ions in water  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Encapsulation of Reactive Intermediates 
+273
+has a purple color and is diamagnetic because iron(II) is in its low spin state. With a 
+cavity volume of 140    Å 3 , it encloses preferably small cyclic hydrocarbons but no organic 
+cations, probably because of its small total charge. The cage dissociates back to its build-
+ing block in a reversible manner at low pH as a consequence of protonation of the ligands. 
+It can also be irreversibly decomposed by addition of a chelating amine resulting in an 
+imine exchange reaction.  10   The preparation of the complex is achieved by mixing an 
+Ga3+
+Ga3+
+Ga3+
+Ga3+
+R´
+O
+HPR3+
++ H+
+Ga3+
+Ga3+
+Ga3+
+Ga3+
+R´
+OH
+PR3
+R´
+OH
+PR3
+HPR3+
+PR3
+R´
+O
+ Scheme 10.4   Stabilization of phosphonium ions in water by encapsulation  
+Fe2+
+Fe2+
+Fe2+
+Fe2+
+=
+4 FeSO4
+Base, H2O
+N
+N
+–O3S
+SO3–
+NH
+N
+L =
+N
+H3N
+–O3S
+SO3–
+NH3
+O
+12
+6
+Fe2+
+Fe2+
+Fe2+
+Fe2+
+Fe2+
+Fe2+
+Fe2+
+Fe2+
+P
+P
+P
+P
+P
+P
+P
+P
+9
+1) O2
+2) H2O
+4 H3PO4
+P
+P
+P
+P
+Fe4L64– 
++ 4 H2SO4 + 12 H2O
+10
++
+y = 91%
+ Scheme 10.5   Encapsulation of P 4 in   Fe L
+4 6
+4− 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+274 
+Molecular Encapsulation
+aqueous solution of   Fe L
+4
+6
+4− with solid white phosphorus; the crystallization is induced by 
+vapor diffusion of acetone yielding 91% of   P
+Fe L
+4
+4
+6
+4
+@
+−. The decrease in reactivity is not 
+mainly due to exclusion of dioxygen from P 4  as the dynamic nature of the host and the 
+small size of dioxygen do not allow obtaining a strict separation of the reactant. The main 
+reason is that the reaction products and intermediates are too large to ﬁ t into the cavity. 
+However, this dynamic inclusion has one important advantage: the reactive guest can 
+easily be released by extraction with benzene or cyclohexane where P 4  can exhibit its 
+reactivity and be oxidized to ﬁ nally give phosphoric acid H 3 PO 4 . In this case, the removal 
+of P 4  is performed by using a competing guest for the cavity; with  n - heptane, the extrac-
+tion is not successful. 
+ A further example concerns the isolation of cyclic trimers of siloxanes.  11 These cyclic 
+trimers are usually short - lived kinetic products generated during the ﬁ rst phase of the 
+polycondensation of trisilanols.  12   In a bulk, they usually further condense to higher oli-
+gomers which are thermodynamically more stable and therefore, these trimers cannot be 
+isolated. However, when the condensation of phenyltrimethoxysilane PhSi(OMe) 3 is 
+performed in the   M L
+6
+4
+12+ nanocage  12 , only the cyclic trimer  14  is obtained under stereo-
+chemistry control giving exclusively the all - cis isomer (Scheme  10.6 ). 
+ Nanocage  12  is a stable complex which can easily be prepared in boiling water by 
+self - assembly of 6 units of a platinum nitrate salt with 4 molecules of a tris(4 - pyridyl)
+triazine  11  panel as ligand. The holes between the panels are sufﬁ ciently large to allow 
+solvents and small molecules like PhSi(OMe) 3  to enter or exit the cage. At 100    ° C in an 
+aqueous solution of capsule  12 , PhSi(OMe) 3  is hydrolyzed within ﬁ ve minutes to trisilanol 
+ 13 . The large cavity of  12  encloses three or four molecules of  13  at once forming the 
+complex ( 13 ) 3 – 4 @ 12  which can be monitored by NMR. The condensation takes place in 
+the cavity until trimer  14  is formed. However,  14  is too bulky to escape or to condense 
+further. The reaction is then stopped at this level and  14  imprisoned in cage  12  can be 
+isolated in 92% yield by ﬁ ltration and recrystallization. The complex  14 @ 12  is now stable 
+in an aqueous solution and even under acidic conditions (pH  <  1). 
+ Using this methodology, the size and shape of the cavity determines which oligomer 
+will be isolated (Scheme  10.7 ). Indeed, bowl  16  produces dimer  19  whereas the small 
+coordination tube  21 , which allows the complexation of only one molecule of the reactant, 
+affords monomer  18 , a silanetriol.  13   In this case, starting from 4 equiv of 3,5 - bis(3 - pyridyl)
+pyridine  20  and 6 equiv of Pd(en)(NO 3 ) 2 , tube  21  can only be prepared  in situ  by means 
+N
+N
+N
+N
+N
+N
+Pt2+
+N
+Pt(NO3)2
+N
+6
++
+4
+11
+=
+HNO3
+H2O, 100 °C
+Pt2+
+Pt2+
+Pt2+
+Pt2+
+Pt2+
+Pt2+
+3 PhSi(OMe)3
+Pt2+
+Pt2+
+Pt2+
+Pt2+
+Pt2+
+Pt2+
+=
+Pt2+
+Pt2+
+Pt2+
+Pt2+
+Pt2+
+Pt2+
+Ph
+Si
+OH
+OH
+OH
+3 or 4
+– 3 H2O
+– 3 MeOH
+12
+(13)3-4@12
+14@12
+H2O, 100 °C
+Si
+O
+Si
+O
+Si
+O
+Ph
+OH
+Ph
+OH
+Ph
+OH
+y = 92%
+ Scheme 10.6   Isolation of the cyclic siloxane trimer  14 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Encapsulation of Reactive Intermediates 
+275
+of the template effect of 2 - naphthyltrimethoxylsilane  17  forming complex  17 @ 21 . 
+Aromatic compound  17  is a very suitable guest due to strong   π – π  and CH – π interaction 
+between its naphthyl group and the pyridyl panels. At this temperature,  17  slowly hydro-
+lyzes to  18  as revealed by monitoring of the reaction by NMR. Prolonged heating gives 
+ 18 @ 21 , a complex in which only the hydrophobic naphthyl group is deeply included in 
+the tube. The hydrophilic Si(OH) 3  group is still exposed outside the cavity but the steri-
+cally demanding tube framework prevents further polycondensation. Moreover, these 
+experiments demonstrate that full enclosure of the reactive center in a cage is not always 
+necessary to stabilize an intermediate and partial inclusion can be sufﬁ cient.  18 @ 21 was 
+isolated in very good yield (92%), recrystallized from water, and submitted to X - ray 
+analysis. 
+ 10.3  Isolation of Non - covalently Bonded Aggregates 
+ In absence of a suitable guest molecule, in general the cavities are ﬁ lled with solvent 
+molecules. Usually, several of these small compounds are enclosed in the inner space and 
+are relatively loosely bonded and disordered. Using as a host the coordination cage 
+N
+N
+N
+N
+N
+N
+N
+H
+Pt(NO3)2
+H
+N
+6
++
+4
+15
+16
+19@16
+Si
+O
+HO
+OH
+Si
+OH
+HO
+Si
+OH
+HO
+OH
+Si
+O
+O
+O
+H2O, 100 °C
+5 min
+– 6 MeOH
+H2O, 100 °C
+1 h
+Si
+OH
+HO
+OH
+2
+17
+(18)2@16
+(a)
+12+
+12+
+12+
+(b)
+N
+N
+N
+N
+H
+Pt(NO3)2
+H
+N
+6
++
+4
+20
+Si
+O
+O
+O
+Si
+HO
+HO
+HO
++
+17
+18@21
+H2O, 80 °C
+1 h
+y = 92%
+y = 88%
+ Scheme 10.7   Cavity - directed synthesis of labile silanols: A) Dimer  19 in bowl  16 . 
+B) Monomer  18 in tube  21 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+276 
+Molecular Encapsulation
+ Pd L
+6
+4
+12+  22b  self - assembled from four tris - pyridyl ligands  11  and six Pd(bipy) 2+ , a highly 
+ordered adamantanoid (H 2 O) 10  cluster has been obtained; this structure corresponds to the 
+basic unit of I 6 - type ice (Figure  10.1 ). 14   The structure could be revealed by an X - ray dif-
+fraction study at  − 180  ° C. The position of the hydrogen atoms was determined by single -
+ crystal neutron diffraction at room temperature with crystals prepared from D 2 O. In this 
+case, the recognition of the molecular ice by the cage is quite peculiar because it does 
+not occur through OH – π  hydrogen bonding but through interaction of the lone pair of the 
+4 bridgehead water molecules with the aromatic   π  - system of the 4 triazine walls of the 
+cationic  Pd L
+6
+4
+12+ cage  22b . This highly ordered structure of the water cluster is quite stable: 
+it is still not molten at room temperature. 
+ Similarly, encapsulation favors the formation of stable hydrogen - bonded dimers. In 
+aqueous solution, the hydrophobic cavity protects the hydrogen bonds between the pair 
+from the concurrence of the water molecules. For example, four base pairs are required 
+for the stable association of two DNA strands in water. In a cage, only one pair of nucle-
+otide is necessary to achieve a selective binding as demonstrated by the formation of a 
+hydrogen - bonded aggregate between 5 ′ - adenosine monophosphate  24 and 5 ′ - uridine 
+monophosphate  25  resulting in the preferred formation of complex  24.25 @ 23 over 
+( 24 ) 2 @ 23  and ( 25 ) 2 @ 23 (Scheme  10.8 ). 15   This selectivity is due to the fact that the 
+nucleobases cannot efﬁ ciently form hydrogen bridges with themselves. The pillared cage 
+ 23  is an appropriate host because it possesses a ﬂ at hydrophobic pocket perfectly suited 
+for the binding of planar aromatic guests as a result of an ideal interplanary distance 
+between the panels (6.6    Å ).  23  is obtained by self - assembly of two tris(4 - pyridyl)triazine 
+and three 1,4 - pyrazine ligands with six Pt(en)(NO 3 ) 2  edges in the presence of coronene 
+as an aromatic template. 
+ Structures held together by metal - metal  d – d  interaction can also be prepared using 
+encapsulation. Inﬁ nite stacking of metal complexes is quite common in the solid or in the 
+liquid crystalline state and these structures possess interesting electroconductive and 
+3.06 Å
+3.09 Å
+ Figure 10.1   X - ray crystal structure of  22b along with oxygen atoms (water molecules) 
+around the cage.  Reprinted with permission from  [14] . Copyright 2005 American Chemical 
+Society 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Encapsulation of Reactive Intermediates 
+277
+magnetic properties. Guest inclusion into a molecular cage allows the stacking of a ﬁ nite 
+number of metal complexes and the study of their properties. For example, two molecules 
+of Pt(acac) 2 ( 26a ) can be included into the cage   Pd L L
+6
+3
+1
+2
+2 12+  27  by stirring the mixture of 
+the two components in water at room temperature (Scheme  10.9 ). 16 The quantitative 
+formation of the complex ( 26a ) 2 @ 27  is revealed by NMR spectroscopy on account of the 
+upﬁ eld - shift of the guest signals and by CSI - MS. Single crystals obtained by slow evapo-
+ration of water provide more details about the structure of the assembly: inclusion of the 
+guests induces conformational change of the cage which is now twisted by 23    °  to maxi-
+mize the interactions with the twisted dimer of Pt(acac) 2 . Evidence for the  d – d interaction 
+is given by the short Pt(II) – Pt(II) distance of 3.32  Å , an impressive downﬁ eld shift of the 
+NH
+O
+O
+N
+O
+OH
+OH
+O
+P
+–O
+O–
+O
+N
+N
+N
+N
+NH2
+O
+OH
+OH
+O
+P
+–O
+O–
+O
+N
+N
+N
+N
+H2N
+O
+OH
+OH
+O
+P
+–O
+O–
+O
+NH
+O
+O
+N
+O
+OH
+OH
+O
+P
+O–
+O–
+O
++
+24
+25
+23
+H2O
+N
+N
+N
+Pt
+N
+N
+N
+Pt
+Pt
+N
+N
+N
+Pt
+N
+N
+N
+Pt
+N
+N
+N
+Pt
+N
+N
+H2N
+NH2
+N
+H2
+H2N
+NH2
+N
+H2
+H2N
+NH2
+NH2
+H2N
+23
+24.25@23
+=
+12+
+ Scheme 10.8   Structure of the enclathrated nucleotide base pair  24 . 25 @ 23 
+N
+N
+N
+Pd
+N
+N
+N
+Pd
+Pd
+N
+Pd
+N
+N
+Pd
+N
+N
+N
+Pd
+N
+N
+H2N
+NH2
+N
+H2
+H2N
+NH
+N
+H
+H2N
+NH2
+NH2
+H2N
+12+
+N
+N
+N
+(26)2@27
+27 =
+O
+O
+M
+O
+O
+O
+O
+M
+O
+O
+O
+O
+M
+O
+O
+2
+27
+H2O
+26a: M = Pt(II)
+26b: M = Pd(II)
+26c: M = Cu(II)
+ Scheme 10.9   Discrete stacking of two planar metal complexes  26 within the pillared 
+cage  27 causing metal - metal interactions between the guests  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+278 
+Molecular Encapsulation
+ 195 Pt NMR signal upon inclusion, and by UV spectra of the powdered orange crystals 
+showing a new absorption band at 500 nm. The interactions are weaker in aqueous solu-
+tion and the color disappears. Similar stacked dimers can be obtained with Pd(acac) 2 ( 2b ) 
+and Cu(acac) 2 ( 2c ). As a monomer, Cu(acac) 2 is a radical with one unpaired electron 
+( S  =  ½ ). ESR spectroscopy reveals the presence of a triplet species ( S  =  1) and spin – spin 
+interaction between the copper atoms in the complex ( 26c ) 2 @ 27 . Using a similar approach, 
+higher deﬁ nite stacked towers can be synthesized consisting of seven or nine large aro-
+matic molecules. 17 
+ The spin state of a transition metal complex can even be changed by encapsulation. 
+Spin crossover are usually induced by temperature or pressure changes, by light or by 
+magnetic stimuli.  18   Using cage  23  as a host for the red, planar, low spin complex Ni(II)
+(acen) ( S  =  0) a green 1  :  1 complex is obtained (Scheme  10.10 ). 19 SQUID measurements 
+show that the ground state is then coupled with the high - spin state ( S  =  1) via a spin - orbit 
+interaction. The spin crossover results from interactions between the   dz2 orbital of Ni(II) 
+with the triazine ring of the panel forming a pseudo octahedral ligand ﬁ eld. 
+ 10.4  Inclusion of Reactive Intermediates 
+ 10.4.1  Viologen Radical Cations 
+ Viologens (4,4 ′  - bipyridinium) are widely used because of their electron - transfer proper-
+ties. However, application is often hindered by the poor stability of the corresponding 
+cation radical. Inclusion in a macromolecule should largely prevent intermolecular reac-
+tions or dimerization of this reactive species. Cucurbiturils, which easily can be synthe-
+sized from glycoluril and formaldehyde, are perfect hosts for organic cations due to their 
+rigidity and the combination of a hydrophobic cavity with a very polar rim of urea groups 
+leading to high association constants. The main drawback is their poor solubility in water 
+and in organic solvents.  20   Thus, the dication methyl viologen ( 28 ) is tightly bound by 
+cucurbit[7]uril (k   =  1  ×  10 5  M  − 1  for  28 @CB[7]). 21   This value is signiﬁ cantly higher than 
+those determined, for the previously studied complexes with the more ﬂ exible cyclodex-
+trins (10 3 – 10 4  M  − 1 ). Upon inclusion,  28  indeed keeps its electrochemical properties and 
+12+
+O
+N
+N
+Ni
+O
+O
+N
+N
+Ni
+O
+N
+N
+N
+Pt
+N
+N
+N
+Pt
+Pt
+23
+Ni(acen)
+red
+low-spin
+high-spin
+Ni(acen)@23
+green
+ Scheme 10.10   Encapsulation - driven spin crossover of Ni(II)(acen)  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Encapsulation of Reactive Intermediates 
+279
+still undergoes a reversible one - electron reduction to radical cation  28 * without changes 
+in the kinetic. The reduced complex  28  * @CB[7] with the radical cation is still ﬁ rmly 
+bonded because the guest is still charged. Further reduction leads to a neutral viologen 
+which for the most part is released from the host.  22 
+ This approach can also be applied for example to the protection of polyaniline (PANI), 
+one of the most useful conducting polymer due to its stability and the simple control of 
+the conductivity through doping/dedoping strategies with protons or oxidizing agents. 
+Polyaniline is obtained by oxidation of aniline, mostly with ammonium persulfate. The 
+reduced form is the colorless leucoemeraldine with phenyl rings connected by amine 
+bonds (Scheme  10.12 A). In the fully oxidized violet pernigraniline state, the links consist 
+of imine groups. The most interesting form is the half - oxidized emeraldine, a blue - green 
+paramagnetic polyradical cation which possesses a high conductivity of 1000   S   cm  − 1 . This 
+conjugated polymer is therefore very interesting for application in molecular electronics. 
+However, interchain interactions, coiling and the chemical stability of the molecule are 
+common problems. A widely used approach is the encapsulation of the chain to form an 
+insulated molecular wire.  23   In the case of emeraldine, it has been shown that   β - cyclodextrin 
+can be threaded into the polymer forming a molecular necklace, a pseudopolyrotaxane. 
+In  N - methyl - 2 - pyrrolidone, complexation by   β - cyclodextrin forces the polyaniline chain 
+to change its conformation from coil to rod because the close packing of host molecules 
+with a narrow cavity strongly favors the linear all -  trans conﬁ guration of the chain, the 
+N
+N
+N
+N
+N
+N
++ e–
+– e–
+0.2 M NaCl/H2O
++
+CB[7]
+28
+28@CB[7]
+28*@CB[7]
+ Scheme 10.11   Protection of a viologen radical cation by inclusion in a cucurbituril  
+*
+N
+H
+H
+N
+N
+N
+*
+m
+n x
+polymer chain
+(a)
+(b)
++   n
+a-CyD nanotube
+insulated molecular wire
+ Scheme 10.12   A) Structure of the three different states of polyaniline: leucoemeraldine 
+(m  =  1, n   =  0), emeraldine (m   =  0.5, n   =  0.5), and pernigraniline (m   =  0, n   =  1). 
+B) Conformation change from coil to rod of a polyaniline chain by threading into a 
+cyclodextrin nanotube  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+280 
+Molecular Encapsulation
+conﬁ guration required to realize high conductivity.  24   This process is disfavored by entropy 
+and therefore, it is only observed at temperatures below 2  ° C. Moreover, this insulated 
+emeraldine is protected from chemical oxidation by iodine. Similarly, polyaniline has 
+been threaded into a   β - 1,3 - glucan 25   and also into a more rigid molecular nanotube 
+(Scheme  10.12 B) consisting of   α  - CD macrocycles which have been crosslinked with 
+epichlorhydrin using polyethylene glycol as a template.  26   This linearized molecular wire 
+could be observed by atomic force microscopy. 27 
+ The strength of this approach is best illustrated by the stabilization of the radical cation 
+ 31 * +  of the dimer of polyaniline  29 conﬁ ned as a rotaxane in the cavity of cucurbit[7]
+uril, an assembly soluble in a wide range of polar organic solvents (Scheme  10.13 ). 28 
+Whereas in water the neutral rotaxane  31 @CB[7] is rapidly oxidized by oxygen to form 
+the blue radical cation  31 * + @CB[7] which is relatively persistent toward further oxida-
+tion, the free dimer  31  requires ammonium persulfate oxidation yielding the benzoquinoid 
+dication  31 2+ almost directly. As shown by square wave voltammetry, these ﬁ ndings can 
+be explained by a thermodynamic stabilization of the radical cation  31 * +  in comparison 
+to the neutral  31  as a consequence of the strong afﬁ nity of the cucurbiturils for cations 
+(The ﬁ rst oxidation potential is lowered by 570  mV upon rotaxanation). The resistance 
+against further oxidation is the result of a kinetic effect (The second oxidation potential 
+remains practically unchanged). The rotaxane  31 @CB[7] is synthesized in good yields 
+by reductive amination of the complexed and protonated aniline  29 @CB[7] with the 
+aldehyde stoppers  30 . 
+H
+N
+NH2
+H2N
+H
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+N
+H
+O
+O
+O
+O
+O
+O
+O
+O
+H
+N
+N
+H
+CB[7]
++  2
+NaBH3CN, CB[7]
+H2O/AcOH
+4 °C, pH = 3.5
+29
+30
+31@CB[7]
+y = 52–85%
+31*+@CB[7]
+O2
+ Scheme 10.13   Kinetic and thermodynamic stabilization of a radical cation as a 
+cucurbituril rotaxane  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Encapsulation of Reactive Intermediates 
+281
+ 10.4.2  Radicals 
+ The supramolecular chemistry of radicals has been widely investigated, especially with 
+stable radicals like TEMPO or benzyl  t - butyl nitroxide. 29   This is because radicals 
+can be observed by EPR spectroscopy, a method particularly suitable to obtain kinetic 
+information about the association and dissociation processes in the time range between 
+10  − 9  and 10  − 5  seconds, i.e., for complexes displaying fast exchange on the NMR 
+time scale. 
+ More reactive radicals have been generated by photochemical cleavage of esters and 
+ketones in dendrimers. Under these conditions, the radical pair remains encapsulated in 
+a cage and the two moieties can better recombine. Furthermore, their mobility is reduced. 
+One of the most impressive results is obtained by the cleavage of 1 - naphthyl phenylacyl 
+ester  32 (Scheme  10.14 ). 30   Whereas the photolysis in hexane solution leads to a mixture 
+of seven products, the reaction in an aqueous solution of  G2  or  G3  poly(alkyl aryl ether) 
+dendrimers of the second (respectively, the third) generation at pH 9 is highly selective. 
+This increase in selectivity is mainly caused by the short life - time of the singlet radical 
+pair  33  and  34  in the conﬁ ned environment of the dendritic pocket. In hexane, the high 
+persistency of the radicals allows the dimethyl phenylacyl radical  34  to split off CO to 
+form the stable tertiary radical  35 . The rate of this decarbonylation reaction has been 
+determined to be 1.5  ×  10 8  s  − 1 . The high persistency of the radicals is also the reason why 
+they have enough time to diffuse away in hexane and ﬁ nally recombine to the symmetrical 
+diphenylbutane  41  and naphthol  40 . In the dendrimer, recombination occurs in less than 
+6   ns. On this time scale, as a consequence of the high viscosity of the medium and the 
+restricted mobility of the radical pair, the recombination remains highly selective and 
+formation of the  ortho - ketone  36  is strongly preferred (93% in  G2  and 96% in  G3 ). The 
+sole side product is the  para - isomer  37 , the other pathways are still not open. Moreover, 
+during this short time period, the radicals do not leak from the hydrophobic dendritic 
+cavity to the water bulk. Thus, no products result from hydrolysis. Especially this absence 
+of hydrolysis products and the high selectivity of the reaction in the relatively open den-
+drimer of the second generation are remarkable. Experiments based on the generation of 
+long - lived triplet radical pairs which can only recombine if they undergo intersystem 
+crossing have shown that the dendrimer cavities are leak - proof even on the microsecond 
+time scale. Performing this photolysis in a SDS (sodium dodecyl sulfate) micelle leads 
+to similar results but the reaction is less selective. Additional examples are described in 
+the ﬁ rst chapter of this book. 
+ The particular steric conditions prevailing in guest – host systems allow the observation 
+of some unusual reactions which are rarely observed in solution (Scheme  10.15 ). This is 
+the case for the photooxidation of adamantane  43  in the   Pd L
+6
+4
+12+ cage  22b  which leads to 
+the generation of an adamantyl radical in an anion radical ( 43 3 . 43 * @ 22b *  −  ). 31 This reac-
+tion is caused by the narrow conﬁ nement of four adamantane molecules in  43 4 @ 22b 
+which are pressed against the triazine core of the ligand (host – guest distance  =  2.6  Å ). 
+This triazine being coordinated to three pyridines and being part of a cationic cage is a 
+particularly efﬁ cient electron acceptor which can remove an electron from the guest. The 
+freshly  in situ  generated adamantyl radical cation then loses a proton and selectively forms 
+the tertiary 1 - adamantyl radical  43  *  because it is more stable than the 2 - adamantyl radical. 
+Finally, reaction with water or oxygen leads to the formation of 1 - adamantanol  44 and 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+282 
+Molecular Encapsulation
+OH
+HO
+HO
+OH
+HO
+OH
+OH
+OH
+OH
+OH
+OH
+HO
+O
+C4H8
+O
+O
+O
+H8C4
+C4H8
+O
+O
+HO
+OH
+HO
+OH
+O
+H8C4 O
+O
+O
+C4H8
+H8C4 O
+O
+OH
+HO
+OH
+HO
+O
+H8C4
+O
+O
+O
+C4H8
+C4H8
+O
+O
+OH
+OH
+OH
+HO
+O
+Ph
+O
+O
+Ph
+O
+OH
+Ph
+O
+OH
+O
+Ph
+O
+Ph
+OH
+OH
+Ph
+Ph
+OH
+Ph
+Ph
+O
+Ph
+Ph
+32
+33
+34
+33
+35
+33
+35
+36
+y = 35%
+hexane
+hn
+– CO2
+– CO
+cage
+cage
+separated
+37
+y = 17%
+38
+y = 4%
+39
+y = 21%
+40
+y = 8%
+41
+y = 8%
+42
+y = 6%
+(a)
+O
+Ph
+O
+O
+Ph
+O
+OH
+Ph
+O
+OH
+O
+Ph
+32
+33
+34
+36
+y = 93%
+hn, G2
+pH = 9
+cage
+37
+y = 7%
+(b)
+G2
+hn 
+ Scheme 10.14   Photochemical cleavage of 1 - naphthyl phenylacyl ester  32 . A) In hexane. 
+B) In an aqueous solution of poly(alkyl aryl ether) dendrimer  G2 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Encapsulation of Reactive Intermediates 
+283
+1 - adamantyl hydroperoxide  45  in an overall yield of 24% (only one of the four adaman-
+tanes reacts). The blue radical anion could be detected by EPR and differential IR 
+spectroscopy.  
+ 10.4.3  Carbenes 
+ Carbenes are species comprising a divalent carbon atom. Because this carbon has only 
+six valence electrons, it is highly electron - deﬁ cient and reactive.  32 However, depending 
+on the groups attached to the carbenic carbon, the stability and the philicity of these 
+species vary greatly.  33   For example, the  N  - heterocyclic carbenes (NHC) which have been 
+recognized as powerful organocatalysts and ligands are nucleophilic and can even be 
+isolated. However, they remain air and moisture - sensitive. These compounds illustrate 
+why a supramolecular approach is useful in this ﬁ eld. It allows the broadening of the 
+reaction conditions in which sensitive intermediates can be applied and manipulated. 
+Classical approaches include complexation of the carbene with Lewis - acids like CO 2 or 
+the highly electrophilic SiCl 4 . However, these compounds tend to be too stable. Good 
+results are also obtained with the use of a polydimethylsiloxane matrix which compen-
+sates the weaker acidity of the silicon atoms in silicone by its macromolecularity. The 
+stabilization interaction is low (3 – 5  kcal  mol  − 1 ), preserving the reactivity but nevertheless 
+allows for storing and handling in the presence of air. 34 
+ Most of the work concerning the modiﬁ cation of carbene reactivity has been performed 
+on cyclodextrins (CD) with reactive alkyl carbenes. Diazirines have proven to be the most 
+convenient precursors due to the small size of the three - membered ring and the volatility 
+of the leaving group, molecular nitrogen. Diazirines are usually obtained from the 
+corresponding ketone in two steps: in a methanolic solution of ammonia, hydroxylamine -
+ O  - sulfonic acid (HOSA) is added yielding a diaziridine which then is oxidized to the 
+diazirine, most conveniently with iodine. 
+ On a laboratory scale, the complexes are prepared by the coprecipitation method:  35 the 
+guest is added to an aqueous solution of the hydrophilic cyclodextrin. The complex is 
+usually less soluble, precipitates and can be isolated by ﬁ ltration or centrifugation. For 
+water - insoluble guests, diethyl ether can be used to facilitate the phase transfer. The ether 
+then can be blown away by bubbling argon through the solution. The main driving forces 
+for the complex formation are hydrophobic and van - der - Waals interactions. These are the 
+434@22b
+433.43*@22b*–
+OH
+O
+OH
+H
+– e–, – H+
+H2O
+O2
+12+
+12+
+44
+45
+hv
+ Scheme 10.15   Photooxidation of an alkane blocked in a  Pd L
+6 4
+12+ cage built with triazine 
+panels 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+284 
+Molecular Encapsulation
+reasons why the most important criteria for a high association constant are a good ﬁ t 
+between the dimensions of the guest and the cavity of cyclodextrins and a high polarizabil-
+ity of the guest molecules. In water, the driving force for complex formation is governed 
+by the hydrophobicity of the inner surface of the cyclodextrins. Indeed, any water mol-
+ecules residing inside the cavity are higher in energy because they cannot build an exten-
+sive network of hydrogen bonds. They are then readily displaced by the hydrophobic 
+guest in order to minimize the surface where water molecules are in contact with apolar 
+units. 
+ To understand the reactivity of a carbene entrapped inside a host molecule, the proper-
+ties of the inclusion complex should be investigated ﬁ rst. This occurs by measurement of 
+the changes in the physical properties of the guest upon complexation. Whereas spectro-
+photometric and ﬂ uorescence spectroscopy are most useful for dyes and conductometric 
+studies for ionic compounds, diazirines in cyclodextrins are best studied applying circular 
+dichroism  36   and NMR spectroscopy. Indeed, circular dichroism which measures the dif-
+ference in absorbance between left and right circularly polarized light is a very powerful 
+method because only the complex gives rise to an absorption spectrum, an effect which 
+is called induced circular dichroism (ICD). In fact, two conditions should be met to obtain 
+a signal: ﬁ rst, a chromophore absorbing UV or visible light, a condition fulﬁ lled only by 
+the diazirine and second, a center of chirality, e.g., as observed in cyclodextrins. Titration 
+experiments allow the determination of the strength of the complex and the stoichiometry 
+is obtained by the method of continuous variation. Moreover, information can be obtained 
+about the orientation of the chromophore in relation to the cyclodextrin depending on the 
+sign of the ICD effect (Figure  10.2 ). According to Harata ’ s rule 37   which is based on the 
+Kirkwood – Tinoco 38   theory of polarizabilities, a positive sign of the ICD effect means that 
+the transition dipole moment vector of the chromophore is parallel to the symmetry axis 
+of the cyclodextrin, whereas a negative sign is caused by a perpendicular arrangement. 
+Harata ’ s rule is valid for an aromatic chromophore located inside the cavity; in case where 
+the chromophore is situated outside, the signs are reversed, according to Kodaka ’ s rule. 39 
+ During the past twenty years, signiﬁ cant work has been performed. Several carbenes 
+have been studied in order to observe changes in their reactivity. Especially the supra-
+pos. ICD
+neg. ICD of 
+half intensity
+neg. ICD
+pos. ICD of 
+half intensity
+ Figure 10.2   Illustration of Harata ’ s and Kodaka ’ s rules  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Encapsulation of Reactive Intermediates 
+285
+molecular chemistry of 4 - oxocyclohexa - 2,5 - dienylidene 40 , 2 - methylcyclohexylidene, 3 - 
+nortricyclanylidene, cyclooctylidene, chlorophenylcarbene, and adamantanylidene was 
+investigated. 41 
+ 10.4.3.1  4 - Oxocyclohexa - 2,5 - dienylidene 
+ 4 - Oxocyclohexa - 2,5 - dienylidene ( 48 ) is known as an intermediate in the degradation of 
+4 - chlorophenol ( 46 ), a widespread organic pollutant. Carbene  48  is generated by photoin-
+duced dehalogenation (  λ  =  280  nm) of  46 and is relatively long - lived ( ca. 1  µ s) in water 
+because this triplet carbene is reluctant to abstract hydrogen from OH groups (Scheme 
+ 10.16 ). 40   Depending on the reaction conditions, carbene  48  can be trapped efﬁ ciently 
+either by oxygen to form  p - benzoquinone ( 50 ) through the intermediacy of benzoquinone -
+ O - oxide ( 49 ). It can also be scavenged as biphenyl  54  by reaction with the starting mate-
+rial, or as hydroquinone ( 53 ) by reaction with water, or can be trapped by an alkene. In 
+an aqueous cyclodextrin (CD) solution, however, the usual reaction pathway to benzo-
+quinone  50  is hampered; instead, phenol ( 52 ) is obtained. In the presence of CDs, although 
+the association constants are rather small (140   M  − 1  for   α - CD and 300  M  − 1  for   β - CD), 
+carbene  48  becomes difﬁ cult to trap. Instead, hydrogen abstraction from the host strongly 
+dominates to form phenol ( 52 ). This is especially true for   α - CD: a 0.03  M solution of 
+ α  - CD (83% complexation) yields 91% of phenol even in the presence of air. Indeed, the 
+rate constant for the quenching of triplet  48  by   α - CD ( k q  =  5.7  ×  10 8  M  − 1  s  − 1 ) is very high. 
+This is not only due to the good hydrogen donor property of secondary alcohols but also 
+to the conﬁ nement in the narrow cavity of   α  - CD as revealed by a comparison with the 
+signiﬁ cantly slower hydrogen abstraction from alcohols or glucose ( k q  =  8.5  ×  10 6  M  − 1  s  − 1 ). 
+In fact, the life - time of  48  is impressively reduced to a few tens of nanoseconds in the 
+presence of cyclodextrin. Photolysis in the solid state also leads to phenol ( 52 ). 42 
+hn/H2O
+– Cl–
+OH
+– H+
+OH
+O
+O
+O2
+O
+O
+O
+O
+O
+Cl
+OH
+OH
+OH
+Cl
+OH
+46
+47
+48
+49
+50
+OH
+52
+51
+53
+54
+RH
+46
+H2O
+ Scheme 10.16   Reaction pathways of 4 - oxocyclohexa - 2,5 - dienylidene ( 48 ) generated by 
+photodecomposition of 4 - chlorophenol ( 46 ) 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+286 
+Molecular Encapsulation
+ The selectivity of an intramolecular carbene reaction is very strongly dependent on the 
+conformation of the molecule, due to the high reactivity of the divalent carbon and its 
+poor selectivity. If a carbene precursor or the carbene entrapped within a cavity is forced 
+to take on a different conformation than the one prevailing in the liquid state, new products 
+can be expected. For molecules with functional groups, a change in the geometry can be 
+enforced by using noncovalent interactions like hydrogen bonds, dipole – dipole, or ion –
+ ion interactions. For alkanes only few strategies remain; a convex structure can be built 
+up to press the alkyl groups into a speciﬁ c pocket 43   or the hydrophobic effect can be 
+employed to compress apolar units into the cavity of a host (Figure  10.3 ).  44 These 
+approaches have proven to be successful for the packing of alkyl chains into reduced 
+space. Alkyl chains which are normally fully extended in solution (all  anti ) can be forced 
+to coil to a helix in order to ﬁ t into the available restricted space. Use of polarizable side 
+walls slightly helps the change in conformation by increasing van - der - Waals interactions 
+and C − H/  π  interactions. An example is the coiling of the alkyl chain of the anionic sur-
+factant sodium dodecyl sulfate (SDS) in the anionic cavitand  55  in water. The coiling is 
+monitored best by NMR spectroscopy as the CH 2  protons are strongly shifted upﬁ eld 
+when they are placed in proximity of an aromatic ring and by NOE measurements which 
+allow determining the size of the helix in the most representative conformation. In the 
+case of  SDS @ 55 , an eight - carbon helix seems to be present together with a few percent 
+of a six - carbon helix. Of course, due to the ﬂ exibility of the alkyl chain and the fact that 
+an optimally ﬁ lled cavity should have a packing coefﬁ cient of only 55%,  45 rapid changes 
+in the conformation still occur. The energetic cost for the coiling process has been esti-
+mated at circa 0.5   kcal ⋅ mol  − 1 for each  gauche interaction. 
+ 10.4.3.2  2 - Methylcyclohexylidene 
+ One of the ﬁ rst attempts to follow this concept was performed with 2 - methylcyclohexy-
+lidene ( 57 ). Carbene  57  is known to yield 1 - methylcyclohexene ( 59 ) and 3 - methylcy-
+O
+O
+O
+O
+O
+O
+O
+O
+H
+H
+H
+H
+NH
+N
+NH
+N
+N
+HN
+NH
+N
+CO2–
+–O2C
+CO2–
+CO2–
+OSO3–
+SDS
+55
+–O3SO
+OSO3–
+A
+B
+Na+
+Na+
+Na+
+Na+
+Na+
+ Figure 10.3   Structure of the complex between SDS and cavitand  55 . ( A ) Scheme 
+illustrating the coiling of the alkyl chain within the cavity. ( B ) Extended conformation of 
+SDS in the cavity 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Encapsulation of Reactive Intermediates 
+287
+clohexene ( 60 ) when generated in solution or in the gas phase (Scheme  10.17 ).  46 With 
+diazirine  56  as photoactivated precursor, a number of intermediates  †   are generated which 
+can be trapped depending on the reaction conditions or decompose to alkenes  59  and  60 . 
+In absence of a suitable reaction partner, carbene  57  is generated. The most characteristic 
+reaction for its presence is the intramolecular insertion into CH bonds. It was hypothesized 
+that the steric constraints in the cavity of a cyclodextrin may favor the conformer  57 ax 
+with an axial methyl group over conformer  57 eq  which is the most stable conformer under 
+normal conditions (Scheme  10.18 ).  47   As a consequence of the high reactivity of carbenes 
+N
+N
+N
+N
+N2
+N2+
+H
+*
+56
+56*
+57
+58
+59
+60
+61
+62
+63
+N
+63
+64
+N
+O
+hn
+– N2
+– N2
+– N2
+– H+
++ H+
++ H+
++
+ Scheme 10.17   Generation of 2 - metylcyclohexylidene ( 57 ) and its subsequent reactions  
+Me
+Hax
+H
+H
+Me
+H
+H
+H
+N
+N
+Me
+H
+H
+H
+Me
+Heq
+H
+H
+N
+N
+56
+56
+57ax
+57eq
+hn
+hn
+– N2
+– N2
+ Scheme 10.18   Orbital alignment in the two conformers  57 ax and  57 eq of 
+2 - methylcyclohexylidene  
+  †   This concerns essentially the photoactivated diazirine  56 *  which may react directly by a rearrangement in the excited state 
+(RIES) or ring - open to the labile diazo compound  61 . Under slightly acidic conditions, protonation of the carbene to carbenium 
+ion  63 and the intermediacy of diazonium ion  62 should also be considered. 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+288 
+Molecular Encapsulation
+and their propensity to react with a wide range of bonds that are suitably aligned, the 
+presence of a different conformer of the reactive intermediate should lead to a different 
+product distribution. For an efﬁ cient hydrogen shift, the ﬁ lled molecular orbital of the 
+breaking CH bond (HOMO) should be aligned with the empty orbital at the carbenic 
+center (LUMO). In  57 ax , the arrangement of the orbitals is much more favorable for a 
+1,3 - CH insertion which would produce norcarane  58 . Moreover, formation of alkene  59 
+should be hampered. Unfortunately, starting from diazirine  56 , no signiﬁ cant change is 
+obtained;  58 is not formed and the alkene ratio does not signiﬁ cantly vary (Table  10.1 ). 
+ The intermediates being electron - deﬁ cient, formation of alkene  59  is always favored 
+in accordance with Saytzeff ’ s rule. The highest yield of  59  is obtained from the solid state 
+photolysis of  56 @ α  - CD owing to a relative high  59  :  60  ratio and the absence of inter-
+molecular products.  
+ 10.4.3.3  3 - Nortricyclanylidene 
+ Similarly, 3 - nortricyclanylidene ( 66 ) was studied to obtain some evidence for an operat-
+ing corset effect imposed by the macrocyclic host.  48   In the gas phase and also in solution, 
+ 66 ring - opens to 4 - ethynylcyclopentene ( 67 ) via cyclopropylcarbene fragmentation, a 
+reaction which causes a signiﬁ cant change in the geometry of the guest (Scheme  10.19 ). 
+It was expected that generating carbene  66  in the nanopore of a cyclodextrin would favor 
+the formation of quadricyclane ( 69 ) through a 1,3 - CH insertion in analogy to the reactivity 
+of 2 - norbornanylidene ( 73 ) affording  68  in a nearly quantitative yield.  49 However,  69 was 
+never observed from any reaction of the cyclodextrin complexes. Instead and in contrast 
+to the results obtained with methylcyclohexylidene  57 , a very signiﬁ cant amount of the 
+carbene  66  reacted with the OH groups at the rims of cyclodextrins ( 71 : 52% with   β - CD 
+and 80% with  α - CD, Table  10.2 ). This ﬁ nding can be explained by the difference in the 
+life - time of carbenes  57  and  66 , respectively. Whereas  57  can rearrange very easily to an 
+alkene by a 1,2 - H - shift, this pathway does not exist for  66 . As an alternative, the cleavage 
+of the three - membered ring requires to overcome a considerable energy barrier. This 
+leaves more time for the guest to react innermolecularly with the host. An intriguing result 
+is the formation of the signiﬁ cant amount (14%) of nortricyclane ( 68 ) in the narrow and 
+rigid cavity of  α - CD. Product  68  is caused by a twofold abstraction of hydrogen. However, 
+insertion of the carbene into a CH bond of the host does not occur, a reaction that up to 
+now has never been observed with cyclodextrins. Formation of azine  70  in   β - CD suggests 
+that  65 @ β  - CD crystallizes in a head - to - head arrangement with two diazirine groups 
+facing each other. 
+ Table 10.1   Product distribution from the decomposition of 
+diazirine  56 
+ 
+ ratio 
+ 59  :  60 
+ alkene 
+ 59 
+ alkene 
+ 60 
+ azine 
+ 63 
+ ether 
+ 64 
+ 0.1  M  56 in MeOH  
+ 1.8 
+ 43 
+ 24 
+ 
+ 33 
+ 56 @ β - CD 
+ 1.9 
+ 66 
+ 34 
+ 
+  
+ 0.1  M  56 in  n - C 5 H 12 
+ 2.1 
+ 45 
+ 21 
+ 34 
+ 
+ 56 @ γ - CD 
+ 2.1 
+ 62 
+ 30 
+ 8 
+  
+ 56 @ α - CD 
+ 2.6 
+ 72 
+ 28 
+ 
+ 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Encapsulation of Reactive Intermediates 
+289
+N
+N
+N
+N
+R
+OH
+65
+66
+67
+68
+69
+70
+71
+72
+– N2
+α-CD
+RH
+H2O
+65
+73
+68
+y = 99%
+hv
+ Scheme 10.19  3 - Nortricyclanylidene ( 66 ) and its subsequent reactions  
+ Table 10.2   Main products (%) resulting from the photolysis of 3 - azinortricyclane ( 65 ) 
+ 
+ enyne  67 
+ nortricyclane  68 
+ azine  70 
+ insertion into 
+the medium  71 
+ alcohol  72 
+ cyclohexane  
+ 19 
+ 1 
+ 49 
+ 20 
+ 1 
+ 65 @ β - CD 
+ 11 
+ 4 
+ 10 
+ 52 
+ 19 
+ 65 @ α - CD 
+ 6 
+ 14 
+ – 
+ 80 
+ – 
+ 10.4.3.4  Adamantanylidene 
+ Photolyses of the   α - ,   β - , and   γ - cyclodextrin complexes  74 @CD of 2 - aziadamantane ( 74 ) 
+in the solid state indeed afforded markedly different product distributions and also dif-
+ferent inclusion geometries (Figure  10.4 ).  51,52 The complexes  74 @CD have been investi-
+gated in detail using ICD.  53   This study performed in aqueous solutions shows that whereas 
+the diazirine group in  74 @ β - CD and  60 @ γ - CD is placed in the vicinity of polar OH 
+groups, the diazirine function in  74 @(  α - CD) 2 is located in an apolar microenvironment 
+as is revealed by the ﬁ ne structure of its CD and UV spectrum. Moreover, for  74 @(  α -
+ CD) 2 , a very large ICD (  ∆ ε  ∞   =  − 0.732  M  − 1  cm  − 1  at 380   nm) is obtained due to strong 
+interaction of the guest with the chiral cyclodextrin. This is in contrast to the weak absorp-
+tion measured for  74 @ γ  - CDs which can be explained by the increased mobility of the 
+guest  74 in the large and more ﬂ exible cavity of   γ - CD. 52 The validity of computational 
+calculations of host – guest complexes has been questioned. 54 Titration experiments have 
+revealed the thermodynamic parameters of the 2 - aziadamantane   β - CD complex; it has 
+also been shown that the results obtained are in good agreement with molecular dynamics 
+simulations of this complex under explicit consideration of water molecules.  55 These dif-
+ferences in the strength of the complex are found again chemically: the reactivities of the 
+enclosed adamantanylidene diverge signiﬁ cantly (Scheme  10.20 and Table  10.3 ). 51,52 
+ Especially the 1   :   2 complex formed with   α  - cyclodextrin leads to a drastic modiﬁ cation 
+of the product distribution. Due to a complete encapsulation of the guest, formation of 
+azine  78  is totally inhibited, thus inner -  and intramolecular reaction pathways are favored. 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+290 
+Molecular Encapsulation
+ Table 10.3    Product distribution resulting from photolyses of diazirine  74 
+ 
+ 76 
+ 77 
+ 78 
+ 79 
+ 80 
+ 81 - 3 ′ 
+ 81 - 2 ′ 
+ 81 - 6 ′ 
+ CyD - 81 2 
+ n - C 7 H 16 
+ 0.2 
+ 
+ 54 
+ 
+ 
+ 
+ 10  a  
+ 
+ 
+ 74 @( α - CD) 2 
+ 9 
+ 31 
+ – 
+ 0.3 
+ 1 
+ 39 
+  19 
+ – 
+ – 
+ 74 @ β - CD 
+ 11 
+ 4 
+ 33 
+ 2 
+ 0.3 
+ – 
+ 7 
+ 17 
+ 10 
+ 74 @ γ - CD 
+ 9 
+ 6 
+ 29 
+ 9 
+ 13 
+ 9 
+ 4 
+ 5 
+ – 
+ a  Insertion into the solvent.  
+N
+N
+N
+N
+N
+N
+74@(α-CD)2
+74@β-CD
+ Figure 10.4   Proposed structures for complexes  74 @( α - CD) 2 and  74 @ β - CD 
+O
+OH
+74
+75
+76
+77
+78
+79
+80
+– N2
+α-CD
+H2O
+74
+N
+N
+O
+O
+O
+6´
+2´
+3´
+N
+N
+CD
+CD
+CD
+CD
+81-3´
+81-2´
+81-6´
+hv
+ Scheme 10.20   Products obtained from adamantanylidene  75 
+However, within the conﬁ ned environment, the 1,3 C − H insertion reaction of carbene  75 
+is not favored; the yield of didehydroadamantane ( 76 ) remains low (9%) and CH - insertions 
+into the host do not occur as well. Instead, the production of adamantane ( 77 ) is strongly 
+enhanced and reaches 31%. The formation of  77  is particularly facilitated by the fact that 
+the singlet - triplet gap in adamantanylidene  75  is low (3.1 to 4.8   kcal   mol  − 1 ). 56 Although 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Encapsulation of Reactive Intermediates 
+291
+ Figure 10.5   Crystal structure of the complex of 5 - hydroxy - 2 - aziadamantane with   β - CD 
+obtained by X - ray diffraction.  Reprinted with permission from  [50] . Copyright 2000 Elsevier  
+ 75  has been generated as a singlet and generally reacts as a singlet, the speciﬁ c steric 
+constraints prevailing in the rigid cavity of two   α  - CDs hamper concerted insertion reac-
+tions which have high requirements on the alignment of the orbitals involved in the reac-
+tion. Instead, intersystem crossing and hydrogen abstraction are favored. Accordingly, 
+oxidized  α  - CD is also recovered. This pathway is more signiﬁ cant for adamantanylidene 
+ 75  than for nortricyclanylidene  66  because  66  has a larger singlet - triplet gap due to a 
+higher ring strain. In fact, the main reaction of  75 corresponds to an etheriﬁ cation of the 
+secondary rim of the cyclodextrin (39% for  81 - 3 ′  and 19% for  81 - 2 ′ ). The predilection 
+for reaction at position 3 corresponds to the geometrical requirement of the most stable 
+conformation of the alkylated cyclodextrins  81 . In  81 - 3 ′ , the adamantyl group preferably 
+remains directly on the top of the cavity, whereas in  81 – 2 ′ , it points outwards. Reaction 
+with the primary hydroxy group at C6 does not occur. The photolyses of the 1   :   1 com-
+plexes with   β - and   γ  - CD afford a wider range of products.  52   First of all, with   β - and   γ - CD, 
+etheriﬁ cation at C6 is geometrically possible and does happen. With  74 @ β - CD, even two 
+adamantyl groups can react with the hydroxy functions of the same cyclodextrin molecule. 
+Second, the main product is azine  78  along with adamantanone ( 79 ) which probably arises 
+from the hydrolysis of an intermediate on the way to azine  78  or directly from  78 . 52 And 
+ﬁ nally, it is worth noticing that the yield of adamantanol  80  very strongly depends on the 
+dryness of the hygroscopic cyclodextrin complexes. Overall, the ICD spectra and the 
+products obtained from photolysis of 2 - aziadamantane ( 74 ) in CD allow to draw conclu-
+sions about the supramolecular structure. Indeed, the results are mostly compatible with 
+a head - to - head arrangement of the cyclodextrins in the  74 @(  α - CD) 2  complex (Figure 
+ 10.4 ). For the  β  - CD complex, the major product being azine  78 , a 2  :  2 structure is more 
+likely (Figure  10.4 ). Such a combination of CDs would be the analogue of the structure 
+determined by X - ray analysis for the complex of 5 - hydroxy - 2 - aziadamantane with   β - CD 50 
+(Figure  10.5 ). 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+292 
+Molecular Encapsulation
+– N2
+Cl
+N
+N
+Cl
+H
+O
+Cl
+N
+N
+Cl
+Cl
+H
+85
+86
+87
+in Ar matrix
+88
+neat
+89
+from 85@β-CD
+hv
+ Scheme 10.22   Reactivity of chloro(phenyl)carbene  86 
+ 10.4.3.5  Arylcarbenes 
+ The following example emphasizes the fact that to observe drastic changes in the reactiv-
+ity, encapsulation in a host molecule is not compulsory. It is often sufﬁ cient to perform 
+the reaction in a constrained system under the condition that the adequate conformation 
+is present. Thus, striking results have been obtained starting from 1 - (1,1 ′ - biphenyl - 4 - yl) -
+ 1 - diazo - 2 - phenylpropane ( 82 ). Although photolysis of  82  in solution yields a complex 
+mixture of products resulting from hydrogen and phenyl shifts, photolysis in the solid 
+state is highly stereoselective and affords almost exclusively the ( Z ) - alkene  84 (Scheme 
+ 10.21 ) as a consequence of the conformational constraints of the crystal packing which 
+are nearly the same in the reactant and in the ( Z ) - product. 57   Moreover, the migrating 
+hydrogen is already perfectly aligned with the empty p orbital of the carbene intermediate 
+ 83 and no rotation is required for the 1,2 hydrogen shift. 
+ 10.4.3.6  Chloro(phenyl)carbene 
+ Attempts were also made to observe the rearrangement of chloro(phenyl)carbene ( 86 ) to 
+1 - chloro - 1,2,4,6 - cycloheptatetraene ( 87 ) in the cavity of cyclodextrins.  58 Starting from 
+diazirine  85 , the rearrangement to  87  can indeed be observed in an argon matrix at 10   K.  59 
+Under preparative conditions, 100% of azine  88  is obtained. What would happen in a 
+molecular capsule? Reactive intermediate  86  belongs to the category of carbenes that are 
+particularly suitable for intermolecular reactions as a result of the absence of a reaction 
+pathway like the common hydrogen shifts leading to the formation of alkenes. As a con-
+sequence, carbene  86 possesses a relatively long life - time (3.6  µ s in isooctane) 60 and 
+prefers to react with the OH groups of CDs yielding almost exclusively benzaldehyde 
+( 89 ) (Scheme  10.22 ). 58 
+Ph
+H
+H
+Ph
+H
+Ph
+83
+(Z)-84
+y = 96%
+(E)-84
+y = 3%
+N2
+Ph
+H
+– N2
+82
+hv
+ Scheme 10.21   Photolysis of diazo compound  82 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Encapsulation of Reactive Intermediates 
+293
+ This high propensity of entrapped carbenes to react with native   α - and   β - cyclodextrin 
+motivated us to search for more inert hosts. Therefore, after a few experiments with 
+hydrophilic cyclodextrins derivatives, i.e., permethylated cyclodextrins (TRIMEB in the 
+case of  β - CD, TRIMEA for  α - CD) were performed successfully as molecular reactors 
+for supramolecular carbene chemistry.  61   This is due to their ready availability,  62 their high 
+solubility in water and in organic solvents and their good crystallization properties. The 
+absence of OH groups at the rims of TRIMEB makes this host inert toward reactions of 
+carbenes. However, owing to the lack of intramolecular hydrogen bridges, TRIMEB is 
+more ﬂ exible and forms less stable complexes with lower association constants in com-
+parison to native   β - cyclodextrin. 61 
+ 10.4.3.7  Bicyclo[3.2.1]octan - 8 - ylidenes 
+ The most recent experiments have been performed with 3 - substituted bicyclo[3.2.1]octan -
+ 8 - ylidenes  91 . These carbenes were chosen because of their symmetry. In the presence 
+of a chiral host these achiral intermediates could give rise to chiral products  92  and  93 
+(Scheme  10.23 ). The aim of this study was to determine whether the intrinsically chiral 
+cyclodextrin hosts are able to cause the formation of one enantiomer over the other.  63 The 
+unsubstituted bicyclo[3.2.1]octan - 8 - ylidene ( 91 ) reacts exclusively through 1,3 - CH inser-
+tion to tricyclooctane  92 . 64 For the 3 - endo - substituted carbenes  91 , a second reaction 
+pathway becomes competitive yielding bicyclo[3.3.0]octene  93  by a 1,2 alkyl shift. It was 
+found that not only the host is able to induce a modest enantiomeric excess but the corset 
+effect of the host can also signiﬁ cantly alter the bicyclooctene :tricyclooctane ratio  93  :  92 
+(Table  10.4 ). Once again, the rigid and narrow bowl of   α  - CD exerts the strongest inﬂ u-
+ence on the guest.  90b @(  α - CD) 2  is the complex for which the highest ee (8%) is obtained. 
+Also the formation of  93 is preferred over  92 . 63 
+ For  90b @TRIMEB, a single crystal suitable for X - ray analysis could be grown (Figure 
+ 10.6 ). 61   The structure obtained ascertains the complete separation of one guest molecule 
+from another and explains why azine  94  is lacking in the product mixture resulting from 
+the photolysis of  90b @TRIMEB.  90b @TRIMEB is a good example for a complex for 
+N
+N
+R
+– N2
+R
+R
+R
+R
+N
+R
+N
+R
+O
+90
+91
+92
+93
+94
+95
+90
+a: R = H
+b: R = OH
+c: R = OMe
+hv
+ Scheme 10.23   Generation of bicyclo[3.2.1]octanylidene  91 and its subsequent reactions  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+294 
+Molecular Encapsulation
+ Figure 10.6   Crystal structure of  90b @TRIMEB 
+ Table 10.4   Product distribution resulting from the 
+decomposition of diazirine  90 
+ 
+ 94  :  95 
+ 93  :  92 
+ ee  92 
+ 90b @ β - CD 
+ 
+ 45  :  55 
+ 4% 
+ 90b @TRIMEB  
+ 
+ 21  :  79 
+ 4% 
+ 90b @ (  α - CD ) 2 
+ 
+ 55  :  45 
+ 8% 
+ 90b 
+  
+ 34  :  66 
+ 
+ 90c @ β - CD 
+ 89  :  11 
+ 
+ 
+ 90c @TRIMEB  
+ 
+ 92c excl.  
+ 
+ 90c 
+ 
+ 36  :  64 
+ 
+ 90c in benzene  
+ 38  :  5 
+ 15  :  42 
+ 
+which the orientation of the guest depends on its environment. In the solid state, the 
+hydroxy group of the guest is positioned in the middle of the cyclodextrin cavity forming 
+a hydrogen bridge with a glucosidic oxygen atom. In contrast, in an aqueous solution, the 
+orientation is reversed: the hydroxy group is pointing toward the larger rim and the bulk 
+of the solvent whereas the diazirine unit is deeply enclosed within the hydrophobic cavity 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Encapsulation of Reactive Intermediates 
+295
+as demonstrated from ICD spectra and 2D ROESY experiments. The association constant 
+determined by the curve ﬁ tting method is 550  M  − 1  in water; this is still a fair value but 
+already considerably less then the association constant of the corresponding  90b @ β - CD 
+(11200  M  − 1 ). 61 
+ 10.4.4  Nitrenes 
+ Our knowledge about supramolecular nitrene chemistry and the reactivity of these inter-
+mediates in a constrained system is still in its infancy: even though nitrenes are widely 
+used for photoafﬁ nity labelling. 65   However, the exact structures of the products formed 
+after reaction with the active sites are often unknown. Therefore, a better understanding 
+of the binding properties of a nitrene precursor within the host molecule is necessary. 
+Moreover, it is essential to learn which reactions still do occur inside a supramolecular 
+structure. 
+ Azides  96  are the most popular precursors for nitrenes  97 , which can be generated 
+either thermally or photochemically.  66   In a nitrene, the nitrogen atom is monovalent and 
+possesses a sextet of electrons in its outer shell. Therefore, nitrenes are highly reactive 
+intermediates. Usually, they are generated as singlets with paired electrons. However, 
+intersystem crossing to the diradical triplet ground state is quite fast. (Scheme  10.24 ) 
+ The most characteristic reaction of nitrenes consists of secondary amine  98 formation 
+by insertion into C − H bonds either in a concerted process for singlets or through hydrogen 
+abstraction followed by recombination of the radical couple for triplets, a process called 
+pseudoinsertion. An even more efﬁ cient reaction is the addition to alkenes to form aziri-
+dines. For singlets, this addition is concerted and thus stereoselective. Whereas for triplets, 
+the reaction proceeds through a stepwise mechanism involving radicals and therefore is 
+not stereoselective. Further typical reactions are double hydrogen abstraction of triplet 
+nitrenes to afford primary amines  100 and formation of azo compound  99 by reaction 
+with the azide precursor or by dimerization when the nitrene concentration is high. 
+ Our group has investigated the behavior of nitrenes enclosed in host molecules. 
+For this purpose, we have obtained initial results with adamantyl nitrenes which can be 
+generated either thermally or photochemically from readily available adamantane azides.  67 
+N
+N
+N
+R
+N
+N
+N
+R
+R
+N
+1
+R
+N
+3
+ISC
+97
+singlet
+97
+triplet
+96
+R
+H
+N
+CR´3
+R´3CH
+hn
+– N2
+hn
+– N2
+R
+N
+N
+R
+R
+NH2
+R´3CH
+98
+99
+100
+[H]
+ Scheme 10.24   Nitrene generation  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+296 
+Molecular Encapsulation
+Two main reasons guided this choice. On one hand, the reactions of these compounds 
+under classical conditions are already known. This facilitates to ﬁ nd out, how nitrene 
+reactivity has been modiﬁ ed by inclusion. On the other hand, as has been shown earlier 
+in this chapter, the adamantane skeleton is a good ﬁ t for the cavity of   α - and   β - cyclodextrins 
+leading to high association constants upon complexation. 
+ 10.4.4.1  1 - Adamantanyl nitrene 
+ 1 - Adamantanyl nitrene ( 102 ) is generated by photolysis of 1 - adamantane azide ( 101 ). 
+Nitrene  102  rearranges by an alkyl shift to the unstable imine  103 (Scheme  10.25 ). The 
+C = N double bond is quite reactive because it is located at a bridge - head. Therefore,  103 
+dimerizes to azetidine  105  in a head - to - tail fashion in an alkane solution or in the solid 
+state. 68 
+ In   α  -  and also in   β  - cyclodextrin, the outcome of the reaction is totally different because 
+dimerization to  105  cannot occur. Instead, during the aqueous work - up the hemiaminal 
+4 - azahomoadamantan - 3 - ol ( 104 ) is formed by addition of water to the bridge - head imine 
+(Table  10.5 ). 
+ 10.4.4.2  2 - Adamantanyl nitrene 
+ 2 - Adamantane azide ( 106 ) behaves similarly (Scheme  10.26 ): after generation of nitrene 
+ 107 , the main reaction consists of a 1,2 - alkyl shift to form 4 - azahomoadamant - 4 - ene ( 108 ) 
+which can be isolated.  69   As a side product, adamantane imine ( 109 ) is produced through 
+hn
+– N2
+N
+N3
+N
+N
+NH
+N
+OH
+H2O
+101
+102
+103
+104
+105
+ Scheme 10.25   Generation of 1 - adamantyl nitrene  102 and its subsequent reactions  
+ Table 10.5   Product distribution resulting from the 
+decomposition of 1 - adamantane azide  101 
+ 
+ Yield (%)  
+ 104 
+ 105 
+ 101 (solid state)  
+ 
+  84 
+ 101 (alkane solution)  
+ 
+ 88 
+ 101 @( α - CD ) 2 
+ 94  a  
+ 
+ 101 @ β - CD 
+ 91 
+ traces  
+ a  Traces of 1 - adamantane amine and adamantan - 1 - ol.  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Encapsulation of Reactive Intermediates 
+297
+a 1,2 - H shift in  107 . Compound  109  easily hydrolyzes to afford adamantanone ( 79 ). When 
+nitrene  107 is generated inside the cyclodextrin cavity, very similar results are obtained 
+(Table  10.6 ). In any case, both adamantanyl nitrenes did not form any isolable innermo-
+lecular products with   α - or  β - cyclodextrin. 
+ 10.4.4.3  Ferrocenyl nitrene 
+ The third case study concerns ferrocenyl nitrene. The geometry of the inclusion com-
+plexes of its precursor inside   α - and   β - cyclodextrins was thoroughly investigated using 
+induced circular dichroism, quantum mechanical and NMR studies.  70   Because of the poor 
+solubility of these complexes in water, alternative solvents had to be employed. Aprotic 
+polar solvents like DMSO and DMF possess the best solubilizing properties but at the 
+cost of low association constants. Ethylene glycol is a better compromise between binding 
+and solubilizing properties. 
+ Indeed, the behavior of ferrocenyl azide inside   β  - cyclodextrin is striking, since the 
+alignment of the guest changes depending on the solvent and the temperature (Figure 
+ 10.7 ). In ethylene glycol and in DMSO/H 2 O 50/50, a negative ICD is obtained which 
+results from an axial orientation according to Harata ’ s rule (Figure  10.8 , Structure A). 
+With DMSO contents higher than 62%, the ICD band is positive, ferrocenyl azide adopts 
+an equatorial arrangement (Structure B). Structure B is also favored at higher temperatures 
+as can be shown by the sign reversal of the ICD spectra between 10 and 40    ° C (Figure 
+ 10.7 B). The proposed geometries of inclusion are also corroborated by 2D ROESY spec-
+troscopy (Table  10.7 ). 
+–N2
+N
+H2O
+106
+107
+108
+N3
+N
+109
+NH
+79
+O
+hv
+ Scheme 10.26   Generation of 2 - adamantanyl nitrene  107 and its subsequent reactions  
+ Table 10.6   Product distribution resulting from the 
+decomposition of 2 - adamantane azide  106 
+ 
+ Yield (%)  
+ 108 
+ 79 
+ 106 (solid state) 
+  84  
+ 15 
+ 106 (alkane solution)  
+ 87  
+ 5 
+ 106 @( α - CD) 2 
+ 81 
+ 10 
+ 106 @ β - CD 
+ 77 
+ 23 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+298 
+Molecular Encapsulation
+100
+10
+20
+30
+40
+15
+25
+35
+90
+80
+70
+60
+50
+40
+480
+380
+390
+420
+450
+480
+510
+540
+570
+530
+430
+(a)
+(b)
+l [nm]
+l [nm]
+∆E [M–1cm–1]
+∆E [M–1cm–1]
+0.015
+0.01
+0.005
+0
+–0.005
+–0.01
+–0.015
+0.12
+0.1
+0.08
+0.06
+0.04
+0.02
+0
+–0.02
+–0.04
+–0.06
+ Figure 10.7   A ) ICD signal dependence of FcN 3 @ β - CD on the DMSO content (% v/v) of 
+the aqueous solution, T   =  25  ° C.  B ) Temperature effect ( ° C) on the ICD spectra sign at a 
+constant solvent composition, (DMSO/H 2 O: 62/38 (v/v), [FcN 3 ]: 0.0049   M, [  β - CD]: 
+0.0496   M).  Reprinted with permission from  [70] . Copyright 2006 American Chemical 
+Society 
+ Finally, the ferrocenyl complexes were decomposed photochemically and thermally. 
+Thermolyses can be performed in this case because the decomposition temperature of 
+the azide ( 96 ) (80  ° C) is much lower than those employed for other diazirines and azides. 
+The results obtained from photolyses and thermolyses do not differ signiﬁ cantly. Here 
+again,  α  - CD causes the most drastic changes because of the complete encapsulation of 
+the guest in a 1   :   2 complex (Scheme  10.27 ). In accord with the other reactions performed 
+in  α  - CD, the main reaction pathway is hydrogen abstraction from the host. Upon ther-
+molysis ferrocenyl amine ( 112 ) is obtained in a yield up to 60%. More remarkably, 
+ferrocenyl nitrene ( 111 ) seems to react in very low yields with   α - CD. However, the 
+structure of the reaction product  113  has not been fully established yet and is quite 
+unexpected because  113  is the result of a glucopyranose - furanose conversion. In contrast, 
+the products obtained by thermolysis of ferrocenyl nitrene in the solid state, namely 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Encapsulation of Reactive Intermediates 
+299
+(a)
+(b)
+ Figure 10.8   Proposed orientation of ferrocenyl azide inside the   β - cyclodextrin cavity 
+according to ICD. (A) axial, (B) equatorial arrangement.  Reprinted with permission from 
+ [70] . Copyright 2006 American Chemical Society  
+ Table 10.7   Yields of isolated products from decomposition of ferrocenyl azide ( F c N 3, 110 ) 
+complexes 
+ Complex  
+  
+ FcH ( 115 ) 
+ FcN=NFc ( 114 ) 
+ FcNH 2 ( 112 ) 
+ FcN - CD 
+ FcN 3 (solid)  
+ ∆ 
+ 9 
+ 47 
+ – 
+ – 
+ FcN 3 @( α - CD) 2 
+ ∆ 
+ < 0.5 
+ – 
+ 60 
+ 9 
+ FcN 3 @( α - CD) 2 
+ h ν 
+ < 0.5 
+ – 
+ 53 
+ 3 
+ FcN 3 @ β - CD 
+ ∆ 
+ < 0.5 
+ 5 
+ 22 
+ no 
+ FcN 3 @ β - CD 
+ h ν 
+ < 0.5 
+ 8 
+ 27 
+ no 
+ FcN 3 @ γ - CD 
+ ∆ 
+ 4 
+ 4 
+ 19 
+ yes 
+ FcN 3 @ γ - CD 
+ h ν 
+ 1 
+ 2 
+ 9 
+ yes 
+ FcN 3 @TRIMEB  
+ ∆ 
+ 7 
+ 2 
+ – 
+ yes 
+azoferrocene ( 114 ) (47%) and ferrocene ( 115 ) (9%) are not formed from FcN 3 @(  α - CD) 2 . 
+With FcN 3 @ β - CD, ferrocenyl amine ( 112 ) remains the main product (22%) but there is 
+no insertion into the host and azoferrocene formation ( 114 : 5%) cannot be totally avoided. 
+FcN 3 @TRIMEB yields ferrocene and azoferrocene. The crystal structure of FcN 3 @
+TRIMEB is quite uncommon: the guest adopts a bimodal arrangement. In one half of the 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+300 
+Molecular Encapsulation
+ Figure 10.9   Crystal structure of FcN 3 @TRIMEB showing the two orientations of the guest  
+– N2
+Fe
+N3
+Fe
+N
+Fe
+NH2
+Fe
+N
+Fe
+Fe
+N
+110
+111
+112
+114
+115
+113
+α-CD
+O
+OH
+O
+O
+HO
+O
+OH
+OH
+O
+OHO
+O
+OH
+HO
+O
+O
+OH
+OH
+HO
+O
+OH
+O
+HO
+OH
+O
+OH
+HO
+OH
+HO
+O
+HN
+Fe
+hv
+ Scheme 10.27   Generation of ferrocenyl nitrene ( 111 ) and its subsequent reactions  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Encapsulation of Reactive Intermediates 
+301
+ferrocenyl azide molecules the azido group is oriented toward the bottom of the cavity 
+(Figure  10.9 , orientation A) whereas in the other half this group is pointing toward the 
+secondary rim (orientation B).  67 
+ 10.4.4.4  Phenylnitrene 
+ Phenylnitrene ( 117 ) can be generated as a singlet from phenyl azide ( 116 ) under UV 
+irradiation. Below 165   K, intersystem crossing to the triplet state occurs. Otherwise, an 
+alkyl shift leads to the formation of the easily polymerizing 1 - azacyclohepta - 1,2,4,6 -
+ tetraene ( 118 ), (Scheme  10.28 ) a compound which is in equilibrium with singlet phenyl-
+nitrene. 71   Finally, the nitrene may be trapped if suitable compounds are present, e.g. 
+formation of azobenzene ( 119 ) by reaction with phenyl azide. Otherwise, hydrogen 
+abstraction affords aniline ( 120 ) and polymerization products are often obtained.  72 
+Interestingly, the chemical behavior of phenylnitrene is strongly altered when this inter-
+mediate is generated inside the resorcin[4]arene - based cavitand  121 . 72 Especially,  121 can 
+be functionalized regioselectively depending on the structure of the complex. 
+ The complex  116 @ 121  is obtained in a 1.5   :   1 stoichiometry by crystallization from a 
+saturated solution of cavitand  121  in phenyl azide ( 116 ) and drying at 25    ° C (18  h at 
+0.4   Torr). Irradiation of the 1.5   :   1 complex of  116 @ 121  leads to the formation of  N -
+ alkylaniline  122 as the major product (35%) through a regioselective C − H insertion of 
+phenylnitrene into one of the alkyl chains (Scheme  10.29 ). The formation of product  122 
+is a strong hint that in  116 @ 121  excess of phenyl azide is located between the alkyl 
+chains. The major secondary product is azobenzene ( 119 ) (22%). This relatively high 
+yield of dimerization product can be explained by the speciﬁ c packing found in the crystal 
+structure of  116 @ 121 , namely a head - to - head arrangement in which two azido groups 
+are in close proximity. 
+ DSC (Differential Scanning Calorimetry) analysis reveals how a 1   :   1 complex can be 
+obtained (Figure  10.10 ). Indeed, two dissociation processes are observed. First, excess 
+phenyl azide is lost between 70 and 125    ° C (  ∆ H  =  4.0  kcal  mol  − 1 ). Second, the remaining 
+1  :  1 complex dissociates at 142  ° C with a fairly high   ∆ H of 13.1  kcal  mol  − 1 . It is worth 
+noticing that MPWB1K/6 - 31+G(d,p) calculations (  ∆ H  =  11.1  kcal  mol  − 1 ) are in good 
+agreement with the experimental results concerning the orientation of the guest and the 
+strength of the interactions. 
+hn
+– N2
+N3
+N
+N
+NH2
+N
+N
+116
+117
+118
+119
+120
+polymerization
+116
+[H]
+ Scheme 10.28   Solution chemistry of phenyl azide  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+302 
+Molecular Encapsulation
+O
+O
+O
+O
+O
+O
+O
+O
+H
+H
+H
+H
+N
+N N
+N
+N
+N
+N
+N
+N
+H
+H
+O
+O
+O
+O
+O
+O
+O
+O
+H
+H
+H
+H
+N
+N N
+N
+N
+N
+N
+N
+HN
+116@121
+(1.5:1)
++
++
+123 (6%)
+122 (35%)
+119 (22%)
+hn
+hn
+O
+O
+O
+O
+O
+O
+O
+O
+H
+H
+H
+H
+R
+R
+R
+R
+N
+N N
+N
+N
+N
+N
+N
+N
+H
+H
+(1:1)
++
+O
+O
+O
+O
+O
+O
+O
+O
+H
+H
+H
+H
+R
+R
+R
+R
+N
+N N
+N
+N
+N
+N
+N
+N
+H
+H
+124 (7%)
+123 (31%)
+R = C6H13
+O
+O
+O
+O
+O
+O
+O
+O
+H
+H
+H
+H
+N
+N N
+N
+N
+N
+N
+N
+121
+N3
+116
++
+116@121
+N
+N
++
+119 (11%)
+N
+N
+ Scheme 10.29   Irradiation of  116 @ 121 
+4
+2
+0
+–2
+–4
+–6
+–8
+–10
+–12
+–14
+–1640
+60
+80
+100
+Temperature [°C]
+Temp(Peak) ≈ 114 °C
+DH = 4.0 kal/mol
+Temp(Peak) ≈ 142 °C
+DH = 13.1 kal/mol
+120
+140
+160
+180
+200
+100
+95
+90
+85
+80
+75
+70
+Mass [%]
+Heat Flow [mW]
+ Figure 10.10   DSC diagram and thermogravimetric analysis (starting on the top) of 
+ 116 @ 121 .  Reprinted with permission from  [72] . Copyright 2009 American Chemical 
+Society 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Encapsulation of Reactive Intermediates 
+303
+ For synthetic purposes, the 1.5   :   1 complex can be treated thermally at 112    ° C for 35  min 
+at 1   atm to furnish  116 @ 121 as a 1  :  1 complex (Figure  10.11 ). Its photolysis does not 
+afford any C − H insertion product  122 . Instead, phenylnitrene adds to a quinoxaline ring 
+and yields the two diastereomeric aziridines  123  (31%) and  124  (7%) together with 
+azobenzene ( 119 ) (11%). This high regioselectivity and even the aziridine formation can 
+only be obtained using solid state photolysis and are the result of the restricted motion of 
+the nitrene in the cavitand. Indeed, photolysis of phenyl azide in presence of 10 equiv of 
+quinoxaline in benzene affords only aniline ( 120 ) (17%) and azobenzene ( 119 ) (9%). The 
+azanorcaradienes  123  and/or  124  can be converted into azepine  126  upon heating via a 
+1,5 - sigmatropic nitrogen migration to aziridine  125  followed by valence isomerization 
+(Scheme  10.30 ). Irradiation of azepine  126  affords back the aziridines  123  and  124  in a 
+ratio of 1  :  5; this reaction chain allows reversing the ratio of  123  :  124 . 
+ In conclusion, the generation of reactive intermediates in the cavity of a supramolecular 
+structure offers a straightforward approach to the preparation of functionalized hosts as 
+can be seen for example from the results obtained from the different regioselective modi-
+ﬁ cations of a resorcin[4]arene cavitand by phenylnitrene.  72 The properties of the guest 
+can be signiﬁ cantly changed: intersystem - crossing can be enforced and therefore a carbene 
+can be coerced to react as a triplet. Accordingly, the reactivity may vary greatly. Moreover, 
+ Figure 10.11   Crystal structure of  116 @ 121 : side view and detail of crystal lattice. 
+ Reprinted with permission from  [72] . Copyright 2009 American Chemical Society  
+N
+N
+N
+N
+N
+N
+Ph
+hν
+123   or   124
+126
+123:124 = 1:5
+140 °C
+5 h
+Ph
+N
+N
+N
+Ph
+125
+ Scheme 10.30   Isomerization of aziridines  123 and/or  124 with ratio reversal  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+304 
+Molecular Encapsulation
+as a trend, the encapsulated intermediates tend to be less reactive, especially in intermo-
+lecular reactions and toward the inner side of the host. This is partly due to the steric 
+requirement for the reaction and also due to the need to have an optimal alignment of the 
+orbitals of the reactant. As a consequence of the conﬁ nement in a constrained system, 
+these reactions are slowed down. However, especially in rigidly and densely packed 
+complexes, some reactions which do not have strong requirements on the geometry of 
+the transition state are strongly accelerated, e.g., electron transfer or hydrogen abstraction. 
+Indeed, the narrow cavity of   α  - CD has proven to be a very efﬁ cient hydrogen donor 
+toward triplet intermediates and radicals favoring the reduction of the guest.  
+ References 
+  1.  a)  R.  Arun ,  C. K.  Ashok Kumar ,  V. V. N. S. S.  Sravanthi ,  Cyclodextrins as drug carrier mol-
+ecule: a review ,  Sci. Pharm. ,  2008 ,  76 ,  567 – 598 ;  b)  R.  Gaudana ,  J.  Jwala ,  S. H. S.  Boddu ,  A. 
+K.   Mitra  ,  Recent perspectives in ocular drug delivery ,  Pharm. Res. ,  2009 ,  26 ,  1197 – 1216 ;  c) 
+ A.  Vyas ,  S.  Saraf ,  S.  Saraf ,  Cyclodextrin based novel drug delivery systems ,  J. Incl. Phenom. 
+Macrocycl. Chem. ,  2008 ,  62 ,  23 – 42 . 
+  2.  T.  Iwasawa ,  R. J.  Hooley ,  J.  Rebek  Jr. ,  Stabilization of labile carbonyl addition intermediates 
+by a synthetic receptor ,  Science ,  2007 ,  317 ,  493 – 496 . 
+  3.  X.  Li ,  S.  Danishefsky ,  New chemistry with old functional groups: on the reaction of isonitriles 
+with carboxylic acids  –  a route to various amide types ,  J. Am. Chem. Soc. ,  2008 ,  130 , 
+ 5446 – 5447 . 
+  4.  P.  Restorp ,  J .  Rebek  Jr. ,  Reaction of isonitriles with carboxylic acids in a cavitand: observation 
+of elusive isoimide intermediates ,  J. Am. Chem. Soc. ,  2008 ,  130 ,  11850 – 11851 . 
+  5.  D. L.  Caulder ,  C.  Br ü ckner ,  R. E.  Powers ,  S.  K ö nig ,  T. N.  Parac ,  J. A.  Leary ,  K. N.  Raymond , 
+ Design, formation and properties of tetrahedral M 4 L 4  and M 4 L 6  supramolecular clusters ,  J. Am. 
+Chem. Soc. ,  2001 ,  123 ,  8923 – 8938 . 
+  6.  V. M.  Dong ,  D.  Fiedler ,  B.  Carl ,  R. G.  Bergman ,  K. N.  Raymond ,  Molecular recognition and 
+stabilization of iminium ions in water ,  J. Am. Chem. Soc. ,  2006 ,  128 ,  14464 – 14465 . 
+  7.  J. L.  Brumaghim ,  M.  Michels ,  K. N.  Raymond ,  Hydrophobic chemistry in aqueous solution: 
+stabilization and stereoselective encapsulation of phosphonium guests in a supramolecular host , 
+ Eur. J. Org. Chem. ,  2004 ,  4552 – 4559 . 
+  8.  P.  Mal ,  B.  Breiner ,  K.  Rissanen ,  J. R.  Nitschke ,  White phosphorus is air - stable within a self –
+ assembled tetrahedral capsule ,  Science ,  2009 ,  324 ,  1697 – 1699 . 
+     9.       P.   Mal  ,   D.   Schultz  ,   K.   Beyeh  ,   K.   Rissanen  ,   J. R.   Nitschke  ,  An unlockable – relockable iron cage 
+by subcomponent self – assembly ,  Angew. Chem. Int. Ed. ,  2008 ,  47 ,  8297 – 8301 . 
+ 10.  C. D.  Meyer ,  C. S.  Joiner ,  J. F.  Stoddart ,  Template – directed synthesis employing reversible 
+imine bond formation ,  Chem. Soc. Rev. ,  2007 ,  36 ,  1705 – 1723 . 
+ 11.  M.  Yoshizawa ,  T.  Kusukawa ,  M.  Fujita ,  K.  Yamaguchi ,  Ship – in – a – bottle synthesis of other-
+wise labile cyclic trimers of siloxanes in a self – assembled coordination cage ,  J. Am. Chem. 
+Soc. ,  2000 ,  122 ,  6311 – 6312 . 
+ 12.  R. H.  Baney ,  M.  Itoh ,  A.  Sakakibara ,  T.  Suzuki ,  Silsesquioxanes ,  Chem. Rev. ,  1995 ,  95 , 
+ 1409 – 1430 . 
+  13.       M.   Yoshizawa  ,   T.   Kusukawa  ,   M.   Fujita  ,   S.   Sakamoto  ,   K.   Yamaguchi  ,  Cavity – directed synthe-
+sis of labile silanol oligomers within self – assembled coordination cages ,  J. Am. Chem. Soc. , 
+ 2001 ,  123 ,  10454 – 10459 . 
+ 14.  M.  Yoshizawa ,  T.  Kusukawa ,  M.  Kawano ,  T.  Ohhara ,  I.  Tanaka ,  K.  Kurihara ,  N.  Niimura  , 
+  M.   Fujita  ,  Endohedral clusterization of ten water molecules into a  ‘ molecular ice ’  within the 
+hydrophobic pocket of a self – assembled cage ,  J. Am. Chem. Soc. ,  2005 ,  127 ,  2798 – 2799 . 
+ 15.  T.  Sawada ,  M.  Yoshizawa ,  S.  Sato ,  M.  Fujita ,  Minimal nucleotide duplex formation in water 
+through enclathration in self – assembled hosts ,  Nature Chemistry ,  2009 ,  1 ,  53 – 56 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Encapsulation of Reactive Intermediates 
+305
+ 16.  M.  Yoshizawa ,  K.  Ono ,  K.  Kumazawa ,  T.  Kato ,  M.  Fujita ,  Metal – metal  d – d  interaction through 
+the discrete stacking of mononuclear M(II) complexes (M   =   Pt, Pd, and Cu) within an organic –
+ pillared coordination cage ,  J. Am. Chem. Soc. ,  2005 ,  127 ,  10800 – 10801 . 
+ 17.  Y.  Yamauchi ,  M.  Yoshizawa ,  M.  Fujita ,  Engineering stacks of aromatic rings by the interpen-
+etration of self – assembled coordination cages ,  J. Am. Chem. Soc. ,  2008 ,  130 ,  5832 – 5833 . 
+ 18.  P.  G ü tlich ,  H. A.  Goodwin ,  Topics in Current Chemistry, Spin Crossover in Transition Metal 
+Compounds I – III ;  Springer ,  Berlin ,  2004 . 
+ 19.  K.  Ono ,  M.  Yoshizawa ,  M.  Akita ,  T.  Kato ,  Y.  Tsunobuchi ,  S.  Ohkoshi ,  M.  Fujita ,  Spin crossover 
+by encapsulation ,  J. Am. Chem. Soc. ,  2009 ,  131 ,  2782 – 2783 . 
+ 20.  K.  Kim ,  N.  Selvapalam ,  Y. H.  Ko ,  K. M.  Park ,  D.  Kim ,  J.  Kim ,  Functionalized cucurbiturils 
+and their applications ,  Chem. Soc. Rev. ,  2007 ,  36 ,  267 – 279 . 
+ 21.  W.  Ong ,  M.  Gomez – Kaifer ,  A. E.  Kaifer ,  Cucurbit[7]uril: a very effective host for viologens 
+and their cation radicals ,  Org. Lett. ,  2002 ,  4 ,  1791 – 1794 . 
+ 22.  A.  Mirzoian ,  A. E.  Kaifer ,  Reactive pseudorotaxanes: inclusion complexation of reduced violo-
+gens by the hosts   β – cyclodextrin and heptakis(2,6 – di – O – methyl) – β – cyclodextrin ,  Chem. Eur. 
+J. ,  1997 ,  3 ,  1052 – 1058 . 
+ 23.  M. J.  Frampton ,  H. L.  Anderson ,  Insulated molecular wires ,  Angew. Chem. Int. Ed. ,  2007 ,  46 , 
+ 1028 – 1064 . 
+ 24.  K.  Yoshida ,  T.  Shimomura ,  K.  Ito ,  R.  Hayakawa ,  Inclusion complex formation of cyclodextrin 
+and polyaniline ,  Langmuir ,  1999 ,  15 ,  910 – 913 . 
+ 25.  M.  Numata ,  T.  Hasegawa ,  T.  Fujisawa ,  K.  Sakurai ,  S.  Shinkai ,   β – 1,3 – Glucan (schizophyllan) 
+can act as a one – dimensional host for creation of novel poly(aniline) nanoﬁ ber structures ,  Org. 
+Lett. ,  2004 ,  6 ,  4447 – 4450 . 
+ 26.  A.  Harada ,  J.  Li ,  M.  Kamachi ,  Synthesis of a tubular polymer from threaded cyclodextrins , 
+ Nature ,  1993 ,  364 ,  516 – 518 . 
+ 27.  T.  Shimomura ,  T.  Akai ,  T.  Abe ,  K.  Ito ,  Atomic force microscopy observation of insulated 
+molecular wire formed by conducting polymer and molecular nanotube ,  J. Chem. Phys. ,  2002 , 
+ 116 ,  1753 – 1756 . 
+ 28.  R.  Eelkema ,  K.  Maeda ,  B.  Odell ,  H. L.  Anderson ,  Radical cation stabilization in a cucurbituril 
+oligoaniline rotaxane ,  J. Am. Chem. Soc. ,  2007 ,  129 ,  12384 – 12385 . 
+ 29.  P.  Franchi ,  M.  Lucarini ,  G. F.  Pedulli ,  Use of nitroxide radicals to investigate supramolecular 
+entities ,  Curr. Org. Chem. ,  2004 ,  8 ,  1831 – 1849 . 
+ 30.  L. S.  Kaanumalle ,  J.  Nithyanandhan ,  M.  Pattabiraman ,  N.  Jayaraman ,  V.  Ramamurthy , 
+ Water – soluble dendrimers as photochemical reaction media: chemical behavior of singlet 
+and triplet radical pairs inside dendritic reaction cavities ,  J. Am. Chem. Soc. ,  2004 ,  126 , 
+ 8999 – 9006 . 
+ 31.  Y.  Furutani ,  H.  Kandori ,  M.  Kawano ,  K.  Nakabayashi ,  M.  Yoshizawa ,  M.  Fujita ,  In situ spec-
+troscopic, electrochemical, and theoretical studies of the photoinduced host – guest electron 
+transfer that precedes unusual host – mediated alkane photooxidation ,  J. Am. Chem. Soc. ,  2009 , 
+ 131 ,  4764 – 4768 . 
+ 32.  R. A.  Moss ,  M. S.  Platz ,  M .  Jones  Jr. ,  Reactive Intermediate Chemistry ,  Wiley ,  Hoboken ,  2004 . 
+ 33.  J. – L.  Mieusset ,  U. H.  Brinker ,  The carbene reactivity surface: a classiﬁ cation ,  J. Org. Chem. , 
+ 2008 ,  73 ,  1553 – 1558 . 
+ 34.  F.  Bonnette ,  T.  Kato ,  M.  Destarac ,  G.  Mignani ,  F. P.  Cossio ,  A.  Baceiredo ,  Encapsulated  N –
+ heterocyclic carbenes in silicones without reactivity modiﬁ cation ,  Angew. Chem. Int. Ed. ,  2007 , 
+ 46 ,  8632 – 8635 . 
+ 35.  A. R.  Hedges ,  Industrial applications of cyclodextrins ,  Chem. Rev. ,  1998 ,  98 ,  2035 – 2044 . 
+ 36.  a)  Y. A.  Zhdanov ,  Y. E.  Alekseev ,  E. V.  Kompantseva ,  E. N.  Vergeichik ,  Induced optical activity 
+in cyclodextrin complexes ,   Russ. Chem. Rev. ,  1992 ,  61 ,  563 – 575 ;  b)  D.  Krois ,  U. H.  Brinker , 
+ Circular dichroism of cyclodextrin complexes , in  Handbook of Cyclodextrins and Their 
+Complexes ;  H.  Dodziuk (Ed.),  Wiley ,  New York ,  289 – 298 ,  2006 . 
+ 37.  K.  Harata ,  H.  Uedeira ,  The circular dichroism of the   β – cyclodextrin complex with naphthalene 
+derivatives ,  Bull. Chem. Soc. Jpn. ,  1975 ,  48 ,  375 – 378 . 
+ 38.  I.  Tinoco  Jr. ,  Theoretical aspects of optical activity part two: polymers ,  Adv. Chem. Phys. ,  1962 , 
+ 4 ,  113 – 160 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+306 
+Molecular Encapsulation
+ 39.  a)  M.  Kodaka ,  Sign of circular dichroism induced by   β – cyclodextrin ,  J. Phys. Chem. ,  1991 , 
+ 95 ,  2110 – 2112 ;  b)  M.  Kodaka ,  Application of a general rule to induced circular dichroism of 
+naphthalene derivatives complexed with cyclodextrins ,  J. Phys. Chem. A ,  1998 ,  102 ,  8101 – 
+8103 . 
+  40.     a)   M. G.   Rosenberg  ,   U. H.   Brinker  ,  Carbenes generated within cyclodextrins and zeolites ,  Adv. 
+Phys. Org. Chem. ,  2005 ,  40 ,  1 – 47 ;  b)  M. G.  Rosenberg ,  U. H.  Brinker ,  Constrained carbenes , 
+ Eur. J. Org. Chem. ,  2006 ,  5423 – 5440 . 
+ 41.  I.  Manet ,  S.  Monti ,  P.  Bortolus ,  M.  Fagnoni ,  A.  Albini ,  The photochemistry of 4 – chlorophenol 
+in water revisited: the effect of cyclodextrins on cation and carbene reactions ,  Chem. Eur. J. , 
+ 2005 ,  11 ,  4274 – 4282 . 
+ 42.  J. P. Da  Silva ,  L. F.  Vieira Ferreira ,  A. M.  Da Silva ,  A. S.  Oliveira ,  A comparative study of 
+the photophysics and photochemistry of 4 – chlorophenol adsorbed on silicalite and   β –
+ cyclodextrin ,  J. Photochem. Photobiol. A ,  2002 ,  151 ,  157 – 164 . 
+ 43.  B. W.  Purse ,  J.  Rebek  Jr. ,  Self – fulﬁ lling cavitands: packing alkyl chains into small spaces , 
+ PNAS ,  2006 ,  103 ,  2530 – 2534 . 
+ 44.  L.  Trembleau ,  J .  Rebek  Jr. ,  Helical conformation of alkanes in a hydrophobic cavitand ,  Science , 
+ 2003 ,  301 ,  1219 – 1220 . 
+ 45.  S.  Mecozzi ,  J .  Rebek  Jr. ,  The 55% solution: a formula for molecular recognition in the liquid 
+state ,  Chem. Eur. J. ,  1998 ,  4 ,  1016 – 1022 . 
+ 46.  J. W.  Wilt ,  W. J.  Wagner ,  The rearrangement of 2 – methylcyclohexylidene ,  J. Org. Chem. , 
+ 1964 ,  29 ,  2788 – 2789 . 
+ 47.  M. G.  Rosenberg ,  S. M.  Kam ,  U. H.  Brinker ,  Encapsulation of an asymmetric diazirine: reac-
+tivity of 2 – methylcyclohexanylidene ,  Tetrahedron Lett. ,  1996 ,  37 ,  3235 – 3238 . 
+ 48.  M. G.  Rosenberg ,  U. H.  Brinker ,  Effect of supramolecular constraint on the selectivity of 
+3 – nortricyclanylidene ,  J. Org. Chem. ,  2001 ,  66 ,  1517 – 1522 . 
+ 49.  L.  Friedman ,  H.  Shechter ,  Transannular and hydrogen – rearrangement reactions in carbenoid 
+decomposition of diazocycloalkanes ,  J. Am. Chem. Soc. ,  1961 ,  83 ,  3159 – 3160 . 
+ 50.  M. M.  Bobek ,  G.  Giester ,  H.  K ä hlig ,  U. H.  Brinker ,  A  ‘ sugar – coated ’  carbene precursor: a 
+single crystal X – ray diffraction and NMR study ,  Tetrahedron Lett. ,  2000 ,  41 ,  5663 – 5667 . 
+ 51.  D.  Krois ,  M. M.  Bobek ,  A.  Werner ,  H.  K ä hlig ,  U. H.  Brinker ,  Chemospeciﬁ c monofunction-
+alization of   α – cyclodextrin in the solid state ,  Org. Lett. ,  2000 ,  2 ,  315 – 318 . 
+ 52.  a)  U. H.  Brinker ,  R.  Buchkremer ,  M.  Kolodziejczyk ,  R.  Kupfer ,  M. G.  Rosenberg ,  M. D.   Poliks , 
+ M.  Orlando ,  M. L.  Gross ,  Carbenes in constrained systems I: 1,3 - C − H, insertion reaction of 
+adamantylidene within the   β - cyclodextrin cavity ,  Angew. Chem., Int. Ed. Engl. ,  1993 ,  32 , 
+ 1344 – 1346 ;  b)  D.  Krois ,  L.  Brecker ,  A.  Werner ,  U. H.  Brinker ,  Supramolecular structure –
+ reactivity relationships: photolysis of a series of aziadamantane@cyclodextrin inclusion com-
+plexes in the solid state ,  Adv. Synth. Catal. ,  2004 ,  346 ,  1367 – 1374 . 
+ 53.  D.  Krois ,  U. H.  Brinker ,  Induced circular dichroism and UV – vis  absorption spectroscopy of 
+cyclodextrin inclusion complexes: structural elucidation of supramolecular aziadamantane 
+(spiro[adamantane – 2,3 ′ – diazirine]) ,  J. Am. Chem. Soc. ,  1998 ,  120 ,  11627 – 11632 . 
+ 54.  a)  H.  Dodziuk ,  Modeling of CDs and their complexes , in  Cyclodextrins and Their Complexes ; 
+ H.  Dodziuk (Ed.),  Wiley ,  Weinheim ,  2006 ;  b)  E. A.  Castro ,  D. A. J.  Barbiric ,  Molecular mod-
+eling and cyclodextrins: a relationship strengthened by complexes ,  Curr. Org. Chem. ,  2006 , 
+ 10 ,  715 – 729 . 
+ 55.  a)  B.  Sellner ,  G.  Zifferer ,  A.  Kornherr ,  D.  Krois ,  U. H.  Brinker ,  Molecular dynamics simula-
+tions of   β – cyclodextrin – aziadamantane complexes in water: simulation versus experiment ,  J. 
+Phys. Chem. B ,  2008 ,  112 ,  710 – 714 ;  b)  G.  Zifferer ,  A.  Kornherr ,  U. H.  Brinker ,  Molecular 
+dynamics simulation of conﬁ gurational properties of complexes between   β – cyclodextrin and 
+2,6 – diaziadamantane in water ,  Mol. Simul. ,  2008 ,  34 ,  1177 – 1183 . 
+ 56.  a)  T.  Bally ,  S.  Matzinger ,  L.  Truttmann ,  M. S.  Platz ,  S.  Morgan ,  Matrix spectroscopy of 
+2 – adamantylidene, a dialkylcarbene with singlet ground state ,  Angew. Chem. Int. Ed. Engl. , 
+ 1994 ,  33 ,  1964 – 1966 ;  b)  G. V.  Shustov ,  M. T. H.  Liu ,  On the possibility of conversion of 
+strained bridgehead alkenes into carbenes via 1,2 hydrogen and 1,2 carbon migrations. A theo-
+retical study of the rearrangements in the adamantene and protoadamantene systems ,  Can. J. 
+Chem. ,  1998 ,  76 ,  851 – 861 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Encapsulation of Reactive Intermediates 
+307
+ 57.  a)  S. H.  Shin ,  A. E.  Keating ,  M. A.  Garcia – Garibay ,  Transforming a nonselective carbene 
+rearrangement into a highly selective process by using crystalline media ,  J. Am. Chem. Soc. , 
+ 1996 ,  118 ,  7626 – 7627 ;  b)  S. H.  Shin ,  D.  Cizmeciyan ,  A. E.  Keating ,  S. I.  Khan ,  M. A. 
+ Garcia – Garibay ,  Control of carbene reactivity by crystals. A highly selective 1,2 – H shift in the 
+solid – to – solid reaction of 1 – (4 ′ – biphenylyl) – 2 – phenyldiazopropane to ( Z) – 1 – (4 ′ – biphenylyl) –
+ 2 – phenylpropene ,  J. Am. Chem. Soc. ,  1997 ,  119 ,  1859 – 1868 ;  c)  A. E.  Keating ,  S. H.  Shin ,  K. 
+N.  Houk ,  M. A.  Garcia – Garibay  ,  Combining quantum mechanical reaction pathways with force 
+ﬁ eld lattice interactions to model a solid – state phototransformation ,  J. Am. Chem. Soc. ,  1997 , 
+ 119 ,  1474 – 1475 ;  d)  M. A.  Garcia – Garibay ,  S.  Shin ,  C. N.  Sanrame ,  Engineering reactions in 
+crystalline solids: prediction of intramolecular carbene rearrangements ,  Tetrahedron ,  2000 ,  56 , 
+ 6729 – 6737 ;  e)  C. N.  Sanrame ,  C. P.  Suhrada ,  H.  Dang ,  M. A.  Garcia – Garibay ,  Photochemistry 
+of crystalline chlorodiazirines: the inﬂ uence of conformational disorder and intermolecular 
+Cl · · · N = N interactions on the solid – state reactivity of singlet chlorocarbenes ,  J. Phys. Chem. 
+A ,  2003 ,  107 ,  3287 – 3294 . 
+ 58.  M. G.  Rosenberg ,  U. H.  Brinker ,  Inter – and innermolecular reactions of chloro(phenyl)carbene , 
+ J. Org. Chem. ,  2003 ,  68 ,  4819 – 4832 . 
+ 59.  W. W.  Sander ,  Chemiluminescence from arylcarbene oxidation: phenylchlorocarbene and 
+(2 - chlorophenyl)carbene ,  Spectrochim. Acta A ,  1987 ,  43A ,  637 – 46 . 
+ 60.  a)  N. J.  Turro ,  J. A .  Butcher  Jr. ,  R. A.  Moss ,  W.  Guo ,  R. C.  Munjal ,  M.  Fedorynski ,  Absolute 
+rate constants for additions of phenylchlorocarbene to alkenes ,  J. Am. Chem. Soc. ,  1980 ,  102 , 
+ 7576 – 7578 ;  b)  I.  Naito ,  A.  Oku ,  N.  Otani ,  Y.  Fujiwara ,  Y.  Tanimoto ,  Formation of oxonium 
+ylide evidenced by the laser ﬂ ash photolysis of (biphenyl – 4 – yl)chlorodiazirine in ethers , 
+ J. Chem. Soc., Perkin Trans 2 ,  1996 ,  725 – 729 . 
+ 61.  J. – L.  Mieusset ,  D.  Krois ,  M.  Pacar ,  L.  Brecker ,  G.  Giester ,  U. H  Brinker ,  Supramolecular 
+recognition and structural elucidation of inclusion complexes of an achiral carbene precursor 
+in  β – and permethylated   β – cyclodextrin ,  Org. Lett. ,  2004 ,  6 ,  1967 – 1970 . 
+ 62.  V.  Schurig ,  M.  Jung ,  D.  Schmalzing ,  M.  Schleimer ,  J.  Duvekot ,  J. C.  Buyten ,  J. A.  Peene ,  P. 
+ Mussche  ,  CGC enantiomer separation on diluted cyclodextrin derivatives coated on fused silica 
+columns ,  J. High Resolut. Chromatogr. ,  1990 ,  13 ,  470 – 474 . 
+ 63.  J. – L.  Mieusset ,  G.  Wagner ,  K. – J.  Su ,  M.  Steurer ,  M.  Pacar ,  M.  Abraham ,  U. H.  Brinker , 
+Supramolecular photochirogenesis with carbenes entrapped in cyclodextrins,  Eur. J. Org. 
+Chem. ,  2009 ,  5907 – 5912 . 
+ 64.  G. N.  Fickes ,  C. B.  Rose ,  Reactions of bicyclo[3.2.1]octan – 8 – ylidene and bicyclo[3.2.1]oct –
+ 2 – en – 8 – ylidene ,  J. Org. Chem. ,  1972 ,  37 ,  2898 – 2899 . 
+ 65.  a)  W.  Lwowski ,  Nitrenes in photoafﬁ nity labeling: speculations of an organic chemist ,  Ann N 
+Y Acad Sci ,  1980 ,  346 ,  491 – 500 ;  b)  E. L.  Vodovozova ,  Photoafﬁ nity labeling and its applica-
+tion in structural biology ,  Biochemistry (Moscow) ,  2007 ,  72 ,  1 – 20 ;  c)  S.  Br ä se ,  C.  Gil ,  K. 
+ Knepper  ,   V.   Zimmermann  ,  Organic azides: an exploding diversity of a unique class of com-
+pounds ,  Angew. Chem. Int. Ed. ,  2005 ,  44 ,  5188 – 5240 . 
+ 66.  a)  M. S.  Platz ,  Nitrenes , in  Reactive Intermediate Chemistry ,  R. A.  Moss ,  M. S.  Platz ,  M.  Jones 
+ Jr. (Eds.),  Wiley ,  Hoboken ,  501 – 560 ,  2004 ;  b)  M. P.  Doyle ,  Synthetic carbene and nitrene 
+chemistry , in  Reactive Intermediate Chemistry ,  R. A.  Moss ,  M. S.  Platz ,  M.  Jones  Jr. (Eds.), 
+ Wiley ,  Hoboken ,  561 – 592 ,  2004 . 
+ 67.  P.  Walla , Supramolecular chemistry of organic azides, Ph.D Thesis, University of Vienna, 
+Austria,  2009 . 
+ 68.  a)  H.  Quast ,  P.  Eckert ,  Br ü ckenkopfazide, Die Photolyse von 1 – Azidoadamantan, ein einfacher 
+Weg zu Azahomoadamantanen ,  Liebigs Ann. Chem. ,  1974 ,  1727 – 1741 ;  b)  I. R.  Dunkin ,  C. J. 
+ Shields ,  H.  Quast ,  B.  Seiferling ,  The photolysis of 1 – azido – 4 – methylbicyclo[2.2.2]octane and 
+1 – azidoadamantane in low – temperature matrices ,  Tetrahedron Lett. ,  1983 ,  24 ,  3887 – 3890 ;  c) 
+ J.  Michl ,  G. J.  Radziszewski ,  J. W.  Downing ,  K. B.  Wiberg ,  F. H.  Walker ,  D. R.  Miller ,  P. 
+ Kovacic ,  M.  Jawdosiuk ,  V.  Bonacic – Koutecky  ,  Highly strained single and double bonds ,  Pure 
+Appl. Chem. ,  1983 ,  55 ,  315 – 322 . 
+ 69.  T.  Sasaki ,  S.  Eguchi ,  N.  Toi ,  Photochemical synthesis of 4 – azahomoadamant – 4 – enes and 
+further studies on their reactivity in some cycloadditions ,  J. Org. Chem. ,  1979 ,  44 ,  3711 – 
+3715 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+308 
+Molecular Encapsulation
+ 70.  P.  Walla ,  V. B.  Arion ,  U. H.  Brinker ,  Solvent –  and temperature – tuned orientation of ferrocenyl 
+azide inside  β  – cyclodextrin ,  J. Org. Chem. ,  2006 ,  71 ,  3274 – 3277 . 
+ 71.  a)  R.  Warmuth ,  S.  Makowiec ,  The phenyl nitrene rearrangement in the inner phase of a hemi-
+carcerand ,  J. Am. Chem. Soc. ,  2005 ,  127 ,  1084 – 1085 ;  b)  E.  Leyva ,  M. S.  Platz ,  G.  Persy ,  J. 
+ Wirz  ,  Photochemistry of phenyl azide: the role of singlet and triplet phenylnitrene as transient 
+intermediates ,  J. Am. Chem. Soc. ,  1986 ,  108 ,  3783 – 3790 ;  c)  W. T.  Borden ,  N. P.  Gritsan ,  C. 
+M.  Hadad ,  W. L.  Karney ,  C. R.  Kemnitz ,  M. S.  Platz ,  The interplay of theory and experiment 
+in the study of phenylnitrene ,  Acc. Chem. Res. ,  2000 ,  33 ,  765 – 771 . 
+ 72.  G.  Wagner ,  V. B.  Arion ,  L.  Brecker ,  C.  Krantz ,  J. – L.  Mieusset ,  U. H.  Brinker ,  Controllable 
+selective functionalization of a cavitand via solid state photolysis of an encapsulated phenyl 
+azide ,  Org. Lett. ,  2009 ,  11 ,  3056 – 3058 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+ 11 
+Dye Encapsulation 
+ Jeremiah J.  Gassensmith 1 ,  Easwaran  Arunkumar 2 , and  Bradley D.  Smith 1 
+ 1  Department of Chemistry and Biochemistry, 251 Nieuwland Science Hall, University of Notre 
+Dame, Notre Dame, IN 46556, USA  
+ 2  Molecular Targeting Technologies Inc, 833 Lincoln Ave, West Chester, PA 19380, USA 
+ 11.1  Introduction 
+ Organic dyes have been used throughout the ages as pigments in everyday items like 
+paints, clothing, and printed matter. More recently, ﬂ uorescent dyes have emerged as 
+crucial components in many high technology devices such as secure banknotes, lasing 
+media, optical data storage, biomedical probes, and environmental sensors. A critical issue 
+in all of these applications is dye performance, which can be judged by several parameters 
+such as chemical stability, photochemical stability, colour intensity, ﬂ uorescence quantum 
+yield, solubility, toxicity, etc. The systematic development of organic dyes has been 
+pursued since the ﬁ rst reported synthesis of Indigo by von Baeyer in 1882,  1 an accom-
+plishment which set in motion the German chemical industry.  2 In recent times, interest 
+in ﬂ uorescent dyes has increased dramatically due to their growing impact in biotechnol-
+ogy and nanotechnology. It is worth noting that ﬂ uorescent dyes were a central component 
+in the large scale sequencing methods that mapped the human genome, one of mankind ’ s 
+most impressive scientiﬁ c achievements. 3 
+ The most obvious way to alter dye performance is to synthetically modify the covalent 
+structure. However, despite the continued advances in synthetic organic chemistry, the 
+process of dye synthesis is still a tedious task that consumes materials and human 
+resources. As a way of circumventing this problem, supramolecular chemists have started 
+Molecular Encapsulation: Organic Reactions in Constrained Systems        Edited by Udo H. Brinker and Jean-Luc Mieusset
+© 2010 John Wiley & Sons, Inc.  ISBN: 978-0-470-99807-6
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+310 
+Molecular Encapsulation
+to explore non - covalent methods for altering dye properties. The focus of this chapter is 
+on mechanical encapsulation of dyes inside: (a) protective organic container molecules 
+such as cyclodextrins, cucurbiturils, cyclophanes, and crown ethers (Scheme  11.1 ), (b) 
+biological receptors such as antibodies, aptamers and peptides, and (c) inorganic cages 
+such as zeolites and silica nanoparticles. In some cases the dye binding process is revers-
+ible and produces a host – guest complex that is in equilibrium with the free species; in 
+other cases the mechanical bonding is so strong that the host – guest complex can be con-
+sidered a permanent molecule. Upon encapsulation, the microenvironment around the dye 
+is changed, which often alters the absorption wavelength or the ﬂ uorescence quantum 
+yield. Further, the dye is sterically protected, thus inhibiting intermolecular processes that 
+often degrade dye performance like self - aggregation which reduces brightness and colour 
+purity and photooxidation which leads to bleaching. Steric protection of long wavelength 
+dyes is expected to be particularly helpful, because these dyes inherently have narrow 
+HOMO – LUMO gaps and thus tend to be highly reactive. 
+ Scheme 11.1   Common container molecules: (top left) Cyclodextrin (CD), (top right) 
+Cucurbituril (CB), (bottom left) crown ether cyclophane, (bottom right) tetralactam 
+cyclophane  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Dye Encapsulation 
+311
+ There are various practical reasons to develop supramolecular methods of dye encap-
+sulation. Reversible dye binding systems can be incorporated into dynamic association 
+schemes that produce changes in colour or ﬂ uorescence emission. Thus, they can act as 
+analytical sensing processes for environmental assays or as molecular probes for cell 
+biology. Permanent encapsulation inside a container molecule can be achieved by several 
+rotaxane synthesis methods that have been developed over the last twenty years.  4 These 
+dye rotaxanes can act as bright and highly stable ﬂ uorescent probes for diagnostics and 
+bioimaging applications. Another way to make a bioimaging agent is to use a genetically 
+expressible bioreceptor such as an antibody or aptamer with a recognition motif that 
+selectively binds a dye with high afﬁ nity. 5   These tagged bioreceptors can be visualized 
+by ﬂ uorescence microscopy and used as imaging agents in cell biology research. Finally, 
+permanent encapsulation of dyes inside porous inorganic matrices produces probes 
+and advanced materials with many potential applications in biotechnology and 
+nanotechnology. 6 
+ 11.2  Reversible Dye Encapsulation Inside Organic Container Molecules 
+ Organic container molecules are large macrocycles whose internal cavities can accom-
+modate guest molecules. Historically, the most studied family of water - soluble container 
+molecules are the cyclodextrins (CDs) which have non - polar cavities that can accom-
+modate organic dyes of appropriate size and insulate them from an aqueous solvent. The 
+three most common CDs are  α - CD,   β - CD and   γ  - CD with cavity diameters of 5.7, 7.8 and 
+9.5  Å respectively. 7 Encapsulation of ﬂ uorescent dyes inside a CD typically improves 
+chemical and photochemical stability and also raises the ﬂ uorescence quantum yield. 
+However, a drawback with CD encapsulation is the relatively weak association constant 
+( K a  ∼  10 3 − 10 4  M  − 1 ) which can be readily disrupted. This has prompted a move in recent 
+years to the cucurbit[n]uril (CB) family of container molecules which have much higher 
+dye afﬁ nities in water and, like CDs, possess different diameters depending upon the 
+number of repeating subunits in the macrocycle.  8   For example, the association constant 
+for the dye Rhodamine in water is 50,000   M  − 1  with cucurbit[7]uril (CB[7]) but only 
+210  M  − 1  with   β - CD. 9   The Rhodamine inclusion complex, in addition to possessing greater 
+chemical stability and reduced dye aggregation, also exhibits properties distinct from 
+uncomplexed Rhodamine dyes including longer ﬂ uorescence lifetimes and decreased 
+nonspeciﬁ c adsorption to surfaces.  10   The inclusion complex appears quite suitable for dye 
+based lasers, which operate most efﬁ ciently with aqueous lasing media. An aqueous solu-
+tion of Rhodamine 6G complexed inside CB[7] produces better beam shape proﬁ les when 
+compared to free Rhodamine 6G in ethanol. CB[7] can also be used in stoichiometric 
+ratios and thus it negligibly impacts the refractive qualities of the water, unlike detergents 
+and emulsiﬁ ers, which also produce a dye deaggregating effect, but adversely affects 
+performance due to bubble and foam formation.  11 
+ Related studies have shown that CB[7] binds fused tricyclic dyes such as Proﬂ avine, 
+Pyronine Y, and Thionine with higher association constants than the analogous CD, and 
+that dye encapsulation increases the ﬂ uorescence quantum yield.  12   In contrast to CB[7], 
+the larger CB[8] encapsulates two dye molecules while the smaller CB[5] does not 
+effectively encapsulate any tricyclic dye. In Figure  11.1 , the perceived colour of the dye 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+312 
+Molecular Encapsulation
+solution is altered by these encapsulation processes. This colour difference is attributed 
+to changes in polarity induced by encapsulation and, when CB[8] is used, changes in 
+dye aggregation. Separate studies have shown that CB[7] can also encapsulate Brilliant 
+Green, a ﬂ uorescent antimicrobial trimethane dye, and form a 1   :   1 association complex 
+with a binding constant of 17,000   M  − 1 . Intriguingly, the ﬂ uorescence quantum yield for 
+the inclusion complex is further enhanced when it associates with bovine serum albumin 
+(Figure  11.2 ). 13 
+ Reversible dye binding systems can be developed into colourimetric and ﬂ uorescent 
+assays for analytical detection. As shown in Figure  11.3 , two different binding schemes 
+can be envisioned, (a) competitive dye/analyte inclusion, and (b) cooperative dye/analyte 
+inclusion. The competitive inclusion process is the basis for the  ‘ dye displacement assay ’ 
+where the analyte displaces the dye from the container molecule. For this process to be 
+visualized, the properties of complexed and uncomplexed dyes must be markedly dif-
+ Figure 11.1   Vials containing dyes in the absence or presence of CBs. From left to right: 
+1) PF; 2) PF - CB[7]; 3) (PF) 2 - CB[8]; 4) PYY; 5) PYY - CB[7]; 6) (PYY) 3 - CB[8]; 7) TH; 8) 
+TH - CB[7]; 9) (TH) 2 - CB[8].  Reprinted with permission from  [12] . Copyright 2008 Wiley-
+VCH Verlag GmbH & Co. KGaA  
+ Figure 11.2   Complexation of Brilliant Green inside CB[7] causes a ﬂ uorescence increase 
+which is further enhanced when the complex binds to the protein, bovine serum albumin. 
+ Reprinted with permission from  [13] . Copyright Wiley-VCH Verlag GmbH & Co. KGaA  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Dye Encapsulation 
+313
+ferent. For example, CB[7] and the ﬂ uorescent dye Dapoxyl have been incorporated into 
+an assay that monitors the activity of amino acid decarboxylase enzymes. 14 At pH 6, 
+Dapoxyl has a relatively high afﬁ nity for CB[7] ( K a  =  20,000  M  − 1 ) and it is over 200 
+times more ﬂ uorescent when inside the CB[7] cavity. Zwitterionic amino acids have 
+much lower binding afﬁ nities for CB[7] ( K a  <  1,000  M  − 1 ) and cannot displace the dye, 
+but the presence of amino acid decarboxylase leads to decarboxylated cationic products 
+that have substantially stronger afﬁ nities for CB[7] ( ∼ 30,000  M  − 1 ). The overall scheme 
+is a  ‘ switch off ’  assay, where the product of enzyme action displaces the dye from the 
+container molecule which decreases the ﬂ uorescence intensity. In general,  ‘ switch on ’ 
+ﬂ uorescence assays are technically easier to monitor but they are harder to devise because 
+most dyes are more ﬂ uorescent when they are encapsulated. A rare example uses the 
+dye 2,3 - diazabicyclo[2.2.2]oct - 2 - ene (DBO), which is less ﬂ uorescent when it is bound 
+to a  p - sulfonatocalix[4]arene macrocycle. 14   The action of amino acid decarboxylase leads 
+to displacement of the DBO dye from the macrocycle and an eight - fold increase in ﬂ uo-
+rescence intensity. 
+ The other binding scheme in Figure  11.3  is cooperative dye/analyte inclusion, where 
+the analyte promotes association of the dye inside the container molecule. Compared to 
+dye displacement, this is a more complicated supramolecular system because it requires 
+the container molecule to have multi - guest recognition properties. Proof - of - concept 
+studies have been reported using crown ether cyclophanes as container molecules that 
+can simultaneously bind two types of guests: ﬂ at aromatic dyes and metal cations. In 
+Figure  11.4  is a crown ether derived naphthalene macrocycle whose weak afﬁ nity for a 
+pyromellitic diimide is increased by an order of magnitude by the presence of lithium 
+salts. 15   The crown ether oxygens coordinate to the lithium cations which in turn promotes 
+simultaneous dye inclusion. The result is a stunning colour change from a pale yellow 
+to bright red due to formation of a charge transfer complex. In principle, this multi - 
+component assembly can be employed as a colorimetric sensor for lithium cations. 
+ A related cooperative binding system is shown in Figure  11.5 . A crown ether derived 
+macrocycle only binds a squaraine dye when sodium cations are present in the solution.  16 
+The sodium cations bridge the dye and the crown ether oxygens inside the macrocyclic 
+ Figure 11.3   (top) Competitive dye/analyte inclusion; (bottom) cooperative dye/analyte 
+inclusion  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+314 
+Molecular Encapsulation
+cavity, an inclusion process that enhances the dye ’ s ﬂ uorescence. Addition of potassium 
+cations leads to displacement of the sodium and consequent dye ejection from the cavity 
+because the larger potassium ions bind to the cyclophane exterior and thus dye inclusion 
+is no longer favoured. This multicomponent assembly system exhibits rudimentary char-
+acteristics of a combination NOT/AND logic device where the presence of sodium alone 
+causes ﬂ uorescence signal increase, but a mixture of sodium and excess potassium or 
+potassium alone produces no change in ﬂ uorescence. 
+ 11.3  Reversible Dye Encapsulation by Biological Receptors 
+ There is growing interest in biological receptors for ﬂ uorescent dyes, in particular, geneti-
+cally expressed receptors such as proteins or oligonucleotides.  17   A major goal of this 
+research is to discover high afﬁ nity dye recognition motifs that can be utilized for bio-
+imaging applications. The recognition motif can be encoded into the sequence of a larger 
+protein or oligonucleotide of interest where the dye can be used to non - covalently label 
+the genetically expressed target in a living cell or animal. The initial challenge is to ﬁ nd 
+the appropriate dye recognition motifs using standard biotechnology screening methods 
+such as phage display, 18 yeast display, 19   or SELEX (systematic evolution of ligands by 
+exponential enrichment).  20   A recent example employed phage display technology to 
+identify a 7 - mer peptide sequence (IQSPHFF) with subnanomolar afﬁ nity for a ﬂ uores-
+cent near - IR benzindolium dye (Dye A in Figure  11.6 ).  21   Molecular modelling indicates 
+that the peptide sequence forms a tweezer structure with two aromatic arms surrounding 
+the ﬂ at dye. Incorporating the IQSPHFF sequence into larger protein structures allows 
+ Figure 11.5   Crown ether cyclophane binds squaraine dye only in the presence of sodium 
+cations  
+ Figure 11.4   Crown ether cyclophane binds pyromellitic diimide dye only in the presence 
+of lithium cations 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Dye Encapsulation 
+315
+selective dye labelling in a range of assays including ELISA, ﬂ ow cytometry, high 
+throughput screens, microscopy and  in vivo  imaging. However, a drawback with this 
+protein labelling system is the small change in the dye emission wavelength and intensity 
+that occurs upon binding which makes it difﬁ cult to distinguish between bound and 
+unbound dye. This means there may be an undesirably high background signal which 
+would lower the contrast. This problem can be minimized by using a dye whose ﬂ uores-
+cence in free solution is weak but increases substantially upon association with the 
+bioreceptor. Several antibodies have been identiﬁ ed that exhibit this ﬂ uorescence activat-
+ing phenomenon. One example binds a stilbene derivative (dye B in Figure  11.6 ) produc-
+ing a blue - emitting exciplex band due to interaction of the excited state stilbene with a 
+ground - state tryptophan residue buried in the antibody.  22 Another research programme 
+has used yeast display technology to identify single chain antibodies as ﬂ uorescence 
+activating proteins.  23   The antibodies selectively bind target dyes such as dye C and 
+increase the emission intensity by factors of several thousand. There has also been 
+progress ﬁ nding RNA and DNA aptamers that bind dyes and raise quantum yields.  24 For 
+example, a double - stranded RNA aptamer binds the cyanine dye D with  K a  =  10 7  M  − 1 and 
+enhances the ﬂ uorescence quantum yield by 60 - fold. 25 
+ 11.4  Permanent Dye Encapsulation Inside Rotaxanes 
+ Permanent encapsulation eliminates any ambiguity due to partial dissociation of the dye 
+from the host. The most common strategy for trapping a dye inside a container molecule 
+ Figure 11.6   Dyes A, B, C and D 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+316 
+Molecular Encapsulation
+is to form an interlocked structure known as a rotaxane. Rotaxane synthesis has improved 
+greatly over the last few decades with the discovery and reﬁ nement of a number of tem-
+plated reactions. The three most common methods for rotaxane formation are clipping, 
+capping, and slipping (Figure  11.7 ), and each has its strengths and weaknesses. To date, 
+much of the research effort on dye rotaxanes has focused on developing synthetic methods 
+that are compatible with the reactive functional groups in organic dyes. Yields for the 
+rotaxane formation step are often low (5 – 30%) and eventually they will have to be raised 
+if dye rotaxanes are to be implemented in commercial applications. A promising approach 
+that warrants further attention is to use solid - state synthesis methods (Figure  11.7 ). 26 
+ The pioneering dye rotaxane synthesis, reported by Anderson and coworkers in 1996, 
+utilized Glaser coupling under aqueous conditions in the presence of a water soluble 
+cyclophane macrocycle to produce a mixture of [2] and [3]rotaxanes with a conjugated 
+phenylacetylene ﬂ uorophore as the axle component (Figure  11.8 ).  27   The purpose of the 
+encapsulation was to insulate the conjugated   π  - system from quenching processes and both 
+rotaxanes were found to be six fold more ﬂ uorescent. 
+ Many of the subsequent preparations of dye rotaxanes have employed CD as the pro-
+tective macrocycle. In each case, a threaded complex is assembled in aqueous solution 
+and a covalent capping reaction produces the permanently interlocked rotaxane. In Figures 
+ 11.9  and  11.10  are two capping reactions that encapsulate dyes inside CD to produce 
+acene 28   and cyanine rotaxanes.  29   Similar methods have also been used to make phenyl-
+acetylene, 30   and oligo(thiophene) rotaxanes.  31   With the larger   γ  - CD it is possible to 
+simultaneously encapsulate two dyes and make homo - and hetero - [3]rotaxanes that can 
+achieve extremely efﬁ cient energy transfer between the chromophores.  32 While water is 
+a useful solvent for driving hydrophobic dyes into the CD cavity to make the precursor 
+threaded complexes, it does limit the scope of the capping reactions in that they must be 
+water compatible. 
+ The acene [2]rotaxane in Figure  11.9  was prepared by mixing an anthracene bisboronic 
+acid with   β  - CD in water and conducting a Suzuki capping reaction to produce the per-
+manent rotaxane. Unlike the free acene axle, the rotaxane does not exhibit an excimer 
+ Figure 11.7   Three strategies for rotaxane synthesis: capping, clipping and slipping  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+ Figure 11.8   Dimerization reaction to produce a [3]rotaxane with a phenylacetylene axle  
+ Figure 11.9   Synthesis of anthracene dye encapsulated by   β - CD 
+ Figure 11.10   Synthesis of cyanine dye encapsulated by   α - CD 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+318 
+Molecular Encapsulation
+emission band at elevated concentration, indicating that the surrounding CD prevents 
+self - aggregation of the acene chromophore. However, a dye rotaxane structure does not 
+automatically prevent all types of bimolecular reactions with the encapsulated dye. For 
+instance, anthracene is well known to undergo a [4+4] photodimerization process as well 
+as a [4+2] cycloaddition with singlet oxygen to produce a bridged 9,10 - endoperoxide. A 
+comparison of the reactivities of the acene axle component and the rotaxane in Figure 
+ 11.9  showed that the surrounding   β  - CD completely prevented the photodimerization 
+process, but it only slowed the rate of photooxidation by about an order of magnitude. 
+Thus, the chemical protection provided by the surrounding CD is diminished when the 
+reactant is sterically small like molecular oxygen. 
+ The difﬁ culty in preventing dye photooxidation is further illustrated by the cyanine 
+rotaxane in Figure  11.10 . Cyanine dyes are a very popular class of red and near - IR ﬂ uo-
+rescent dyes but they are susceptible to photobleaching. It is known that photogenerated 
+singlet oxygen can decompose cyanine dyes by oxidative cleavage of the conjugated 
+double bonds.  33   The capping reaction shown in Figure  11.10  has been optimized for gram 
+scale production of the cyanine rotaxane which has similar photophysical properties as 
+the free dye.  34   In terms of photostability, air saturated solutions of free dye decompose 
+3.9 times faster than encapsulated dye, a modest amount of oxidative protection. The 
+above two rotaxane examples demonstrate the difﬁ culty in sterically blocking dye photo-
+oxidation. Future efforts to design high stability dye rotaxanes should be based on a clear 
+understanding of the chemical and photochemical degradation processes and where they 
+occur on the chromophore. By knowing what decomposition reactions to prevent, more 
+effective encapsulation strategies can be developed. 
+ The encapsulation of squaraine dyes as axle components inside rotaxanes has lead to 
+some dramatic improvements in dye performance. Squaraines exhibit sharp, strong 
+absorption and emission bands in the red and near - IR wavelengths and they are attractive 
+dyes for bioimaging. 35 However, there are two serious limitations; they tend to form non -
+ ﬂ uorescent aggregates and the dye ’ s electron deﬁ cient C 4 O 2  core is susceptible to chemi-
+cal attack by nucleophiles.  36   Both of these drawbacks are overcome by dye inclusion 
+inside a tetralactam macrocycle, a process that is driven by hydrogen bonding interactions 
+with the squaraine oxygens. First - generation squaraine rotaxanes were prepared in 
+20 – 30% yield by a templated clipping reaction in weakly polar organic solvent.  37 The 
+rotaxanes exhibit very similar photophysical properties as the precursor squaraines, but 
+the encapsulating macrocycle protects the dye from nucleophilic attack. For example, the 
+unprotected squaraine loses its blue colour within minutes in serum solution while 
+squaraine rotaxanes retain their colour for days. In addition, the surrounding tetralactam 
+macrocycle diminishes squaraine absorption band broadening by inhibiting interchromo-
+phoric interactions both in solution and solid state. 
+ It is straightforward to conjugate cell targeting ligands to squaraine rotaxanes and 
+produce ﬂ uorescence probes for bioimaging. For example, attachment of zinc coordinated 
+dipicolylamine groups, which are known to target bacterial cell surfaces, produces a 
+bright, photostable, and non - toxic probe for bacteria imaging.  38   This probe is over 20 
+times more photostable than an analogous probe composed of the popular cyanine dye, 
+Cy5. The enhanced photostability allows acquisition of ﬂ uorescent movies of bacterial 
+cell division; these movies were previously unavailable due to photobleaching of the 
+ﬂ uorescent probe. 39 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Dye Encapsulation 
+319
+ A series of second - generation squaraine rotaxanes can be produced using the anthrylene 
+tetralactam macrocycle shown in Scheme  11.1 . The high solubility of this macrocycle in 
+organic solvents allows squaraine rotaxanes to be produced in essentially quantitative 
+yield by either a thermally promoted slipping process that forces the dye through the 
+macrocyclic cavity,  40   or capping chemistry that covalently adds stopper groups to a self -
+ assembled pseudo - rotaxane complex. 41   The tetralactam macrocycle wraps tightly around 
+the squaraine dye and there is about a 40   nm red - shift in the emission wavelength, a 
+phenomenon that has been observed with a related perylene diimide rotaxane system. 42 
+ Figure 11.11   Squaraine dye is susceptible to nucleophilic attack (left), whereas the 
+squaraine rotaxane is essentially inert (right)  
+ Figure 11.12   Montage from ﬂ uorescent movie showing division of bacteria cells labeled 
+with squaraine rotaxane.  Reprinted with permission from  [39] . Copyright Wiley-VCH Verlag 
+GmbH & Co. KGaA  
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+320 
+Molecular Encapsulation
+Thus, the structure of the surrounding macrocycle is a molecular design parameter 
+that can be used to non - covalently ﬁ ne - tune the photophysical properties of the encapsu-
+lated dye. 
+ 11.5  Permanent Encapsulation Inside Inorganic Matrices 
+ A conceptually different way to permanently encapsulate dyes is to trap them inside 
+inorganic cages.  43   The most straightforward approach is to employ preformed molecular 
+sieves or zeolites. If the dye is smaller than the diameter of the pores then solution and 
+gas phase diffusion techniques can be used to load the dye molecules inside the zeolite 
+(Figure  11.13 ). Shown in Figure  11.14  is a more sophisticated approach, which assembles 
+the dye inside the zeolite (i.e.  ‘ ship in a bottle synthesis ’ ) using a precursor molecule 
+that is grafted to the cavity walls.  44   These dye doped inorganic materials can act as solar 
+energy capture devices and as optical sensors. An example of the latter is a ﬂ uorescent 
+humidity sensor based on Nile Red encapsulated inside NaY zeolite supercages.  45 The 
+ﬂ uorescence of Nile Red is sensitive to solvent polarity and incorporation within the 
+zeolitic pores further enhances this effect, partly because the zeolite cavities are 
+hydrophilic.   
+ Clay materials, like zeolites, have also been explored as naturally occurring micropo-
+rous hosts for dyes.  46   Trapping the dyes within these three dimensional scaffolds provides 
+protection from external quenchers but inhibits aggregation behaviour by immobilizing 
+and segregating them within the framework of the material. Interestingly, dye encapsula-
+tion within micro and mesoporous materials was performed by the ancient Mayas several 
+thousand years ago. Indigo, a naturally derived blue dye extracted from many plants of 
+the genus  Indigofera , has modest stability but encapsulation inside palygorskite clay 
+produces a dye of exceptional stability, one that is inert to high and low pH solutions, 
+photobleaching and oxidation. The packing arrangement of the dye within the clay is still 
+a matter of investigation but computational and spectroscopic evidence suggests the 
+zeolitic water in the clay is released upon inclusion of indigo and H - bond contacts 
+ingress
+ca. 0.74 nm
+hexagonal prism
+supercage
+b-cage
+inner diameter
+ca. 1.3 nm
+ Figure 11.13   Conceptualization of a microporous zeolite.  Adapted from Reference  46 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Dye Encapsulation 
+321
+between the dye walls of the clay and structural water molecules (those molecules that 
+make up the scaffold of the clay) form stabilizing interactions. 47 
+ The desire to produce non - toxic ﬂ uorescent nanoparticles for bioimaging and diagnos-
+tic applications has lead to new methods of doping dyes within the lattice structures of 
+silica nanoparticles.  48   The trapped dyes exhibit enhanced stability, increased ﬂ uorescence, 
+and decreased self - aggregation. A range of related microemulsion methods have been 
+reported to produce dye - doped and core - shell silica nanoparticles.  49   In some cases, the 
+dyes are covalently conjugated to the silicate precursor which leads to greater dye dis-
+persal within the nanoparticle.  50   An alternative method employs a cationic surfactant to 
+template the formation of mesoporous silica containing the molecularly dispersed dyes. 
+Fluorescent silica nanoparticles are potentially useful as sensors for lab - on - chip diagnos-
+tics and as probes for cell and animal imaging. Nanoparticle probes that contain photo-
+sensitizing dyes are potential candidates for photodynamic therapy.  51 Most photosensitizing 
+ Figure 11.14   Dye synthesis inside silica cage.  Adapted from Reference  44 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+322 
+Molecular Encapsulation
+dyes are hydrophobic, which leads to formulation problems and poor  in vivo distribution. 
+Covalently attaching photosensitizers to the nanoparticles enables convenient delivery to 
+tumor cells without the problem of dye diffusion away from the target site. Molecular 
+oxygen can penetrate the pores of the nanoparticles, thus irradiation of the target site after 
+nanoparticle delivery leads to singlet oxygen release within the tumor. Additional cell 
+targeting properties can be acquired by decorating the nanoparticle surface with afﬁ nity 
+ligands or cell penetrating peptides. 52 
+ 11.6  Conclusion 
+ Most of the organic dyes that are currently employed in colourimetric and biosensing 
+assays have been around for many decades and although they do not always have optimal 
+performance properties they remain useful because they have low toxicity and relatively 
+low cost. The emergence of new technologies in frontier industries like biomedicine, 
+materials science, and nanotechnology creates a growing demand for dyes that have 
+improved performance. One of the major attractions of molecular encapsulation is that it 
+uses established, familiar dyes as central chromophores; however, a potential drawback 
+with some applications is that the encapsulation matrix will add considerable size and 
+mass to the ﬁ nal product. In most cases, the crucial factor that will determine the eventual 
+scientiﬁ c and societal impact of encapsulated dye products is the economic cost of 
+fabrication, and there is a continuing need to develop high - yielding templated synthesis 
+methods. The remarkable synthetic success that has been achieved in recent years is 
+reason to expect further major progress. Intellectually, dye encapsulation is likely to 
+expand as an interdisciplinary ﬁ eld, connecting fundamental scientists and engineers who 
+aim to invent next - generation nanoscale devices and molecular machines. 
+ Acknowledgements 
+ We are grateful for ﬁ nancial support from the NIH and the NSF (USA). 
+ References 
+  1.  A.  Baeyer ,  V.  Drewson ,  Darstellung von Indigoblau aus Orthonitrobenzaldehyd ,  Ber. Chem. , 
+ 1882 ,  14 ,  2856 – 2864 . 
+  2.  H. G.  Schr ö ter ,  A. S.  Travis ,  An issue of different mentalities: national approaches to the 
+development of the chemical industry in Britain and Germany before 1914 , in  The Chemical 
+Industry in Europe, 1850 – 1914: Industrial Growth, Pollution, and Professionalization ,  E. 
+ Homburg ,  A. S.  Travis ,  H. G.  Schr ö ter (Eds.),  Chemists and Chemistry , Vol.  17 ,  Kluwer 
+Academic Publishers ,  Boston ,  1998 . 
+  3.  S.  Thangadurai ,  The human genome project: the role of analytical chemists .,  Anal. Sci. ,  2004 , 
+ 20 ,  595 – 601 . 
+  4.  E.  Arunkumar ,  C. C.  Forbes ,  B. D.  Smith ,  Improving the properties of organic dyes by molecu-
+lar encapsulation ,  Eur. J. Org. Chem. ,  2005 ,  19 ,  4051 – 4059 . 
+  5.  B. N. G.  Giepmans ,  S. R.  Adams ,  M. H.  Ellisman ,  R. Y.  Tsien ,  The ﬂ uorescent toolbox for 
+assessing protein location and function ,  Science ,  2006 ,  312 ,  217 – 224 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Dye Encapsulation 
+323
+  6.  A.  Burns ,  H.  Ow ,  U.  Wiesner ,  Fluorescent core - shell silica nanoparticles: towards  ‘ Lab on a 
+particle ’ architectures for nanobiotechnology ,  Chem. Soc. Rev. ,  2006 ,  35 ,  1028 – 1042 . 
+  7.  J.  Szejtli ,  Introduction and general overview of cyclodextrin chemistry ,  Chem. Rev. ,  1998 ,  98 , 
+ 1743 – 1754 . 
+  8.  W. M.  Nau ,  J.  Mohanty ,  Taming ﬂ uorescent dyes with cucurbituril ,  Int. J. Photoenergy ,  2005 , 
+ 7 ,  133 – 141 . 
+  9.  S.  Hamai ,  K.  Sasaki ,  Investigation of the formation of inclusion complexes between Rhodamine 
+6G and cyclodextrins by means of capillary electrophoresis using poly(vinylsulfate) ,  J. Inclusion 
+Phenom. Mol. Rec. Chem. ,  2003 ,  45 ,  19 – 25 . 
+ 10.  J.  Mohanty ,  W. M.  Nau ,  Ultrastable Rhodamine with cucurbituril ,  Angew. Chem. Int. Ed. ,  2005 , 
+ 44 ,  3750 – 3754 . 
+ 11.  J.  Mohanty ,  H.  Pal ,  A. K.  Ray ,  S.  Kumar ,  W. M.  Nau ,  Supramolecular dye laser with cucur-
+bit[7]uril in water ,  ChemPhysChem ,  2007 ,  8 ,  54 – 56 . 
+ 12.  P.  M. - Navajas ,  A.  Corma ,  H.  Garcia ,  Complexation and ﬂ uorescence of tricyclic basic dyes 
+encapsulated in cucurbiturils ,  ChemPhysChem ,  2008 ,  9 ,  713 – 720 . 
+ 13.  A. C.  Bhasikuttan ,  J.  Mohanty ,  W. M.  Nau ,  H.  Pal ,  Efﬁ cient ﬂ uorescence enhancement and 
+cooperative binding of an organic dye in a supra - bimolecular host - protein assembly ,  Angew. 
+Chem. Int. Ed. ,  2007 ,  46 ,  4120 – 4122 . 
+ 14.  A.  Henning ,  H.  Bakirci ,  W. M.  Nau ,  Label - free continuous enzyme assays with macrocycle -
+ ﬂ uorescent dye complexes ,  Nat. Methods ,  2007 ,  4 ,  629 – 632 . 
+ 15.  G.  Kaiser ,  T.  Jarrosson ,  S.  Otto ,  Y. - F.  Ng ,  A. D.  Bond ,  J. K. M.  Sanders ,  Lithium - templated 
+synthesis of a donor acceptor pseudorotaxane and catenane ,  Angew. Chem. Int. Ed. ,  2004 ,  43 , 
+ 1993 – 1996 . 
+ 16.  a)  S. - Y.  Hsueh ,  C. - C.  Lai ,  Y. - H.  Liu ,  S. - M.  Peng ,  S. - H.  Chiu ,  Highly selective Na + - templated 
+formation of [2]pseudorotaxanes exhibiting signiﬁ cant optical outputs ,  Angew. Chem. Int. Ed. , 
+ 2007 ,  46 ,  2013 – 2017 ,;  b)  S. - Y.  Hsueh ,  C. - C.  Lai ,  Y. - H.  Liu ,  Y.  Wang ,  S. - M.  Peng ,  S. - H.  Chiu , 
+ Protecting a squaraine near - IR dye through its incorporation in a slippage - derived [2]rotaxane , 
+ Org. Lett. ,  2007 ,  9 ,  4523 – 4526 . 
+ 17.  S.  Achilefu ,  Lighting up tumors with receptor speciﬁ c optical molecular probes ,  Technol. Canc. 
+Res. and Treat. ,  2004 ,  3 ,  393 – 409 . 
+ 18.  D. R.  Buckler ,  A.  Park ,  M.  Viswanathan ,  R. M.  Hoet ,  R. C.  Ladner ,  Screening isolates from 
+antibody phage - display libraries ,  Drug Disc. Today ,  2008 ,  13 ,  318 – 324 . 
+ 19.  S. A.  Gai ,  K. D.  Wittrup ,  Yeast surface display for protein engineering and characterization , 
+ Curr. Opin. Struct. Biol. ,  2007 ,  17 ,  467 – 473 . 
+ 20.  S. C. B.  Gopinath ,  Methods developed for SELEX ,  Anal. Bioanal. Chem. ,  2007 ,  387 , 
+ 171 – 182 . 
+ 21.  K. A.  Kelly ,  J.  Carson ,  J. R.  McCarthy ,  R.  Weissleder ,  Novel peptide sequence ( ‘ IQ - tag ’ ) with 
+high afﬁ nity for NIR ﬂ uorochromes allows protein and cell speciﬁ c labeling for in vivo 
+imaging ,  PLoS ONE ,  2007 ,  7 ,  e665 . 
+ 22.  E. W.  Debler ,  G. F.  Kaufmann ,  M. M.  Meijler ,  A.  Heine ,  J. M.  Mee ,  G.  Pljevalj cˇ i c´ ,  A. J.  Di 
+ Bilio ,  P. G.  Schultz ,  D. P.  Millar ,  K. D.  Janda ,  I. A.  Wilson ,  H. B.  Gray ,  R. A.  Lerner ,  Deeply 
+inverted electron - hole recombination in a luminescent antibody - stilbene complex ,  Science , 
+ 2008 ,  319 ,  1232 – 1235 . 
+ 23.  C.  S. - Gyorgyi ,  B. F.  Schmidt ,  Y.  Creeger ,  G. W.  Fisher ,  K. L.  Zakel ,  S.  Adler ,  J. A.  J 
+Fitzpatrick  ,  C. A.  Woolford ,  Q.  Yan ,  K. V.  Vasilev ,  P. B.  Berget ,  M. P.  Bruchez ,  J. W  Jarvik , 
+ A.  Waggoner ,  Fluorogen - activating single - chain antibodies for imaging cell surface proteins , 
+ Nat. Biotechnol. ,  2008 ,  26 ,  235 – 240 . 
+ 24.  a)  B. A.  Sparano ,  K.  Koide ,  Fluorescent sensors for speciﬁ c RNA: a general paradigm using 
+chemistry and combinatorial biology ,  J. Am. Chem. Soc. ,  2007 ,  129 ,  4785 – 4794 ,;  b)  S.  Sando , 
+ A.  Narita ,  Y.  Aoyama ,  Light - up hoechst – DNA aptamer pair : generation of an aptamer -
+ selective ﬂ uorophore from a conventional DNA - staining dye ,  ChemBioChem ,  2007 ,  8 , 
+ 1795 – 1803 . 
+ 25.  T. P.  Constantin ,  G. L.  Silva ,  K. L.  Robertson ,  T. P.  Hamilton ,  K.  Fague ,  A. S.  Waggoner , 
+ B. A.  Armitage ,  Synthesis of new ﬂ uorogenic cyanine dyes and incorporation into RNA ﬂ uoro-
+modules ,  Org. Lett. ,  2008 ,  10 ,  1561 – 1564 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+324 
+Molecular Encapsulation
+ 26.  H. W.  Daniell ,  E. J. F.  Klotz ,  B.  Odell ,  T. D. W.  Claridge ,  H. L.  Anderson ,  Solid - phase 
+synthesis of oligo(phenylene ethynylene) rotaxanes ,  Angew. Chem. Int. Ed. ,  2007 ,  46 , 
+ 6845 – 6848 . 
+ 27.  S.  Anderson ,  H. L.  Anderson ,  Synthesis of a water - soluble conjugated [3]rotaxane ,  Angew 
+Chem. Int. Ed. ,  1996 ,  35 ,  1956 – 1959 . 
+ 28.  M. T.  Stone ,  H. L.  Anderson ,  A cyclodextrin - insulated anthracene rotaxane with enhanced 
+ﬂ uorescence and photostability ,  Chem. Commun. ,  2007 ,  23 ,  2387 – 2389 . 
+ 29.  J. E. H.  Buston ,  J. R.  Young ,  H. L.  Anderson ,  Rotaxane - encapsulated cyanine dyes: enhanced 
+ﬂ uorescence efﬁ ciency and photostability ,  Chem. Commun. ,  2000 ,  905 – 906 . 
+ 30.  J. S.  Park ,  J. N.  Wilson ,  K. I.  Hardcastle ,  U. H. F.  Bunz ,  M.  Srinivasarao ,  Reduced ﬂ uorescence 
+quenching of cyclodextrin - acetylene dye rotaxanes ,  J. Am. Chem. Soc. ,  2006 ,  128 ,  7714 – 7715 . 
+ 31.  K.  Sakamoto ,  Y.  Takashima ,  H.  Yamaguchi ,  A.  Harada ,  Preparation and properties of rotaxanes 
+formed by dimethyl - β  - cyclodextrin and oligo(thiophene)s with   β - cyclodextrin stoppers ,  J. Org. 
+Chem. ,  2007 ,  72 ,  459 – 465 . 
+ 32.  E. J. F.  Klotz ,  T. D. W.  Claridge ,  H. L.  Anderson ,  Homo - and hetero - [3]rotaxanes (with two 
+ π - systems clasped in a single macrocycle ,  J. Am. Chem. Soc. ,  2006 ,  128 ,  12432 – 12433 . 
+ 33.  A.  Toutchkine ,  D. - V.  Nguyen ,  K. M.  Hahn ,  Merocyanine dyes with improved photostability , 
+ Org. Lett. ,  2007 ,  9 ,  2775 – 2777 . 
+ 34.  C. M. S.  Yau ,  S. I.  Pascu ,  S. A.  Odom ,  J. E.  Warren ,  E. J. F.  Clotz ,  M. J.  Frampton ,  C. C. 
+ Williams ,  V.  Coropceanu ,  M. K.  Kuimova ,  D.  Philips ,  S.  Barlow ,  J. L.  Br é das ,  S. R.  Marder , 
+ V.  Millar ,  H. L.  Anderson ,  Stabilization of a hetptamethine cyanine dye by rotaxane encapsula-
+tion ,  Chem. Commun. ,  2008 ,  25 ,  2897 – 2899 . 
+ 35.  B.  Oswald ,  L.  Patsenker ,  J.  Duschl ,  H.  Szmacinski ,  O. H.  Wolfbeis ,  E.  Terpetschnig  ,  Synthesis, 
+spectral properties, and detection limits of reactive squaraine dyes, a new class of diode laser 
+compatible ﬂ uorescent protein labels ,  Bioconj. Chem. ,  1999 ,  10 ,  925 – 931 . 
+ 36.  a)  E.  Arunkumar ,  J.  Daub ,  A.  Ajayaghosh ,  Selective calcium ion sensing with a bichromophoric 
+squaraine foldamer ,  J. Am. Chem. Soc. ,  2005 ,  127 ,  3156 – 3164 ,;  b)  J. V.  Ros - Lis ,  B.  Garcia , 
+ D.  Jimenez ,  R.  Martinez - Manez ,  F.  Sancenon ,  J.  Soto ,  F.  Gonzalvo ,  M. C.  Valldecabres , 
+ Squaraines as ﬂ uoro - chromogenic probes for thiol containing compounds and their application 
+to the detection of biorelevant thiols ,  J. Am. Chem. Soc. ,  2004 ,  126 ,  4064 – 4065 . 
+ 37.  E.  Arunkumar ,  C. C.  Forbes ,  B. C.  Noll ,  B. D.  Smith ,  Squaraine - derived rotaxanes: sterically 
+protected ﬂ uorescent near - IR dyes ,  J. Am. Chem. Soc. ,  2005 ,  127 ,  3288 – 3289 . 
+ 38.  W. M.  Leevy ,  J. R.  Johnson ,  C.  Lakshmi ,  J.  Morris ,  M.  Marquez ,  B. D.  Smith ,  Selective rec-
+ognition of bacterial membranes by zinc(II) - coordination complexes ,  Chem. Commun. ,  2006 , 
+ 15 ,  1595 – 1597 . 
+ 39.  J. R.  Johnson ,  N.  Fu ,  E.  Arunkumar ,  W. M.  Leevy ,  S. T.  Gammon ,  D.  Piwinica - Worms  ,  B. D. 
+ Smith  ,  Squaraine rotaxanes: superior substitutes for Cy – 5 in molecular probes for near - infrared 
+ﬂ uorescence cell imaging ,  Angew. Chem. Int. Ed. ,  2007 ,  46 ,  5528 – 5531 . 
+ 40.  J. J.  Gassensmith ,  E.  Arunkumar ,  L.  Barr ,  J. M.  Baums ,  K. M.  DiVittorio ,  J. R.  Johnson , 
+ B. C.  Noll ,  B. D.  Smith ,  Self - assembly of ﬂ uorescent inclusion complexes in competitive 
+media including the interior of living cells ,  J. Am. Chem. Soc. ,  2007 ,  129 ,  15054 – 15059 . 
+ 41.  J. J.  Gassensmith ,  L.  Barr ,  J. M.  Baumes ,  A.  Paek ,  A.  Nguyen ,  B. D.  Smith ,  Synthesis and 
+photophysical investigation of squaraine rotaxanes by clicked capping ,  Org. Lett. ,  2008 ,  10 , 
+ 3343 – 3346 . 
+ 42.  J.  Baggerman ,  D. C.  Jagesar ,  R. A. L.  Vall é e ,  J.  Hofkens ,  F. C.  De  Schryyer ,  F.  Schelhase ,  F. 
+ V ö gtle ,  A. M.  Brouwer ,  Fluorescent perylene diimide rotaxanes: spectroscopic signatures of 
+wheel - chromophore interactions ,  Chem. - Eur. J. ,  2007 ,  13 ,  1291 – 1299 . 
+ 43.  D.  W ö hrle ,  G.  Schulz - ekloff ,  Molecular sieve encapsulated organic dyes and metal chelates , 
+ Adv. Mat. ,  1994 ,  6 ,  875 – 880 . 
+ 44.  M.  Comes ,  M. D.  Marcos ,  R.  Martinez - Manez ,  M. C.  Millan ,  J. V.  Ros - Lis ,  F.  Sancenon  ,  J. 
+ Soto ,  L. A.  Villaescusa ,  Anchoring dyes into multidimensional large - pore zeolites: a prospec-
+tive use as chromogenic sensing materials ,  Chem. - Eur. J. ,  2006 ,  12 ,  2162 – 2170 . 
+ 45.  I.  Pellejero ,  M.  Urbiztondo ,  D.  Izquierdo ,  S.  Irusta ,  I.  Salinas ,  M. P.  Pina ,  An optochemical 
+humidity sensor based on immobilized Nile Red in Y Zeolite ,  Ind. Eng. Chem. Res. ,  2007 ,  46 , 
+ 2335 – 2341 . 
+ Downloaded from https://onlinelibrary.wiley.com/doi/ by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Dye Encapsulation 
+325
+ 46.  G.  S. - Ekloff ,  D.  W ö hrle ,  B.  van  Duffel ,  R. A.  Schoonheydt ,  Chromophores in porous silicas 
+and minerals: preparation and optical properties ,  Micropor. Mesopor. Mater. ,  2002 ,  51 , 
+ 91 – 138 . 
+ 47.  R.  Giustetto ,  F. X. L. I.  Xamena ,  G.  Ricchiardi ,  S.  Bordiga ,  A.  Damin ,  R.  Gobetto ,  M. R. 
+ Chierotti  ,  Maya Blue: a computational and spectroscopic study ,  J. Phys. Chem. B ,  2005 ,  109 , 
+ 19360 – 19368 . 
+ 48.  L.  Wang ,  K.  Wang ,  S.  Santra ,  X.  Zhao ,  L. R.  Hilliard ,  J. E.  Smith ,  Y.  Wu ,   W.  Tan ,  Watching 
+silica nanoparticles glow in the biological world ,  Anal. Chem. A - Pages ,  2006 ,  78 ,  646 – 654 . 
+ 49.  X.  Fang ,  X.  Liu ,  S.  Schuster ,  W.  Tan ,  Designing a novel molecular beacon for surface - 
+immobilized DNA hybridization studies ,  J. Am. Chem. Soc. ,  1999 ,  121 ,  2921 – 2922 . 
+ 50.  Z.  Yang ,  S.  Zheng ,  W. J.  Harrison ,  J.  Harder ,  X.  Wen ,  J. G.  Gelovani ,  A.  Qiao ,  C.  Li ,  Long -
+ circulating near - infrared ﬂ uorescence core - cross - linked polymeric micelles: synthesis, charac-
+terization, and dual nuclear/optical imaging ,  Biomacromolecules ,  2007 ,  8 ,  3422 – 3428 . 
+ 51.  T. Y.  Ohulchanskyy ,  I.  Roy ,  L. N.  Goswami ,  Y.  Chen ,  E. J.  Bergey ,  R. K.  Pandey ,   A. R. 
+ Oseroff ,  P. N.  Prasad ,  Organically modiﬁ ed silica nanoparticles with covalently incorporated 
+photosensitizer for photodynamic therapy of cancer ,  Nano Lett. ,  2007 ,  7 ,  2835 – 2842 . 
+ 52.  S.  Santra ,  H.  Yang ,  D.  Dutta ,  J. T.  Stanley ,  P. H.  Holloway ,  W.  Tan ,  B. M.  Moudgil ,  R. A. 
+ Mericle  ,  TAT conjugated, FITC doped silica nanoparticles for bioimaging applications ,  Chem. 
+Commun. ,  2004 ,  24 ,  2810 – 2811 . 
+ 
