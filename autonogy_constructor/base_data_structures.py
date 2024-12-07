@@ -3,7 +3,7 @@ from typing import List, Literal, Union
 
 class DataProperty(BaseModel):
     """Extract data properties from text for ontology creation. These should be value-based properties, not entities. Do not miss any fields. If a data property has no value in context, ignore this property."""
-    name: str = Field(description="Provide a clear and concise name for the data property. It should be in lowercase and separate words with underscores. Don't use plural form.")
+    name: str = Field(description="Provide a clear and concise name for the data property. It should be in lowercase and separate words with underscores. Don't use plural form. ")
     values: Union[dict, None] = Field(
         default=None,
         description="A dictionary of values as values and their owner classes for the data property as keys. Owner classes should be existing entities in the Entity list. If the data property has no value in context, specify 'None'."
@@ -14,8 +14,8 @@ class DataProperty(BaseModel):
     )
 
 class Entity(BaseModel):
-    """Extract entities from text for ontology creation, including classes and individuals, excluding data properties. Then regard all entities as classes. Do not miss any fields."""
-    name: str = Field(description="Provide a clear and concise name for the entity. Use the format [Full Name]([Abbreviation]) if abbreviation is available, where [Full Name] should be in lowercase and separate words with underscores, and [Abbreviation] should keep its original format. Don't use plural form.")
+    """Extract entities from text for ontology creation, including classes and individuals, excluding data properties. Then regard all entities as classes. Do not miss any fields. Use '(' and ')' to replace square brackets '[' and ']' in entity names."""
+    name: str = Field(description="Provide a clear and concise name for the entity. Use the format [Full Name]([Abbreviation]) if abbreviation is available, where [Full Name] should be in lowercase and separate words with underscores, and [Abbreviation] should keep its original format. Don't use plural form. Use '(' and ')' to replace square brackets '[' and ']'.")
     information: Union[str, None] = Field(
         default=None,
         description="Offer a complete and comprehensive sentence detailing the entity from the text."
@@ -76,9 +76,9 @@ class Hierarchy(BaseModel):
         default='',
         description="Subclass name, it should be an existing entity in the Entity list"
     )
-    superclass: str = Field(
-        default='',
-        description="Superclass name, it should be an existing entity in the Entity list"
+    superclass: List[str] = Field(
+        default=[],
+        description="Superclass names, it should be one or more existing entities in the Entity list"
     )
     information: Union[str, None] = Field(
         default=None,
@@ -86,7 +86,7 @@ class Hierarchy(BaseModel):
     )
 
 class Disjointness(BaseModel):
-    """Extract disjoint class relationships in the ontology. Disjoint classes means nothing belongs to both classes. Do not miss any fields."""
+    """Extract disjoint class relationships in the ontology. Disjoint classes means nothing belongs to both classes. Only extract disjoint class relationships when the text explicitly mentions that the two classes are disjoint, which means something cannot be both classes at the same time. Do not miss any fields."""
     class1: str = Field(
         default='',
         description="First class name, it should be an existing entity in the Entity list"

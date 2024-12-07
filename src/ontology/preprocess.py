@@ -26,20 +26,22 @@ def create_metadata_properties():
         #         range = [np.ndarray]
         #         namespace = meta
             
-        # 检查并创建location注释属性(值类型为元组列表,每个元组包含两个字符串)  
-        if meta.location in ontology.annotation_properties():
-            location_prop = meta.location
-            if location_prop.range != [str]:
-                print("location range is not (str, str), changing...")
-                location_prop.range = [str]
+        # 检查并创建source注释属性(值类型为元组列表,每个元组包含两个字符串)  
+        if meta.source in ontology.annotation_properties():
+            print("source exists")
+            source_prop = meta.source
+            if source_prop.range != [str]:
+                print("source range is not str, changing...")
+                source_prop.range = [str]
         else:
-            print("location does not exist, creating...")
-            class location(AnnotationProperty):
+            print("source does not exist, creating...")
+            class source(AnnotationProperty):
                 range = [str]
                 namespace = meta
             
         # 检查并创建information注释属性(值类型为字符串列表)
         if meta.information in ontology.annotation_properties():
+            print("infomation exists")
             info_prop = meta.information
             if info_prop.range != [str]:
                 print("information range is not str, changing...")
@@ -52,6 +54,7 @@ def create_metadata_properties():
         
         # 检查并创建hierarchy_information注释属性(值类型为字符串列表)
         if meta.hierarchy_information in ontology.annotation_properties():
+            print("hierachy_information exists")
             hierarchy_info_prop = meta.hierarchy_information
             if hierarchy_info_prop.range != [str]:
                 print("hierarchy_information range is not str, changing...")

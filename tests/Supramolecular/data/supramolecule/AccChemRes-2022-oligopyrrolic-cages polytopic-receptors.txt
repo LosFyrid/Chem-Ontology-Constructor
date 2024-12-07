@@ -104,7 +104,7 @@ Scheme 1. Synthesis of the Oligopyrrolic Calix−Cryptand 1
 Figure 1. (a−c) Diﬀerent views of cage 1 as deduced from single-crystal X-ray crystallographic analyses, showing the clefts (a) and the inner cavity (b
 and c). (d) X-ray crystal structure of the exo complex formed between receptor 1 and the neutral guest molecules H2O and CH2Cl2. Data from ref 1.
 
-the case of most classic cryptate complexes. For instance, as
+The case of most classic cryptate complexes. For instance, as
 inferred from X-ray crystallographic analyses, one CH2Cl2
 solvent and three water molecules are located within the three
 external clefts of 1 via cooperative hydrogen-bonding, halogen-
@@ -283,7 +283,7 @@ by a ball-and-stick model. Solvent molecules are omitted for clarity.
 Data from ref 29.
 Scheme 4. Synthetic Route to Cage 21 and Its Proposed F−Binding Mode
 
-based systems where, for instance, several of the present authors
+Based systems where, for instance, several of the present authors
 reported recently a series of oligopyrrolic imine cages (27−31)
 that were found to act as shape-persistent porous organic
 materials.3,46 These relatively large oligopyrrolic cryptands were
@@ -399,14 +399,7 @@ solvents, such as tetrahydrofuran (THF) or DMF, an inﬁnite
 Scheme 7. Synthesis of Acyclic Pyrrolic Precursors 41 and 42 Used To Prepare the Cage-Like Supramolecular Receptors (41)2
 and (42)2
 
-Scheme 8). The factors regulating the dynamics and outcome of
-this supramolecular assembly and how they may be inﬂuenced
-by the presence of potentially bound guests, such as acids,
-remain as subjects for future study.
-Figure 8. (a and b) Solid-state structures of receptors (41)2 and (42)2 as determined by single-crystal X-ray structural analyses. (c−f) Single-crystal X-
-ray structures of discrete supramolecular complexes with empirical chemical formula [(42H)2
-2+⊂(counteranion−)2] formed between receptor (42)2
-and various biologically relevant small organic dicarboxylic acids (oxalic acid, maleic acid, malonic acid) and a mineral acid (H2SO4). Note: Solvent
+Note: Solvent
 molecules inside the cavity are omitted for clarity. (Inset) Comparative “space-ﬁlling” models of pyridine- and naphthyridine-based supramolecular
 cage-like structures formed by quadruple hydrogen bonding showing the void volumes for the guest-free forms. Data from refs 4 and 69.
 Scheme 8. Schematic Representation of the Solvent-Dependent Self-Assembled Macrocyclization Process Leading to Dimer

@@ -9,7 +9,8 @@ def merge_ontology(
     ontology_entities: base_data_structures.OntologyEntities,
     ontology_elements: base_data_structures.OntologyElements, 
     ontology_data_properties: base_data_structures.OntologyDataProperties,
-    ontology_object_properties: base_data_structures.OntologyObjectProperties
+    ontology_object_properties: base_data_structures.OntologyObjectProperties,
+    source: str
 ):
     """
     将本体数据合并到已有本体中
@@ -28,11 +29,11 @@ def merge_ontology(
     
     # 写入实体(类)
     if ontology_entities and ontology_entities.entities:
-        _merge_entities(ontology_entities.entities)
+        _merge_entities(ontology_entities.entities, source)
         onto.save()
     # 写入层级关系
     if ontology_elements and ontology_elements.hierarchy:
-        _merge_hierarchy(ontology_elements.hierarchy)
+        _merge_hierarchy(ontology_elements.hierarchy, source)
         onto.save()
     # 写入不相交关系
     if ontology_elements and ontology_elements.disjointness:
@@ -40,11 +41,11 @@ def merge_ontology(
         onto.save()
     # 写入数据属性
     if ontology_data_properties and ontology_data_properties.data_properties:
-        _merge_data_properties(ontology_data_properties.data_properties)
+        _merge_data_properties(ontology_data_properties.data_properties, source)
         onto.save() 
     # 写入对象属性
     if ontology_object_properties and ontology_object_properties.object_properties:
-        _merge_object_properties(ontology_object_properties.object_properties)
+        _merge_object_properties(ontology_object_properties.object_properties, source)
         onto.save()
     try:
         # 保存本体
@@ -59,40 +60,53 @@ def _class_exists(class_name: str) -> bool:
     except Exception:
         return False
 
-def _merge_entities(entities: List[base_data_structures.Entity]):
+def _merge_entities(entities: List[base_data_structures.Entity], source: str):
     """合并实体(类)"""
     namespace = ONTOLOGY_CONFIG["classes"]
     for entity in entities:
+        if entity.name and "[" in entity.name and "]" in entity.name:
+            print(f"\n----------------------------------------------------------------\n类名包含方括号: {entity.name}\n----------------------------------------------------------------\n")
         try:
             if not _class_exists(entity.name):
                 with namespace:
                     new_class = types.new_class(entity.name, (Thing,))
                     if entity.information:
                         new_class.information = [entity.information]
+                    new_class.source = [source]
             else:
                 print(f"类 {entity.name} 已存在,更新类")
                 existing_class = namespace[entity.name]
                 if entity.information and entity.information not in existing_class.information:
                     existing_class.information.append(entity.information)
+                if source and source not in existing_class.source:
+                    existing_class.source.append(source)
         except Exception as e:
             print(f"添加实体 {entity.name} 失败: {e}")
 
-def _merge_hierarchy(hierarchies: List[base_data_structures.Hierarchy]):
+def _merge_hierarchy(hierarchies: List[base_data_structures.Hierarchy], source: str):
     """合并层级关系"""
     namespace = ONTOLOGY_CONFIG["classes"]
     for hierarchy in hierarchies:
         try:
-            if _class_exists(hierarchy.subclass) and _class_exists(hierarchy.superclass):
+            if _class_exists(hierarchy.subclass) and all(_class_exists(sup) for sup in hierarchy.superclass):
                 subclass = namespace[hierarchy.subclass]
-                superclass = namespace[hierarchy.superclass]
                 # 移除Thing类
                 if Thing in subclass.is_a:
                     subclass.is_a.remove(Thing)
                 # 添加新的父类
-                if superclass not in subclass.is_a:
-                    subclass.is_a.append(superclass)
+                added_new = False
+                for sup in hierarchy.superclass:
+                    superclass = namespace[sup]
+                    if superclass not in subclass.is_a:
+                        subclass.is_a.append(superclass)
+                        added_new = True
+                
+                # 只在添加了新父类时添加information和source
+                if added_new:
                     if hierarchy.information and hierarchy.information not in subclass.hierarchy_information:
                         subclass.hierarchy_information.append(hierarchy.information)
+                    if source and f"Source (Superclass: {', '.join(hierarchy.superclass)}): {source}" not in subclass.source:
+                        subclass.source.append(f"Source (Superclass: {', '.join(hierarchy.superclass)}): {source}")
             else:
                 if not _class_exists(hierarchy.subclass):
                     print(f"类 {hierarchy.subclass} 不存在")
@@ -113,7 +127,7 @@ def _merge_disjointness(disjointness: List[base_data_structures.Disjointness]):
         except Exception as e:
             print(f"添加不相交关系 {disj.class1} <-×-> {disj.class2} 失败: {e}")
 
-def _merge_data_properties(data_properties: List[base_data_structures.DataProperty]):
+def _merge_data_properties(data_properties: List[base_data_structures.DataProperty], source: str):
     """合并数据属性"""
     namespace = ONTOLOGY_CONFIG["data_properties"]
     class_namespace = ONTOLOGY_CONFIG["classes"]
@@ -124,11 +138,14 @@ def _merge_data_properties(data_properties: List[base_data_structures.DataProper
                     new_dp = types.new_class(dp.name, (DataProperty,))
                     if dp.information:
                         new_dp.information = [dp.information]
+                    new_dp.source = [source]
             else:
                 print(f"数据属性 {dp.name} 已存在,更新数据属性")    
                 new_dp = namespace[dp.name]
                 if dp.information and dp.information not in new_dp.information:
                     new_dp.information.append(dp.information)
+                if source and source not in new_dp.source:
+                    new_dp.source.append(source)
                 
             if dp.values:
                 flattened_values = flatten_dict(dp.values)
@@ -157,8 +174,13 @@ def _merge_data_properties(data_properties: List[base_data_structures.DataProper
                                 current_values = [current_values] if current_values is not None else []
                                 
                             # 如果新值不在当前值列表中，添加它
-                            if value is not None and value not in current_values:
-                                current_values.append(value)
+                            if value is not None:
+                                if isinstance(value, list):
+                                    for v in value:
+                                        if v not in current_values:
+                                            current_values.append(v)
+                                elif value not in current_values:
+                                    current_values.append(value)
                                 
                             # 更新属性值
                             setattr(owner_class, dp.name, current_values)
@@ -167,7 +189,7 @@ def _merge_data_properties(data_properties: List[base_data_structures.DataProper
         except Exception as e:
             print(f"添加数据属性 {dp.name} 失败: {e}")
 
-def _merge_object_properties(object_properties: List[base_data_structures.ObjectProperty]):
+def _merge_object_properties(object_properties: List[base_data_structures.ObjectProperty], source: str):
     """合并对象属性"""
     namespace = ONTOLOGY_CONFIG["object_properties"]
     class_namespace = ONTOLOGY_CONFIG["classes"]
@@ -179,11 +201,14 @@ def _merge_object_properties(object_properties: List[base_data_structures.Object
                     new_op = types.new_class(op.name, (ObjectProperty,))
                     if op.information:
                         new_op.information = [op.information]
+                    new_op.source = [source]
             else:
                 print(f"对象属性 {op.name} 已存在,更新对象属性")
                 new_op = namespace[op.name]
                 if op.information and op.information not in new_op.information:
                     new_op.information.append(op.information)
+                if source and source not in new_op.source:
+                    new_op.source.append(source)
                 
             # 处理对象属性的实例
             if op.instances:

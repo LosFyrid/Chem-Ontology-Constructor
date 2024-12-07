@@ -1,25 +1,6 @@
 Supramolecular Chemistry of Anions
-DOI: 10.1002/anie.201309937
 Advances in Anion Supramolecular Chemistry:
-From Recognition to Chemical Applications
-Nicholas H. Evans* and Paul D. Beer*
-Angewandte
-Chemie
-Keywords:
-anion recognition · anions · sensors ·
-supramolecular chemistry ·
-template synthesis
-Dedicated to Professor Jean-Marie Lehn on
-the occasion of his 75th birthday
-.
-Angewandte
-Reviews
-N. H. Evans and P. D. Beer
-11716
-www.angewandte.org
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
-1. Introduction
+From Recognition to Chemical Applications1. Introduction
 Anions have an enormous impact upon our lives. Within
 our own bodies, the carrier of our genetic information—
 DNA—is anionic, as are the majority of enzyme substrates
@@ -38,23 +19,14 @@ around us. Nitrate and sulfate are key components in the
 production of acid rain.[4] Excessive use of phosphates and
 nitrates in fertilizers has led to eutrophication in waterways.[5]
 Pertechnetate (a by-product of nuclear fuel reprocessing)[6]
-and perchlorate (arising from the manufacture of explo-
-sives)[7] are two further examples of anthropogenic pollutants,
-while arsenate is an example of a naturally occurring one.[8] In
 short, there has been, and still is, considerable motivation for
 investigating the binding and sensing of anionic species.
 In 1968, Park and Simmons described the binding of
-halide anions by macrobicyclic ammonium cages (Fig-
-ure 1a).[9] A year previously, Shriver and Biallas had reported
-the formation of a chelate between a diboron ligand and
-a methoxide ion (Figure 1b).[10] These are generally consid-
 ered to be the first examples of anion coordination and hence
 the point of genesis for anion supramolecular chemistry.
 Initially there was very little progress in the coordination
 chemistry of anions, in comparison to that of cations, where
-Pedersens seminal reports on macrocyclic crown ethers[11]
 heralded the development of an array of cation-binding
-ligands, including Lehns cryptands[12] and Crams spher-
 ands.[13] This lack of development in the field of anion
 recognition has been attributed, in part, to a number of
 intrinsic properties associated with anionic species. Anions
@@ -91,44 +63,9 @@ from almost nothing into a rapidly maturing field of research. The
 supramolecular chemistry of anions has also found real practical use
 in a variety of applications such as catalysis, ion extraction, and the use
 of anions as stimuli for responsive chemical systems.
-From the Contents
-1. Introduction
-11717
-2. Fundamental Advances in
-Anion Recognition
-11718
-3. Anions as Templates
-11724
-4. Progress in Anion Sensing
-11732
-5. Anion Transportation
-11740
-6. Future Directions: Applications
-of Anion Supramolecular
-Chemistry
-11743
-7. Conclusion and Outlook
-11749
-Figure 1. First examples of anion coordination: a) the macrobicyclic
-ammonium cage of Park and Simmons and b) the boron chelate of
-Shriver and Biallas.
-[*] Dr. N. H. Evans
-Department of Chemistry, Lancaster University
-Lancaster, LA1 4YB (UK)
-E-mail: n.h.evans@lancaster.ac.uk
-Prof. P. D. Beer
-Chemistry Research Laboratory, Department of Chemistry
-University of Oxford
-Mansfield Road, Oxford, OX1 3TA (UK)
-E-mail: paul.beer@chem.ox.ac.uk
-Anion Supramolecular Chemistry
-Angewandte
-Chemie
-11717
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
-the receptor (Figure 2a),[14] and Schmidtchen, who reported
+
+
+Anion Supramolecular Chemistrythe receptor (Figure 2a),[14] and Schmidtchen, who reported
 innovative quaternary ammonium hosts able to bind halides
 within their cage structure (Figure 2b).[15] In spite of this slow
 beginning, anion supramolecular chemistry featured heavily
@@ -154,8 +91,9 @@ ular chemistry today, we cannot contemplate producing
 a comprehensive review of the topic. Instead we seek to
 provide an overview of the most significant and substantial
 developments in the field since 2001, as well as providing
-some indication of where we expect the area to develop in the
-second decade of this century.[17]
+some indication of where we expect the area to develop in the second decade of this century
+
+
 2. Fundamental Advances in Anion Recognition
 Previously, anion receptors have been usefully classified
 by consideration of the type of noncovalent interaction used
@@ -193,46 +131,10 @@ transportation), and recent developments are often exploited
 in these applications. Secondly, we discuss the appearance of
 receptors based on new noncovalent interactions, specifically
 those using anion–p and halogen bonding.
-Nick Evans graduated from Wadham Col-
-lege, University of Oxford with a First Class
-Masters in Chemistry (2006), before obtain-
-ing a DPhil in Inorganic Chemistry (2011),
-having worked on anion-sensing rotaxanes
-and catenanes in the group of Prof. Paul
-Beer. After undertaking postdoctoral research
-on chiral lanthanide complexes with Prof.
-David Parker (Durham University), he took
-up a Lectureship in Chemistry at Lancaster
-University in 2013. His research involves the
-development of functional supramolecular
-systems, with a particular focus on guest
-recognition and sensing.
-Paul Beer obtained a PhD from King’s
-College London in 1982 with Dr. C. Dennis
-Hall. After a Royal Society European Post-
-doctoral Fellowship with Prof. Jean-Marie
-Lehn and a Demonstratorship at the Univer-
-sity of Exeter, he was awarded a Lectureship
-at the University of Birmingham in 1984. In
-1990, he moved to the University of Oxford,
-where he became a Professor of Chemistry
-in 1998. His research interests cover many
-areas of coordination and supramolecular
 chemistry, in particular the binding and
 sensing of anions by macrocycles and inter-
 locked molecular host systems.
-Figure 2. Significant early examples of anion coordination: a) the
-dicarboxylate binding macrocycle by Hosseini and Lehn and
-b) Schmidtchen’s tetraammonium cage.
-.
-Angewandte
-Reviews
-N. H. Evans and P. D. Beer
-11718
-www.angewandte.org
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
 2.1. Critical Developments in Receptors Utilizing Hydrogen
 Bonding
 2.1.1. New NH-, OH-, and CH-Containing Receptors
@@ -265,40 +167,33 @@ indolocarbazoles, are representative examples of heterocyclic
 NH hydrogen-bond donors that have been investigated in
 recent times (typically in combination with other hydrogen-
 bond donors) as potent anion receptors.[33]
-For example, Gale and co-workers synthesized pyridine-
-2,6-dicarboxamide and isophthalamide molecules which pos-
-sessed pendent indole groups (Figure 4a).[34] These receptors
 proved to be highly selective for fluoride over chloride (for
 example) in [D6]DMSO/0.5% water mixtures, which was
 attributed to the “twisted” conformation of the receptor
 encapsulating the smaller fluoride ion, whereas chloride
 “perches” on the receptor, as evidenced in a solid-state
 crystal-structure determination. Previously, Jurczak and co-
-workers had reported on carbazole/amide receptors (Fig-
-ure 4b).[35] These molecules were found to bind benzoate and
 dihydrogen phosphate much more strongly than chloride in
 [D6]DMSO/0.5% water. The first reports of anion complex-
 ation with indolocarbazoles were made by the Beer research
 group, where it was demonstrated that, in acetone, simple
 indolocarbazoles bound benzoate strongly (typically logKa >
 5).[36] Jeong and co-workers have since incorporated indolo-
-carbazoles into a range of macrocyclic receptors (Fig-
-ure 4c).[37] Chloride is bound more strongly by the smaller
 cyclic receptor (in 10% MeOH/acetone), whereas the larger
 anions investigated were bound more strongly to the larger
 receptor, indicative of a degree of complementarity between
 the host and guest.
+
+
 Recently, the use of chiral anions to induce helical
 chirality in NH hydrogen-bond-donating foldamer anion
 receptors has been demonstrated. This is exemplified by the
 tri(indolocarbazole) synthesized by Jeong and co-workers
 that forms a chiral helix upon coordination to enantiopure 10-
 camphorsulfonate in dichloromethane, as revealed by circular
-dichroism (Figure 5).[38] A related example is that of Zhao, Li,
 and co-workers, who used the chiral glutamate anion to
 induce helical chirality in a benzamide oligomer.[39]
 As already mentioned in the Introduction, protonated
-bicyclic NH-containing molecules have been known to bind
 anions for some 45 years. Interest in such cryptand-like
 receptors was rekindled by a 1978 report by Lehn and co-
 workers of an azaoxa cryptand, which was shown to selec-
@@ -309,33 +204,12 @@ Notable among these has been the work of Bowman-James
 and co-workers, who studied neutral cryptands (prepared by
 reacting tri(2-aminoethyl)amine, commonly referred to as
 “tren”, with isophthaloyl chlorides), which are able to bind
-fluoride with Ka > 105m1 in competitive [D6]DMSO (Fig-
-ure 6a).[42] Recently, Mani and co-workers described the
 ability of polypyrrolic cryptands to also bind fluoride in
-[D6]DMSO (Figure 6b).[43] A notable achievement in this
 field has been the selective recognition of the radioactive
-pollutant 99TcO4
- by a protonated cryptand in acidic water
-(Figure 6c).[44] Amendola and co-workers demonstrated by
 isothermal titration calorimetry that the pertechnetate anion
 was bound more strongly than either nitrate or chloride by
 two orders of magnitude.
-Figure 3. Squaramides as NH hydrogen-bond-donating anion recep-
-tors: a) Fabbrizzi’s generic structure of a squaramide and b) the diaryl
-squaramide receptor which exhibited particular enhancement of halide
-ion binding in comparison to the analogous urea receptor.
-Figure 4. Examples of recent heterocyclic NH hydrogen-bonding
-receptors: a) Gale’s indole-containing receptors; b) Jurczak’s carbazole
-diamide receptors, and c) Jeong’s indolocarbazole-containing macro-
-cycles.
 Anion Supramolecular Chemistry
-Angewandte
-Chemie
-11719
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-www.angewandte.org
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
 The simple, commercially available molecule catechol,
 has been found by D. K. Smith[45] to be a remarkably potent
 chloride binder in CD3CN (Ka = 1575m1; Figure 7a). Further
@@ -344,12 +218,10 @@ selectivity for chloride (over bromide and iodide) than its
 structural
 isomer
 resorcinol
-(Figure 7b).[46]
 However,
 attempts to functionalize catechol with further hydrogen-
 bond donors proved problematic, with an intramolecular six-
 membered hydrogen-bonding arrangement found to inhibit
-anion binding in a number of the receptors prepared (Fig-
 ure 7c).[47]
 Recently it has been recognized that the triazole motif
 may be utilized as a potent CH hydrogen-bond donor, with
@@ -368,10 +240,8 @@ a
 triazolophane
 in
 dichloromethane
-(Fig-
 ure 8a).[49] By careful design, a receptor has also been
 constructed that binds iodide in a 2:1 “sandwich” complex
-(Figure 8b).[50]
 Contemporaneous with Floods first seminal reports, the
 research groups of Craig[51] and Hecht[52] described the
 formation of halide-templated oligotriazole foldamers in
@@ -393,31 +263,7 @@ CD2Cl2/CD3OD (3:2). The same macrocycle was also incor-
 porated into a [3]rotaxane with a dialkylphosphate axle.
 Further examples of anion-templated rotaxanes will be
 covered in Section 3.4.
-Figure 5. Jeong’s indolocarbazole foldamer anion receptor which forms
-a chiral helix with a positive Cotton effect upon addition of (R)-10-
-camphorsulfonate in dichloromethane.
-Figure 6. Cryptand-like receptors: a) Bowman-James’ polyamide and
-b) Mani’s polypyrrole cages that bind fluoride; c) Amendola’s polyaza
 cage that binds pertechnetate.
-Figure 7. Dihydroxybenzenes as OH hydrogen-bonding chloride
-receptors: a) mode of chloride binding of catechol; b) mode of
-chloride binding by resorcinol, and c) example of a functionalized
-catechol that has reduced chloride affinity because of intramolecular
-hydrogen bonding.
-Figure 8. Flood’s triazole macrocycles as CH hydrogen-bond-donat-
-ing anion receptors: a) the original triazolophane binding chloride and
-b) an alternative triazolophane that binds iodide in a 2:1 “sandwich”
-complex.
-.
-Angewandte
-Reviews
-N. H. Evans and P. D. Beer
-11720
-www.angewandte.org
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
-Sindelar
 and
 co-workers
 have
@@ -428,7 +274,6 @@ hydrogen-bond
 donors
 in
 a family of cyclic glycouril oligomers
-termed bambus[n]urils (Figure 11).[54]
 The
 original
 bambus[6]uril,
@@ -436,15 +281,9 @@ was
 shown crystallographically to hydro-
 gen bond to a chloride ion through 12
 CH···Cl hydrogen bonds in the solid
-state.[54a]
 An
-analogue
-soluble
-in
-organic solvents was later found to
-bind halides very strongly in solution
-(e.g. Ka(I) = 3.8  109m1), albeit in
-noncompetitive chloroform.[54b]
+
+
 2.1.2. Binding in Aqueous Media with Neutral Hydrogen-Bond
 Donors
 The ability of a receptor to operate in aqueous media is
@@ -460,18 +299,14 @@ has investigated synthetic cyclopeptides containing alternat-
 ing aromatic and l-proline residues that may act as anion
 receptors in solvent media with exceptionally high aqueous
 contents, even in pure (i.e. 100%) water. In their first
-reports,[55] cyclohexapeptide macrocycles were shown to
 bind anions in an 80:20 mixture of D2O and CD3OD solutions.
 Whereas the macrocycle bound inorganic anions with a 1:1
 stoichiometry in pure DMSO, 2:1 association occurred in
 aqueous solutions, with the anion being completely desol-
-vated and encapsulated within the sandwich complex (Fig-
 ure 12a). Furthermore, one of the macrocycles was able to
 bind sulfate in pure D2O, admittedly with a modest associ-
-ation constant (Ka = 56m1).[56]
 In subsequent work, covalently linking two cyclopeptides
 with adipic acid allowed for “molecular oyster” receptors able
-to bind sulfate with logKa  5 in a 50:50 mixture of H2O and
 CH3OH (Figure 12b).[57] The ability of these receptors to
 operate in such competitive solvent media has been accred-
 ited to hydrophobic interactions between the two cyclopep-
@@ -491,42 +326,18 @@ receptors
 capable
 of
 binding
-Figure 9. Triazoles as CH hydrogen-bond donors in anion-templated
-foldamers: a) Craig’s tetrakis(triazole) foldamer and b) Hecht’s chiral
-oligotriazole foldamer.
-Figure 10. Flood’s pentagonal “cyanostar” macrocycle capable of bind-
-ing large anions in a 2:1 sandwich complex.
-Figure 11. Sindelar’s
-bambus[n]urils capa-
 ble of binding halide
 ions by CH···X
 hydrogen bonds.
-Figure 12. Kubik’s cyclopeptide anion receptors: a) the original hexa-
-peptide macrocycles and b) two of the macrocycles covalently linked to
-form a “molecular oyster”.
-Anion Supramolecular Chemistry
-Angewandte
-Chemie
-11721
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-www.angewandte.org
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
-a range of anions in [D6]DMSO containing 5% water, and in
+Anion Supramolecular Chemistrya range of anions in [D6]DMSO containing 5% water, and in
 the case of H2PO4
  (where R = H, R’ = Me in the receptor) in
 [D6]DMSO
 containing
 25%
 water
-(Ka = 234m1;
-Fig-
-ure 14a).[60] In more recent work, combining indole and
 urea functionalities has resulted in receptors able to bind
 anions in [D6]DMSO containing 10% water, with the binding
-of H2PO4
- being observed once again in 25% water solutions
-(Ka = 160m1; Figure 14b).[61]
 The binding of anions in water by neutral hydrogen-bond
 donors is, and will remain, a considerable challenge.[62] For
 even though these few examples demonstrate that receptors
@@ -534,6 +345,8 @@ with sufficient hydrogen-bond-donor character can be readily
 constructed, for such systems to operate in pure water
 requires sufficient solubility, a property that—to date—has
 proved difficult to concomitantly incorporate.
+
+
 2.1.3. Understanding Anion Complexation versus Deprotonation
 Electron-withdrawing groups may be added to a receptor
 to increase the binding strength of hydrogen-bond donors.
@@ -541,13 +354,10 @@ This increases the acidity of the hydrogen-bond donor, which
 simultaneously increases the likelihood of the receptor being
 deprotonated, in particular by basic anions such as fluoride or
 acetate. In-depth investigations of this effect have been
-carried out by the research groups of Fabbrizzi,[63] Gale,[64] and
-Gunnlaugsson,[65] and some illustrative examples are dis-
 cussed below.
 Titration of TBAF into solutions of a simple urea receptor
 (substituted with electron-withdrawing nitrophenyl groups) in
 DMSO led to complex behavior being observed beyond
-simple hydrogen-bond formation (Figure 15).[66] The first
 equivalent of fluoride titrated forms strong hydrogen bonds
 with the receptor as expected. However, the addition of
 a second equivalent results in deprotonation occurring, with
@@ -558,16 +368,12 @@ state in the deprotonated receptor.
 It has been shown that certain amidopyrrole receptors are
 also sufficiently acidic to be deprotonated. For example, the
 receptor in Figure 16a was deprotonated by fluoride in
-CD2Cl2.[67] Once again, two equivalents of TBAF were
 required for proton transfer, to allow for formation of the
 stable HF2
- species. The amido(thio)urea receptor in Fig-
-ure 16b proved to be so acidic that a greater range of anions
 caused deprotonation. One equivalent of anion was sufficient
 to induce proton transfer in the case of fluoride, acetate,
 benzoate, and dihydrogen phosphate. This process was
 accompanied by the appearance of a new absorption band
-in the UV/Vis spectrum of the receptor.[68]
 It should be noted that many colorimetric anion sensors
 previously described are now believed to function through
 such proton-transfer processes. This should always be kept in
@@ -576,25 +382,7 @@ a carboxylate or fluoride.
 An appreciation has also begun to develop that an acidic
 anion may be deprotonated. Titration of excess TBAH2PO4
 into solutions of butyl diindolylurea receptor in [D6]DMSO
-(Figure 17) led to the observation of a second set of signals
 further downfield in the 1H NMR spectrum. This observation
-Figure 13. Jeong’s water-soluble indolocarbazole foldamer.
-Figure 14. Neutral hydrogen-bonding receptors capable of binding
-anions in aqueous DMSO solvent media: a) dipyrrolylmethane amide
-and b) diindolylurea.
-Figure 15. Hydrogen bonding and subsequent deprotonation of an
-acidic urea derivative by fluoride.
-Figure 16. Further acidic receptors deprotonated by basic anions:
-a) an amidopyrrole and b) an amido(thio)urea.
-.
-Angewandte
-Reviews
-N. H. Evans and P. D. Beer
-11722
-www.angewandte.org
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
 was rationalized by hypothesizing that the pKa value of the
 bound H2PO4
  is reduced, which allows for proton transfer to
@@ -602,7 +390,9 @@ unbound anion. Evidence for this is provided by the solid-
 state structure of the phenyl analogue of the receptor (grown
 in the presence of excess TBAH2PO4), where the coordinated
 anion is observed to be HPO4
-2.[69]
+
+
+
 2.2. Exploiting New Interactions To Bind Anions
 2.2.1. Anion–p Receptors
 The term anion–p refers to the attractive force between an
@@ -622,7 +412,6 @@ halides with the unfluorinated species in CDCl3. Crucially,
 weak binding of halides (Ka = 20–35m1) was noted with the
 pentafluorophenyl species. In subsequent studies, Berryman
 et al. demonstrated that it is possible to recognize halides
-solely using anion–p interactions (Figure 18b).[73] The sub-
 stitution pattern of the nitro groups prevents halide ions from
 hydrogen bonding to the molecule. Despite this, the binding
 of the halides (Ka = 26–53m1) was observed in C6D6. The
@@ -630,7 +419,6 @@ unsubstituted, protic analogue, which is capable of hydrogen
 bonding (but not of anion–p interactions) possesses no
 affinity for the halide ions. Wang et al. have reported upon
 the ability of an electron-deficient tetraoxacalix[2]arene[2]-
-triazine receptor to bind halide ions (Figure 18c).[74] The
 dichloro-substituted macrocycle can bind chloride (Ka =
 4036m1) in CH3CN, while no binding was observed with
 the proto analogue, consistent with a binding mode based on
@@ -638,10 +426,6 @@ anion–p interactions.
 An anion–p prismatic receptor has very recently been
 studied
 by
-Wasielewski,
-Stoddart,
-and
-co-workers
 (Figure 19).[75] The tri(naphthalenediimide) trigonal prism
 was shown to bind the I3
  ion with an association constant
@@ -652,21 +436,9 @@ Anion–p interactions have perhaps been most notably
 exploited in the construction of anion–p slides by Mareda and
 Matile (see Section 5.3). These systems are capable of the
 transmembrane transportation of anionic species.[76]
-Figure 17. Binding and subsequent deprotonation of dihydrogen phos-
-phate by a diindolylurea receptor.
-Figure 18. Evidence of anion–p interactions binding halide ions in
-solution: a) by augmenting hydrogen bonds and b,c) by interacting
-solely through anion–p contacts.
-Figure 19. Structure of a tri(naphthalenediimide) trigonal prism capa-
 ble of binding the triiodide ion by anion–p interactions.
 Anion Supramolecular Chemistry
-Angewandte
-Chemie
-11723
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-www.angewandte.org
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
 2.2.2. Halogen Bonding Receptors
 Halogen bonding may be represented by YX···D, where
 X is an electrophilic halogen atom, D is a donor of electron
@@ -685,7 +457,6 @@ recognition begun to be realized.
 Taylor and co-workers constructed a receptor containing
 a convergent array of halogen-bond donors by incorporation
 of ortho-substituted iodotetrafluroroarenes on to a 2,4,6-
-trimethylbenzene scaffold (Figure 20a).[79] In acetone, this
 receptor was demonstrated to bind halide ions Cl > Br > I,
 while not exhibiting affinity for the oxoanions HSO4
  and
@@ -694,7 +465,6 @@ NO3
 It is possible to achieve anion binding in much more
 competitive solvent media by utilizing electrostatic interac-
 tions. Such charge-assisted halogen bonding is exhibited by
-the bidentate bromoimidazoliophane in Figure 20b.[80] The
 syn isomer is capable of selectively binding bromide in a 9:1
 mixture of CD3OD and D2O. The protic, hydrogen-bonding
 analogue (which lacks syn/anti isomerism) exhibits weak,
@@ -705,8 +475,6 @@ substituted macrocycles are able to act as selective fluores-
 cence sensors of bromide and iodide, respectively, in CD3OD/
 D2O (9:1).[81] A simple iodoimidazolium has also been
 investigated (Figure 20c), and shown to selectively bind
-H2PO4
- in [D6]DMSO.[82] Once again the protic analogue
 exhibits weak, unselective binding of the anions investigated.
 A comprehensive isothermal calorimetric study of anion
 binding with di(iodoimidazolium) systems (Figure 20d) has
@@ -733,52 +501,17 @@ compared
 to
 dihydrogen
 phosphate
-(Figure 21).
+
+
 3. Anions as Templates
 Up to a decade ago, the use of anionic species as templates
 in self-assembly had been very much in its infancy, with the
 majority of examples being of the serendipitous kind.
-Inspection of the literature from this time reveals various
-isolated, underdeveloped cases such as Mingos cage[85] and
-Lehns helicate[86] (Figure 22), as well as an earlier report by
-Hawthorne and co-workers on the role of chloride in the
-synthesis of anion-binding mercuraborane macrocycles.[87]
-In the following years, the preparation of a significant
-number of anion-templated molecules was reported. Salient
-examples are now discussed with the focus being specifically
-on structures constructed by the strategic use of anions as
-templates. Reviews containing more detailed information on
-serendipitously produced molecular architectures may be
-found elsewhere.[88]
-Traditionally, templated synthesis has involved a consid-
-ered iterative process based on design, manufacture, assess-
-ment, and re-design (possibly aided by computer modeling).
-However, the advent of dynamic combinatorial chemistry
-(DCC) provides a powerful alternative strategy.[89] In the
-DCC approach, a suitably chosen set of building blocks, which
-may continuously interconvert, is prepared. The addition of
-a template (e.g. an anion) to this dynamic combinatorial
 library (DCL) will lead to a shifting of the dynamic equilibria
 present, driven by the requirement to minimize the free
 energy of the entire library, thereby resulting in the amplifi-
 cation of certain product member(s) of the DCL, which may
 then in turn be isolated. Both of these methodological
-Figure 20. Examples of receptors that employ halogen bonds: a) con-
-vergent iodotetrafluoroarenes; b) bidentate bromoimidazoliophane;
-c) monodentate iodoimidazolium; and d) bidentate iodoimidazolium.
-Figure 21. Structures of disubstituted urea derivatives used by Taylor
-and co-workers to calculate the contribution of halogen bonding to
-anion binding.
-.
-Angewandte
-Reviews
-N. H. Evans and P. D. Beer
-11724
-www.angewandte.org
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
-concepts have been utilized in the construction of anion-
 templated molecules in the last ten years.
 3.1. Anion-Templated Dimeric Complexes and Capsules
 The use of anions, with multidentate ligands, to template
@@ -787,17 +520,13 @@ exploited in recent years.
 For example, Wu, Yang, and co-workers have reported
 a coplanar acyclic triurea ligand that forms a 2:1 (L/A)
 complex with either phosphate or sulfate in aqueous DMSO
-solutions (Figure 23a).[90] Sulfate was shown by Schubert and
 co-workers to template the formation of a 2:1 (L/A) complex
 with a triazole-triazolium ligand in acetonitrile through
-a combination of hydrogen bonding and electrostatic inter-
 actions (Figure 23b).[91] Interestingly, the bis(triazolium)
 analogue only formed a 1:1 complex with sulfate.
 Two classes of tripodal ligands have been widely utilized
 for the formation of anion-templated dimeric “capsules”,
 namely a) trifunctionalized trialkylbenzenes[92–94] and b) those
-based
-on
 functionalizing
 tri(2-aminoethyl)amine
 (“tren”).[95–97]
@@ -816,22 +545,8 @@ It is noteworthy that the use of tren-based ligands in
 industrially useful anionic extraction processes has been
 demonstrated. Details of these reports can be found in
 Section 6.2.
-Figure 22. Early examples of anions used as templates: a) Mingos’
-cage and b) Lehn’s helicate.
-Figure 23. Examples of anion-templated “complexes” using flat
-ligands: a) Wu and Yang’s triurea dimer with a phosphate template
-and b) Schubert’s sulfate-templated triazole-triazolium dimer.
-Figure 24. Examples of ligands used in the preparation of anion-
-templated “capsules” using tripodal ligands: a) Steed’s triethylbenzene
-tripyridinium ligand and b) Das’ tren-trithiourea ligand.
 Anion Supramolecular Chemistry
-Angewandte
-Chemie
-11725
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-www.angewandte.org
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
 3.2. Anion-Templated Macrocycles
 The exploitation of anions to template the synthesis of
 macrocyclic species has been studied intensely over the last
@@ -846,16 +561,13 @@ by
 Alcalde
 and
 co-workers
-(Figure 25).[98] Their investigations confirmed that cyclization
 is accelerated by a factor of ten in the presence of chloride. It
 was proposed that the halide ion hydrogen bonds to the
 imidazole and imidazolium moieties, thus supporting the
 arrangement of the molecule in a cyclic-shaped transition
 state which leads to formation of the macrocyclic product.
 The use of a chloride template has also been demon-
-strated by Bçhmer and co-workers in the preparation of
 a remarkable cyclic hexaurea macrocycle.[99] Reacting the
-diamine and diisocyanate (Figure 26) in acetonitrile simply
 yields the triurea macrocycle. However, in dichloromethane
 the hexaurea macrocycle is also isolated in a yield of 20%. A
 crystal structure of this macrocycle (grown in the presence of
@@ -889,20 +601,7 @@ Alfonso, Luis, and co-workers have thoroughly investi-
 gated the anion-templated synthesis of pseudopeptidic mac-
 rocycles by using aromatic dicarboxylates as templates
 (Figure 28).[101] Di(amidoamines) and aromatic dialdehyde
-Figure 25. Alcalde’s study of the template effect using a chloride ion.
-Figure 26. Bçhmer’s tri- and hexaurea macrocycles, the latter of which
-is capable of binding two chloride ions in a figure-of-eight conforma-
-tion.
-Figure 27. The sulfate-templated synthesis of a [2+2] macrocycle.
-.
-Angewandte
-Reviews
-N. H. Evans and P. D. Beer
 11726
-www.angewandte.org
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
 precursors were allowed to react in the presence of a dicar-
 boxylate template to form tetraimine macrocycles, which
 were isolated after in situ reduction of the imine bonds. A
@@ -918,6 +617,8 @@ macrocyclic product. More recently, replacing the 1,4-dialde-
 hyde with 1,3,5-benzenetricarbaldehyde, and switching the
 dicarboxylate for a tricarboxylate template, has enabled the
 efficient synthesis of macrocyclic cages.[101d]
+
+
 3.3. Anion-Templated Metallo-Organic Cages
 Contemporaneous with Mingos chloride-templated cage
 described above, McCleverty, Ward, and co-workers de-
@@ -938,47 +639,27 @@ The original system of Ward and co-workers represents an
 example of the serendipitous discovery of the anion template
 effect. The research group of Custelcean, in collaboration
 with the computationalist Hay, prepared a rationally designed
-[M4L6]8+ tetrahedral cage templated by a sulfate ion, which it
-strongly binds (Kapp  6  106m1; Figure 30).[105] In this exam-
 ple, each ligand molecule contains a urea unit, capable of
 acting as a bidentate hydrogen-bond donor. These were
 calculated—and found by crystallography—to form 12 hydro-
 gen bonds to the templating sulfate ion. Avery similar sulfate-
-templated cage has also been published by Kaifer and co-
-workers.[106]
 The resulting topologies of anion-templated metallo-
 organic cages are very often unexpected and not simply
 limited to tetrahedra. As an illustration, Steel and Sumby
-have reported a flat prismatic “disclike” [Ag6L2]6+ cage (L =
 hexa(2-pyridyl)[3]radialene), where a fluoride ion is encap-
-sulated (Figure 31a).[107] Fluoride is believed to act as
 template, due to the encapsulation of the halide ion and the
 lack of a discrete fluoride ion in the reagents used to prepare
 the cage. More recently, Su and co-workers have found that
 a T-shaped pyridyldiphosphine ligand will form “nanotube”-
 shaped [Ag6L6]6+ cages in the presence of SbF6
-; the
 encapsulation of two anions was proved by crystallography
-(Figure 31b).[108]
 Recent studies on anion-responsive metallo-organic cages
 represent one of the most interesting developments in anion
 supramolecular chemistry. A discussion on this topic can be
-found in Section 6.3.3.
-Figure 28. Dicarboxylate-templated synthesis of pseudopeptidic macro-
-cycles by Alfonso and Luis.
-Figure 29. Ward’s original tetrafluoroborate-templated [Co4L6]8+ tetra-
-hedral cage.
-Figure 30. Synthesis of a rationally designed sulfate-templated [Ni4L6]8+
-tetrahedral cage by Custelcean and Hay.
 Anion Supramolecular Chemistry
-Angewandte
-Chemie
-11727
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-www.angewandte.org
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
-3.4. Anion-Templated Rotaxanes and Catenanes
+
+
+3.4. Anion-Templated Rotaxanes and Catenanes
 Two of the most aesthetically pleasing classes of molecules
 in chemistry are catenanes and rotaxanes. A catenane is
 a compound that consists of two or more rings that are
@@ -993,12 +674,10 @@ co-workers: a phenoxide “half-axle” component, being held
 in place by hydrogen bonding to a macrocyclic isophthala-
 mide motif, was trapped by an benzylic electrophile stoppered
 on one side, with the anionic template being consumed in the
-synthesis of the interlocked structure (Figure 32).[111]
 Related rotaxanes have since been prepared by Schalley
 and co-workers, where a phenolate-containing thread once
 again forms a hydrogen bond to an isophthalamide macro-
 cycle, but stoppering in this case furnishes the interlocked
-structure with the phenolate remaining intact (Figure 33).[112]
 In an approach inspired by the copper(I)-templated
 method of the Sauvage research group, Beer and co-workers
 synthesized interlocked structures by use of a spherical
@@ -1026,6 +705,8 @@ ion it was shown that the resulting unique interlocked cavities
 selectively bound chloride over more basic oxoanions such as
 dihydrogen phosphate and acetate in competitive CDCl3/
 CD3OD solvent mixtures.
+
+
 Very recently, bis(triazole)pyridinium analogues of these
 species have been prepared, with both the rotaxane[77] and
 catenane[78] showing selectivity for the halides (Cl to I) over
@@ -1033,22 +714,7 @@ dihydrogen phosphate in CDCl3/CD3OD (1:1). The pyridi-
 nium axle motifs have also been exchanged for imidazo-
 lium[118] and triazolium[119] in the construction of further
 rotaxanes. A rotaxane has also been synthesized where the
-axle component—an iodotriazolium—coordinates to the
-Figure 31. Further examples of anion-templated metallo-organic cage
-formation: a) Steel’s “disclike” [Ag6L2]6+ cage (viewed from above) and
-b) Su’s “nanotube” [Ag6L6]6+ cage.
-Figure 32. Vçgtle’s anion-templated rotaxane synthesis.
-Figure 33. Schalley’s phenoxide rotaxane.
-.
-Angewandte
-Reviews
-N. H. Evans and P. D. Beer
-11728
-www.angewandte.org
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
-halide ion by means of a halogen bond (Figure 36).[120] The
+axle component—an iodotriazolium—coordinates to thehalide ion by means of a halogen bond (Figure 36).[120] The
 hexafluorophosphate salt of the iodotriazolium rotaxane
 bound the halides in the order I > Br > Cl in CDCl3/
 CD3OD/D2O (45:45:10). The authors attributed this trend to
@@ -1060,26 +726,9 @@ cyclization strategies for preparing doubly charged [2]cate-
 nanes. For example, two equivalents of methylpyridinium
 precursors were templated by one equivalent of a chloride
 ion, which led to catenane formation in a yield of 78%
-(Figure 37).[121] Further catenanes have been prepared by
 cyclizing pyridinium nicotinamide precursors around sul-
 fate[122] and bromoimidazolium precursors around bromide
-ions[123] (Figure 38).
-Figure 34. Beer’s first synthesis of a chloride-templated rotaxane.
-Figure 35. Beer’s first synthesis of a chloride-templated catenane.
-Figure 36. Beer’s halogen-bonding, iodide-selective, iodotriazolium
-rotaxane.
-Figure 37. [2]Catenane synthesis with a chloride ion template by
-double cyclization of methylpyridinium precursors.
-Figure 38. Structures of [2]catenanes prepared by double cyclization
-around sulfate (a) and bromide templates (b).
 Anion Supramolecular Chemistry
-Angewandte
-Chemie
-11729
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-www.angewandte.org
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
 The power of a halide ion template is elegantly demon-
 strated by the production of exotic structures, including
 a
@@ -1098,17 +747,6 @@ of certain functionalities (e.g. pyridyl). An alternative method
 has therefore been developed, where a diamine is reacted
 with a bis-acid chloride in the presence of an axle or
 macrocycle
-to
-produce
-a
-rotaxane[126]
-or
-catenane[127]
-(Figure 40). This method was exploited in the synthesis of
-a doubly charged rotaxane (produced by methylation of the
-pyridyl rotaxane in Figure 40), which was capable of selec-
-tively binding chloride in a 65:35 mixture of [D6]acetone and
-D2O.[126b]
 A very recent development has been the use of the
 pyridine-N-oxide in place of methylpyridinium to synthesize
 anion-templated neutral rotaxanes (Figure 41).[128] Here, the
@@ -1123,30 +761,12 @@ Another example of constructing interpenetrated and
 interlocked species by using an anion template and neutral
 components comes from using indolocarbazole. For example,
 an indolocarbazole may thread through an isophthalamide
-Figure 39. Chloride-templated a) “handcuff” catenane and b) “Janus”
-rotaxane.
-Figure 40. Beer’s alternative diacid chloride/diamine “clipping” rotax-
-ane synthesis.
-Figure 41. Beer’s neutral pyridine-N-oxide rotaxane capable of binding
-halides in aqueous solvent.
-.
-Angewandte
-Reviews
-N. H. Evans and P. D. Beer
-11730
-www.angewandte.org
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
-macrocycle with either fluoride or sulfate ions acting as the
 template,[129] and catenanes have been prepared where two
 indolocarbazole units coordinate around a chloride ion
-(Figure 42).[130]
 To date, the anion-templated synthesis of interlocked
 molecules has been dominated by the use of spherical halide
 (in particular chloride) templates. The Beer research group
 has recently disclosed the preparation of a nitrate-templated
-rotaxane (Figure 43).[131] By using an axle precursor contain-
 ing both methylpyridinium diamide and isophthalamide
 motifs, the polyatomic nitrate anion can template the
 formation of a pseudorotaxane with an isophthalamide
@@ -1158,7 +778,8 @@ gen phosphate, and acetate) were used in place of nitrate in
 the reaction. The rotaxane was demonstrated to selectively
 recognize nitrate over other singly charged oxoanions (bicar-
 bonate, dihydrogen phosphate, and acetate) in CDCl3/
-CD3OD/D2O (45:45:10).
+
+
 3.5. The Optimization and Discovery of Anion-Templated Anion
 Receptors by Dynamic Combinatorial Chemistry
 By its very nature, DCC appears to offer an excellent way
@@ -1178,42 +799,25 @@ with the receptor depicted in Figure 44b, with association
 constants of logKa(I) = 4.75 and logKa(SO4
 2) = 6.83 mea-
 sured in CH3CN/H2O (2:1), which were an order of magni-
-Figure 42. An indolocarbazole-containing anion-templated pseudoro-
-taxane (a) and catenane (b).
-Figure 43. Beer’s nitrate-templated rotaxane.
-Figure 44. DCC for “molecular oysters” by Kubik and Otto: a) the
-components of the DCL and b) the structure of the receptor with
-a single linker possessing the highest association constants for iodide
-and sulfate.
-Anion Supramolecular Chemistry
-Angewandte
-Chemie
-11731
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-www.angewandte.org
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
-tude greater than for the diamide-linked receptor discussed in
+Anion Supramolecular Chemistrytude greater than for the diamide-linked receptor discussed in
 Section 2.1.2. In a second communication, the use of an
 alternative library allowed the optimization of a receptor with
 two linkers between the macrocycles. In this case, one of the
 amplified receptors was able to bind sulfate with logKa = 8.67
-(in 2:1 CH3CN/H2O).[133b]
 Beeren and Sanders have since taken the use of DCC one
 stage further by creating and then investigating novel anion
-receptors.[134] A library was constructed containing a disubsti-
 tuted ferrocene scaffold (specifically a dihydrazide), with
 isophthalaldehyde and 4-methylbenzylhydrazide. The addi-
 tion of TBAH2PO4 to the DCL led to magnification of a linear
 receptor that in fact binds two H2PO4
- ions (Figure 45).[135]
+
+
 4. Progress in Anion Sensing
 The importance of anions in biology and their environ-
 mental impact has meant that ways to selectively detect and
 report, that is, sense, the presence of an anionic species, have
 been intensively investigated. Indeed, this area of anionic
 supramolecular chemistry saw significant early advances
-being made, as summarized by Beer and Gale in 2001.[16]
 Here, we focus on some of the key developments since that
 date.
 Molecular sensors for anions may be classified by the
@@ -1227,7 +831,6 @@ human eye.
 A popular approach to construct an anion sensor is to link
 a binding site to a suitable redox-active or optical reporter
 group, which may be termed the reporter-spacer-receptor
-approach (Figure 46).
 4.1.1. Electrochemical Anion Sensors
 A range of sensors capable of electrochemically detecting
 anions have been constructed by incorporating the redox-
@@ -1249,24 +852,7 @@ example, Fabbrizzi and co-workers demonstrated that catho-
 dic shifts of the CoII/CoIII bipyridyl redox couple are observed
 in aqueous acetonitrile electrolyte solutions upon the binding
 of anions by the convergent array of imidazolium groups in
-a cagelike receptor (Figure 48a).[140] Meanwhile, Beer et al.
-Figure 45. Linear receptor for dihydrogen phosphate by Beeren and
-Sanders.
-Figure 46. Schematic representation of sensing the binding of an
-anionic guest by the reporter-spacer-receptor approach.
-Figure 47. Tucker’s chiral ferrocenylurea sensor capable of electro-
-chemically discriminating between enantiomers of a chiral carboxylate
-anion.
-.
-Angewandte
-Reviews
-N. H. Evans and P. D. Beer
-11732
-www.angewandte.org
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
-have shown that the dithiocarbamate macrocycle depicted in
+a cagelike receptor (Figure 48a).[140] Meanwhile, Beer et al.have shown that the dithiocarbamate macrocycle depicted in
 Figure 48b exhibits a cathodic shift in the CuII/CuIII redox
 couple upon the addition of dihydrogen phosphate.[141] Non-
 metallic electrochemical anion sensors have also been syn-
@@ -1274,6 +860,8 @@ thesized. For example, the redox-active tetrathiafulvalene
 (TTF) has been fused to a halide-binding calixpyrrole, which
 allows for the electrochemical sensing of halide ions in
 acetonitrile (Figure 48c).[142]
+
+
 4.1.2. Optical Anion Sensors
 Many fluorescent anion sensors have been constructed by
 using the reporter-spacer-receptor approach described above,
@@ -1284,13 +872,6 @@ transition metal luminescent motif RuII bipyridyl[145] have
 continued to be utilized.
 An addition to these signaling units has been the
 naphthalimide group.[146] The first naphthalimide-containing
-anion
-sensor
-was
-described
-by
-Gunnlaugsson
-et al.
 (Figure 49).[147] The addition of acetate and dihydrogen
 phosphate to this receptor in DMSO leads to a quenching
 of fluorescence, as a result of enhanced photoelectron transfer
@@ -1298,7 +879,6 @@ of fluorescence, as a result of enhanced photoelectron transfer
 Another organic chromophore investigated recently as
 a fluorescent signaling unit is 2,6-bis(arylethynyl)pyridine.[148]
 Johnson, Haley, and co-workers reported that the receptor in
-Figure 50 (once protonated) exhibits an “off to on” fluores-
 cence response to added chloride in acetonitrile. Analogous
 compounds, where the central pyridine is replaced by
 a benzene ring, have also been found to be fluorescently
@@ -1324,26 +904,11 @@ cancer screening. Another impressive example has been the
 study of bicarbonate concentrations in the mitochrondria of
 living cells by use of a mixture of the Eu and Tb complexes of
 the same ligand (Figure 51b), which allows for the necessary
-Figure 48. Electrochemical anion sensors: a) Fabbrizzi’s CoII-tri(imida-
-zolium) cage, b) Beer’s CuII-dithiocarbamate macrocycles, and c) a
-TTF-calixpyrrole by Jeppesen and Becher.
-Figure 49. Gunnlaugsson’s fluorescent naphthalimide anion sensor.
-Figure 50. A 2,6-bis(arylethynyl)pyridine fluorescent anion sensor by
-Johnson and Haley.
-Figure 51. Lanthanide complexes used in the determination of levels of
-citrate in seminal fluid (a) and mitchrondrial bicarbonate concentra-
-tion (b).
-Anion Supramolecular Chemistry
-Angewandte
-Chemie
-11733
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-www.angewandte.org
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
-ratiometric analysis.[151] Modulation of the Eu emission (by
+Anion Supramolecular Chemistryratiometric analysis.[151] Modulation of the Eu emission (by
 coordination of bicarbonate) is varied by changing the levels
 of CO2 in the cell incubation atmosphere.
+
+
 4.1.3. Interlocked Structures Capable of Selective Anion Sensing
 Beer and co-workers have taken their interlocked mole-
 cules capable of selective anion recognition and shown that by
@@ -1364,7 +929,6 @@ is capable of penetrating the interlocked cavity, whereas the
 polyatomic oxoanions associate at the cavitys periphery.
 Luminescent rotaxanes incorporating a 4,4’-diamide-2,2’-
 bipyridyl macrocycle to allow for complexation of ReI and
-RuII ions have also been reported (Figure 53).[154] The
 addition of chloride and dihydrogen phosphate to samples
 of the metalated rotaxanes dissolved in aqueous acetone
 (containing up to 30% H2O) led to enhancement of the
@@ -1374,7 +938,6 @@ bound more strongly than dihydrogen phosphate—was in
 agreement with that obtained from 1H NMR titrations.
 In collaboration with Faulkner, Beer and co-workers have
 also reported a lanthanide-appended rotaxane that responds
-to changing chloride concentration (Figure 54).[155] The lumi-
 nescence behavior is modulated by the binding of the chloride
 ion first to the ninth coordination site of the EuIII cation,
 which leads to quenching of the lanthanide emission. This is
@@ -1390,24 +953,7 @@ consistent with binding of the halide ion within the two
 interlocked cavities. The addition of sulfate to the free host
 led to complex, but different, electrochemical behavior;
 1H NMR titrations indicated that the neutral rotaxane binds
-the dianion in a 1:1 stoichiometry. For the naphthalene
-Figure 52. Beer’s ferrocene-appended rotaxane (a) and catenane (b)
-that can selectively sense chloride ions bound within the interlocked
-cavity.
-Figure 53. Rotaxane capable of selectively sensing chloride by modu-
-lation of the transition-metal/bipyridyl luminescence.
-Figure 54. Rotaxane capable of selectively sensing chloride by modu-
-lation of the EuIII ion luminescence.
-.
-Angewandte
-Reviews
-N. H. Evans and P. D. Beer
-11734
-www.angewandte.org
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
-rotaxane (Figure 55b), the addition of chloride, bromide, and
+the dianion in a 1:1 stoichiometry. For the naphthalenerotaxane (Figure 55b), the addition of chloride, bromide, and
 acetate simply led to a modest enhancement of the naphtha-
 lene emission. In the case of sulfate, a dramatic quenching was
 initially observed before restoration and enhancement. This
@@ -1419,7 +965,6 @@ binding mode) and being hence further away from the
 fluorescent moiety.
 B. D. Smith et al. have reported the use of squaraine
 rotaxane shuttles as reversible optical sensors for chloride
-ions (Figure 56). In the first report,[158] they demonstrated that
 the addition of chloride resulted in the tetralactam macro-
 cycle of the rotaxane being displaced, thereby leading to
 a threefold increase in the deep-red fluorescence emission
@@ -1433,6 +978,8 @@ substituted dye, the rotaxane was able to sense anions
 ratiometrically as a result of anion binding modulating the
 emission wavelength, rather than changing the emission
 intensity.
+
+
 4.2. Indicator-Displacement Assays for Anions
 An alternative design for optical anion sensors is the use
 of indicator-displacement assays (IDAs). Here, an indicator is
@@ -1440,65 +987,31 @@ bound weakly by the receptor, so that it is displaced upon
 addition of guest, thereby giving
 either a colorimetric or fluorescence
 response (Figure 57). One of the
-principal
-advantages
-of
-this
+principal advantages of this
 approach is the possibility of using
 different indicators with the same
 receptor.[160]
-The pioneering work on indica-
-tor-displacement assays for anions
-was
-reported
-by
-Metzger
-and
+The pioneering work on indicator-displacement assays for anions
+was reported by Metzger and
 Anslyn just before the start of the
-new
-millennium.
-For
-example,
-a
-1,3,5-trisubstituted-2,4,6-triethyl-
-benzene scaffold containing three
+new millennium. For example,
+a 1,3,5-trisubstituted-2,4,6-triethylbenzene scaffold containing three
 guanidinium groups was shown to
 selectively sense the levels of citrate
 in commercially available soft drinks
 by using 5-carboxyfluorescein as an
-indicator
-(Figure 58).[161]
-Anslyn’s
+indicator (Figure 58).[161] Anslyn’s
 research group has also reported
-a polyguanidinium-appended scaf-
-fold that fluorescently sensed inosi-
-tol triphosphate in methanol[162] and
+a polyguanidinium-appended scaffold that fluorescently sensed inositol triphosphate in methanol[162] and
 an assay that colorimetrically sensed
 heparin.[163]
 The use of metallic complexes
 allows for the facile generation of
-Figure 55. Beer’s [3]rotaxanes which can selectively sense anions
-a) electrochemically and b) by fluorescence.
-Figure 56. B. D. Smith’s squaraine [2]rotaxane shuttle which senses
-chloride.
-Figure 57. Schematic rep-
-resentation of sensing
-the binding of an anionic
-guest by an indicator-dis-
-placement assay
-approach.
-Anion Supramolecular Chemistry
-Angewandte
-Chemie
-11735
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-www.angewandte.org
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
-assays that may operate in aqueous solvent media. Fabbrizzi
+Anion Supramolecular Chemistryassays that may operate in aqueous solvent media. Fabbrizzi
 et al. reported upon a dicopper cage that could selectively
-detect (by fluorescence) bicarbonate in water, by displace-
-ment of a coumarine indicator (Figure 59).[164]
+detect (by fluorescence) bicarbonate in water, by displace-ment of a coumarine indicator
+
+
 4.3. Anion Chemodosimeters
 Chemodosimeters are examples of a third class of anion
 sensor, which typically provide a colorimetric response
@@ -1518,37 +1031,16 @@ olefinic isomers maleate and fumarate, as the cis isomer
 maleate is able to form strong hydrogen bonds to the enol
 group (significantly enhancing the electron density on the
 oxygen atom), thereby allowing for accelerated cyclization
-(Figure 61a).[165] In a second paper, the pyrylium product has
 been shown to undergo a ring opening followed by a ring
 closing to form a thiopyrylium upon the addition of the sulfide
 anion, which is marked by a change in color from magenta to
-blue (Figure 61b). Impressive selectivity over a wide range of
-anions was reported.[166]
 The cyanide ion is a very common target for detection by
 chemodosimeters, as its high nucleophilicity allows for the
 design of receptors that will selectively react with this
 particular anion. For
 example, Sessler and co-workers
 reported a colorimetric sensor for cyanide based on a benzil
-analogue (Figure 62). Solutions of the chemodosimeter in
-Figure 58. Anslyn’s demonstration of IDAs by sensing citrate in
-aqueous solvent media.
-Figure 59. Fabrizzi’s dicopper cage (and coumarin indicator) that can
-selectively detect bicarbonate.
-Figure 60. Schematic representation of sensing the presence of anions
-by chemodosimeters.
-Figure 61. Examples of chemodosimeters that sense a) maleate and
-b) hydrogen sulfide anions.
-.
-Angewandte
-Reviews
-N. H. Evans and P. D. Beer
-11736
-www.angewandte.org
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
-a 70:30 mixture of MeOH and H2O are yellow, but the
+b) hydrogen sulfide anions.a 70:30 mixture of MeOH and H2O are yellow, but the
 addition of low concentrations of cyanide results in the
 solution becoming colorless, with a high selectivity across
 a range of anions tested.[167]
@@ -1564,7 +1056,6 @@ of cyanide in a 90:10 mixture of H2O in MeOH.
 Fluoride is another nucleophilic anion that is commonly
 sensed by chemodosimetric methods. In particular, a vast
 number of receptors have been prepared which exploit the
-formation of BF[169] and SiF bonds (Figure 64). For
 example, the diboron naphthalene compound is capable of
 binding fluoride in a bidentate fashion with an exceptionally
 high association constant of 5  109m1 in THFand a change in
@@ -1577,26 +1068,25 @@ silane, an enhancement in fluorescence occurs because of
 alteration of the through-space interactions between the three
 anthracene moieties upon binding of fluoride (in THF) to the
 central silicon atom.[172]
+
+
 4.4. Surface-Attached Anion Sensors
 Research into anion sensors has traditionally focused on
 the design and synthesis of solution-based receptors equipped
 with appropriate reporter groups. However, receptors at-
 tached to surfaces as self-assembled monolayers (SAMs) can
 exhibit a number of advantages over their solution-phase
-analogues.[173] First, the receptor is typically more preorgan-
 ized on a surface, which may lead to amplification of a sensory
 response. Second, there is the possibility of recycling a sur-
 face-attached sensor, and third, by immobilizing a receptor to
 a surface, it is possible to use a water-insoluble receptor in
 aqueous conditions.
-4.4.1. Surface-Attached Anion Sensors with Reporter Groups
 The redox-active ferrocene motif has been used in
 a number of surface-confined anion sensors. The first example
 was demonstrated by Astruc and co-workers, where a simple
 amidoferrocenyl alkylthiolate was adsorbed onto a gold
 electrode surface, and a large cathodic shift of the Fc/Fc+
 redox couple was observed upon the addition of dihydrogen
-phosphate.[174] The same research group has also attached
 amidoferrocenyl alkanethiols to gold nanoparticles, by con-
 structing mixed monolayers of the ferrocene-containing thiol
 and dodecanethiol.[175] Beer et al. have since demonstrated
@@ -1613,22 +1103,9 @@ electrolyte
 solution
 (2:1
 CH2Cl2/
-Figure 62. Sessler’s benzil chemodosimeter which selectively senses
-cyanide.
-Figure 63. A cationic ammonium borane which is highly selective for
-the binding and sensing of cyanide.
-Figure 64. Chemodosimeters for detecting fluoride: a) Gabba’s dibor-
 ylnaphthalene; b) Aldridge’s diboronate ferrocene molecules, and
 c) Yamaguchi’s trianthrylfluorosilane.
-Anion Supramolecular Chemistry
-Angewandte
-Chemie
-11737
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-www.angewandte.org
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
-CH3CN).[176a] The redox couple of the calixarene functional-
+Anion Supramolecular ChemistryCH3CN).[176a] The redox couple of the calixarene functional-
 ized with the ferrocenylurea (Figure 65b) undergoes a similar
 enhancement
 in
@@ -1648,7 +1125,6 @@ onto
 a
 gold
 surface
-(Figure 66).[177] In this case, the chloride-
 induced cathodic shift of the first oxidation
 wave of the TTF group in dichloromethane
 was significantly less than that of the
@@ -1658,8 +1134,6 @@ receptor being sterically inhibited from
 undergoing rearrangement from its ground
 state 1,3-alternate conformation to the
 cone conformation that calix[4]pyrroles
-adopt when binding chloride ions in solu-
-tion.
 Sophisticated
 redox-active
 chloride
@@ -1668,27 +1142,23 @@ been prepared by Beer, Davis, and co-
 workers.[178,179] In the first reported system,
 a ferrocene-appended macrocycle was confined to a surface
 as part of a rotaxane by use of a thiotic acid appended
-pentaphenylferrocene-stoppered axle (Figure 67).[178] Upon
 removal of the chloride template, the rotaxane was able to
 sense chloride in electrolytic acetonitrile solutions through
 a cathodic shift in the Fc/Fc+ redox wave. Excellent selectivity
 in sensing was observed: with chloride being sensed in the
 presence of a 100-fold excess of dihydrogen phosphate.
 Very recently, an osmium-bipyridyl macrocycle has been
-incorporated as part of a rotaxane SAM (Figure 68).[179] As
 before, removal of the chloride template allows for electro-
 chemical sensing of chloride in electrolytic acetonitrile
 solutions, this time by a cathodic shift in the OsII/OsIII-
 bipyridyl redox wave.
 Beer, Davis et al. have also reported an optical surface-
 attached anion sensor consisting of zinc(II) metalloporphyr-
-ins assembled onto gold nanoparticles (Figure 69).[180] These
 were able to bind chloride and dihydrogen phosphate in
 dichloromethane and DMSO, as measured by UV/Vis titra-
 tion experiments, with higher affinities than when the metal-
 loporphyrins were free in solution.
 Gunnlaugsson and co-workers have prepared lanthanide
-complexes on gold nanoparticles for luminescent sensing of
 phosphate ions in aqueous solution (Figure 70).[181] The
 sensing of coordinating anions such as carboxylates and
 phosphates occurs by the switching off of the EuIII emission by
@@ -1697,30 +1167,7 @@ displacement of the b-diketone ligand, which acts as an
 such as AMP, ADP, ATP, cyclic AMP, or NADP were found to
 quench the luminescence to a greater degree over other
 anions. However, complete quenching was only observed with
-flavin monophosphate.
-Figure 65. Electrochemical anion-sensing SAMs absorbed on to gold,
-based on a) ferrocene diamide and b) ferrocenylurea calixarene recep-
-tors.
-Figure 66. Jeppe-
-sen’s calixpyrrole/
-TTF sensor capa-
-ble of electro-
-chemically detect-
-ing chloride.
-Figure 67. Surface-confined rotaxane capable of selectively sensing
-chloride by a cathodic shift in the Fc/Fc+ redox wave.
-Figure 68. Surface-confined rotaxane capable of sensing chloride by
-a cathodic shift in the OsII/OsIII-bipyridyl redox wave.
-.
-Angewandte
-Reviews
-N. H. Evans and P. D. Beer
-11738
-www.angewandte.org
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
-Crego-Calama
+flavin monophosphate.Crego-Calama
 and
 co-workers
 produced
@@ -1733,6 +1180,8 @@ hydrogen-bonding unit. Impressively, the combination illus-
 trated here was able to selectively sense, in acetonitrile,
 105m1 acetate in the presence of 104m1 nitrate and
 103m1 hydrogen sulfate.
+
+
 4.4.2. Surface-Attached Anion Sensors Based on Electrochemical
 Impedance Spectroscopy
 Electrochemical impedance spectroscopy (EIS) is a tech-
@@ -1758,28 +1207,15 @@ halides not being detected. Selectivity for fluoride was found
 in a similar system, based on a calix[6]crown-4 scaffold.[184] In
 both these systems the surface-confined sensor mirrored the
 anion-binding properties of solution-phase analogues.
+
+
 4.5. Detection of Multiple Anions: Sensor Arrays and Pattern
-Recognition
 Many simple anion sensors are promiscuous, being
 capable of responding to a range of anions, and so will only
 be useful as a sensor for a particular anionic species in
 isolation. Typical “real-world” environmental and biological
 samples will not conform to this limitation. Even if a sensor is
-Figure 69. Zinc metalloporphyrin nanoparticle sensor by Beer and
-Davis capable of optical anion detection.
-Figure 70. Gunnlaugsson’s luminescent lanthanide nanoparticle
-sensor for optically detecting flavin monophosphate.
-Figure 71. Structure of Crego-Calama’s fluorescent acetate-selective
-sensor constructed on quartz selective.
-Anion Supramolecular Chemistry
-Angewandte
-Chemie
-11739
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-www.angewandte.org
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
-able to operate in the presence of other anions, it may be of
+Anion Supramolecular Chemistryable to operate in the presence of other anions, it may be of
 interest to sense more than one (perhaps even all) of the
 anions in a sample.
 A supramolecular chemistry approach to overcome these
@@ -1801,7 +1237,6 @@ be differentiated by the quantity of fluoride and other anions
 present. In the same year, Anzenbacher and co-workers also
 described a sensor array for detecting phosphate ions in
 human serum by using eight different (tripodal hydrogen-
-bond-donating) sensor molecules.[187]
 A notable recent example of a ratiometric indicator-
 displacement assay array capable of colorimetrically distin-
 guishing between ten anions in water has been reported by
@@ -1814,6 +1249,8 @@ Nine chelating indicators and eight metal cations were used to
 construct the 3  6 array, which could analyze anions in “real-
 world” samples, for example, drinking water or discharged
 waste streams.
+
+
 5. Anion Transportation
 5.1. Introduction
 The investigation of synthetic anion transportation is
@@ -1827,7 +1264,6 @@ and bicarbonate anions.[1] In addition, it is known that
 prodigiosins, a family of small naturally occurring molecules
 capable of anion binding, possess a range of biological
 activity, including antibiotic, immunosuppressive, and anti-
-tumor behavior.[189]
 In recent times, most studies on anion transportation have
 used unilamellar vesicles composed of a lipid or a mixture of
 lipid and cholesterol to simulate the phospholipid bilayers of
@@ -1839,7 +1275,6 @@ and c) NMR spectroscopy. However, real cells have been, and
 are increasingly, being used in conjunction with whole cell
 patch clamp or Ussing chamber techniques. For accessible
 discussions of these experimental methods we refer interested
-readers to specialist reviews.[190]
 Ion transport may be classified by the direction of travel of
 the ionic species. A uniport mechanism is where a single type
 of ion is transported, with no other processes occurring at the
@@ -1855,24 +1290,13 @@ the same direction. Strictly, this is ion-pair transportation, but
 we will cover examples for completeness in the next section.
 Here we choose to discuss research on anion transporta-
 tion based primarily on whether the transporter is either a) a
-Figure 72. A cyclotriveratrylene SAM which allows the detection of
-anions by EIS.
-Figure 73. Structures of colorimetric anion sensors used by Anzen-
 bacher to construct a sensor array able to differentiate brands of
-toothpaste by anionic composition.
-.
-Angewandte
-Reviews
-N. H. Evans and P. D. Beer
-11740
-www.angewandte.org
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
-mobile carrier (molecules that bind and “chaperone” the
+toothpaste by anionic composition.mobile carrier (molecules that bind and “chaperone” the
 ion(s) across the bilayer) or b) an anion channel (where
 molecules are large enough alone, or by aggregation, to span
 a bilayer).
+
+
 5.2. Mobile Anion Carriers—“Anionophores”
 The design of successful mobile anion carriers, which may
 be termed anionophores, typically arise from examples of
@@ -1884,10 +1308,7 @@ In one of the most established programs on anionophore
 research, A. P. Davis and co-workers have reported upon the
 use of derivatives of cholic acid, which possess both hydrogen-
 bond-donating urea groups and a lipophilic steroid skeleton
-that can shield a complexed anion (Figure 74).[192] In their first
-studies (in collaboration with B. D. Smith), efflux of chloride
 ions was monitored by use of an ISE and
-35Cl NMR
 spectroscopy.[193] The strongest binders of chloride were
 found to be the best transporters of the anion across
 unilamellar vesicles. In the same report, they used an
@@ -1900,14 +1321,12 @@ synthetic vesicles, and using the fluorescent dye lucigenin to
 monitor influx of chloride. Interesting results from these
 investigations include the presence of a positive charge having
 a deleterious effect on transport,[194] while a cyclic “chola-
-phane” (Figure 75a) was shown to be a more active trans-
 porter.[195] Although a modestly stronger anion binder, the
 authors attribute the greater transport activity of the chol-
 aphane to the increased shielding of the anion from the
 solvent. More recently, the same research group has reported
 the simplification of the structure from a steroid scaffold to
 a trans-decalin, while retaining high levels of transport
-activity (Figure 75b).[196] The potentially pharmacologically
 useful features of this trans-decalin structure are its lower
 lipophilicity (more likely to be deliverable through aqueous
 environments in vivo) and reduced molecular weight (more
@@ -1918,9 +1337,6 @@ pair. For example, Sessler et al. studied the efflux of chloride
 across synthetic membranes by synthetic prodigiosins and
 dipyrromethenes
 using
-an
-ISE
-(Figure 76a).[197]
 A
 pH
 dependency, consistent with HCl symport was observed.
@@ -1943,22 +1359,8 @@ dicatechol (Figure 77).[201] In the latter case, the presence and
 specific substitution pattern of the catechol appeared to be
 crucial, for neither the tetramethylated phenol analogue nor
 the 3,4-isomer were able to transport anions.
-Figure 74. Davis’ first cholic acid derived chloride transporter.
-Figure 75. A. P. Davis’ “cholaphane” (a) and trans-decalin based anio-
-nophore (b).
-Figure 76. Anionophores capable of H+/Cl transport: a) Sessler’s
-synthetic prodigiosin and b) an imidazole-pyrrole by Gale and B. D.
-Smith.
-Figure 77. Tren-based anionophores capable of H+/Cl transport:
-a) D. K. Smith’s triamide and b) J. T. Davis’ dicatechol.
 Anion Supramolecular Chemistry
-Angewandte
-Chemie
-11741
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-www.angewandte.org
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
 Attention has also been paid to the transportation of the
 bicarbonate ion across bilayers, with a key seminal report on
 this topic being made by J. T. Davis, Gale, Quesada et al.[202]
@@ -1978,12 +1380,10 @@ observed in the related, but structurally simpler, tambjamine
 alkaloids (Figure 78b).[204] Meanwhile, Gale and co-workers
 have reported that tripodal tri(thio)ureas are capable of Cl/
 HCO3
- antiport across synthetic membranes (Figure 78c).
 Notably, the triurea analogues exhibit much lower (if any)
 transport ability.[205] More recently, the same research group
 has demonstrated that squaramides can facilitate antiport
 chloride ion transportation, including Cl/HCO3
- exchange
 (Figure 78d). In this report, the squaramides were found to be
 better transporters than analogous thioureas and ureas.[206]
 This interest in the transportation of other biologically
@@ -2003,41 +1403,15 @@ bond between the receptor and lactate could explain this
 observation.
 Sulfate is a highly hydrophilic anion (in part because of its
 double negative charge), and hence is hugely challenging to
-transport across a lipophilic membrane. Gale, Jolliffe, Plavec,
-and co-workers have very recently used 33S NMR spectros-
 copy to demonstrate direct evidence of sulfate transportation
-with tri(thio)ureas based on tren or cyclopeptide scaffolds.[209]
 Specifically,
 33S-labeled sulfate, in conjunction with para-
 magnetic Mn2+ and Fe3+ ions, allowed for the discrimination
 of intra- and extravesicular sulfate. By using this technique it
-was shown that the cyclopeptide cage in Figure 80, could
-facilitate
-not
-only
-Cl/SO4
-2
-and
-HCO3
-/SO4
-2
-antiport,
-but
-Mn2+/
-SO4
-2 symport as well.
 Hydrogen bonding has been all but
 ubiquitous in the anionophores de-
 scribed to date. However, calix[4]ar-
 enes that can bind and transport anions
-by anion–p interactions (Figure 81a)
-or halogen bonding (Figure 81b) have
-been prepared by Matile and co-work-
-ers.[210] In a more recent communica-
-tion, the ability of simple, commer-
-cially
-available
-halogenated
 com-
 pounds to transport anions, by utilizing
 halogen bonding, has been reported by
@@ -2045,31 +1419,8 @@ the
 same
 research
 group
-(Fig-
-ure 81c).[211]
-Figure 78. Anionophores capable of Cl/HCO3
- transport: a) Obato-
-clax, b) tambjamine alkaloids, c) tripodal trithioureas, and d) squara-
-mides.
-Figure 79. Anionophores for: a) maleate and fumarate, b) pyruvate,
-and c) lactate.
-Figure 80. A tri-
-thiourea cyclopeptide
-cage capable of facili-
-tating transmembrane
-transportation of sul-
 fate.
-Figure 81. Anionophores that utilize a) anion–p and b,c) halogen-
-bonding interactions.
-.
-Angewandte
-Reviews
-N. H. Evans and P. D. Beer
-11742
-www.angewandte.org
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
 5.3. Anion Channels
 Considering that nature employs channels to transport
 anions, it is unsurprising that there has been research into the
@@ -2078,13 +1429,11 @@ illustrative examples; for further discussions we refer inter-
 ested readers to specialist reviews.[190]
 Tomich and co-workers have been pursuing the prepara-
 tion of chloride ion transporting channels for some consid-
-erable time.[212] Basing their work on the natural spinal cord
 glycine receptor ion channel, 22-amino acid residue peptides
 have been synthesized, and found to be selective for chloride,
 as tested by the planar lipid bilayer method. Gokel and co-
 workers have reported the use of shorter amphiphilic
 heptapeptides, which form anion channels upon dimerizing
-in a bilayer (Figure 82).[213] This research group has been able
 to optimize features (e.g. the lipophilic N and C termini and
 the actual amino acid sequence) of the peptides to maximize
 the efficiency of chloride transport.[214] Specific examples
@@ -2094,7 +1443,6 @@ Relatively small molecules may act as anion channels. For
 example, J. T. Davis and co-workers have used voltage-clamp
 experiments to demonstrate that a 1,3-alternate tetrabutyla-
 mide calix[4]arene could assemble into channels for the
-transport of the H+/Cl ion pair (Figure 83).[216] Subsequently,
 the same research group have reported upon calix[4]arenes
 existing in partial cone[217] and cone[218]
 conformations that also form ion chan-
@@ -2110,15 +1458,15 @@ rods
 transport
 chloride across a bilayer by anion–p
 interactions
-(Figure 84).[219]
 More
 recently,
 perylenediimide
 analogues
 have also been shown to facilitate
 anion transport.[220]
+
+
 6. Future Directions: Applications of Anion Supra-
-molecular Chemistry
 Here attention is turned to examples of functional
 applications of anion supramolecular chemistry. Some of
 these research themes have already reached remarkably high
@@ -2139,13 +1487,11 @@ huge amounts of research interest, and
 we emphasize that what follows merely
 represents a few highlights from a large
 number of examples which may be
-found in the literature.[221]
 For example, Jacobsen and co-
 workers reported upon a thiourea-cat-
 alyzed enantioselective Pictet–Spen-
 gler
 cyclization
-(Figure 85).[222]
 The
 proposed reaction mechanism has the
 chiral thiourea catalyst hydrogen bond-
@@ -2164,32 +1510,16 @@ asymmetric
 alkylation
 of
 oxindoles
-(Figure 86). Optimization of the catalyst structure and solvent
 allowed for almost quantitative yields and enantiomeric
-excesses of up to 97%.[226]
+
+
 6.1.2. Chiral Anions as Catalysts in Organic Chemistry
 Another highly investigated research theme based on
 anions in catalytic reactions has been the deployment of chiral
 anions to achieve stereoselective organic transformations.[227]
 In the majority of cases, these have been axially chiral
-Figure 82. Structure of Gokel’s prototype amphiphilic heptapeptide.
-Figure 83. Davis’ 1,3-
-alternate tetrabutyl-
-amide calix[4]arene.
-Figure 84. Matile’s
-naphthalenediimide
 anion–p slide.
-Figure 85. Key mechanistic steps in Jacobsen’s thiourea catalyzed
-Pictet–Spengler cyclization, with a mediating chloride ion.
-Anion Supramolecular Chemistry
-Angewandte
-Chemie
-11743
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-www.angewandte.org
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
-binaphthyl phosphate ions. For example, Mayer and List
+Anion Supramolecular Chemistrybinaphthyl phosphate ions. For example, Mayer and List
 reported upon the transfer hydrogenation of a,b-unsaturated
 aldehydes using dihydropyridine and 20 mol% of an ammo-
 nium binaphthyl phosphate salt, with enantiomer excesses
@@ -2201,7 +1531,6 @@ counterions to the cationic IrIII organometallic fragment.[229]
 Toste and co-workers have also described the use of
 a chiral binaphthylphosphate ion to mediate the asymmetric
 ring opening of meso-aziridinium and episulfonium ions
-(Figure 88).[230]
 The
 positively
 charged
@@ -2213,7 +1542,6 @@ excesses > 90%.
 In contrast, the enantioselective epoxidation of alkenes
 with a MnIII salen complex reported by Liao and List involves
 coordination of the chiral anion with the catalytic reagent,
-rather than the reaction substrate (Figure 89).[231] After
 thorough screening, almost quantitative yields and enantio-
 meric excesses of up to 96% were achieved.
 In a notable departure, Reek and co-workers have
@@ -2233,25 +1561,7 @@ consisting
 of
 a “shell” coating a “core”, possess unique catalytic properties.
 Beer and co-workers have used anion coordination as a novel
-Figure 86. Ooi’s asymmetric alkylation of oxindoles, catalyzed by
-a chiral 1,2,3-triazolium organocatalyst.
-Figure 87. Enantioselective transfer hydrogenation of unsaturated alde-
-hyedes, utilizing a chiral binaphthyl phosphate ion by Mayer and List.
-Figure 88. Mechanism of Toste’s chiral anion mediated asymmetric
-ring opening of meso-aziridinium ions.
-Figure 89. Enantioselective epoxidation of alkenes with a chiral MnIII-
-salen-phosphate complex by Liao and List.
-Figure 90. Reek’s asymmetric hydrogenation using a chiral cofactor.
-.
-Angewandte
-Reviews
-N. H. Evans and P. D. Beer
-11744
-www.angewandte.org
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
-synthetic method to prepare Au@Pd and Pt@Pd core@shell
+ring opening of meso-aziridinium ions.synthetic method to prepare Au@Pd and Pt@Pd core@shell
 nanoparticles.[233] First, core nanoparticles are prepared using
 stabilizing
 ligands
@@ -2259,12 +1569,13 @@ containing
 hydrogen-bond-donating
 amides. Then, the shell metal is introduced, in an oxidized
 form, as part of an anionic [MCl4]n complex which is bound
-by the hydrogen-bond-donating amides (Figure 91). To com-
 plete the synthesis, the metal is reduced, thereby yielding the
 core@shell nanoparticles. The Au@Pd nanoparticles synthe-
 sized by this method were shown to be highly efficient in
 catalyzing the industrially useful conversion of chloronitro-
 benzene into chloroaniline.
+
+
 6.2 Anionic Extraction
 As stated in the Introduction, a key motivation for
 investigating anion recognition is the capture and removal
@@ -2275,7 +1586,6 @@ cean and co-workers, who have been able to separate sulfate
 from simulated nuclear waste. The key challenges they faced
 included the strong hydration of the dianion, the presence of
 various competing anions, and extreme alkalinity (pH > 14).
-However, a remarkably simple tren-triurea (Figure 92a) can
 extract sulfate from simulated nuclear waste by crystalliza-
 tion.[234] One equivalent of sulfate ions is bound by hydrogen
 bonds from two tren-triurea ligand molecules that encapsu-
@@ -2292,23 +1602,13 @@ ation is required to form neutral anion–ligand systems. As in
 the case of the sulfate system developed by Custelcean and
 co-workers, one equivalent of [PtCl6]2 ion is bound by two
 tren ligands, but the tren ligands are protonated, and
-crystallographical
-structure
-determination
-indicates
-that
 only two of the tren “arms” participate in hydrogen bonding
 with any given anion. The authors were able to demonstrate
 that this system was able to recover PtIV from acidic chloride
 feed solutions.
+
+
 6.3. Anion-Responsive Materials and Molecules
-The
-generation
-of
-systems
-which
-respond
-through
 a change in a property that is beyond a perturbation leading
 simply to an optical or electrochemical sensory response is
 a key area of investigation in supramolecular chemistry today.
@@ -2324,22 +1624,7 @@ a fibrous solid network and a solvent that is retained within
 this solid “structure”. A gel will remain in the vessel in which
 it is residing upon inversion of the vessel; however, upon
 heating it may pass through a phase transition, equivalent to
-the melting of a solid, at a temperature denoted Tgel.
-Figure 91. Beer’s method of synthesizing core@shell nanoparticles by
-complexation of the shell metal as an anionic complex by functional-
-ized core nanoparticles.
-Figure 92. Structures of tren-triureas used by a) Custelcean to extract
-sulfate from simulated nuclear waste and b) Tasker and Schrçder to
-extract and transport [PtCl6]2.
-Anion Supramolecular Chemistry
-Angewandte
-Chemie
-11745
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-www.angewandte.org
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
-Molecules containing neutral hydrogen-bond donors and
+the melting of a solid, at a temperature denoted Tgel.Molecules containing neutral hydrogen-bond donors and
 acceptors, for example ureas, may form gels provided the
 solvent is not too competitive to prevent hydrogen bonding.
 Anions may be added that compete as hydrogen-bond
@@ -2361,14 +1646,12 @@ Anion-triggered hydrogelators have also been reported.
 For example, Mocerino and Ogden described a proline-
 functionalized
 calix[4]arene
-(Figure 94a)
 which
 formed
 hydrogels in the presence of specific anions; the effect the
 anion had on gel stability was attributed to the Hofmeister
 series.[239] Zhang and co-workers demonstrated that proton-
 ated melamine will form gels in water with oxoanions such as
-nitrate, phosphate, sulfate, and ATP (Figure 94b).[240] In both
 cases, gelation can be switched off by increasing the pH value,
 which leads to deprotonation of the gelator and loss of the
 positive charge required to interact with the anion in the
@@ -2376,28 +1659,14 @@ competitive aqueous solvent.
 Anions have also been used to affect the supramolecular
 structures of liquid crystals. Kim and co-workers incorporated
 a guanidinium motif onto the apex of a mesogen to allow
-interaction of an anion with the
 molecule (Figure 95).[241] The result-
-ing
-cation
-forms
-supramolecular
-structures that depend upon the
-nature of the counterion: hexagonal
-columnar with nitrate or tetrafluor-
-oborate, rectangular columnar with
-HCCCO2
-, while a cubic mesophase
-is observed with chloride. Notably
-the deprotonated guanidine is not
-a liquid crystal, but does form a gel
-phase in dodecane.
+
+
 6.3.2. Anion-Responsive Complexes and Molecules
 The effect of anions on the structures and conformational
 behaviors of single chemical species has also been docu-
 mented. For example, Yam and co-workers have reported the
 anion-assisted trans-cis isomerization of a PdII-phosphine
-complex (Figure 96).[242] Both phosphine ligands contain an
 acetanilide functionality, which can form a convergent hydro-
 gen-bonding cleft to an appropriate anion only when cis to
 one another. Hence, in chloroform, the addition of chloride or
@@ -2406,29 +1675,7 @@ reversed by the addition of DMSO.
 Jones and Hamilton have documented the ability of halide
 ions to control the conformation of hydrogen-bonded diphe-
 nylacetylenes.[243] In chloroform, the free diphenylacetylene
-Figure 93. Structure of Steed’s diurea gelators, illustrating the hydro-
-gen bonding between individual molecules.
-Figure 94. Anion-triggered hydrogelators: a) structure of proline-func-
-tionalized calix[4]arene and b) proposed hydrogen-bonding interactions
-of anion-templated gel structures of melamine and nitrate.
-Figure 95. Kim’s guanidi-
-nium-functionalized
-mesogen, which exhibits
-different supramolecular
-structures depending on
-the counterion.
-Figure 96. Yam’s anion-assisted trans–cis isomerization of a PdII-phos-
-phine complex.
-.
-Angewandte
-Reviews
-N. H. Evans and P. D. Beer
-11746
-www.angewandte.org
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
-derivative (Figure 97) exists mainly (ca. 9:1) in the confor-
+phine complex.derivative (Figure 97) exists mainly (ca. 9:1) in the confor-
 mation where the ester carbonyl group can hydrogen bond to
 one of the NH groups of the acidic urea functionality. A
 halide ion will bind in preference to the urea, so the addition
@@ -2440,7 +1687,6 @@ architectures is the potential for such molecules to exhibit
 relative motion of their constituent parts. In recent times, it
 has been shown that this may be achieved by use of anionic
 stimuli. For example, Beer and co-workers have reported
-a pH-switchable catenane (Figure 98).[244] Synthesized by
 using a chloride ion template and then exchanged to the
 hexafluorophosphate salt, the catenane contains a phenol
 which may be deprotonated to generate a phenoxide moiety.
@@ -2454,7 +1700,6 @@ reported by Keaveney and Leigh.[245]
 Alternatively, the switching of the counterion of a pos-
 itively charged interlocked molecule may induce molecular
 motion. For example, Leigh and co-workers synthesized the
-chloride salt of a rotaxane (Figure 99), where the macrocyclic
 component initially resides over a pyridinium ring in the axle,
 as a consequence of electrostatic attraction between the
 positively charged pyridinium ring and a negatively charged
@@ -2464,30 +1709,12 @@ hexafluorophosphate, leaves the PdII cation coordinatively
 unsaturated and induces shuttling to the Lewis basic nitrogen
 atom of the triazole. Reintroduction of chloride returns the
 macrocycle to its original position. Other rotaxane shuttles,
-switchable by Cl/PF6
- metathesis, have also been reported by
 the research groups of Beer[247] and Chiu.[248]
 A neutral rotaxane, switchable by the addition and
 removal of acetate, has been reported by Chiu and co-
-workers (Figure 100).[249] In CDCl3/CD3CN (1:1), the axle of
 the rotaxane resides with the urea C=O group hydrogen
 bonding to the 2,6-pyridyldiamide moiety of the macrocycle.
-In the presence of acetate, the urea NH groups hydrogen
-Figure 97. Hamilton’s halide-controlled hydrogen-bonded diphenylace-
-tylene.
-Figure 98. Beer’s pH-switchable phenol/phenoxide catenane.
-Figure 99. Leigh’s molecular shuttle driven by Cl/PF6
- metathesis.
-Figure 100. Chiu’s acetate-driven molecular shuttle.
-Anion Supramolecular Chemistry
-Angewandte
-Chemie
-11747
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-www.angewandte.org
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
-bond to the anion, thereby forcing the macrocycle to move
+Anion Supramolecular Chemistrybond to the anion, thereby forcing the macrocycle to move
 and hydrogen bond to the ester C=O group instead.
 We note that appropriately designed switchable inter-
 locked molecules have been shown to act as anion sensors.
@@ -2495,6 +1722,8 @@ Examples of rotaxane shuttles that provide an optical sensory
 response to chloride have been reported recently by the
 research groups of B. D. Smith (see Section 4.1.3)[158,159] and
 Beer.[250]
+
+
 6.3.3. Anion-Responsive Transition-Metallo-Organic Cages
 Whereas metal-templated organic cages that can act as
 anion receptors are known,[251] examples that are responsive
@@ -2504,67 +1733,30 @@ very recently.
 Nitschke and co-workers have described that the reaction
 of p-toluidine, 6,6’-diformyl-3,3’-bipyridine, and Co(OTf)2
 produces a [Co4L6]8+ tetrahedron, where each ligand L is
-a di(imine)bipyridyl moiety (Figure 101).[252] The addition of
 LiClO4 leads to a structural reconstitution to create a barrel-
 like [Co10L15]20+ pentagonal prism, which binds chloride
-within its structure with an affinity K > 6  105m1. The same
 research group has also reported an alternative system, where
 4,4’-diaminobiphenyl, 2-formylpyridine, and a FeII salt are
 allowed to react. This reaction leads to a [Fe4L6]8+ tetrahedral
 cage, which exists as a system of interconverting diastereo-
 mers in solution. The addition of anionic guests leads to new
 combinations of diastereomers, which are able to rotate their
-bonds to adapt to the particular anion added.[253]
 Chifotides, Dunbar, and co-workers have studied the
 conversion of FeII di(pyridyl)tetrazine cages with p-acidic
 cavities by exchange of the anion encapsulated within the self-
-assembled structure (Figure 102).[254] They first established
 that a 3,6-bis(2-pyridyl)-1,2,4,5-tetrazine (bptz) ligand forms
 a molecular square [Fe4(bptz)4(CH3CN)8](BF4)8 with the
-BF4
  ion and a pentagon [Fe5(bptz)5(CH3CN)10](SbF6)10
-with the SbF6
  ion. X-ray crystallography indicated that
-a BF4
- and (two) SbF6
  ions reside within the cavities of the
 respective self-assembled structures. It was then demon-
-strated that it was possible to convert a SbF6
--templated
-pentagon into a square by using a 25-fold excess of BF4
- in
 acetonitrile at reflux. The failure to achieve this conversion
-under less-stringent conditions (a 15-fold excess of BF4
-,
 stirring at room temperature), suggests that the pentagonal
-SbF6
  capsule is much more stable than the square BF4
-
 structure.
 Clever and co-workers have reported upon the elegant
 formation of an interpenetrated coordination cage upon
-BF4
-/Cl metathesis (Figure 103).[255] Formation of a thermo-
-Figure 101. Nitschke’s [Co4L6]8+ tetrahedron and [Co10L15]20+ pentagonal
-prism.
-Figure 102. Study by Chifotides and Dunbar of the conversion of
-a SbF6
--templated pentagonal cage into a BF4
--templated molecular
-square.
-Figure 103. Clever’s monomeric cage that can form an interpenetrated
-dimer upon BF4
-/Cl metathesis.
-.
-Angewandte
-Reviews
-N. H. Evans and P. D. Beer
-11748
-www.angewandte.org
- 2014 Wiley-VCH Verlag GmbH & Co. KGaA, Weinheim
-Angew. Chem. Int. Ed. 2014, 53, 11716 – 11754
- 15213773, 2014, 44, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/anie.201309937 by University Of Science, Wiley Online Library on [15/10/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
-dynamically stable monomeric [Pd2L4](BF4)4 cage occurs in
+BF4dynamically stable monomeric [Pd2L4](BF4)4 cage occurs in
 acetonitrile upon reacting [Pd(CH3CN)4][BF4] with a mono-
 dentate dibenzosuberone dipyridyl ligand derivatized with
 a bulky aryl substituent. The addition of the much smaller
@@ -2572,7 +1764,8 @@ chloride ion permits dimerization, thereby resulting in an
 interpenetrated [Cl@Pd4L8](BF4)7 double cage. The enlarged
 outer pockets of this double cage show a preference for the
 binding of large anions such as ReO4
-.
+
+
 7. Conclusion and Outlook
 In the last ten years or so, since the last review,[16] a vast
 wealth of anion supramolecular research has been under-
@@ -2595,14 +1788,3 @@ nanotechnological devices and materials, mimicking systems
 found in nature. Hence, anion supramolecular chemistry will
 continue to be an exciting, innovative, and productive field of
 scientific research for many years to come.
-We thank the many group members and collaborators who
-have contributed to the research carried out in the laboratories
-of P.D.B. in Oxford. P.D.B. wishes to acknowledge funding
-from the EPSRC, the European Research Council (Advanced
-Grant), the European Union for Marie Curie Fellowships, the
-Clarendon Fund, and the Royal Commission for the Exhibi-
-tion of 1851. N.H.E. wishes to thank the EPSRC for the
-funding of his doctoral studentship at Oxford, and Lancaster
-University for their current on-going financial support.
-Received: November 15, 2013
-Published online: September 9, 2014

@@ -17,6 +17,7 @@ class ExtractOntologyEntities(dspy.Signature):
       - Ensure each entity name is specific and meaningful
       - Avoid redundancy by consolidating similar concepts
       - Avoid concepts describing data properties.
+      - Use '(' and ')' to replace square brackets '[' and ']' in entity names.
 
     Remember: The final goal is to create a precise and well-structured ontological framework that accurately represents the chemistry domain knowledge in the text. In this part, the goal is to extract all the entities to be the ontology classes to be used in the subsequent parts and ontology."""
     text: str = dspy.InputField(
@@ -35,16 +36,18 @@ class ExtractOntologyElements(dspy.Signature):
       - If a class is another class with more specific meaning or modifiers, it should be classified as a subclass of the other class even if the text does not explicitly mention their relationships.
       - Carefully analyze the text for "is-a" relationships between entities
       - Look for phrases indicating classification or categorization
+      - Carefully analyze the text for multiple inheritance relationships
       - Ensure the hierarchy is logically consistent
       - Document the evidence supporting each relationship
       - Verify that subclass-superclass relationship remains valid after removing modifiers and context
       - Avoid misclassification due to other entities appearing in modifiers of parent/child classes
-      - 
+      - Avoid circular or contradictory hierarchical relationships
 
     2. Determine Disjoint Relationships:
       - Identify mutually exclusive classes that cannot share instances
       - Look for explicit statements of incompatibility
       - Verify each disjoint relationship is properly justified
+      - Only extract disjoint class relationships when the text explicitly mentions that the two classes are disjoint, which means something cannot be both classes at the same time.
 
     Remember: The final goal is to create a precise and well-structured ontological framework that accurately represents the chemistry domain knowledge in the text. In this part, the goal is to extract all the hierarchy and disjointness of the ontology classes to abound ontology."""
 

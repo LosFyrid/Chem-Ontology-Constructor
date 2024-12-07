@@ -66,9 +66,9 @@ ONTOLOGY_CONFIG = {
 }
 
 _ASSESSMENT_CRITERIA_SCORE_CONFIG = {
-    "entity_score": 8,
+    "entity_score": 9,
     "hierachy_score": 7,
-    "disjointness_score": 5,
+    "disjointness_score": 6,
     "data_property_score": 4,
     "object_property_score": 8,
     "ontology_structure_score": 4,
@@ -93,13 +93,14 @@ Award 1 point for each criterion met:
 - Entities are properly consolidated without redundancy (1 point)
 - Entity design supports future expansion and integration with other ontologies (1 point)
 - Entities can be effectively applied across different chemical subdomains (1 point)
-- Entities have chemical meaning and accuracy even without the context of text and information fields (1 point)""",
+- Entities have chemical meaning and accuracy even without the context of text and information fields (1 point)
+- Entity names do not contain square brackets (1 point)""",
     "hierachy_score": _ASSESSMENT_CRITERIA_SCORE_CONFIG["hierachy_score"],
     "hierachy": f"""You are an expert chemist. Based on text, Class Hierarchy Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["hierachy_score"]} points):
 Award 1 point for each criterion met:
 - Class hierarchies align with valid chemical taxonomies (1 point)
 - Subclass relationships are logically sound, chemically meaningful and accurate even without the context of text and information fields (1 point)
-- Multiple inheritance is used appropriately when necessary (1 point)
+- Multiple inheritance is used appropriately when context explicitly mentions a class is a subclass of multiple classes (1 point)
 - Hierarchical relationships are stated or implied in the text (1 point)
 - Superclass-subclass pairs maintain consistent semantic meaning (1 point)
 - No circular or contradictory hierarchical relationships (1 point)
@@ -107,6 +108,7 @@ If the ontology has no subclass-superclass relationships, check if the text cont
     "disjointness_score": _ASSESSMENT_CRITERIA_SCORE_CONFIG["disjointness_score"],
     "disjointness": f"""You are an expert chemist. Based on text, Disjoint Classes Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["disjointness_score"]} points):
 Award 1 point for each criterion met:
+- Disjoint class relationships are explicitly stated in the text (1 point)
 - Correctly identifies mutually exclusive class relationships in chemical concepts (1 point)
 - Disjoint classes are comprehensive without missing key exclusions (1 point)
 - Disjoint classes reflect real chemical incompatibilities (1 point)
