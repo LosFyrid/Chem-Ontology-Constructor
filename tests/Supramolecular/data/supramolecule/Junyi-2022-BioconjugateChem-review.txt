@@ -1,3 +1,4 @@
+https://doi.org/10.1021/acs.bioconjchem.2c00096
 Applications of Synthetic Receptors in Bioanalysis and Drug
 Transport
 ABSTRACT: Synthetic receptors are powerful tools for molecular recognition. They can bind to guests with high selectivity and

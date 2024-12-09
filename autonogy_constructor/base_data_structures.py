@@ -14,7 +14,7 @@ class DataProperty(BaseModel):
     )
 
 class Entity(BaseModel):
-    """Extract entities from text for ontology creation, including classes and individuals, excluding data properties. Then regard all entities as classes. Do not miss any fields. Use '(' and ')' to replace square brackets '[' and ']' in entity names."""
+    """Extract entities from text for ontology creation, including classes and individuals, excluding data properties. Then regard all entities as classes. Do not miss any fields. Use '(' and ')' to replace square brackets '[' and ']' in entity names and abbreviations."""
     name: str = Field(description="Provide a clear and concise name for the entity. Use the format [Full Name]([Abbreviation]) if abbreviation is available, where [Full Name] should be in lowercase and separate words with underscores, and [Abbreviation] should keep its original format. Don't use plural form. Use '(' and ')' to replace square brackets '[' and ']'.")
     information: Union[str, None] = Field(
         default=None,

@@ -4,6 +4,7 @@ import yaml
 from pathlib import Path
 from dotenv import load_dotenv
 
+import owlready2
 from owlready2 import onto_path, get_ontology
 
 load_dotenv()
@@ -49,7 +50,9 @@ with open(config_path, "r") as f:
 
 _ONTOLOGY_CONFIG = yaml_settings["ontology"]
 onto_path.append(_ONTOLOGY_CONFIG["ontology_directory_path"])
+owlready2.JAVA_EXE = _ONTOLOGY_CONFIG["java_exe"]
 ontology = get_ontology(_ONTOLOGY_CONFIG["ontology_iri"]).load(only_local=True)
+
 
 LLM_CONFIG = yaml_settings["LLM"]
 EXTRACTOR_EXAMPLES_CONFIG = yaml_settings["extractor_examples"]
@@ -57,6 +60,7 @@ DATASET_CONSTRUCTION_CONFIG = yaml_settings["dataset_construction"]
 
 ONTOLOGY_CONFIG = {
     "ontology": ontology,
+    "closed_ontology_file_path": _ONTOLOGY_CONFIG["closed_ontology_iri"],
     "meta": ontology.get_namespace(_ONTOLOGY_CONFIG["namespace_meta_iri"]),
     "classes": ontology.get_namespace(_ONTOLOGY_CONFIG["namespace_classes_iri"]),
     "individuals": ontology.get_namespace(_ONTOLOGY_CONFIG["namespace_individuals_iri"]),

@@ -19,39 +19,35 @@ def merge_ontology(
         ontology_elements: 要合并的本体元素数据
         ontology_data_properties: 要合并的本体数据属性
         ontology_object_properties: 要合并的本体对象属性
+        source: 数据来源
     """
-    # 加载或创建本体
     try:
         onto = ONTOLOGY_CONFIG["ontology"]
+        
+        # 写入实体(类)
+        if ontology_entities and ontology_entities.entities:
+            _merge_entities(ontology_entities.entities, source)
+            onto.save()
+        # 写入层级关系
+        if ontology_elements and ontology_elements.hierarchy:
+            _merge_hierarchy(ontology_elements.hierarchy, source)
+            onto.save()
+        # 写入不相交关系
+        if ontology_elements and ontology_elements.disjointness:
+            _merge_disjointness(ontology_elements.disjointness)
+            onto.save()
+        # 写入数据属性
+        if ontology_data_properties and ontology_data_properties.data_properties:
+            _merge_data_properties(ontology_data_properties.data_properties, source)
+            onto.save() 
+        # 写入对象属性
+        if ontology_object_properties and ontology_object_properties.object_properties:
+            _merge_object_properties(ontology_object_properties.object_properties, source)
+            onto.save()
+            
     except Exception as e:
-        print(f"加载本体失败: {e}")
-        return
-    
-    # 写入实体(类)
-    if ontology_entities and ontology_entities.entities:
-        _merge_entities(ontology_entities.entities, source)
-        onto.save()
-    # 写入层级关系
-    if ontology_elements and ontology_elements.hierarchy:
-        _merge_hierarchy(ontology_elements.hierarchy, source)
-        onto.save()
-    # 写入不相交关系
-    if ontology_elements and ontology_elements.disjointness:
-        _merge_disjointness(ontology_elements.disjointness)
-        onto.save()
-    # 写入数据属性
-    if ontology_data_properties and ontology_data_properties.data_properties:
-        _merge_data_properties(ontology_data_properties.data_properties, source)
-        onto.save() 
-    # 写入对象属性
-    if ontology_object_properties and ontology_object_properties.object_properties:
-        _merge_object_properties(ontology_object_properties.object_properties, source)
-        onto.save()
-    try:
-        # 保存本体
-        onto.save()
-    except Exception as e:
-        print(f"保存本体失败: {e}")
+        print(f"本体合并失败: {e}")
+        raise  # 重新抛出异常，让调用者知道发生了错误
 
 def _class_exists(class_name: str) -> bool:
     """检查类是否存在"""
@@ -63,29 +59,44 @@ def _class_exists(class_name: str) -> bool:
 def _merge_entities(entities: List[base_data_structures.Entity], source: str):
     """合并实体(类)"""
     namespace = ONTOLOGY_CONFIG["classes"]
+    meta = ONTOLOGY_CONFIG["meta"]
+    
     for entity in entities:
-        if entity.name and "[" in entity.name and "]" in entity.name:
-            print(f"\n----------------------------------------------------------------\n类名包含方括号: {entity.name}\n----------------------------------------------------------------\n")
         try:
             if not _class_exists(entity.name):
                 with namespace:
                     new_class = types.new_class(entity.name, (Thing,))
                     if entity.information:
-                        new_class.information = [entity.information]
-                    new_class.source = [source]
+                        # 创建SourcedInformation实例
+                        info_instance = meta.SourcedInformation()
+                        info_instance.content = entity.information
+                        info_instance.source = source
+                        # 关联到类
+                        new_class.has_information.append(info_instance)
             else:
-                print(f"类 {entity.name} 已存在,更新类")
                 existing_class = namespace[entity.name]
-                if entity.information and entity.information not in existing_class.information:
-                    existing_class.information.append(entity.information)
-                if source and source not in existing_class.source:
-                    existing_class.source.append(source)
+                if entity.information:
+                    # 检查是否已存在相同的信息
+                    exists = False
+                    for info in existing_class.has_information:
+                        if info.content == entity.information and info.source == source:
+                            exists = True
+                            break
+                    
+                    if not exists:
+                        # 创建新的SourcedInformation实例
+                        info_instance = meta.SourcedInformation()
+                        info_instance.content = entity.information
+                        info_instance.source = source
+                        existing_class.has_information.append(info_instance)
         except Exception as e:
             print(f"添加实体 {entity.name} 失败: {e}")
 
 def _merge_hierarchy(hierarchies: List[base_data_structures.Hierarchy], source: str):
     """合并层级关系"""
     namespace = ONTOLOGY_CONFIG["classes"]
+    meta = ONTOLOGY_CONFIG["meta"]
+    
     for hierarchy in hierarchies:
         try:
             if _class_exists(hierarchy.subclass) and all(_class_exists(sup) for sup in hierarchy.superclass):
@@ -101,17 +112,21 @@ def _merge_hierarchy(hierarchies: List[base_data_structures.Hierarchy], source: 
                         subclass.is_a.append(superclass)
                         added_new = True
                 
-                # 只在添加了新父类时添加information和source
-                if added_new:
-                    if hierarchy.information and hierarchy.information not in subclass.hierarchy_information:
-                        subclass.hierarchy_information.append(hierarchy.information)
-                    if source and f"Source (Superclass: {', '.join(hierarchy.superclass)}): {source}" not in subclass.source:
-                        subclass.source.append(f"Source (Superclass: {', '.join(hierarchy.superclass)}): {source}")
+                # 只在添加了新父类时添加information
+                if added_new and hierarchy.information:
+                    # 创建SourcedInformation实例
+                    info_instance = meta.SourcedInformation()
+                    info_instance.content = hierarchy.information
+                    info_instance.source = f"Source (Superclass: {', '.join(hierarchy.superclass)}): {source}"
+                    # 关联到类
+                    subclass.has_information.append(info_instance)
             else:
                 if not _class_exists(hierarchy.subclass):
                     print(f"类 {hierarchy.subclass} 不存在")
-                if not _class_exists(hierarchy.superclass):
-                    print(f"类 {hierarchy.superclass} 不存在")
+                # 修改这里：检查每个父类是否存在
+                for sup in hierarchy.superclass:
+                    if not _class_exists(sup):
+                        print(f"类 {sup} 不存在")
         except Exception as e:
             print(f"添加层级关系 {hierarchy.subclass} -> {hierarchy.superclass} 失败: {e}")
 

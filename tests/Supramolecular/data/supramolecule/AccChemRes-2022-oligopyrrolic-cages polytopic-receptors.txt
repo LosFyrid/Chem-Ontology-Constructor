@@ -1,3 +1,4 @@
+https://doi.org/10.1021/acs.accounts.2c00120
 Oligopyrrolic Cages: From Classic Molecular Constructs to
 Chemically Responsive Polytopic Receptors
 CONSPECTUS: “Functional molecular systems”, discrete and self-assembled constructs
@@ -130,13 +131,10 @@ Cl−, an overall association constant on the order of 106 M−2 in
 CD2Cl2 was recorded at 298 K. Very slow exchange was seen in
 the cases of H2PO4
 −and SCN−(as their TBA salts) under
-otherwise identical experimental conditions. Overall, these
-Figure 2. Synthesis of cage 4 via the partial oxidation of 1 by DDQ. (Inset) Space-ﬁlling view of the structure of cage 4 deduced from single-crystal X-
-ray crystallographic analysis. Neutral guest molecules, speciﬁcally H2O, EtOH, and EtOAc, are omitted for clarity. Data from ref 12.
-Scheme 2. Synthetic Scheme of Pyrrole−Pyridine−Pyrrole-Based Cryptand 8
-Chart 1. Chemical Structures of Various Oligopyrrolic Cryptand Cages 9−14
+otherwise identical experimental conditions. 
 
-diﬀerences were ascribed to the combined eﬀect of size
+
+Overall, these diﬀerences were ascribed to the combined eﬀect of size
 complementary, steric, and electronic interactions.
 Chemical oxidation of cage 1 by 5,6-dichloro-2,3-dicyano-p-
 benzoquinone (DDQ) was found to produce an unprecedented

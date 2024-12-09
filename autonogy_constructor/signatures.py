@@ -16,10 +16,20 @@ class ExtractOntologyEntities(dspy.Signature):
         * Laboratory equipment and procedures
       - Ensure each entity name is specific and meaningful
       - Avoid redundancy by consolidating similar concepts
-      - Avoid concepts describing data properties.
-      - Use '(' and ')' to replace square brackets '[' and ']' in entity names.
+      - Avoid concepts describing data properties
+      - Use '(' and ')' to replace square brackets '[' and ']' in entity names and abbreviations
+      - Avoid '/' and '#' in entity names and abbreviations. Replace them with text to claim the meaning of the entity
+      - Entity representing the union or intersection of multiple entities should be split into multiple entities
+
+    2. Document Entity Information:
+      s- For each entity, extract a complete and comprehensive sentence from the text that best describes the entity
+      - The sentence should capture the essential characteristics or role of the entity
+      - Ensure the information is factual and directly supported by the text
+      - Avoid making inferences or combining information from different contexts
+      - Focus on clear, unambiguous descriptions
 
     Remember: The final goal is to create a precise and well-structured ontological framework that accurately represents the chemistry domain knowledge in the text. In this part, the goal is to extract all the entities to be the ontology classes to be used in the subsequent parts and ontology."""
+    
     text: str = dspy.InputField(
         desc="a paragraph of text to extract entities to form an ontology"
     )
@@ -42,6 +52,7 @@ class ExtractOntologyElements(dspy.Signature):
       - Verify that subclass-superclass relationship remains valid after removing modifiers and context
       - Avoid misclassification due to other entities appearing in modifiers of parent/child classes
       - Avoid circular or contradictory hierarchical relationships
+      - Most importantly, an entity A consists of an entity B, and this entity A is **not** a subclass of entity B. The composition and construction relationship is not a Superclass-Subclass relationship.
 
     2. Determine Disjoint Relationships:
       - Identify mutually exclusive classes that cannot share instances
@@ -71,6 +82,7 @@ class ExtractOntologyDataProperties(dspy.Signature):
         * Numerical measurements and quantities 
         * Descriptive characteristics
         * Physical or chemical properties
+      - More importantly, the value of a data property of an entity should be a state, and this value points the owner entity itself.
       - For each property:
         * Determine the owner entity from existing_ontology_elements
         * Identify specific values if present
@@ -101,6 +113,8 @@ class ExtractOntologyObjectProperties(dspy.Signature):
         * Verbs and action phrases
         * Structural relationships
         * Functional dependencies
+        * Composition and construction relationships
+      - More importantly, the value of an object property of an entity should be another entity, and this value points the value entity.
       - For each relationship:
         * Define clear domain (source) entities from existing_ontology_elements
         * Specify range (target) entities from existing_ontology_elements

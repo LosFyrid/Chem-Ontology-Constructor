@@ -3,12 +3,14 @@ ontology:
   ontology_file_path: "{{ontology_directory_path}}chem_ontology.owl"
   ontology_base_iri: "http://www.test.org/chem_ontologies/"
   ontology_iri: "{{ontology_base_iri}}chem_ontology.owl"
+  closed_ontology_iri: "{{ontology_base_iri}}closed_chem_ontology.owl"
   namespace_meta_iri: "{{ontology_base_iri}}meta/"
   namespace_classes_iri: "{{ontology_base_iri}}classes/"
   namespace_individuals_iri: "{{ontology_base_iri}}individuals/"
   namespace_data_properties_iri: "{{ontology_base_iri}}data_properties/"
   namespace_object_properties_iri: "{{ontology_base_iri}}object_properties/"
   namespace_axioms_iri: "{{ontology_base_iri}}axioms/"
+  java_exe: "C:/Program Files/Java/jdk-23/bin/java.exe"
 
 
 LLM:
