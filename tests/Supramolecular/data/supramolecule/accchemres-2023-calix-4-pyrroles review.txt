@@ -88,6 +88,8 @@ the binding of polar substrates.
 preferentially adopts 1,2- and 1,3-alternate conformations. The
 addition of a coordinating anion induces the switching of 1 into
 the cone conformation owing to the establishment of four
+
+
 In addition, and mainly in nonpolar chlorinated solvents, 1 acts
 as ion-pair receptor in the complexation of cesium, imidazolium
 and alkylammonium salts of coordinating anions. The cation is

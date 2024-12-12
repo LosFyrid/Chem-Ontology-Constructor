@@ -12,33 +12,56 @@ def create_metadata_properties():
     
     with ontology:
         # 创建SourcedInformation类
-        if not "SourcedInformation" in ontology.classes():
+        if not meta.SourcedInformation in ontology.classes():
             print("Creating SourcedInformation class...")
             class SourcedInformation(Thing):
                 namespace = meta
-        
+        si = meta.SourcedInformation
         # 创建content和source属性
         if not meta.content in ontology.data_properties():
             print("Creating content property...")
             class content(DataProperty):
                 namespace = meta
-                domain = [SourcedInformation]
+                domain = [si]
                 range = [str]
                 
         if not meta.source in ontology.data_properties():
             print("Creating source property...")
             class source(DataProperty):
                 namespace = meta
-                domain = [SourcedInformation]
+                domain = [si]
+                range = [str]
+
+        if not meta.file_path in ontology.data_properties():
+            print("Creating file_path property...")
+            class file_path(DataProperty):
+                namespace = meta
+                domain = [si]
+                range = [str]
+
+        # 创建type属性
+        if not meta.type in ontology.data_properties():
+            print("Creating type property...")
+            class type(DataProperty):
+                namespace = meta
+                domain = [si]
                 range = [str]
         
+        # 创建property属性
+        if not meta.property in ontology.data_properties():
+            print("Creating property property...")
+            class property(DataProperty):
+                namespace = meta
+                domain = [si]
+                range = [str]
+
         # 创建has_information对象属性
         if not meta.has_information in ontology.object_properties():
             print("Creating has_information property...")
             class has_information(ObjectProperty):
                 namespace = meta
-                domain = [Thing]
-                range = [SourcedInformation]
+                # domain = [Thing]
+                range = [si]
     
     ontology.save()
 

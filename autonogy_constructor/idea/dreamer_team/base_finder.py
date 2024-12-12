@@ -2,7 +2,7 @@ from typing import Dict, List, TypedDict
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.messages import BaseMessage
-from langgraph.graph import Graph, StateGraph
+from langgraph.graph import Graph, StateGraph, END
 
 class FinderState(TypedDict):
     """Base state for gap finder agents"""
@@ -108,11 +108,10 @@ class BaseFinder:
             }
         )
         
-        workflow.add_edge("generate", "end")
+        workflow.add_edge("generate", END)
         
         # Set entry and exit
         workflow.set_entry_point("analyze")
-        workflow.set_finish_point("end")
         
         return workflow.compile()
     

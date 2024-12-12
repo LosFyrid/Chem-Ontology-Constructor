@@ -10,7 +10,8 @@ def merge_ontology(
     ontology_elements: base_data_structures.OntologyElements, 
     ontology_data_properties: base_data_structures.OntologyDataProperties,
     ontology_object_properties: base_data_structures.OntologyObjectProperties,
-    source: str
+    source: str,
+    file_path: str
 ):
     """
     将本体数据合并到已有本体中
@@ -26,11 +27,11 @@ def merge_ontology(
         
         # 写入实体(类)
         if ontology_entities and ontology_entities.entities:
-            _merge_entities(ontology_entities.entities, source)
+            _merge_entities(ontology_entities.entities, source, file_path)
             onto.save()
         # 写入层级关系
         if ontology_elements and ontology_elements.hierarchy:
-            _merge_hierarchy(ontology_elements.hierarchy, source)
+            _merge_hierarchy(ontology_elements.hierarchy, source, file_path )
             onto.save()
         # 写入不相交关系
         if ontology_elements and ontology_elements.disjointness:
@@ -38,11 +39,11 @@ def merge_ontology(
             onto.save()
         # 写入数据属性
         if ontology_data_properties and ontology_data_properties.data_properties:
-            _merge_data_properties(ontology_data_properties.data_properties, source)
+            _merge_data_properties(ontology_data_properties.data_properties, source, file_path)
             onto.save() 
         # 写入对象属性
         if ontology_object_properties and ontology_object_properties.object_properties:
-            _merge_object_properties(ontology_object_properties.object_properties, source)
+            _merge_object_properties(ontology_object_properties.object_properties, source, file_path)
             onto.save()
             
     except Exception as e:
@@ -56,7 +57,29 @@ def _class_exists(class_name: str) -> bool:
     except Exception:
         return False
 
-def _merge_entities(entities: List[base_data_structures.Entity], source: str):
+def _instantiate_sourced_information(source: str, type: str, file_path: str, superclass: List[str] = None, property = None, information: str = None):
+    """创建SourcedInformation实例"""
+    meta = ONTOLOGY_CONFIG["meta"]
+    info_instance = meta.SourcedInformation()
+    info_instance.source = [source]
+    info_instance.file_path = [file_path]
+    if type == "entity":
+        info_instance.content = [information]
+        info_instance.type = ["entity"]
+    elif type == "hierarchy":
+        info_instance.content = [f"(Superclass: {', '.join(superclass)}): {information}"]
+        info_instance.type = ["hierarchy"]
+    elif type == "data_property":
+        info_instance.content = [information]
+        info_instance.type = ["data_property"]
+        info_instance.property = [property]
+    elif type == "object_property":
+        info_instance.content = [information]
+        info_instance.type = ["object_property"]
+        info_instance.property = [property] 
+    return info_instance
+
+def _merge_entities(entities: List[base_data_structures.Entity], source: str, file_path: str):
     """合并实体(类)"""
     namespace = ONTOLOGY_CONFIG["classes"]
     meta = ONTOLOGY_CONFIG["meta"]
@@ -66,11 +89,10 @@ def _merge_entities(entities: List[base_data_structures.Entity], source: str):
             if not _class_exists(entity.name):
                 with namespace:
                     new_class = types.new_class(entity.name, (Thing,))
+                with meta:
                     if entity.information:
                         # 创建SourcedInformation实例
-                        info_instance = meta.SourcedInformation()
-                        info_instance.content = entity.information
-                        info_instance.source = source
+                        info_instance = _instantiate_sourced_information(source, "entity", file_path, information=entity.information)
                         # 关联到类
                         new_class.has_information.append(info_instance)
             else:
@@ -85,14 +107,12 @@ def _merge_entities(entities: List[base_data_structures.Entity], source: str):
                     
                     if not exists:
                         # 创建新的SourcedInformation实例
-                        info_instance = meta.SourcedInformation()
-                        info_instance.content = entity.information
-                        info_instance.source = source
+                        info_instance = _instantiate_sourced_information(source, "entity", file_path, information=entity.information)
                         existing_class.has_information.append(info_instance)
         except Exception as e:
             print(f"添加实体 {entity.name} 失败: {e}")
 
-def _merge_hierarchy(hierarchies: List[base_data_structures.Hierarchy], source: str):
+def _merge_hierarchy(hierarchies: List[base_data_structures.Hierarchy], source: str, file_path: str):
     """合并层级关系"""
     namespace = ONTOLOGY_CONFIG["classes"]
     meta = ONTOLOGY_CONFIG["meta"]
@@ -115,9 +135,7 @@ def _merge_hierarchy(hierarchies: List[base_data_structures.Hierarchy], source: 
                 # 只在添加了新父类时添加information
                 if added_new and hierarchy.information:
                     # 创建SourcedInformation实例
-                    info_instance = meta.SourcedInformation()
-                    info_instance.content = hierarchy.information
-                    info_instance.source = f"Source (Superclass: {', '.join(hierarchy.superclass)}): {source}"
+                    info_instance = _instantiate_sourced_information(source, "hierarchy", file_path, superclass=hierarchy.superclass, information=hierarchy.information)
                     # 关联到类
                     subclass.has_information.append(info_instance)
             else:
@@ -142,7 +160,7 @@ def _merge_disjointness(disjointness: List[base_data_structures.Disjointness]):
         except Exception as e:
             print(f"添加不相交关系 {disj.class1} <-×-> {disj.class2} 失败: {e}")
 
-def _merge_data_properties(data_properties: List[base_data_structures.DataProperty], source: str):
+def _merge_data_properties(data_properties: List[base_data_structures.DataProperty], source: str, file_path: str):
     """合并数据属性"""
     namespace = ONTOLOGY_CONFIG["data_properties"]
     class_namespace = ONTOLOGY_CONFIG["classes"]
@@ -151,16 +169,27 @@ def _merge_data_properties(data_properties: List[base_data_structures.DataProper
             if not dp.name in ONTOLOGY_CONFIG["ontology"].data_properties():
                 with namespace:
                     new_dp = types.new_class(dp.name, (DataProperty,))
-                    if dp.information:
-                        new_dp.information = [dp.information]
-                    new_dp.source = [source]
+                    # print(f"创建数据属性 {dp.name}")
+                    # if dp.information:
+                    #     print(f"创建SourcedInformation实例")
+                    #     info_instance = _instantiate_sourced_information(source, "data_property", information=dp.information)
+                    #     print(f"将SourcedInformation实例关联到数据属性 {dp.name}")
+                    #     new_dp.has_information.append(info_instance)
             else:
                 print(f"数据属性 {dp.name} 已存在,更新数据属性")    
                 new_dp = namespace[dp.name]
-                if dp.information and dp.information not in new_dp.information:
-                    new_dp.information.append(dp.information)
-                if source and source not in new_dp.source:
-                    new_dp.source.append(source)
+                # # 检查是否已存在相同的信息
+                # if dp.information:
+                #     exists = False
+                #     for info in new_dp.has_information:
+                #         if info.content == dp.information and info.source == source:
+                #             exists = True
+                #             break
+                            
+                #     if not exists:
+                #         # 创建并添加新的信息
+                #         info_instance = _instantiate_sourced_information(source, "data_property", information=dp.information)
+                #         new_dp.has_information.append(info_instance)
                 
             if dp.values:
                 flattened_values = flatten_dict(dp.values)
@@ -181,6 +210,17 @@ def _merge_data_properties(data_properties: List[base_data_structures.DataProper
                             else:
                                 owner_class = And(entity_classes)
                             
+                                domain_class_name = f"intersection_of_{'_'.join(entity_classes)}"
+
+                                with class_namespace:
+                                    domain_class = types.new_class(domain_class_name, (Thing,))
+                                    domain_class.equivalent_to.append(owner_class)
+                                    owner_class = domain_class
+
+
+                            info_instance = _instantiate_sourced_information(source, "data_property", file_path, property=dp.name, information=value)
+                            owner_class.has_information.append(info_instance)
+
                             # 获取当前值，如果不存在则初始化为空列表
                             current_values = getattr(owner_class, dp.name, [])
                             
@@ -204,7 +244,7 @@ def _merge_data_properties(data_properties: List[base_data_structures.DataProper
         except Exception as e:
             print(f"添加数据属性 {dp.name} 失败: {e}")
 
-def _merge_object_properties(object_properties: List[base_data_structures.ObjectProperty], source: str):
+def _merge_object_properties(object_properties: List[base_data_structures.ObjectProperty], source: str, file_path: str):
     """合并对象属性"""
     namespace = ONTOLOGY_CONFIG["object_properties"]
     class_namespace = ONTOLOGY_CONFIG["classes"]
@@ -214,16 +254,22 @@ def _merge_object_properties(object_properties: List[base_data_structures.Object
             if not op.name in ONTOLOGY_CONFIG["ontology"].object_properties():
                 with namespace:
                     new_op = types.new_class(op.name, (ObjectProperty,))
-                    if op.information:
-                        new_op.information = [op.information]
-                    new_op.source = [source]
+                    # if op.information:
+                    #     info_instance = _instantiate_sourced_information(source, "object_property", information=op.information)
+                    #     new_op.has_information.append(info_instance)
             else:
                 print(f"对象属性 {op.name} 已存在,更新对象属性")
                 new_op = namespace[op.name]
-                if op.information and op.information not in new_op.information:
-                    new_op.information.append(op.information)
-                if source and source not in new_op.source:
-                    new_op.source.append(source)
+                # if op.information:
+                #     exists = False
+                #     for info in new_op.has_information:
+                #         if info.content == op.information and info.source == source:
+                #             exists = True
+                #             break
+                            
+                #     if not exists:
+                #         info_instance = _instantiate_sourced_information(source, "object_property", information=op.information)
+                #         new_op.has_information.append(info_instance)
                 
             # 处理对象属性的实例
             if op.instances:
@@ -256,15 +302,24 @@ def _merge_object_properties(object_properties: List[base_data_structures.Object
                                         # 单个类的情况,直接添加类限制
                                         domain_class = class_namespace[instance.domain.entity]
                                         domain_class.is_a.append(restriction_expr)
+                                        
+                                        info_instance = _instantiate_sourced_information(source, "object_property", file_path, property=op.name, information=f"{instance.range.type}({instance.range.entity})")
+                                        domain_class.has_information.append(info_instance)
                                     else:
-                                        # 多个类构成表达式的情况,使用一般类公理
+                                        # 创建一个新的命名类来表示domain表达式
+                                        domain_class_name = f"{instance.domain.type}_of_{'_'.join(domain_entities)}"
                                         if instance.domain.type == 'union':
                                             domain_expr = Or([class_namespace[e] for e in domain_entities])
-                                        else: # intersection
+                                        else: # intersection 
                                             domain_expr = And([class_namespace[e] for e in domain_entities])
-                                        with axiom_namespace:
-                                            gca = GeneralClassAxiom(domain_expr)
-                                            gca.is_a.append(restriction_expr)
+                                            
+                                        # 将domain表达式定义为一个命名类
+                                        with class_namespace:
+                                            domain_class = types.new_class(domain_class_name, (Thing,))
+                                            domain_class.equivalent_to.append(domain_expr)
+                                            domain_class.is_a.append(restriction_expr)
+                                        info_instance = _instantiate_sourced_information(source, "object_property", file_path, property=op.name, information=f"{instance.restriction}({range_expr})")
+                                        domain_class.has_information.append(info_instance)
                     except Exception as e:
                         print(f"设置对象属性 {op.name} 的实例域和值域失败: {e}")
                     

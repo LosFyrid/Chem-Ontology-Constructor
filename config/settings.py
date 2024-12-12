@@ -98,7 +98,7 @@ Award 1 point for each criterion met:
 - Entity design supports future expansion and integration with other ontologies (1 point)
 - Entities can be effectively applied across different chemical subdomains (1 point)
 - Entities have chemical meaning and accuracy even without the context of text and information fields (1 point)
-- Entity names do not contain square brackets (1 point)""",
+- Entity full names and abbreviations do not contain square brackets (1 point)""",
     "hierachy_score": _ASSESSMENT_CRITERIA_SCORE_CONFIG["hierachy_score"],
     "hierachy": f"""You are an expert chemist. Based on text, Class Hierarchy Score (0-{_ASSESSMENT_CRITERIA_SCORE_CONFIG["hierachy_score"]} points):
 Award 1 point for each criterion met:

@@ -19,6 +19,7 @@ LLM:
   # model: "o1-mini"
   streaming: false
   temperature: 0
+  max_tokens: 10000
 
 extractor_examples:
   individual_directory_path:  ${PROJECT_ROOT}data/extractor_examples/concept/

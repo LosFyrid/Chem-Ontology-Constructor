@@ -17,7 +17,7 @@ class ExtractOntologyEntities(dspy.Signature):
       - Ensure each entity name is specific and meaningful
       - Avoid redundancy by consolidating similar concepts
       - Avoid concepts describing data properties
-      - Use '(' and ')' to replace square brackets '[' and ']' in entity names and abbreviations
+      - Use '(' and ')' to **replace square brackets** '[' and ']' in entity names and abbreviations. **SQAURE BRACKETS ARE NOT ALLOWED IN ENTITY NAMES AND ABBREVIATIONS IN ANY CASE**. Especially, replace square brackets in case of ions.
       - Avoid '/' and '#' in entity names and abbreviations. Replace them with text to claim the meaning of the entity
       - Entity representing the union or intersection of multiple entities should be split into multiple entities
 
@@ -52,7 +52,7 @@ class ExtractOntologyElements(dspy.Signature):
       - Verify that subclass-superclass relationship remains valid after removing modifiers and context
       - Avoid misclassification due to other entities appearing in modifiers of parent/child classes
       - Avoid circular or contradictory hierarchical relationships
-      - Most importantly, an entity A consists of an entity B, and this entity A is **not** a subclass of entity B. The composition and construction relationship is not a Superclass-Subclass relationship.
+      - **Most importantly**, an entity A consists of an entity B, and this entity A is **not** a subclass of entity B. The composition, component, construction and part of relationship is **not** a Superclass-Subclass relationship.
 
     2. Determine Disjoint Relationships:
       - Identify mutually exclusive classes that cannot share instances
