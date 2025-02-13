@@ -192,24 +192,27 @@ def _merge_data_properties(data_properties: List[base_data_structures.DataProper
                 #         new_dp.has_information.append(info_instance)
                 
             if dp.values:
+                
                 flattened_values = flatten_dict(dp.values)
+                
                 for owner_path, value in flattened_values.items():
                     # 从路径中提取所有实体名称
-                    entity_names = owner_path.split(" with ")
                     
+                    entity_names = owner_path.split(" with ")
+                   
                     # 检查所有实体是否存在
                     if all(_class_exists(name) for name in entity_names):
                         try:
                             # 获取所有实体类
                             entity_classes = [class_namespace[name] for name in entity_names]
-                            
+
                             # 如果只有一个实体
                             if len(entity_classes) == 1:
                                 owner_class = entity_classes[0]
                             # 如果有多个实体，创建它们的交集类
                             else:
                                 owner_class = And(entity_classes)
-                            
+
                                 domain_class_name = f"intersection_of_{'_'.join(entity_classes)}"
 
                                 with class_namespace:
@@ -218,7 +221,7 @@ def _merge_data_properties(data_properties: List[base_data_structures.DataProper
                                     owner_class = domain_class
 
 
-                            info_instance = _instantiate_sourced_information(source, "data_property", file_path, property=dp.name, information=value)
+                            info_instance = _instantiate_sourced_information(source, "data_property", file_path, property=dp.name, information=value if not isinstance(value, list) else f"({', '.join(value)})")
                             owner_class.has_information.append(info_instance)
 
                             # 获取当前值，如果不存在则初始化为空列表
@@ -227,7 +230,6 @@ def _merge_data_properties(data_properties: List[base_data_structures.DataProper
                             # 如果当前值不是列表，创建一个包含当前值的新列表
                             if not isinstance(current_values, list):
                                 current_values = [current_values] if current_values is not None else []
-                                
                             # 如果新值不在当前值列表中，添加它
                             if value is not None:
                                 if isinstance(value, list):

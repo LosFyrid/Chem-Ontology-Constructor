@@ -4,56 +4,55 @@ import json
 from .base_finder import BaseFinder, FinderState
 
 class MethodologyFinder(BaseFinder):
-    """Agent for analyzing methodology transfer opportunities"""
+    """Agent for analyzing methodology transfer opportunities between domains"""
     
     def _get_analysis_prompt(self) -> ChatPromptTemplate:
         """Get prompt for methodology gap analysis"""
         return ChatPromptTemplate.from_messages([
-            ("system", "Analyze methodology transfer opportunities between domains."),
+            ("system", "你是一位专家，请分析两个本体之间方法论的差异及潜在的迁移可能性。"),
             ("user", """
-            Source Domain:
-            {source_domain}
-            
-            Target Domain:
-            {target_domain}
-            
-            Focus on:
-            1. Successful methodologies in source domain
-            2. Similar challenges in target domain
-            3. Adaptation requirements
-            4. Transfer feasibility
-            
-            Format your response as a JSON list of gaps, each with:
-            - methodology_name: name of the methodology
-            - source_usage: how it's used in source domain
-            - target_challenge: related challenge in target domain
-            - adaptation_needs: what needs to be modified
-            - feasibility: feasibility score (0-1)
-            - potential_impact: expected impact of transfer
-            """)
+源本体：
+{source_domain}
+
+目标本体：
+{target_domain}
+
+请重点关注以下方面：
+1. 源本体中成功应用的方法论及其优势
+2. 目标本体面临的具体挑战以及方法论上的不足
+3. 针对目标本体的改进和方法论迁移需求
+4. 现有方法论在新领域中的适应性
+
+请以JSON格式返回分析结果，每个项目应包含：
+- methodology_name: 方法论名称
+- source_usage: 在源本体中的应用情况
+- target_challenge: 目标本体面临的挑战
+- adaptation_needs: 需要做出的调整
+- feasibility: 迁移可行性（0-1）
+- potential_impact: 预期的改善效果
+""")
         ])
     
     def _get_ideation_prompt(self) -> ChatPromptTemplate:
         """Get prompt for research idea generation"""
         return ChatPromptTemplate.from_messages([
-            ("system", "Generate research ideas for methodology transfer."),
+            ("system", "你是一位专家，请基于上述方法论差异分析提出改进思路及研究想法。"),
             ("user", """
-            Methodology Gaps:
-            {gaps}
-            
-            For each gap, propose a research idea that:
-            1. Adapts the methodology for the new domain
-            2. Addresses key challenges
-            3. Maintains scientific rigor
-            4. Has clear success criteria
-            
-            Format your response as a JSON list of ideas, each with:
-            - gap_addressed: which methodology gap this addresses
-            - research_question: clear problem statement
-            - adaptation_strategy: how to modify the methodology
-            - validation_approach: how to verify success
-            - expected_benefits: anticipated improvements
-            """)
+Methodology Gaps:
+{gaps}
+
+请提出研究想法，要求：
+1. 针对现有方法论的不足提出改进方案
+2. 评估方法论迁移的可行性和预期效果
+3. 给出明确的验证和评估方案
+
+请以JSON格式返回每个研究想法，格式包括：
+- gap_addressed: 针对的具体方法论差异
+- research_question: 清晰的研究问题描述
+- adaptation_strategy: 方法论的改进策略
+- validation_approach: 如何验证改进方案
+- expected_benefits: 预期改进效果
+""")
         ])
     
     def _parse_gaps(self, content: str) -> List[Dict]:

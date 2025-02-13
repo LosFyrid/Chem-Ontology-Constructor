@@ -1,278 +1,195 @@
-from typing import TypedDict, List, Dict
+from typing import TypedDict, List, Dict, Literal, Annotated, Optional
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
-from langchain_core.messages import BaseMessage
-from langgraph.graph import Graph, StateGraph
+from langgraph.graph import Graph, StateGraph, END, START
+from langgraph.graph.message import AnyMessage, add_messages
 import json
 
+from autonogy_constructor.idea.query_team.utils import parse_json
+
 class CriticState(TypedDict):
-    """Critic team state"""
+    """Critic团队状态"""
     # Input
-    research_idea: Dict  # 待评估的研究想法
-    context: Dict  # 相关上下文（当前类、目标类等）
+    research_ideas: List[Dict]
+    gap_analysis: Dict
     
-    # Evaluation Results
-    feasibility_score: float  # 科学可行性评分
-    novelty_score: float     # 创新性评分
-    practicality_score: float  # 实验可行性评分
-    verification_results: Dict  # 知识验证结果
+    # Evaluation
+    evaluations: List[Dict]
+    needs_improvement: bool
     
-    # Final Results
-    evaluations: List[Dict]  # 所有评估结果
-    suggestions: List[str]   # 改进建议
-    
-    # Query Management
-    query_requests: List[Dict]  # 需要查询的信息
+    # State Management
+    stage: str
+    previous_stage: Optional[str]
+    status: str
     
     # System
-    messages: List[BaseMessage]
-    done: bool
+    messages: Annotated[list[AnyMessage], add_messages]
 
 def create_critic_graph() -> Graph:
-    """Create critic team workflow"""
     workflow = StateGraph(CriticState)
-    llm = ChatOpenAI(temperature=0)
     
-    # 1. 科学可行性评估
-    def assess_feasibility(state: CriticState) -> CriticState:
-        """Assess scientific feasibility"""
-        prompt = ChatPromptTemplate.from_messages([
-            ("system", "You are a rigorous scientific reviewer."),
-            ("user", """
-            Research Idea:
-            {idea}
+    def assess_information(state: CriticState) -> Dict:
+        """评估是否有足够信息进行评估"""
+        try:
+            llm = ChatOpenAI(temperature=0)
             
-            Evaluate the scientific feasibility considering:
-            1. Theoretical foundation
-            2. Chemical principles
-            3. Methodology soundness
-            4. Potential challenges
-            
-            Provide:
-            1. Score (0-1)
-            2. Detailed analysis
-            3. Specific concerns
-            4. Suggestions for improvement
-            
-            Format as JSON with:
-            - score: float
-            - analysis: string
-            - concerns: list of strings
-            - suggestions: list of strings
-            """)
-        ])
-        
-        response = llm.invoke(prompt.format_messages(idea=state["research_idea"]))
-        result = parse_evaluation(response.content)
-        
-        state["feasibility_score"] = result["score"]
-        state["evaluations"].append({
-            "type": "feasibility",
-            "result": result
-        })
-        
-        return state
-    
-    # 2. 创新性评估
-    def assess_novelty(state: CriticState) -> CriticState:
-        """Assess novelty and innovation"""
-        prompt = ChatPromptTemplate.from_messages([
-            ("system", "You are an expert in research innovation assessment."),
-            ("user", """
-            Research Idea:
-            {idea}
-            
-            Evaluate the novelty considering:
-            1. Originality of approach
-            2. Potential impact
-            3. Advancement over existing work
-            4. Cross-domain insights
-            
-            Provide:
-            1. Score (0-1)
-            2. Innovation analysis
-            3. Similar existing work
-            4. Unique contributions
-            
-            Format as JSON with:
-            - score: float
-            - analysis: string
-            - similar_work: list of strings
-            - contributions: list of strings
-            """)
-        ])
-        
-        response = llm.invoke(prompt.format_messages(idea=state["research_idea"]))
-        result = parse_evaluation(response.content)
-        
-        state["novelty_score"] = result["score"]
-        state["evaluations"].append({
-            "type": "novelty",
-            "result": result
-        })
-        
-        return state
-    
-    # 3. 实验可行性评估
-    def assess_practicality(state: CriticState) -> CriticState:
-        """Assess experimental practicality"""
-        prompt = ChatPromptTemplate.from_messages([
-            ("system", "You are an experienced experimental chemist."),
-            ("user", """
-            Research Idea:
-            {idea}
-            
-            Evaluate the experimental practicality considering:
-            1. Required resources
-            2. Technical challenges
-            3. Time and cost
-            4. Safety considerations
-            
-            Provide:
-            1. Score (0-1)
-            2. Practical analysis
-            3. Resource requirements
-            4. Risk assessment
-            
-            Format as JSON with:
-            - score: float
-            - analysis: string
-            - requirements: list of strings
-            - risks: list of strings
-            """)
-        ])
-        
-        response = llm.invoke(prompt.format_messages(idea=state["research_idea"]))
-        result = parse_evaluation(response.content)
-        
-        state["practicality_score"] = result["score"]
-        state["evaluations"].append({
-            "type": "practicality",
-            "result": result
-        })
-        
-        return state
-    
-    # 4. 知识验证
-    def verify_knowledge(state: CriticState) -> CriticState:
-        """Verify knowledge accuracy"""
-        # 检查是否需要额外信息
-        prompt = ChatPromptTemplate.from_messages([
-            ("system", "You are verifying the knowledge foundations of a research idea."),
-            ("user", """
-            Research Idea:
-            {idea}
-            
-            Context:
-            {context}
-            
-            Identify:
-            1. Key knowledge claims
-            2. Required verifications
-            3. Missing information
-            4. Potential conflicts
-            
-            Format as JSON with:
-            - claims: list of knowledge claims
-            - verifications_needed: list of needed checks
-            - missing_info: list of required information
-            - potential_conflicts: list of concerns
-            """)
-        ])
-        
-        response = llm.invoke(prompt.format_messages(
-            idea=state["research_idea"],
-            context=state["context"]
-        ))
-        verification_needs = parse_verification(response.content)
-        
-        # 如果需要额外信息，生成查询请求
-        if verification_needs["missing_info"]:
-            state["query_requests"].extend([
+            assessment_prompt = ChatPromptTemplate.from_messages([
+                ("system", "You are an expert research evaluator. Assess if there is sufficient information for evaluation."),
+                ("user", """
+                Research Ideas:
+                {ideas}
+                
+                Gap Analysis:
+                {gap_analysis}
+                
+                Assess if we have enough information about:
+                1. Research methodology details
+                2. Expected outcomes
+                3. Technical feasibility
+                4. Resource requirements
+                
+                Return as JSON:
                 {
-                    "query": info,
-                    "purpose": "verification"
+                    "is_sufficient": bool,
+                    "missing_information": list[str],
+                    "required_queries": list[str],
+                    "reasoning": str
                 }
-                for info in verification_needs["missing_info"]
+                """)
             ])
-        
-        state["verification_results"] = verification_needs
-        return state
+            
+            response = llm.invoke(assessment_prompt.format_messages(
+                ideas=state["research_ideas"],
+                gap_analysis=state["gap_analysis"]
+            ))
+            
+            result = parse_json(response.content)
+            
+            if not result["is_sufficient"]:
+                return {
+                    "stage": "querying",  # 需要更多信息，转到查询阶段
+                    "previous_stage": state.get("stage"),
+                    "query_requests": [{
+                        "query": query,
+                        "requester": "critic",
+                        "priority": 1
+                    } for query in result["required_queries"]],
+                    "messages": [
+                        f"Insufficient information: {result['reasoning']}",
+                        f"Required information: {', '.join(result['missing_information'])}"
+                    ]
+                }
+            
+            return {
+                "stage": "critiquing",  # 信息充足，继续评估
+                "previous_stage": state.get("stage"),
+                "can_proceed": True,
+                "messages": ["Information assessment completed: sufficient information available"]
+            }
+            
+        except Exception as e:
+            return {
+                "status": "error",
+                "stage": "error",
+                "previous_stage": state.get("stage"),
+                "error": str(e),
+                "messages": [f"Information assessment failed: {str(e)}"]
+            }
     
-    # 5. 综合评估
-    def synthesize_evaluation(state: CriticState) -> CriticState:
-        """Synthesize all evaluations"""
-        # 计算总分
-        scores = {
-            "feasibility": state["feasibility_score"],
-            "novelty": state["novelty_score"],
-            "practicality": state["practicality_score"]
+    def evaluate_ideas(state: CriticState) -> Dict:
+        """评估研究想法"""
+        try:
+            llm = ChatOpenAI(temperature=0)
+            
+            evaluation_prompt = ChatPromptTemplate.from_messages([
+                ("system", "你是一位专家研究评审，请对提出的科学问题进行综合评价。"),
+                ("user", """
+Research Ideas:
+{ideas}
+
+Gap Analysis:
+{gap_analysis}
+
+请针对以下方面对每个科学问题进行评价：
+1. 创新性（0-10）：科学问题是否具有突破性的新观点？
+2. 可行性（0-10）：提出的问题是否可以通过现有方法解决？
+3. 科学性/知识针对性（0-10）：问题是否准确聚焦于科学知识而非仅仅是本体数据结构？
+4. 本体知识衔接（0-10）：科学问题与本体提供的科学信息是否紧密衔接？
+
+另外，如果对科学问题的正确性存在疑问，请在评价中予以说明，并建议补充查询以验证相关数据。
+
+请将评价结果以JSON格式返回，格式如下：
+{
+    "evaluations": [
+        {
+            "idea_id": str,
+            "scores": {
+                "innovation": int,
+                "feasibility": int,
+                "scientific_accuracy": int,
+                "knowledge_alignment": int
+            },
+            "comments": str,
+            "suggestions": list[str]
         }
-        
-        # 生成最终建议
-        prompt = ChatPromptTemplate.from_messages([
-            ("system", "Synthesize evaluations into final recommendations."),
-            ("user", """
-            Evaluations:
-            {evaluations}
+    ],
+    "needs_improvement": bool,
+    "improvement_areas": list[str]
+}
+""")
+            ])
             
-            Verification Results:
-            {verification}
+            response = llm.invoke(evaluation_prompt.format_messages(
+                ideas=state["research_ideas"],
+                gap_analysis=state["gap_analysis"]
+            ))
             
-            Provide:
-            1. Overall assessment
-            2. Key strengths
-            3. Major concerns
-            4. Improvement suggestions
+            result = parse_json(response.content)
             
-            Format as JSON with:
-            - assessment: string
-            - strengths: list of strings
-            - concerns: list of strings
-            - suggestions: list of strings
-            """)
-        ])
-        
-        response = llm.invoke(prompt.format_messages(
-            evaluations=state["evaluations"],
-            verification=state["verification_results"]
-        ))
-        synthesis = parse_synthesis(response.content)
-        
-        state["suggestions"] = synthesis["suggestions"]
-        state["done"] = True
-        return state
+            return {
+                "stage": "critiquing",
+                "previous_stage": state.get("stage"),
+                "status": "success",
+                "evaluations": result["evaluations"],
+                "needs_improvement": result["needs_improvement"],
+                "messages": [
+                    f"Evaluation completed with {len(result['evaluations'])} reviews",
+                    f"Areas needing improvement: {', '.join(result['improvement_areas'])}" 
+                    if result["needs_improvement"] else "No major improvements needed"
+                ]
+            }
+            
+        except Exception as e:
+            return {
+                "status": "error",
+                "stage": "error",
+                "previous_stage": state.get("stage"),
+                "error": str(e),
+                "messages": [f"Evaluation failed: {str(e)}"]
+            }
     
-    # Build workflow
-    workflow.add_node("feasibility", assess_feasibility)
-    workflow.add_node("novelty", assess_novelty)
-    workflow.add_node("practicality", assess_practicality)
-    workflow.add_node("verification", verify_knowledge)
-    workflow.add_node("synthesis", synthesize_evaluation)
+    # Add nodes
+    workflow.add_node("assess", assess_information)
+    workflow.add_node("evaluate", evaluate_ideas)
+    
+    # Add routing logic
+    def route_after_assessment(state: CriticState) -> Literal["evaluate", "need_info"]:
+        """Route based on information assessment"""
+        return "evaluate" if state.get("can_proceed", False) else "need_info"
     
     # Add edges
-    workflow.add_edge("feasibility", "novelty")
-    workflow.add_edge("novelty", "practicality")
-    workflow.add_edge("practicality", "verification")
-    
-    # Add conditional edges
-    def needs_verification(state: CriticState) -> bool:
-        return bool(state["query_requests"])
+    workflow.add_edge(START, "assess")
     
     workflow.add_conditional_edges(
-        "verification",
-        needs_verification,
+        "assess",
+        route_after_assessment,
         {
-            True: "query",  # 需要验证时转到查询子图
-            False: "synthesis"  # 不需要验证时进行综合评估
+            "evaluate": "evaluate",
+            "need_info": END  # 如果需要更多信息，结束当前图返回主工作流
         }
     )
     
-    workflow.add_edge("synthesis", "end")
-    
-    # Set entry and exit
-    workflow.set_entry_point("feasibility")
-    workflow.set_finish_point("end")
+    workflow.add_edge("evaluate", END)
     
     return workflow.compile()
 

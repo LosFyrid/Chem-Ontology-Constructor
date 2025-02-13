@@ -1,5 +1,10 @@
 from typing import List, Tuple, Dict, Optional, Set
 from owlready2 import *
+from langchain.chat_models import ChatOpenAI
+from langchain.prompts import ChatPromptTemplate
+
+from autonogy_constructor.idea.query_team.utils import parse_json
+
 
 class OntologyTools:
     """Tools for ontology querying and parsing
@@ -275,17 +280,213 @@ class OntologyTools:
     
     def parse_hierarchy_structure(self, root_class: str = None) -> Dict:
         """Parse complete hierarchy structure"""
+        visited = set()  # 添加循环检测
+        
         def build_tree(cls_name):
-            return {
+            if cls_name in visited:
+                return {"name": cls_name, "cyclic": True}
+            visited.add(cls_name)
+            tree = {
                 "name": cls_name,
                 "info": self.get_class_info(cls_name),
                 "children": [build_tree(c) for c in self.get_children(cls_name)]
             }
+            visited.remove(cls_name)
+            return tree
             
         if root_class:
             return build_tree(root_class)
         else:
-            # 找到所有顶层类
             top_classes = [cls.name for cls in self.onto.classes() 
                          if not self.get_parents(cls.name)]
             return [build_tree(cls) for cls in top_classes]
+
+class OntologyAnalyzer:
+    """本体分析工具 - 专注于本体结构分析"""
+    
+    def __init__(self):
+        self.llm = ChatOpenAI(temperature=0)
+        self.tools = OntologyTools(None)
+        
+    def analyze_domain_structure(self, ontology) -> Dict:
+        """分析领域的基本结构
+        - 核心概念和关系
+        - 属性分布
+        - 层次结构
+        """
+        self.tools.onto = ontology
+        hierarchy = self.tools.parse_hierarchy_structure()
+        
+        structure_info = {
+            "hierarchy": hierarchy,  # 只保留一份层次结构
+            "properties": [self.tools.parse_property_definition(p.name) 
+                         for p in ontology.properties()]
+        }
+        
+        prompt = ChatPromptTemplate.from_messages([
+            ("system", """You are an expert in ontology analysis.
+            Analyze the given ontology structure and identify key patterns and characteristics."""),
+            ("user", """Analyze the following ontology structure:
+            
+            Classes: {classes}
+            Properties: {properties}
+            Hierarchy: {hierarchy}
+            
+            Provide a comprehensive analysis including:
+            1. Core concepts and their relationships
+            2. Key structural patterns
+            3. Important property distributions
+            4. Potential research areas
+            
+            Format as JSON with:
+            - core_concepts: list[str]
+            - key_patterns: list[dict]
+            - property_analysis: dict
+            - research_opportunities: list[dict]
+            """)
+        ])
+        
+        response = self.llm.invoke(prompt.format_messages(**structure_info))
+        return parse_json(response.content)
+    
+    def find_key_concepts(self, ontology) -> List[Dict]:
+        """识别关键概念
+        - 概念的中心度
+        - 属性丰富度
+        - 连接模式
+        """
+        self.tools.onto = ontology
+        
+        # 获取本体信息
+        classes_info = []
+        for cls in ontology.classes():
+            class_info = {
+                "name": cls.name,
+                "properties": self.tools.get_class_properties(cls.name),
+                "parents": self.tools.get_parents(cls.name),
+                "children": self.tools.get_children(cls.name),
+                "related": self.tools.get_related_classes(cls.name)
+            }
+            classes_info.append(class_info)
+            
+        relationships = []
+        for prop in ontology.properties():
+            rel = self.tools.parse_property_definition(prop.name)
+            relationships.append(rel)
+            
+        prompt = ChatPromptTemplate.from_messages([
+            ("system", """You are an expert in identifying key concepts in scientific domains."""),
+            ("user", """Analyze these ontology concepts:
+            
+            Classes: {classes}
+            Relationships: {relationships}
+            
+            Identify key concepts based on:
+            1. Centrality in the network
+            2. Property richness
+            3. Connection patterns
+            4. Research potential
+            
+            Format as JSON with:
+            - key_concepts: list[dict]  # Each with name, importance_score, reasoning
+            - research_value: dict  # Research potential for each concept
+            """)
+        ])
+        
+        response = self.llm.invoke(prompt.format_messages(
+            classes=classes_info,
+            relationships=relationships
+        ))
+        return parse_json(response.content)
+        
+    def compare_domains(self, source_ontology, target_ontology) -> Dict:
+        """比较两个领域的基本结构
+        - 概念映射
+        - 结构差异
+        - 属性对应
+        """
+        # 分析源领域
+        self.tools.onto = source_ontology
+        source_structure = {
+            "hierarchy": self.tools.parse_hierarchy_structure(),
+            "properties": [self.tools.parse_property_definition(p.name) 
+                         for p in source_ontology.properties()],
+            "key_concepts": self.find_key_concepts(source_ontology)
+        }
+        
+        # 分析目标领域
+        self.tools.onto = target_ontology
+        target_structure = {
+            "hierarchy": self.tools.parse_hierarchy_structure(),
+            "properties": [self.tools.parse_property_definition(p.name) 
+                         for p in target_ontology.properties()],
+            "key_concepts": self.find_key_concepts(target_ontology)
+        }
+        
+        prompt = ChatPromptTemplate.from_messages([
+            ("system", """You are an expert in cross-domain knowledge transfer."""),
+            ("user", """Compare these two domains:
+            
+            Source Domain:
+            {source_structure}
+            
+            Target Domain:
+            {target_structure}
+            
+            Analyze:
+            1. Conceptual analogies
+            2. Methodological differences
+            3. Transfer opportunities
+            4. Potential innovations
+            
+            Format as JSON with:
+            - analogies: list[dict]  # 概念对应关系
+            - method_differences: list[dict]  # 方法论差异
+            - transfer_opportunities: list[dict]  # 知识迁移机会
+            - innovation_points: list[dict]  # 创新点
+            """)
+        ])
+        
+        response = self.llm.invoke(prompt.format_messages(
+            source_structure=source_structure,
+            target_structure=target_structure
+        ))
+        return parse_json(response.content)
+    
+    def get_research_opportunities(self, analysis_result: Dict) -> List[Dict]:
+        """从分析结果中提取研究机会"""
+        opportunities = []
+        
+        # 从领域结构分析中提取
+        if "research_opportunities" in analysis_result:
+            opportunities.extend(analysis_result["research_opportunities"])
+            
+        # 从关键概念分析中提取
+        if "key_concepts" in analysis_result:
+            for concept in analysis_result["key_concepts"]:
+                if "research_value" in concept and concept["research_value"].get("potential", 0) > 0.7:
+                    opportunities.append({
+                        "type": "concept_based",
+                        "concept": concept["name"],
+                        "opportunity": concept["research_value"]["description"]
+                    })
+                    
+        # 从跨领域分析中提取
+        if "cross_domain_analysis" in analysis_result:
+            cd_analysis = analysis_result["cross_domain_analysis"]
+            if "transfer_opportunities" in cd_analysis:
+                opportunities.extend([
+                    {
+                        "type": "transfer",
+                        **opp
+                    } for opp in cd_analysis["transfer_opportunities"]
+                ])
+            if "innovation_points" in cd_analysis:
+                opportunities.extend([
+                    {
+                        "type": "innovation",
+                        **point
+                    } for point in cd_analysis["innovation_points"]
+                ])
+                
+        return opportunities
