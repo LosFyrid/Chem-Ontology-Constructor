@@ -1,4 +1,4 @@
-from autonogy_constructor.modules import Assessment
+from autology_constructor.modules import Assessment
 from config.settings import ASSESSMENT_CRITERIA_CONFIG
 
 def assessor_metric(gold, pred, trace=None):

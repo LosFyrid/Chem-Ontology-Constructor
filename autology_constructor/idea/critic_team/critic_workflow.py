@@ -5,7 +5,7 @@ from langgraph.graph import Graph, StateGraph, END, START
 from langgraph.graph.message import AnyMessage, add_messages
 import json
 
-from autonogy_constructor.idea.query_team.utils import parse_json
+from autology_constructor.idea.query_team.utils import parse_json
 
 class CriticState(TypedDict):
     """Critic团队状态"""

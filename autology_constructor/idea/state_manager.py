@@ -1,20 +1,43 @@
 from typing import TypedDict, Literal, Dict, Optional, List, Union, Any, Annotated
 from langgraph.graph.message import AnyMessage, add_messages
 
-class WorkflowState(TypedDict):
-    """工作流状态"""
+class Query(TypedDict):
+    """Query Information Schema"""
+    request_natural_language: str  # 原始自然语言查询请求 (来自其他智能体)
+    request_processed: str # 处理后的自然语言查询请求
+    query_strategy_chosen: str # query agent 选择的查询策略: "tool_based" 或 "sparql"
+    query_plan_tool: Optional[List[Dict[str, Any]]] # 工具查询计划 (如果选择 tool_based)
+    query_sparql: Optional[str] # 生成的 SPARQL 查询语句 (如果选择 sparql)
+    raw_query_output: Optional[Any] # 原始查询输出 (工具函数或 SPARQL endpoint 返回的原始数据)
+    processed_response: Optional[str] # query agent 处理后的最终自然语言响应
+    source_agent: Optional[str] # 发起查询的智能体
+
+class QueryState(TypedDict):
+    """Query State Schema"""
+    current_query: Optional[Query]
+    query_history: List[Query]
+
+
+
+class WorkflowState(QueryState):
+    """Workflow Schema"""
     # Control
     stage: str
     previous_stage: Optional[str]
     status: str
     
     # Input
-    source_ontology: Any
-    target_ontology: Optional[Any]
+    ontology: Any
+    multi_domain_ontology: Optional[Any]
     analysis_type: str
     
-    # Context（统一存放所有子模块共同使用的信息）
-    shared_context: Dict  # 示例键： "ontology_analysis", "research_ideas", "gap_analysis", "query" (包含 query_requests, query_results, interface), "evaluations"
+    # Context
+    shared_context: Dict[str, Any]
+    ontology_analysis: Dict[str, Any]
+    research_ideas: List[Dict[str, Any]]
+    current_idea: Optional[Dict[str, Any]]
+    idea_evaluations: List[Dict[str, Any]]
+    gap_analysis: Dict[str, Any]
     
     # Error Handling & 控制信息
     error: Optional[str]
@@ -27,35 +50,35 @@ class StateManager:
     def __init__(self):
         """初始化状态管理器"""
         self.state = {
-            # Control
-            "stage": "querying",
-            "previous_stage": None,
-            "status": "initialized",
-            
-            # Input
-            "source_ontology": None,
-            "target_ontology": None,
-            "analysis_type": "single_domain",
-            
-            # Context
-            "shared_context": {},
-            "ontology_analysis": {},
-            "research_ideas": [],
-            "current_idea": None,
-            "idea_evaluations": [],
-            "gap_analysis": {},
-            
-            # Query Management
-            "query_interface": None,
-            "query_requests": [],
-            "query_results": {},
-            
-            # Error Handling
-            "error": None,
-            "needs_improvement": False,
-            
-            # System
-            "messages": []
+            "Control": {
+                "stage": "querying",
+                "previous_stage": None,
+                "status": "initialized",
+            },
+            "Input": {
+                "ontology": None,
+                "multi_domain_ontology": None,
+                "analysis_type": "single_domain",
+            },
+            "Context": {
+                "shared_context": {},
+                "ontology_analysis": {},
+                "research_ideas": [],
+                "current_idea": None,
+                "idea_evaluations": [],
+                "gap_analysis": {},
+            },
+            "Query Management": {
+                "current_query": None,
+                "query_history": [],
+            },
+            "Error Handling": {
+                "error": None,
+                "needs_improvement": False,
+            },
+            "System": {
+                "messages": []
+            }
         }
     
     def update_state(self, updates: Dict) -> None:

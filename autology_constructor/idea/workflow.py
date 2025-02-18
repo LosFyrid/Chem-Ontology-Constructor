@@ -1,15 +1,15 @@
 from typing import TypedDict, List, Dict, Any, Literal
 from langgraph.graph import Graph, StateGraph, END, START
-from autonogy_constructor.idea.query_team.query_workflow import create_query_graph
-from autonogy_constructor.idea.dreamer_team.dreamer_workflow import create_dreamer_graph
-from autonogy_constructor.idea.critic_team.critic_workflow import create_critic_graph
-from autonogy_constructor.idea.query_team.query_interface import QueryInterface
-from autonogy_constructor.idea.state_manager import WorkflowState, create_state_manager
-from autonogy_constructor.idea.query_team.ontology_tools import OntologyAnalyzer
-from autonogy_constructor.idea.dreamer_team.evidence_finder import EvidenceFinder
-from autonogy_constructor.idea.dreamer_team.knowledge_finder import KnowledgeFinder
-from autonogy_constructor.idea.dreamer_team.methodology_finder import MethodologyFinder
-from autonogy_constructor.idea.dreamer_team.meta_science_finder import MetaScienceFinder
+from autology_constructor.idea.query_team.query_workflow import create_query_graph
+from autology_constructor.idea.dreamer_team.dreamer_workflow import create_dreamer_graph
+from autology_constructor.idea.critic_team.critic_workflow import create_critic_graph
+from autology_constructor.idea.query_team.query_interface import QueryInterface
+from autology_constructor.idea.state_manager import WorkflowState, create_state_manager
+from autology_constructor.idea.query_team.ontology_tools import OntologyAnalyzer
+from autology_constructor.idea.dreamer_team.evidence_finder import EvidenceFinder
+from autology_constructor.idea.dreamer_team.knowledge_finder import KnowledgeFinder
+from autology_constructor.idea.dreamer_team.methodology_finder import MethodologyFinder
+from autology_constructor.idea.dreamer_team.meta_science_finder import MetaScienceFinder
 import os
 
 def create_workflow(ontology_folder: str) -> Graph:

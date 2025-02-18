@@ -5,8 +5,8 @@ from dspy.predict import Retry
 def my_backtrack_handler(func):
     return backtrack_handler(func, max_backtracks=5)
 
-from autonogy_constructor.signatures import ExtractOntologyEntities, ExtractOntologyElements, ExtractOntologyDataProperties, ExtractOntologyObjectProperties
-from autonogy_constructor.modules import Assessment
+from autology_constructor.signatures import ExtractOntologyEntities, ExtractOntologyElements, ExtractOntologyDataProperties, ExtractOntologyObjectProperties
+from autology_constructor.modules import Assessment
 
 class ChemOntologyWithEntitiesAssertions(dspy.Module):
     def __init__(self):

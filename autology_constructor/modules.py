@@ -5,9 +5,9 @@ from dspy.primitives.assertions import assert_transform_module, backtrack_handle
 from dspy.predict import Retry
 
 
-from autonogy_constructor.base_data_structures import OntologyElements, OntologyDataProperties, OntologyObjectProperties, OntologyEntities
-from autonogy_constructor.signatures import ExtractOntologyElements, ExtractOntologyDataProperties, ExtractOntologyObjectProperties, ExtractOntologyEntities, Assess
-from autonogy_constructor.utils import ontology_entities_to_string, ontology_elements_to_string, ontology_data_properties_to_string, ontology_object_properties_to_string
+from autology_constructor.base_data_structures import OntologyElements, OntologyDataProperties, OntologyObjectProperties, OntologyEntities
+from autology_constructor.signatures import ExtractOntologyElements, ExtractOntologyDataProperties, ExtractOntologyObjectProperties, ExtractOntologyEntities, Assess
+from autology_constructor.utils import ontology_entities_to_string, ontology_elements_to_string, ontology_data_properties_to_string, ontology_object_properties_to_string
 
 from config.settings import ASSESSMENT_CRITERIA_CONFIG
 
