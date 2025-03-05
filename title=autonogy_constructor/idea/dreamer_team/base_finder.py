@@ -1,4 +1,4 @@
-from autology_constructor.idea.common.llm_helpers import invoke_llm
+from autonogy_constructor.idea.common.llm_helpers import invoke_llm
 
 class BaseFinder:
     def generate_ideas(self, gaps: List[Dict]) -> List[Dict]:

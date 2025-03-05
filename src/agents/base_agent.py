@@ -21,7 +21,10 @@ class AgentTemplate:
         self.name = name
         self.tools = tools
         self.system_prompt = system_prompt
+        self.vanilla_model = model
         self.model = model.bind_tools(self.tools)
+
+    
 
     def create_agent(self):
         """Create an agent."""
