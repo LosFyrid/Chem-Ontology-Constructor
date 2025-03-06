@@ -1,6 +1,6 @@
 import dspy
 
-from autonogy_constructor.base_data_structures import OntologyElements, OntologyDataProperties, OntologyObjectProperties, OntologyEntities
+from autology_constructor.base_data_structures import OntologyElements, OntologyDataProperties, OntologyObjectProperties, OntologyEntities
 
 class ExtractOntologyEntities(dspy.Signature):
     """Analyze the provided text from research papers in the field of chemistry to identify all chemistry-related entities for the subsequent parts to construct an ontological framework together. And all the entities are regarded as classes in the ontology.

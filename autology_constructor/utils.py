@@ -1,4 +1,4 @@
-from autonogy_constructor.base_data_structures import OntologyElements, OntologyEntities, OntologyDataProperties, OntologyObjectProperties
+from autology_constructor.base_data_structures import OntologyElements, OntologyEntities, OntologyDataProperties, OntologyObjectProperties
 
 def flatten_dict(d, parent_key=''):
     items = []

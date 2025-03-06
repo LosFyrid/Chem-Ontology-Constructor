@@ -3,7 +3,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 from langgraph.graph import Graph, StateGraph, END
 from langgraph.graph.message import AnyMessage, add_messages
-from autonogy_constructor.idea.query_team.utils import parse_json
+from autology_constructor.idea.query_team.utils import parse_json
 
 class FinderState(TypedDict):
     """Base state for gap finder agents"""

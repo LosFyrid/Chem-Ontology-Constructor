@@ -5,9 +5,9 @@ from dspy.primitives.assertions import assert_transform_module, backtrack_handle
 from dspy.predict import Retry
 
 
-from autonogy_constructor.base_data_structures import OntologyElements, OntologyDataProperties, OntologyObjectProperties, OntologyEntities
-from autonogy_constructor.signatures import ExtractOntologyElements, ExtractOntologyDataProperties, ExtractOntologyObjectProperties, ExtractOntologyEntities, Assess
-from autonogy_constructor.utils import ontology_entities_to_string, ontology_elements_to_string, ontology_data_properties_to_string, ontology_object_properties_to_string
+from autology_constructor.base_data_structures import OntologyElements, OntologyDataProperties, OntologyObjectProperties, OntologyEntities
+from autology_constructor.signatures import ExtractOntologyElements, ExtractOntologyDataProperties, ExtractOntologyObjectProperties, ExtractOntologyEntities, Assess
+from autology_constructor.utils import ontology_entities_to_string, ontology_elements_to_string, ontology_data_properties_to_string, ontology_object_properties_to_string
 
 from config.settings import ASSESSMENT_CRITERIA_CONFIG
 
@@ -37,15 +37,15 @@ class ChemOntology(dspy.Module):
 
         self.entities_extractor = dspy.ChainOfThought(ExtractOntologyEntities)
         self.elements_extractor = dspy.ChainOfThought(ExtractOntologyElements)
-        # self.data_properties_extractor = dspy.ChainOfThought(ExtractOntologyDataProperties)
-        # self.object_properties_extractor = dspy.ChainOfThought(ExtractOntologyObjectProperties)
+        self.data_properties_extractor = dspy.ChainOfThought(ExtractOntologyDataProperties)
+        self.object_properties_extractor = dspy.ChainOfThought(ExtractOntologyObjectProperties)
     
     def forward(self, context):
         entities = self.entities_extractor(text=context)
         elements = self.elements_extractor(text=context, ontology_entities=entities.ontology_entities)
-        # data_properties = self.data_properties_extractor(text=context, ontology_entities=entities.ontology_entities)
-        # object_properties = self.object_properties_extractor(text=context, ontology_entities=entities.ontology_entities)
-        return dspy.Prediction(context=context, ontology_entities=entities.ontology_entities, ontology_elements=elements.ontology_elements, ontology_data_properties=None,ontology_object_properties=None)#data_properties.ontology_data_properties, ontology_object_properties=object_properties.ontology_object_properties)
+        data_properties = self.data_properties_extractor(text=context, ontology_entities=entities.ontology_entities)
+        object_properties = self.object_properties_extractor(text=context, ontology_entities=entities.ontology_entities)
+        return dspy.Prediction(context=context, ontology_entities=entities.ontology_entities, ontology_elements=elements.ontology_elements, ontology_data_properties=data_properties.ontology_data_properties, ontology_object_properties=object_properties.ontology_object_properties)
 
 class Assessment(dspy.Module):
     def __init__(self, verbose=False, assertions=False):

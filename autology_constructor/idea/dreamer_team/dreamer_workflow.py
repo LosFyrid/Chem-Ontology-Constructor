@@ -3,12 +3,12 @@ from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 from langgraph.graph import Graph, StateGraph, END, START
 from langgraph.graph.message import AnyMessage, add_messages
-from autonogy_constructor.idea.query_team.ontology_tools import OntologyAnalyzer
+from autology_constructor.idea.query_team.ontology_tools import OntologyAnalyzer
 from .evidence_finder import EvidenceFinder
 from .knowledge_finder import KnowledgeFinder
 from .methodology_finder import MethodologyFinder
 from .meta_science_finder import MetaScienceFinder
-from autonogy_constructor.idea.query_team.utils import parse_json
+from autology_constructor.idea.query_team.utils import parse_json
 class DreamerState(TypedDict):
     """Dreamer团队状态"""
     # Input

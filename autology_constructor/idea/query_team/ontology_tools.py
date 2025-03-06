@@ -3,7 +3,7 @@ from owlready2 import *
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 
-from autonogy_constructor.idea.query_team.utils import parse_json
+from autology_constructor.idea.query_team.utils import parse_json
 
 
 class OntologyTools:

@@ -1,7 +1,7 @@
 from owlready2 import *
 from typing import List
-from autonogy_constructor import base_data_structures 
-from autonogy_constructor.utils import flatten_dict
+from autology_constructor import base_data_structures 
+from autology_constructor.utils import flatten_dict
 
 from config.settings import ONTOLOGY_CONFIG
 

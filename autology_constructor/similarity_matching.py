@@ -2,7 +2,7 @@ from typing import Optional, Tuple
 import numpy as np
 from openai import OpenAI
 from rapidfuzz import fuzz
-from autonogy_constructor.base_data_structures import Entity
+from autology_constructor.base_data_structures import Entity
 import re
 
 class EntityMatcher:
