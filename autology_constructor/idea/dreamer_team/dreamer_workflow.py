@@ -9,6 +9,10 @@ from .knowledge_finder import KnowledgeFinder
 from .methodology_finder import MethodologyFinder
 from .meta_science_finder import MetaScienceFinder
 from autology_constructor.idea.query_team.utils import parse_json
+
+
+
+
 class DreamerState(TypedDict):
     """Dreamer团队状态"""
     # Input

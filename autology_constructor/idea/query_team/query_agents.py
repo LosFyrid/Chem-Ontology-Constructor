@@ -3,6 +3,9 @@ from src.agents.base_agent import AgentTemplate
 from langchain.prompts import ChatPromptTemplate
 import json
 
+from .ontology_tools import OntologyTools   
+from .utils import parse_json
+
 class QueryParserAgent(AgentTemplate):
     """自然语言查询解析器 (无工具版本)"""
     def __init__(self):

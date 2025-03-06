@@ -1,6 +1,38 @@
 from typing import TypedDict, Literal, Dict, Optional, List, Union, Any, Annotated
 from langgraph.graph.message import AnyMessage, add_messages
 
+
+
+
+class Query(TypedDict):
+    """查询"""
+    query: str
+    results: Dict
+
+class QueryState(TypedDict):
+    """查询状态"""
+    current_query: Query
+    query_history: List[Query]
+
+class DreamerState(TypedDict):
+    """Dreamer团队状态"""
+    # Input
+    ontology: Any
+    domain_ontology: Optional[Any]
+    analysis_type: str
+    
+    # Analysis
+    gap_types: List[str]
+    research_ideas: List[Dict]
+    
+    # State Management
+    stage: str
+    previous_stage: Optional[str]
+    status: str
+    
+    # System
+    messages: Annotated[list[AnyMessage], add_messages]
+
 class WorkflowState(TypedDict):
     """工作流状态"""
     # Control
