@@ -1,92 +1,55 @@
-from typing import TypedDict, Literal, Dict, Optional, List, Union, Any, Annotated
+from typing import Dict, List, TypedDict, Literal, Annotated, Optional, Any
 from langgraph.graph.message import AnyMessage, add_messages
 
 
-
-
-class Query(TypedDict):
-    """查询"""
-    query: str
-    results: Dict
-
-class QueryState(TypedDict):
-    """查询状态"""
-    current_query: Query
-    query_history: List[Query]
-
 class DreamerState(TypedDict):
     """Dreamer团队状态"""
-    # Input
-    ontology: Any
-    domain_ontology: Optional[Any]
-    analysis_type: str
+    # 输入
+    ontology: Any  # 主要本体
+    additional_ontologies: Optional[List[Any]]  # 用于跨领域分析的其他本体
     
-    # Analysis
-    gap_types: List[str]
-    research_ideas: List[Dict]
+    # 分析
+    analysis_type: str  # "single_domain" 或 "cross_domain"
+    domain_analysis: Optional[Dict]  # 领域结构分析结果
+    gap_analysis: Dict  # 研究空白分析
+    research_ideas: List[Dict]  # 生成的研究创意
     
-    # State Management
-    stage: str
-    previous_stage: Optional[str]
-    status: str
+    # 评价与改进
+    critic_feedback: Optional[Dict]  # 来自Critic Team的反馈
+    idea_versions: Optional[List[Dict]]  # 记录创意的不同版本
     
-    # System
-    messages: Annotated[list[AnyMessage], add_messages]
+    # 查询管理
+    pending_queries: Optional[List[Dict]]  # 等待Query Team处理的查询
+    query_results: Optional[Dict]  # Query Team返回的查询结果
+    information_needs: Optional[List[Dict]]  # 已识别的信息需求
+    
+    # 工作流状态管理
+    stage: str  # 当前阶段
+    previous_stage: Optional[str]  # 上一阶段
+    status: str  # 状态：initialized, processing, waiting_for_query, waiting_for_critic, error, completed
+    
+    # 系统
+    messages: Annotated[List[AnyMessage], add_messages]  # 系统消息
 
-class WorkflowState(TypedDict):
-    """工作流状态"""
-    # Control
-    stage: str
-    previous_stage: Optional[str]
-    status: str
-    
-    # Input
-    source_ontology: Any
-    target_ontology: Optional[Any]
-    analysis_type: str
-    
-    # Context（统一存放所有子模块共同使用的信息）
-    shared_context: Dict  # 示例键： "ontology_analysis", "research_ideas", "gap_analysis", "query" (包含 query_requests, query_results, interface), "evaluations"
-    
-    # Error Handling & 控制信息
-    error: Optional[str]
-    needs_improvement: bool
-    
-    # 系统消息
-    messages: Annotated[list[AnyMessage], add_messages]
 
 class StateManager:
     def __init__(self):
-        """初始化状态管理器"""
-        self.state = {
-            # Control
-            "stage": "querying",
+        """初始化Dreamer团队状态管理器"""
+        self.state: DreamerState = {
+            "ontology": None,
+            "additional_ontologies": None,
+            "analysis_type": "single_domain",
+            "domain_analysis": None,
+            "gap_analysis": {},
+            "research_ideas": [],
+            "critic_feedback": None,
+            "idea_versions": [],
+            "pending_queries": [],
+            "query_results": {},
+            "information_needs": [],
+            "stage": "initialized",
             "previous_stage": None,
             "status": "initialized",
-            
-            # Input
-            "source_ontology": None,
-            "target_ontology": None,
-            "analysis_type": "single_domain",
-            
-            # Context
-            "shared_context": {},
-            "ontology_analysis": {},
-            "research_ideas": [],
-            "current_idea": None,
-            "idea_evaluations": [],
-            "gap_analysis": {},
-            
-            # Query Management
-            "query_interface": None,
-            "query_requests": [],
-            "query_results": {},
-            
-            # Error Handling
-            "error": None,
-            "needs_improvement": False,
-            
-            # System
             "messages": []
         }
     
@@ -95,91 +58,66 @@ class StateManager:
         for key, value in updates.items():
             if isinstance(value, dict) and key in self.state and isinstance(self.state[key], dict):
                 self.state[key].update(value)
+            elif isinstance(value, list) and key in self.state and isinstance(self.state[key], list):
+                # 对于列表类型，考虑是追加还是替换
+                if key in ["messages", "pending_queries", "information_needs"]:
+                    self.state[key].extend(value)
+                else:
+                    self.state[key] = value
             else:
                 self.state[key] = value
-    
-    def prepare_team_state(self, team: str) -> Dict:
-        """准备特定team的状态"""
-        if team == "dream":
-            return {
-                "current_class": self.state["current_class"],
-                "target_class": self.state["target_class"],
-                "collected_info": {
-                    "ontology_info": self.state["ontology_info"],
-                    "class_info": self.state["class_info"]
-                },
-                "gap_analysis": self.state["gap_analysis"],
-                "query_interface": self.state["query_interface"],
-                "analysis_type": self.state["analysis_type"]
-            }
-        elif team == "critic":
-            return {
-                "research_idea": self.state["current_idea"],
-                "context": {
-                    "current_class": self.state["current_class"],
-                    "target_class": self.state["target_class"],
-                    "ontology_info": self.state["ontology_info"],
-                    "class_info": self.state["class_info"]
-                },
-                "query_interface": self.state["query_interface"]
-            }
-        return {}
-    
-    def handle_team_result(self, team: str, result: Dict) -> None:
-        """处理team的执行结果"""
-        if team == "dream":
-            if result.get("research_ideas"):
-                new_idea = result["research_ideas"][-1]
-                self.state["current_idea"] = new_idea
-                self.state["research_ideas"].append(new_idea)
-            
-            # 更新gap分析结果
-            for gap_type in ["evidence_gaps", "knowledge_gaps", "methodology_gaps", "meta_science_gaps"]:
-                if gap_type in result:
-                    self.state["gap_analysis"][gap_type].extend(result[gap_type])
-                    
-        elif team == "critic":
-            if result.get("evaluation"):
-                evaluation = result["evaluation"]
-                self.state["idea_evaluations"].append(evaluation)
-                self.state["needs_improvement"] = evaluation.get("needs_improvement", False)
                 
-                # 更新当前想法的评估结果
-                if self.state["current_idea"]:
-                    self.state["current_idea"]["evaluation"] = evaluation
+        # 自动更新previous_stage
+        if "stage" in updates and updates["stage"] != self.state.get("previous_stage"):
+            self.state["previous_stage"] = updates.get("previous_stage", self.state.get("stage"))
     
-    def handle_query_result(self, result: Dict) -> None:
-        """处理查询结果"""
-        if result.get("status") == "success":
-            self.state["query_results"].update(result.get("results", {}))
+    def handle_error(self, error: Exception) -> None:
+        """处理错误，记录错误信息"""
+        error_msg = f"Error in {self.state.get('stage')}: {str(error)}"
+        self.state['status'] = 'error'
+        self.add_message({"role": "system", "content": error_msg})
+    
+    def add_message(self, message: Dict[str, str]) -> None:
+        """添加消息到消息历史"""
+        if isinstance(message, str):
+            message = {"role": "system", "content": message}
+        self.state['messages'].append(message)
+    
+    def get_state(self) -> DreamerState:
+        """获取当前状态"""
+        return self.state
+    
+    def reset(self) -> None:
+        """重置状态"""
+        self.__init__()
+    
+    def process_query_results(self, results: Dict) -> None:
+        """处理Query Team返回的查询结果"""
+        if not results:
+            return
             
-            # 更新相关信息
-            if "ontology_info" in result.get("results", {}):
-                self.state["ontology_info"].update(result["results"]["ontology_info"])
-            if "class_info" in result.get("results", {}):
-                self.state["class_info"].update(result["results"]["class_info"])
+        self.state["query_results"] = results
+        self.add_message({"role": "system", "content": "收到Query Team查询结果"})
+        
+        # 清空pending_queries
+        self.state["pending_queries"] = []
+        
+        # 更新状态
+        self.state["status"] = "processing"
     
-    def handle_error(self, error: Exception, context: Dict) -> None:
-        """处理错误"""
-        error_info = {
-            "type": type(error).__name__,
-            "message": str(error),
-            "context": context,
-            "stage": self.state["stage"]
-        }
-        self.state["error"] = error_info
-        self.state["messages"].append(f"Error in {self.state['stage']}: {str(error)}")
-    
-    def rollback_to_previous(self) -> None:
-        """回滚到前一个状态"""
-        if self.state["previous_stage"]:
-            self.state["stage"] = self.state["previous_stage"]
-            self.state["messages"].append(f"Rolled back to {self.state['previous_stage']}")
-    
-    def add_message(self, message: str) -> None:
-        """添加系统消息"""
-        self.state["messages"].append(message)
+    def process_critic_feedback(self, feedback: Dict) -> None:
+        """处理Critic Team返回的反馈"""
+        if not feedback:
+            return
+            
+        self.state["critic_feedback"] = feedback
+        self.add_message({"role": "system", "content": "收到Critic Team反馈"})
+        
+        # 更新状态
+        self.state["status"] = "processing"
+        self.state["stage"] = "received_feedback"
+
 
 def create_state_manager() -> StateManager:
-    """创建状态管理器实例"""
+    """创建并返回一个StateManager实例"""
     return StateManager()
