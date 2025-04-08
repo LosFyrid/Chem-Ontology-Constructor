@@ -1,15 +1,41 @@
-from typing import TypedDict, List, Dict, Any, Literal
+from typing import TypedDict, List, Dict, Any, Literal, Optional
 from langgraph.graph import Graph, StateGraph, END, START
-from autology_constructor.idea.query_team.query_workflow import create_query_graph
+from autology_constructor.idea.query_team.query_workflow import create_query_graph, QueryState
 from autology_constructor.idea.dreamer_team.dreamer_workflow import create_dreamer_graph
 from autology_constructor.idea.critic_team.critic_workflow import create_critic_graph
-from autology_constructor.idea.state_manager import WorkflowState
+from autology_constructor.idea.state_manager import DreamerState, create_result_handler
+from autology_constructor.idea.query_team.query_manager import QueryManager, Query
 from autology_constructor.idea.query_team.ontology_tools import OntologyAnalyzer
 from autology_constructor.idea.dreamer_team.evidence_finder import EvidenceFinder
 from autology_constructor.idea.dreamer_team.knowledge_finder import KnowledgeFinder
 from autology_constructor.idea.dreamer_team.methodology_finder import MethodologyFinder
 from autology_constructor.idea.dreamer_team.meta_science_finder import MetaScienceFinder
 import os
+
+
+
+class WorkflowState(TypedDict):
+    """工作流状态"""
+    # 本体
+    source_ontology: Any
+    target_ontology: Optional[Any]
+    analysis_type: str  # "single_domain" 或 "cross_domain"
+    
+    # 团队状态
+    dreamer_state: DreamerState
+    query_state: Optional[Dict]
+    critic_state: Optional[Dict]
+    
+    # 共享上下文
+    shared_context: Dict
+    
+    # 工作流状态
+    stage: str
+    previous_stage: Optional[str]
+    status: str
+    error: Optional[str]
+    needs_improvement: bool
+    messages: List[Dict]
 
 def create_workflow(ontology_folder: str) -> Graph:
     """
@@ -43,6 +69,7 @@ def create_workflow(ontology_folder: str) -> Graph:
     dream_graph = create_dreamer_graph()
     critic_graph = create_critic_graph()
     analyzer = OntologyAnalyzer()
+    query_manager = QueryManager()
     
     def initialize_state(state: WorkflowState) -> Dict:
         """初始化工作流状态"""
@@ -52,15 +79,26 @@ def create_workflow(ontology_folder: str) -> Graph:
             "source_ontology": source_ontology,
             "target_ontology": target_ontology,
             "analysis_type": analysis_type,
+            "dreamer_state": {
+                "ontology": source_ontology,
+                "additional_ontologies": [target_ontology] if target_ontology else None,
+                "analysis_type": analysis_type,
+                "domain_analysis": None,
+                "gap_analysis": {},
+                "research_ideas": [],
+                "critic_feedback": None,
+                "idea_versions": [],
+                "stage": "initialized",
+                "previous_stage": None,
+                "status": "initialized",
+                "messages": []
+            },
+            "query_state": None,
+            "critic_state": None,
             "shared_context": {
                 "ontology_analysis": {},
                 "research_ideas": [],
                 "gap_analysis": {},
-                "query": {
-                    "interface": None,
-                    "requests": [],
-                    "results": {}
-                },
                 "evaluations": []
             },
             "error": None,
@@ -84,26 +122,11 @@ def create_workflow(ontology_folder: str) -> Graph:
     
     def handle_query_result(state: WorkflowState) -> Dict:
         """处理查询结果"""
-        updates = {
-            "status": state["query_state"].get("status", "error"),
-            "stage": state["previous_stage"] if state["query_state"].get("status") == "success" else "error",
-            "previous_stage": state.get("stage"),
-            "messages": []
-        }
+        query_state = state.get("query_state", {})
         
-        if state["query_state"].get("status") == "success":
-            # 更新查询结果
-            if "ontology_analysis" in state["query_state"].get("results", {}):
-                updates["ontology_analysis"] = state["query_state"]["results"]["ontology_analysis"]
-                updates["messages"].append("Successfully updated ontology analysis")
-                
-            # 更新查询结果
-            updates["query_results"] = state["query_state"].get("results", {})
-            updates["messages"].append("Query completed successfully")
-        else:
-            # 处理错误情况
-            updates["error"] = state["query_state"].get("error", "Unknown error in query")
-            updates["messages"].append(f"Query failed: {updates['error']}")
+        # 使用工厂方法创建查询结果处理器
+        handler = create_result_handler("query", state)
+        updates = handler.handle(query_state)
         
         return updates
 
@@ -138,41 +161,35 @@ def create_workflow(ontology_folder: str) -> Graph:
             research_ideas.extend(finder.generate_ideas(gaps[finder_type]))
         
         return {
-            "dream_state": {
+            "dreamer_state": {
                 "source_ontology": state["source_ontology"],
                 "target_ontology": state.get("target_ontology"),
                 "analysis_type": state["analysis_type"],
                 "domain_analysis": domain_analysis,
-                "gaps": gaps
+                "gaps": gaps,
+                "research_ideas": research_ideas
             }
         }
     
     def handle_dream_result(state: WorkflowState) -> Dict:
-        """处理 dream 结果"""
-        dream_state = state["dream_state"]
-        return {
-            "stage": "critiquing",
-            "previous_stage": state.get("stage"),
-            "status": dream_state.get("status", "success"),
-            "research_ideas": dream_state.get("research_ideas", []),
-            "gap_analysis": dream_state.get("gap_analysis", {}),
-            "messages": dream_state.get("messages", ["Dream phase completed"]),
-            "error": dream_state.get("error")
-        }
+        """处理梦想结果"""
+        dream_state = state.get("dreamer_state", {})
+        
+        # 使用工厂方法创建梦想结果处理器
+        handler = create_result_handler("dreamer", state)
+        updates = handler.handle(dream_state)
+        
+        return updates
 
     def handle_critic_result(state: WorkflowState) -> Dict:
-        """处理 critic 结果"""
+        """处理批评结果"""
         critic_state = state.get("critic_state", {})
-        return {
-            "stage": "dreaming" if critic_state.get("needs_improvement") else "end",
-            "previous_stage": state.get("stage"),
-            "status": critic_state.get("status", "success"),
-            "evaluations": critic_state.get("evaluations", []),
-            "needs_improvement": critic_state.get("needs_improvement", False),
-            "messages": critic_state.get("messages", []),
-            "error": critic_state.get("error"),
-            "research_ideas": state.get("research_ideas", []) if critic_state.get("needs_improvement") else []
-        }
+        
+        # 使用工厂方法创建批评结果处理器
+        handler = create_result_handler("critic", state)
+        updates = handler.handle(critic_state)
+        
+        return updates
 
     # 添加节点
     workflow.add_node("initialize", initialize_state)

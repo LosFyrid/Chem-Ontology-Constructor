@@ -1,4 +1,5 @@
-from typing import Dict, List, Optional
+from enum import Enum
+from typing import Dict, List, Optional, Callable, Any
 from pydantic import BaseModel, Field
 import uuid
 from datetime import datetime, timedelta
@@ -6,8 +7,13 @@ from queue import PriorityQueue
 import threading
 import time
 import hashlib
+from .query_transformers import QueryToStateTransformer, StateToQueryTransformer
 
-
+class QueryStatus(str, Enum):
+    PENDING = "pending"
+    PROCESSING = "processing"
+    COMPLETED = "completed"
+    FAILED = "failed"
 
 class Query(BaseModel):
     """查询请求"""
@@ -19,12 +25,17 @@ class Query(BaseModel):
     originating_agent: str  # 发起查询的agent
     priority: str = "normal"  # high, normal, low
     
+    # 查询上下文
+    query_context: Dict[str, Any] = Field(default_factory=dict)
+    
     # 回调信息
     callback_id: Optional[str] = None  # 用于异步回调的ID
     
     # 状态跟踪
     created_at: datetime = Field(default_factory=datetime.now)
-    status: str = "pending"  # pending, processing, completed, failed
+    status: QueryStatus = QueryStatus.PENDING
+    result: Optional[Dict] = None
+    error: Optional[str] = None
 
 class QueryCache:
     def __init__(self, ttl: int = 3600):  # 默认缓存1小时
@@ -98,7 +109,7 @@ class QueryQueueManager:
         cached_result = self.cache.get(query)
         if cached_result:
             # 直接存储为完成结果
-            query.status = "completed"
+            query.status = QueryStatus.COMPLETED
             self.completed_queries[query.query_id] = (query, cached_result)
             return query.query_id
             
@@ -113,14 +124,14 @@ class QueryQueueManager:
             return None
         _, query = self.pending_queries.get()
         self.active_queries[query.query_id] = query
-        query.status = "processing"
+        query.status = QueryStatus.PROCESSING
         return query
         
     def store_result(self, query_id: str, result: Dict) -> None:
         """存储查询结果并缓存"""
         if query_id in self.active_queries:
             query = self.active_queries.pop(query_id)
-            query.status = "completed"
+            query.status = QueryStatus.COMPLETED
             self.completed_queries[query_id] = (query, result)
             
             # 缓存结果(非错误结果才缓存)
@@ -133,7 +144,7 @@ class QueryQueueManager:
             return self.completed_queries[query_id][1]
         return None
     
-    def register_callback(self, query_id: str, callback_fn: callable) -> None:
+    def register_callback(self, query_id: str, callback_fn: Callable) -> None:
         """注册查询完成时的回调函数"""
         self.callbacks[query_id] = callback_fn
         
@@ -141,7 +152,7 @@ class QueryQueueManager:
         """标记查询失败"""
         if query_id in self.active_queries:
             query = self.active_queries.pop(query_id)
-            query.status = "failed"
+            query.status = QueryStatus.FAILED
             self.failed_queries[query_id] = query  # 添加到失败查询字典
             self.completed_queries[query_id] = (query, {"error": error_message})
     
@@ -165,7 +176,7 @@ class QueryQueueManager:
                 self.retries[query_id] = current_retries + 1
                 
                 # 重新入队
-                query.status = "pending"
+                query.status = QueryStatus.PENDING
                 priority = {"high": 1, "normal": 2, "low": 3}.get(query.priority, 2)
                 self.pending_queries.put((priority, query))
                 
@@ -180,14 +191,17 @@ class QueryManager:
     
     def __init__(self):
         """初始化查询管理器"""
-        self.query_manager = QueryQueueManager()
         self._query_worker = None
         self._stop_worker = False
+        self.query_manager = QueryQueueManager()
+        self._subscribers = {}
+        self._query_to_state = QueryToStateTransformer()
+        self._state_to_query = StateToQueryTransformer()
         
         # 初始化LangGraph
+        from .query_workflow import create_query_graph
         self.query_graph = create_query_graph()
         self.graph_saver = MemorySaver()
-        self._subscribers = {}  # 用于存储订阅查询结果的回调
     
     def start_worker(self):
         """启动查询处理工作线程"""
@@ -227,25 +241,33 @@ class QueryManager:
         
     def _execute_query_with_langgraph(self, query: Query) -> Dict:
         """使用LangGraph执行查询"""
-        # 与原代码相同，但不依赖于Dreamer状态
+        # 将Query转换为QueryState
+        query_state = self._query_to_state.transform(query)
         
+        # 执行查询工作流
+        result = self.query_graph.invoke(query_state)
+        
+        # 将QueryState转换回Query
+        self._state_to_query.transform(result, query)
+        
+        return result
+    
     def submit_query(self, query_text: str, 
                     query_context: Dict = None,
                     priority: str = "normal") -> str:
         """提交查询并返回查询ID"""
         # 创建查询实例
         query = Query(
-            query_id=str(uuid.uuid4()),
             natural_query=query_text,
-            query_strategy="tool_sequence",
-            templated_query="",
-            **query_context,  # 额外的上下文信息
-            priority=priority
+            originating_team=query_context.get("originating_team", "unknown"),
+            originating_agent=query_context.get("originating_agent", "unknown"),
+            priority=priority,
+            query_context=query_context or {}
         )
         
         return self.query_manager.enqueue(query)
     
-    def subscribe(self, query_id: str, callback: callable) -> None:
+    def subscribe(self, query_id: str, callback: Callable) -> None:
         """订阅查询结果"""
         self._subscribers[query_id] = callback
         

@@ -99,36 +99,111 @@ class SparqlExpertAgent(AgentTemplate):
 class ValidationAgent(AgentTemplate):
     """结果验证专家"""
     def __init__(self):
-        super().__init__(
-            system_prompt="验证查询结果的完整性和有效性",
-            tools=[]
-        )
+        system_prompt = """
+        你是一个专门验证查询结果的专家。你需要从多个维度评估查询结果的质量：
+        
+        1. 完整性：
+           - 结果是否包含所有必要信息？
+           - 是否有缺失的字段或数据？
+           - 查询结果是否足够详细？
+        
+        2. 一致性：
+           - 结果内部是否存在矛盾？
+           - 数据格式是否统一？
+           - 不同结果项之间是否保持一致的结构？
+        
+        3. 准确性：
+           - 结果是否符合查询意图？
+           - 内容是否正确？
+           - 是否存在明显错误？
+        
+        对每个维度进行详细评估，并提供具体分析理由。
+        你的验证结果应以JSON格式返回，包含以下字段：
+        - valid: 布尔值，表示结果是否有效
+        - details: 包含各维度验证结果的列表
+        - message: 总体评估结论
+        """
+        super().__init__(system_prompt=system_prompt, tools=[])
     
-    def validate(self, results: Any) -> Dict:
-        """执行结果验证"""
+    def validate(self, results: Any, query_context: Dict = None) -> Dict:
+        """执行结果验证
+        
+        Args:
+            results: 查询结果
+            query_context: 可选的查询上下文信息
+        
+        Returns:
+            Dict: 验证结果，包含valid, details, message等字段
+        """
         # 基础格式验证
         if not results:
-            return {"valid": False, "message": "空结果集"}
+            return {"valid": False, "message": "空结果集", "details": []}
         
-        # 调用LLM进行语义验证
-        prompt = ChatPromptTemplate.from_messages([
-            ("system", "请验证以下查询结果是否符合预期："),
-            ("user", """根据原始查询需求，判断结果是否：
-1. 包含所有必需字段
-2. 数据格式正确
-3. 逻辑自洽
-
-结果数据：
-{results}
-
-返回JSON验证报告，包含：
-- valid: 是否有效
-- missing_fields: 缺失字段
-- format_errors: 格式错误
-- logical_issues: 逻辑问题""")
-        ])
+        # 构建验证提示
+        prompt = f"""
+        请验证以下查询结果:
         
-        response = self.llm.invoke(prompt.format_messages(
-            results=json.dumps(results, ensure_ascii=False)
-        ))
-        return parse_json(response.content)
+        {json.dumps(results, indent=2, ensure_ascii=False)}
+        """
+        
+        # 如果有查询上下文，添加到提示中
+        if query_context:
+            prompt += f"""
+            验证上下文信息:
+            - 查询意图: {query_context.get('intent', '未知')}
+            - 查询类型: {query_context.get('type', '未知')}
+            - 查询目标: {query_context.get('target', '未知')}
+            """
+        
+        prompt += """
+        请从完整性、一致性和准确性三个维度进行验证，并给出详细理由。
+        对每个维度评分（1-5分，5分为最佳），并提供总体评估。
+        
+        返回JSON格式，包含以下结构:
+        {
+            "valid": true/false,  // 结果是否有效
+            "details": [  // 各维度验证结果
+                {
+                    "dimension": "completeness",
+                    "score": 4,  // 1-5分
+                    "valid": true,  // 该维度是否通过
+                    "message": "详细评估..."
+                },
+                // 其他维度...
+            ],
+            "message": "总体评估结论"
+        }
+        """
+        
+        response = self.llm.invoke(prompt)
+        
+        try:
+            # 尝试解析JSON响应
+            validation = parse_json(response.content)
+            
+            # 确保结果格式正确
+            if "valid" not in validation:
+                validation["valid"] = False
+                validation["message"] = "验证结果格式不完整"
+                
+            if "details" not in validation:
+                validation["details"] = []
+                
+            return validation
+        except Exception as e:
+            # 如果解析失败，使用简单的文本分析
+            text = response.content.lower()
+            valid = "valid" in text and "true" in text and "invalid" not in text
+            
+            # 创建基本验证结果
+            return {
+                "valid": valid,
+                "details": [
+                    {
+                        "dimension": "general",
+                        "valid": valid,
+                        "message": response.content[:200] + "..."
+                    }
+                ],
+                "message": f"无法解析详细验证结果: {str(e)[:100]}"
+            }

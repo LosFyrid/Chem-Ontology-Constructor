@@ -1,9 +1,260 @@
-from typing import List, Tuple, Dict, Optional, Set
+from typing import List, Tuple, Dict, Optional, Set, Any, Callable
 from owlready2 import *
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
+import re
 
-from autology_constructor.idea.query_team.utils import parse_json
+from autology_constructor.idea.query_team.utils import parse_json, format_sparql_results, extract_variables_from_sparql
+
+
+class SparqlExecutionError(Exception):
+    """SPARQL查询执行错误"""
+    pass
+
+
+class SparqlOptimizer:
+    """SPARQL查询优化器
+    
+    对SPARQL查询进行各种优化，提高查询效率和稳定性：
+    1. 优化前缀声明
+    2. 优化过滤条件
+    3. 优化连接操作
+    """
+    
+    def __init__(self):
+        self.optimizations = [
+            self._optimize_prefixes,
+            self._optimize_filters,
+            self._optimize_joins
+        ]
+
+    def optimize(self, query: str) -> str:
+        """应用所有优化策略到查询
+        
+        Args:
+            query: 原始SPARQL查询
+            
+        Returns:
+            优化后的SPARQL查询
+        """
+        optimized = query
+        for optimization in self.optimizations:
+            optimized = optimization(optimized)
+        return optimized
+        
+    def _optimize_prefixes(self, query: str) -> str:
+        """优化前缀声明
+        
+        确保常用前缀存在，移除未使用前缀
+        """
+        # 检查常用前缀是否已声明
+        common_prefixes = {
+            "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+            "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+            "owl": "http://www.w3.org/2002/07/owl#",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        }
+        
+        # 提取已声明的前缀
+        prefix_pattern = r'PREFIX\s+(\w+):\s+<([^>]+)>'
+        declared_prefixes = dict(re.findall(prefix_pattern, query, re.IGNORECASE))
+        
+        # 检查查询中使用的前缀
+        used_prefixes = set(re.findall(r'(\w+):[^\s.]+', query))
+        
+        # 添加缺失但使用的常用前缀
+        new_prefixes = ""
+        for prefix, uri in common_prefixes.items():
+            if prefix in used_prefixes and prefix not in declared_prefixes:
+                new_prefixes += f"PREFIX {prefix}: <{uri}>\n"
+        
+        # 如果有新前缀，添加到查询开头
+        if new_prefixes:
+            # 检查查询是否已有PREFIX声明
+            if re.search(prefix_pattern, query, re.IGNORECASE):
+                # 在最后一个PREFIX后插入
+                query = re.sub(
+                    r'(PREFIX\s+\w+:\s+<[^>]+>)([^P]|$)',
+                    r'\1\n' + new_prefixes + r'\2',
+                    query,
+                    count=1,
+                    flags=re.IGNORECASE
+                )
+            else:
+                # 在查询开头添加
+                query = new_prefixes + query
+        
+        return query
+        
+    def _optimize_filters(self, query: str) -> str:
+        """优化过滤条件
+        
+        将复杂过滤条件移到更早位置，优化执行计划
+        """
+        # 提取所有FILTER表达式
+        filter_pattern = r'FILTER\s*\(([^)]+)\)'
+        filters = re.findall(filter_pattern, query, re.IGNORECASE)
+        
+        # 如果没有过滤器，直接返回
+        if not filters:
+            return query
+            
+        # 优化过滤器位置（将过滤器尽可能移到WHERE子句前部）
+        where_pattern = r'(WHERE\s*\{)(.*?)(\})'
+        
+        def optimize_where(match):
+            prefix = match.group(1)
+            body = match.group(2)
+            suffix = match.group(3)
+            
+            # 删除所有过滤器
+            body_without_filters = re.sub(filter_pattern, '', body, flags=re.IGNORECASE)
+            
+            # 在三元组模式后添加所有过滤器
+            optimized_body = body_without_filters
+            for f in filters:
+                optimized_body += f" FILTER({f})"
+                
+            return prefix + optimized_body + suffix
+            
+        # 仅优化没有OPTIONAL, UNION等复杂结构的简单查询
+        if not re.search(r'OPTIONAL|UNION|MINUS', query, re.IGNORECASE):
+            return re.sub(where_pattern, optimize_where, query, flags=re.IGNORECASE | re.DOTALL)
+        
+        return query
+        
+    def _optimize_joins(self, query: str) -> str:
+        """优化连接操作
+        
+        重排三元组模式顺序，优化连接顺序
+        """
+        # 此优化需要更复杂分析，简化实现
+        # 规则：将限制性更强的三元组模式（包含类型声明）移到前面
+        
+        # 查找WHERE子句
+        where_match = re.search(r'WHERE\s*\{(.*?)\}', query, re.IGNORECASE | re.DOTALL)
+        if not where_match:
+            return query
+            
+        where_body = where_match.group(1)
+        
+        # 提取三元组模式
+        patterns = [p.strip() for p in re.split(r'\.|\s*FILTER\s*\([^)]+\)', where_body) if p.strip()]
+        
+        # 优先级排序：类型声明 > 具体URI > 变量
+        def pattern_priority(pattern):
+            if 'rdf:type' in pattern or 'a ' in pattern:
+                return 0  # 最高优先级
+            elif re.search(r'<[^>]+>', pattern):
+                return 1  # 次高优先级
+            else:
+                return 2  # 最低优先级
+                
+        # 尝试按优先级排序
+        try:
+            sorted_patterns = sorted(patterns, key=pattern_priority)
+            
+            # 如果排序结果与原始不同，替换WHERE子句
+            if sorted_patterns != patterns:
+                sorted_where = ' . '.join(sorted_patterns)
+                if sorted_where:
+                    sorted_where += ' .'
+                new_query = query.replace(where_body, sorted_where)
+                return new_query
+        except:
+            # 排序失败，返回原始查询
+            pass
+            
+        return query
+
+
+class SparqlExecutor:
+    """SPARQL查询执行器
+    
+    负责执行SPARQL查询，包括：
+    1. 查询优化
+    2. 执行查询
+    3. 异常处理和重试
+    """
+    
+    def __init__(self):
+        self.optimizer = SparqlOptimizer()
+        self.max_retries = 2
+        
+    def execute(self, query: str, ontology: Any) -> Dict:
+        """执行SPARQL查询
+        
+        Args:
+            query: SPARQL查询字符串
+            ontology: 查询的本体对象
+            
+        Returns:
+            查询结果
+            
+        Raises:
+            SparqlExecutionError: 查询执行失败
+        """
+        if not ontology:
+            raise SparqlExecutionError("未设置本体")
+            
+        # 优化查询
+        try:
+            optimized_query = self.optimizer.optimize(query)
+        except Exception as e:
+            # 优化失败时使用原始查询
+            optimized_query = query
+            
+        # 执行查询（带重试）
+        retries = 0
+        last_error = None
+        
+        while retries <= self.max_retries:
+            try:
+                return self._execute_query(optimized_query, ontology)
+            except Exception as e:
+                last_error = e
+                retries += 1
+                
+                # 最后一次尝试使用原始查询
+                if retries == self.max_retries:
+                    try:
+                        return self._execute_query(query, ontology)
+                    except Exception as final_e:
+                        last_error = final_e
+                        break
+        
+        # 所有尝试都失败
+        error_msg = str(last_error) if last_error else "未知错误"
+        raise SparqlExecutionError(f"SPARQL执行失败: {error_msg}")
+    
+    def _execute_query(self, query: str, ontology: Any) -> Dict:
+        """实际执行优化后的查询
+        
+        Args:
+            query: 优化后的SPARQL查询
+            ontology: 本体对象
+            
+        Returns:
+            格式化的查询结果
+        """
+        # 执行查询
+        results = list(default_world.sparql(query))
+        
+        # 获取变量名
+        variables = extract_variables_from_sparql(query)
+        
+        # 格式化结果
+        formatted_results = format_sparql_results(results)
+        
+        # 添加变量映射和查询信息
+        if variables:
+            formatted_results["variables"] = variables
+        
+        formatted_results["query_info"] = {
+            "original_query": query,
+        }
+        
+        return formatted_results
 
 
 class OntologyTools:
@@ -19,6 +270,7 @@ class OntologyTools:
     
     def __init__(self, ontology):
         self.onto = ontology
+        self.sparql_executor = SparqlExecutor()
 
     #######################
     # Basic Information
@@ -300,6 +552,32 @@ class OntologyTools:
             top_classes = [cls.name for cls in self.onto.classes() 
                          if not self.get_parents(cls.name)]
             return [build_tree(cls) for cls in top_classes]
+    
+    #######################
+    # SPARQL Operations
+    #######################
+    
+    def execute_sparql(self, sparql_query: str) -> Dict:
+        """执行SPARQL查询并返回格式化结果
+        
+        Args:
+            sparql_query: SPARQL查询字符串
+            
+        Returns:
+            查询结果，包含results字段的字典
+            
+        Example:
+            >>> query = "SELECT ?x WHERE { ?x rdf:type owl:Class }"
+            >>> tools.execute_sparql(query)
+            {'results': [{'var0': 'Class1'}, {'var0': 'Class2'}, ...]}
+        """
+        try:
+            # 使用SPARQL执行器执行查询
+            return self.sparql_executor.execute(sparql_query, self.onto)
+        except SparqlExecutionError as e:
+            return {"error": str(e), "query": sparql_query}
+        except Exception as e:
+            return {"error": f"查询执行异常: {str(e)}", "query": sparql_query}
 
 class OntologyAnalyzer:
     """本体分析工具 - 专注于本体结构分析"""
