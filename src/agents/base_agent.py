@@ -2,7 +2,7 @@ from langgraph.graph import StateGraph, MessagesState
 from langgraph.prebuilt import ToolNode
 from langchain_core.tools import tool
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langgraph import create_react_agent
+from langgraph.prebuilt import create_react_agent
 class AgentTemplate:
     """A template class for creating language model agents with tools.
     

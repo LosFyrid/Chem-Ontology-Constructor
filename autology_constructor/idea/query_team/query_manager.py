@@ -7,6 +7,8 @@ from queue import PriorityQueue
 import threading
 import time
 import hashlib
+# Assuming owlready2 is available in the environment
+# from owlready2 import World, ThingClass # For type hinting if needed
 from .query_transformers import QueryToStateTransformer, StateToQueryTransformer
 
 class QueryStatus(str, Enum):
@@ -197,14 +199,33 @@ class QueryManager:
         self._subscribers = {}
         self._query_to_state = QueryToStateTransformer()
         self._state_to_query = StateToQueryTransformer()
-        
-        # 初始化LangGraph
-        from .query_workflow import create_query_graph
-        self.query_graph = create_query_graph()
-        self.graph_saver = MemorySaver()
+        self.class_name_cache: List[str] = [] # Add class name cache
+
+        # 推迟 LangGraph 初始化，避免循环导入
+        self.query_graph = None
+        # self.graph_saver = MemorySaver() # Removed MemorySaver as it wasn't imported
     
+    def _initialize_graph(self):
+        """Initializes the LangGraph query graph if not already done."""
+        if self.query_graph is None:
+            from .query_workflow import create_query_graph # Local import
+            self.query_graph = create_query_graph()
+
+    def update_class_name_cache(self, ontology: Any):
+        """Manually update the class name cache from the ontology."""
+        if ontology and hasattr(ontology, 'classes'):
+            try:
+                self.class_name_cache = sorted([cls.name for cls in ontology.classes()])
+                print(f"Class name cache updated with {len(self.class_name_cache)} classes.")
+            except Exception as e:
+                print(f"Error updating class name cache: {e}")
+        else:
+            print("Warning: Ontology object invalid or missing 'classes' attribute during cache update.")
+            self.class_name_cache = []
+
     def start_worker(self):
         """启动查询处理工作线程"""
+        self._initialize_graph() # Ensure graph is initialized before starting worker
         if self._query_worker is None or not self._query_worker.is_alive():
             self._stop_worker = False
             self._query_worker = threading.Thread(target=self._process_queries)
@@ -223,6 +244,12 @@ class QueryManager:
             query = self.query_manager.get_next_query()
             if query:
                 try:
+                    # Ensure graph is ready
+                    if self.query_graph is None:
+                         print("Error: Query graph not initialized. Cannot process query.")
+                         self.query_manager.mark_failed(query.query_id, "Query graph not initialized")
+                         continue # Skip this query
+                         
                     # 调用LangGraph执行查询
                     result = self._execute_query_with_langgraph(query)
                     self.query_manager.store_result(query.query_id, result)
@@ -231,26 +258,36 @@ class QueryManager:
                 except Exception as e:
                     self.handle_error(e)
                     self.query_manager.mark_failed(query.query_id, str(e))
+                    # Also notify subscribers about the failure
+                    self._notify_subscribers(query.query_id) # Notify even on failure
             else:
                 # 没有查询时短暂休眠，避免CPU空转
                 time.sleep(0.1)
     
     def handle_error(self, error: Exception):
         """处理错误"""
-        print(f"查询错误: {str(error)}")
+        # Consider adding more sophisticated logging here
+        print(f"Query processing error: {str(error)}")
         
     def _execute_query_with_langgraph(self, query: Query) -> Dict:
         """使用LangGraph执行查询"""
         # 将Query转换为QueryState
         query_state = self._query_to_state.transform(query)
         
+        # Add the class name cache to the initial state
+        query_state["available_classes"] = self.class_name_cache
+
         # 执行查询工作流
-        result = self.query_graph.invoke(query_state)
-        
-        # 将QueryState转换回Query
-        self._state_to_query.transform(result, query)
-        
-        return result
+        # Ensure graph is initialized (double check)
+        if self.query_graph is None:
+             raise RuntimeError("Query graph not initialized before invoking.")
+             
+        final_state = self.query_graph.invoke(query_state)
+
+        # 将最终的QueryState转换回Query对象（更新状态/结果）
+        self._state_to_query.transform(final_state, query)
+
+        return final_state # Return the final state dictionary
     
     def submit_query(self, query_text: str, 
                     query_context: Dict = None,
@@ -272,19 +309,35 @@ class QueryManager:
         self._subscribers[query_id] = callback
         
     def _notify_subscribers(self, query_id: str) -> None:
-        """当查询完成时通知订阅者"""
-        self.query_manager._trigger_callback(query_id)
+        """当查询完成或失败时通知订阅者"""
+        # Trigger internal callback if any (seems duplicated, review QueryQueueManager)
+        # self.query_manager._trigger_callback(query_id)
         
-        # 获取查询结果
-        result = self.query_manager.get_result(query_id)
-        if result and query_id in self._subscribers:
-            # 通知订阅者
-            try:
-                self._subscribers[query_id](query_id, result)
-                # 移除订阅
-                del self._subscribers[query_id]
-            except Exception as e:
-                print(f"通知订阅者错误: {str(e)}")
+        # Check for registered subscribers
+        if query_id in self._subscribers:
+            callback = self._subscribers.pop(query_id) # Remove subscriber after notifying
+            query_obj, result_dict = None, None
+            
+            # Retrieve query and result/error
+            if query_id in self.query_manager.completed_queries:
+                 query_obj, result_dict = self.query_manager.completed_queries[query_id]
+            elif query_id in self.query_manager.failed_queries: # Check failed dict too
+                 # This path might be redundant if mark_failed also puts it in completed_queries
+                 query_obj = self.query_manager.failed_queries[query_id]
+                 result_dict = {"error": query_obj.error if query_obj.error else "Marked as failed"}
+            
+            if callback and query_obj and result_dict is not None:
+                try:
+                    # Pass query_id and result_dict (which contains 'error' on failure)
+                    callback(query_id, result_dict)
+                except Exception as e:
+                    print(f"Error executing subscriber callback for query {query_id}: {str(e)}")
+            elif callback:
+                 # If query info not found but callback exists, notify about the issue
+                 try:
+                     callback(query_id, {"error": f"Query state for {query_id} not found after processing."}) 
+                 except Exception as e:
+                     print(f"Error executing subscriber callback (query not found) for query {query_id}: {str(e)}")
                 
     def get_result(self, query_id: str) -> Optional[Dict]:
         """获取查询结果"""

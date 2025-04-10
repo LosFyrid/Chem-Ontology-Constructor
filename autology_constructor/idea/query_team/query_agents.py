@@ -2,34 +2,167 @@ from typing import Dict, List, Any
 from src.agents.base_agent import AgentTemplate
 from langchain.prompts import ChatPromptTemplate
 import json
+import inspect
+import re
 
 from .ontology_tools import OntologyTools   
 from .utils import parse_json
+
+class ToolPlannerAgent(AgentTemplate):
+    """Generates a tool execution plan based on a normalized query using an LLM."""
+    def __init__(self):
+        system_prompt = """You are an expert planner for ontology tool execution.
+Given a normalized query description and a list of available tools with their descriptions, create a sequential execution plan (a list of JSON objects) to fulfill the query.
+Each step in the plan should be a JSON object with 'tool' (the tool name) and 'params' (a dictionary of parameters for the tool).
+Only use the provided tools. Ensure the parameters match the tool's requirements based on its description.
+Output ONLY the JSON list of plan steps, without any other text or explanation.
+
+Available tools:
+{tool_descriptions}
+"""
+        super().__init__(
+            system_prompt=system_prompt,
+            tools=[] # This agent plans, it doesn't execute tools directly
+        )
+
+    def _get_tool_descriptions(self, tool_instance: OntologyTools) -> str:
+        """Generates formatted descriptions of OntologyTools methods."""
+        descriptions = []
+        # Ensure tool_instance is not None
+        if tool_instance is None:
+            return "No tool instance provided."
+            
+        for name, method in inspect.getmembers(tool_instance, predicate=inspect.ismethod):
+            # Exclude private methods, constructor, and potentially the main execute_sparql if planning should use finer tools
+            if not name.startswith("_") and name not in ["__init__", "execute_sparql"]: 
+                try:
+                    sig = inspect.signature(method)
+                    doc = inspect.getdoc(method)
+                    desc = f"- {name}{sig}: {doc if doc else 'No description available.'}"
+                    descriptions.append(desc)
+                except ValueError: # Handles methods without signatures like built-ins if any sneak through
+                    descriptions.append(f"- {name}(...): No signature/description available.")
+        return "\n".join(descriptions) if descriptions else "No tools available."
+
+    def generate_plan(self, normalized_query: Dict, ontology_tools: OntologyTools) -> List[Dict]:
+        """Generates the tool execution plan."""
+        if not normalized_query or isinstance(normalized_query, dict) and normalized_query.get("error"):
+             return [{"error": "Cannot generate plan from invalid or missing normalized query."}]
+             
+        tool_descriptions_str = self._get_tool_descriptions(ontology_tools)
+        
+        # Prepare prompt using system prompt as template
+        # Assuming AgentTemplate stores the raw system_prompt string
+        # If AgentTemplate pre-formats the prompt, adjust accordingly
+        formatted_system_prompt = self.system_prompt.format(tool_descriptions=tool_descriptions_str)
+        
+        user_message = f"""Generate an execution plan for the following normalized query:
+{json.dumps(normalized_query, indent=2, ensure_ascii=False)}
+
+Output the plan as a JSON list of steps."""
+
+        # Combine into messages for LLM invocation (adapt based on AgentTemplate's LLM interface)
+        messages = [
+            ("system", formatted_system_prompt),
+            ("user", user_message)
+        ]
+        
+        # Assuming self.llm.invoke can handle a list of messages
+        response = self.llm.invoke(messages) 
+
+        try:
+            # Parse the response content, assuming it's a JSON list
+            # Use existing parse_json from utils which includes basic error handling
+            # Let's enhance parsing robustness slightly here
+            raw_content = response.content
+            cleaned_content = re.sub(r"```json\n?(.*?)\n?```", r"\1", raw_content, flags=re.DOTALL).strip()
+            
+            plan = json.loads(cleaned_content) # Try parsing cleaned content
+
+            if isinstance(plan, list):
+                # Basic validation: check if items are dicts with 'tool'
+                if all(isinstance(step, dict) and 'tool' in step for step in plan):
+                    return plan
+                elif not plan: # Empty list is a valid plan (no tools needed)
+                    return []
+            # If parsing or validation fails, return error
+            error_msg = "Failed to generate a valid plan JSON list (non-list or invalid step format)"
+            print(f"{error_msg}. Raw response: {raw_content}")
+            return [{"error": error_msg, "raw_response": raw_content}]
+        except json.JSONDecodeError:
+             # Attempt to find JSON within the string if direct parsing fails
+            match = re.search(r'\[\s*\{.*?\}\s*\]', raw_content, re.DOTALL) # Look specifically for list of objects
+            if match:
+                try:
+                    plan = json.loads(match.group(0))
+                    if isinstance(plan, list) and all(isinstance(step, dict) and 'tool' in step for step in plan):
+                         print("Warning: Had to extract JSON from raw response.")
+                         return plan
+                except json.JSONDecodeError:
+                     pass # Fall through to error
+            error_msg = "Failed to parse plan JSON list from LLM response"
+            print(f"{error_msg}. Raw response: {raw_content}")
+            return [{"error": error_msg, "raw_response": raw_content}]
+        except Exception as e:
+            error_msg = f"Error parsing generated plan: {str(e)}"
+            print(f"{error_msg}. Raw response: {getattr(response, 'content', str(response))}")
+            return [{"error": error_msg, "raw_response": getattr(response, 'content', str(response))}]
 
 class QueryParserAgent(AgentTemplate):
     """自然语言查询解析器 (无工具版本)"""
     def __init__(self):
         system_prompt = """你是本体查询解析专家，负责将自然语言查询转换为结构化格式。注意：
-1. 必须严格遵循输出JSON格式
-2. 只使用可用的本体类：{available_classes}"""
+1. 必须严格遵循输出JSON格式。
+2. 请参考下面提供的可用本体类列表来识别实体。"""
         super().__init__(
             system_prompt=system_prompt,
-            tools=[]  # 无工具
+            tools=[] # 无工具
         )
 
     def __call__(self, state: Dict) -> Dict:
-        prompt = self._create_prompt(state["natural_query"])
-        response = self.llm.invoke(prompt)
+        natural_query = state.get("natural_query")
+        available_classes = state.get("available_classes", []) # Get classes from state
+
+        if not natural_query:
+            return {"error": "Natural query missing in input state."}
+
+        prompt_messages = self._create_prompt_messages(natural_query, available_classes)
+        
+        response = self.llm.invoke(prompt_messages)
         return self._parse_response(response.content)
 
-    def _create_prompt(self, query: str) -> str:
-        return f"请转换查询：{query}"
+    def _create_prompt_messages(self, query: str, available_classes: List[str]) -> List[tuple[str, str]]:
+        class_list_str = ", ".join(available_classes) if available_classes else "无可用类信息"
+        
+        user_content = f"可用类: {class_list_str}\n\n请转换查询：{query}\n\n输出必须是 JSON 格式。"
+        
+        return [
+            ("system", self.system_prompt),
+            ("user", user_content)
+        ]
 
     def _parse_response(self, raw: str) -> Dict:
         try:
-            return json.loads(raw)
-        except:
-            return {"error": "解析失败"}
+            cleaned_raw = re.sub(r"```json\n?(.*?)\n?```", r"\1", raw, flags=re.DOTALL).strip()
+            return json.loads(cleaned_raw)
+        except json.JSONDecodeError as e:
+            match = re.search(r'\{.*\}|\[.*\]', raw, re.DOTALL)
+            if match:
+                try:
+                    extracted_json = match.group(0)
+                    return json.loads(extracted_json)
+                except json.JSONDecodeError as inner_e:
+                    error_msg = f"解析失败 (直接解析: {e}; 提取后解析: {inner_e})"
+                    print(f"{error_msg}. Raw response: {raw}")
+                    return {"error": error_msg, "raw_response": raw}
+            else:
+                error_msg = f"解析失败，未找到有效的 JSON 结构: {e}"
+                print(f"{error_msg}. Raw response: {raw}")
+                return {"error": error_msg, "raw_response": raw}
+        except Exception as e:
+             error_msg = f"解析时发生未知错误: {str(e)}"
+             print(f"{error_msg}. Raw response: {raw}")
+             return {"error": error_msg, "raw_response": raw}
 
 class StrategyPlannerAgent(AgentTemplate):
     """查询策略规划器"""
