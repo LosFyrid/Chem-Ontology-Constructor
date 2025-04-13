@@ -10,6 +10,8 @@ import hashlib
 # Assuming owlready2 is available in the environment
 # from owlready2 import World, ThingClass # For type hinting if needed
 from .query_transformers import QueryToStateTransformer, StateToQueryTransformer
+from concurrent.futures import Future, ThreadPoolExecutor
+import queue
 
 class QueryStatus(str, Enum):
     PENDING = "pending"
@@ -29,9 +31,6 @@ class Query(BaseModel):
     
     # 查询上下文
     query_context: Dict[str, Any] = Field(default_factory=dict)
-    
-    # 回调信息
-    callback_id: Optional[str] = None  # 用于异步回调的ID
     
     # 状态跟踪
     created_at: datetime = Field(default_factory=datetime.now)
@@ -99,7 +98,6 @@ class QueryQueueManager:
         self.pending_queries = PriorityQueue()  # 优先级队列
         self.active_queries = {}  # 正在处理的查询
         self.completed_queries = {}  # 已完成的查询
-        self.callbacks = {}
         self.retries = {}  # 查询ID到重试次数的映射
         self.max_retries = 3  # 最大重试次数
         self.failed_queries = {}  # 失败的查询
@@ -146,10 +144,6 @@ class QueryQueueManager:
             return self.completed_queries[query_id][1]
         return None
     
-    def register_callback(self, query_id: str, callback_fn: Callable) -> None:
-        """注册查询完成时的回调函数"""
-        self.callbacks[query_id] = callback_fn
-        
     def mark_failed(self, query_id: str, error_message: str) -> None:
         """标记查询失败"""
         if query_id in self.active_queries:
@@ -157,16 +151,7 @@ class QueryQueueManager:
             query.status = QueryStatus.FAILED
             self.failed_queries[query_id] = query  # 添加到失败查询字典
             self.completed_queries[query_id] = (query, {"error": error_message})
-    
-    def _trigger_callback(self, query_id: str) -> None:
-        """触发查询回调"""
-        if query_id in self.callbacks and query_id in self.completed_queries:
-            try:
-                callback = self.callbacks.pop(query_id)
-                query, result = self.completed_queries[query_id]
-                callback(query, result)
-            except Exception as e:
-                print(f"回调执行错误: {str(e)}")
+
     def retry_query(self, query_id: str) -> bool:
         """重试失败的查询"""
         if query_id in self.failed_queries:
@@ -193,17 +178,20 @@ class QueryManager:
     
     def __init__(self):
         """初始化查询管理器"""
-        self._query_worker = None
-        self._stop_worker = False
-        self.query_manager = QueryQueueManager()
-        self._subscribers = {}
+        self.query_queue_manager = QueryQueueManager()
         self._query_to_state = QueryToStateTransformer()
         self._state_to_query = StateToQueryTransformer()
-        self.class_name_cache: List[str] = [] # Add class name cache
+        self.class_name_cache: List[str] = []
+        
+        # ADDED Executor and Dispatcher related attributes
+        self.executor = ThreadPoolExecutor(max_workers=4) # Executor for query tasks
+        self.task_futures: Dict[str, Future] = {} # Tracks Futures returned to callers
+        self._task_futures_lock = threading.Lock() # Lock for task_futures dict
+        self._dispatcher_thread: Optional[threading.Thread] = None # Dispatcher thread object
+        self._stop_dispatcher_event = threading.Event() # Event to signal dispatcher stop
 
         # 推迟 LangGraph 初始化，避免循环导入
         self.query_graph = None
-        # self.graph_saver = MemorySaver() # Removed MemorySaver as it wasn't imported
     
     def _initialize_graph(self):
         """Initializes the LangGraph query graph if not already done."""
@@ -223,47 +211,98 @@ class QueryManager:
             print("Warning: Ontology object invalid or missing 'classes' attribute during cache update.")
             self.class_name_cache = []
 
-    def start_worker(self):
-        """启动查询处理工作线程"""
-        self._initialize_graph() # Ensure graph is initialized before starting worker
-        if self._query_worker is None or not self._query_worker.is_alive():
-            self._stop_worker = False
-            self._query_worker = threading.Thread(target=self._process_queries)
-            self._query_worker.daemon = True
-            self._query_worker.start()
-    
-    def stop_worker(self):
-        """停止查询处理工作线程"""
-        self._stop_worker = True
-        if self._query_worker:
-            self._query_worker.join(timeout=2.0)
-            
-    def _process_queries(self):
-        """查询处理线程的主循环"""
-        while not self._stop_worker:
-            query = self.query_manager.get_next_query()
-            if query:
-                try:
-                    # Ensure graph is ready
-                    if self.query_graph is None:
-                         print("Error: Query graph not initialized. Cannot process query.")
-                         self.query_manager.mark_failed(query.query_id, "Query graph not initialized")
-                         continue # Skip this query
-                         
-                    # 调用LangGraph执行查询
-                    result = self._execute_query_with_langgraph(query)
-                    self.query_manager.store_result(query.query_id, result)
-                    # 触发回调
-                    self._notify_subscribers(query.query_id)
-                except Exception as e:
-                    self.handle_error(e)
-                    self.query_manager.mark_failed(query.query_id, str(e))
-                    # Also notify subscribers about the failure
-                    self._notify_subscribers(query.query_id) # Notify even on failure
-            else:
-                # 没有查询时短暂休眠，避免CPU空转
-                time.sleep(0.1)
-    
+    def start(self):
+        """Initializes the graph and starts the dispatcher thread."""
+        self._initialize_graph()
+        if self._dispatcher_thread is None or not self._dispatcher_thread.is_alive():
+            self._stop_dispatcher_event.clear()
+            self._dispatcher_thread = threading.Thread(target=self._dispatch_loop, daemon=True, name="QueryDispatcherThread")
+            self._dispatcher_thread.start()
+            print("Query Manager dispatcher started.")
+
+    def stop(self):
+        """Stops the dispatcher thread and shuts down the executor."""
+        print("Stopping Query Manager...")
+        self._stop_dispatcher_event.set()
+        if self._dispatcher_thread and self._dispatcher_thread.is_alive():
+            # Give the dispatcher a chance to exit cleanly after seeing the event
+            self._dispatcher_thread.join(timeout=2.0) 
+        print("Shutting down query executor...")
+        # Shutdown executor, wait=True ensures tasks finish (adjust as needed)
+        self.executor.shutdown(wait=True) 
+        print("Query Manager stopped.")
+
+    def _dispatch_loop(self):
+        """Continuously fetches queries from the queue and submits them to the executor."""
+        print(f"Dispatcher loop started on thread {threading.current_thread().name}")
+        while not self._stop_dispatcher_event.is_set():
+            try:
+                # Use timeout in get() to allow checking the stop event periodically
+                priority, query = self.query_queue_manager.pending_queries.get(block=True, timeout=0.5)
+                # print(f"Dispatching query: {query.query_id}") # Optional: for debugging
+                # Submit the task execution to the thread pool
+                # We don't need the future returned by submit here, as we already created one in submit_query
+                self.executor.submit(self._execute_query_task, query)
+            except queue.Empty:
+                # Queue is empty, loop continues to check stop event
+                continue
+            except Exception as e:
+                # Log unexpected errors in the dispatcher loop itself
+                print(f"Error in dispatcher loop: {e}")
+                # Avoid tight loop on persistent errors
+                time.sleep(0.5) 
+        print("Dispatcher loop exiting.")
+
+    def _execute_query_task(self, query: Query):
+        """Executes a single query task in an executor thread and completes its Future."""
+        # print(f"Executing query {query.query_id} on thread {threading.current_thread().name}") # Optional: debugging
+        result: Optional[Dict] = None
+        exception: Optional[Exception] = None
+        result_future: Optional[Future] = None # To store the future associated with this query
+
+        try:
+            # Retrieve the future BEFORE execution
+            with self._task_futures_lock:
+                # Don't pop yet, just retrieve.
+                result_future = self.task_futures.get(query.query_id)
+
+            if not result_future:
+                 print(f"Warning: Future not found for query {query.query_id} at start of execution.")
+                 self.query_queue_manager.mark_failed(query.query_id, "Internal error: Future not found")
+                 return 
+
+            # Ensure graph is ready 
+            if self.query_graph is None:
+                 raise RuntimeError("Query graph not initialized before executing task.")
+
+            # Execute the core logic
+            result = self._execute_query_with_langgraph(query)
+            self.query_queue_manager.store_result(query.query_id, result)
+
+        except Exception as e:
+            exception = e
+            self.handle_error(e) # Log or handle the error
+            self.query_queue_manager.mark_failed(query.query_id, str(e)) # Mark in QQM state
+
+        finally:
+            # Complete the Future and remove it from tracking
+            final_future_to_complete: Optional[Future] = None
+            with self._task_futures_lock:
+                # Use pop to get and remove atomically
+                final_future_to_complete = self.task_futures.pop(query.query_id, None)
+
+            if final_future_to_complete:
+                # Check if the future is already done (e.g., cancelled), though cancellation isn't implemented here
+                if not final_future_to_complete.done(): 
+                    if exception:
+                        final_future_to_complete.set_exception(exception)
+                    else:
+                        # Ensure result is a dict even if None was somehow returned
+                        final_result = result if result is not None else {}
+                        final_future_to_complete.set_result(final_result)
+                    # print(f"Completed future for query {query.query_id}") # Optional: debugging
+            # else: (Optional log) Future was already removed or never found.
+
     def handle_error(self, error: Exception):
         """处理错误"""
         # Consider adding more sophisticated logging here
@@ -291,8 +330,13 @@ class QueryManager:
     
     def submit_query(self, query_text: str, 
                     query_context: Dict = None,
-                    priority: str = "normal") -> str:
-        """提交查询并返回查询ID"""
+                    priority: str = "normal") -> Future: # Changed return type
+        """提交查询并返回一个 concurrent.futures.Future 对象来获取结果。
+
+        可以通过 Future 对象的 result(), exception(), done() 等方法交互。
+        使用 add_done_callback(fn) 注册的回调函数 fn 将接收 Future 对象本身作为其唯一参数 (fn(future))。
+        在回调内部，使用 future.result() (可能引发异常) 或 future.exception() 获取结果。
+        """        
         # 创建查询实例
         query = Query(
             natural_query=query_text,
@@ -302,51 +346,26 @@ class QueryManager:
             query_context=query_context or {}
         )
         
-        return self.query_manager.enqueue(query)
-    
-    def subscribe(self, query_id: str, callback: Callable) -> None:
-        """订阅查询结果"""
-        self._subscribers[query_id] = callback
+        # Create and store the Future before enqueuing
+        future = Future()
+        with self._task_futures_lock:
+            self.task_futures[query.query_id] = future
         
-    def _notify_subscribers(self, query_id: str) -> None:
-        """当查询完成或失败时通知订阅者"""
-        # Trigger internal callback if any (seems duplicated, review QueryQueueManager)
-        # self.query_manager._trigger_callback(query_id)
+        # Enqueue the query; the dispatcher will pick it up
+        self.query_queue_manager.enqueue(query)
         
-        # Check for registered subscribers
-        if query_id in self._subscribers:
-            callback = self._subscribers.pop(query_id) # Remove subscriber after notifying
-            query_obj, result_dict = None, None
-            
-            # Retrieve query and result/error
-            if query_id in self.query_manager.completed_queries:
-                 query_obj, result_dict = self.query_manager.completed_queries[query_id]
-            elif query_id in self.query_manager.failed_queries: # Check failed dict too
-                 # This path might be redundant if mark_failed also puts it in completed_queries
-                 query_obj = self.query_manager.failed_queries[query_id]
-                 result_dict = {"error": query_obj.error if query_obj.error else "Marked as failed"}
-            
-            if callback and query_obj and result_dict is not None:
-                try:
-                    # Pass query_id and result_dict (which contains 'error' on failure)
-                    callback(query_id, result_dict)
-                except Exception as e:
-                    print(f"Error executing subscriber callback for query {query_id}: {str(e)}")
-            elif callback:
-                 # If query info not found but callback exists, notify about the issue
-                 try:
-                     callback(query_id, {"error": f"Query state for {query_id} not found after processing."}) 
-                 except Exception as e:
-                     print(f"Error executing subscriber callback (query not found) for query {query_id}: {str(e)}")
-                
-    def get_result(self, query_id: str) -> Optional[Dict]:
-        """获取查询结果"""
-        return self.query_manager.get_result(query_id)
+        return future
     
     def retry_failed_queries(self) -> List[str]:
-        """重试所有失败的查询"""
+        """重试所有失败的查询 (NOTE: This needs review with the Future pattern)"""
+        # TODO: Review how retry interacts with Futures. 
+        # Should it return new Futures? Or is it just re-queueing?
+        # Current implementation just re-queues, doesn't create/return new futures.
         retried_ids = []
-        for query_id in list(self.query_manager.failed_queries.keys()):
-            if self.query_manager.retry_query(query_id):
+        for query_id in list(self.query_queue_manager.failed_queries.keys()):
+            if self.query_queue_manager.retry_query(query_id):
                 retried_ids.append(query_id)
+                # Q: Should we create a new Future for the retry? 
+                # If yes, how does the original caller get it? 
+                # If no, the original Future remains completed with the failure.
         return retried_ids
