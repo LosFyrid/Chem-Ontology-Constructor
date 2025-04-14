@@ -40,7 +40,6 @@ class QueryState(TypedDict):
 def create_query_graph() -> Graph:
     """创建查询工作流"""
     workflow = StateGraph(QueryState)
-    
     # Get the default LLM instance
     try:
         default_model = get_cached_default_llm()

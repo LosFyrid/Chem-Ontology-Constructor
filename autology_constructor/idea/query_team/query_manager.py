@@ -9,34 +9,11 @@ import time
 import hashlib
 # Assuming owlready2 is available in the environment
 # from owlready2 import World, ThingClass # For type hinting if needed
-from .query_transformers import QueryToStateTransformer, StateToQueryTransformer
+from .schemas import Query, QueryStatus # Import Query and QueryStatus from schemas
+from .query_adapter import QueryToStateAdapter, StateToQueryAdapter
 from concurrent.futures import Future, ThreadPoolExecutor
 import queue
 
-class QueryStatus(str, Enum):
-    PENDING = "pending"
-    PROCESSING = "processing"
-    COMPLETED = "completed"
-    FAILED = "failed"
-
-class Query(BaseModel):
-    """查询请求"""
-    query_id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    natural_query: str
-    
-    # 元数据
-    originating_team: str  # dreamer, critic等
-    originating_agent: str  # 发起查询的agent
-    priority: str = "normal"  # high, normal, low
-    
-    # 查询上下文
-    query_context: Dict[str, Any] = Field(default_factory=dict)
-    
-    # 状态跟踪
-    created_at: datetime = Field(default_factory=datetime.now)
-    status: QueryStatus = QueryStatus.PENDING
-    result: Optional[Dict] = None
-    error: Optional[str] = None
 
 class QueryCache:
     def __init__(self, ttl: int = 3600):  # 默认缓存1小时
@@ -153,25 +130,34 @@ class QueryQueueManager:
             self.completed_queries[query_id] = (query, {"error": error_message})
 
     def retry_query(self, query_id: str) -> bool:
-        """重试失败的查询"""
+        """尝试重新排队一个失败的查询。
+
+        如果查询存在于失败列表且未达到最大重试次数，
+        则更新重试次数，重置状态为 PENDING，将其重新放入队列，
+        并从失败列表中移除，然后返回 True。否则返回 False。
+        """
         if query_id in self.failed_queries:
             query = self.failed_queries[query_id]
             current_retries = self.retries.get(query_id, 0)
-            
+
             if current_retries < self.max_retries:
                 # 更新重试计数
                 self.retries[query_id] = current_retries + 1
-                
-                # 重新入队
+
+                # 重置状态并重新入队
                 query.status = QueryStatus.PENDING
                 priority = {"high": 1, "normal": 2, "low": 3}.get(query.priority, 2)
                 self.pending_queries.put((priority, query))
-                
+
                 # 从失败列表中移除
                 del self.failed_queries[query_id]
-                return True
-                
-        return False
+                print(f"Query {query_id} successfully re-queued for retry ({self.retries[query_id]}/{self.max_retries}).")
+                return True # Indicate success
+            else:
+                print(f"Query {query_id} reached max retries ({self.max_retries}). Cannot retry.")
+        else:
+            print(f"Query {query_id} not found in failed list. Cannot retry.")
+        return False # Indicate failure to retry
 
 class QueryManager:
     """独立的查询管理器，负责处理和管理所有查询请求"""
@@ -179,8 +165,8 @@ class QueryManager:
     def __init__(self):
         """初始化查询管理器"""
         self.query_queue_manager = QueryQueueManager()
-        self._query_to_state = QueryToStateTransformer()
-        self._state_to_query = StateToQueryTransformer()
+        self._query_to_state = QueryToStateAdapter()
+        self._state_to_query = StateToQueryAdapter()
         self.class_name_cache: List[str] = []
         
         # ADDED Executor and Dispatcher related attributes
@@ -356,16 +342,30 @@ class QueryManager:
         
         return future
     
-    def retry_failed_queries(self) -> List[str]:
-        """重试所有失败的查询 (NOTE: This needs review with the Future pattern)"""
-        # TODO: Review how retry interacts with Futures. 
-        # Should it return new Futures? Or is it just re-queueing?
-        # Current implementation just re-queues, doesn't create/return new futures.
-        retried_ids = []
-        for query_id in list(self.query_queue_manager.failed_queries.keys()):
-            if self.query_queue_manager.retry_query(query_id):
-                retried_ids.append(query_id)
-                # Q: Should we create a new Future for the retry? 
-                # If yes, how does the original caller get it? 
-                # If no, the original Future remains completed with the failure.
-        return retried_ids
+    def retry_failed_queries(self) -> Dict[str, Future]: # Changed return type
+        """尝试重试所有当前失败的查询。
+
+        对于每个成功重新排队的查询，会创建一个新的 Future 对象来追踪这次重试。
+        返回一个字典，其中键是成功发起重试的查询 ID，值是对应的新的 Future 对象。
+        调用者负责处理这些返回的 Future。原始失败的 Future 状态不变。
+        """
+        retried_futures: Dict[str, Future] = {} # Initialize dict for returning new futures
+        # Grab IDs first to avoid modification issues during iteration
+        failed_ids = list(self.query_queue_manager.failed_queries.keys())
+
+        print(f"Attempting to retry {len(failed_ids)} failed queries...")
+        for query_id in failed_ids:
+            # Call the modified QQM method
+            was_requeued = self.query_queue_manager.retry_query(query_id)
+            if was_requeued:
+                # Create and register a NEW future for this retry attempt
+                new_future = Future()
+                with self._task_futures_lock:
+                    # Overwrite any existing future for this query_id in the manager's tracking
+                    # This ensures the task executor finds and completes this new future
+                    self.task_futures[query_id] = new_future
+                # Store the new future in the dictionary to be returned
+                retried_futures[query_id] = new_future
+
+        print(f"Successfully initiated retry for {len(retried_futures)} queries.")
+        return retried_futures

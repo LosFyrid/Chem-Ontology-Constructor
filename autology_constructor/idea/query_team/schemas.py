@@ -1,5 +1,8 @@
 from pydantic import BaseModel, Field
-from typing import List, Optional, Dict, Any
+from typing import List, Optional, Dict, Any, Union
+from enum import Enum
+import uuid
+from datetime import datetime
 
 class NormalizedQuery(BaseModel):
     """Represents the structured understanding of a natural language query."""
@@ -25,4 +28,29 @@ class ValidationReport(BaseModel):
     """Represents the overall validation report for a query result."""
     valid: bool = Field(description="Overall assessment of whether the query result is valid.")
     details: List[DimensionReport] = Field(default_factory=list, description="A list of detailed validation results for each assessed dimension.")
-    message: str = Field(description="A concluding summary message about the overall validation result.") 
+    message: str = Field(description="A concluding summary message about the overall validation result.")
+
+class QueryStatus(str, Enum):
+    PENDING = "pending"
+    PROCESSING = "processing"
+    COMPLETED = "completed"
+    FAILED = "failed"
+
+class Query(BaseModel):
+    """查询请求"""
+    query_id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    natural_query: str
+
+    # 元数据
+    originating_team: str  # dreamer, critic等
+    originating_agent: str  # 发起查询的agent
+    priority: str = "normal"  # high, normal, low
+
+    # 查询上下文
+    query_context: Dict[str, Any] = Field(default_factory=dict)
+
+    # 状态跟踪
+    created_at: datetime = Field(default_factory=datetime.now)
+    status: QueryStatus = QueryStatus.PENDING
+    result: Optional[Dict] = None
+    error: Optional[str] = None 

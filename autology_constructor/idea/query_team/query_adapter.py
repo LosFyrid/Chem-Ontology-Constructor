@@ -1,7 +1,7 @@
 from typing import Dict, Optional, Any, List, Literal
-from .query_manager import Query, QueryStatus
+from .schemas import Query, QueryStatus
 
-class QueryToStateTransformer:
+class QueryToStateAdapter:
     """将Query转换为QueryState的转换器"""
     def transform(self, query: Query) -> Dict:
         """将Query对象转换为QueryState字典"""
@@ -22,7 +22,7 @@ class QueryToStateTransformer:
             "messages": []
         }
 
-class StateToQueryTransformer:
+class StateToQueryAdapter:
     """将QueryState转换回Query的转换器"""
     def transform(self, state: Dict, query: Query) -> None:
         """将QueryState的状态更新到Query对象"""

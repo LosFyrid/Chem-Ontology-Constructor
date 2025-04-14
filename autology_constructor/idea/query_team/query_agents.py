@@ -107,11 +107,13 @@ Output the plan as a JSON list of steps matching the ToolCallStep structure."""
             return {"error": error_msg} # Return error dictionary
 
 class QueryParserAgent(AgentTemplate):
-    """自然语言查询解析器 (使用结构化输出)"""
+    """You are an expert ontology query parser. Your task is to convert natural language queries into a structured format.
+1. Strictly adhere to the NormalizedQuery JSON schema for the output.
+2. Refer to the provided list of available ontology classes to identify entities."""
     def __init__(self, model: BaseLanguageModel):
-        system_prompt = """你是本体查询解析专家，负责将自然语言查询转换为结构化格式。
-1. 严格遵循 NormalizedQuery 的 JSON schema 输出。
-2. 参考下面提供的可用本体类列表来识别实体。"""
+        system_prompt = """You are an expert ontology query parser. Your task is to convert natural language queries into a structured format.
+1. Strictly adhere to the NormalizedQuery JSON schema for the output.
+2. Refer to the provided list of available ontology classes to identify entities."""
         super().__init__(
             model=model,
             name="QueryParserAgent",
@@ -164,25 +166,25 @@ Output *only* the JSON object conforming to the NormalizedQuery schema."""
         ]
 
 class StrategyPlannerAgent(AgentTemplate):
-    """查询策略规划器"""
+    """Select the optimal execution strategy (tool_sequence/SPARQL) based on the query characteristics."""
     def __init__(self, model: BaseLanguageModel):
         super().__init__(
             model=model,
             name="StrategyPlannerAgent",
-            system_prompt="根据查询特征选择最佳执行策略（tool_based/sparql）",
+            system_prompt="Select the optimal execution strategy (tool_sequence/SPARQL) based on the query characteristics.",
             tools=[]
         )
     
     def decide_strategy(self, standardized_query: Dict) -> str:
-        prompt = f"""标准化查询：
+        prompt = f"""Standardized query:
 {json.dumps(standardized_query, indent=2)}
 
-请选择策略："""
+Please select a strategy:"""
         response = self.llm.invoke(prompt)
         return response.content.strip().lower()
 
 class ToolExecutorAgent(AgentTemplate):
-    """工具执行专家"""
+    """Execute the tool call sequence according to the query plan."""
     def __init__(self, model: BaseLanguageModel):
         # We need an OntologyTools instance for the 'tools' argument of AgentTemplate
         # Passing None initially, will be set in execute_plan. This might need adjustment
@@ -192,7 +194,7 @@ class ToolExecutorAgent(AgentTemplate):
         super().__init__(
             model=model,
             name="ToolExecutorAgent",
-            system_prompt="根据查询计划执行工具调用序列",
+            system_prompt="Execute the tool call sequence according to the query plan.",
             # Pass the *instance* of OntologyTools, not the class itself
             # AgentTemplate expects a list of tool callables or LangChain tools
             # We might need to adjust how tools are passed or used in AgentTemplate
@@ -202,7 +204,7 @@ class ToolExecutorAgent(AgentTemplate):
         )
     
     def execute_plan(self, plan: List[ToolCallStep], ontology: Any) -> List[Dict]:
-        """执行工具调用计划"""
+        """Execute the tool call sequence according to the query plan."""
         # Use the ontology_tools_instance created in __init__
         self.ontology_tools_instance.onto = ontology  # 注入当前本体
         results = []
@@ -236,19 +238,19 @@ class ToolExecutorAgent(AgentTemplate):
         return results
 
 class SparqlExpertAgent(AgentTemplate):
-    """SPARQL生成专家"""
+    """Convert the standardized query into correct SPARQL syntax."""
     def __init__(self, model: BaseLanguageModel):
         super().__init__(
             model=model,
             name="SparqlExpertAgent",
-            system_prompt="将标准化查询转换为正确的SPARQL语法",
+            system_prompt="Convert the standardized query into correct SPARQL syntax.",
             tools=[]
         )
     
     def generate_sparql(self, query_desc: Dict) -> str:
         prompt = ChatPromptTemplate.from_messages([
             ("system", self.system_prompt),
-            ("user", "请为以下查询生成SPARQL语句：\n{query}")
+            ("user", "Please generate the SPARQL statement for the following query:\\n{query}")
         ])
         response = self.llm.invoke(prompt.format_messages(
             query=json.dumps(query_desc, ensure_ascii=False)
@@ -256,12 +258,14 @@ class SparqlExpertAgent(AgentTemplate):
         return response.content
 
 class ValidationAgent(AgentTemplate):
-    """结果验证专家 (使用结构化输出)"""
+    """You are an expert specializing in validating query results. You need to evaluate the quality of the query results across multiple dimensions: completeness, consistency, and accuracy.
+Provide a detailed assessment and specific reasoning for each dimension.
+Your validation result MUST strictly follow the ValidationReport JSON schema format."""
     def __init__(self, model: BaseLanguageModel):
         system_prompt = """
-        你是一个专门验证查询结果的专家。你需要从多个维度评估查询结果的质量：完整性、一致性、准确性。
-        对每个维度进行详细评估，并提供具体分析理由。
-        你的验证结果必须严格以 ValidationReport 的 JSON schema 格式返回。
+        You are an expert specializing in validating query results. You need to evaluate the quality of the query results across multiple dimensions: completeness, consistency, and accuracy.
+        Provide a detailed assessment and specific reasoning for each dimension.
+        Your validation result MUST strictly follow the ValidationReport JSON schema format.
         """
         super().__init__(
             model=model,
@@ -277,14 +281,14 @@ class ValidationAgent(AgentTemplate):
             self.structured_llm = None
 
     def validate(self, results: Any, query_context: Dict = None) -> Union[ValidationReport, Dict]:
-        """执行结果验证
+        """Execute result validation
         
         Args:
-            results: 查询结果
-            query_context: 可选的查询上下文信息
+            results: Query results
+            query_context: Optional query context information
         
         Returns:
-            Union[ValidationReport, Dict]: 验证结果，包含valid, details, message等字段
+            Union[ValidationReport, Dict]: Validation result, containing valid, details, message, etc. fields
         """
         if not self.structured_llm:
              return {"error": "ValidationAgent LLM not configured for structured output during init."}
@@ -301,20 +305,20 @@ class ValidationAgent(AgentTemplate):
             return {"error": f"Validation failed: Could not serialize results for LLM prompt - {str(e)}"}
 
         # Build the prompt parts
-        prompt_parts = [f"请验证以下查询结果:\n\n```json\n{results_str}\n```"]
+        prompt_parts = [f"Please validate the following query results:\\n\\n```json\\n{results_str}\\n```"]
 
         if query_context:
             prompt_parts.append(f"""
-验证上下文信息:
-- 查询意图: {query_context.get('intent', '未知')}
-- 查询类型: {query_context.get('type', '未知')}
-- 查询目标: {query_context.get('target', '未知')}
+Validation Context Information:
+- Query Intent: {query_context.get('intent', 'Unknown')}
+- Query Type: {query_context.get('type', 'Unknown')}
+- Query Target: {query_context.get('target', 'Unknown')}
 """)
 
         prompt_parts.append("""
-请从完整性、一致性和准确性三个维度进行验证，并给出详细理由。
-对每个维度提供评分（1-5分）。
-返回严格符合 ValidationReport JSON schema 的单个 JSON 对象。
+Please validate based on the dimensions of completeness, consistency, and accuracy, providing detailed reasoning.
+Provide a score (1-5) for each dimension.
+Return a single JSON object strictly conforming to the ValidationReport JSON schema.
 """)
 
         prompt = "\n\n".join(prompt_parts)
