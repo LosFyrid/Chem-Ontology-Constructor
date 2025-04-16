@@ -1,14 +1,15 @@
-from typing import Dict, List, Literal, Optional, Any
+from typing import Dict, List, Literal, Optional, Any, Union
 from typing_extensions import Annotated, TypedDict
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
+from langchain_core.messages import SystemMessage
 from langgraph.graph import Graph, StateGraph, END, START
 from langgraph.graph.message import AnyMessage, add_messages
 from .ontology_tools import OntologyTools, SparqlExecutionError
 from .query_agents import QueryParserAgent, StrategyPlannerAgent, ToolPlannerAgent, ToolExecutorAgent, SparqlExpertAgent, ValidationAgent
 from .query_manager import Query, QueryStatus
 from .utils import format_sparql_error, format_sparql_results, extract_variables_from_sparql
-from .schemas import NormalizedQuery, ToolCallStep, ValidationReport
+from .schemas import NormalizedQuery, ToolPlan, ValidationReport
 from autology_constructor.idea.common.llm_provider import get_cached_default_llm
 
 class QueryState(TypedDict):
@@ -26,7 +27,7 @@ class QueryState(TypedDict):
     # Query Management
     query_results: Dict  # 查询结果
     normalized_query: Optional[NormalizedQuery]  # 标准化的查询结构
-    execution_plan: Optional[List[ToolCallStep]]  # 执行计划
+    execution_plan: Optional[ToolPlan]  # 执行计划
     validation_report: Optional[ValidationReport]  # Added field for report
     sparql_query: Optional[str]  # Generated SPARQL query
     status: str  # 状态
@@ -39,7 +40,9 @@ class QueryState(TypedDict):
 
 def create_query_graph() -> Graph:
     """创建查询工作流"""
+
     workflow = StateGraph(QueryState)
+
     # Get the default LLM instance
     try:
         default_model = get_cached_default_llm()
@@ -63,29 +66,25 @@ def create_query_graph() -> Graph:
         try:
             query = state["query"]
             available_classes = state["available_classes"]
-            
             # Prepare state for parser agent, including available classes
             parser_state = {
                 "natural_query": query,
                 "available_classes": available_classes
             }
-
             # Use parser agent
             normalized_result = parser_agent(parser_state)
-            
             # Check if parsing resulted in an error reported by the agent
             if isinstance(normalized_result, dict) and normalized_result.get("error"):
-                 raise ValueError(f"Query parsing failed: {normalized_result.get('error')}")
+                    raise ValueError(f"Query parsing failed: {normalized_result.get('error')}")
             elif not isinstance(normalized_result, NormalizedQuery):
-                 # Should not happen if agent works correctly, but good to check
-                 raise TypeError(f"Query parser returned unexpected type: {type(normalized_result)}")
-                 
+                    # Should not happen if agent works correctly, but good to check
+                    raise TypeError(f"Query parser returned unexpected type: {type(normalized_result)}")
             return {
                 "normalized_query": normalized_result,
                 "status": "parsing_complete",
                 "stage": "normalized",
                 "previous_stage": state.get("stage"),
-                "messages": [AnyMessage(content=f"Query normalized: {query}")]
+                "messages": [SystemMessage(content=f"Query normalized: {query}")]
             }
         except Exception as e:
             error_message = f"Query normalization failed: {str(e)}"
@@ -95,7 +94,7 @@ def create_query_graph() -> Graph:
                 "stage": "error",
                 "previous_stage": state.get("stage"),
                 "error": error_message,
-                "messages": [AnyMessage(content=error_message)]
+                "messages": [SystemMessage(content=error_message)]
             }
     
     def determine_strategy(state: QueryState) -> Dict:
@@ -121,7 +120,7 @@ def create_query_graph() -> Graph:
                 "status": "strategy_determined",
                 "stage": "strategy",
                 "previous_stage": state.get("stage"),
-                "messages": [AnyMessage(content=f"Query strategy determined: {strategy}")]
+                "messages": [SystemMessage(content=f"Query strategy determined: {strategy}")]
             }
         except Exception as e:
             error_message = f"Strategy determination failed: {str(e)}"
@@ -131,7 +130,7 @@ def create_query_graph() -> Graph:
                 "stage": "error",
                 "previous_stage": state.get("stage"),
                 "error": error_message,
-                "messages": [AnyMessage(content=error_message)]
+                "messages": [SystemMessage(content=error_message)]
             }
     
     def execute_query(state: QueryState) -> Dict:
@@ -156,7 +155,7 @@ def create_query_graph() -> Graph:
                 # Check if plan generation resulted in an error
                 if isinstance(plan_result, dict) and plan_result.get("error"):
                     raise ValueError(f"Failed to generate tool plan: {plan_result.get('error')}")
-                elif not isinstance(plan_result, list):
+                elif not isinstance(plan_result, Union[ToolPlan, Dict]):
                      raise TypeError(f"Tool planner returned unexpected type: {type(plan_result)}")
                 
                 # Execute the plan using ToolExecutorAgent
@@ -174,7 +173,7 @@ def create_query_graph() -> Graph:
                     "status": "executed",
                     "stage": "executed",
                     "previous_stage": state.get("stage"),
-                    "messages": [AnyMessage(content="Tool-based query executed.")]
+                    "messages": [SystemMessage(content="Tool-based query executed.")]
                 }
             elif strategy == "SPARQL":
                 # Generate SPARQL query using SparqlExpertAgent
@@ -194,7 +193,7 @@ def create_query_graph() -> Graph:
                     "status": "executed",
                     "stage": "executed",
                     "previous_stage": state.get("stage"),
-                    "messages": [AnyMessage(content="SPARQL query executed successfully.")]
+                    "messages": [SystemMessage(content="SPARQL query executed successfully.")]
                 }
             else:
                 raise ValueError(f"Unsupported query strategy: {strategy}")
@@ -207,7 +206,7 @@ def create_query_graph() -> Graph:
                 "stage": "error",
                 "previous_stage": state.get("stage"),
                 "error": error_message,
-                "messages": [AnyMessage(content=error_message)]
+                "messages": [SystemMessage(content=error_message)]
             }
     
     def validate_results(state: QueryState) -> Dict:
@@ -229,7 +228,7 @@ def create_query_graph() -> Graph:
                     "error": results_to_validate.get("error"),
                     "validation_report": None, # Set report to None on error skip
                     "previous_stage": state.get("stage"),
-                    "messages": [AnyMessage(content="Validation skipped due to prior error.")]
+                    "messages": [SystemMessage(content="Validation skipped due to prior error.")]
                  }
 
             # Prepare query context for validation agent
@@ -261,7 +260,7 @@ def create_query_graph() -> Graph:
                 "status": final_status,
                 "stage": "validated",
                 "previous_stage": state.get("stage"),
-                "messages": [AnyMessage(content=f"Results validation {final_status}: {validation_message}")]
+                "messages": [SystemMessage(content=f"Results validation {final_status}: {validation_message}")]
             }
         except Exception as e:
             error_message = f"Results validation failed: {str(e)}"
@@ -272,7 +271,7 @@ def create_query_graph() -> Graph:
                 "previous_stage": state.get("stage"),
                 "error": error_message,
                 "validation_report": None, # Ensure report is None on error
-                "messages": [AnyMessage(content=error_message)]
+                "messages": [SystemMessage(content=error_message)]
             }
     
     # Add nodes

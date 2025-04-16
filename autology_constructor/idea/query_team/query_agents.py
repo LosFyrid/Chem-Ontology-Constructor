@@ -10,7 +10,7 @@ from .ontology_tools import OntologyTools
 from .utils import parse_json
 
 # Import Pydantic models
-from .schemas import NormalizedQuery, ToolCallStep, ValidationReport, DimensionReport
+from .schemas import NormalizedQuery, ToolCallStep, ValidationReport, DimensionReport, ToolPlan
 
 class ToolPlannerAgent(AgentTemplate):
     """Generates a tool execution plan based on a normalized query using an LLM."""
@@ -50,7 +50,7 @@ Available tools:
                     descriptions.append(f"- {name}(...): No signature/description available.")
         return "\n".join(descriptions) if descriptions else "No tools available."
 
-    def generate_plan(self, normalized_query: Union[Dict, NormalizedQuery], ontology_tools: OntologyTools) -> Union[List[ToolCallStep], Dict]:
+    def generate_plan(self, normalized_query: Union[Dict, NormalizedQuery], ontology_tools: OntologyTools) -> Union[ToolPlan, Dict]:
         """Generates the tool execution plan."""
         if not normalized_query:
              return {"error": "Cannot generate plan from missing normalized query."}
@@ -84,11 +84,14 @@ Output the plan as a JSON list of steps matching the ToolCallStep structure."""
         
         try:
             # Use the helper method to get the structured LLM
-            structured_llm = self._get_structured_llm(List[ToolCallStep])
-            plan: List[ToolCallStep] = structured_llm.invoke(messages)
+            print("1")
+            structured_llm = self._get_structured_llm(ToolPlan)
+            print("2")
+            plan: ToolPlan = structured_llm.invoke(messages)
+            print("3")
 
             # Basic validation: check if it's a list (LangChain should handle Pydantic validation)
-            if not isinstance(plan, list):
+            if not isinstance(plan, ToolPlan):
                 # This case might indicate an issue with the LLM or LangChain's parsing
                 raise ValueError("LLM did not return a list structure as expected for the plan.")
 
@@ -171,17 +174,45 @@ class StrategyPlannerAgent(AgentTemplate):
         super().__init__(
             model=model,
             name="StrategyPlannerAgent",
-            system_prompt="Select the optimal execution strategy (tool_sequence/SPARQL) based on the query characteristics.",
+            system_prompt="""You are an expert strategy planner. Based on the standardized query characteristics, select the optimal execution strategy: 'tool_sequence' or 'SPARQL'.
+
+Available Strategies:
+1.  **tool_sequence**: Utilizes a sequence of pre-defined atomic operations (wrapped owlready2 functions) to retrieve relevant information from the ontology by combining these operations.
+2.  **SPARQL**: Converts the natural language query into a SPARQL query and executes it directly against the ontology to retrieve information.
+
+Instructions:
+- Prefer the 'tool_sequence' strategy for most queries.
+- Use the 'SPARQL' strategy ONLY when the query is complex and naturally suited for a SPARQL query (e.g., involves complex graph patterns, aggregations, or specific SPARQL features not easily replicated by tool sequences).
+
+Output ONLY the selected strategy name ('tool_sequence' or 'SPARQL').""",
             tools=[]
         )
     
     def decide_strategy(self, standardized_query: Dict) -> str:
-        prompt = f"""Standardized query:
-{json.dumps(standardized_query, indent=2)}
+        # Construct the user message content
+        user_content = f"""Standardized query:
+{json.dumps(standardized_query, indent=2, ensure_ascii=False)}
 
-Please select a strategy:"""
-        response = self.llm.invoke(prompt)
-        return response.content.strip().lower()
+Based on the query characteristics and the available strategies described in the system prompt, please select the optimal strategy ('tool_sequence' or 'SPARQL'). Output ONLY the selected strategy name."""
+
+        # Create the messages list including the system prompt
+        messages = [
+            ("system", self.system_prompt),
+            ("user", user_content)
+        ]
+
+        # Invoke the model with the structured messages
+        response = self.model_instance.invoke(messages)
+        # Ensure the response content is stripped and lowercased
+        strategy = response.content.strip().lower()
+
+        # Basic validation to ensure it's one of the expected strategies
+        if strategy not in ['tool_sequence', 'sparql']:
+            print(f"Warning: StrategyPlannerAgent returned an unexpected strategy: '{strategy}'. Defaulting to 'tool_sequence'.")
+            # Consider raising an error or logging more formally depending on desired robustness
+            return 'tool_sequence' # Or handle the unexpected output appropriately
+
+        return strategy
 
 class ToolExecutorAgent(AgentTemplate):
     """Execute the tool call sequence according to the query plan."""
@@ -203,12 +234,12 @@ class ToolExecutorAgent(AgentTemplate):
             tools=[] # Let's keep this empty for AgentTemplate's init, as we call methods directly
         )
     
-    def execute_plan(self, plan: List[ToolCallStep], ontology: Any) -> List[Dict]:
+    def execute_plan(self, plan: ToolPlan, ontology: Any) -> List[Dict]:
         """Execute the tool call sequence according to the query plan."""
         # Use the ontology_tools_instance created in __init__
         self.ontology_tools_instance.onto = ontology  # 注入当前本体
         results = []
-        for step in plan: # Iterate over ToolCallStep objects
+        for step in plan.steps: # Iterate over ToolCallStep objects
             tool_name = step.tool
             params = step.params
             try:
@@ -252,7 +283,7 @@ class SparqlExpertAgent(AgentTemplate):
             ("system", self.system_prompt),
             ("user", "Please generate the SPARQL statement for the following query:\\n{query}")
         ])
-        response = self.llm.invoke(prompt.format_messages(
+        response = self.model_instance.invoke(prompt.format_messages(
             query=json.dumps(query_desc, ensure_ascii=False)
         ))
         return response.content

@@ -17,6 +17,12 @@ class ToolCallStep(BaseModel):
     tool: str = Field(description="The name of the tool to be called. Must be one of the available OntologyTools methods.")
     params: Dict[str, Any] = Field(default_factory=dict, description="A dictionary of parameters required to call the specified tool.")
 
+class ToolPlan(BaseModel):
+    """Represents the planned sequence of tool calls."""
+    steps: List[ToolCallStep] = Field(default_factory=list, description="The sequence of tool calls to execute.")
+            
+
+
 class DimensionReport(BaseModel):
     """Represents the validation result for a specific dimension."""
     dimension: str = Field(description="The dimension being evaluated, e.g., 'completeness', 'consistency', 'accuracy'.")
