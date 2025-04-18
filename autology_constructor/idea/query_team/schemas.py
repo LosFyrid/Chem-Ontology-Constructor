@@ -7,8 +7,8 @@ from datetime import datetime
 class NormalizedQuery(BaseModel):
     """Represents the structured understanding of a natural language query."""
     intent: str = Field(description="The main goal or action of the query, e.g., 'find information', 'compare entities', 'get property'.")
-    target_entities: List[str] = Field(default_factory=list, description="The primary entities or concepts the query is about.")
-    properties: List[str] = Field(default_factory=list, description="Specific property names mentioned or relevant to the query.")
+    relevant_entities: List[str] = Field(default_factory=list, description="The primary entities or concepts the query is about. The names in the list must be present in the available classes.")
+    relevant_properties: List[str] = Field(default_factory=list, description="Specific property names mentioned or relevant to the query.")
     filters: Optional[Dict[str, Any]] = Field(default=None, description="Filtering conditions to apply, where keys are property names and values are the filter criteria.")
     query_type_suggestion: Optional[str] = Field(default=None, description="A suggested type for the query based on the parsing, e.g., 'fact-finding', 'comparison', 'definition'.")
 
