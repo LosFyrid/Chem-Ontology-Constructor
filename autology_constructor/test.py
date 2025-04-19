@@ -4,9 +4,12 @@ import owlready2.class_construct
 
 from config.settings import ONTOLOGY_CONFIG
 
+from autology_constructor.idea.query_team.ontology_tools import OntologyTools
+
 onto = get_ontology("data/ontology/backup-2.owl").load()
 #onto = ONTOLOGY_CONFIG["ontology"]
 
+meta = ONTOLOGY_CONFIG["meta"]
 class_namespace = ONTOLOGY_CONFIG["classes"]
 data_property_namespace = ONTOLOGY_CONFIG["data_properties"]
 object_property_namespace = ONTOLOGY_CONFIG["object_properties"]
@@ -40,63 +43,83 @@ print(super_class)
 print(type(super_class))
 print("--------------------------------")
 
-restrictions = [restriction for restriction in super_classes if isinstance(restriction, owlready2.class_construct.Restriction)]
-if len(restrictions) > 0:
-    # for restriction in restrictions:
-    #     restriction_value = restriction.__getattr__("value")
-    #     restriction_is_a = restriction.is_a
-    #     restriction_dict = restriction.__dict__
-    #     restriction_subclasses = restriction.subclasses()
-    #     restriction_property = restriction.property
-    #     print(restriction_value)
-    #     print(type(restriction_value))
-    #     print(restriction_is_a)
-    #     print(restriction_dict)
-    #     print(restriction_subclasses)
-    #     print(restriction_property)
-    #     print(type(restriction_property))
-    #     print("--------------------------------")
-    restrictions = restrictions[1]
-    restriction_value = restrictions.__getattr__("value")
-    restriction_is_a = restrictions.is_a
-    restriction_dict = restrictions.__dict__
-    restriction_subclasses = restrictions.subclasses()
-    restriction_property = restrictions.property
-    print(restriction_value)
-    print(type(restriction_value))
-    print(restriction_is_a)
-    print(restriction_dict)
-    print(restriction_subclasses)
-    print(restriction_property)
-    print(type(restriction_property))
-    print(type(restriction_value.Classes[0]))
-    print([cls.name for cls in restriction_value.Classes])
-    print([class_namespace[name] for name in [cls.name for cls in restriction_value.Classes]])
-    print("--------------------------------")
-else:
-    restriction = None
-    print("No restrictions found")
+ontology_tools = OntologyTools(onto)
+
+print(ontology_tools.get_class_info("classes/bis_isonitrile"))
 
 
 
 
 
 
-print("Super Classes Information:")
-for i, sc in enumerate(super_classes):
-    print(f"Super Class {i+1}:")
-    print(f"  Name: {getattr(sc, 'name', 'No name attribute')}")
-    print(f"  Type: {type(sc)}")
-print("--------------------------------")
-for i, ancestor in enumerate(ancestors):
-    print(f"Ancestor {i+1}:")
-    print(f"  Name: {getattr(ancestor, 'name', 'No name attribute')}")
-    print(f"  Type: {type(ancestor)}")
-print("--------------------------------")
+# restrictions = [restriction for restriction in super_classes if isinstance(restriction, owlready2.class_construct.Restriction)]
+# if len(restrictions) > 0:
+#     # for restriction in restrictions:
+#     #     restriction_value = restriction.__getattr__("value")
+#     #     restriction_is_a = restriction.is_a
+#     #     restriction_dict = restriction.__dict__
+#     #     restriction_subclasses = restriction.subclasses()
+#     #     restriction_property = restriction.property
+#     #     print(restriction_value)
+#     #     print(type(restriction_value))
+#     #     print(restriction_is_a)
+#     #     print(restriction_dict)
+#     #     print(restriction_subclasses)
+#     #     print(restriction_property)
+#     #     print(type(restriction_property))
+#     #     print("--------------------------------")
+#     restrictions = restrictions[0]
+#     restriction_value = restrictions.__getattr__("value")
+#     restriction_is_a = restrictions.is_a
+#     restriction_dict = restrictions.__dict__
+#     restriction_subclasses = restrictions.subclasses()
+#     restriction_property = restrictions.property
+#     print(restriction_value)
+#     print(type(restriction_value))
+#     print(restriction_is_a)
+#     print(restriction_dict)
+#     print(restriction_subclasses)
+#     print(restriction_property)
+#     print(type(restriction_property))
+#     # print(type(restriction_value.Classes[0]))
+#     # print([cls.name for cls in restriction_value.Classes])
+#     # print([class_namespace[name] for name in [cls.name for cls in restriction_value.Classes]])
+#     print(isinstance(restriction_value, meta.SourcedInformation))
+#     print(restriction_value.type[0])
+
+#     print("--------------------------------")
+# else:
+#     restriction = None
+#     print("No restrictions found")
 
 
 
 
+
+
+# print("Super Classes Information:")
+# for i, sc in enumerate(super_classes):
+#     print(f"Super Class {i+1}:")
+#     print(f"  Name: {getattr(sc, 'name', 'No name attribute')}")
+#     print(f"  Type: {type(sc)}")
+# print("--------------------------------")
+# for i, ancestor in enumerate(ancestors):
+#     print(f"Ancestor {i+1}:")
+#     print(f"  Name: {getattr(ancestor, 'name', 'No name attribute')}")
+#     print(f"  Type: {type(ancestor)}")
+# print("--------------------------------")
+
+
+
+# for cls in onto.classes():
+#     restrictions = [restriction for restriction in cls.is_a if isinstance(restriction, owlready2.class_construct.Restriction)]
+#     sourced_informations = [restriction.__getattr__("value") for restriction in restrictions if isinstance(restriction.__getattr__("value"), meta.SourcedInformation) and restriction.__getattr__("value").type[0] == "entity"]
+#     sis = [restriction.__getattr__("value") for restriction in restrictions if isinstance(restriction.__getattr__("value"), meta.SourcedInformation)]
+
+#     if not len(sourced_informations) > 0 and cls.name != "SourcedInformation" and cls.name != "bis-isonitrile" :
+#         print(f"Class {cls.name} has no sourced information")
+#         print(restrictions)
+#         print("--------------------------------")
 
 
 

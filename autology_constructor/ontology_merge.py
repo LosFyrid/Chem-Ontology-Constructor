@@ -213,7 +213,7 @@ def _merge_data_properties(data_properties: List[base_data_structures.DataProper
                             else:
                                 owner_class = And(entity_classes)
 
-                                domain_class_name = f"intersection_of_{'_'.join(entity_classes)}"
+                                domain_class_name = f"intersection_of_{'_and_'.join(entity_classes)}"
 
                                 with class_namespace:
                                     domain_class = types.new_class(domain_class_name, (Thing,))
@@ -309,7 +309,8 @@ def _merge_object_properties(object_properties: List[base_data_structures.Object
                                         domain_class.has_information.append(info_instance)
                                     else:
                                         # 创建一个新的命名类来表示domain表达式
-                                        domain_class_name = f"{instance.domain.type}_of_{'_'.join(domain_entities)}"
+                                        separator = '_or_' if instance.domain.type == 'union' else '_and_'
+                                        domain_class_name = f"{instance.domain.type}_of_{separator.join(domain_entities)}"
                                         if instance.domain.type == 'union':
                                             domain_expr = Or([class_namespace[e] for e in domain_entities])
                                         else: # intersection 

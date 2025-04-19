@@ -6,6 +6,9 @@ import re
 
 from autology_constructor.idea.query_team.utils import parse_json, format_sparql_results, extract_variables_from_sparql
 
+from config.settings import ONTOLOGY_CONFIG
+
+meta = ONTOLOGY_CONFIG["meta"]
 
 class SparqlExecutionError(Exception):
     """SPARQL查询执行错误"""
@@ -279,10 +282,12 @@ class OntologyTools:
     def get_class_info(self, class_name: str) -> Dict:
         """Get basic information about a class"""
         cls = self.onto[class_name]
+        si_restrictions = [restriction for restriction in cls.is_a if isinstance(restriction, owlready2.class_construct.Restriction) and isinstance(restriction.__getattr__("value"), meta.SourcedInformation)]
+        entity_sis = [restriction.__getattr__("value") for restriction in si_restrictions if isinstance(restriction.__getattr__("value"), meta.SourcedInformation) and "entity" in restriction.__getattr__("value").type]
+
         return {
             "name": cls.name,
-            "information": list(cls.information) if hasattr(cls, "information") else [],
-            "source": list(cls.source) if hasattr(cls, "source") else []
+            "information": [si.content for si in entity_sis],
         }
     
     def get_information_sources(self, class_name: str) -> List[str]:
