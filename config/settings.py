@@ -3,9 +3,11 @@ import re
 import yaml
 from pathlib import Path
 from dotenv import load_dotenv
+from dataclasses import dataclass, field
+from typing import Dict, Optional
 
 import owlready2
-from owlready2 import onto_path, get_ontology
+from owlready2 import onto_path, get_ontology, Ontology, Namespace
 
 load_dotenv()
 
@@ -19,15 +21,18 @@ def path_constructor(loader, node):
     value = node.value
     match = path_matcher.match(value)
     env_var = match.group()[2:-1]
-    return os.environ.get(env_var, '') + value[match.end():]
+    project_root = os.environ.get(env_var, '')
+    return os.path.join(project_root, value[match.end():])
 
 def resolve_key_references(yaml_dict):
-    def _resolve_value(value, yaml_dict):
+    def _resolve_value(value, current_level_dict):
         if isinstance(value, str):
             match = key_matcher.search(value)
             if match:
                 key = match.group(1).strip()
-                if key in yaml_dict:
+                if key in current_level_dict:
+                    return value.replace(match.group(0), str(current_level_dict[key]))
+                elif key in yaml_dict:
                     return value.replace(match.group(0), str(yaml_dict[key]))
         return value
 
@@ -43,31 +48,103 @@ yaml.SafeLoader.add_implicit_resolver('!path', path_matcher, None)
 yaml.SafeLoader.add_constructor('!path', path_constructor)
 
 config_path = Path(__file__).parent / "settings.yaml"
-with open(config_path, "r") as f:
+with open(config_path, "r", encoding='utf-8') as f:
     yaml_settings = yaml.safe_load(f)
+    if 'PROJECT_ROOT' in os.environ:
+        yaml_settings['PROJECT_ROOT'] = os.environ['PROJECT_ROOT']
     yaml_settings = resolve_key_references(yaml_settings)
 
+# --- Set Java Path Globally (Step 1 - Added) ---
+_ontology_yaml_config = yaml_settings.get("ontology", {}) # Get ontology section safely
 
-_ONTOLOGY_CONFIG = yaml_settings["ontology"]
-onto_path.append(_ONTOLOGY_CONFIG["ontology_directory_path"])
-owlready2.JAVA_EXE = _ONTOLOGY_CONFIG["java_exe"]
-ontology = get_ontology(_ONTOLOGY_CONFIG["ontology_iri"]).load(only_local=True)
+java_path_from_yaml = _ontology_yaml_config.get("java_exe")
+if java_path_from_yaml:
+    java_path_obj = Path(java_path_from_yaml) 
+    if not java_path_obj.exists() or not java_path_obj.is_file():
+         print(f"Warning: Specified JAVA_EXE path from YAML ('{java_path_from_yaml}') does not exist or is not a file.")
+    # Set the global variable for owlready2
+    owlready2.JAVA_EXE = str(java_path_obj) 
+    print(f"Setting owlready2.JAVA_EXE globally from settings.yaml: {owlready2.JAVA_EXE}")
+else:
+     print("Warning: 'java_exe' not found in settings.yaml ontology section. Owlready2 reasoning might fail if Java is required.")
+
+# --- Define OntologySettings Class ---
+@dataclass
+class OntologySettings:
+    base_iri: str
+    ontology_file_name: str
+    directory_path: str
+    closed_ontology_file_name: str
+
+    _ontology: Optional[Ontology] = field(init=False, repr=False, default=None)
+    _namespaces: Dict[str, Namespace] = field(default_factory=dict, init=False, repr=False)
+
+    def __post_init__(self):
+        onto_path.append(self.directory_path)
+        try:
+            self._ontology = get_ontology(self.ontology_iri).load(only_local=True)
+        except Exception as e:
+            print(f"Error loading ontology {self.ontology_iri}: {e}")
+            raise RuntimeError(f"Failed to load ontology: {self.ontology_iri}") from e
+
+    @property
+    def ontology_iri(self) -> str:
+        return self.base_iri.rstrip('/') + '/' + self.ontology_file_name.lstrip('/')
+
+    @property
+    def closed_ontology_iri(self) -> str:
+        return self.base_iri.rstrip('/') + '/' + self.closed_ontology_file_name.lstrip('/')
+
+    @property
+    def ontology(self) -> Ontology:
+        if self._ontology is None:
+            raise RuntimeError("Ontology has not been loaded successfully.")
+        return self._ontology
+
+    def get_namespace(self, suffix: str) -> Namespace:
+        full_iri = self.base_iri.rstrip('/') + '/' + suffix.lstrip('/')
+        print(full_iri)
+        if full_iri not in self._namespaces:
+            if self._ontology is None:
+                raise RuntimeError("Cannot get namespace because ontology is not loaded.")
+            self._namespaces[full_iri] = self.ontology.get_namespace(full_iri)
+        return self._namespaces[full_iri]
+
+    @property
+    def meta(self) -> Namespace:
+        return self.get_namespace("meta/")
+
+    @property
+    def classes(self) -> Namespace:
+        return self.get_namespace("classes/")
+
+    @property
+    def individuals(self) -> Namespace:
+        return self.get_namespace("individuals/")
+
+    @property
+    def data_properties(self) -> Namespace:
+        return self.get_namespace("data_properties/")
+
+    @property
+    def object_properties(self) -> Namespace:
+        return self.get_namespace("object_properties/")
+
+    @property
+    def axioms(self) -> Namespace:
+        return self.get_namespace("axioms/")
+
+# --- Instantiate Settings Objects ---
+# _ontology_settings_data already has java_exe popped in previous step
+# Ensure it's still the case or adjust if the dict is re-read
+_ontology_settings_data = yaml_settings.get("ontology", {})
+_ontology_settings_data.pop('java_exe', None) # Pop again to be safe
+ONTOLOGY_SETTINGS = OntologySettings(**_ontology_settings_data)
 
 
 LLM_CONFIG = yaml_settings["LLM"]
 EXTRACTOR_EXAMPLES_CONFIG = yaml_settings["extractor_examples"]
 DATASET_CONSTRUCTION_CONFIG = yaml_settings["dataset_construction"]
-
-ONTOLOGY_CONFIG = {
-    "ontology": ontology,
-    "closed_ontology_file_path": _ONTOLOGY_CONFIG["closed_ontology_iri"],
-    "meta": ontology.get_namespace(_ONTOLOGY_CONFIG["namespace_meta_iri"]),
-    "classes": ontology.get_namespace(_ONTOLOGY_CONFIG["namespace_classes_iri"]),
-    "individuals": ontology.get_namespace(_ONTOLOGY_CONFIG["namespace_individuals_iri"]),
-    "data_properties": ontology.get_namespace(_ONTOLOGY_CONFIG["namespace_data_properties_iri"]),
-    "object_properties": ontology.get_namespace(_ONTOLOGY_CONFIG["namespace_object_properties_iri"]),
-    "axioms": ontology.get_namespace(_ONTOLOGY_CONFIG["namespace_axioms_iri"])
-}
 
 _ASSESSMENT_CRITERIA_SCORE_CONFIG = {
     "entity_score": 9,

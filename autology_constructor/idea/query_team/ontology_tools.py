@@ -1,14 +1,15 @@
-from typing import List, Tuple, Dict, Optional, Set, Any, Callable
+from typing import List, Tuple, Dict, Optional, Set, Any, Callable, Union
 from owlready2 import *
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 import re
+from collections import deque
+import traceback
+import warnings
 
 from autology_constructor.idea.query_team.utils import parse_json, format_sparql_results, extract_variables_from_sparql
 
-from config.settings import ONTOLOGY_CONFIG
-
-meta = ONTOLOGY_CONFIG["meta"]
+from config.settings import ONTOLOGY_SETTINGS, OntologySettings
 
 class SparqlExecutionError(Exception):
     """SPARQL查询执行错误"""
@@ -103,7 +104,7 @@ class SparqlOptimizer:
             return query
             
         # 优化过滤器位置（将过滤器尽可能移到WHERE子句前部）
-        where_pattern = r'(WHERE\s*\{)(.*?)(\})'
+        where_pattern = r'(WHERE\s*\{)(.*?)(\}) '
         
         def optimize_where(match):
             prefix = match.group(1)
@@ -240,8 +241,8 @@ class SparqlExecutor:
         Returns:
             格式化的查询结果
         """
-        # 执行查询
-        results = list(default_world.sparql(query))
+        # 使用传入的 ontology 对象的 world 来执行 SPARQL
+        results = list(ontology.world.sparql(query))
         
         # 获取变量名
         variables = extract_variables_from_sparql(query)
@@ -261,349 +262,632 @@ class SparqlExecutor:
 
 
 class OntologyTools:
-    """Tools for ontology querying and parsing
-    
-    This class provides comprehensive tools for working with OWL ontologies:
-    1. Basic Information: Get basic class information and metadata
-    2. Property Operations: Query and analyze property relationships
-    3. Hierarchy Operations: Navigate and analyze class hierarchies
-    4. Semantic Analysis: Analyze relationships and similarities
-    5. Parsing Operations: Parse complete definitions and structures
+    """用于本体查询和解析的工具 (v3: 使用 OntologySettings)
+
+    此类提供了用于处理 OWL 本体 的综合工具，需要一个配置好的 OntologySettings 实例。
     """
-    
-    def __init__(self, ontology):
-        self.onto = ontology
-        self.sparql_executor = SparqlExecutor()
 
-    #######################
-    # Basic Information
-    #######################
-    
-    def get_class_info(self, class_name: str) -> Dict:
-        """Get basic information about a class"""
-        cls = self.onto[class_name]
-        si_restrictions = [restriction for restriction in cls.is_a if isinstance(restriction, owlready2.class_construct.Restriction) and isinstance(restriction.__getattr__("value"), meta.SourcedInformation)]
-        entity_sis = [restriction.__getattr__("value") for restriction in si_restrictions if isinstance(restriction.__getattr__("value"), meta.SourcedInformation) and "entity" in restriction.__getattr__("value").type]
+    def __init__(self, ontology_settings: OntologySettings):
+        """初始化 OntologyTools
 
-        return {
-            "name": cls.name,
-            "information": [si.content for si in entity_sis],
-        }
-    
-    def get_information_sources(self, class_name: str) -> List[str]:
-        """Get all information sources of a class"""
-        cls = self.onto[class_name]
-        return list(cls.source) if hasattr(cls, "source") else []
-
-    def get_information_by_source(self, class_name: str, source: str) -> List[str]:
-        """Get information from a specific source for a class"""
-        cls = self.onto[class_name]
-        if not hasattr(cls, "has_information"):
-            return []
-        return [info.content for info in cls.has_information if info.source == source]
-
-    #######################
-    # Property Operations
-    #######################
-    
-    def get_class_properties(self, class_name: str) -> List[str]:
-        """Get all properties associated with a class"""
-        cls = self.onto[class_name]
-        properties = set()
-        
-        # Get properties from restrictions
-        for r in cls.is_a:
-            if isinstance(r, Restriction):
-                properties.add(r.property.name)
-        
-        # Get directly declared properties
-        for prop in cls.get_properties():
-            properties.add(prop.name)
-            
-        return sorted(list(properties))
-    
-    def get_property_restrictions(self, class_name: str, property_name: str) -> List[Dict]:
-        """Get all restrictions on a specific property for a class"""
-        cls = self.onto[class_name]
-        restrictions = []
-        
-        for r in cls.is_a:
-            if isinstance(r, Restriction) and r.property.name == property_name:
-                restrictions.append({
-                    "type": str(r.type),
-                    "value": str(r.value),
-                    "raw_value": r.value  # Keep the original value for further processing
-                })
-        
-        return restrictions
-    
-    def get_property_values(self, class_name: str, property_name: str) -> Set:
-        """Get all values associated with a property for a class"""
-        restrictions = self.get_property_restrictions(class_name, property_name)
-        values = set()
-        
-        for r in restrictions:
-            value = r["raw_value"]
-            if isinstance(value, ThingClass):
-                values.add(value.name)
-            elif hasattr(value, "__iter__"):
-                values.update(v.name for v in value if isinstance(v, ThingClass))
-                
-        return values
-
-    #######################
-    # Hierarchy Operations
-    #######################
-    
-    def get_parents(self, class_name: str) -> List[str]:
-        """Get direct parent classes"""
-        cls = self.onto[class_name]
-        return [c.name for c in cls.is_a if isinstance(c, ThingClass)]
-    
-    def get_children(self, class_name: str) -> List[str]:
-        """Get direct child classes"""
-        cls = self.onto[class_name]
-        return [c.name for c in cls.subclasses()]
-    
-    def get_ancestors(self, class_name: str) -> List[str]:
-        """Get all ancestor classes"""
-        cls = self.onto[class_name]
-        return [c.name for c in cls.ancestors() if isinstance(c, ThingClass)]
-    
-    def get_descendants(self, class_name: str) -> List[str]:
-        """Get all descendant classes"""
-        cls = self.onto[class_name]
-        return [c.name for c in cls.descendants() if isinstance(c, ThingClass)]
-
-    #######################
-    # Semantic Analysis
-    #######################
-    
-    def get_related_classes(self, class_name: str) -> Dict[str, List[str]]:
-        """Get classes related through object properties"""
-        cls = self.onto[class_name]
-        relations = {}
-        
-        # 获取所有对象属性
-        for prop in self.onto.object_properties():
-            related = []
-            # 通过限制获取关联的类
-            for r in cls.is_a:
-                if isinstance(r, Restriction) and r.property == prop:
-                    if isinstance(r.value, ThingClass):
-                        related.append(r.value.name)
-                    elif hasattr(r.value, "__iter__"):
-                        related.extend(v.name for v in r.value if isinstance(v, ThingClass))
-            
-            # 通过直接属性值获取关联的类
-            if hasattr(cls, prop.name):
-                values = getattr(cls, prop.name)
-                if isinstance(values, list):
-                    related.extend(v.name for v in values if isinstance(v, ThingClass))
-                elif isinstance(values, ThingClass):
-                    related.append(values.name)
-            
-            if related:
-                relations[prop.name] = sorted(list(set(related)))  # 去重并排序
-                
-        return relations
-
-    def get_property_path(self, start_class: str, end_class: str, max_depth: int = 5) -> List[List[str]]:
-        """Find property paths connecting two classes"""
-        paths = []
-        visited = set()
-        
-        def dfs(current: str, target: str, path: List[str], depth: int):
-            if depth > max_depth:
-                return
-            if current == target:
-                paths.append(path[:])
-                return
-            if current in visited:
-                return
-                
-            visited.add(current)
-            for prop_name, related in self.get_related_classes(current).items():
-                for cls in related:
-                    if cls not in visited:
-                        dfs(cls, target, path + [prop_name], depth + 1)
-            visited.remove(current)
-        
-        dfs(start_class, end_class, [], 0)
-        return paths
-    
-    def get_semantic_similarity(self, class1: str, class2: str) -> float:
-        """Calculate semantic similarity between two classes"""
-        cls1 = self.onto[class1]
-        cls2 = self.onto[class2]
-        
-        # 计算属性重叠度
-        props1 = set(self.get_class_properties(class1))
-        props2 = set(self.get_class_properties(class2))
-        prop_sim = len(props1 & props2) / len(props1 | props2) if props1 or props2 else 0
-        
-        # 计算共同祖先
-        ancestors1 = set(self.get_ancestors(class1))
-        ancestors2 = set(self.get_ancestors(class2))
-        ancestor_sim = len(ancestors1 & ancestors2) / len(ancestors1 | ancestors2) if ancestors1 or ancestors2 else 0
-        
-        # 计算信息内容相似度
-        info1 = set(info.content for info in cls1.has_information) if hasattr(cls1, "has_information") else set()
-        info2 = set(info.content for info in cls2.has_information) if hasattr(cls2, "has_information") else set()
-        info_sim = len(info1 & info2) / len(info1 | info2) if info1 or info2 else 0
-        
-        # 加权平均
-        return 0.4 * prop_sim + 0.4 * ancestor_sim + 0.2 * info_sim
-    
-    def get_disjoint_classes(self, class_name: str) -> List[str]:
-        """Get classes that are explicitly declared as disjoint"""
-        cls = self.onto[class_name]
-        disjoint = set()
-        
-        for d in cls.disjoints():
-            disjoint.update(c.name for c in d.entities if isinstance(c, ThingClass))
-            
-        disjoint.discard(class_name)  # Remove the class itself
-        return sorted(list(disjoint))
-    
-    def get_inconsistent_classes(self) -> List[str]:
-        """Get all inconsistent classes in the ontology"""
-        close_world(self.onto)
-        with self.onto:
-            sync_reasoner_pellet(
-                infer_property_values = True,
-                infer_data_property_values = True
-            )
-        return [cls.name for cls in default_world.inconsistent_classes()]
-
-    #######################
-    # Parsing Operations
-    #######################
-    
-    def parse_class_definition(self, class_name: str) -> Dict:
-        """Parse complete class definition"""
-        result = {
-            "basic_info": self.get_class_info(class_name),
-            "properties": {
-                "data": [],
-                "object": []
-            },
-            "hierarchy": {
-                "parents": self.get_parents(class_name),
-                "children": self.get_children(class_name)
-            },
-            "relations": self.get_related_classes(class_name)
-        }
-        
-        # 获取所有属性
-        for prop_name in self.get_class_properties(class_name):
-            prop = self.onto[prop_name]
-            if isinstance(prop, owlready2.DataProperty):
-                result["properties"]["data"].append({
-                    "name": prop_name,
-                    "values": list(self.get_property_values(class_name, prop_name)),
-                    "restrictions": self.get_property_restrictions(class_name, prop_name)
-                })
-            else:
-                result["properties"]["object"].append({
-                    "name": prop_name,
-                    "values": list(self.get_property_values(class_name, prop_name)),
-                    "restrictions": self.get_property_restrictions(class_name, prop_name)
-                })
-                
-        return result
-    
-    def parse_property_definition(self, property_name: str) -> Dict:
-        """Parse complete property definition"""
-        prop = self.onto[property_name]
-        result = {
-            "name": property_name,
-            "type": "data" if isinstance(prop, owlready2.DataProperty) else "object",
-            "domain": [c.name for c in prop.domain] if prop.domain else [],
-            "range": [c.name for c in prop.range] if prop.range else [],
-            "usage": []
-        }
-        
-        # 查找所有使用该属性的类
-        for cls in self.onto.classes():
-            restrictions = self.get_property_restrictions(cls.name, property_name)
-            if restrictions:
-                result["usage"].append({
-                    "class": cls.name,
-                    "restrictions": restrictions
-                })
-                
-        return result
-    
-    def parse_hierarchy_structure(self, root_class: str = None) -> Dict:
-        """Parse complete hierarchy structure"""
-        visited = set()  # 添加循环检测
-        
-        def build_tree(cls_name):
-            if cls_name in visited:
-                return {"name": cls_name, "cyclic": True}
-            visited.add(cls_name)
-            tree = {
-                "name": cls_name,
-                "info": self.get_class_info(cls_name),
-                "children": [build_tree(c) for c in self.get_children(cls_name)]
-            }
-            visited.remove(cls_name)
-            return tree
-            
-        if root_class:
-            return build_tree(root_class)
-        else:
-            top_classes = [cls.name for cls in self.onto.classes() 
-                         if not self.get_parents(cls.name)]
-            return [build_tree(cls) for cls in top_classes]
-    
-    #######################
-    # SPARQL Operations
-    #######################
-    
-    def execute_sparql(self, sparql_query: str) -> Dict:
-        """执行SPARQL查询并返回格式化结果
-        
         Args:
-            sparql_query: SPARQL查询字符串
-            
-        Returns:
-            查询结果，包含results字段的字典
-            
-        Example:
-            >>> query = "SELECT ?x WHERE { ?x rdf:type owl:Class }"
-            >>> tools.execute_sparql(query)
-            {'results': [{'var0': 'Class1'}, {'var0': 'Class2'}, ...]}
+            ontology_settings (OntologySettings): 已配置和加载的本体设置对象。
         """
+        if not isinstance(ontology_settings, OntologySettings):
+            raise TypeError("ontology_settings 必须是 OntologySettings 的实例。")
+
+        self.onto_settings = ontology_settings
+        self.onto = self.onto_settings.ontology # 可能为 None
+
+        # 获取命名空间，需要处理 ontology 或 namespace 可能为 None 的情况
+        self.meta_ns = self.onto_settings.meta
+        self._classes_ns = self.onto_settings.classes
+        self._obj_props_ns = self.onto_settings.object_properties
+        self._data_props_ns = self.onto_settings.data_properties
+
+        # 检查本体是否成功加载
+        if self.onto is None:
+            warnings.warn("OntologyTools 初始化时本体未加载。大多数功能将不可用。", RuntimeWarning)
+            # 将关键组件设为 None 或默认值
+            self.has_information_prop = None
+            self.SourcedInformationClass = None
+            return # 提前退出初始化或允许继续但功能受限
+
+        # 获取关键的 Meta 属性和类
+        if self.meta_ns:
+            try:
+                self.has_information_prop = self.meta_ns['has_information']
+                # -- 修改检查方式 --
+                # 移除之前的调试打印
+                # 使用 is_a 属性进行检查，更符合 owlready2 的方式
+                if owl.ObjectProperty not in getattr(self.has_information_prop, 'is_a', []):
+                    warnings.warn(f"'{self.has_information_prop}' is not recognized as an owl:ObjectProperty based on its 'is_a' attribute.", ImportWarning)
+                    self.has_information_prop = None
+            except (KeyError, AttributeError):
+                warnings.warn("'has_information' 未在 meta 命名空间中找到。", ImportWarning)
+                self.has_information_prop = None
+            # 移除之前的调试打印
+
+            try:
+                self.SourcedInformationClass = self.meta_ns['SourcedInformation']
+                # 同样，对 SourcedInformationClass 的检查也应该基于 owlready2 的类型系统
+                # issubclass(self.SourcedInformationClass, Thing) 看起来是正确的，暂时保留
+                # 移除之前的调试打印
+                if not issubclass(self.SourcedInformationClass, Thing): # issubclass is safer
+                    warnings.warn("'meta.SourcedInformation' 不是有效的类 (ThingClass)。", ImportWarning)
+                    self.SourcedInformationClass = None
+            except (KeyError, AttributeError, TypeError): # TypeError for issubclass if not a class
+                warnings.warn("'SourcedInformation' 未在 meta 命名空间中找到或不是有效类。", ImportWarning)
+                self.SourcedInformationClass = None
+            # 移除之前的调试打印
+        else:
+            warnings.warn("Meta 命名空间未加载。SourcedInformation 相关功能将不可用。", RuntimeWarning)
+            self.has_information_prop = None
+            self.SourcedInformationClass = None
+
+        # 验证其他命名空间是否加载
+        if not self._classes_ns: warnings.warn("Classes 命名空间未加载。", RuntimeWarning)
+        if not self._obj_props_ns: warnings.warn("Object Properties 命名空间未加载。", RuntimeWarning)
+        if not self._data_props_ns: warnings.warn("Data Properties 命名空间未加载。", RuntimeWarning)
+
+
+    def _check_ontology_loaded(self) -> bool:
+        """检查本体是否已加载"""
+        if self.onto is None:
+             warnings.warn("操作无法执行，因为本体未加载。", RuntimeWarning)
+             return False
+        return True
+
+    def _get_class_by_name(self, class_name: str) -> Optional[ThingClass]:
+        """辅助函数：通过名称安全地获取类对象 (使用 [] 访问 classes 命名空间)"""
+        if not self._check_ontology_loaded() or not self._classes_ns: return None
         try:
-            # 使用SPARQL执行器执行查询
-            return self.sparql_executor.execute(sparql_query, self.onto)
-        except SparqlExecutionError as e:
-            return {"error": str(e), "query": sparql_query}
+            cls = self._classes_ns[class_name]
+            if isinstance(cls, ThingClass):
+                return cls
+            else:
+                 warnings.warn(f"在 'classes' 命名空间中找到 '{class_name}' 但它不是 ThingClass。")
+                 return None
+        except KeyError:
+            return None # 类不存在是正常情况，不警告
         except Exception as e:
-            return {"error": f"查询执行异常: {str(e)}", "query": sparql_query}
+             warnings.warn(f"通过名称 '{class_name}' 获取类时发生意外错误: {e}")
+             return None
+
+    def _get_property_by_name(self, property_name: str) -> Optional[Union[ObjectProperty, DataProperty]]:
+        """辅助函数：通过名称安全地获取属性对象 (尝试 obj props, 然后 data props)"""
+        if not self._check_ontology_loaded(): return None
+        prop = None
+        # 优先尝试对象属性
+        if self._obj_props_ns:
+            try:
+                prop = self._obj_props_ns[property_name]
+                if isinstance(prop, ObjectProperty):
+                    return prop
+                else:
+                    # 找到了但类型不对？这很奇怪，记录一下
+                    warnings.warn(f"在 object_properties 命名空间中找到 '{property_name}' 但它不是 ObjectProperty。")
+                    prop = None # 重置以便尝试数据属性
+            except KeyError:
+                pass # 不在对象属性中，正常，继续查找
+            except Exception as e:
+                 warnings.warn(f"在 object_properties 中查找 '{property_name}' 时出错: {e}")
+                 prop = None # 出错则不继续
+
+        # 如果不是对象属性（或查找出错），尝试数据属性
+        if prop is None and self._data_props_ns:
+            try:
+                prop = self._data_props_ns[property_name]
+                if isinstance(prop, DataProperty):
+                    return prop
+                else:
+                     warnings.warn(f"在 data_properties 命名空间中找到 '{property_name}' 但它不是 DataProperty。")
+                     return None
+            except KeyError:
+                pass # 也不在数据属性中
+            except Exception as e:
+                 warnings.warn(f"在 data_properties 中查找 '{property_name}' 时出错: {e}")
+
+        # 如果两个命名空间都没找到，返回 None
+        return None
+
+
+    def _get_restriction_value_str(self, value: Any) -> str:
+        """辅助函数：将限制值转换为字符串表示"""
+        # ... (此函数不变)
+        if isinstance(value, ThingClass) or isinstance(value, owlready2.PropertyClass): return getattr(value, 'name', str(value))
+        elif isinstance(value, Or): return " OR ".join([self._get_restriction_value_str(c) for c in value.Classes])
+        elif isinstance(value, And): return " AND ".join([self._get_restriction_value_str(c) for c in value.Classes])
+        elif isinstance(value, Not): return f"NOT ({self._get_restriction_value_str(value.Class)})"
+        elif isinstance(value, Thing): return getattr(value, 'name', str(value))
+        else: return str(value)
+
+    def _get_sourced_info(self, entity: Union[ThingClass, ObjectProperty, DataProperty], info_type: Optional[Union[str, List[str]]] = None) -> List[Thing]:
+        """辅助函数：获取实体关联的 SourcedInformation 实例，可选地按类型过滤"""
+        # ... (此函数不变)
+        if not self._check_ontology_loaded() or not self.has_information_prop or not self.SourcedInformationClass: return []
+        linked_info_instances = []
+        try:
+            raw_linked_items = getattr(entity, self.has_information_prop.name, [])
+            if not isinstance(raw_linked_items, list): raw_linked_items = [raw_linked_items]
+            for item in raw_linked_items:
+                 if self.SourcedInformationClass in item.is_a:
+                     if info_type:
+                         item_types = getattr(item, 'type', []); item_types = [item_types] if isinstance(item_types, str) else item_types
+                         target_types = [info_type] if isinstance(info_type, str) else info_type
+                         if any(t in item_types for t in target_types): linked_info_instances.append(item)
+                     else: linked_info_instances.append(item)
+        except AttributeError as e: warnings.warn(f"访问实体 '{getattr(entity, 'name', entity)}' 的 has_information 时出错: {e}")
+        except Exception as e: warnings.warn(f"获取实体 '{getattr(entity, 'name', entity)}' 的 SI 时出错: {e}")
+        return linked_info_instances
+
+
+    # --- 内部单类处理函数 ---
+    # 这些函数现在首先检查本体是否加载
+
+    def _get_single_class_info(self, class_name: str) -> Dict:
+        if not self._check_ontology_loaded(): return {"error": "本体未加载"}
+        cls = self._get_class_by_name(class_name)
+        if not cls: return {"error": f"类 '{class_name}' 未找到。"}
+        entity_info_contents = []
+        sourced_infos = self._get_sourced_info(cls, info_type="entity")
+        for info_instance in sourced_infos:
+            try:
+                content = getattr(info_instance, 'content', None)
+                if content is not None:
+                    if isinstance(content, list): entity_info_contents.extend([str(c) for c in content])
+                    else: entity_info_contents.append(str(content))
+            except AttributeError: pass # warnings.warn(f"SI {getattr(info_instance, 'name', info_instance)} 缺少 'content' 属性。")
+            except Exception as e: warnings.warn(f"处理 SI {getattr(info_instance, 'name', info_instance)} 时出错: {e}")
+        return {"name": cls.name, "information": list(set(entity_info_contents))}
+
+    def _get_single_information_sources(self, class_name: str) -> Union[List[str], Dict]:
+         if not self._check_ontology_loaded(): return {"error": "本体未加载"}
+         cls = self._get_class_by_name(class_name)
+         if not cls: return {"error": f"类 '{class_name}' 未找到。"}
+         sources = set()
+         sourced_infos = self._get_sourced_info(cls)
+         for info_instance in sourced_infos:
+             try:
+                 source_val = getattr(info_instance, 'source', None)
+                 if source_val is not None:
+                     if isinstance(source_val, list): sources.update([str(s) for s in source_val])
+                     else: sources.add(str(source_val))
+             except AttributeError: pass # warnings.warn(f"SI {getattr(info_instance, 'name', info_instance)} 缺少 'source' 属性。")
+             except Exception as e: warnings.warn(f"处理 SI {getattr(info_instance, 'name', info_instance)} 的 source 时出错: {e}")
+         return sorted(list(sources))
+
+    # --- NEW: Refactored private methods for single class operations ---
+
+    def _get_single_parents(self, class_name: str) -> Union[List[str], Dict]:
+         """Internal: Get direct parents for a single class."""
+         if not self._check_ontology_loaded(): return {"error": "本体未加载"}
+         cls = self._get_class_by_name(class_name)
+         if not cls: return {"error": f"类 '{class_name}' 未找到。"}
+         parents = []
+         try:
+             # Iterate over is_a to find ThingClass parents (direct superclasses)
+             for parent in cls.is_a:
+                 # Ensure it's a class, not Thing itself, and has a name
+                 if isinstance(parent, ThingClass) and parent != owlready2.Thing and hasattr(parent, 'name'):
+                      parents.append(parent.name)
+         except Exception as e: warnings.warn(f"获取类 '{class_name}' 的父类时出错: {e}")
+         # Return unique sorted list
+         return sorted(list(set(parents)))
+
+    def _get_single_children(self, class_name: str) -> Union[List[str], Dict]:
+         """Internal: Get direct children for a single class."""
+         if not self._check_ontology_loaded(): return {"error": "本体未加载"}
+         cls = self._get_class_by_name(class_name)
+         if not cls: return {"error": f"类 '{class_name}' 未找到。"}
+         children = []
+         try:
+             # Use the subclasses() generator provided by owlready2
+             for child in cls.subclasses():
+                 if isinstance(child, ThingClass) and hasattr(child, 'name'): children.append(child.name)
+         except Exception as e: warnings.warn(f"获取类 '{class_name}' 的子类时出错: {e}")
+         return sorted(list(set(children)))
+
+    def _get_single_ancestors(self, class_name: str) -> Union[List[str], Dict]:
+         """Internal: Get all ancestors for a single class."""
+         if not self._check_ontology_loaded(): return {"error": "本体未加载"}
+         cls = self._get_class_by_name(class_name)
+         if not cls: return {"error": f"类 '{class_name}' 未找到。"}
+         ancestors = []
+         try:
+             # Use the ancestors() method
+             all_ancestors = cls.ancestors()
+             for ancestor in all_ancestors:
+                 # Exclude self and Thing
+                 if isinstance(ancestor, ThingClass) and ancestor != cls and ancestor != owlready2.Thing and hasattr(ancestor, 'name'): ancestors.append(ancestor.name)
+         except Exception as e: warnings.warn(f"获取类 '{class_name}' 的祖先时出错: {e}")
+         return sorted(list(set(ancestors)))
+
+    def _get_single_descendants(self, class_name: str) -> Union[List[str], Dict]:
+          """Internal: Get all descendants for a single class."""
+          if not self._check_ontology_loaded(): return {"error": "本体未加载"}
+          cls = self._get_class_by_name(class_name)
+          if not cls: return {"error": f"类 '{class_name}' 未找到。"}
+          descendants = []
+          try:
+              # Use the descendants() method
+              all_descendants = cls.descendants()
+              for descendant in all_descendants:
+                   # Exclude self
+                   if isinstance(descendant, ThingClass) and descendant != cls and hasattr(descendant, 'name'): descendants.append(descendant.name)
+          except Exception as e: warnings.warn(f"获取类 '{class_name}' 的后代时出错: {e}")
+          return sorted(list(set(descendants)))
+
+    def _get_single_related_classes(self, class_name: str) -> Union[Dict[str, List[str]], Dict]:
+         """Internal: Get related classes via object properties for a single class."""
+         if not self._check_ontology_loaded(): return {"error": "本体未加载"}
+         cls = self._get_class_by_name(class_name)
+         if not cls: return {"error": f"类 '{class_name}' 未找到。"}
+         related_map = {}
+         try:
+             # Use the NEW _get_single_class_properties method
+             class_props_res = self._get_single_class_properties(class_name) # Call self!
+             if isinstance(class_props_res, dict): # Error case from properties
+                 warnings.warn(f"无法获取 '{class_name}' 的属性以查找相关类: {class_props_res.get('error', '未知错误')}")
+                 return {"error": f"获取属性失败: {class_props_res.get('error', '未知错误')}"}
+
+             for prop_name in class_props_res:
+                 prop = self._get_property_by_name(prop_name)
+                 if not prop or not isinstance(prop, ObjectProperty): continue # Only consider object properties
+
+                 related_class_names_for_prop = set()
+                 # Get restrictions for *this* property on the class
+                 restrictions_result = self.get_property_restrictions(class_name, prop_name) # Public method ok here
+                 if isinstance(restrictions_result, dict) and "error" in restrictions_result:
+                     warnings.warn(f"无法获取 '{class_name}' 上 '{prop_name}' 的限制: {restrictions_result['error']}")
+                     continue # Skip property if restrictions can't be fetched
+
+                 # Analyze restrictions (SOME, ONLY, VALUE) to find related classes
+                 relevant_restriction_types = {"SOME", "ONLY", "VALUE"} # Include VALUE for specific individuals/classes
+                 for restriction in restrictions_result:
+                     if restriction["type"] in relevant_restriction_types:
+                         raw_value = restriction["raw_value"]; classes_to_process = []
+                         # Handle different types of restriction values
+                         if isinstance(raw_value, ThingClass): classes_to_process.append(raw_value)
+                         elif isinstance(raw_value, Or) or isinstance(raw_value, And): classes_to_process.extend(getattr(raw_value, 'Classes', []))
+                         # Could add handling for Individuals if needed:
+                         # elif isinstance(raw_value, Thing): related_class_names_for_prop.add(f"Individual:{raw_value.name}") # Or its class
+
+                         for related_cls in classes_to_process:
+                              if isinstance(related_cls, ThingClass) and hasattr(related_cls, 'name'): related_class_names_for_prop.add(related_cls.name)
+
+                 if related_class_names_for_prop: related_map[prop_name] = sorted(list(related_class_names_for_prop))
+         except Exception as e: warnings.warn(f"获取类 '{class_name}' 的相关类时出错: {e}")
+         return related_map
+
+    def _get_single_disjoint_classes(self, class_name: str) -> Union[List[str], Dict]:
+          """Internal: Get disjoint classes for a single class."""
+          if not self._check_ontology_loaded(): return {"error": "本体未加载"}
+          cls = self._get_class_by_name(class_name)
+          if not cls: return {"error": f"类 '{class_name}' 未找到。"}
+          disjoint_classes = set()
+          try:
+              # Use the disjoints() method which returns AllDisjoint objects
+              for disjoint_set in cls.disjoints():
+                   # disjoint_set.entities contains the classes in the disjoint axiom
+                   if cls in disjoint_set.entities:
+                      for entity in disjoint_set.entities:
+                          # Add other classes from the set, excluding self
+                          if isinstance(entity, ThingClass) and entity != cls and hasattr(entity, 'name'): disjoint_classes.add(entity.name)
+          except Exception as e: warnings.warn(f"获取类 '{class_name}' 的不相交类时出错: {e}")
+          return sorted(list(disjoint_classes))
+
+    # --- MODIFIED: _get_single_class_properties based on Restrictions ---
+    def _get_single_class_properties(self, class_name: str) -> Union[List[str], Dict]:
+         """Internal: Get properties used in restrictions for a single class."""
+         if not self._check_ontology_loaded(): return {"error": "本体未加载"}
+         cls = self._get_class_by_name(class_name)
+         if not cls: return {"error": f"类 '{class_name}' 未找到。"}
+         properties = set()
+         try:
+             # Iterate through the class's superclasses and equivalent classes (is_a)
+             # Restrictions are typically found here
+             for item in cls.is_a:
+                 if isinstance(item, owlready2.Restriction):
+                     prop = getattr(item, 'property', None)
+                     if prop and isinstance(prop, (ObjectProperty, DataProperty)) and hasattr(prop, 'name'):
+                         properties.add(prop.name)
+
+             # Consider also equivalent_to if properties might be defined there
+             for item in cls.equivalent_to:
+                 if isinstance(item, owlready2.Restriction):
+                      prop = getattr(item, 'property', None)
+                      if prop and isinstance(prop, (ObjectProperty, DataProperty)) and hasattr(prop, 'name'):
+                          properties.add(prop.name)
+                 # Could also look for properties in equivalent classes if needed
+                 # elif isinstance(item, ThingClass):
+                 #    # Recursively get properties? Might be complex/circular.
+                 #    pass
+
+         except Exception as e: warnings.warn(f"从类 '{class_name}' 的限制中提取属性时出错: {e}")
+         return sorted(list(properties))
+
+    # --- MODIFIED: _parse_single_class_definition using new private methods ---
+    def _parse_single_class_definition(self, class_name: str) -> Dict:
+         if not self._check_ontology_loaded(): return {"error": "本体未加载"}
+         cls = self._get_class_by_name(class_name)
+         if not cls: return {"error": f"类 '{class_name}' 未找到。"}
+
+         definition = {}
+         errors = {}
+
+         # Basic Info
+         basic_info = self._get_single_class_info(class_name)
+         if "error" in basic_info: errors["basic_info"] = basic_info["error"]
+         definition["basic_info"] = basic_info
+
+         # Properties (using the NEW restriction-based method)
+         all_properties_res = self._get_single_class_properties(class_name) # Call self!
+         properties_summary = {"data": {}, "object": {}}
+         sourced_prop_info = {}
+
+         if isinstance(all_properties_res, dict): errors["properties"] = all_properties_res["error"]
+         else:
+             # Process properties found
+             for prop_name in all_properties_res:
+                 prop = self._get_property_by_name(prop_name)
+                 if not prop:
+                     warnings.warn(f"在 _parse_single_class_definition 中无法找到属性 '{prop_name}'，尽管它在 _get_single_class_properties 中被列出。")
+                     continue
+
+                 # Get restrictions specifically for this property on this class
+                 restrictions = self.get_property_restrictions(class_name, prop_name) # Public API ok here
+                 prop_type_key = "object" if isinstance(prop, ObjectProperty) else "data"
+
+                 prop_entry = properties_summary[prop_type_key].get(prop_name, {"name": prop_name, "restrictions": []})
+                 if isinstance(restrictions, list):
+                     # Filter out potential error dicts if get_property_restrictions returns partial errors
+                     prop_entry["restrictions"].extend([r for r in restrictions if isinstance(r, dict) and "error" not in r])
+                 elif "error" in restrictions:
+                     prop_entry["restriction_error"] = restrictions["error"]
+                 properties_summary[prop_type_key][prop_name] = prop_entry
+
+             # Sourced Information for Properties
+             prop_info_instances = self._get_sourced_info(cls, info_type=["data_property", "object_property"])
+             for info in prop_info_instances:
+                  try:
+                      prop_name_from_info_list = getattr(info, 'property', []) # Assume it might be a list
+                      prop_name_from_info = prop_name_from_info_list[0] if prop_name_from_info_list else None
+                      content_list = getattr(info, 'content', [])
+                      content = content_list[0] if content_list else None
+                      source_list = getattr(info, 'source', [])
+                      source = source_list[0] if source_list else None
+                      file_path_list = getattr(info, 'file_path', [])
+                      file_path = file_path_list[0] if file_path_list else None
+
+                      if prop_name_from_info and content:
+                           if prop_name_from_info not in sourced_prop_info: sourced_prop_info[prop_name_from_info] = []
+                           sourced_prop_info[prop_name_from_info].append({"content": str(content), "source": str(source) if source else None, "file_path": str(file_path) if file_path else None})
+                  except Exception as e: warnings.warn(f"处理属性 SI {getattr(info, 'name', info)} 时出错: {e}")
+
+             # Merge sourced info into properties summary
+             for prop_name, info_list in sourced_prop_info.items():
+                  prop = self._get_property_by_name(prop_name)
+                  if prop:
+                      prop_type_key = "object" if isinstance(prop, ObjectProperty) else "data"
+                      if prop_name in properties_summary[prop_type_key]:
+                          properties_summary[prop_type_key][prop_name]["sourced_information"] = info_list
+                      else: # Property mentioned in SI but not found via restrictions
+                          properties_summary[prop_type_key][prop_name] = {"name": prop_name, "restrictions": [], "sourced_information": info_list}
+                  else:
+                      warnings.warn(f"属性 '{prop_name}' 在 SI 中提及但在本体中未找到。")
+
+
+         definition["properties"] = {"data": list(properties_summary["data"].values()), "object": list(properties_summary["object"].values())}
+
+         # Hierarchy (using new private methods)
+         parents = self._get_single_parents(class_name); # Call self!
+         children = self._get_single_children(class_name) # Call self!
+         if isinstance(parents, dict): errors["parents"] = parents["error"]
+         if isinstance(children, dict): errors["children"] = children["error"]
+         definition["hierarchy"] = {
+             "parents": parents if isinstance(parents, list) else [],
+             "children": children if isinstance(children, list) else [],
+             "sourced_hierarchy_info": [{"content": str(getattr(i, 'content', [''])[0]), "source": str(getattr(i, 'source', [''])[0])} for i in self._get_sourced_info(cls, info_type="hierarchy")]
+         }
+
+         # Relations (using new private method)
+         relations = self._get_single_related_classes(class_name) # Call self!
+         if isinstance(relations, dict) and "error" in relations: errors["relations"] = relations["error"]
+         definition["relations"] = relations if not ("error" in relations) else {}
+
+         # Disjointness (using new private method)
+         disjoint_with = self._get_single_disjoint_classes(class_name) # Call self!
+         if isinstance(disjoint_with, dict): errors["disjoint_with"] = disjoint_with["error"]
+         definition["disjoint_with"] = disjoint_with if isinstance(disjoint_with, list) else []
+
+         if errors: definition["parsing_errors"] = errors
+         return definition
+
+
+    ####################################
+    # Public API - Supports List Input
+    ####################################
+
+    # --- MODIFIED: Public API methods now call corresponding _get_single_... ---
+
+    def get_class_info(self, class_names: Union[str, List[str]]) -> Dict[str, Dict]:
+        if not self._check_ontology_loaded(): return {name: {"error": "本体未加载"} for name in ([class_names] if isinstance(class_names, str) else class_names)}
+        if isinstance(class_names, str): class_names = [class_names]
+        return {name: self._get_single_class_info(name) for name in class_names}
+
+    def get_information_sources(self, class_names: Union[str, List[str]]) -> Dict[str, Union[List[str], Dict]]:
+        if not self._check_ontology_loaded(): return {name: {"error": "本体未加载"} for name in ([class_names] if isinstance(class_names, str) else class_names)}
+        if isinstance(class_names, str): class_names = [class_names]
+        return {name: self._get_single_information_sources(name) for name in class_names}
+
+    def get_information_by_source(self, class_names: Union[str, List[str]], source: str) -> Dict[str, Union[List[str], Dict]]:
+         if not self._check_ontology_loaded(): return {name: {"error": "本体未加载"} for name in ([class_names] if isinstance(class_names, str) else class_names)}
+         if isinstance(class_names, str): class_names = [class_names]
+         # Keep the internal function here as it's specific to this method's logic
+         def _get_single_information_by_source(class_name: str, src: str) -> Union[List[str], Dict]:
+              cls = self._get_class_by_name(class_name)
+              if not cls: return {"error": f"类 '{class_name}' 未找到。"}
+              matching_content = []
+              sourced_infos = self._get_sourced_info(cls) # Use the class-level helper
+              for info_instance in sourced_infos:
+                  try:
+                      instance_sources = getattr(info_instance, 'source', [])
+                      if isinstance(instance_sources, str): instance_sources = [instance_sources]
+                      if src in instance_sources:
+                          content = getattr(info_instance, 'content', None)
+                          if content is not None:
+                              if isinstance(content, list): matching_content.extend([str(c) for c in content])
+                              else: matching_content.append(str(content))
+                  except AttributeError: pass
+                  except Exception as e: warnings.warn(f"为 '{class_name}' 和源 '{src}' 查找信息时出错: {e}")
+              return list(set(matching_content))
+         return {name: _get_single_information_by_source(name, source) for name in class_names}
+
+    def get_class_properties(self, class_names: Union[str, List[str]]) -> Dict[str, Union[List[str], Dict]]:
+        if not self._check_ontology_loaded(): return {name: {"error": "本体未加载"} for name in ([class_names] if isinstance(class_names, str) else class_names)}
+        if isinstance(class_names, str): class_names = [class_names]
+        return {name: self._get_single_class_properties(name) for name in class_names} # Call self!
+
+    def get_parents(self, class_names: Union[str, List[str]]) -> Dict[str, Union[List[str], Dict]]:
+        if not self._check_ontology_loaded(): return {name: {"error": "本体未加载"} for name in ([class_names] if isinstance(class_names, str) else class_names)}
+        if isinstance(class_names, str): class_names = [class_names]
+        return {name: self._get_single_parents(name) for name in class_names} # Call self!
+
+    def get_children(self, class_names: Union[str, List[str]]) -> Dict[str, Union[List[str], Dict]]:
+        if not self._check_ontology_loaded(): return {name: {"error": "本体未加载"} for name in ([class_names] if isinstance(class_names, str) else class_names)}
+        if isinstance(class_names, str): class_names = [class_names]
+        # Remove the internal definition, call the class-level private method
+        return {name: self._get_single_children(name) for name in class_names} # Call self!
+
+    def get_ancestors(self, class_names: Union[str, List[str]]) -> Dict[str, Union[List[str], Dict]]:
+         if not self._check_ontology_loaded(): return {name: {"error": "本体未加载"} for name in ([class_names] if isinstance(class_names, str) else class_names)}
+         if isinstance(class_names, str): class_names = [class_names]
+         # Remove the internal definition, call the class-level private method
+         return {name: self._get_single_ancestors(name) for name in class_names} # Call self!
+
+    def get_descendants(self, class_names: Union[str, List[str]]) -> Dict[str, Union[List[str], Dict]]:
+         if not self._check_ontology_loaded(): return {name: {"error": "本体未加载"} for name in ([class_names] if isinstance(class_names, str) else class_names)}
+         if isinstance(class_names, str): class_names = [class_names]
+         # Remove the internal definition, call the class-level private method
+         return {name: self._get_single_descendants(name) for name in class_names} # Call self!
+
+    def get_related_classes(self, class_names: Union[str, List[str]]) -> Dict[str, Union[Dict[str, List[str]], Dict]]:
+        if not self._check_ontology_loaded(): return {name: {"error": "本体未加载"} for name in ([class_names] if isinstance(class_names, str) else class_names)}
+        if isinstance(class_names, str): class_names = [class_names]
+        # Remove the internal definition, call the class-level private method
+        return {name: self._get_single_related_classes(name) for name in class_names} # Call self!
+
+    def get_disjoint_classes(self, class_names: Union[str, List[str]]) -> Dict[str, Union[List[str], Dict]]:
+         if not self._check_ontology_loaded(): return {name: {"error": "本体未加载"} for name in ([class_names] if isinstance(class_names, str) else class_names)}
+         if isinstance(class_names, str): class_names = [class_names]
+         # Remove the internal definition, call the class-level private method
+         return {name: self._get_single_disjoint_classes(name) for name in class_names} # Call self!
+
+    def parse_class_definition(self, class_names: Union[str, List[str]]) -> Dict[str, Dict]:
+        if not self._check_ontology_loaded(): return {name: {"error": "本体未加载"} for name in ([class_names] if isinstance(class_names, str) else class_names)}
+        if isinstance(class_names, str): class_names = [class_names]
+        return {name: self._parse_single_class_definition(name) for name in class_names} # Call self!
+
+    # --- MODIFIED: get_semantic_similarity using new private methods ---
+    def get_semantic_similarity(self, class1_name: str, class2_name: str) -> Union[float, Dict]:
+        if not self._check_ontology_loaded(): return {"error": "本体未加载"}
+        if class1_name == class2_name: return 1.0
+        cls1 = self._get_class_by_name(class1_name); cls2 = self._get_class_by_name(class2_name)
+        if not cls1: return {"error": f"类 '{class1_name}' 未找到。"}
+        if not cls2: return {"error": f"类 '{class2_name}' 未找到。"}
+        def jaccard_similarity(set1: Set, set2: Set) -> float: intersection = len(set1.intersection(set2)); union = len(set1.union(set2)); return intersection / union if union > 0 else 0.0
+        try:
+            # Use the NEW restriction-based property method via self
+            props1_res = self._get_single_class_properties(class1_name); props2_res = self._get_single_class_properties(class2_name); prop_sim = 0.0
+            if not isinstance(props1_res, dict) and not isinstance(props2_res, dict): prop_sim = jaccard_similarity(set(props1_res), set(props2_res))
+
+            # Use the NEW ancestor method via self
+            anc1_res = self._get_single_ancestors(class1_name); anc2_res = self._get_single_ancestors(class2_name); ancestor_sim = 0.0
+            if not isinstance(anc1_res, dict) and not isinstance(anc2_res, dict): ancestor_sim = jaccard_similarity(set(anc1_res), set(anc2_res))
+
+            # Info calculation remains the same
+            info1_res = self._get_single_class_info(class1_name); info2_res = self._get_single_class_info(class2_name); info_sim = 0.0
+            # Ensure we handle potential errors from _get_single_class_info
+            info1_data = info1_res.get("information", []) if isinstance(info1_res, dict) else []
+            info2_data = info2_res.get("information", []) if isinstance(info2_res, dict) else []
+            info_sim = jaccard_similarity(set(info1_data), set(info2_data))
+
+            # Weights can remain the same, or adjust if needed
+            total_similarity = (0.4 * prop_sim) + (0.4 * ancestor_sim) + (0.2 * info_sim)
+        except Exception as e: warnings.warn(f"计算 '{class1_name}' 和 '{class2_name}' 相似度时出错: {e}"); return {"error": f"计算相似度时出错: {e}"}
+        return round(total_similarity, 4)
+
+
+    # --- MODIFIED: parse_hierarchy_structure using new private methods ---
+    def parse_hierarchy_structure(self, root_class_name: Optional[str] = None) -> Union[Dict, List[Dict]]:
+        if not self._check_ontology_loaded(): return {"error": "本体未加载"}
+        memo = {}
+        # build_subtree now needs access to self to call _get_single_children
+        def build_subtree(self_obj: 'OntologyTools', class_name: str, visited_path: Set[str]) -> Dict: # Pass self_obj
+            if class_name in memo: return memo[class_name]
+            node = {"name": class_name, "children": []}
+            if class_name in visited_path: node["cyclic_dependency_detected"] = True; memo[class_name] = node; return node
+            visited_path.add(class_name)
+            # Use the class-level private method via self_obj
+            children_result = self_obj._get_single_children(class_name) # Call self_obj!
+            if isinstance(children_result, dict) and "error" in children_result: node["error_fetching_children"] = children_result["error"]
+            else:
+                for child_name in children_result: node["children"].append(build_subtree(self_obj, child_name, visited_path.copy())) # Pass self_obj
+            visited_path.remove(class_name); memo[class_name] = node; return node
+        try:
+            if root_class_name:
+                root_cls = self._get_class_by_name(root_class_name)
+                if not root_cls: return {"error": f"根类 '{root_class_name}' 未找到。"}
+                memo.clear(); return build_subtree(self, root_class_name, set()) # Pass self
+            else:
+                top_level_classes = []
+                all_classes = list(self.onto.classes()) # Assumes onto is loaded
+                for cls in all_classes:
+                     if not isinstance(cls, ThingClass) or cls == owlready2.Thing or not hasattr(cls, 'name'): continue
+                     # Use the class-level private method via self
+                     parents_res = self._get_single_parents(cls.name) # Call self!
+                     if isinstance(parents_res, dict): warnings.warn(f"无法获取 '{cls.name}' 父类: {parents_res['error']}"); continue
+                     if not parents_res: top_level_classes.append(cls.name)
+                forest = []
+                for top_class_name in sorted(top_level_classes): memo.clear(); forest.append(build_subtree(self, top_class_name, set())) # Pass self
+                return forest
+        except Exception as e: error_msg = f"解析层级结构时出错: {e}\n{traceback.format_exc()}"; warnings.warn(error_msg); return {"error": error_msg}
+
 
 class OntologyAnalyzer:
     """本体分析工具 - 专注于本体结构分析"""
     
-    def __init__(self):
-        self.llm = ChatOpenAI(temperature=0)
-        self.tools = OntologyTools(None)
+    def __init__(self, ontology_settings: Optional[OntologySettings] = None):
+        # Store settings or use global default
+        if ontology_settings is None:
+            from config.settings import ONTOLOGY_SETTINGS as global_settings
+            self.settings = global_settings
+        else:
+            self.settings = ontology_settings
+            
+        # Initialize LLM
+        # Ensure OPENAI_API_KEY is loaded if ChatOpenAI relies on it implicitly
+        # from config.settings import OPENAI_API_KEY 
+        self.llm = ChatOpenAI(temperature=0) 
         
-    def analyze_domain_structure(self, ontology) -> Dict:
-        """分析领域的基本结构
-        - 核心概念和关系
-        - 属性分布
-        - 层次结构
-        """
-        self.tools.onto = ontology
+        # Initialize tools with the determined settings
+        self.tools = OntologyTools(self.settings)
+        
+    def analyze_domain_structure(self) -> Dict:
+        """分析领域的基本结构 (using self.settings and self.tools)"""
+        
+        # Use self.tools for parsing
         hierarchy = self.tools.parse_hierarchy_structure()
-        
+        properties_info = [self.tools.parse_property_definition(p.name) 
+                         for p in self.settings.ontology.properties() 
+                         if "error" not in self.tools.parse_property_definition(p.name)] # Filter errors
+        class_names = [c.name for c in self.settings.ontology.classes()]
+
         structure_info = {
-            "hierarchy": hierarchy,  # 只保留一份层次结构
-            "properties": [self.tools.parse_property_definition(p.name) 
-                         for p in ontology.properties()]
+            "hierarchy": hierarchy, 
+            "properties": properties_info,
+            "classes": class_names
         }
         
         prompt = ChatPromptTemplate.from_messages([
@@ -629,33 +913,46 @@ class OntologyAnalyzer:
             """)
         ])
         
-        response = self.llm.invoke(prompt.format_messages(**structure_info))
-        return parse_json(response.content)
+        try:
+            response = self.llm.invoke(prompt.format_messages(**structure_info))
+            return parse_json(response.content)
+        except Exception as e:
+             print(f"Error during LLM invocation or JSON parsing in analyze_domain_structure: {e}")
+             return {"error": f"Analysis failed: {e}"}
     
-    def find_key_concepts(self, ontology) -> List[Dict]:
-        """识别关键概念
-        - 概念的中心度
-        - 属性丰富度
-        - 连接模式
-        """
-        self.tools.onto = ontology
+    def find_key_concepts(self) -> List[Dict]:
+        """识别关键概念 (using self.settings and self.tools)"""
         
-        # 获取本体信息
         classes_info = []
-        for cls in ontology.classes():
-            class_info = {
-                "name": cls.name,
-                "properties": self.tools.get_class_properties(cls.name),
-                "parents": self.tools.get_parents(cls.name),
-                "children": self.tools.get_children(cls.name),
-                "related": self.tools.get_related_classes(cls.name)
-            }
-            classes_info.append(class_info)
+        for cls in self.settings.ontology.classes():
+            cls_name = cls.name
+            try: # Add error handling for tool calls
+                 properties = self.tools.get_class_properties(cls_name)
+                 parents = self.tools.get_parents(cls_name)
+                 children = self.tools.get_children(cls_name)
+                 related = self.tools.get_related_classes(cls_name)
+                 class_info = {
+                     "name": cls_name,
+                     "properties": properties, 
+                     "parents": parents, 
+                     "children": children,
+                     "related": related
+                 }
+                 classes_info.append(class_info)
+            except Exception as e:
+                 print(f"Error processing class {cls_name} in find_key_concepts: {e}")
+                 # Optionally append an error entry or skip
+                 classes_info.append({"name": cls_name, "error": str(e)})
             
         relationships = []
-        for prop in ontology.properties():
-            rel = self.tools.parse_property_definition(prop.name)
-            relationships.append(rel)
+        for prop in self.settings.ontology.properties(): 
+             try: # Add error handling
+                  prop_def = self.tools.parse_property_definition(prop.name)
+                  if "error" not in prop_def:
+                       relationships.append(prop_def)
+             except Exception as e:
+                  print(f"Error processing property {prop.name} in find_key_concepts: {e}")
+                  relationships.append({"name": prop.name, "error": str(e)})
             
         prompt = ChatPromptTemplate.from_messages([
             ("system", """You are an expert in identifying key concepts in scientific domains."""),
@@ -676,45 +973,54 @@ class OntologyAnalyzer:
             """)
         ])
         
-        response = self.llm.invoke(prompt.format_messages(
-            classes=classes_info,
-            relationships=relationships
-        ))
-        return parse_json(response.content)
+        try:
+            response = self.llm.invoke(prompt.format_messages(
+                classes=classes_info,
+                relationships=relationships
+            ))
+            return parse_json(response.content)
+        except Exception as e:
+             print(f"Error parsing LLM response for key concepts: {e}")
+             return {"error": "Failed to parse LLM response", "raw_content": response.content}
         
-    def compare_domains(self, source_ontology, target_ontology) -> Dict:
-        """比较两个领域的基本结构
-        - 概念映射
-        - 结构差异
-        - 属性对应
-        """
-        # 分析源领域
-        self.tools.onto = source_ontology
-        source_structure = {
-            "hierarchy": self.tools.parse_hierarchy_structure(),
-            "properties": [self.tools.parse_property_definition(p.name) 
-                         for p in source_ontology.properties()],
-            "key_concepts": self.find_key_concepts(source_ontology)
-        }
+    def compare_domains(self, other_settings: OntologySettings) -> Dict:
+        """比较 self.settings 和 other_settings 代表的领域"""
         
-        # 分析目标领域
-        self.tools.onto = target_ontology
-        target_structure = {
-            "hierarchy": self.tools.parse_hierarchy_structure(),
-            "properties": [self.tools.parse_property_definition(p.name) 
-                         for p in target_ontology.properties()],
-            "key_concepts": self.find_key_concepts(target_ontology)
-        }
+        # Analyze source domain (self)
+        try:
+            source_structure = self.analyze_domain_structure()
+            source_key_concepts = self.find_key_concepts()
+            source_analysis = {
+                "structure": source_structure,
+                "key_concepts": source_key_concepts
+            }
+        except Exception as e:
+             print(f"Error analyzing source domain ({self.settings.ontology_iri}): {e}")
+             return {"error": f"Failed to analyze source domain: {e}"}
+        
+        # Analyze target domain (other)
+        try:
+            # Create a temporary analyzer for the other settings
+            target_analyzer = OntologyAnalyzer(other_settings)
+            target_structure = target_analyzer.analyze_domain_structure()
+            target_key_concepts = target_analyzer.find_key_concepts()
+            target_analysis = {
+                "structure": target_structure,
+                "key_concepts": target_key_concepts
+            }
+        except Exception as e:
+             print(f"Error analyzing target domain ({other_settings.ontology_iri}): {e}")
+             return {"error": f"Failed to analyze target domain: {e}"}
         
         prompt = ChatPromptTemplate.from_messages([
             ("system", """You are an expert in cross-domain knowledge transfer."""),
             ("user", """Compare these two domains:
             
-            Source Domain:
-            {source_structure}
+            Source Domain Analysis ({self.settings.ontology_iri}):
+            {source_analysis}
             
-            Target Domain:
-            {target_structure}
+            Target Domain Analysis ({other_settings.ontology_iri}):
+            {target_analysis}
             
             Analyze:
             1. Conceptual analogies
@@ -730,46 +1036,47 @@ class OntologyAnalyzer:
             """)
         ])
         
-        response = self.llm.invoke(prompt.format_messages(
-            source_structure=source_structure,
-            target_structure=target_structure
-        ))
-        return parse_json(response.content)
+        try:
+            # Include IRIs in the formatted prompt for context
+            response = self.llm.invoke(prompt.format_messages(
+                source_analysis=source_analysis,
+                target_analysis=target_analysis,
+                # Pass IRIs separately if needed in the prompt template
+                source_iri = self.settings.ontology_iri, 
+                target_iri = other_settings.ontology_iri
+            ))
+            return parse_json(response.content)
+        except Exception as e:
+            print(f"Error parsing LLM response for domain comparison: {e}")
+            return {"error": "Failed to parse LLM response", "raw_content": response.content}
     
     def get_research_opportunities(self, analysis_result: Dict) -> List[Dict]:
         """从分析结果中提取研究机会"""
         opportunities = []
         
         # 从领域结构分析中提取
-        if "research_opportunities" in analysis_result:
-            opportunities.extend(analysis_result["research_opportunities"])
+        if isinstance(analysis_result, dict) and "research_opportunities" in analysis_result and isinstance(analysis_result["research_opportunities"], list):
+            opportunities.extend(analysis_result["research_opportunities"]) 
             
         # 从关键概念分析中提取
-        if "key_concepts" in analysis_result:
-            for concept in analysis_result["key_concepts"]:
-                if "research_value" in concept and concept["research_value"].get("potential", 0) > 0.7:
-                    opportunities.append({
-                        "type": "concept_based",
-                        "concept": concept["name"],
-                        "opportunity": concept["research_value"]["description"]
-                    })
+        if isinstance(analysis_result, dict) and "key_concepts" in analysis_result and isinstance(analysis_result["key_concepts"], list):
+             for concept in analysis_result["key_concepts"]:
+                 # Add more robust checking for nested dictionaries/keys
+                 if isinstance(concept, dict) and "research_value" in concept and isinstance(concept["research_value"], dict) and concept["research_value"].get("potential", 0) > 0.7:
+                     opportunities.append({
+                         "type": "concept_based",
+                         "concept": concept.get("name", "Unknown"),
+                         "opportunity": concept["research_value"].get("description", "N/A")
+                     }) 
                     
-        # 从跨领域分析中提取
-        if "cross_domain_analysis" in analysis_result:
-            cd_analysis = analysis_result["cross_domain_analysis"]
-            if "transfer_opportunities" in cd_analysis:
-                opportunities.extend([
-                    {
-                        "type": "transfer",
-                        **opp
-                    } for opp in cd_analysis["transfer_opportunities"]
-                ])
-            if "innovation_points" in cd_analysis:
-                opportunities.extend([
-                    {
-                        "type": "innovation",
-                        **point
-                    } for point in cd_analysis["innovation_points"]
-                ])
+        # 从跨领域分析中提取 (If analysis_result is from compare_domains)
+        if isinstance(analysis_result, dict):
+             transfer_opps = analysis_result.get("transfer_opportunities")
+             innovation_pts = analysis_result.get("innovation_points")
+
+             if isinstance(transfer_opps, list):
+                 opportunities.extend([{"type": "transfer", **opp} for opp in transfer_opps if isinstance(opp, dict)])
+             if isinstance(innovation_pts, list):
+                 opportunities.extend([{"type": "innovation", **point} for point in innovation_pts if isinstance(point, dict)])
                 
         return opportunities
