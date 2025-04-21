@@ -22,7 +22,7 @@ print(ontology_tools.get_class_info("bis-formamides"))
 # --- Additions for Testing OntologyTools ---
 print("\n" + "="*20 + " Starting OntologyTools Test Suite " + "="*20)
 
-# --- Define Placeholders (IMPORTANT: Replace with actual names from your ontology!) ---
+
 class_name_1 = "bis-formamides"
 # Replace with another valid class name from backup-2.owl
 class_name_2 = "calix(4)pyrrole"

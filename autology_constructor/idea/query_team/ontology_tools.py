@@ -267,6 +267,16 @@ class OntologyTools:
     此类提供了用于处理 OWL 本体 的综合工具，需要一个配置好的 OntologySettings 实例。
     """
 
+    # Class attribute for restriction type mapping
+    RESTRICTION_TYPE_MAP = {
+        24: "SOME", 
+        25: "ONLY", 
+        26: "EXACTLY",
+        27: "MIN", 
+        28: "MAX", 
+        29: "VALUE",
+    }
+
     def __init__(self, ontology_settings: OntologySettings):
         """初始化 OntologyTools
 
@@ -339,57 +349,110 @@ class OntologyTools:
         return True
 
     def _get_class_by_name(self, class_name: str) -> Optional[ThingClass]:
-        """辅助函数：通过名称安全地获取类对象 (使用 [] 访问 classes 命名空间)"""
-        if not self._check_ontology_loaded() or not self._classes_ns: return None
-        try:
-            cls = self._classes_ns[class_name]
-            if isinstance(cls, ThingClass):
-                return cls
-            else:
-                 warnings.warn(f"在 'classes' 命名空间中找到 '{class_name}' 但它不是 ThingClass。")
-                 return None
-        except KeyError:
-            return None # 类不存在是正常情况，不警告
-        except Exception as e:
-             warnings.warn(f"通过名称 '{class_name}' 获取类时发生意外错误: {e}")
-             return None
+        """辅助函数：通过名称安全地获取类对象 (首先尝试 classes 命名空间，然后后备搜索 IRI)"""
+        if not self._check_ontology_loaded(): return None
 
-    def _get_property_by_name(self, property_name: str) -> Optional[Union[ObjectProperty, DataProperty]]:
-        """辅助函数：通过名称安全地获取属性对象 (尝试 obj props, 然后 data props)"""
+        # 1. 尝试标准路径 (classes 命名空间)
+        if self._classes_ns: # Check if classes_ns exists before trying
+            try:
+                cls = self._classes_ns[class_name]
+                if isinstance(cls, ThingClass):
+                    return cls
+                else:
+                     # Found something but not a ThingClass, might be an error in ontology or loading
+                     warnings.warn(f"在 'classes' 命名空间中找到 '{class_name}' 但它不是 ThingClass。")
+                     # Don't immediately return None, allow fallback search to potentially find the correct class
+                     # return None
+            except KeyError:
+                 # Not found in classes_ns, proceed to fallback search
+                 pass
+            except Exception as e:
+                 # Handle unexpected errors during primary lookup, but still allow fallback
+                 warnings.warn(f"在 'classes' 命名空间中查找 '{class_name}' 时发生意外错误: {e}")
+                 pass # Proceed to fallback
+
+        # 2. 后备: 搜索 IRI 结尾匹配 class_name 的 owl:Class
+        try:
+            # 使用 owl_class 进行搜索，因为它在测试中有效
+            search_results = self.onto.search(iri=f"*/{class_name}", type=owlready2.owl_class)
+
+            if search_results:
+                potential_cls = search_results[0]
+                if len(search_results) > 1:
+                    warnings.warn(f"通过后备 IRI 搜索找到多个类匹配 '{class_name}' ({len(search_results)} 个)，将返回第一个结果。")
+
+                # 验证找到的对象是否确实是 ThingClass
+                if isinstance(potential_cls, ThingClass):
+                    warnings.warn(f"类 '{class_name}' 在预期的 'classes' 命名空间中未找到，但通过后备 IRI 搜索找到。")
+                    return potential_cls
+                else:
+                    warnings.warn(f"后备 IRI 搜索找到的对象 '{potential_cls}' 不是有效的 ThingClass，无法返回。")
+                    return None
+            else:
+                # 后备搜索也未找到
+                return None # Class not found through either method
+
+        except Exception as e:
+            warnings.warn(f"后备 IRI 搜索类 '{class_name}' 时发生意外错误: {e}")
+            return None
+
+        # Fallback if _classes_ns didn't exist and search failed (should theoretically be covered above)
+        # return None
+
+    def _get_property_by_name(self, property_name: str) -> Optional[Union[ObjectProperty, DataProperty, ObjectPropertyClass, DataPropertyClass]]:
+        """辅助函数：通过名称安全地获取属性对象 (尝试 meta, obj props, 然后 data props)
+           MODIFIED: Now also checks the meta namespace and accepts metaclasses."""
         if not self._check_ontology_loaded(): return None
         prop = None
-        # 优先尝试对象属性
-        if self._obj_props_ns:
+
+        # 1. 首先尝试 Meta 命名空间
+        if self.meta_ns:
             try:
-                prop = self._obj_props_ns[property_name]
-                if isinstance(prop, ObjectProperty):
+                prop = self.meta_ns[property_name]
+                # 假设 meta 命名空间也可能包含实例或元类
+                if isinstance(prop, (ObjectProperty, DataProperty, ObjectPropertyClass, DataPropertyClass)):
                     return prop
                 else:
-                    # 找到了但类型不对？这很奇怪，记录一下
-                    warnings.warn(f"在 object_properties 命名空间中找到 '{property_name}' 但它不是 ObjectProperty。")
-                    prop = None # 重置以便尝试数据属性
+                    warnings.warn(f"在 meta 命名空间中找到 '{property_name}' 但类型未知: {type(prop)}")
+                    prop = None # 重置以继续查找
             except KeyError:
-                pass # 不在对象属性中，正常，继续查找
+                pass # 不在 meta 中，正常
+            except Exception as e:
+                warnings.warn(f"在 meta 命名空间中查找 '{property_name}' 时出错: {e}")
+                prop = None # 出错则重置
+
+        # 2. 如果在 Meta 中未找到，尝试对象属性命名空间
+        if prop is None and self._obj_props_ns:
+            try:
+                prop = self._obj_props_ns[property_name]
+                if isinstance(prop, (ObjectProperty, ObjectPropertyClass)):
+                    return prop
+                else:
+                    warnings.warn(f"在 object_properties 命名空间中找到 '{property_name}' 但它不是 ObjectProperty 或 ObjectPropertyClass 类型。实际类型: {type(prop)}")
+                    prop = None
+            except KeyError:
+                pass
             except Exception as e:
                  warnings.warn(f"在 object_properties 中查找 '{property_name}' 时出错: {e}")
-                 prop = None # 出错则不继续
+                 prop = None
 
-        # 如果不是对象属性（或查找出错），尝试数据属性
+        # 3. 如果仍未找到，尝试数据属性命名空间
         if prop is None and self._data_props_ns:
             try:
                 prop = self._data_props_ns[property_name]
-                if isinstance(prop, DataProperty):
+                if isinstance(prop, (DataProperty, DataPropertyClass)):
                     return prop
                 else:
-                     warnings.warn(f"在 data_properties 命名空间中找到 '{property_name}' 但它不是 DataProperty。")
-                     return None
+                     warnings.warn(f"在 data_properties 命名空间中找到 '{property_name}' 但它不是 DataProperty 或 DataPropertyClass 类型。实际类型: {type(prop)}")
+                     return None # 在这里返回 None，因为这是最后尝试的地方
             except KeyError:
-                pass # 也不在数据属性中
+                pass
             except Exception as e:
                  warnings.warn(f"在 data_properties 中查找 '{property_name}' 时出错: {e}")
+                 return None # 出错则返回 None
 
-        # 如果两个命名空间都没找到，返回 None
-        return None
+        # 如果所有命名空间都找不到，返回 None (prop 初始为 None 或被重置)
+        return prop
 
 
     def _get_restriction_value_str(self, value: Any) -> str:
@@ -537,11 +600,33 @@ class OntologyTools:
 
                  related_class_names_for_prop = set()
                  # Get restrictions for *this* property on the class
-                 restrictions_result = self.get_property_restrictions(class_name, prop_name) # Public method ok here
-                 if isinstance(restrictions_result, dict) and "error" in restrictions_result:
-                     warnings.warn(f"无法获取 '{class_name}' 上 '{prop_name}' 的限制: {restrictions_result['error']}")
-                     continue # Skip property if restrictions can't be fetched
+                 cls_for_restrictions = self._get_class_by_name(class_name) # Get class object again
+                 restrictions_result = [] # Use a list like the original code expected
+                 if cls_for_restrictions:
+                     for item in cls_for_restrictions.is_a:
+                         if isinstance(item, owlready2.Restriction) and getattr(item, 'property', None) == prop:
+                             try:
+                                 restriction_type_code = getattr(item, 'type', -1) # Get integer type code
+                                 # Use the class attribute mapping
+                                 restriction_type = self.RESTRICTION_TYPE_MAP.get(restriction_type_code, item.__class__.__name__.upper())
 
+                                 restriction_value = getattr(item, 'value', None)
+                                 # For cardinality restrictions, value might be in 'cardinality'
+                                 # Using the correct codes 27, 28, 29 for MIN, MAX, EXACTLY
+                                 if restriction_value is None and restriction_type_code in [27, 28, 29]:
+                                     restriction_value = getattr(item, 'cardinality', None)
+
+                                 # Add more sophisticated parsing if needed
+                                 restrictions_result.append({
+                                     "type": restriction_type,
+                                     "value": self._get_restriction_value_str(restriction_value),
+                                     "raw_value": restriction_value
+                                 })
+                             except Exception as parse_err:
+                                 warnings.warn(f"解析类 '{class_name}' 上属性 '{prop_name}' 的限制 '{item}' 时出错 (in related_classes): {parse_err}")
+                 # --- END REPLACEMENT ---
+
+                 # Removed error check for restrictions_result as we now generate it directly
                  # Analyze restrictions (SOME, ONLY, VALUE) to find related classes
                  relevant_restriction_types = {"SOME", "ONLY", "VALUE"} # Include VALUE for specific individuals/classes
                  for restriction in restrictions_result:
@@ -585,25 +670,20 @@ class OntologyTools:
          if not cls: return {"error": f"类 '{class_name}' 未找到。"}
          properties = set()
          try:
-             # Iterate through the class's superclasses and equivalent classes (is_a)
-             # Restrictions are typically found here
+             # 遍历类的 is_a (父类和限制)
              for item in cls.is_a:
+                 # 检查 item 是否为 Restriction 对象
                  if isinstance(item, owlready2.Restriction):
+                     # 安全地获取 Restriction 的 'property' 属性
                      prop = getattr(item, 'property', None)
-                     if prop and isinstance(prop, (ObjectProperty, DataProperty)) and hasattr(prop, 'name'):
+                     # 检查 prop 是否存在，是否是 ObjectProperty 或 DataProperty 的实例，并且有 name 属性
+                     is_prop_instance = isinstance(prop, (ObjectProperty, DataProperty))
+                     is_meta_instance = isinstance(prop, (ObjectPropertyClass, DataPropertyClass))
+                     # --- CORRECTED CHECK --- 
+                     if prop and isinstance(prop, (ObjectProperty, DataProperty, ObjectPropertyClass, DataPropertyClass)) and hasattr(prop, 'name'):
                          properties.add(prop.name)
-
-             # Consider also equivalent_to if properties might be defined there
-             for item in cls.equivalent_to:
-                 if isinstance(item, owlready2.Restriction):
-                      prop = getattr(item, 'property', None)
-                      if prop and isinstance(prop, (ObjectProperty, DataProperty)) and hasattr(prop, 'name'):
-                          properties.add(prop.name)
-                 # Could also look for properties in equivalent classes if needed
-                 # elif isinstance(item, ThingClass):
-                 #    # Recursively get properties? Might be complex/circular.
-                 #    pass
-
+                 # ... (注释掉的部分是处理等价类，这里暂时忽略)
+ 
          except Exception as e: warnings.warn(f"从类 '{class_name}' 的限制中提取属性时出错: {e}")
          return sorted(list(properties))
 
@@ -636,8 +716,35 @@ class OntologyTools:
                      continue
 
                  # Get restrictions specifically for this property on this class
-                 restrictions = self.get_property_restrictions(class_name, prop_name) # Public API ok here
-                 prop_type_key = "object" if isinstance(prop, ObjectProperty) else "data"
+                 cls_for_restrictions = self._get_class_by_name(class_name) # Get class object again
+                 restrictions = []
+                 if cls_for_restrictions:
+                     for item in cls_for_restrictions.is_a:
+                         if isinstance(item, owlready2.Restriction) and getattr(item, 'property', None) == prop:
+                             # Basic parsing, using item.type for specific restriction type
+                             try:
+                                 restriction_type_code = getattr(item, 'type', -1) # Get integer type code
+                                 # Use the class attribute mapping
+                                 restriction_type = self.RESTRICTION_TYPE_MAP.get(restriction_type_code, item.__class__.__name__.upper())
+
+                                 restriction_value = getattr(item, 'value', None)
+                                 # For cardinality restrictions, value might be in 'cardinality'
+                                 # Using the correct codes 27, 28, 29 for MIN, MAX, EXACTLY
+                                 if restriction_value is None and restriction_type_code in [27, 28, 29]:
+                                     restriction_value = getattr(item, 'cardinality', None)
+
+                                 # Add more sophisticated parsing if needed
+                                 restrictions.append({
+                                     "type": restriction_type,
+                                     "value": self._get_restriction_value_str(restriction_value),
+                                     "raw_value": restriction_value
+                                 })
+                             except Exception as parse_err:
+                                 warnings.warn(f"解析类 '{class_name}' 上属性 '{prop_name}' 的限制 '{item}' 时出错: {parse_err}")
+                 # --- END REPLACEMENT ---
+
+                 # Determine property type (handle metaclass case)
+                 prop_type_key = "object" if isinstance(prop, (ObjectProperty, ObjectPropertyClass)) else "data"
 
                  prop_entry = properties_summary[prop_type_key].get(prop_name, {"name": prop_name, "restrictions": []})
                  if isinstance(restrictions, list):
@@ -799,8 +906,14 @@ class OntologyTools:
         def jaccard_similarity(set1: Set, set2: Set) -> float: intersection = len(set1.intersection(set2)); union = len(set1.union(set2)); return intersection / union if union > 0 else 0.0
         try:
             # Use the NEW restriction-based property method via self
-            props1_res = self._get_single_class_properties(class1_name); props2_res = self._get_single_class_properties(class2_name); prop_sim = 0.0
-            if not isinstance(props1_res, dict) and not isinstance(props2_res, dict): prop_sim = jaccard_similarity(set(props1_res), set(props2_res))
+            props1_res = self._get_single_class_properties(class1_name)
+            props2_res = self._get_single_class_properties(class2_name)
+            prop_sim = 0.0
+            # MODIFIED: Exclude 'has_information' from similarity calculation
+            if not isinstance(props1_res, dict) and not isinstance(props2_res, dict):
+                 props1_filtered = set(props1_res) - {'has_information'}
+                 props2_filtered = set(props2_res) - {'has_information'}
+                 prop_sim = jaccard_similarity(props1_filtered, props2_filtered)
 
             # Use the NEW ancestor method via self
             anc1_res = self._get_single_ancestors(class1_name); anc2_res = self._get_single_ancestors(class2_name); ancestor_sim = 0.0
