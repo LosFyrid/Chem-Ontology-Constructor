@@ -23,17 +23,13 @@ print(ontology_tools.get_class_info("bis-formamides"))
 print("\n" + "="*20 + " Starting OntologyTools Test Suite " + "="*20)
 
 
-class_name_1 = "bis-formamides"
+class_name_1 = "super_aryl_extended_calix(4)pyrroles(SAE-C(4)Ps)"
 # Replace with another valid class name from backup-2.owl
-class_name_2 = "calix(4)pyrrole"
+class_name_2 = "ae-c(4)ps"
 # Replace with a valid object property name from backup-2.owl
-prop_name_obj = "is_capable_of_binding"
-# Replace with a valid data property name from backup-2.owl
-prop_name_data = "binding_energy"
-# Replace with a valid source string used in your SourcedInformation instances (if available) for meaningful testing of get_information_by_source
-source_name = "PLACEHOLDER_SOURCE_STRING"
+source_name = "https://doi.org/10.1021/acs.accounts.2c00839"
 # Replace with a valid class name to use as root for hierarchy parsing
-root_class_name = "macrocyclic_receptor"
+root_class_name = "c(4)ps"
 
 # List of classes for testing list inputs
 class_list = [class_name_1, class_name_2]
@@ -106,7 +102,7 @@ run_test("parse_class_definition (list)", lambda: ontology_tools.parse_class_def
 # run_test(f"get_property_path ({class_name_1} -> {class_name_2})", lambda: ontology_tools.get_property_path(class_name_1, class_name_2))
 
 # 16. get_semantic_similarity
-run_test(f"get_semantic_similarity ({class_name_1}, {class_name_2})", lambda: ontology_tools.get_semantic_similarity(class_name_1, class_name_2))
+# run_test(f"get_semantic_similarity ({class_name_1}, {class_name_2})", lambda: ontology_tools.get_semantic_similarity(class_name_1, class_name_2))
 
 # 17. get_inconsistent_classes
 # print("\n--- Testing: get_inconsistent_classes (Ensure Java/Pellet is configured) ---")
@@ -121,7 +117,7 @@ run_test(f"get_semantic_similarity ({class_name_1}, {class_name_2})", lambda: on
 # run_test(f"parse_property_definition ({prop_name_data})", lambda: ontology_tools.parse_property_definition(prop_name_data))
 
 # 19. parse_hierarchy_structure
-run_test("parse_hierarchy_structure (full)", lambda: ontology_tools.parse_hierarchy_structure())
+# run_test("parse_hierarchy_structure (full)", lambda: ontology_tools.parse_hierarchy_structure())
 run_test(f"parse_hierarchy_structure (root={root_class_name})", lambda: ontology_tools.parse_hierarchy_structure(root_class_name))
 
 

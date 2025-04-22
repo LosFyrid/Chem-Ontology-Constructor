@@ -27,8 +27,9 @@ print("props: ", props)
 props_filtered = set(props) - {'has_information'}
 print("props_filtered: ", props_filtered)
 
-
-
+prop = ontology_settings.meta["is_stable_as"]
+print("prop: ", prop)
+print("type(prop): ", type(prop))
 
 
 
@@ -53,8 +54,9 @@ for res in super_classes:
     print(is_res)
     if is_res:
         print(res.property)
-        print(res.property.name)
         print(type(res.property))
+        print(res.property.name)
+        print(res.property.name == "has_information")
         print(isinstance(res.property, (ObjectPropertyClass, DataPropertyClass)))
         print("-"*100)
         print(type(res.subclasses))
