@@ -27,12 +27,22 @@ print("props: ", props)
 props_filtered = set(props) - {'has_information'}
 print("props_filtered: ", props_filtered)
 
-prop = ontology_settings.meta["is_stable_as"]
+prop = ontology_settings.object_properties["is_stable_as"]
 print("prop: ", prop)
 print("type(prop): ", type(prop))
+print("prop.name: ", prop.name)
+print("prop.domain", prop.domain)
+print("prop.range", prop.range)
 
-
-
+ops = list(ontology_settings.ontology.object_properties())
+for op in ops:
+    if len(op.range) > 0 and len(op.domain) > 0:
+        print("op: ", op)
+        print("type(op): ", type(op))
+        print("op.name: ", op.name)
+        print("op.domain", op.domain)
+        print("op.range", op.range)
+        print("-"*100) 
 
 onto = get_ontology("http://www.test.org/chem_ontologies/backup-2.owl").load(only_local=True)
 

@@ -10,7 +10,6 @@ class QueryToStateAdapter:
             "source_ontology": query.query_context.get("ontology"),
             "query_type": query.query_context.get("query_type", "unknown"),
             "query_strategy": None,
-            "additional_ontology": query.query_context.get("additional_ontology"),
             "originating_team": query.originating_team,
             "originating_stage": query.query_context.get("originating_stage", "unknown"),
             "query_results": {},

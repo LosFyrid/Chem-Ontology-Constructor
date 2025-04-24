@@ -11,18 +11,20 @@ from .query_manager import Query, QueryStatus
 from .utils import format_sparql_error, format_sparql_results, extract_variables_from_sparql
 from .schemas import NormalizedQuery, ToolPlan, ValidationReport
 from autology_constructor.idea.common.llm_provider import get_cached_default_llm
+from config.settings import OntologySettings
 
 class QueryState(TypedDict):
     """查询团队状态"""
     # Input
     query: str  # 自然语言查询
-    source_ontology: Any  # 使用主工作流中的source_ontology
+    source_ontology: OntologySettings  # 使用OntologySettings类型，而不是Any
     query_type: str  # 查询类型
     query_strategy: Optional[Literal["tool_sequence", "SPARQL"]]  # 查询策略
-    additional_ontology: Optional[Any]  # 额外本体（用于跨域查询）
     originating_team: str  # 发起查询的团队
     originating_stage: str  # 发起查询的阶段
     available_classes: List[str]  # Add available classes from cache
+    available_data_properties: List[str]  
+    available_object_properties: List[str]
     
     # Query Management
     query_results: Dict  # 查询结果
@@ -58,7 +60,6 @@ def create_query_graph() -> Graph:
     tool_agent = ToolExecutorAgent(model=default_model)
     sparql_agent = SparqlExpertAgent(model=default_model)
     validator_agent = ValidationAgent(model=default_model)
-    ontology_tools_instance = OntologyTools(None)
     
     # 节点实现
     def normalize_query(state: QueryState) -> Dict:
@@ -66,10 +67,14 @@ def create_query_graph() -> Graph:
         try:
             query = state["query"]
             available_classes = state["available_classes"]
+            available_data_properties = state["available_data_properties"]
+            available_object_properties = state["available_object_properties"]
             # Prepare state for parser agent, including available classes
             parser_state = {
                 "natural_query": query,
-                "available_classes": available_classes
+                "available_classes": available_classes,
+                "available_data_properties": available_data_properties,
+                "available_object_properties": available_object_properties
             }
             # Use parser agent
             normalized_result = parser_agent(parser_state)
@@ -138,35 +143,35 @@ def create_query_graph() -> Graph:
         try:
             strategy = state.get("query_strategy")
             normalized_query_obj = state["normalized_query"]
-            source_ontology = state["source_ontology"]
+            ontology_settings = state["source_ontology"]
 
-            if not strategy or not source_ontology or not isinstance(normalized_query_obj, NormalizedQuery):
-                 raise ValueError("Missing strategy, source ontology, or invalid NormalizedQuery object for execution.")
+            if not strategy or not ontology_settings or not isinstance(normalized_query_obj, NormalizedQuery):
+                 raise ValueError("Missing strategy, ontology settings, or invalid NormalizedQuery object.")
 
-            # Ensure the ontology tools instance has the correct ontology
-            ontology_tools_instance.onto = source_ontology
-            # Also set ontology for the ToolExecutorAgent's internal tools reference
-            tool_agent.tools = ontology_tools_instance
+            # 验证ontology_settings类型
+            if not isinstance(ontology_settings, OntologySettings):
+                raise TypeError(f"source_ontology must be an OntologySettings instance, got {type(ontology_settings).__name__}")
 
+            # 创建OntologyTools实例
+            ontology_tools = OntologyTools(ontology_settings)
+            
+            # 设置工具代理的OntologyTools实例
+            tool_agent.set_ontology_tools(ontology_tools)
+            
             if strategy == "tool_sequence":
-                # Generate execution plan using the new ToolPlannerAgent
-                plan_result = tool_planner_agent.generate_plan(normalized_query_obj, ontology_tools_instance)
+                # 生成执行计划
+                plan_result = tool_planner_agent.generate_plan(normalized_query_obj, ontology_tools)
                 
-                # Check if plan generation resulted in an error
+                # 检查计划生成是否出错
                 if isinstance(plan_result, dict) and plan_result.get("error"):
                     raise ValueError(f"Failed to generate tool plan: {plan_result.get('error')}")
                 elif not isinstance(plan_result, Union[ToolPlan, Dict]):
                      raise TypeError(f"Tool planner returned unexpected type: {type(plan_result)}")
                 
-                # Execute the plan using ToolExecutorAgent
-                execution_results = tool_agent.execute_plan(plan_result, source_ontology) # Pass ontology just in case
+                # 执行计划 - 已经在上面设置了OntologyTools
+                execution_results = tool_agent.execute_plan(plan_result)
 
-                # Check for errors during execution
-                execution_errors = [step["error"] for step in execution_results if "error" in step]
-                if execution_errors:
-                    print(f"Errors during tool execution: {execution_errors}")
-                    # Decide how to handle partial success/failure - here we just store all results
-
+                # 处理结果
                 return {
                     "execution_plan": plan_result,
                     "query_results": {"results": execution_results}, # Wrap tool results for consistency
@@ -175,14 +180,15 @@ def create_query_graph() -> Graph:
                     "previous_stage": state.get("stage"),
                     "messages": [SystemMessage(content="Tool-based query executed.")]
                 }
+                
             elif strategy == "SPARQL":
-                # Generate SPARQL query using SparqlExpertAgent
+                # 生成SPARQL查询
                 sparql_query_str = sparql_agent.generate_sparql(normalized_query_obj.model_dump())
 
-                # Execute SPARQL using the robust OntologyTools.execute_sparql
-                results = ontology_tools_instance.execute_sparql(sparql_query_str)
+                # 使用创建的OntologyTools实例执行SPARQL
+                results = ontology_tools.execute_sparql(sparql_query_str)
                 
-                # Check for errors returned by execute_sparql
+                # 错误检查
                 if isinstance(results, dict) and results.get("error"):
                     raise SparqlExecutionError(f"SPARQL execution failed: {results.get('error')}. Query: {results.get('query')}")
 
@@ -236,8 +242,8 @@ def create_query_graph() -> Graph:
             if isinstance(normalized_query_obj, NormalizedQuery):
                  query_context = {
                      "intent": normalized_query_obj.intent,
-                     "target": ", ".join(normalized_query_obj.target_entities),
-                     # Add more context from normalized_query if needed
+                     "relevant_entities": ", ".join(normalized_query_obj.relevant_entities),
+                     "relevant_properties": ", ".join(normalized_query_obj.relevant_properties),
                  }
             query_context["query"] = state.get("query")
             query_context["type"] = state.get("query_type", "unknown")

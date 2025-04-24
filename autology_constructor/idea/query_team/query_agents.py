@@ -8,6 +8,7 @@ import re
 
 from .ontology_tools import OntologyTools   
 from .utils import parse_json
+from config.settings import OntologySettings
 
 # Import Pydantic models
 from .schemas import NormalizedQuery, ToolCallStep, ValidationReport, DimensionReport, ToolPlan
@@ -56,7 +57,7 @@ Available tools:
              return {"error": "Cannot generate plan from missing normalized query."}
         # Check for error dictionary explicitly
         if isinstance(normalized_query, dict) and normalized_query.get("error"):
-             return {"error": f"Cannot generate plan from invalid normalized query: {normalized_query.get('error')}"}
+             return {"error": f"Cannot generate plan from invalid normalized query: {normalized_query.get('error', 'Unknown error')}"}
 
         tool_descriptions_str = self._get_tool_descriptions(ontology_tools)
         
@@ -84,11 +85,8 @@ Output the plan as a JSON list of steps matching the ToolCallStep structure."""
         
         try:
             # Use the helper method to get the structured LLM
-            print("1")
             structured_llm = self._get_structured_llm(ToolPlan)
-            print("2")
             plan: ToolPlan = structured_llm.invoke(messages)
-            print("3")
 
             # Basic validation: check if it's a list (LangChain should handle Pydantic validation)
             if not isinstance(plan, ToolPlan):
@@ -110,13 +108,13 @@ Output the plan as a JSON list of steps matching the ToolCallStep structure."""
             return {"error": error_msg} # Return error dictionary
 
 class QueryParserAgent(AgentTemplate):
-    """You are an expert ontology query parser. Your task is to convert natural language queries into a structured format.
-1. Strictly adhere to the NormalizedQuery JSON schema for the output.
-2. Refer to the provided list of available ontology classes to identify entities."""
     def __init__(self, model: BaseLanguageModel):
         system_prompt = """You are an expert ontology query parser. Your task is to convert natural language queries into a structured format.
 1. Strictly adhere to the NormalizedQuery JSON schema for the output.
-2. Refer to the provided list of available ontology classes to identify entities."""
+2. Refer to the provided list of available ontology classes to identify entities.
+3. Refer to the provided lists of data properties and object properties to identify property relationships.
+4. Note that there are SourcedInformation objects that provide additional metadata. When queries involve concepts like "source", "description", or "definition", consider that these information are not related to relations."""
+
         super().__init__(
             model=model,
             name="QueryParserAgent",
@@ -137,12 +135,19 @@ class QueryParserAgent(AgentTemplate):
 
         natural_query = state.get("natural_query")
         available_classes = state.get("available_classes", [])
+        available_data_properties = state.get("available_data_properties", [])  # Added: get data properties from state
+        available_object_properties = state.get("available_object_properties", [])  # Added: get object properties from state
 
         if not natural_query:
             return {"error": "Natural query missing in input state."}
 
-        prompt_messages = self._create_prompt_messages(natural_query, available_classes)
-        
+        prompt_messages = self._create_prompt_messages(
+            natural_query, 
+            available_classes,
+            available_data_properties,  # Added: pass data properties to prompt creation
+            available_object_properties  # Added: pass object properties to prompt creation
+        )
+        print(prompt_messages)
         try:
             # Use the structured LLM instance created in __init__
             response: NormalizedQuery = self.structured_llm.invoke(prompt_messages)
@@ -152,11 +157,23 @@ class QueryParserAgent(AgentTemplate):
             print(error_msg)
             return {"error": error_msg}
 
-    def _create_prompt_messages(self, query: str, available_classes: List[str]) -> List[tuple[str, str]]:
-        class_list_str = ", ".join(available_classes) if available_classes else "No available class information provided."
+    def _create_prompt_messages(self, query: str, available_classes: List[str],
+                              available_data_properties: List[str] = None,  # Added: parameter for data properties
+                              available_object_properties: List[str] = None  # Added: parameter for object properties
+                             ) -> List[tuple[str, str]]:
         
-        # Updated user prompt to reinforce structured output format
+        # Default to empty lists if None
+        available_data_properties = available_data_properties or []
+        available_object_properties = available_object_properties or []
+        
+        class_list_str = ", ".join(available_classes) if available_classes else "No available class information provided."
+        data_prop_list_str = ", ".join(available_data_properties) if available_data_properties else "No available data property information provided."  # Added: format data properties
+        obj_prop_list_str = ", ".join(available_object_properties) if available_object_properties else "No available object property information provided."  # Added: format object properties
+        
+        # Updated user prompt to include all lists
         user_content = f"""Available classes: {class_list_str}
+Available data properties: {data_prop_list_str}
+Available object properties: {obj_prop_list_str}
 
 Please analyze the following query and convert it into the NormalizedQuery JSON format:
 Query: {query}
@@ -217,33 +234,39 @@ Based on the query characteristics and the available strategies described in the
 class ToolExecutorAgent(AgentTemplate):
     """Execute the tool call sequence according to the query plan."""
     def __init__(self, model: BaseLanguageModel):
-        # We need an OntologyTools instance for the 'tools' argument of AgentTemplate
-        # Passing None initially, will be set in execute_plan. This might need adjustment
-        # depending on how AgentTemplate uses self.tools in its __init__.
-        # Let's instantiate it here for now.
-        self.ontology_tools_instance = OntologyTools(None)
+        # 不预先创建OntologyTools实例
+        self.ontology_tools_instance = None
         super().__init__(
             model=model,
             name="ToolExecutorAgent",
             system_prompt="Execute the tool call sequence according to the query plan.",
-            # Pass the *instance* of OntologyTools, not the class itself
-            # AgentTemplate expects a list of tool callables or LangChain tools
-            # We might need to adjust how tools are passed or used in AgentTemplate
-            # For now, let's assume AgentTemplate doesn't strictly require LangChain tools in __init__
-            # And we primarily use self.ontology_tools_instance directly here.
             tools=[] # Let's keep this empty for AgentTemplate's init, as we call methods directly
         )
     
-    def execute_plan(self, plan: ToolPlan, ontology: Any) -> List[Dict]:
-        """Execute the tool call sequence according to the query plan."""
-        # Use the ontology_tools_instance created in __init__
-        self.ontology_tools_instance.onto = ontology  # 注入当前本体
+    def set_ontology_tools(self, ontology_tools: OntologyTools) -> None:
+        """设置OntologyTools实例
+        
+        Args:
+            ontology_tools: 预配置好的OntologyTools实例
+        """
+        self.ontology_tools_instance = ontology_tools
+    
+    def execute_plan(self, plan: ToolPlan) -> List[Dict]:
+        """执行工具调用序列
+        
+        Args:
+            plan: 执行计划
+        """
+        # 验证OntologyTools实例是否已设置
+        if self.ontology_tools_instance is None:
+            return [{"error": "OntologyTools instance not set. Call set_ontology_tools() before executing plan."}]
+        
         results = []
         for step in plan.steps: # Iterate over ToolCallStep objects
             tool_name = step.tool
             params = step.params
             try:
-                # Use the instance directly
+                # 使用实例直接调用方法
                 tool_method = getattr(self.ontology_tools_instance, tool_name, None)
                 if not tool_method or not callable(tool_method):
                     results.append({
@@ -253,7 +276,7 @@ class ToolExecutorAgent(AgentTemplate):
                     })
                     continue
 
-                # Execute the tool method with its parameters
+                # 执行工具方法
                 result = tool_method(**params)
                 results.append({
                     "tool": tool_name, # Changed 'step' to 'tool' for clarity
@@ -332,6 +355,7 @@ Your validation result MUST strictly follow the ValidationReport JSON schema for
         # Serialize results for the prompt. Handle potential errors.
         try:
             results_str = json.dumps(results, indent=2, ensure_ascii=False, default=str) # Added default=str for broader serialization
+            print(results_str)
         except Exception as e:
             return {"error": f"Validation failed: Could not serialize results for LLM prompt - {str(e)}"}
 
@@ -343,11 +367,14 @@ Your validation result MUST strictly follow the ValidationReport JSON schema for
 Validation Context Information:
 - Query Intent: {query_context.get('intent', 'Unknown')}
 - Query Type: {query_context.get('type', 'Unknown')}
-- Query Target: {query_context.get('target', 'Unknown')}
+- Query relevant entities: {query_context.get('relevant_entities', 'Unknown')}
+- Query relevant properties: {query_context.get('relevant_properties', 'Unknown')}
 """)
 
         prompt_parts.append("""
-Please validate based on the dimensions of completeness, consistency, and accuracy, providing detailed reasoning.
+Please validate based on the dimensions of completeness, consistency, and accuracy, providing detailed reasoning. 
+When a field exists but contains empty content (such as empty lists or null values), this indicates that no relevant knowledge exists in the ontology. This should be considered valid but can be noted as a knowledge limitation in your message.
+However, if fields that should logically be present are completely missing from the results, this suggests that relevant queries were not performed, which should be flagged for review.
 Provide a score (1-5) for each dimension.
 Return a single JSON object strictly conforming to the ValidationReport JSON schema.
 """)

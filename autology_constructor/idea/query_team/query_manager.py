@@ -79,6 +79,7 @@ class QueryQueueManager:
         self.max_retries = 3  # 最大重试次数
         self.failed_queries = {}  # 失败的查询
         self.cache = QueryCache()
+        self._counter = 0  # 添加计数器，用于优先级队列中的稳定排序
         
     def enqueue(self, query: Query) -> str:
         """添加查询到队列，先检查缓存"""
@@ -92,14 +93,17 @@ class QueryQueueManager:
             
         # 无缓存时正常入队
         priority = {"high": 1, "normal": 2, "low": 3}.get(query.priority, 2)
-        self.pending_queries.put((priority, query))
+        # 递增计数器并使用它作为第二排序依据
+        self._counter += 1
+        self.pending_queries.put((priority, self._counter, query))
         return query.query_id
         
     def get_next_query(self) -> Optional[Query]:
         """获取下一个要处理的查询"""
         if self.pending_queries.empty():
             return None
-        _, query = self.pending_queries.get()
+        # 解包三元素元组
+        _, _, query = self.pending_queries.get()
         self.active_queries[query.query_id] = query
         query.status = QueryStatus.PROCESSING
         return query
@@ -147,7 +151,9 @@ class QueryQueueManager:
                 # 重置状态并重新入队
                 query.status = QueryStatus.PENDING
                 priority = {"high": 1, "normal": 2, "low": 3}.get(query.priority, 2)
-                self.pending_queries.put((priority, query))
+                # 递增计数器并使用三元素元组
+                self._counter += 1
+                self.pending_queries.put((priority, self._counter, query))
 
                 # 从失败列表中移除
                 del self.failed_queries[query_id]
@@ -168,6 +174,8 @@ class QueryManager:
         self._query_to_state = QueryToStateAdapter()
         self._state_to_query = StateToQueryAdapter()
         self.class_name_cache: List[str] = []
+        self.data_property_cache: List[str] = []  # 新增: 数据属性缓存
+        self.object_property_cache: List[str] = []  # 新增: 对象属性缓存
         
         # ADDED Executor and Dispatcher related attributes
         self.executor = ThreadPoolExecutor(max_workers=4) # Executor for query tasks
@@ -196,6 +204,55 @@ class QueryManager:
         else:
             print("Warning: Ontology object invalid or missing 'classes' attribute during cache update.")
             self.class_name_cache = []
+            
+    def update_data_property_cache(self, ontology: Any):
+        """更新数据属性缓存。
+
+        从本体中提取所有数据属性的名称并排序存储。
+        
+        Args:
+            ontology: 包含data_properties方法的本体对象
+        """
+        self.data_property_cache = []
+        if ontology and hasattr(ontology, 'data_properties'):
+            try:
+                self.data_property_cache = sorted([prop.name for prop in ontology.data_properties()])
+                print(f"数据属性缓存更新完成，共 {len(self.data_property_cache)} 个属性")
+            except Exception as e:
+                print(f"更新数据属性缓存时出错: {e}")
+        else:
+            print("警告: 本体对象无效或缺少'data_properties'属性，数据属性缓存已清空")
+            
+    def update_object_property_cache(self, ontology: Any):
+        """更新对象属性缓存。
+
+        从本体中提取所有对象属性的名称并排序存储。
+        
+        Args:
+            ontology: 包含object_properties方法的本体对象
+        """
+        self.object_property_cache = []
+        if ontology and hasattr(ontology, 'object_properties'):
+            try:
+                self.object_property_cache = sorted([prop.name for prop in ontology.object_properties()])
+                print(f"对象属性缓存更新完成，共 {len(self.object_property_cache)} 个属性")
+            except Exception as e:
+                print(f"更新对象属性缓存时出错: {e}")
+        else:
+            print("警告: 本体对象无效或缺少'object_properties'属性，对象属性缓存已清空")
+            
+    def update_all_caches(self, ontology: Any):
+        """更新所有本体相关缓存（类名、数据属性、对象属性）。
+        
+        提供一个统一的入口点，确保所有缓存同时更新，保持数据一致性。
+        
+        Args:
+            ontology: 本体对象，应具有classes、data_properties和object_properties方法
+        """
+        self.update_class_name_cache(ontology)
+        self.update_data_property_cache(ontology)
+        self.update_object_property_cache(ontology)
+        print("所有本体缓存更新完成")
 
     def start(self):
         """Initializes the graph and starts the dispatcher thread."""
@@ -224,7 +281,7 @@ class QueryManager:
         while not self._stop_dispatcher_event.is_set():
             try:
                 # Use timeout in get() to allow checking the stop event periodically
-                priority, query = self.query_queue_manager.pending_queries.get(block=True, timeout=0.5)
+                priority, _, query = self.query_queue_manager.pending_queries.get(block=True, timeout=0.5)
                 # print(f"Dispatching query: {query.query_id}") # Optional: for debugging
                 # Submit the task execution to the thread pool
                 # We don't need the future returned by submit here, as we already created one in submit_query
@@ -299,8 +356,10 @@ class QueryManager:
         # 将Query转换为QueryState
         query_state = self._query_to_state.transform(query)
         
-        # Add the class name cache to the initial state
+        # 将所有缓存添加到初始状态
         query_state["available_classes"] = self.class_name_cache
+        query_state["available_data_properties"] = self.data_property_cache  # 新增: 添加数据属性到状态
+        query_state["available_object_properties"] = self.object_property_cache  # 新增: 添加对象属性到状态
 
         # 执行查询工作流
         # Ensure graph is initialized (double check)
