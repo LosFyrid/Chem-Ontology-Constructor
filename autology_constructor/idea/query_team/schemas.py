@@ -35,6 +35,8 @@ class ValidationReport(BaseModel):
     valid: bool = Field(description="Overall assessment of whether the query result is valid.")
     details: List[DimensionReport] = Field(default_factory=list, description="A list of detailed validation results for each assessed dimension.")
     message: str = Field(description="A concluding summary message about the overall validation result.")
+    improvement_suggestions: Optional[List[str]] = Field(default=None, description="Text suggestions for improving the query if validation failed.")
+    issue_aspects: Optional[List[str]] = Field(default=None, description="The aspects of the query that need improvement (e.g., 'entity_recognition', 'property_selection', 'strategy').")
 
 class QueryStatus(str, Enum):
     PENDING = "pending"

@@ -1,6 +1,7 @@
 ---
 description: GLOBAL INSTRUCTION FOLLOW PROTOCOLS
 globs: 
+alwaysApply: true
 ---
 
 # RIPER-5 MODE: STRICT OPERATIONAL PROTOCOL

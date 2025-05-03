@@ -135,8 +135,9 @@ class QueryParserAgent(AgentTemplate):
 
         natural_query = state.get("natural_query")
         available_classes = state.get("available_classes", [])
-        available_data_properties = state.get("available_data_properties", [])  # Added: get data properties from state
-        available_object_properties = state.get("available_object_properties", [])  # Added: get object properties from state
+        available_data_properties = state.get("available_data_properties", [])
+        available_object_properties = state.get("available_object_properties", [])
+        enhanced_feedback = state.get("enhanced_feedback")  # 获取增强反馈
 
         if not natural_query:
             return {"error": "Natural query missing in input state."}
@@ -144,8 +145,9 @@ class QueryParserAgent(AgentTemplate):
         prompt_messages = self._create_prompt_messages(
             natural_query, 
             available_classes,
-            available_data_properties,  # Added: pass data properties to prompt creation
-            available_object_properties  # Added: pass object properties to prompt creation
+            available_data_properties,
+            available_object_properties,
+            enhanced_feedback  # 传递增强反馈
         )
         print(prompt_messages)
         try:
@@ -159,7 +161,8 @@ class QueryParserAgent(AgentTemplate):
 
     def _create_prompt_messages(self, query: str, available_classes: List[str],
                               available_data_properties: List[str] = None,  # Added: parameter for data properties
-                              available_object_properties: List[str] = None  # Added: parameter for object properties
+                              available_object_properties: List[str] = None,  # Added: parameter for object properties
+                              enhanced_feedback: str = None  # Added: parameter for enhanced feedback
                              ) -> List[tuple[str, str]]:
         
         # Default to empty lists if None
@@ -176,9 +179,13 @@ Available data properties: {data_prop_list_str}
 Available object properties: {obj_prop_list_str}
 
 Please analyze the following query and convert it into the NormalizedQuery JSON format:
-Query: {query}
+Query: {query}"""
 
-Output *only* the JSON object conforming to the NormalizedQuery schema."""
+        # 添加增强反馈（如果有）
+        if enhanced_feedback:
+            user_content += f"\n\n--- VALIDATION FEEDBACK ---\n{enhanced_feedback}\n---"
+
+        user_content += "\n\nOutput *only* the JSON object conforming to the NormalizedQuery schema."
         
         return [
             ("system", self.system_prompt),
@@ -311,16 +318,35 @@ class SparqlExpertAgent(AgentTemplate):
         ))
         return response.content
 
-class ValidationAgent(AgentTemplate):
-    """You are an expert specializing in validating query results. You need to evaluate the quality of the query results across multiple dimensions: completeness, consistency, and accuracy.
+"""
+You are an expert specializing in validating query results for an ontology system. You need to evaluate the quality of the query results across multiple dimensions: completeness, consistency, and accuracy.
+
 Provide a detailed assessment and specific reasoning for each dimension.
-Your validation result MUST strictly follow the ValidationReport JSON schema format."""
+
+When validation fails, provide specific improvement suggestions addressing:
+- Entity recognition issues
+- Property selection problems
+- Query formulation concerns
+- Strategy selection considerations
+
+Your validation result MUST strictly follow the ValidationReport JSON schema format, which includes fields for improvement suggestions and issue aspects.
+"""
+
+class ValidationAgent(AgentTemplate):
+    """验证查询结果质量并提供改进建议的专家代理"""
     def __init__(self, model: BaseLanguageModel):
         system_prompt = """
-        You are an expert specializing in validating query results. You need to evaluate the quality of the query results across multiple dimensions: completeness, consistency, and accuracy.
-        Provide a detailed assessment and specific reasoning for each dimension.
-        Your validation result MUST strictly follow the ValidationReport JSON schema format.
-        """
+You are an expert specializing in validating query results for an ontology system. You need to evaluate the quality of the query results across multiple dimensions: completeness, consistency, and accuracy.
+
+Provide a detailed assessment and specific reasoning for each dimension.
+
+When validation fails, provide specific improvement suggestions.
+
+Your validation result MUST strictly follow the ValidationReport JSON schema format, which includes fields for improvement suggestions and issue aspects.
+"""
+
+
+
         super().__init__(
             model=model,
             name="ValidationAgent",
@@ -335,14 +361,14 @@ Your validation result MUST strictly follow the ValidationReport JSON schema for
             self.structured_llm = None
 
     def validate(self, results: Any, query_context: Dict = None) -> Union[ValidationReport, Dict]:
-        """Execute result validation
+        """执行结果验证，并提供改进建议
         
         Args:
-            results: Query results
-            query_context: Optional query context information
+            results: 查询结果
+            query_context: 可选的查询上下文信息
         
         Returns:
-            Union[ValidationReport, Dict]: Validation result, containing valid, details, message, etc. fields
+            Union[ValidationReport, Dict]: 验证结果，包含valid, details, message等字段，以及improvement_suggestions
         """
         if not self.structured_llm:
              return {"error": "ValidationAgent LLM not configured for structured output during init."}
@@ -360,30 +386,41 @@ Your validation result MUST strictly follow the ValidationReport JSON schema for
             return {"error": f"Validation failed: Could not serialize results for LLM prompt - {str(e)}"}
 
         # Build the prompt parts
-        prompt_parts = [f"Please validate the following query results:\\n\\n```json\\n{results_str}\\n```"]
+        user_prompt = f"""Please validate the following query results:
+
+```json
+{results_str}
+```
+
+"""
 
         if query_context:
-            prompt_parts.append(f"""
+            user_prompt += f"""
 Validation Context Information:
-- Query Intent: {query_context.get('intent', 'Unknown')}
-- Query Type: {query_context.get('type', 'Unknown')}
-- Query relevant entities: {query_context.get('relevant_entities', 'Unknown')}
-- Query relevant properties: {query_context.get('relevant_properties', 'Unknown')}
-""")
+- Query: "{query_context.get('query', 'Unknown')}"
+- Intent: {query_context.get('intent', 'Unknown')}
+- Type: {query_context.get('type', 'Unknown')}
+- Strategy: {query_context.get('strategy', 'Unknown')}
+- Relevant entities: {query_context.get('relevant_entities', 'Unknown')}
+- Relevant properties: {query_context.get('relevant_properties', 'Unknown')}
+"""
 
-        prompt_parts.append("""
-Please validate based on the dimensions of completeness, consistency, and accuracy, providing detailed reasoning. 
-When a field exists but contains empty content (such as empty lists or null values), this indicates that no relevant knowledge exists in the ontology. This should be considered valid but can be noted as a knowledge limitation in your message.
-However, if fields that should logically be present are completely missing from the results, this suggests that relevant queries were not performed, which should be flagged for review.
-Provide a score (1-5) for each dimension.
-Return a single JSON object strictly conforming to the ValidationReport JSON schema.
-""")
+        user_prompt += """
+Evaluate based on completeness, consistency, and accuracy.
 
-        prompt = "\n\n".join(prompt_parts)
+If validation fails, provide:
+1. A list of specific text suggestions for improvement in the "improvement_suggestions" field
+2. A list of corresponding issue aspects (like "entity_recognition", "property_selection", etc.) in the "issue_aspects" field
+
+Your response must be a ValidationReport object with these fields if validation fails.
+"""
 
         try:
             # Use the structured LLM instance created in __init__
-            validation_report: ValidationReport = self.structured_llm.invoke(prompt)
+            validation_report: ValidationReport = self.structured_llm.invoke([
+                ("system", self.system_prompt),
+                ("user", user_prompt)
+            ])
             return validation_report
         except Exception as e:
             # Catch errors from structured output process
@@ -391,3 +428,191 @@ Return a single JSON object strictly conforming to the ValidationReport JSON sch
             print(error_msg)
             # Consider logging raw response if available
             return {"error": error_msg}
+
+class HypotheticalDocumentAgent(AgentTemplate):
+    """从专业化学家角度生成假设性答案，帮助查询标准化"""
+    def __init__(self, model: BaseLanguageModel):
+        system_prompt = """You are an expert chemist who specializes in chemistry knowledge representation. 
+Your task is to help clarify and interpret chemistry queries that have been difficult to process.
+
+When presented with an ambiguous or failed chemistry query, you should:
+1. Interpret what the query is trying to ask from a chemistry expert's perspective
+2. Generate a "hypothetical answer" - what a complete and accurate answer would look like
+3. Identify the key chemistry concepts, relationships, and properties that would be needed
+
+Do NOT concern yourself with ontology structures, classes, or implementation details.
+Focus ONLY on creating a chemistry expert's interpretation of the question and ideal answer."""
+
+        super().__init__(
+            model=model,
+            name="HypotheticalDocumentAgent",
+            system_prompt=system_prompt,
+            tools=[]
+        )
+
+    def generate_hypothetical_document(self, query: str, validation_history: Any = None) -> Dict:
+        """Generate a hypothetical answer from a chemistry expert perspective.
+        
+        Args:
+            query: The natural language query
+            validation_history: Previous validation reports to learn from
+            
+        Returns:
+            Dict containing hypothetical answer and key concepts
+        """
+        # Format validation history info if available
+        validation_info = ""
+        if validation_history:
+            validation_info = "Previous validation issues:\n"
+            if isinstance(validation_history, list):
+                for i, report in enumerate(validation_history):
+                    if hasattr(report, 'message'):
+                        validation_info += f"- Attempt {i+1}: {report.message}\n"
+            elif hasattr(validation_history, 'message'):
+                validation_info += f"- {validation_history.message}\n"
+        
+        # Create the prompt
+        user_prompt = f"""As a chemistry expert, please help clarify this chemistry query that has been difficult to interpret:
+
+"{query}"
+
+{validation_info}
+
+Please provide:
+
+1. A CHEMISTRY EXPERT'S INTERPRETATION of what this query is really asking about. 
+   Explain the query from a chemistry perspective, clarifying any ambiguities.
+
+2. A HYPOTHETICAL IDEAL ANSWER that would fully address this query.
+   What would a complete and accurate response look like?
+   Include all relevant chemistry information that should appear in the answer.
+
+3. KEY CHEMISTRY CONCEPTS that are essential to understanding this query:
+   - Main chemical entities/substances involved
+   - Important properties or relationships being asked about
+   - Chemistry-specific terminology that needs to be understood
+
+Please format your response as a JSON object with these sections:
+"interpretation": Your chemistry expert's understanding of the query
+"hypothetical_answer": What a complete answer would look like
+"key_concepts": List of essential chemistry concepts, entities and properties
+"""
+
+        # Call the model
+        response = self.model_instance.invoke([
+            ("system", self.system_prompt),
+            ("user", user_prompt)
+        ])
+        
+        # Process the response
+        try:
+            result = json.loads(response.content)
+            return result
+        except json.JSONDecodeError:
+            # If can't parse as JSON, extract structured information using regex
+            # or return a formatted version of the raw response
+            print("Warning: Could not parse hypothetical document response as JSON")
+            return {
+                "interpretation": "Could not parse structured response.",
+                "hypothetical_answer": response.content,
+                "key_concepts": []
+            }
+
+class ResultFormatterAgent(AgentTemplate):
+    """Formats query results into concise, organized information points."""
+    def __init__(self, model: BaseLanguageModel):
+        system_prompt = """You are an expert at distilling complex chemistry query results into clear, concise information points.
+
+Your task is to:
+1. Analyze the provided query and its results
+2. Extract the most relevant information that directly addresses the query
+3. Present this information as a well-organized set of key points
+4. Eliminate redundancy and irrelevant details
+5. Ensure technical accuracy while making the information accessible
+
+When formatting results:
+- Start with the most important findings that directly answer the query
+- Group related information together logically
+- Use consistent, precise terminology
+- Highlight quantitative data, relationships, and definitive facts
+- Include important qualifiers or context when necessary"""
+
+        super().__init__(
+            model=model,
+            name="ResultFormatterAgent",
+            system_prompt=system_prompt,
+            tools=[]
+        )
+
+    def format_results(self, query: str, results: Dict, query_context: Dict = None) -> Dict:
+        """Format query results into organized information points.
+        
+        Args:
+            query: The original natural language query
+            results: The query results to format
+            query_context: Additional context about the query
+            
+        Returns:
+            Dict containing formatted results with key points
+        """
+        # Format context information
+        context_info = ""
+        if query_context:
+            if query_context.get('intent'):
+                context_info += f"Query intent: {query_context.get('intent')}\n"
+            if query_context.get('relevant_entities'):
+                context_info += f"Relevant entities: {query_context.get('relevant_entities')}\n"
+            if query_context.get('relevant_properties'):
+                context_info += f"Relevant properties: {query_context.get('relevant_properties')}\n"
+        
+        # Try to convert results to string if not already
+        results_str = ""
+        try:
+            if isinstance(results, str):
+                results_str = results
+            elif isinstance(results, dict):
+                results_str = json.dumps(results, indent=2, ensure_ascii=False, default=str)
+            else:
+                results_str = str(results)
+        except:
+            results_str = "Error: Could not format results as string"
+        
+        # Create the prompt
+        user_prompt = f"""Please format the following chemistry query results into clear, concise information points:
+
+ORIGINAL QUERY:
+"{query}"
+
+{context_info}
+
+QUERY RESULTS:
+{results_str}
+
+Please extract the most relevant information that directly addresses the query, and present it as:
+1. A short summary (1-2 sentences) that directly answers the main question
+2. A set of key information points, organized logically
+3. Any important relationships or patterns found in the data
+
+Format your response as a JSON object with:
+"summary": A direct answer to the query
+"key_points": An array of important information points
+"relationships": Any significant relationships or patterns (if applicable)
+"""
+
+        # Call the model
+        response = self.model_instance.invoke([
+            ("system", self.system_prompt),
+            ("user", user_prompt)
+        ])
+        
+        # Process the response
+        try:
+            formatted_result = json.loads(response.content)
+            return formatted_result
+        except json.JSONDecodeError:
+            # If can't parse as JSON, return a simple structure with the raw content
+            return {
+                "summary": "Could not generate structured summary.",
+                "key_points": [response.content],
+                "relationships": []
+            }

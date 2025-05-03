@@ -6,7 +6,7 @@ from langchain_core.messages import SystemMessage
 from langgraph.graph import Graph, StateGraph, END, START
 from langgraph.graph.message import AnyMessage, add_messages
 from .ontology_tools import OntologyTools, SparqlExecutionError
-from .query_agents import QueryParserAgent, StrategyPlannerAgent, ToolPlannerAgent, ToolExecutorAgent, SparqlExpertAgent, ValidationAgent
+from .query_agents import QueryParserAgent, StrategyPlannerAgent, ToolPlannerAgent, ToolExecutorAgent, SparqlExpertAgent, ValidationAgent, HypotheticalDocumentAgent, ResultFormatterAgent
 from .query_manager import Query, QueryStatus
 from .utils import format_sparql_error, format_sparql_results, extract_variables_from_sparql
 from .schemas import NormalizedQuery, ToolPlan, ValidationReport
@@ -37,6 +37,13 @@ class QueryState(TypedDict):
     previous_stage: Optional[str]  # 上一阶段
     error: Optional[str]  # Add error field for better tracking
     
+    # Retry and Feedback
+    retry_count: Optional[int]  # 重试计数
+    force_strategy: Optional[str]  # 强制使用不同的策略
+    hypothetical_document: Optional[Dict]  # 假设性文档（由化学专家生成）
+    validation_history: Optional[List]  # 验证报告历史
+    formatted_results: Optional[Dict]  # 格式化后的结果
+    
     # System
     messages: Annotated[list[AnyMessage], add_messages]
 
@@ -60,6 +67,8 @@ def create_query_graph() -> Graph:
     tool_agent = ToolExecutorAgent(model=default_model)
     sparql_agent = SparqlExpertAgent(model=default_model)
     validator_agent = ValidationAgent(model=default_model)
+    hypothetical_document_agent = HypotheticalDocumentAgent(model=default_model)
+    result_formatter_agent = ResultFormatterAgent(model=default_model)
     
     # 节点实现
     def normalize_query(state: QueryState) -> Dict:
@@ -280,27 +289,132 @@ def create_query_graph() -> Graph:
                 "messages": [SystemMessage(content=error_message)]
             }
     
+    def generate_hypothetical_document(state: QueryState) -> Dict:
+        """从专业化学家角度生成假设性答案，帮助查询标准化"""
+        try:
+            query = state.get("query")
+            validation_history = state.get("validation_history", [])
+            
+            if not query:
+                raise ValueError("Cannot generate hypothetical document: query is missing")
+            
+            # 使用HypotheticalDocumentAgent生成假设性文档
+            hypothetical_doc = hypothetical_document_agent.generate_hypothetical_document(
+                query=query, 
+                validation_history=validation_history
+            )
+            
+            # 更新状态
+            return {
+                "hypothetical_document": hypothetical_doc,
+                "status": "hypothetical_generated",
+                "stage": "hypothetical_generated",
+                "previous_stage": state.get("stage"),
+                "messages": [SystemMessage(content=f"Generated hypothetical document to aid in query understanding: {hypothetical_doc.get('interpretation', '')[:100]}...")]
+            }
+        except Exception as e:
+            error_message = f"Hypothetical document generation failed: {str(e)}"
+            print(error_message)
+            return {
+                "status": "error",
+                "stage": "error",
+                "previous_stage": state.get("stage"),
+                "error": error_message,
+                "messages": [SystemMessage(content=error_message)]
+            }
+    
+    def format_results(state: QueryState) -> Dict:
+        """格式化查询结果为用户友好的形式"""
+        try:
+            query = state.get("query")
+            results = state.get("query_results")
+            normalized_query_obj = state.get("normalized_query")
+            
+            if not query or not results:
+                raise ValueError("Cannot format results: query or results is missing")
+            
+            # 准备query_context
+            query_context = {}
+            if isinstance(normalized_query_obj, NormalizedQuery):
+                query_context = {
+                    "intent": normalized_query_obj.intent,
+                    "relevant_entities": ", ".join(normalized_query_obj.relevant_entities),
+                    "relevant_properties": ", ".join(normalized_query_obj.relevant_properties),
+                }
+            
+            # 使用ResultFormatterAgent格式化结果
+            formatted_results = result_formatter_agent.format_results(
+                query=query,
+                results=results,
+                query_context=query_context
+            )
+            
+            # 更新状态
+            return {
+                "formatted_results": formatted_results,
+                "status": "completed",
+                "stage": "completed",
+                "previous_stage": state.get("stage"),
+                "messages": [SystemMessage(content=f"Results formatted: {formatted_results.get('summary', '')}")]
+            }
+        except Exception as e:
+            error_message = f"Results formatting failed: {str(e)}"
+            print(error_message)
+            return {
+                "status": "error",
+                "stage": "error",
+                "previous_stage": state.get("stage"),
+                "error": error_message,
+                "messages": [SystemMessage(content=error_message)]
+            }
+    
     # Add nodes
     workflow.add_node("normalize", normalize_query)
     workflow.add_node("strategy", determine_strategy)
     workflow.add_node("execute", execute_query)
     workflow.add_node("validate", validate_results)
+    workflow.add_node("hypothetical_document", generate_hypothetical_document)  # 新增节点
+    workflow.add_node("format_results", format_results)  # 新增节点
     
     # Define conditional edges for error handling and branching
     def decide_next_node(state: QueryState):
+        # 检查是否存在错误状态
         if state.get("status") == "error":
             print(f"Workflow ending due to error at stage: {state.get('stage')}, Error: {state.get('error')}")
             return END
+
+        # 获取当前阶段和重试计数
         current_stage = state.get("stage")
+        retry_count = state.get("retry_count", 0)
+
+        # 对于验证反馈阶段，实现重试逻辑
+        if current_stage == "validation_feedback":
+            if retry_count <= 2:
+                # 前两次重试，回到标准化阶段
+                return "normalize"
+            elif retry_count == 3:
+                # 第三次重试，尝试假设性文档生成
+                return "hypothetical_document"
+            else:
+                # 超出重试次数，终止工作流
+                print(f"Exceeded maximum retry attempts ({retry_count})")
+                return END
+
+        # 标准流程节点决策
         if current_stage == "normalized":
             return "strategy"
         elif current_stage == "strategy":
             return "execute"
         elif current_stage == "executed":
-             return "validate"
+            return "validate"
         elif current_stage == "validated":
-             return END
-        # Add a fallback or default case if needed, though END is often suitable
+            return "format_results"
+        elif current_stage == "hypothetical_generated":
+            return "normalize"  # 生成假设性文档后返回到标准化阶段
+        elif current_stage == "completed":
+            return END
+
+        # 默认情况（包括其他未明确处理的状态）
         print(f"Warning: Unexpected state '{current_stage}' reached. Ending workflow.")
         return END
     
@@ -310,8 +424,9 @@ def create_query_graph() -> Graph:
     workflow.add_conditional_edges("strategy", decide_next_node)
     workflow.add_conditional_edges("execute", decide_next_node)
     workflow.add_conditional_edges("validate", decide_next_node)
+    workflow.add_conditional_edges("hypothetical_document", decide_next_node)  # 新增边
+    workflow.add_conditional_edges("format_results", decide_next_node)  # 新增边
     
-    # Compile the graph (ensure this is done correctly)
-    # Consider compiling outside if graph needs further modification (e.g., persistence)
+    # 编译工作流
     compiled_graph = workflow.compile()
     return compiled_graph 
