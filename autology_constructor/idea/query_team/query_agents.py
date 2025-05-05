@@ -597,6 +597,8 @@ Format your response as a JSON object with:
 "summary": A direct answer to the query
 "key_points": An array of important information points
 "relationships": Any significant relationships or patterns (if applicable)
+
+DO NOT wrap your response in ```json```.
 """
 
         # Call the model

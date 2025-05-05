@@ -373,7 +373,7 @@ def create_query_graph() -> Graph:
     workflow.add_node("strategy", determine_strategy)
     workflow.add_node("execute", execute_query)
     workflow.add_node("validate", validate_results)
-    workflow.add_node("hypothetical_document", generate_hypothetical_document)  # 新增节点
+    workflow.add_node("generate_hypothetical_document", generate_hypothetical_document)  # 新增节点
     workflow.add_node("format_results", format_results)  # 新增节点
     
     # Define conditional edges for error handling and branching
@@ -394,7 +394,7 @@ def create_query_graph() -> Graph:
                 return "normalize"
             elif retry_count == 3:
                 # 第三次重试，尝试假设性文档生成
-                return "hypothetical_document"
+                return "generate_hypothetical_document"
             else:
                 # 超出重试次数，终止工作流
                 print(f"Exceeded maximum retry attempts ({retry_count})")
@@ -424,7 +424,7 @@ def create_query_graph() -> Graph:
     workflow.add_conditional_edges("strategy", decide_next_node)
     workflow.add_conditional_edges("execute", decide_next_node)
     workflow.add_conditional_edges("validate", decide_next_node)
-    workflow.add_conditional_edges("hypothetical_document", decide_next_node)  # 新增边
+    workflow.add_conditional_edges("generate_hypothetical_document", decide_next_node)  # 新增边
     workflow.add_conditional_edges("format_results", decide_next_node)  # 新增边
     
     # 编译工作流

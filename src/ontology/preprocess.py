@@ -2,13 +2,13 @@ from owlready2 import *
 import numpy as np
 import datetime
 
-from config import settings
+from config.settings import ONTOLOGY_SETTINGS
 
 
 def create_metadata_properties():
     """Create necessary metadata classes and properties in the ontology"""
-    ontology = settings.ONTOLOGY_CONFIG["ontology"]
-    meta = settings.ONTOLOGY_CONFIG["meta"]
+    ontology = ONTOLOGY_SETTINGS.ontology
+    meta = ONTOLOGY_SETTINGS.meta
     
     with ontology:
         # 创建SourcedInformation类

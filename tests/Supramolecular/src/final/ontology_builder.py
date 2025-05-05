@@ -119,6 +119,11 @@ def process_chunk_worker(worker_args):
     logger = logging.getLogger('ontology_builder') # Get logger configured in main process
 
     logger.info(f"Processing chunk {chunk_index}...")
+    try:
+        setup_dspy_lm()
+    except Exception as e:
+        logger.critical("Failed to initialize DSPy LM. Exiting.")
+        return
     # Re-configure DSPy LM within the worker process for safety/compatibility
     # setup_dspy_lm() # Might be needed depending on start method and dspy internals
 
@@ -191,18 +196,18 @@ def main(args):
                 handler.setLevel(logging.DEBUG)
         logger.debug("Debug logging enabled.")
 
-    try:
-        setup_dspy_lm()
-    except Exception as e:
-        logger.critical("Failed to initialize DSPy LM. Exiting.")
-        return # Exit if LM setup fails
+    # try:
+    #     setup_dspy_lm()
+    # except Exception as e:
+    #     logger.critical("Failed to initialize DSPy LM. Exiting.")
+    #     return # Exit if LM setup fails
 
     logger.info("Initializing main ontology...")
     try:
         # Pass base_iri if required by ChemOntology or merge_ontology
         # For now, assume default constructor works and merge handles IRI/saving
-        main_ontology = ChemOntology()
-        create_metadata_properties(main_ontology) # Pass the instance
+        # extractor = ChemOntology()
+        create_metadata_properties() # Pass the instance
         logger.info("Main ontology initialized and metadata added.")
     except Exception as e:
         logger.exception("Failed to initialize ChemOntology or add metadata.")
@@ -318,11 +323,10 @@ def main(args):
             # Call merge_ontology - assuming it modifies main_ontology in place
             # and handles saving/output internally based on its logic.
             merge_ontology(
-                main_ontology, # Pass the main ontology instance
-                entities_res,
-                elements_res,
-                data_props_res,
-                obj_props_res,
+                entities_res.ontology_entities,
+                elements_res.ontology_elements,
+                data_props_res.ontology_data_properties,
+                obj_props_res.ontology_object_properties,
                 source,
                 "" # Placeholder for potential future argument?
             )

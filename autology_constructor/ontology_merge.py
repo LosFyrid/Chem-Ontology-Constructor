@@ -3,7 +3,7 @@ from typing import List
 from autology_constructor import base_data_structures 
 from autology_constructor.utils import flatten_dict
 
-from config.settings import ONTOLOGY_CONFIG
+from config.settings import ONTOLOGY_SETTINGS
 
 def merge_ontology(
     ontology_entities: base_data_structures.OntologyEntities,
@@ -23,7 +23,7 @@ def merge_ontology(
         source: 数据来源
     """
     try:
-        onto = ONTOLOGY_CONFIG["ontology"]
+        onto = ONTOLOGY_SETTINGS.ontology
         
         # 写入实体(类)
         if ontology_entities and ontology_entities.entities:
@@ -53,13 +53,13 @@ def merge_ontology(
 def _class_exists(class_name: str) -> bool:
     """检查类是否存在"""
     try:
-        return ONTOLOGY_CONFIG["classes"][class_name] in ONTOLOGY_CONFIG["ontology"].classes()
+        return ONTOLOGY_SETTINGS.classes[class_name] in ONTOLOGY_SETTINGS.ontology.classes()
     except Exception:
         return False
 
 def _instantiate_sourced_information(source: str, type: str, file_path: str, superclass: List[str] = None, property = None, information: str = None):
     """创建SourcedInformation实例"""
-    meta = ONTOLOGY_CONFIG["meta"]
+    meta = ONTOLOGY_SETTINGS.meta
     info_instance = meta.SourcedInformation()
     info_instance.source = [source]
     info_instance.file_path = [file_path]
@@ -81,8 +81,8 @@ def _instantiate_sourced_information(source: str, type: str, file_path: str, sup
 
 def _merge_entities(entities: List[base_data_structures.Entity], source: str, file_path: str):
     """合并实体(类)"""
-    namespace = ONTOLOGY_CONFIG["classes"]
-    meta = ONTOLOGY_CONFIG["meta"]
+    namespace = ONTOLOGY_SETTINGS.classes
+    meta = ONTOLOGY_SETTINGS.meta
     
     for entity in entities:
         try:
@@ -114,8 +114,8 @@ def _merge_entities(entities: List[base_data_structures.Entity], source: str, fi
 
 def _merge_hierarchy(hierarchies: List[base_data_structures.Hierarchy], source: str, file_path: str):
     """合并层级关系"""
-    namespace = ONTOLOGY_CONFIG["classes"]
-    meta = ONTOLOGY_CONFIG["meta"]
+    namespace = ONTOLOGY_SETTINGS.classes
+    meta = ONTOLOGY_SETTINGS.meta
     
     for hierarchy in hierarchies:
         try:
@@ -150,7 +150,7 @@ def _merge_hierarchy(hierarchies: List[base_data_structures.Hierarchy], source: 
 
 def _merge_disjointness(disjointness: List[base_data_structures.Disjointness]):
     """合并不相交关系"""
-    namespace = ONTOLOGY_CONFIG["classes"]
+    namespace = ONTOLOGY_SETTINGS.classes
     for disj in disjointness:
         try:
             if _class_exists(disj.class1) and _class_exists(disj.class2):
@@ -162,11 +162,11 @@ def _merge_disjointness(disjointness: List[base_data_structures.Disjointness]):
 
 def _merge_data_properties(data_properties: List[base_data_structures.DataProperty], source: str, file_path: str):
     """合并数据属性"""
-    namespace = ONTOLOGY_CONFIG["data_properties"]
-    class_namespace = ONTOLOGY_CONFIG["classes"]
+    namespace = ONTOLOGY_SETTINGS.data_properties
+    class_namespace = ONTOLOGY_SETTINGS.classes
     for dp in data_properties:
         try:
-            if not dp.name in ONTOLOGY_CONFIG["ontology"].data_properties():
+            if not dp.name in ONTOLOGY_SETTINGS.ontology.data_properties():
                 with namespace:
                     new_dp = types.new_class(dp.name, (DataProperty,))
                     # print(f"创建数据属性 {dp.name}")
@@ -248,12 +248,12 @@ def _merge_data_properties(data_properties: List[base_data_structures.DataProper
 
 def _merge_object_properties(object_properties: List[base_data_structures.ObjectProperty], source: str, file_path: str):
     """合并对象属性"""
-    namespace = ONTOLOGY_CONFIG["object_properties"]
-    class_namespace = ONTOLOGY_CONFIG["classes"]
-    axiom_namespace = ONTOLOGY_CONFIG["axioms"]
+    namespace = ONTOLOGY_SETTINGS.object_properties
+    class_namespace = ONTOLOGY_SETTINGS.classes
+    axiom_namespace = ONTOLOGY_SETTINGS.axioms
     for op in object_properties:
         try:
-            if not op.name in ONTOLOGY_CONFIG["ontology"].object_properties():
+            if not op.name in ONTOLOGY_SETTINGS.ontology.object_properties():
                 with namespace:
                     new_op = types.new_class(op.name, (ObjectProperty,))
                     # if op.information:
