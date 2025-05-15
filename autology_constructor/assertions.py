@@ -1,12 +1,9 @@
 import dspy
-from dspy.primitives.assertions import assert_transform_module, backtrack_handler
-from dspy.predict import Retry
-
-def my_backtrack_handler(func):
-    return backtrack_handler(func, max_backtracks=5)
 
 from autology_constructor.signatures import ExtractOntologyEntities, ExtractOntologyElements, ExtractOntologyDataProperties, ExtractOntologyObjectProperties
 from autology_constructor.modules import Assessment
+
+max_backtracks = 3
 
 class ChemOntologyWithEntitiesAssertions(dspy.Module):
     def __init__(self):
@@ -69,7 +66,7 @@ class ChemOntologyWithObjectPropertiesAssertions(dspy.Module):
         dspy.Suggest(all(qualified),"".join(suggestion),target_module=self.object_properties_extractor)
         return dspy.Prediction(context=context, ontology_entities=entities.ontology_entities, ontology_object_properties=object_properties.ontology_object_properties, score_info=score_info)
 
-chemonto_with_entities_assertions = assert_transform_module(ChemOntologyWithEntitiesAssertions().map_named_predictors(Retry), backtrack_handler) 
-chemonto_with_elements_assertions = assert_transform_module(ChemOntologyWithElementsAssertions().map_named_predictors(Retry), backtrack_handler) 
-chemonto_with_data_properties_assertions = assert_transform_module(ChemOntologyWithDataPropertiesAssertions().map_named_predictors(Retry), backtrack_handler) 
-chemonto_with_object_properties_assertions = assert_transform_module(ChemOntologyWithObjectPropertiesAssertions().map_named_predictors(Retry), backtrack_handler) 
+chemonto_with_entities_assertions = ChemOntologyWithEntitiesAssertions().activate_assertions(max_backtracks=max_backtracks)
+chemonto_with_elements_assertions = ChemOntologyWithElementsAssertions().activate_assertions(max_backtracks=max_backtracks)
+chemonto_with_data_properties_assertions = ChemOntologyWithDataPropertiesAssertions().activate_assertions(max_backtracks=max_backtracks)
+chemonto_with_object_properties_assertions = ChemOntologyWithObjectPropertiesAssertions().activate_assertions(max_backtracks=max_backtracks) 

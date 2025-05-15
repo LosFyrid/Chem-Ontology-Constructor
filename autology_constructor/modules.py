@@ -1,8 +1,6 @@
 from numpy import mean
 
 import dspy
-from dspy.primitives.assertions import assert_transform_module, backtrack_handler
-from dspy.predict import Retry
 
 
 from autology_constructor.base_data_structures import OntologyElements, OntologyDataProperties, OntologyObjectProperties, OntologyEntities
@@ -11,6 +9,7 @@ from autology_constructor.utils import ontology_entities_to_string, ontology_ele
 
 from config.settings import ASSESSMENT_CRITERIA_CONFIG
 
+max_backtracks = 3
 
 entity = ASSESSMENT_CRITERIA_CONFIG["entity"]
 entity_score = ASSESSMENT_CRITERIA_CONFIG["entity_score"]
@@ -28,24 +27,103 @@ overall_content = ASSESSMENT_CRITERIA_CONFIG["overall_content"]
 overall_content_score = ASSESSMENT_CRITERIA_CONFIG["overall_content_score"]
 full_score = ASSESSMENT_CRITERIA_CONFIG["full_score"]
 
-def my_backtrack_handler(func):
-    return backtrack_handler(func, max_backtracks=5)
+class BaseEntityExtractor(dspy.Module):
+    def __init__(self):
+        super().__init__()
+        self.entities_extractor = dspy.ChainOfThought(ExtractOntologyEntities)
+    
+    def forward(self, context):
+        return self.entities_extractor(text=context)
+
+class BaseElementExtractor(dspy.Module):
+    def __init__(self):
+        super().__init__()
+        self.elements_extractor = dspy.ChainOfThought(ExtractOntologyElements)
+    
+    def forward(self, context, ontology_entities):
+        # Ensure ontology_entities is passed as a string if the signature expects it
+        # Or, ensure the signature and subsequent processing can handle the OntologyEntities object directly
+        return self.elements_extractor(text=context, ontology_entities=ontology_entities)
+
+class BaseDataPropertyExtractor(dspy.Module):
+    def __init__(self):
+        super().__init__()
+        self.data_properties_extractor = dspy.ChainOfThought(ExtractOntologyDataProperties)
+    
+    def forward(self, context, ontology_entities):
+        return self.data_properties_extractor(text=context, ontology_entities=ontology_entities)
+
+class BaseObjectPropertyExtractor(dspy.Module):
+    def __init__(self):
+        super().__init__()
+        self.object_properties_extractor = dspy.ChainOfThought(ExtractOntologyObjectProperties)
+    
+    def forward(self, context, ontology_entities):
+        return self.object_properties_extractor(text=context, ontology_entities=ontology_entities)
 
 class ChemOntology(dspy.Module):
     def __init__(self):
         super().__init__()
-
-        self.entities_extractor = dspy.ChainOfThought(ExtractOntologyEntities)
-        self.elements_extractor = dspy.ChainOfThought(ExtractOntologyElements)
-        self.data_properties_extractor = dspy.ChainOfThought(ExtractOntologyDataProperties)
-        self.object_properties_extractor = dspy.ChainOfThought(ExtractOntologyObjectProperties)
+        self.entities_extractor = BaseEntityExtractor()
+        self.elements_extractor = BaseElementExtractor()
+        self.data_properties_extractor = BaseDataPropertyExtractor()
+        self.object_properties_extractor = BaseObjectPropertyExtractor()
     
     def forward(self, context):
-        entities = self.entities_extractor(text=context)
-        elements = self.elements_extractor(text=context, ontology_entities=entities.ontology_entities)
-        data_properties = self.data_properties_extractor(text=context, ontology_entities=entities.ontology_entities)
-        object_properties = self.object_properties_extractor(text=context, ontology_entities=entities.ontology_entities)
-        return dspy.Prediction(context=context, ontology_entities=entities.ontology_entities, ontology_elements=elements.ontology_elements, ontology_data_properties=data_properties.ontology_data_properties, ontology_object_properties=object_properties.ontology_object_properties)
+        entities_pred = self.entities_extractor(context=context)
+        entities_output = entities_pred.ontology_entities
+
+        elements_pred = self.elements_extractor(context=context, ontology_entities=entities_output)
+        elements_output = elements_pred.ontology_elements
+
+        data_properties_pred = self.data_properties_extractor(context=context, ontology_entities=entities_output)
+        data_properties_output = data_properties_pred.ontology_data_properties
+
+        object_properties_pred = self.object_properties_extractor(context=context, ontology_entities=entities_output)
+        object_properties_output = object_properties_pred.ontology_object_properties
+
+        return dspy.Prediction(
+            context=context, 
+            ontology_entities=entities_output,
+            ontology_elements=elements_output,
+            ontology_data_properties=data_properties_output,
+            ontology_object_properties=object_properties_output
+        )
+
+class ChemOntologyWithRefinement(dspy.Module):
+    def __init__(self):
+        super().__init__()
+        self.entity_extractor = RefinedEntityExtractor()
+        self.element_extractor = RefinedElementExtractor()
+        self.data_property_extractor = RefinedDataPropertyExtractor()
+        self.object_property_extractor = RefinedObjectPropertyExtractor()
+
+    def forward(self, context):
+        # Step 1: Extract and refine entities
+        entities_prediction = self.entity_extractor(context=context)
+        # The output of Refine is the student's last successful (or max_iters) prediction.
+        # This Prediction object should contain .ontology_entities
+        refined_entities = entities_prediction.ontology_entities 
+
+        # Step 2: Extract and refine elements using refined entities
+        elements_prediction = self.element_extractor(context=context, ontology_entities=refined_entities)
+        refined_elements = elements_prediction.ontology_elements
+
+        # Step 3: Extract and refine data properties using refined entities
+        data_properties_prediction = self.data_property_extractor(context=context, ontology_entities=refined_entities)
+        refined_data_properties = data_properties_prediction.ontology_data_properties
+
+        # Step 4: Extract and refine object properties using refined entities
+        object_properties_prediction = self.object_property_extractor(context=context, ontology_entities=refined_entities)
+        refined_object_properties = object_properties_prediction.ontology_object_properties
+
+        return dspy.Prediction(
+            context=context, 
+            ontology_entities=refined_entities,
+            ontology_elements=refined_elements,
+            ontology_data_properties=refined_data_properties,
+            ontology_object_properties=refined_object_properties
+        )
 
 class Assessment(dspy.Module):
     def __init__(self, verbose=False, assertions=False):
@@ -159,69 +237,103 @@ Reason:
 
         return mean(normalized_score_list)
 
-class ChemOntologyWithEntitiesAssertions(dspy.Module):
-    def __init__(self):
-        super().__init__()
+def validate_entities_reward(args: dict, pred: dspy.Prediction) -> float:
+    assessed_text = args['context']
+    assessment_ontology_object = pred.ontology_entities
 
-        self.entities_extractor = dspy.ChainOfThought(ExtractOntologyEntities)
-        self.assessor = Assessment(assertions=True)
+    assessor_module = Assessment(assertions=False, verbose=False) 
+    score = assessor_module(assessed_text=assessed_text, assessment_ontology=assessment_ontology_object)
     
+    return score
+
+def validate_elements_reward(args: dict, pred: dspy.Prediction) -> float:
+    assessed_text = args['context']
+    assessment_ontology_object = pred.ontology_elements
+    # ontology_entities_input = args['ontology_entities'] # This might be needed if Assessment for elements requires it
+
+    assessor_module = Assessment(assertions=False, verbose=False)
+    score = assessor_module(assessed_text=assessed_text, assessment_ontology=assessment_ontology_object)
+    return score
+
+def validate_data_properties_reward(args: dict, pred: dspy.Prediction) -> float:
+    assessed_text = args['context']
+    assessment_ontology_object = pred.ontology_data_properties
+    # ontology_entities_input = args['ontology_entities']
+
+    assessor_module = Assessment(assertions=False, verbose=False)
+    score = assessor_module(assessed_text=assessed_text, assessment_ontology=assessment_ontology_object)
+    return score
+
+def validate_object_properties_reward(args: dict, pred: dspy.Prediction) -> float:
+    assessed_text = args['context']
+    assessment_ontology_object = pred.ontology_object_properties
+    # ontology_entities_input = args['ontology_entities']
+
+    assessor_module = Assessment(assertions=False, verbose=False)
+    score = assessor_module(assessed_text=assessed_text, assessment_ontology=assessment_ontology_object)
+    return score
+
+class RefinedEntityExtractor(dspy.Module):
+    def __init__(self, threshold=0.95):
+        super().__init__()
+        self.base_extractor = BaseEntityExtractor()
+        self.refined_extractor = dspy.Refine(
+            module=self.base_extractor, 
+            reward_fn=validate_entities_reward, 
+            N=max_backtracks,
+            threshold=threshold
+        )
+
     def forward(self, context):
-        entities = self.entities_extractor(text=context)
-        assertions, score_info = self.assessor(assessed_text=context, assessment_ontology=entities.ontology_entities)
-        qualified = [x[0] for x in assertions.values()]
-        suggestion = [x[1] for x in assertions.values()]
-        dspy.Suggest(all(qualified),"".join(suggestion),target_module=self.entities_extractor)
-        return dspy.Prediction(context=context, ontology_entities=entities.ontology_entities, score_info=score_info)
+        return self.refined_extractor(context=context)
 
-class ChemOntologyWithElementsAssertions(dspy.Module):
-    def __init__(self):
+class RefinedElementExtractor(dspy.Module):
+    def __init__(self, threshold=0.95):
         super().__init__()
+        self.base_extractor = BaseElementExtractor()
+        self.refined_extractor = dspy.Refine(
+            module=self.base_extractor, 
+            reward_fn=validate_elements_reward, 
+            N=max_backtracks,
+            threshold=threshold
+        )
 
-        self.elements_extractor = dspy.ChainOfThought(ExtractOntologyElements)
-        self.assessor = Assessment(assertions=True)
-    
-    def forward(self, context, entities):
-        elements = self.elements_extractor(text=context, ontology_entities=entities.ontology_entities)
-        assertions, score_info = self.assessor(assessed_text=context, assessment_ontology=elements.ontology_elements)
-        qualified = [x[0] for x in assertions.values()]
-        suggestion = [x[1] for x in assertions.values()]
-        dspy.Suggest(all(qualified),"".join(suggestion),target_module=self.elements_extractor)
+    def forward(self, context, ontology_entities):
+        return self.refined_extractor(context=context, ontology_entities=ontology_entities)
 
-        return dspy.Prediction(context=context, ontology_elements=elements.ontology_elements, score_info=score_info)
-
-class ChemOntologyWithDataPropertiesAssertions(dspy.Module):
-    def __init__(self):
+class RefinedDataPropertyExtractor(dspy.Module):
+    def __init__(self, threshold=0.95):
         super().__init__()
+        self.base_extractor = BaseDataPropertyExtractor()
+        self.refined_extractor = dspy.Refine(
+            module=self.base_extractor, 
+            reward_fn=validate_data_properties_reward, 
+            N=max_backtracks,
+            threshold=threshold
+        )
 
-        self.data_properties_extractor = dspy.ChainOfThought(ExtractOntologyDataProperties)
-        self.assessor = Assessment(assertions=True)
+    def forward(self, context, ontology_entities):
+        return self.refined_extractor(context=context, ontology_entities=ontology_entities)
 
-    def forward(self, context, entities):
-        data_properties = self.data_properties_extractor(text=context, ontology_entities=entities.ontology_entities)
-        assertions, score_info = self.assessor(assessed_text=context, assessment_ontology=data_properties.ontology_data_properties)
-        qualified = [x[0] for x in assertions.values()]
-        suggestion = [x[1] for x in assertions.values()]
-        dspy.Suggest(all(qualified),"".join(suggestion),target_module=self.data_properties_extractor)
-        return dspy.Prediction(context=context, ontology_entities=entities.ontology_entities, ontology_data_properties=data_properties.ontology_data_properties, score_info=score_info)
-
-class ChemOntologyWithObjectPropertiesAssertions(dspy.Module):
-    def __init__(self):
+class RefinedObjectPropertyExtractor(dspy.Module):
+    def __init__(self, threshold=0.95):
         super().__init__()
+        self.base_extractor = BaseObjectPropertyExtractor()
+        self.refined_extractor = dspy.Refine(
+            module=self.base_extractor, 
+            reward_fn=validate_object_properties_reward, 
+            N=max_backtracks,
+            threshold=threshold
+        )
 
-        self.object_properties_extractor = dspy.ChainOfThought(ExtractOntologyObjectProperties)
-        self.assessor = Assessment(assertions=True)
-
-    def forward(self, context, entities):
-        object_properties = self.object_properties_extractor(text=context, ontology_entities=entities.ontology_entities)
-        assertions, score_info = self.assessor(assessed_text=context, assessment_ontology=object_properties.ontology_object_properties)
-        qualified = [x[0] for x in assertions.values()]
-        suggestion = [x[1] for x in assertions.values()]
-        dspy.Suggest(all(qualified),"".join(suggestion),target_module=self.object_properties_extractor)
-        return dspy.Prediction(context=context, ontology_entities=entities.ontology_entities, ontology_object_properties=object_properties.ontology_object_properties, score_info=score_info)
+    def forward(self, context, ontology_entities):
+        return self.refined_extractor(context=context, ontology_entities=ontology_entities)
 
 
-chemonto_with_entities_assertions = assert_transform_module(ChemOntologyWithEntitiesAssertions().map_named_predictors(Retry), backtrack_handler) 
-chemonto_with_elements_assertions = assert_transform_module(ChemOntologyWithElementsAssertions().map_named_predictors(Retry), backtrack_handler) 
-chemonto_with_data_properties_assertions = assert_transform_module(ChemOntologyWithDataPropertiesAssertions().map_named_predictors(Retry), backtrack_handler) 
-chemonto_with_object_properties_assertions = assert_transform_module(ChemOntologyWithObjectPropertiesAssertions().map_named_predictors(Retry), backtrack_handler) 
+# chemonto_with_entities_assertions = ChemOntologyWithEntitiesAssertions().activate_assertions(max_backtracks=max_backtracks)
+
+# Instantiate the new main orchestrator module
+chemonto_refined = ChemOntologyWithRefinement()
+
+# Instantiate the base orchestrator module (without refinement)
+chemonto_base = ChemOntology()

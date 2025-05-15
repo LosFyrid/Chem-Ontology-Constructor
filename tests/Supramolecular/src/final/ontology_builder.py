@@ -39,13 +39,14 @@ else:
 # Now import project modules
 try:
     import dspy
-    from autology_constructor.modules import ChemOntology
-    from autology_constructor.assertions import (
-        chemonto_with_entities_assertions,
-        chemonto_with_elements_assertions,
-        chemonto_with_data_properties_assertions,
-        chemonto_with_object_properties_assertions
-    )
+    # from autology_constructor.modules import ChemOntology # Old import, to be removed by a subsequent one
+    from autology_constructor.modules import chemonto_refined, chemonto_base # New imports
+    # from autology_constructor.assertions import (
+    #     chemonto_with_entities_assertions,
+    #     chemonto_with_elements_assertions,
+    #     chemonto_with_data_properties_assertions,
+    #     chemonto_with_object_properties_assertions
+    # ) # Removed old assertion-based modules
     from autology_constructor.ontology_merge import merge_ontology
     from src.ontology.preprocess import create_metadata_properties
     from config import settings # For LLM_CONFIG and OPENAI_API_KEY
@@ -76,19 +77,18 @@ logger.addHandler(console_handler)
 # --- Argument Parser Setup ---
 def setup_arg_parser():
     """Sets up the command-line argument parser."""
-    parser = argparse.ArgumentParser(description="Build Chemical Ontology from JSON chunks.")
-    parser.add_argument("--input-path", type=str, required=True,
-                        help="Path to the input JSON file or directory containing JSON files.")
-    parser.add_argument("--components", type=str, nargs='+',
-                        choices=['entities', 'elements', 'data_properties', 'object_properties'],
-                        default=['entities', 'elements', 'data_properties', 'object_properties'],
-                        help="Specify which ontology components to generate and merge.")
-    parser.add_argument("--parallel", action='store_true', default=False,
-                        help="Enable parallel processing using multiprocessing.")
+    parser = argparse.ArgumentParser(description="Builds an ontology from text chunks using DSPy.")
+    parser.add_argument("--input-path", type=str, required=True, help="Path to the directory containing input text files (chunks).")
+    parser.add_argument("--output-path", type=str, default="./build", help="Path to the directory where ontology files will be saved.")
+    # parser.add_argument("--components", type=str, nargs='*', help="List of ontology components to generate (e.g., entities elements data_properties object_properties). Extracts all if not specified.")
+    parser.add_argument("--max-workers", type=int, default=cpu_count(), help="Maximum number of worker processes for parallel processing.")
+    parser.add_argument("--parallel", action='store_true', help="Enable parallel processing. If not set, runs sequentially.")
     parser.add_argument("--cpu-fraction", type=float, default=0.7,
                         help="Fraction of CPU cores to use when parallel processing is enabled (e.g., 0.7 for 70%).")
     parser.add_argument("--debug", action='store_true', default=False,
                         help="Enable debug logging.")
+    parser.add_argument('--extractor-type', choices=['refined', 'base'], default='refined',
+                        help="Type of extractor to use: 'refined' (with dspy.Refine) or 'base' (without).")
     return parser
 
 # --- DSPy LM Setup ---
@@ -114,7 +114,7 @@ def process_chunk_worker(worker_args):
     Processes a single chunk to generate ontology components.
     Designed to be run in a separate process.
     """
-    chunk_index, chunk_data, components_list = worker_args
+    chunk_index, chunk_data, components_list, extractor_type = worker_args
     process_name = f"Worker-{os.getpid()}" # Identify worker in logs
     logger = logging.getLogger('ontology_builder') # Get logger configured in main process
 
@@ -138,42 +138,24 @@ def process_chunk_worker(worker_args):
 
     try:
         start_time = time.time()
-        if 'entities' in components_list:
-            logger.debug(f"Chunk {chunk_index}: Generating entities...")
-            temp_entities_result = chemonto_with_entities_assertions(content)
-            results['entities'] = temp_entities_result
-            logger.debug(f"Chunk {chunk_index}: Entities generation finished.")
 
-        if 'elements' in components_list:
-             logger.debug(f"Chunk {chunk_index}: Generating elements...")
-             # Pass the entities result if it was generated
-             dependency = temp_entities_result if 'entities' in results else None
-             if dependency is None and 'entities' in components_list:
-                  logger.warning(f"Chunk {chunk_index}: 'elements' requires 'entities', but entities generation failed or wasn't requested properly.")
-                  # Decide how to handle: skip elements or proceed without dependency? For now, proceed without.
-             elements_result = chemonto_with_elements_assertions(content, dependency)
-             results['elements'] = elements_result
-             logger.debug(f"Chunk {chunk_index}: Elements generation finished.")
+        active_extractor = None
+        if extractor_type == 'refined':
+            active_extractor = chemonto_refined
+            logger.debug(f"Chunk {chunk_index}: Using refined extractor.")
+        else: # extractor_type == 'base'
+            active_extractor = chemonto_base
+            logger.debug(f"Chunk {chunk_index}: Using base extractor.")
 
-        if 'data_properties' in components_list:
-            logger.debug(f"Chunk {chunk_index}: Generating data properties...")
-            dependency = temp_entities_result if 'entities' in results else None # Assuming DP also depends on entities
-            if dependency is None and 'entities' in components_list:
-                  logger.warning(f"Chunk {chunk_index}: 'data_properties' requires 'entities', but entities generation failed or wasn't requested properly.")
-            # Assuming the assertion function exists and takes content + entity results
-            data_props_result = chemonto_with_data_properties_assertions(content, dependency)
-            results['data_properties'] = data_props_result
-            logger.debug(f"Chunk {chunk_index}: Data properties generation finished.")
+        if not active_extractor:
+            logger.error(f"Chunk {chunk_index}: Could not determine active extractor for type '{extractor_type}'.")
+            results['error'] = f"Invalid extractor type: {extractor_type}"
+            return results
 
-        if 'object_properties' in components_list:
-            logger.debug(f"Chunk {chunk_index}: Generating object properties...")
-            dependency = temp_entities_result if 'entities' in results else None # Assuming OP also depends on entities
-            if dependency is None and 'entities' in components_list:
-                  logger.warning(f"Chunk {chunk_index}: 'object_properties' requires 'entities', but entities generation failed or wasn't requested properly.")
-            # Assuming the assertion function exists and takes content + entity results
-            obj_props_result = chemonto_with_object_properties_assertions(content, dependency)
-            results['object_properties'] = obj_props_result
-            logger.debug(f"Chunk {chunk_index}: Object properties generation finished.")
+        logger.debug(f"Chunk {chunk_index}: Generating ontology components with {extractor_type} extractor...")
+        prediction = active_extractor(context=content)
+        results['ontology_prediction'] = prediction
+        logger.debug(f"Chunk {chunk_index}: Ontology components generation finished.")
 
         end_time = time.time()
         logger.info(f"Chunk {chunk_index} processed successfully in {end_time - start_time:.2f} seconds.")
@@ -261,8 +243,23 @@ def main(args):
 
     logger.info(f"Total chunks to process: {len(all_chunks_data)}")
 
+    all_components = ['entities', 'elements', 'data_properties', 'object_properties'] # Keep for reference, but not for selection
+
+    # if not args.components:
+    #     logger.info("No specific components requested, defaulting to all components for structure, but extraction is now unified.")
+        # args.components = all_components # No longer needed to set this for worker
+    # else:
+        # logger.info(f"Requested components: {args.components}")
+        # # Validate requested components
+        # for comp in args.components:
+        #     if comp not in all_components:
+        #         logger.error(f"Invalid component specified: {comp}. Valid components are: {all_components}")
+        #         return
+
     # --- Task Preparation ---
-    tasks = [(idx, chunk, args.components) for idx, chunk in enumerate(all_chunks_data)]
+    # tasks = [(idx, chunk, args.components, args.extractor_type) for idx, chunk in enumerate(all_chunks_data)] # Old tasks with components
+    tasks = [(idx, chunk, all_components, args.extractor_type) for idx, chunk in enumerate(all_chunks_data)] # Pass all_components for reference if needed by worker, or an empty list if not
+
     results_list = []
     start_processing_time = time.time()
 
@@ -314,19 +311,16 @@ def main(args):
         logger.debug(f"Merging results for chunk {idx}...")
         try:
             # Extract results safely
-            entities_res = result_dict.get('entities')
-            elements_res = result_dict.get('elements')
-            data_props_res = result_dict.get('data_properties')
-            obj_props_res = result_dict.get('object_properties')
+            prediction = result_dict.get('ontology_prediction')
             source = result_dict.get('source', f"Source_Chunk_{idx}")
 
             # Call merge_ontology - assuming it modifies main_ontology in place
             # and handles saving/output internally based on its logic.
             merge_ontology(
-                entities_res.ontology_entities,
-                elements_res.ontology_elements,
-                data_props_res.ontology_data_properties,
-                obj_props_res.ontology_object_properties,
+                prediction.ontology_entities,
+                prediction.ontology_elements,
+                prediction.ontology_data_properties,
+                prediction.ontology_object_properties,
                 source,
                 "" # Placeholder for potential future argument?
             )

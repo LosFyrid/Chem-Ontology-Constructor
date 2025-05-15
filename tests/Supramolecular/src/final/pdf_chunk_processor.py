@@ -32,9 +32,9 @@ SRC_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, '..')) # Go up one level to 
 TESTS_ROOT = os.path.abspath(os.path.join(SRC_ROOT, '..')) # Go up one level to Supramolecular
 PROJECT_ROOT = os.path.abspath(os.path.join(TESTS_ROOT, '../../')) # Go up two levels to Chem-Ontology-Constructor
 
-PDF_DIR = os.path.join(PROJECT_ROOT, 'tests/Supramolecular/data/IDA/pdfs')
-CHUNKS_DIR = os.path.join(PROJECT_ROOT, 'tests/Supramolecular/data/IDA/chunks')
-DOI_DIR = os.path.join(PROJECT_ROOT, 'tests/Supramolecular/data/IDA/DOI') # Directory for mapping file
+PDF_DIR = os.path.join(PROJECT_ROOT, r'tests\Supramolecular\data\interaction\pdfs')
+CHUNKS_DIR = os.path.join(PROJECT_ROOT, r'tests\Supramolecular\data\interaction\chunks')
+DOI_DIR = os.path.join(PROJECT_ROOT, r'tests\Supramolecular\data\interaction\DOI') # Directory for mapping file
 LOG_FILE = os.path.join(SCRIPT_DIR, 'processing.log') # Place log in the same dir as the script
 DOI_MISSING_PLACEHOLDER = "DOI_MISSING"
 
