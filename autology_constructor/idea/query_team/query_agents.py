@@ -11,7 +11,7 @@ from .utils import parse_json
 from config.settings import OntologySettings
 
 # Import Pydantic models
-from .schemas import NormalizedQuery, ToolCallStep, ValidationReport, DimensionReport, ToolPlan
+from .schemas import NormalizedQuery, ToolCallStep, ValidationReport, DimensionReport, ToolPlan, ExtractedProperties, NormalizedQueryBody
 
 class ToolPlannerAgent(AgentTemplate):
     """Generates a tool execution plan based on a normalized query using an LLM."""
@@ -109,88 +109,237 @@ Output the plan as a JSON list of steps matching the ToolCallStep structure."""
 
 class QueryParserAgent(AgentTemplate):
     def __init__(self, model: BaseLanguageModel):
-        system_prompt = """You are an expert ontology query parser. Your task is to convert natural language queries into a structured format.
-1. Strictly adhere to the NormalizedQuery JSON schema for the output.
-2. Refer to the provided list of available ontology classes to identify entities.
-3. Refer to the provided lists of data properties and object properties to identify property relationships.
-4. Note that there are SourcedInformation objects that provide additional metadata. When queries involve concepts like "source", "description", or "definition", consider that these information are not related to relations."""
+        system_prompt_main_body = """You are an expert ontology query parser. Your task is to convert natural language queries into a structured format representing the main body of the query (intent, entities, filters, type).
+1. Strictly adhere to the NormalizedQueryBody JSON schema for the output.
+2. Refer to the provided list of available ontology classes to identify entities for the 'relevant_entities' field. First, parse the natural language query to identify initial candidate entities.
+3. If 'HYPOTHETICAL DOCUMENT INSIGHTS' are provided, you MUST then use them to refine and expand your initial findings:
+    - Use the 'Expert Interpretation of the Query' and 'Hypothetical Answer' to better understand the user's true intent and the full scope of information needed. This can help confirm or adjust the initially identified entities and intent.
+    - Critically examine the 'Key Chemistry Concepts Identified' list. These are expert-identified chemical entities. Carefully check if `available_classes` contain terms that are identical, synonymous, or semantically very similar to these `Key Chemistry Concepts Identified`. Prioritize including such identified classes from `available_classes` in the 'relevant_entities' field, potentially adding to or replacing entities derived solely from the natural language query if these expert concepts offer a more accurate or complete representation.
+    - Your goal is to make 'relevant_entities' comprehensive and accurate by first performing a primary analysis of the user's query, and then augmenting this with the expert insights from the hypothetical document.
+4. Note that there are SourcedInformation objects that provide additional metadata. When queries involve concepts like "source", "description", or "definition", consider that these information are not related to relations.
+"""
+        system_prompt_properties = """You are an expert ontology query parser specializing in identifying relevant properties.
+Given a natural language query, the already identified main query body (intent, entities), and available property lists:
+1. Strictly adhere to the ExtractedProperties JSON schema for the output, focusing ONLY on the 'relevant_properties' field.
+2. Refer to the provided lists of data properties and object properties to identify property relationships.
+3. If 'HYPOTHETICAL DOCUMENT INSIGHTS' are provided, you MUST deeply analyze them:
+    - Use the 'Expert Interpretation of the Query' and 'Hypothetical Answer', and 'Key Chemistry Concepts Identified' in conjunction with the 'main_query_body' to infer the properties needed to satisfy the query and connect the identified entities.
+    - The goal is to identify all properties essential for answering the query comprehensively, as suggested by the expert insights and the query's intent.
+"""
+        # Store system prompts for later use in creating full ChatPromptTemplate messages
+        self.system_prompt_main_body = system_prompt_main_body
+        self.system_prompt_properties = system_prompt_properties
 
         super().__init__(
             model=model,
             name="QueryParserAgent",
-            system_prompt=system_prompt,
+            system_prompt="This main system prompt is not directly used for LLM calls in QueryParserAgent, as it's split into two parts.", # This is a placeholder.
             tools=[] # No tools needed for parsing itself
         )
         # Configure LLM for structured output immediately using helper
         try:
-            self.structured_llm = self._get_structured_llm(NormalizedQuery)
+            self.main_body_llm = self._get_structured_llm(NormalizedQueryBody)
+            self.properties_llm = self._get_structured_llm(ExtractedProperties)
         except RuntimeError as e:
-            print(f"Error initializing structured LLM for QueryParserAgent: {e}")
-            self.structured_llm = None # Ensure it's None if setup fails
+            print(f"Error initializing structured LLMs for QueryParserAgent: {e}")
+            self.main_body_llm = None
+            self.properties_llm = None
 
-    def __call__(self, state: Dict) -> Union[NormalizedQuery, Dict]:
-        if not self.structured_llm:
-             # This check is now more robust based on __init__
-             return {"error": "QueryParserAgent LLM not configured for structured output during init."}
-
-        natural_query = state.get("natural_query")
-        available_classes = state.get("available_classes", [])
-        available_data_properties = state.get("available_data_properties", [])
-        available_object_properties = state.get("available_object_properties", [])
-        enhanced_feedback = state.get("enhanced_feedback")  # 获取增强反馈
-
-        if not natural_query:
-            return {"error": "Natural query missing in input state."}
-
-        prompt_messages = self._create_prompt_messages(
-            natural_query, 
-            available_classes,
-            available_data_properties,
-            available_object_properties,
-            enhanced_feedback  # 传递增强反馈
-        )
-        print(prompt_messages)
-        try:
-            # Use the structured LLM instance created in __init__
-            response: NormalizedQuery = self.structured_llm.invoke(prompt_messages)
-            return response
-        except Exception as e:
-            error_msg = f"Failed to get structured output for query parsing: {str(e)}"
-            print(error_msg)
-            return {"error": error_msg}
-
-    def _create_prompt_messages(self, query: str, available_classes: List[str],
-                              available_data_properties: List[str] = None,  # Added: parameter for data properties
-                              available_object_properties: List[str] = None,  # Added: parameter for object properties
-                              enhanced_feedback: str = None  # Added: parameter for enhanced feedback
-                             ) -> List[tuple[str, str]]:
-        
-        # Default to empty lists if None
-        available_data_properties = available_data_properties or []
-        available_object_properties = available_object_properties or []
-        
+    def _create_main_query_body_prompt(self, query: str, available_classes: List[str],
+                                      enhanced_feedback: str = None,
+                                      hypothetical_document: Dict = None
+                                      ) -> List[tuple[str, str]]:
         class_list_str = ", ".join(available_classes) if available_classes else "No available class information provided."
-        data_prop_list_str = ", ".join(available_data_properties) if available_data_properties else "No available data property information provided."  # Added: format data properties
-        obj_prop_list_str = ", ".join(available_object_properties) if available_object_properties else "No available object property information provided."  # Added: format object properties
-        
-        # Updated user prompt to include all lists
-        user_content = f"""Available classes: {class_list_str}
-Available data properties: {data_prop_list_str}
-Available object properties: {obj_prop_list_str}
 
-Please analyze the following query and convert it into the NormalizedQuery JSON format:
-Query: {query}"""
+        user_content = f"Please analyze the following query and convert it into the NormalizedQueryBody JSON format:\nQuery: {query}"
 
-        # 添加增强反馈（如果有）
         if enhanced_feedback:
             user_content += f"\n\n--- VALIDATION FEEDBACK ---\n{enhanced_feedback}\n---"
 
-        user_content += "\n\nOutput *only* the JSON object conforming to the NormalizedQuery schema."
+        if hypothetical_document:
+            interpretation = hypothetical_document.get("interpretation")
+            hypo_answer = hypothetical_document.get("hypothetical_answer")
+            key_concepts_list = hypothetical_document.get("key_concepts")
+
+            hypo_content_parts = ["\n\n--- HYPOTHETICAL DOCUMENT INSIGHTS (Expert Chemist's Perspective) ---"]
+            has_hypo_info = False
+            if interpretation:
+                hypo_content_parts.append(f"\nExpert Interpretation of the Query:\n{interpretation}")
+                has_hypo_info = True
+            if hypo_answer:
+                hypo_content_parts.append(f"\nHypothetical Answer:\n{hypo_answer}")
+                has_hypo_info = True
+            if key_concepts_list and isinstance(key_concepts_list, list) and any(key_concepts_list):
+                filtered_key_concepts = [str(kc) for kc in key_concepts_list if kc and str(kc).strip()]
+                if filtered_key_concepts:
+                    key_concepts_str = "\n- ".join(filtered_key_concepts)
+                    hypo_content_parts.append(f"\nKey Chemistry Concepts Identified (use these to guide 'relevant_entities'):\n- {key_concepts_str}")
+                    has_hypo_info = True
+            
+            if has_hypo_info:
+                user_content += "".join(hypo_content_parts)
+                user_content += "\n--- END OF HYPOTHETICAL DOCUMENT INSIGHTS ---"
+
+        user_content += f"\n\nAvailable classes: {class_list_str}"
+        user_content += "\n\nOutput *only* the JSON object conforming to the NormalizedQueryBody schema."
         
         return [
-            ("system", self.system_prompt),
+            ("system", self.system_prompt_main_body),
             ("user", user_content)
         ]
+
+    def _create_extract_properties_prompt(self, query: str, main_query_body: NormalizedQueryBody,
+                                        available_data_properties: List[str] = None,
+                                        available_object_properties: List[str] = None,
+                                        enhanced_feedback: str = None,
+                                        hypothetical_document: Dict = None
+                                        ) -> List[tuple[str, str]]:
+        available_data_properties = available_data_properties or []
+        available_object_properties = available_object_properties or []
+        
+        data_prop_list_str = ", ".join(available_data_properties) if available_data_properties else "No available data property information provided."
+        obj_prop_list_str = ", ".join(available_object_properties) if available_object_properties else "No available object property information provided."
+        
+        main_body_context_str = (
+            f"Previously identified query body:\n"
+            f"Intent: {main_query_body.intent}\n"
+            f"Relevant Entities: {', '.join(main_query_body.relevant_entities) if main_query_body.relevant_entities else 'None'}\n"
+            f"Filters: {main_query_body.filters if main_query_body.filters else 'None'}\n"
+            f"Query Type Suggestion: {main_query_body.query_type_suggestion if main_query_body.query_type_suggestion else 'None'}"
+        )
+
+        user_content = (
+            f"Based on the original query, the following identified query body, and available property lists, please extract the relevant properties.\n"
+            f"Original Query: {query}\n\n"
+            f"{main_body_context_str}"
+        )
+
+        if enhanced_feedback: # This might be less relevant here but kept for consistency
+            user_content += f"\n\n--- VALIDATION FEEDBACK (primarily for overall query, consider if it implies property needs) ---\n{enhanced_feedback}\n---"
+
+        if hypothetical_document:
+            interpretation = hypothetical_document.get("interpretation")
+            hypo_answer = hypothetical_document.get("hypothetical_answer")
+            key_concepts_list = hypothetical_document.get("key_concepts")
+
+            hypo_content_parts = ["\n\n--- HYPOTHETICAL DOCUMENT INSIGHTS (Expert Chemist's Perspective) ---"]
+            has_hypo_info = False
+            if interpretation:
+                hypo_content_parts.append(f"\nExpert Interpretation of the Query:\n{interpretation}")
+                has_hypo_info = True
+            if hypo_answer:
+                hypo_content_parts.append(f"\nHypothetical Answer (consider what properties are needed to construct this answer):\n{hypo_answer}")
+                has_hypo_info = True
+            if key_concepts_list and isinstance(key_concepts_list, list) and any(key_concepts_list):
+                filtered_key_concepts = [str(kc) for kc in key_concepts_list if kc and str(kc).strip()]
+                if filtered_key_concepts:
+                    key_concepts_str = "\n- ".join(filtered_key_concepts)
+                    hypo_content_parts.append(f"\nKey Chemistry Concepts Identified (these entities might be linked by properties you need to find):\n- {key_concepts_str}")
+                    has_hypo_info = True
+            
+            if has_hypo_info:
+                user_content += "".join(hypo_content_parts)
+                user_content += "\n--- END OF HYPOTHETICAL DOCUMENT INSIGHTS ---"
+        
+        user_content += f"\n\nAvailable data properties: {data_prop_list_str}"
+        user_content += f"\nAvailable object properties: {obj_prop_list_str}"
+        user_content += "\n\nOutput *only* the JSON object conforming to the ExtractedProperties schema (i.e., a JSON with a single key 'relevant_properties' which is a list of strings)."
+        
+        return [
+            ("system", self.system_prompt_properties),
+            ("user", user_content)
+        ]
+
+    def _generate_main_query_body(self, state: Dict) -> Union[NormalizedQueryBody, Dict]:
+        if not self.main_body_llm:
+            return {"error": "QueryParserAgent Main Body LLM not configured."}
+
+        natural_query = state.get("natural_query")
+        available_classes = state.get("available_classes", [])
+        enhanced_feedback = state.get("enhanced_feedback")
+        hypothetical_document = state.get("hypothetical_document")
+
+        if not natural_query:
+            return {"error": "Natural query missing for main body generation."}
+
+        prompt_messages = self._create_main_query_body_prompt(
+            natural_query, 
+            available_classes,
+            enhanced_feedback,
+            hypothetical_document
+        )
+        
+        try:
+            response: NormalizedQueryBody = self.main_body_llm.invoke(prompt_messages)
+            return response
+        except Exception as e:
+            error_msg = f"Failed to get structured output for query body: {str(e)}"
+            print(error_msg)
+            return {"error": error_msg}
+
+    def _extract_relevant_properties(self, state: Dict, main_query_body: NormalizedQueryBody) -> Union[ExtractedProperties, Dict]:
+        if not self.properties_llm:
+            return {"error": "QueryParserAgent Properties LLM not configured."}
+
+        natural_query = state.get("natural_query")
+        available_data_properties = state.get("available_data_properties", [])
+        available_object_properties = state.get("available_object_properties", [])
+        enhanced_feedback = state.get("enhanced_feedback") # May be less relevant here
+        hypothetical_document = state.get("hypothetical_document")
+
+        if not natural_query: # Should be caught earlier, but good practice
+            return {"error": "Natural query missing for properties extraction."}
+
+        prompt_messages = self._create_extract_properties_prompt(
+            natural_query,
+            main_query_body,
+            available_data_properties,
+            available_object_properties,
+            enhanced_feedback,
+            hypothetical_document
+        )
+        
+        try:
+            response: ExtractedProperties = self.properties_llm.invoke(prompt_messages)
+            return response
+        except Exception as e:
+            error_msg = f"Failed to get structured output for relevant properties: {str(e)}"
+            print(error_msg)
+            return {"error": error_msg}
+
+    def __call__(self, state: Dict) -> Union[NormalizedQuery, Dict]:
+        if not self.main_body_llm or not self.properties_llm:
+             return {"error": "QueryParserAgent LLMs not properly configured during init."}
+
+        # Step 1: Generate the main query body
+        main_body_result = self._generate_main_query_body(state)
+        if isinstance(main_body_result, dict) and main_body_result.get("error"):
+            return {"error": f"Failed during main query body generation: {main_body_result.get('error')}"}
+        if not isinstance(main_body_result, NormalizedQueryBody): # Should be caught by _generate_main_query_body
+            return {"error": "Main query body generation returned unexpected type."}
+
+        # Step 2: Extract relevant properties (Temporarily disabled)
+        # properties_result = self._extract_relevant_properties(state, main_body_result)
+        # if isinstance(properties_result, dict) and properties_result.get("error"):
+        #     return {"error": f"Failed during relevant properties extraction: {properties_result.get('error')}"}
+        # if not isinstance(properties_result, ExtractedProperties): # Should be caught by _extract_relevant_properties
+        #     return {"error": "Relevant properties extraction returned unexpected type."}
+            
+        # Step 3: Combine results into a NormalizedQuery object
+        try:
+            final_normalized_query = NormalizedQuery(
+                intent=main_body_result.intent,
+                relevant_entities=main_body_result.relevant_entities,
+                filters=main_body_result.filters,
+                query_type_suggestion=main_body_result.query_type_suggestion,
+                relevant_properties=[] # Temporarily set to empty list
+                # relevant_properties=properties_result.relevant_properties # Original line
+            )
+            return final_normalized_query
+        except Exception as e: # Catch potential Pydantic validation errors if fields are missing/wrong type after all
+            error_msg = f"Failed to combine query body and properties into NormalizedQuery: {str(e)}"
+            print(error_msg)
+            return {"error": error_msg}
 
 class StrategyPlannerAgent(AgentTemplate):
     """Select the optimal execution strategy (tool_sequence/SPARQL) based on the query characteristics."""

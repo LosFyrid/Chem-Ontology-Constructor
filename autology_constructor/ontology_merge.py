@@ -11,7 +11,8 @@ def merge_ontology(
     ontology_data_properties: base_data_structures.OntologyDataProperties,
     ontology_object_properties: base_data_structures.OntologyObjectProperties,
     source: str,
-    file_path: str
+    file_path: str,
+    save_after_merge: bool = True
 ):
     """
     将本体数据合并到已有本体中
@@ -20,7 +21,9 @@ def merge_ontology(
         ontology_elements: 要合并的本体元素数据
         ontology_data_properties: 要合并的本体数据属性
         ontology_object_properties: 要合并的本体对象属性
-        source: 数据来源
+        source: 数据来源（元数据）
+        file_path: 文件路径（元数据）
+        save_after_merge: 是否在合并后保存本体，默认为True，将在函数内部执行一次将本体保存到文件的操作。若处理频率高，遇到I/O瓶颈，可以设置为False，在函数外部手动执行保存操作。
     """
     try:
         onto = ONTOLOGY_SETTINGS.ontology
@@ -28,22 +31,20 @@ def merge_ontology(
         # 写入实体(类)
         if ontology_entities and ontology_entities.entities:
             _merge_entities(ontology_entities.entities, source, file_path)
-            onto.save()
         # 写入层级关系
         if ontology_elements and ontology_elements.hierarchy:
             _merge_hierarchy(ontology_elements.hierarchy, source, file_path )
-            onto.save()
         # 写入不相交关系
         if ontology_elements and ontology_elements.disjointness:
             _merge_disjointness(ontology_elements.disjointness)
-            onto.save()
         # 写入数据属性
         if ontology_data_properties and ontology_data_properties.data_properties:
             _merge_data_properties(ontology_data_properties.data_properties, source, file_path)
-            onto.save() 
         # 写入对象属性
         if ontology_object_properties and ontology_object_properties.object_properties:
             _merge_object_properties(ontology_object_properties.object_properties, source, file_path)
+        
+        if save_after_merge:
             onto.save()
             
     except Exception as e:

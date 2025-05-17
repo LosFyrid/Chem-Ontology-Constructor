@@ -260,8 +260,12 @@ def main(args):
     # tasks = [(idx, chunk, args.components, args.extractor_type) for idx, chunk in enumerate(all_chunks_data)] # Old tasks with components
     tasks = [(idx, chunk, all_components, args.extractor_type) for idx, chunk in enumerate(all_chunks_data)] # Pass all_components for reference if needed by worker, or an empty list if not
 
-    results_list = []
-    start_processing_time = time.time()
+    # results_list = [] # This list will not be used for merging anymore if we merge on the fly
+    overall_processing_start_time = time.time() # Renamed from start_processing_time
+    merge_success_count = 0
+    merge_fail_count = 0
+    chunks_processed_since_last_save = 0
+    save_batch_size = 100 # Configurable batch size for saving
 
     # --- Execution (Parallel or Sequential) ---
     if args.parallel:
@@ -273,68 +277,146 @@ def main(args):
                 num_processes = max(1, math.floor(cpu_count() * fraction))
                 logger.info(f"Starting parallel processing with {num_processes} worker(s)...")
 
-                # Use Pool for parallel execution
                 with Pool(processes=num_processes) as pool:
-                     # Using map to maintain order easily
-                     results_list = pool.map(process_chunk_worker, tasks)
-                logger.info("Parallel processing finished.")
+                    # Using imap_unordered to get results as they complete
+                    for result_dict in pool.imap_unordered(process_chunk_worker, tasks):
+                        idx = result_dict.get('index', -1)
+                        if 'error' in result_dict:
+                            logger.error(f"Skipping merge for chunk {idx} due to processing error: {result_dict['error']}")
+                            merge_fail_count += 1
+                            continue
+                        
+                        # logger.info(f"Attempting to merge results for chunk {idx}...") # Log level might be too verbose here now
+                        try:
+                            prediction = result_dict.get('ontology_prediction')
+                            source_info = result_dict.get('source', f"Source_Chunk_{idx}")
+
+                            if not prediction:
+                                logger.error(f"No ontology prediction found for chunk {idx}. Skipping merge.")
+                                merge_fail_count += 1
+                                continue
+                            
+                            merge_ontology(
+                                prediction.ontology_entities,
+                                prediction.ontology_elements,
+                                prediction.ontology_data_properties,
+                                prediction.ontology_object_properties,
+                                source_info,
+                                "", # Placeholder for file_path, ensure merge_ontology handles this or update if needed
+                                save_after_merge=False # Explicitly set to False
+                            )
+                            # logger.info(f"Successfully merged chunk {idx} into memory.") # Log level might be too verbose
+                            merge_success_count += 1
+                            chunks_processed_since_last_save += 1
+
+                            if chunks_processed_since_last_save >= save_batch_size:
+                                settings.ONTOLOGY_SETTINGS.ontology.save()
+                                logger.info(f"批处理保存本体... ({chunks_processed_since_last_save} chunks merged since last save)")
+                                time.sleep(1)
+                                chunks_processed_since_last_save = 0
+                        except Exception as e:
+                            logger.exception(f"Error merging results for chunk {idx} during parallel processing.")
+                            merge_fail_count += 1
+                logger.info("Parallel processing and merging finished.")
             except Exception as e:
-                 logger.exception("Error during parallel processing.")
+                 logger.exception("Error during parallel processing setup or execution.")
                  # Potentially handle partial results or exit
                  return
     else:
-        logger.info("Starting sequential processing...")
-        # Simple loop for sequential execution
+        logger.info("Starting sequential processing and merging...")
         for i, task in enumerate(tasks):
             logger.info(f"Processing task {i+1}/{len(tasks)} sequentially...")
-            result = process_chunk_worker(task)
-            results_list.append(result)
-        logger.info("Sequential processing finished.")
+            result_dict = process_chunk_worker(task)
+            
+            idx = result_dict.get('index', -1)
+            if 'error' in result_dict:
+                logger.error(f"Skipping merge for chunk {idx} due to processing error: {result_dict['error']}")
+                merge_fail_count += 1
+                continue
 
-    end_processing_time = time.time()
-    logger.info(f"Chunk processing phase took {end_processing_time - start_processing_time:.2f} seconds.")
+            # logger.info(f"Attempting to merge results for chunk {idx}...") # Log level might be too verbose
+            try:
+                prediction = result_dict.get('ontology_prediction')
+                source_info = result_dict.get('source', f"Source_Chunk_{idx}")
+
+                if not prediction:
+                    logger.error(f"No ontology prediction found for chunk {idx}. Skipping merge.")
+                    merge_fail_count += 1
+                    continue
+
+                merge_ontology(
+                    prediction.ontology_entities,
+                    prediction.ontology_elements,
+                    prediction.ontology_data_properties,
+                    prediction.ontology_object_properties,
+                    source_info,
+                    "", # Placeholder for file_path
+                    save_after_merge=False # Explicitly set to False
+                )
+                # logger.info(f"Successfully merged chunk {idx} into memory.") # Log level might be too verbose
+                merge_success_count += 1
+                chunks_processed_since_last_save += 1
+
+                if chunks_processed_since_last_save >= save_batch_size:
+                    settings.ONTOLOGY_SETTINGS.ontology.save()
+                    logger.info(f"批处理保存本体... ({chunks_processed_since_last_save} chunks merged since last save)")
+                    time.sleep(1)
+                    chunks_processed_since_last_save = 0
+            except Exception as e:
+                logger.exception(f"Error merging results for chunk {idx} during sequential processing.")
+                merge_fail_count += 1
+        logger.info("Sequential processing and merging finished.")
+
+    # Final save for any remaining chunks
+    if chunks_processed_since_last_save > 0:
+        settings.ONTOLOGY_SETTINGS.ontology.save()
+        logger.info(f"最终保存剩余的本体更改... ({chunks_processed_since_last_save} chunks)")
+        chunks_processed_since_last_save = 0 # Reset just in case
+
+    overall_processing_end_time = time.time()
+    # logger.info(f"Chunk processing phase took {end_processing_time - start_processing_time:.2f} seconds.") # Removed
 
     # --- Merge Results ---
-    logger.info("Merging results into the main ontology...")
-    merge_success_count = 0
-    merge_fail_count = 0
-    merge_start_time = time.time()
+    # logger.info("Merging results into the main ontology...") # Removed, merging is done above
+    # merge_success_count = 0 # Moved up
+    # merge_fail_count = 0 # Moved up
+    # merge_start_time = time.time() # Removed
 
-    # Results list should be ordered correctly from map or sequential loop
-    for result_dict in results_list:
-        idx = result_dict.get('index', -1)
-        if 'error' in result_dict:
-            logger.error(f"Skipping merge for chunk {idx} due to processing error: {result_dict['error']}")
-            merge_fail_count += 1
-            continue
+    # Results list should be ordered correctly from map or sequential loop # Comment no longer fully applies
+    # for result_dict in results_list: # This loop is removed
+    #     idx = result_dict.get('index', -1)
+    #     if 'error' in result_dict:
+    #         logger.error(f"Skipping merge for chunk {idx} due to processing error: {result_dict['error']}")
+    #         merge_fail_count += 1
+    #         continue
+    #
+    #     logger.debug(f"Merging results for chunk {idx}...")
+    #     try:
+    #         # Extract results safely
+    #         prediction = result_dict.get('ontology_prediction')
+    #         source = result_dict.get('source', f"Source_Chunk_{idx}")
+    #
+    #         # Call merge_ontology - assuming it modifies main_ontology in place
+    #         # and handles saving/output internally based on its logic.
+    #         merge_ontology(
+    #             prediction.ontology_entities,
+    #             prediction.ontology_elements,
+    #             prediction.ontology_data_properties,
+    #             prediction.ontology_object_properties,
+    #             source,
+    #             "" # Placeholder for potential future argument?
+    #         )
+    #         logger.debug(f"Successfully merged chunk {idx}.")
+    #         merge_success_count += 1
+    #     except Exception as e:
+    #         logger.exception(f"Error merging results for chunk {idx}.")
+    #         merge_fail_count += 1
 
-        logger.debug(f"Merging results for chunk {idx}...")
-        try:
-            # Extract results safely
-            prediction = result_dict.get('ontology_prediction')
-            source = result_dict.get('source', f"Source_Chunk_{idx}")
-
-            # Call merge_ontology - assuming it modifies main_ontology in place
-            # and handles saving/output internally based on its logic.
-            merge_ontology(
-                prediction.ontology_entities,
-                prediction.ontology_elements,
-                prediction.ontology_data_properties,
-                prediction.ontology_object_properties,
-                source,
-                "" # Placeholder for potential future argument?
-            )
-            logger.debug(f"Successfully merged chunk {idx}.")
-            merge_success_count += 1
-        except Exception as e:
-            logger.exception(f"Error merging results for chunk {idx}.")
-            merge_fail_count += 1
-
-    merge_end_time = time.time()
-    logger.info(f"Merging phase took {merge_end_time - merge_start_time:.2f} seconds.")
+    # merge_end_time = time.time() # Removed
+    # logger.info(f"Merging phase took {merge_end_time - merge_start_time:.2f} seconds.") # Removed
     logger.info(f"Merge summary: {merge_success_count} succeeded, {merge_fail_count} failed.")
     logger.info("Ontology building process finished.")
-    total_time = time.time() - start_processing_time
+    total_time = overall_processing_end_time - overall_processing_start_time # Adjusted
     logger.info(f"Total execution time: {total_time:.2f} seconds.")
 
 # --- Main Program Entry Point ---

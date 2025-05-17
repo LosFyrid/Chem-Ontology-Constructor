@@ -73,6 +73,7 @@ def create_query_graph() -> Graph:
     # 节点实现
     def normalize_query(state: QueryState) -> Dict:
         """解析并标准化查询，使用缓存的类名"""
+        retry_count = state.get("retry_count",0)
         try:
             query = state["query"]
             available_classes = state["available_classes"]
@@ -83,7 +84,9 @@ def create_query_graph() -> Graph:
                 "natural_query": query,
                 "available_classes": available_classes,
                 "available_data_properties": available_data_properties,
-                "available_object_properties": available_object_properties
+                "available_object_properties": available_object_properties,
+                "enhanced_feedback": state.get("enhanced_feedback"),
+                "hypothetical_document": state.get("hypothetical_document")
             }
             # Use parser agent
             normalized_result = parser_agent(parser_state)
@@ -98,7 +101,8 @@ def create_query_graph() -> Graph:
                 "status": "parsing_complete",
                 "stage": "normalized",
                 "previous_stage": state.get("stage"),
-                "messages": [SystemMessage(content=f"Query normalized: {query}")]
+                "messages": [SystemMessage(content=f"Query normalized: {query}")],
+                "retry_count": retry_count + 1
             }
         except Exception as e:
             error_message = f"Query normalization failed: {str(e)}"
@@ -385,10 +389,12 @@ def create_query_graph() -> Graph:
 
         # 获取当前阶段和重试计数
         current_stage = state.get("stage")
+        current_state = state.get("status")
         retry_count = state.get("retry_count", 0)
-
+        print(f"Retry count: {retry_count}")
         # 对于验证反馈阶段，实现重试逻辑
-        if current_stage == "validation_feedback":
+        if current_stage == "validated" and current_state == "warning":
+            print(f"In retry logic, Retry count: {retry_count}")
             if retry_count <= 2:
                 # 前两次重试，回到标准化阶段
                 return "normalize"
@@ -398,7 +404,7 @@ def create_query_graph() -> Graph:
             else:
                 # 超出重试次数，终止工作流
                 print(f"Exceeded maximum retry attempts ({retry_count})")
-                return END
+                return "format_results"
 
         # 标准流程节点决策
         if current_stage == "normalized":

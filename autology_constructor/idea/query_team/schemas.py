@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 from typing import List, Optional, Dict, Any, Union
 from enum import Enum
 import uuid
@@ -8,9 +8,30 @@ class NormalizedQuery(BaseModel):
     """Represents the structured understanding of a natural language query."""
     intent: str = Field(description="The main goal or action of the query, e.g., 'find information', 'compare entities', 'get property'.")
     relevant_entities: List[str] = Field(default_factory=list, description="The primary entities or concepts the query is about. The names in the list must be present in the available classes.")
-    relevant_properties: List[str] = Field(default_factory=list, description="Specific property names mentioned or relevant to the query.")
+    relevant_properties: List[str] = Field(default_factory=list, description="List of specific property names mentioned or relevant to the query.")
     filters: Optional[Dict[str, Any]] = Field(default=None, description="Filtering conditions to apply, where keys are property names and values are the filter criteria.")
     query_type_suggestion: Optional[str] = Field(default=None, description="A suggested type for the query based on the parsing, e.g., 'fact-finding', 'comparison', 'definition'.")
+
+    @field_validator('relevant_properties', 'relevant_entities', mode='before')
+    @classmethod
+    def convert_none_to_empty_list(cls, value):
+        if value is None:
+            return []
+        return value
+
+class NormalizedQueryBody(BaseModel):
+    """Represents the main body of a structured query, excluding properties."""
+    intent: str = Field(description="The main goal or action of the query, e.g., 'find information', 'compare entities', 'get property'.")
+    relevant_entities: List[str] = Field(default_factory=list, description="The primary entities or concepts the query is about. The names in the list must be present in the available classes.")
+    filters: Optional[Dict[str, Any]] = Field(default=None, description="Filtering conditions to apply, where keys are property names and values are the filter criteria.")
+    query_type_suggestion: Optional[str] = Field(default=None, description="A suggested type for the query based on the parsing, e.g., 'fact-finding', 'comparison', 'definition'.")
+
+    @field_validator('relevant_entities', mode='before')
+    @classmethod
+    def convert_none_to_empty_list(cls, value):
+        if value is None:
+            return []
+        return value
 
 class ToolCallStep(BaseModel):
     """Represents a single step in a tool execution plan."""
@@ -61,4 +82,15 @@ class Query(BaseModel):
     created_at: datetime = Field(default_factory=datetime.now)
     status: QueryStatus = QueryStatus.PENDING
     result: Optional[Dict] = None
-    error: Optional[str] = None 
+    error: Optional[str] = None
+
+class ExtractedProperties(BaseModel):
+    """Represents a list of relevant properties extracted from a query."""
+    relevant_properties: List[str] = Field(default_factory=list, description="List of specific property names identified from the query and available property lists.")
+
+    @field_validator('relevant_properties', mode='before')
+    @classmethod
+    def convert_none_to_empty_list(cls, value):
+        if value is None:
+            return []
+        return value 
