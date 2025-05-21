@@ -425,7 +425,7 @@ def create_query_graph() -> Graph:
         return END
     
     # Add edges using the conditional logic
-    workflow.add_edge(START, "normalize")
+    workflow.add_edge(START, "generate_hypothetical_document")
     workflow.add_conditional_edges("normalize", decide_next_node)
     workflow.add_conditional_edges("strategy", decide_next_node)
     workflow.add_conditional_edges("execute", decide_next_node)

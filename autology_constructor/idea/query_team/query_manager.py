@@ -168,7 +168,7 @@ class QueryQueueManager:
 class QueryManager:
     """独立的查询管理器，负责处理和管理所有查询请求"""
     
-    def __init__(self):
+    def __init__(self, max_workers: int = 4):
         """初始化查询管理器"""
         self.query_queue_manager = QueryQueueManager()
         self._query_to_state = QueryToStateAdapter()
@@ -178,7 +178,7 @@ class QueryManager:
         self.object_property_cache: List[str] = []  # 新增: 对象属性缓存
         
         # ADDED Executor and Dispatcher related attributes
-        self.executor = ThreadPoolExecutor(max_workers=4) # Executor for query tasks
+        self.executor = ThreadPoolExecutor(max_workers=max_workers) # Executor for query tasks
         self.task_futures: Dict[str, Future] = {} # Tracks Futures returned to callers
         self._task_futures_lock = threading.Lock() # Lock for task_futures dict
         self._dispatcher_thread: Optional[threading.Thread] = None # Dispatcher thread object

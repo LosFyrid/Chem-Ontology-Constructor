@@ -737,10 +737,12 @@ ORIGINAL QUERY:
 QUERY RESULTS:
 {results_str}
 
-Please extract the most relevant information that directly addresses the query, and present it as:
+Please filter out irrelevant content and extract both highly relevant information and moderately relevant information that could be expanded into the answer. Present it as:
 1. A short summary (1-2 sentences) that directly answers the main question
 2. A set of key information points, organized logically
 3. Any important relationships or patterns found in the data
+
+When the output information in the QUERY RESULTS is associated with a DOI in the same sourcedInformation, please include the DOI reference in your output for proper citation.
 
 Format your response as a JSON object with:
 "summary": A direct answer to the query
