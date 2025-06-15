@@ -1,5 +1,6 @@
 import os
 from langchain_openai import ChatOpenAI
+from langchain_community.chat_models.tongyi import ChatTongyi
 # from langchain_anthropic import ChatAnthropic
 
 
@@ -31,11 +32,23 @@ def get_default_llm():
     else:
         raise ValueError(f"Only support OpenAI models, model name specified in LLM_CONFIG: {model_name}")
 
+def get_qwen_llm():
+    return ChatTongyi(
+            model_name="qwen2.5-14b-instruct-1m",
+            model_kwargs={
+                "temperature": 0,
+                # "enable_thinking": False,
+                "max_tokens": 8192,
+            }
+        )
 # Cached instance logic
 DEFAULT_LLM_INSTANCE = None
-def get_cached_default_llm():
+def get_cached_default_llm(qwen=False):
     """Returns a cached instance of the default LLM."""
     global DEFAULT_LLM_INSTANCE
     if DEFAULT_LLM_INSTANCE is None:
-        DEFAULT_LLM_INSTANCE = get_default_llm()
+        if qwen:
+            DEFAULT_LLM_INSTANCE = get_qwen_llm()
+        else:
+            DEFAULT_LLM_INSTANCE = get_default_llm()
     return DEFAULT_LLM_INSTANCE 
