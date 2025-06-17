@@ -80,12 +80,16 @@ def create_query_graph() -> Graph:
             available_data_properties = state["available_data_properties"]
             available_object_properties = state["available_object_properties"]
             # Prepare state for parser agent, including available classes
+            if state.get("validation_report"):
+                enhanced_feedback = getattr(state.get("validation_report"), "improvement_suggestions")
+            else:
+                enhanced_feedback = None
             parser_state = {
                 "natural_query": query,
                 "available_classes": available_classes,
                 "available_data_properties": available_data_properties,
                 "available_object_properties": available_object_properties,
-                "enhanced_feedback": state.get("enhanced_feedback"),
+                "enhanced_feedback": enhanced_feedback,
                 "hypothetical_document": state.get("hypothetical_document")
             }
             # Use parser agent
@@ -266,6 +270,7 @@ def create_query_graph() -> Graph:
             validation_result = validator_agent.validate(results_to_validate, query_context)
 
             if isinstance(validation_result, dict) and validation_result.get("error"):
+                 print(f"Validation Report: {validation_result.get('validation_report')}")
                  raise ValueError(f"Validation agent failed: {validation_result.get('error')}")
             elif not isinstance(validation_result, ValidationReport):
                  raise TypeError(f"Validation agent returned unexpected type: {type(validation_result)}")
@@ -289,7 +294,7 @@ def create_query_graph() -> Graph:
                 "stage": "error",
                 "previous_stage": state.get("stage"),
                 "error": error_message,
-                "validation_report": None, # Ensure report is None on error
+                "validation_report": None, 
                 "messages": [SystemMessage(content=error_message)]
             }
     

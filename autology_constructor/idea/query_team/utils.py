@@ -4,25 +4,70 @@ import json
 import re
 import html
 
-def parse_json(content: str) -> List[Dict]:
-    """解析JSON格式的执行计划
-    
+def parse_json(content: str) -> Optional[Union[Dict, List]]:
+    """
+    Robustly parses a JSON string from LLM output.
+
+    It attempts to handle common issues like:
+    - Content being wrapped in markdown code fences (```json ... ```).
+    - Extraneous text before or after the JSON object/array.
+    - Standard JSON decoding errors.
+
     Args:
-        content: JSON格式的字符串
-        
+        content: The string content, potentially containing a JSON object or list.
+
     Returns:
-        解析后的执行计划列表
+        The parsed Python Dict or List if successful, otherwise None.
     
     Example:
-        >>> content = '[{"operation": "get_class_info", "args": {"class_name": "calixarene"}}]'
+        >>> content = 'Here is the plan: [{"operation": "get_class_info", "args": {"class_name": "calixarene"}}]'
+        >>> result = parse_json(content)
+        >>> isinstance(result, list)
+        True
+        >>> content = '{"key": "value"}'
         >>> parse_json(content)
-        [{'operation': 'get_class_info', 'args': {'class_name': 'calixarene'}}]
+        {'key': 'value'}
+        >>> content = 'This is not json.'
+        >>> parse_json(content) is None
+        True
     """
+    if not isinstance(content, str):
+        return None
+
+    # 1. Clean the string: strip whitespace and remove markdown fences
+    processed_content = content.strip()
+    if processed_content.startswith("```json"):
+        processed_content = processed_content[7:]
+    elif processed_content.startswith("```"):
+        processed_content = processed_content[3:]
+    
+    if processed_content.endswith("```"):
+        processed_content = processed_content[:-3]
+    
+    processed_content = processed_content.strip()
+
+    # 2. First, try to parse the whole cleaned string
     try:
-        return json.loads(content)
-    except json.JSONDecodeError as e:
-        print(f"JSON解析错误: {e}")
-        return []
+        return json.loads(processed_content)
+    except json.JSONDecodeError:
+        # If it fails, proceed to find the json structure within the string
+        pass
+
+    # 3. If direct parsing fails, find the first occurrence of a JSON-like structure
+    # This helps if the LLM includes explanatory text before/after the JSON.
+    match = re.search(r'\{.*\}|\[.*\]', processed_content, re.DOTALL)
+    if match:
+        json_str = match.group(0)
+        try:
+            return json.loads(json_str)
+        except json.JSONDecodeError as e:
+            # This is the final attempt. If it fails, we log and return None.
+            print(f"JSON解析错误: Failed to parse extracted string '{json_str[:100]}...': {e}")
+            return None
+    
+    # 4. If no JSON-like structure is found at all
+    print(f"JSON解析错误: No valid JSON structure found in the content.")
+    return None
 
 def format_owlready2_value(value: Any) -> Union[str, List[str], Dict]:
     """格式化owlready2返回的值

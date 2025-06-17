@@ -47,8 +47,8 @@ class ToolPlan(BaseModel):
 class DimensionReport(BaseModel):
     """Represents the validation result for a specific dimension."""
     dimension: str = Field(description="The dimension being evaluated, e.g., 'completeness', 'consistency', 'accuracy'.")
-    score: Optional[int] = Field(default=None, description="The score for this dimension (typically 1-5).")
-    valid: bool = Field(description="Whether the result passed validation for this dimension.")
+    # score: Optional[int] = Field(default=None, description="The score for this dimension (typically 1-5).")
+    # valid: bool = Field(description="Whether the result passed validation for this dimension.")
     message: str = Field(description="Detailed assessment or reasoning for this dimension's validation outcome.")
 
 class ValidationReport(BaseModel):
@@ -57,7 +57,7 @@ class ValidationReport(BaseModel):
     details: List[DimensionReport] = Field(default_factory=list, description="A list of detailed validation results for each assessed dimension.")
     message: str = Field(description="A concluding summary message about the overall validation result.")
     improvement_suggestions: Optional[List[str]] = Field(default=None, description="Text suggestions for improving the query if validation failed.")
-    issue_aspects: Optional[List[str]] = Field(default=None, description="The aspects of the query that need improvement (e.g., 'entity_recognition', 'property_selection', 'strategy').")
+    # issue_aspects: Optional[List[str]] = Field(default=None, description="The aspects of the query that need improvement (e.g., 'entity_recognition', 'property_selection', 'strategy').")
 
 class QueryStatus(str, Enum):
     PENDING = "pending"

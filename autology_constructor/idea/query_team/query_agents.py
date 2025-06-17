@@ -109,14 +109,45 @@ Output the plan as a JSON list of steps matching the ToolCallStep structure."""
 
 class QueryParserAgent(AgentTemplate):
     def __init__(self, model: BaseLanguageModel):
+        '''
+        原始部分指令
+        1. Strictly adhere to the NormalizedQueryBody JSON schema for the output.
+2. Refer to the provided list of available ontology classes to identify 
+entities for the 'relevant_entities' field. First, parse the natural language 
+query to identify initial candidate entities.
+3. If 'HYPOTHETICAL DOCUMENT INSIGHTS' are provided, you MUST then use them to 
+refine and expand your initial findings:
+    - Use the 'Expert Interpretation of the Query' and 'Hypothetical Answer' to 
+    better understand the user's true intent and the full scope of information 
+    needed. This can help confirm or adjust the initially identified entities 
+    and intent.
+    - Critically examine the 'Key Chemistry Concepts Identified' list. These 
+    are expert-identified chemical entities. Carefully check if 
+    `available_classes` contain terms that are identical, synonymous, or 
+    semantically very similar to these `Key Chemistry Concepts Identified`. 
+    Prioritize including such identified classes from `available_classes` in 
+    the 'relevant_entities' field, potentially adding to or replacing entities 
+    derived solely from the natural language query if these expert concepts 
+    offer a more accurate or complete representation.
+    - Your goal is to make 'relevant_entities' comprehensive and accurate by 
+    first performing a primary analysis of the user's query, and then 
+    augmenting this with the expert insights from the hypothetical document.
+4. Note that there are SourcedInformation objects that provide additional 
+metadata. When queries involve concepts like "source", "description", or 
+"definition", consider that these information are not related to relations.
+        '''
         system_prompt_main_body = """You are an expert ontology query parser. Your task is to convert natural language queries into a structured format representing the main body of the query (intent, entities, filters, type).
-1. Strictly adhere to the NormalizedQueryBody JSON schema for the output.
-2. Refer to the provided list of available ontology classes to identify entities for the 'relevant_entities' field. First, parse the natural language query to identify initial candidate entities.
-3. If 'HYPOTHETICAL DOCUMENT INSIGHTS' are provided, you MUST then use them to refine and expand your initial findings:
-    - Use the 'Expert Interpretation of the Query' and 'Hypothetical Answer' to better understand the user's true intent and the full scope of information needed. This can help confirm or adjust the initially identified entities and intent.
-    - Critically examine the 'Key Chemistry Concepts Identified' list. These are expert-identified chemical entities. Carefully check if `available_classes` contain terms that are identical, synonymous, or semantically very similar to these `Key Chemistry Concepts Identified`. Prioritize including such identified classes from `available_classes` in the 'relevant_entities' field, potentially adding to or replacing entities derived solely from the natural language query if these expert concepts offer a more accurate or complete representation.
-    - Your goal is to make 'relevant_entities' comprehensive and accurate by first performing a primary analysis of the user's query, and then augmenting this with the expert insights from the hypothetical document.
-4. Note that there are SourcedInformation objects that provide additional metadata. When queries involve concepts like "source", "description", or "definition", consider that these information are not related to relations.
+
+**Instructions for Identifying `relevant_entities`:**
+1.  **Be Comprehensive**: Your primary goal is to be comprehensive. It is better to include moderately related entities than to miss important ones.
+2.  **Strictly Match Names**: Every entry in the `relevant_entities` field MUST EXACTLY match a name from the provided `available_classes` list. Do not alter names or add entries not present in the list.
+3.  **Find All Variants**: The `available_classes` list may contain similar or related terms (e.g., abbreviations and full names, or just case variations). Make sure to identify all relevant classes that correspond to the concepts in the query.
+
+**General Workflow:**
+1.  Strictly adhere to the NormalizedQueryBody JSON schema for the output.
+2.  Refer to the provided list of `available_classes` to identify entities for the `relevant_entities` field.
+3.  If 'HYPOTHETICAL DOCUMENT INSIGHTS' are provided, you MUST use them to refine and expand your initial findings to better understand the user's true intent and the full scope of information needed.
+4.  Note that concepts like "source", "description", or "definition" in a query often refer to `SourcedInformation` metadata, not relationships between chemical entities.
 """
         system_prompt_properties = """You are an expert ontology query parser specializing in identifying relevant properties.
 Given a natural language query, the already identified main query body (intent, entities), and available property lists:
@@ -154,6 +185,7 @@ Given a natural language query, the already identified main query body (intent, 
         user_content = f"Please analyze the following query and convert it into the NormalizedQueryBody JSON format:\nQuery: {query}"
 
         if enhanced_feedback:
+            print(f"Enhanced Feedback Got ")
             user_content += f"\n\n--- VALIDATION FEEDBACK ---\n{enhanced_feedback}\n---"
 
         if hypothetical_document:
@@ -576,7 +608,7 @@ Your response must be a ValidationReport object with these fields if validation 
             error_msg = f"Failed to get or parse structured validation report: {str(e)}"
             print(error_msg)
             # Consider logging raw response if available
-            return {"error": error_msg}
+            return {"error": error_msg, "validation_report": validation_report}
 
 class HypotheticalDocumentAgent(AgentTemplate):
     """从专业化学家角度生成假设性答案，帮助查询标准化"""
