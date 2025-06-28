@@ -7,7 +7,7 @@ ontology:
 
 
 LLM:
-  model: "gpt-4.1-nano"
+  model: "gpt-4.1"
   # model: "o1-preview"
   # model: "o1-mini"
   streaming: false
