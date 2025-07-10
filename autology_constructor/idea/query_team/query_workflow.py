@@ -1,5 +1,6 @@
 from typing import Dict, List, Literal, Optional, Any, Union
 from typing_extensions import Annotated, TypedDict
+from datetime import datetime
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.messages import SystemMessage
@@ -43,6 +44,7 @@ class QueryState(TypedDict):
     hypothetical_document: Optional[Dict]  # 假设性文档（由化学专家生成）
     validation_history: Optional[List]  # 验证报告历史
     formatted_results: Optional[Dict]  # 格式化后的结果
+    iteration_history: Optional[List[Dict]] # ADD: To store history of each iteration
     
     # System
     messages: Annotated[list[AnyMessage], add_messages]
@@ -233,35 +235,38 @@ def create_query_graph() -> Graph:
             }
     
     def validate_results(state: QueryState) -> Dict:
-        """验证查询结果"""
+        """验证查询结果并记录迭代历史"""
         try:
             results_to_validate = state.get("query_results")
             normalized_query_obj = state.get("normalized_query")
 
+            # Initialize or retrieve history
+            iteration_history = state.get("iteration_history", [])
+
             if not results_to_validate or not isinstance(results_to_validate, dict):
-                 print("Warning: Skipping validation due to missing or malformed results.")
-                 return {"status": state.get("status", "executed"), "stage": "validated", "validation_report": None}
+                print("Warning: Skipping validation due to missing or malformed results.")
+                return {"status": state.get("status", "executed"), "stage": "validated", "validation_report": None, "iteration_history": iteration_history}
 
             if results_to_validate.get("error"):
-                 print(f"Skipping validation because previous step failed: {results_to_validate.get('error')}")
-                 # Propagate error status if validation is reached after an error
-                 return { 
-                    "status": "error", 
+                print(f"Skipping validation because previous step failed: {results_to_validate.get('error')}")
+                return {
+                    "status": "error",
                     "stage": "validation_skipped_due_to_error",
                     "error": results_to_validate.get("error"),
-                    "validation_report": None, # Set report to None on error skip
+                    "validation_report": None,
                     "previous_stage": state.get("stage"),
-                    "messages": [SystemMessage(content="Validation skipped due to prior error.")]
-                 }
+                    "messages": [SystemMessage(content="Validation skipped due to prior error.")],
+                    "iteration_history": iteration_history
+                }
 
             # Prepare query context for validation agent
             query_context = {}
             if isinstance(normalized_query_obj, NormalizedQuery):
-                 query_context = {
-                     "intent": normalized_query_obj.intent,
-                     "relevant_entities": ", ".join(normalized_query_obj.relevant_entities),
-                     "relevant_properties": ", ".join(normalized_query_obj.relevant_properties),
-                 }
+                query_context = {
+                    "intent": normalized_query_obj.intent,
+                    "relevant_entities": ", ".join(normalized_query_obj.relevant_entities),
+                    "relevant_properties": ", ".join(normalized_query_obj.relevant_properties),
+                }
             query_context["query"] = state.get("query")
             query_context["type"] = state.get("query_type", "unknown")
             query_context["strategy"] = state.get("query_strategy")
@@ -270,10 +275,23 @@ def create_query_graph() -> Graph:
             validation_result = validator_agent.validate(results_to_validate, query_context)
 
             if isinstance(validation_result, dict) and validation_result.get("error"):
-                 print(f"Validation Report: {validation_result.get('validation_report')}")
-                 raise ValueError(f"Validation agent failed: {validation_result.get('error')}")
+                print(f"Validation Report: {validation_result.get('validation_report')}")
+                raise ValueError(f"Validation agent failed: {validation_result.get('error')}")
             elif not isinstance(validation_result, ValidationReport):
-                 raise TypeError(f"Validation agent returned unexpected type: {type(validation_result)}")
+                raise TypeError(f"Validation agent returned unexpected type: {type(validation_result)}")
+
+            # Create a snapshot of the current iteration
+            current_iteration_snapshot = {
+                "retry_count": state.get("retry_count", 0),
+                "normalized_query": state.get("normalized_query"),
+                "query_strategy": state.get("query_strategy"),
+                "execution_plan": state.get("execution_plan"),
+                "sparql_query": state.get("sparql_query"),
+                "query_results": state.get("query_results"),
+                "validation_report": validation_result,
+                "timestamp": datetime.now().isoformat()
+            }
+            iteration_history.append(current_iteration_snapshot)
 
             # Determine final status based on validation
             final_status = "success" if validation_result.valid else "warning"
@@ -284,18 +302,27 @@ def create_query_graph() -> Graph:
                 "status": final_status,
                 "stage": "validated",
                 "previous_stage": state.get("stage"),
-                "messages": [SystemMessage(content=f"Results validation {final_status}: {validation_message}")]
+                "messages": [SystemMessage(content=f"Results validation {final_status}: {validation_message}")],
+                "iteration_history": iteration_history  # Pass the updated history
             }
         except Exception as e:
             error_message = f"Results validation failed: {str(e)}"
             print(error_message)
+            # Also update history on error if possible
+            iteration_history = state.get("iteration_history", [])
+            iteration_history.append({
+                "error": error_message,
+                "stage": "validate_results",
+                "timestamp": datetime.now().isoformat()
+            })
             return {
                 "status": "error",
                 "stage": "error",
                 "previous_stage": state.get("stage"),
                 "error": error_message,
-                "validation_report": None, 
-                "messages": [SystemMessage(content=error_message)]
+                "validation_report": None,
+                "messages": [SystemMessage(content=error_message)],
+                "iteration_history": iteration_history
             }
     
     def generate_hypothetical_document(state: QueryState) -> Dict:
