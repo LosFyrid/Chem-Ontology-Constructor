@@ -283,13 +283,15 @@ def create_query_graph() -> Graph:
             # Create a snapshot of the current iteration
             current_iteration_snapshot = {
                 "retry_count": state.get("retry_count", 0),
+                "hypothetical_document": state.get("hypothetical_document"),
                 "normalized_query": state.get("normalized_query"),
                 "query_strategy": state.get("query_strategy"),
                 "execution_plan": state.get("execution_plan"),
                 "sparql_query": state.get("sparql_query"),
                 "query_results": state.get("query_results"),
                 "validation_report": validation_result,
-                "timestamp": datetime.now().isoformat()
+                "timestamp": datetime.now().isoformat(),
+                "messages": state.get("messages")
             }
             iteration_history.append(current_iteration_snapshot)
 
