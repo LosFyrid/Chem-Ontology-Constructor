@@ -161,3 +161,7 @@ cython_debug/
 
 tests/Carbon/pdfs/*
 .VSCodeCounter/*
+
+
+tests\unit_test\query\test\lightrag\temp_rag_storage
+tests\unit_test\query\test\lightrag\storage_backup
