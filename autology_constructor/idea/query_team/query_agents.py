@@ -140,7 +140,7 @@ metadata. When queries involve concepts like "source", "description", or
 
 **Instructions for Identifying `relevant_entities`:**
 1.  **Be Comprehensive**: Your primary goal is to be comprehensive. It is better to include moderately related entities than to miss important ones.
-2.  **Strictly Match Names**: Every entry in the `relevant_entities` field MUST EXACTLY match a name from the provided `available_classes` list. Do not alter names or add entries not present in the list.
+2.  **Strictly Match Names**: Every entry in the `relevant_entities` field MUST EXACTLY match a name from the provided `available_classes` list. Do not alter names or add entries not present in the list. Usually use the snake_case version of the class name.
 3.  **Find All Variants**: The `available_classes` list may contain similar or related terms (e.g., abbreviations and full names, or just case variations). Make sure to identify all relevant classes that correspond to the concepts in the query.
 
 **General Workflow:**
@@ -303,6 +303,7 @@ Given a natural language query, the already identified main query body (intent, 
         
         try:
             response: NormalizedQueryBody = self.main_body_llm.invoke(prompt_messages)
+            
             return response
         except Exception as e:
             error_msg = f"Failed to get structured output for query body: {str(e)}"
