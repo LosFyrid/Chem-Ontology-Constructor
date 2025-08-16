@@ -145,6 +145,13 @@ ONTOLOGY_SETTINGS = OntologySettings(**_ontology_settings_data)
 LLM_CONFIG = yaml_settings["LLM"]
 EXTRACTOR_EXAMPLES_CONFIG = yaml_settings["extractor_examples"]
 DATASET_CONSTRUCTION_CONFIG = yaml_settings["dataset_construction"]
+ENTITY_RETRIEVAL_CONFIG = yaml_settings.get("entity_retrieval", {
+    "top_k": 15,
+    "bm25_weight": 0.5,
+    "jaccard_weight": 0.5,
+    "trigram_size": 3,
+    "min_score_threshold": 0.1
+})
 
 _ASSESSMENT_CRITERIA_SCORE_CONFIG = {
     "entity_score": 9,

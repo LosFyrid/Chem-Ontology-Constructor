@@ -9,6 +9,7 @@ import re
 from .ontology_tools import OntologyTools   
 from .utils import parse_json
 from config.settings import OntologySettings
+from .entity_matcher import EntityMatcher
 
 # Import Pydantic models
 from .schemas import NormalizedQuery, ToolCallStep, ValidationReport, DimensionReport, ToolPlan, ExtractedProperties, NormalizedQueryBody
@@ -140,8 +141,10 @@ metadata. When queries involve concepts like "source", "description", or
 
 **Instructions for Identifying `relevant_entities`:**
 1.  **Be Comprehensive**: Your primary goal is to be comprehensive. It is better to include moderately related entities than to miss important ones.
-2.  **Strictly Match Names**: Every entry in the `relevant_entities` field MUST EXACTLY match a name from the provided `available_classes` list. Do not alter names or add entries not present in the list. Usually use the snake_case version of the class name.
-3.  **Find All Variants**: The `available_classes` list may contain similar or related terms (e.g., abbreviations and full names, or just case variations). Make sure to identify all relevant classes that correspond to the concepts in the query.
+2.  **Strictly Match Names**: Every entry in the `relevant_entities` field MUST EXACTLY match a name from the provided `available_classes` list. Do not alter names or add entries not present in the list. Prefer the full snake_case name. If an abbreviation is used, you must also specify the full name in a comment or parentheses.
+3.  **Find All Variants**: The `available_classes` list may contain similar or related terms (e.g., abbreviations and full names, or just case variations). Make sure to identify all relevant classes that correspond to the concepts in the query. 
+3.1. To be comprehensive, you MUST identify and include all relevant forms found in the list. For instance, if the query mentions a concept represented by an abbreviation, you must also include its full name if it exists in the list.
+3.2. If an abbreviation is certain but could correspond to multiple possible full names in the available_classes list, you MUST include all of those potential full names.
 
 **General Workflow:**
 1.  Strictly adhere to the NormalizedQueryBody JSON schema for the output.
@@ -340,6 +343,22 @@ Given a natural language query, the already identified main query body (intent, 
             print(error_msg)
             return {"error": error_msg}
 
+    def _needs_entity_refinement(self, normalized_query_body: NormalizedQueryBody, available_classes: List[str]) -> bool:
+        """检查是否需要进行实体refinement (用于内部检查)
+        
+        Args:
+            normalized_query_body: 标准化查询主体
+            available_classes: 可用类列表
+            
+        Returns:
+            是否需要refinement
+        """
+        if not normalized_query_body or not normalized_query_body.relevant_entities:
+            return False
+        
+        entity_matcher = EntityMatcher(available_classes)
+        return entity_matcher.needs_refinement(normalized_query_body.relevant_entities)
+
     def __call__(self, state: Dict) -> Union[NormalizedQuery, Dict]:
         if not self.main_body_llm or not self.properties_llm:
              return {"error": "QueryParserAgent LLMs not properly configured during init."}
@@ -350,6 +369,53 @@ Given a natural language query, the already identified main query body (intent, 
             return {"error": f"Failed during main query body generation: {main_body_result.get('error')}"}
         if not isinstance(main_body_result, NormalizedQueryBody): # Should be caught by _generate_main_query_body
             return {"error": "Main query body generation returned unexpected type."}
+
+        # Step 1.5: 内部实体验证和重试机制（保留为兜底机制）
+        # 仅在使用refined_classes时启动内部重试，确保workflow层面的refine_entities节点能正常工作
+        available_classes = state.get("available_classes", [])
+        original_available_classes = state.get("original_available_classes", available_classes)
+        
+        # 判断当前是否使用的是refined_classes（通过比较两个类集合是否不同）
+        using_refined_classes = (available_classes != original_available_classes and 
+                               len(available_classes) < len(original_available_classes))
+        
+        print(f"[QueryParserAgent] Using refined classes: {using_refined_classes}, "
+              f"available: {len(available_classes)}, original: {len(original_available_classes)}")
+        
+        # 内部重试触发条件：仅在使用refined_classes且实体在其中找不到时才触发
+        if (using_refined_classes and 
+            self._needs_entity_refinement(main_body_result, available_classes)):
+            
+            print("[QueryParserAgent] Internal fallback refinement triggered - entities not found in refined class set")
+            print(f"[QueryParserAgent] Using original class set for refinement: {len(original_available_classes)} classes")
+            
+            # 基于原始全量类集合生成候选集进行一次重试 - 使用新的排序检索
+            entity_matcher = EntityMatcher(original_available_classes)
+            ranked_results = entity_matcher.extract_ranked_candidate_classes(main_body_result.relevant_entities)
+            
+            # 从排序结果中提取候选类名（用于向后兼容）
+            candidate_classes = set()
+            for entity_candidates in ranked_results.values():
+                for candidate, score in entity_candidates:
+                    candidate_classes.add(candidate)
+            candidate_classes = sorted(list(candidate_classes))
+            
+            print(f"内部候选实体：{candidate_classes} (total: {len(candidate_classes)})")
+
+            if len(candidate_classes) >= 5:  # 安全检查
+                # 创建新的state with refined classes (基于原始类集合的refinement)
+                refined_state = state.copy()
+                refined_state["available_classes"] = candidate_classes
+                
+                print(f"[QueryParserAgent] Internal refinement: {len(original_available_classes)} -> {len(candidate_classes)} classes")
+                
+                # 重新生成main query body with refined classes
+                main_body_result_refined = self._generate_main_query_body(refined_state)
+                if isinstance(main_body_result_refined, NormalizedQueryBody):
+                    print("[QueryParserAgent] Internal refinement successful")
+                    main_body_result = main_body_result_refined
+            else:
+                print(f"[QueryParserAgent] Internal refinement skipped: candidate set too small ({len(candidate_classes)})")
 
         # Step 2: Extract relevant properties (Temporarily disabled)
         # properties_result = self._extract_relevant_properties(state, main_body_result)
@@ -620,7 +686,8 @@ Your task is to help clarify and interpret chemistry queries that have been diff
 When presented with an ambiguous or failed chemistry query, you should:
 1. Interpret what the query is trying to ask from a chemistry expert's perspective
 2. Generate a "hypothetical answer" - what a complete and accurate answer would look like
-3. Identify the key chemistry concepts, relationships, and properties that would be needed
+3. Identify the key chemistry concepts, relationships, and properties that would be needed. 
+4.If an abbreviation is certain but could correspond to multiple possible full names in the available_classes list, you MUST include all of those potential full names.
 
 Do NOT concern yourself with ontology structures, classes, or implementation details.
 Focus ONLY on creating a chemistry expert's interpretation of the question and ideal answer."""

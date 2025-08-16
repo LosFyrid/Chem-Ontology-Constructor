@@ -11,6 +11,7 @@ from .query_agents import QueryParserAgent, StrategyPlannerAgent, ToolPlannerAge
 from .query_manager import Query, QueryStatus
 from .utils import format_sparql_error, format_sparql_results, extract_variables_from_sparql
 from .schemas import NormalizedQuery, ToolPlan, ValidationReport
+from .entity_matcher import EntityMatcher
 from autology_constructor.idea.common.llm_provider import get_cached_default_llm
 from config.settings import OntologySettings
 
@@ -26,6 +27,7 @@ class QueryState(TypedDict):
     available_classes: List[str]  # Add available classes from cache
     available_data_properties: List[str]  
     available_object_properties: List[str]
+    refined_classes: Optional[List[str]]  # Refined candidate classes for optimization
     
     # Query Management
     query_results: Dict  # 查询结果
@@ -74,13 +76,25 @@ def create_query_graph() -> Graph:
     
     # 节点实现
     def normalize_query(state: QueryState) -> Dict:
-        """解析并标准化查询，使用缓存的类名"""
+        """解析并标准化查询，优先使用refined_classes"""
         retry_count = state.get("retry_count",0)
         try:
             query = state["query"]
             available_classes = state["available_classes"]
             available_data_properties = state["available_data_properties"]
             available_object_properties = state["available_object_properties"]
+            
+            # 优先使用refined_classes，如果存在的话
+            refined_classes = state.get("refined_classes")
+            if refined_classes:
+                effective_classes = refined_classes
+                print(f"[TOKEN OPTIMIZATION] Using refined classes: {len(effective_classes)} classes (~{len(effective_classes) * 2} tokens)")
+            else:
+                effective_classes = available_classes
+                original_classes_count = len(available_classes)
+                estimated_tokens = original_classes_count * 2  # 估算每个类名平均2个token
+                print(f"[TOKEN OPTIMIZATION] Using original classes: {original_classes_count} classes (~{estimated_tokens} tokens)")
+            
             # Prepare state for parser agent, including available classes
             if state.get("validation_report"):
                 enhanced_feedback = getattr(state.get("validation_report"), "improvement_suggestions")
@@ -88,7 +102,8 @@ def create_query_graph() -> Graph:
                 enhanced_feedback = None
             parser_state = {
                 "natural_query": query,
-                "available_classes": available_classes,
+                "available_classes": effective_classes,  # 使用优化后的类集合
+                "original_available_classes": available_classes,  # 传递原始类集合给内部重试使用
                 "available_data_properties": available_data_properties,
                 "available_object_properties": available_object_properties,
                 "enhanced_feedback": enhanced_feedback,
@@ -284,6 +299,7 @@ def create_query_graph() -> Graph:
             current_iteration_snapshot = {
                 "retry_count": state.get("retry_count", 0),
                 "hypothetical_document": state.get("hypothetical_document"),
+                "refined_classes": state.get("refined_classes"),
                 "normalized_query": state.get("normalized_query"),
                 "query_strategy": state.get("query_strategy"),
                 "execution_plan": state.get("execution_plan"),
@@ -406,8 +422,89 @@ def create_query_graph() -> Graph:
                 "messages": [SystemMessage(content=error_message)]
             }
     
+    def refine_entities(state: QueryState) -> Dict:
+        """根据初步标准化结果refinement候选类集合"""
+        try:
+            # 检查是否已有normalized_query结果
+            normalized_query_obj = state.get("normalized_query")
+            if not normalized_query_obj or not isinstance(normalized_query_obj, NormalizedQuery):
+                return {
+                    "status": "error",
+                    "stage": "error", 
+                    "error": "Cannot refine entities: normalized_query missing or invalid",
+                    "messages": [SystemMessage(content="Cannot refine entities: normalized_query missing or invalid")]
+                }
+            
+            available_classes = state.get("available_classes", [])
+            if not available_classes:
+                print("Warning: No available_classes found, skipping refinement")
+                return {
+                    "status": state.get("status", "refinement_skipped"),
+                    "stage": "refinement_skipped",
+                    "previous_stage": state.get("stage"),
+                    "messages": [SystemMessage(content="Refinement skipped: no available classes")]
+                }
+            
+            # 创建EntityMatcher并检查是否需要refinement
+            entity_matcher = EntityMatcher(available_classes)
+            entities = normalized_query_obj.relevant_entities
+
+            print(f"首次查询实体: {entities}")
+            
+            if not entity_matcher.needs_refinement(entities):
+                print("Entities refinement not needed - all entities found in available classes")
+                return {
+                    "status": state.get("status", "refinement_not_needed"),
+                    "stage": "refinement_not_needed", 
+                    "previous_stage": state.get("stage"),
+                    "messages": [SystemMessage(content="Entity refinement not needed")]
+                }
+            
+            # 生成候选类集合 - 使用新的排序检索
+            ranked_results = entity_matcher.extract_ranked_candidate_classes(entities)
+            stats = entity_matcher.get_ranked_refinement_stats(entities)
+            
+            # 从排序结果中提取候选类名（用于向后兼容）
+            candidate_classes = set()
+            for entity_candidates in ranked_results.values():
+                for candidate, score in entity_candidates:
+                    candidate_classes.add(candidate)
+            candidate_classes = sorted(list(candidate_classes))
+            
+            print(f"[ENTITY REFINEMENT] {stats}")
+            
+            # 安全检查：如果候选集太小，不使用refinement
+            if len(candidate_classes) < 3:
+                print(f"Warning: Candidate set too small ({len(candidate_classes)}), skipping refinement")
+                return {
+                    "status": state.get("status", "refinement_skipped"),
+                    "stage": "refinement_skipped",
+                    "previous_stage": state.get("stage"),
+                    "messages": [SystemMessage(content=f"Refinement skipped: candidate set too small ({len(candidate_classes)})")]
+                }
+            
+            return {
+                "refined_classes": candidate_classes,
+                "status": "entities_refined",
+                "stage": "entities_refined",
+                "previous_stage": state.get("stage"),
+                "messages": [SystemMessage(content=f"Entities refined: {len(candidate_classes)} candidate classes generated (reduction: {stats['reduction_ratio']:.2%})")]
+            }
+            
+        except Exception as e:
+            error_message = f"Entity refinement failed: {str(e)}"
+            print(error_message)
+            return {
+                "status": "error",
+                "stage": "error",
+                "previous_stage": state.get("stage"),
+                "error": error_message,
+                "messages": [SystemMessage(content=error_message)]
+            }
+    
     # Add nodes
     workflow.add_node("normalize", normalize_query)
+    workflow.add_node("refine_entities", refine_entities)  # 新增refinement节点
     workflow.add_node("strategy", determine_strategy)
     workflow.add_node("execute", execute_query)
     workflow.add_node("validate", validate_results)
@@ -442,7 +539,9 @@ def create_query_graph() -> Graph:
 
         # 标准流程节点决策
         if current_stage == "normalized":
-            return "strategy"
+            return "refine_entities"  # 标准化后进行entity refinement
+        elif current_stage == "entities_refined" or current_stage == "refinement_not_needed" or current_stage == "refinement_skipped":
+            return "strategy"  # refinement完成后进入策略阶段
         elif current_stage == "strategy":
             return "execute"
         elif current_stage == "executed":
@@ -461,6 +560,7 @@ def create_query_graph() -> Graph:
     # Add edges using the conditional logic
     workflow.add_edge(START, "generate_hypothetical_document")
     workflow.add_conditional_edges("normalize", decide_next_node)
+    workflow.add_conditional_edges("refine_entities", decide_next_node)  # 新增refinement节点的边
     workflow.add_conditional_edges("strategy", decide_next_node)
     workflow.add_conditional_edges("execute", decide_next_node)
     workflow.add_conditional_edges("validate", decide_next_node)

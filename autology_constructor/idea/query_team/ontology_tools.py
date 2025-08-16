@@ -821,11 +821,26 @@ class OntologyTools:
     # --- MODIFIED: Public API methods now call corresponding _get_single_... ---
 
     def get_class_info(self, class_names: Union[str, List[str]]) -> Dict[str, Dict]:
-        """Get basic information for one or more ontology classes.
+        """Get source information for one or more ontology classes.
 
-        Retrieves basic descriptive information associated with the specified class(es),
-        primarily extracted from 'content' of linked 'SourcedInformation' instances
-        of type 'entity'.
+        This function extracts basic descriptive content for the specified class(es)
+        from their original information source. It is primarily used to provide
+        background context from when the entity was recorded, such as its original,
+        unstructured descriptive text.
+
+        [IMPORTANT] Usage Guidelines:
+        - Use this function when: You want to understand the origin of a class or view
+        its initial, raw descriptions.
+        - Do not use this function when: You need structured knowledge, relationships,
+        or a complete definition of the class.
+
+        [Alternative Tool Guide]
+        - For comprehensive knowledge (properties, behavior, applications, etc.),
+        use `get_class_properties`.
+        - For other classes related to the specified class(es),
+        use `get_related_classes`.
+        - For the most detailed information available (including its raw ontology definition),
+        use `parse_class_definition`.
 
         Args:
             class_names (Union[str, List[str]]): A single class name or a list of class names to query.
@@ -904,12 +919,12 @@ class OntologyTools:
     def get_class_properties(self, class_names: Union[str, List[str]]) -> Dict[str, Union[Dict[str, Dict[str, Any]], Dict]]:
         """Get detailed properties for one or more classes, including restrictions and descriptions.
 
-        Retrieves detailed information about properties associated with the specified class(es),
+        Retrieves detailed information about all the properties associated with the specified class(es),
         focusing on properties defined through restrictions (e.g., some, only, min, max)
         and descriptions derived from linked 'SourcedInformation'.
 
         Args:
-            class_names (Union[str, List[str]]): A single class name or a list of class names.
+            class_names (Union[str, List[str]]): A single class name or a list of class names. Never fill this with property names.
 
         Returns:
             Dict[str, Union[Dict[str, Dict[str, Any]], Dict]]:

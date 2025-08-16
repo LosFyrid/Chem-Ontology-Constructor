@@ -5,6 +5,12 @@ ontology:
   closed_ontology_file_name: "closed_chem_ontology.owl"
   java_exe: "C:/Program Files/Java/jdk-23/bin/java.exe"
 
+entity_retrieval:
+  top_k: 5
+  bm25_weight: 0.5
+  jaccard_weight: 0.5
+  trigram_size: 3
+  min_score_threshold: 0.1
 
 LLM:
   model: "gpt-4.1-nano"
