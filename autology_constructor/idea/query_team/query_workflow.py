@@ -758,6 +758,7 @@ def create_query_graph(ontology_tools: OntologyTools) -> Graph:
     workflow.add_conditional_edges("strategy", decide_next_node)
     workflow.add_conditional_edges("execute", decide_next_node)
     workflow.add_conditional_edges("validate", decide_next_node)
+    workflow.add_conditional_edges("refine_decision", decide_next_node)  # 修复：添加缺失的refine_decision路由
     workflow.add_conditional_edges("generate_hypothetical_document", decide_next_node)  # 新增边
     workflow.add_conditional_edges("format_results", decide_next_node)  # 新增边
     

@@ -184,7 +184,9 @@ class QueryManager:
         
         # 存储ontology_settings用于创建ontology_tools
         self.ontology_settings = ontology_settings
-        self.ontology_tools = None  # 懒加载
+        
+        # 线程本地存储，每个工作线程将有自己的OntologyTools实例
+        self._thread_local = threading.local()
         
         # ADDED Executor and Dispatcher related attributes
         self.executor = ThreadPoolExecutor(max_workers=max_workers) # Executor for query tasks
@@ -196,18 +198,36 @@ class QueryManager:
         # 推迟 LangGraph 初始化，避免循环导入
         self.query_graph = None
     
+    def _get_thread_ontology_tools(self):
+        """获取当前线程的OntologyTools实例，实现线程安全的本体访问"""
+        if not hasattr(self._thread_local, 'ontology_tools'):
+            if self.ontology_settings is None:
+                raise RuntimeError("Cannot create thread-local ontology_tools: ontology_settings not provided")
+            from .ontology_tools import OntologyTools
+            
+            # 为每个线程创建独立的OntologySettings实例（土办法但有效）
+            # 创建一个新的设置实例，这样每个线程都有独立的本体副本
+            from config.settings import OntologySettings
+            thread_settings = OntologySettings(
+                base_iri=self.ontology_settings.base_iri,
+                ontology_file_name=self.ontology_settings.ontology_file_name,
+                directory_path=self.ontology_settings.directory_path,
+                closed_ontology_file_name=self.ontology_settings.closed_ontology_file_name
+            )
+            
+            self._thread_local.ontology_tools = OntologyTools(thread_settings)
+            print(f"Created thread-local OntologyTools instance for thread: {threading.current_thread().name}")
+        return self._thread_local.ontology_tools
+    
     def _initialize_graph(self):
         """Initializes the LangGraph query graph if not already done."""
         if self.query_graph is None:
-            # 懒加载ontology_tools
-            if self.ontology_tools is None:
-                if self.ontology_settings is None:
-                    raise RuntimeError("Cannot initialize query graph: ontology_settings not provided")
-                from .ontology_tools import OntologyTools
-                self.ontology_tools = OntologyTools(self.ontology_settings)
+            # 使用线程本地的ontology_tools创建graph
+            # 注意：这个方法主要在主线程调用，所以会为主线程创建一个实例
+            ontology_tools = self._get_thread_ontology_tools()
             
             from .query_workflow import create_query_graph # Local import
-            self.query_graph = create_query_graph(self.ontology_tools)
+            self.query_graph = create_query_graph(ontology_tools)
 
     def update_class_name_cache(self, ontology: Any):
         """Manually update the class name cache from the ontology."""
@@ -377,12 +397,14 @@ class QueryManager:
         query_state["available_data_properties"] = self.data_property_cache  # 新增: 添加数据属性到状态
         query_state["available_object_properties"] = self.object_property_cache  # 新增: 添加对象属性到状态
 
-        # 执行查询工作流
-        # Ensure graph is initialized (double check)
-        if self.query_graph is None:
-             raise RuntimeError("Query graph not initialized before invoking.")
+        # 获取线程本地的ontology_tools并创建专用的graph
+        thread_ontology_tools = self._get_thread_ontology_tools()
+        
+        # 为当前线程创建独立的graph实例，避免工具共享冲突
+        from .query_workflow import create_query_graph
+        thread_query_graph = create_query_graph(thread_ontology_tools)
              
-        final_state = self.query_graph.invoke(query_state)
+        final_state = thread_query_graph.invoke(query_state)
 
         # 将最终的QueryState转换回Query对象（更新状态/结果）
         self._state_to_query.transform(final_state, query)
