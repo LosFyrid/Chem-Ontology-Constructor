@@ -4,6 +4,15 @@ from enum import Enum
 import uuid
 from datetime import datetime
 
+# NEW: 验证结果分类枚举
+class ValidationClassification(str, Enum):
+    """验证结果分类标签"""
+    SUFFICIENT = "sufficient"                    # 结果充分
+    INSUFFICIENT_PROPERTIES = "insufficient_properties"  # 缺乏属性信息
+    INSUFFICIENT = "insufficient"               # 全面信息不足  
+    NO_RESULTS = "no_results"                   # 无结果
+    ERROR = "error"                             # 执行错误
+
 class NormalizedQuery(BaseModel):
     """Represents the structured understanding of a natural language query."""
     intent: str = Field(description="The main goal or action of the query, e.g., 'find information', 'compare entities', 'get property'.")
@@ -51,13 +60,35 @@ class DimensionReport(BaseModel):
     # valid: bool = Field(description="Whether the result passed validation for this dimension.")
     message: str = Field(description="Detailed assessment or reasoning for this dimension's validation outcome.")
 
+# NEW: 简化的工具调用分类结构
+class ToolCallClassification(BaseModel):
+    """单个工具调用的分类结果 - 简化结构"""
+    tool: str = Field(description="Tool function name")
+    class_name: str = Field(description="Class name parameter passed to the tool") 
+    classification: ValidationClassification = Field(description="Classification label for this tool call")
+    reason: str = Field(description="Brief reason for the classification")
+
 class ValidationReport(BaseModel):
-    """Represents the overall validation report for a query result."""
-    valid: bool = Field(description="Overall assessment of whether the query result is valid.")
-    details: List[DimensionReport] = Field(default_factory=list, description="A list of detailed validation results for each assessed dimension.")
-    message: str = Field(description="A concluding summary message about the overall validation result.")
-    improvement_suggestions: Optional[List[str]] = Field(default=None, description="Text suggestions for improving the query if validation failed.")
-    # issue_aspects: Optional[List[str]] = Field(default=None, description="The aspects of the query that need improvement (e.g., 'entity_recognition', 'property_selection', 'strategy').")
+    """简化的验证报告结构"""
+    valid: bool = Field(description="Overall assessment of whether the query result is valid")
+    overall_classification: ValidationClassification = Field(description="Overall classification label")
+    tool_classifications: List[ToolCallClassification] = Field(default_factory=list, description="Classification for each tool call")
+    message: str = Field(description="Brief summary message")
+
+# NEW: 简化的Refiner决策结果 - 为每个工具-参数组合提供hints
+class ToolCallHint(BaseModel):
+    """针对单个工具调用的提示"""
+    tool: str = Field(description="Original tool name")
+    class_name: str = Field(description="Original class name")
+    action: str = Field(description="Suggested action: retry, replace_class, replace_tool, skip")
+    hint: str = Field(description="Detailed hint for LLM about what to try differently")
+    alternative_tools: List[str] = Field(default_factory=list, description="Alternative tool functions")
+
+class RefinerDecision(BaseModel):
+    """QueryRefiner的决策结果 - 简化结构"""
+    overall_action: str = Field(description="Overall action: continue, retry, expand, terminate")
+    reason: str = Field(description="Reason for the decision")
+    tool_call_hints: List[ToolCallHint] = Field(default_factory=list, description="Specific hints for each tool call")
 
 class QueryStatus(str, Enum):
     PENDING = "pending"

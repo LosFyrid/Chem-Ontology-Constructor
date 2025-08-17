@@ -1,58 +1,31 @@
 from typing import Dict, List, Literal, Optional, Any, Union
-from typing_extensions import Annotated, TypedDict
 from datetime import datetime
+import hashlib
+import json
+import logging
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.messages import SystemMessage
 from langgraph.graph import Graph, StateGraph, END, START
-from langgraph.graph.message import AnyMessage, add_messages
 from .ontology_tools import OntologyTools, SparqlExecutionError
 from .query_agents import QueryParserAgent, StrategyPlannerAgent, ToolPlannerAgent, ToolExecutorAgent, SparqlExpertAgent, ValidationAgent, HypotheticalDocumentAgent, ResultFormatterAgent
+from .query_refiner import QueryRefiner
 from .query_manager import Query, QueryStatus
 from .utils import format_sparql_error, format_sparql_results, extract_variables_from_sparql
+from .workflow_utils import (
+    generate_tool_call_signature, record_tool_call, has_tool_call_been_tried,
+    detect_stagnation, handle_stagnation_with_entity_matcher
+)
 from .schemas import NormalizedQuery, ToolPlan, ValidationReport
 from .entity_matcher import EntityMatcher
+from .stategraph import QueryState
 from autology_constructor.idea.common.llm_provider import get_cached_default_llm
-from config.settings import OntologySettings
 
-class QueryState(TypedDict):
-    """查询团队状态"""
-    # Input
-    query: str  # 自然语言查询
-    source_ontology: OntologySettings  # 使用OntologySettings类型，而不是Any
-    query_type: str  # 查询类型
-    query_strategy: Optional[Literal["tool_sequence", "SPARQL"]]  # 查询策略
-    originating_team: str  # 发起查询的团队
-    originating_stage: str  # 发起查询的阶段
-    available_classes: List[str]  # Add available classes from cache
-    available_data_properties: List[str]  
-    available_object_properties: List[str]
-    refined_classes: Optional[List[str]]  # Refined candidate classes for optimization
-    
-    # Query Management
-    query_results: Dict  # 查询结果
-    normalized_query: Optional[NormalizedQuery]  # 标准化的查询结构
-    execution_plan: Optional[ToolPlan]  # 执行计划
-    validation_report: Optional[ValidationReport]  # Added field for report
-    sparql_query: Optional[str]  # Generated SPARQL query
-    status: str  # 状态
-    stage: str  # 当前阶段
-    previous_stage: Optional[str]  # 上一阶段
-    error: Optional[str]  # Add error field for better tracking
-    
-    # Retry and Feedback
-    retry_count: Optional[int]  # 重试计数
-    force_strategy: Optional[str]  # 强制使用不同的策略
-    hypothetical_document: Optional[Dict]  # 假设性文档（由化学专家生成）
-    validation_history: Optional[List]  # 验证报告历史
-    formatted_results: Optional[Dict]  # 格式化后的结果
-    iteration_history: Optional[List[Dict]] # ADD: To store history of each iteration
-    
-    # System
-    messages: Annotated[list[AnyMessage], add_messages]
+logger = logging.getLogger(__name__)
 
-def create_query_graph() -> Graph:
-    """创建查询工作流"""
+
+def create_query_graph(ontology_tools: OntologyTools) -> Graph:
+    """创建查询工作流 - 通过依赖注入使用ontology_tools实例"""
 
     workflow = StateGraph(QueryState)
 
@@ -74,15 +47,33 @@ def create_query_graph() -> Graph:
     hypothetical_document_agent = HypotheticalDocumentAgent(model=default_model)
     result_formatter_agent = ResultFormatterAgent(model=default_model)
     
+    # 使用注入的ontology_tools实例初始化组件
+    query_refiner = QueryRefiner(ontology_tools)
+    entity_matcher = EntityMatcher([])  # 将在refine_entities中重新初始化
+    
+    # 为HypotheticalDocumentAgent设置ontology_tools
+    hypothetical_document_agent.set_ontology_tools(ontology_tools)
+    
     # 节点实现
     def normalize_query(state: QueryState) -> Dict:
-        """解析并标准化查询，优先使用refined_classes"""
+        """解析并标准化查询，优先使用refined_classes，包含LLM停滞检测"""
         retry_count = state.get("retry_count",0)
         try:
             query = state["query"]
             available_classes = state["available_classes"]
             available_data_properties = state["available_data_properties"]
             available_object_properties = state["available_object_properties"]
+            
+            # NEW: 检测LLM停滞
+            if detect_stagnation(state):
+                logger.info("[normalize_query] 检测到LLM停滞，启动EntityMatcher干预")
+                stagnation_result = handle_stagnation_with_entity_matcher(
+                    state, entity_matcher, ontology_tools
+                )
+                if stagnation_result.get("refined_classes"):
+                    logger.info(f"[normalize_query] 停滞处理成功，强制使用新候选: {len(stagnation_result['refined_classes'])} 个类")
+                    # 更新状态，强制使用新的候选类
+                    state = {**state, **stagnation_result}
             
             # 优先使用refined_classes，如果存在的话
             refined_classes = state.get("refined_classes")
@@ -95,11 +86,16 @@ def create_query_graph() -> Graph:
                 estimated_tokens = original_classes_count * 2  # 估算每个类名平均2个token
                 print(f"[TOKEN OPTIMIZATION] Using original classes: {original_classes_count} classes (~{estimated_tokens} tokens)")
             
+            # NEW: 处理来自refiner的hints - 只处理class相关的hints
+            refiner_hints = state.get("refiner_hints", [])
+            class_related_hints = [h for h in refiner_hints if h.action in ["replace_class"]]
+            
             # Prepare state for parser agent, including available classes
             if state.get("validation_report"):
                 enhanced_feedback = getattr(state.get("validation_report"), "improvement_suggestions")
             else:
                 enhanced_feedback = None
+                
             parser_state = {
                 "natural_query": query,
                 "available_classes": effective_classes,  # 使用优化后的类集合
@@ -107,7 +103,8 @@ def create_query_graph() -> Graph:
                 "available_data_properties": available_data_properties,
                 "available_object_properties": available_object_properties,
                 "enhanced_feedback": enhanced_feedback,
-                "hypothetical_document": state.get("hypothetical_document")
+                "hypothetical_document": state.get("hypothetical_document"),
+                "class_hints": class_related_hints  # NEW: 传递类相关的hints给parser agent
             }
             # Use parser agent
             normalized_result = parser_agent(parser_state)
@@ -117,7 +114,8 @@ def create_query_graph() -> Graph:
             elif not isinstance(normalized_result, NormalizedQuery):
                     # Should not happen if agent works correctly, but good to check
                     raise TypeError(f"Query parser returned unexpected type: {type(normalized_result)}")
-            return {
+            
+            result = {
                 "normalized_query": normalized_result,
                 "status": "parsing_complete",
                 "stage": "normalized",
@@ -125,6 +123,15 @@ def create_query_graph() -> Graph:
                 "messages": [SystemMessage(content=f"Query normalized: {query}")],
                 "retry_count": retry_count + 1
             }
+            
+            # 如果处理了停滞，保留相关信息
+            if state.get("stagnation_handled"):
+                result["stagnation_handled"] = True
+                result["stagnation_method"] = state.get("stagnation_method")
+                if state.get("tried_tool_calls"):
+                    result["tried_tool_calls"] = state["tried_tool_calls"]
+            
+            return result
         except Exception as e:
             error_message = f"Query normalization failed: {str(e)}"
             print(error_message)
@@ -173,7 +180,7 @@ def create_query_graph() -> Graph:
             }
     
     def execute_query(state: QueryState) -> Dict:
-        """执行查询 (工具序列或SPARQL)"""
+        """执行查询 (工具序列或SPARQL) - 使用注入的ontology_tools实例"""
         try:
             strategy = state.get("query_strategy")
             normalized_query_obj = state["normalized_query"]
@@ -181,20 +188,25 @@ def create_query_graph() -> Graph:
 
             if not strategy or not ontology_settings or not isinstance(normalized_query_obj, NormalizedQuery):
                  raise ValueError("Missing strategy, ontology settings, or invalid NormalizedQuery object.")
-
-            # 验证ontology_settings类型
-            if not isinstance(ontology_settings, OntologySettings):
-                raise TypeError(f"source_ontology must be an OntologySettings instance, got {type(ontology_settings).__name__}")
-
-            # 创建OntologyTools实例
-            ontology_tools = OntologyTools(ontology_settings)
             
             # 设置工具代理的OntologyTools实例
             tool_agent.set_ontology_tools(ontology_tools)
             
             if strategy == "tool_sequence":
-                # 生成执行计划
-                plan_result = tool_planner_agent.generate_plan(normalized_query_obj, ontology_tools)
+                # NEW: 处理来自refiner的tool相关hints
+                refiner_hints = state.get("refiner_hints", [])
+                tool_related_hints = [h for h in refiner_hints if h.action in ["replace_tool"]]
+                
+                # 生成执行计划，传递tool hints
+                if tool_related_hints:
+                    print(f"[execute_query] 传递 {len(tool_related_hints)} 个tool hints给planner")
+                    plan_result = tool_planner_agent.generate_plan(
+                        normalized_query_obj, 
+                        ontology_tools, 
+                        tool_hints=tool_related_hints
+                    )
+                else:
+                    plan_result = tool_planner_agent.generate_plan(normalized_query_obj, ontology_tools)
                 
                 # 检查计划生成是否出错
                 if isinstance(plan_result, dict) and plan_result.get("error"):
@@ -378,14 +390,34 @@ def create_query_graph() -> Graph:
             }
     
     def format_results(state: QueryState) -> Dict:
-        """格式化查询结果为用户友好的形式"""
+        """格式化查询结果为用户友好的形式 - 使用tried_tool_calls汇总所有成功的工具调用"""
         try:
             query = state.get("query")
-            results = state.get("query_results")
+            current_results = state.get("query_results")
             normalized_query_obj = state.get("normalized_query")
+            tried_tool_calls = state.get("tried_tool_calls", {})
             
-            if not query or not results:
-                raise ValueError("Cannot format results: query or results is missing")
+            if not query:
+                raise ValueError("Cannot format results: query is missing")
+            
+            # NEW: 从tried_tool_calls汇总所有成功的工具调用结果
+            all_results = {"results": []}
+            
+            if tried_tool_calls:
+                for signature, call_info in tried_tool_calls.items():
+                    tool_result = {
+                        "tool": call_info.get("tool"),
+                        "params": call_info.get("params"),
+                        "result": call_info.get("result")
+                    }
+                    all_results["results"].append(tool_result)
+                
+                print(f"[format_results] 从tried_tool_calls汇总了 {len(all_results['results'])} 个工具调用结果")
+            
+            # 如果tried_tool_calls为空，使用当前结果作为fallback
+            if not all_results["results"] and current_results:
+                all_results = current_results
+                print(f"[format_results] 使用当前结果作为fallback")
             
             # 准备query_context
             query_context = {}
@@ -399,7 +431,7 @@ def create_query_graph() -> Graph:
             # 使用ResultFormatterAgent格式化结果
             formatted_results = result_formatter_agent.format_results(
                 query=query,
-                results=results,
+                results=all_results,
                 query_context=query_context
             )
             
@@ -502,16 +534,98 @@ def create_query_graph() -> Graph:
                 "messages": [SystemMessage(content=error_message)]
             }
     
+    def refine_query_decision(state: QueryState) -> Dict:
+        """增强QueryRefiner决策节点 - 完善状态传递和记忆利用"""
+        try:
+            validation_report = state.get("validation_report")
+            if not validation_report:
+                # 没有验证报告，跳过refiner
+                return {
+                    "status": state.get("status", "refiner_skipped"),
+                    "stage": "refiner_skipped",
+                    "previous_stage": state.get("stage"),
+                    "messages": [SystemMessage(content="Refiner skipped: no validation report")]
+                }
+            
+            # 传递完整的状态信息给QueryRefiner，包括记忆和历史
+            enhanced_state = {
+                **state,
+                "query_results": state.get("query_results"),  # 用于获取工具调用信息
+                "tried_tool_calls": state.get("tried_tool_calls", {}),  # 记忆系统
+                "iteration_history": state.get("iteration_history", []),  # 历史信息
+                "refined_classes": state.get("refined_classes", []),  # 当前候选类
+                "available_classes": state.get("available_classes", [])  # 全部可用类
+            }
+            
+            # 使用QueryRefiner分析并决策
+            refiner_decision = query_refiner.propose_next_action(enhanced_state, validation_report)
+            
+            logger.info(f"[refine_query_decision] Refiner决策: {refiner_decision.overall_action}")
+            
+            # 基于决策更新状态
+            result = {
+                "refiner_decision": refiner_decision,
+                "status": f"refiner_{refiner_decision.overall_action}",
+                "stage": "refiner_decision",
+                "previous_stage": state.get("stage"),
+                "messages": [SystemMessage(content=f"Refiner decision: {refiner_decision.overall_action} - {refiner_decision.reason}")]
+            }
+            
+            # 保持关键状态信息
+            if state.get("tried_tool_calls"):
+                result["tried_tool_calls"] = state["tried_tool_calls"]
+            if state.get("iteration_history"):
+                result["iteration_history"] = state["iteration_history"]
+            
+            # 基于决策类型进行不同处理
+            if refiner_decision.overall_action == "retry":
+                # 重试：传递hints给下一轮执行
+                result["refiner_hints"] = refiner_decision.tool_call_hints
+                
+            elif refiner_decision.overall_action == "expand":
+                # 扩展搜索：增加更多候选类
+                current_refined = state.get("refined_classes", [])
+                available_classes = state.get("available_classes", [])
+                
+                # 扩展候选类集合
+                if len(current_refined) < 50 and len(available_classes) > len(current_refined):
+                    expanded_classes = available_classes[:min(50, len(available_classes))]
+                    result["refined_classes"] = expanded_classes
+                    logger.info(f"[refine_query_decision] 扩展候选类到 {len(expanded_classes)} 个")
+                
+            elif refiner_decision.overall_action == "continue":
+                # 继续：保持当前结果
+                result["validation_success"] = True
+                
+            elif refiner_decision.overall_action == "terminate":
+                # 终止：设置终止标志
+                result["should_terminate"] = True
+                result["termination_reason"] = refiner_decision.reason
+            
+            return result
+            
+        except Exception as e:
+            error_message = f"Query refiner decision failed: {str(e)}"
+            logger.error(error_message)
+            return {
+                "status": "error",
+                "stage": "error",
+                "previous_stage": state.get("stage"),
+                "error": error_message,
+                "messages": [SystemMessage(content=error_message)]
+            }
+    
     # Add nodes
     workflow.add_node("normalize", normalize_query)
     workflow.add_node("refine_entities", refine_entities)  # 新增refinement节点
     workflow.add_node("strategy", determine_strategy)
     workflow.add_node("execute", execute_query)
     workflow.add_node("validate", validate_results)
+    workflow.add_node("refine_decision", refine_query_decision)  # NEW: QueryRefiner决策节点
     workflow.add_node("generate_hypothetical_document", generate_hypothetical_document)  # 新增节点
     workflow.add_node("format_results", format_results)  # 新增节点
     
-    # Define conditional edges for error handling and branching
+    # Define conditional edges for enhanced error handling and intelligent routing
     def decide_next_node(state: QueryState):
         # 检查是否存在错误状态
         if state.get("status") == "error":
@@ -522,19 +636,101 @@ def create_query_graph() -> Graph:
         current_stage = state.get("stage")
         current_state = state.get("status")
         retry_count = state.get("retry_count", 0)
-        print(f"Retry count: {retry_count}")
-        # 对于验证反馈阶段，实现重试逻辑
-        if current_stage == "validated" and current_state == "warning":
-            print(f"In retry logic, Retry count: {retry_count}")
+        print(f"Current stage: {current_stage}, Status: {current_state}, Retry count: {retry_count}")
+        
+        # 智能终止条件检查
+        if state.get("should_terminate") or retry_count >= 5:
+            termination_reason = state.get("termination_reason", f"Maximum retry limit reached ({retry_count})")
+            print(f"[decide_next_node] 终止工作流: {termination_reason}")
+            return "format_results"
+        
+        # NEW: 增强的Refiner决策路由
+        if current_stage == "refiner_decision":
+            refiner_decision = state.get("refiner_decision")
+            validation_report = state.get("validation_report")
+            
+            if refiner_decision:
+                action = refiner_decision.overall_action
+                print(f"[decide_next_node] Refiner决策: {action}")
+                
+                if action == "continue":
+                    # 验证成功，继续到结果格式化
+                    return "format_results"
+                    
+                elif action == "retry":
+                    # 分析hints的action类型来决定路由
+                    hints = refiner_decision.tool_call_hints
+                    if not hints:
+                        print("[decide_next_node] 无可用hints，正常重试流程")
+                        return "normalize"
+                    
+                    # 统计各种action类型
+                    replace_tool_hints = [h for h in hints if h.action == "replace_tool"]
+                    replace_class_hints = [h for h in hints if h.action == "replace_class"]
+                    skip_hints = [h for h in hints if h.action == "skip"]
+                    
+                    print(f"[decide_next_node] Hints分析: replace_tool={len(replace_tool_hints)}, replace_class={len(replace_class_hints)}, skip={len(skip_hints)}")
+                    
+                    # 如果全部都是skip，看是否还有其他有效hints
+                    if len(skip_hints) == len(hints):
+                        print("[decide_next_node] 所有hints都是skip，终止重试")
+                        return "format_results"
+                    
+                    # 根据hint类型决定路由
+                    if replace_class_hints and replace_tool_hints:
+                        # 混合情况：需要改类也需要改工具 → 路由到normalize，给两个agent分别传递hints
+                        print("[decide_next_node] 混合hints：同时需要更换类和工具 → normalize")
+                        return "normalize"
+                    elif replace_class_hints and not replace_tool_hints:
+                        # 只需要更换类 → 路由到normalize (标准化agent)
+                        print("[decide_next_node] 仅需更换类 → normalize")  
+                        return "normalize"
+                    elif replace_tool_hints and not replace_class_hints:
+                        # 只需要更换工具 → 路由到strategy (planner agent)
+                        print("[decide_next_node] 仅需更换工具 → strategy")
+                        return "strategy"
+                    else:
+                        # 其他情况，默认重试
+                        print("[decide_next_node] 其他hint情况，默认重试 → normalize")
+                        return "normalize"
+                        
+                elif action == "expand":
+                    # 不再有expand逻辑，直接终止
+                    print("[decide_next_node] expand action不再支持，格式化当前结果")
+                    return "format_results"
+                        
+                elif action == "terminate":
+                    # 明确终止：检查是否有部分成功的结果
+                    if validation_report and len(validation_report.tool_classifications) > 0:
+                        # 有部分结果，进行格式化
+                        successful_calls = [tc for tc in validation_report.tool_classifications 
+                                          if tc.classification in ["sufficient", "insufficient_properties"]]
+                        if successful_calls:
+                            print(f"[decide_next_node] 部分成功 ({len(successful_calls)}/{len(validation_report.tool_classifications)})，格式化结果")
+                            return "format_results"
+                    
+                    print("[decide_next_node] 完全失败，直接终止")
+                    return END
+                else:
+                    print(f"[decide_next_node] 未知的refiner action: {action}, 默认格式化")
+                    return "format_results"
+            else:
+                print("[decide_next_node] 缺少refiner_decision，继续到format_results")
+                return "format_results"
+        
+        # 验证后统一进入refiner决策节点
+        if current_stage == "validated":
+            return "refine_decision"
+        
+        # 传统重试逻辑（保留作为后备，但优先级降低）
+        if current_stage == "validated" and current_state == "warning" and not state.get("refiner_decision"):
+            print(f"[decide_next_node] 进入传统重试逻辑, Retry count: {retry_count}")
             if retry_count <= 2:
-                # 前两次重试，回到标准化阶段
                 return "normalize"
             elif retry_count == 3:
-                # 第三次重试，尝试假设性文档生成
                 return "generate_hypothetical_document"
             else:
-                # 超出重试次数，终止工作流
-                print(f"Exceeded maximum retry attempts ({retry_count})")
+                print(f"[decide_next_node] 超出重试次数 ({retry_count})")
                 return "format_results"
 
         # 标准流程节点决策
@@ -546,8 +742,6 @@ def create_query_graph() -> Graph:
             return "execute"
         elif current_stage == "executed":
             return "validate"
-        elif current_stage == "validated":
-            return "format_results"
         elif current_stage == "hypothetical_generated":
             return "normalize"  # 生成假设性文档后返回到标准化阶段
         elif current_stage == "completed":

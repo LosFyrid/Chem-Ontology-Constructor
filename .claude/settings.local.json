@@ -1,7 +1,17 @@
 {
   "permissions": {
     "allow": [
-      "Bash(pip install:*)"
+      "Bash(pip install:*)",
+      "Bash(conda:*)",
+      "Bash(echo:*)",
+      "Bash(/c/ProgramData/anaconda3/python.exe -c \"import sys; print(''Python路径:'', sys.executable); print(''包搜索路径:''); [print(''  '', p) for p in sys.path[:3]]\")",
+      "Bash(/d/AnacondaEnPs/envs/OntologyConstruction/python.exe -c \"import sys; print(''Python路径:'', sys.executable); print(''包搜索路径:''); [print(''  '', p) for p in sys.path[:3]]\")",
+      "Bash(/c/ProgramData/anaconda3/python.exe -c \"import pydantic; print(pydantic.__version__, pydantic.__file__)\")",
+      "Bash(/d/AnacondaEnPs/envs/OntologyConstruction/python.exe -c \"import pydantic; print(pydantic.__version__, pydantic.__file__)\")",
+      "Bash(/d/AnacondaEnPs/envs/OntologyConstruction/python.exe autology_constructor/idea/query_team/workflow_test.py)",
+      "Bash(/d/AnacondaEnPs/envs/OntologyConstruction/python.exe workflow_test.py)",
+      "WebSearch",
+      "WebFetch(domain:owlready2.readthedocs.io)"
     ],
     "deny": [],
     "ask": []

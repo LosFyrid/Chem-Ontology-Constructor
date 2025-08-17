@@ -1,4 +1,4 @@
-from typing import Dict, List, Any, Union
+from typing import Dict, List, Any, Union, Optional
 from autology_constructor.idea.common.base_agent import AgentTemplate
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.language_models import BaseLanguageModel
@@ -12,7 +12,7 @@ from config.settings import OntologySettings
 from .entity_matcher import EntityMatcher
 
 # Import Pydantic models
-from .schemas import NormalizedQuery, ToolCallStep, ValidationReport, DimensionReport, ToolPlan, ExtractedProperties, NormalizedQueryBody
+from .schemas import NormalizedQuery, ToolCallStep, ValidationReport, DimensionReport, ToolPlan, ExtractedProperties, NormalizedQueryBody, ValidationClassification, ToolCallClassification
 
 class ToolPlannerAgent(AgentTemplate):
     """Generates a tool execution plan based on a normalized query using an LLM."""
@@ -42,7 +42,7 @@ Available tools:
             
         for name, method in inspect.getmembers(tool_instance, predicate=inspect.ismethod):
             # Exclude private methods, constructor, and potentially the main execute_sparql if planning should use finer tools
-            if not name.startswith("_") and name not in ["__init__", "execute_sparql"]: 
+            if not name.startswith("_") and name not in ["__init__", "execute_sparql", "get_class_richness_info"]: 
                 try:
                     sig = inspect.signature(method)
                     doc = inspect.getdoc(method)
@@ -52,8 +52,8 @@ Available tools:
                     descriptions.append(f"- {name}(...): No signature/description available.")
         return "\n".join(descriptions) if descriptions else "No tools available."
 
-    def generate_plan(self, normalized_query: Union[Dict, NormalizedQuery], ontology_tools: OntologyTools) -> Union[ToolPlan, Dict]:
-        """Generates the tool execution plan."""
+    def generate_plan(self, normalized_query: Union[Dict, NormalizedQuery], ontology_tools: OntologyTools, tool_hints: List = None) -> Union[ToolPlan, Dict]:
+        """Generates the tool execution plan with optional tool hints for refinement."""
         if not normalized_query:
              return {"error": "Cannot generate plan from missing normalized query."}
         # Check for error dictionary explicitly
@@ -74,10 +74,27 @@ Available tools:
         except Exception as dump_error:
              return {"error": f"Failed to serialize normalized query for planning: {dump_error}"}
 
+        # NEW: 构建包含tool hints的用户消息
         user_message = f"""Generate an execution plan for the following normalized query:
 {normalized_query_str}
 
 Output the plan as a JSON list of steps matching the ToolCallStep structure."""
+
+        # NEW: 如果有tool hints，添加到用户消息中
+        if tool_hints:
+            hints_text = []
+            for hint in tool_hints:
+                hints_text.append(f"- For tool '{hint.tool}' on class '{hint.class_name}': {hint.hint}")
+                if hint.alternative_tools:
+                    hints_text.append(f"  Consider these alternative tools: {', '.join(hint.alternative_tools)}")
+            
+            hints_section = "\n".join(hints_text)
+            user_message += f"""
+
+IMPORTANT REFINEMENT HINTS:
+{hints_section}
+
+Please incorporate these hints when generating the tool plan. Use the suggested alternative tools or modifications."""
 
         messages = [
             ("system", formatted_system_prompt),
@@ -181,7 +198,8 @@ Given a natural language query, the already identified main query body (intent, 
 
     def _create_main_query_body_prompt(self, query: str, available_classes: List[str],
                                       enhanced_feedback: str = None,
-                                      hypothetical_document: Dict = None
+                                      hypothetical_document: Dict = None,
+                                      class_hints: List = None  # NEW: 添加class_hints参数
                                       ) -> List[tuple[str, str]]:
         class_list_str = ", ".join(available_classes) if available_classes else "No available class information provided."
 
@@ -214,6 +232,21 @@ Given a natural language query, the already identified main query body (intent, 
             if has_hypo_info:
                 user_content += "".join(hypo_content_parts)
                 user_content += "\n--- END OF HYPOTHETICAL DOCUMENT INSIGHTS ---"
+
+        # NEW: 处理class hints
+        if class_hints:
+            hints_text = []
+            for hint in class_hints:
+                hints_text.append(f"- Previous attempt with class '{hint.class_name}' had issues: {hint.hint}")
+            
+            hints_section = "\n".join(hints_text)
+            user_content += f"""
+
+--- CLASS SELECTION HINTS ---
+{hints_section}
+
+Please consider these hints when selecting relevant_entities. Try to choose different classes that avoid the mentioned issues.
+--- END OF CLASS SELECTION HINTS ---"""
 
         user_content += f"\n\nAvailable classes: {class_list_str}"
         user_content += "\n\nOutput *only* the JSON object conforming to the NormalizedQueryBody schema."
@@ -293,6 +326,7 @@ Given a natural language query, the already identified main query body (intent, 
         available_classes = state.get("available_classes", [])
         enhanced_feedback = state.get("enhanced_feedback")
         hypothetical_document = state.get("hypothetical_document")
+        class_hints = state.get("class_hints", [])  # NEW: 获取class hints
 
         if not natural_query:
             return {"error": "Natural query missing for main body generation."}
@@ -301,7 +335,8 @@ Given a natural language query, the already identified main query body (intent, 
             natural_query, 
             available_classes,
             enhanced_feedback,
-            hypothetical_document
+            hypothetical_document,
+            class_hints  # NEW: 传递class hints
         )
         
         try:
@@ -581,19 +616,34 @@ Your validation result MUST strictly follow the ValidationReport JSON schema for
 """
 
 class ValidationAgent(AgentTemplate):
-    """验证查询结果质量并提供改进建议的专家代理"""
+    """查询结果分类器 - 对每个工具调用进行分类"""
     def __init__(self, model: BaseLanguageModel):
         system_prompt = """
-You are an expert specializing in validating query results for an ontology system. You need to evaluate the quality of the query results across multiple dimensions: completeness, consistency, and accuracy.
+You are an expert classifier for ontology query results. Your job is to classify each tool call result.
 
-Provide a detailed assessment and specific reasoning for each dimension.
+Classification Categories:
+- "sufficient": Good results with adequate information
+- "insufficient_properties": Results exist but lack property/relationship details  
+- "insufficient": Results are incomplete or inadequate
+- "no_results": No meaningful results returned
+- "error": Execution failed or returned errors
 
-When validation fails, provide specific improvement suggestions.
+For each tool call in the results, provide:
+1. Tool name (e.g., "get_class_properties")
+2. Class name parameter (e.g., "ChemicalCompound") 
+3. Classification from the 5 categories above
+4. Brief reason (1 sentence)
 
-Your validation result MUST strictly follow the ValidationReport JSON schema format, which includes fields for improvement suggestions and issue aspects.
+Also provide an overall classification based on the worst individual classification.
+
+Your response MUST include:
+- valid: boolean indicating overall validation success
+- overall_classification: the overall classification label
+- tool_classifications: list of individual tool call classifications
+- message: brief summary message describing the overall assessment
+
+Keep your output simple and structured.
 """
-
-
 
         super().__init__(
             model=model,
@@ -609,98 +659,172 @@ Your validation result MUST strictly follow the ValidationReport JSON schema for
             self.structured_llm = None
 
     def validate(self, results: Any, query_context: Dict = None) -> Union[ValidationReport, Dict]:
-        """执行结果验证，并提供改进建议
+        """对查询结果中的每个工具调用进行分类
         
         Args:
-            results: 查询结果
-            query_context: 可选的查询上下文信息
+            results: 查询结果，预期包含多个工具调用的结果
+            query_context: 查询上下文信息
         
         Returns:
-            Union[ValidationReport, Dict]: 验证结果，包含valid, details, message等字段，以及improvement_suggestions
+            ValidationReport: 包含每个工具调用的分类结果
         """
         if not self.structured_llm:
              return {"error": "ValidationAgent LLM not configured for structured output during init."}
 
         # Basic check for empty results
         if not results:
-            # Return an error dict, not a ValidationReport, as validation cannot proceed.
-            return {"error": "Validation failed: Cannot validate empty result set."}
+            return ValidationReport(
+                valid=False,
+                overall_classification=ValidationClassification.NO_RESULTS,
+                tool_classifications=[],
+                message="No query results to validate"
+            )
 
-        # Serialize results for the prompt. Handle potential errors.
+        # Serialize results for analysis
         try:
-            results_str = json.dumps(results, indent=2, ensure_ascii=False, default=str) # Added default=str for broader serialization
-            print(results_str)
+            results_str = json.dumps(results, indent=2, ensure_ascii=False, default=str)
         except Exception as e:
-            return {"error": f"Validation failed: Could not serialize results for LLM prompt - {str(e)}"}
+            return ValidationReport(
+                valid=False,
+                overall_classification=ValidationClassification.ERROR,
+                tool_classifications=[],
+                message=f"Failed to serialize results: {str(e)}"
+            )
 
-        # Build the prompt parts
-        user_prompt = f"""Please validate the following query results:
+        # Extract tool call information from results
+        tool_call_info = self._extract_tool_call_info(results)
 
+        # Build the classification prompt
+        user_prompt = f"""Analyze these query results and classify each tool call:
+
+Query Results:
 ```json
 {results_str}
 ```
 
+Tool Calls Found:
+{self._format_tool_call_info(tool_call_info)}
 """
 
         if query_context:
             user_prompt += f"""
-Validation Context Information:
-- Query: "{query_context.get('query', 'Unknown')}"
-- Intent: {query_context.get('intent', 'Unknown')}
-- Type: {query_context.get('type', 'Unknown')}
-- Strategy: {query_context.get('strategy', 'Unknown')}
-- Relevant entities: {query_context.get('relevant_entities', 'Unknown')}
-- Relevant properties: {query_context.get('relevant_properties', 'Unknown')}
+Query Context:
+- Original Query: "{query_context.get('query', 'Unknown')}"
+- Intent: {query_context.get('intent', 'Unknown')}"
+- Target Entities: {query_context.get('relevant_entities', 'Unknown')}"
 """
 
         user_prompt += """
-Evaluate based on completeness, consistency, and accuracy.
+For each tool call, classify the result quality and provide:
+1. tool: The tool function name
+2. class_name: The class parameter that was passed
+3. classification: One of [sufficient, insufficient_properties, insufficient, no_results, error]
+4. reason: Brief explanation (one sentence)
 
-If validation fails, provide:
-1. A list of specific text suggestions for improvement in the "improvement_suggestions" field
-2. A list of corresponding issue aspects (like "entity_recognition", "property_selection", etc.) in the "issue_aspects" field
+Also determine the overall classification (use the worst individual classification).
 
-Your response must be a ValidationReport object with these fields if validation fails.
+Output a ValidationReport with:
+- valid: boolean (true if overall classification is sufficient)
+- overall_classification: the worst classification from all tool calls
+- tool_classifications: list of individual tool call classifications
+- message: brief summary message describing the overall results quality
 """
 
         try:
-            # Use the structured LLM instance created in __init__
             validation_report: ValidationReport = self.structured_llm.invoke([
                 ("system", self.system_prompt),
                 ("user", user_prompt)
             ])
+            
+            # 直接返回LLM分类结果，不进行后处理
             return validation_report
+            
         except Exception as e:
-            # Catch errors from structured output process
-            error_msg = f"Failed to get or parse structured validation report: {str(e)}"
+            error_msg = f"Failed to classify tool call results: {str(e)}"
             print(error_msg)
-            # Consider logging raw response if available
-            return {"error": error_msg, "validation_report": validation_report}
+            return ValidationReport(
+                valid=False,
+                overall_classification=ValidationClassification.ERROR,
+                tool_classifications=[],
+                message=error_msg
+            )
+    
+    def _extract_tool_call_info(self, results: Any) -> List[Dict]:
+        """从结果中提取工具调用信息 - 基于标准格式"""
+        tool_calls = []
+        
+        if isinstance(results, dict) and "results" in results and isinstance(results["results"], list):
+            # 标准的ToolExecutorAgent结果格式
+            for result_item in results["results"]:
+                if isinstance(result_item, dict) and "tool" in result_item:
+                    tool_calls.append({
+                        "tool": result_item.get("tool", "unknown"),
+                        "params": result_item.get("params", {}),
+                        "result": result_item.get("result"),
+                        "error": result_item.get("error")
+                    })
+        
+        return tool_calls
+    
+    
+    def _format_tool_call_info(self, tool_call_info: List[Dict]) -> str:
+        """格式化工具调用信息用于LLM分析"""
+        if not tool_call_info:
+            return "No tool calls identified"
+        
+        formatted = []
+        for i, call in enumerate(tool_call_info, 1):
+            class_name = call["params"].get("class_name", "unknown")
+            formatted.append(f"{i}. {call['tool']}(class_name='{class_name}')")
+        
+        return "\n".join(formatted)
+    
+    
+    
 
 class HypotheticalDocumentAgent(AgentTemplate):
-    """从专业化学家角度生成假设性答案，帮助查询标准化"""
+    """增强版化学专家 - 具备工具调用能力"""
     def __init__(self, model: BaseLanguageModel):
-        system_prompt = """You are an expert chemist who specializes in chemistry knowledge representation. 
-Your task is to help clarify and interpret chemistry queries that have been difficult to process.
+        system_prompt = """You are an expert chemist with access to ontology tools for clarifying ambiguous queries.
 
-When presented with an ambiguous or failed chemistry query, you should:
-1. Interpret what the query is trying to ask from a chemistry expert's perspective
-2. Generate a "hypothetical answer" - what a complete and accurate answer would look like
-3. Identify the key chemistry concepts, relationships, and properties that would be needed. 
-4.If an abbreviation is certain but could correspond to multiple possible full names in the available_classes list, you MUST include all of those potential full names.
+Your task is to help interpret chemistry queries that have been difficult to process, especially those containing abbreviations or ambiguous terms.
 
-Do NOT concern yourself with ontology structures, classes, or implementation details.
-Focus ONLY on creating a chemistry expert's interpretation of the question and ideal answer."""
+Available Tools:
+1. search_classes(query): Search for classes containing the query term
+2. get_class_info(class_name): Get basic information about a class
+3. get_class_richness_info(class_name): Evaluate how much information a class contains
+
+Workflow for Ambiguous Queries:
+1. Detect abbreviations or ambiguous terms in the query
+2. Use search_classes to find potential full names or related classes
+3. Use get_class_richness_info to evaluate which classes have the most information
+4. Use get_class_info to confirm existence and get basic details
+5. Generate a chemistry expert's interpretation based on your findings
+
+When creating hypothetical documents, focus on:
+- Chemistry expert interpretation of what the query is really asking
+- Hypothetical ideal answer with rich chemistry information  
+- Key chemistry concepts identified through tool exploration
+
+Do NOT concern yourself with ontology structures or implementation details.
+Focus on creating accurate chemistry interpretations."""
 
         super().__init__(
             model=model,
             name="HypotheticalDocumentAgent",
             system_prompt=system_prompt,
-            tools=[]
+            tools=[]  # Tools will be set dynamically
         )
+        
+        # Store ontology tools instance for tool calling
+        self.ontology_tools = None
+
+    def set_ontology_tools(self, ontology_tools):
+        """设置本体工具实例"""
+        self.ontology_tools = ontology_tools
 
     def generate_hypothetical_document(self, query: str, validation_history: Any = None) -> Dict:
-        """Generate a hypothetical answer from a chemistry expert perspective.
+        """Generate enhanced hypothetical answer with tool-assisted analysis.
         
         Args:
             query: The natural language query
@@ -709,6 +833,177 @@ Focus ONLY on creating a chemistry expert's interpretation of the question and i
         Returns:
             Dict containing hypothetical answer and key concepts
         """
+        if not self.ontology_tools:
+            print("[HypotheticalDocumentAgent] Warning: No ontology tools available, using basic mode")
+            return self._generate_basic_hypothetical_document(query, validation_history)
+        
+        # Enhanced workflow with tool assistance
+        try:
+            # Step 1: Analyze query for abbreviations and ambiguous terms
+            analysis_result = self._analyze_query_with_tools(query)
+            
+            # Step 2: Generate hypothetical document incorporating tool findings
+            return self._generate_enhanced_hypothetical_document(query, analysis_result, validation_history)
+            
+        except Exception as e:
+            print(f"[HypotheticalDocumentAgent] Tool-assisted analysis failed: {e}, falling back to basic mode")
+            return self._generate_basic_hypothetical_document(query, validation_history)
+
+    def _analyze_query_with_tools(self, query: str) -> Dict:
+        """Use tools to analyze query for abbreviations and find relevant classes"""
+        
+        analysis = {
+            "detected_terms": [],
+            "class_candidates": {},
+            "richness_evaluations": {}
+        }
+        
+        # Simple term detection (could be enhanced with NLP)
+        potential_terms = self._extract_potential_terms(query)
+        
+        for term in potential_terms:
+            try:
+                # Search for classes containing this term
+                search_results = self._safe_search_classes(term)
+                
+                if search_results:
+                    analysis["class_candidates"][term] = search_results[:5]  # Top 5 results
+                    
+                    # Evaluate richness of top candidates
+                    richness_scores = {}
+                    for class_name in search_results[:3]:  # Evaluate top 3
+                        richness_info = self._safe_get_richness_info(class_name)
+                        if richness_info:
+                            richness_scores[class_name] = richness_info.get("richness_score", 0.0)
+                    
+                    analysis["richness_evaluations"][term] = richness_scores
+                    analysis["detected_terms"].append(term)
+                    
+            except Exception as e:
+                print(f"[HypotheticalDocumentAgent] Error analyzing term '{term}': {e}")
+                continue
+        
+        return analysis
+
+    def _extract_potential_terms(self, query: str) -> List[str]:
+        """Extract potential chemistry terms, abbreviations, and entities from query"""
+        import re
+        
+        # Simple extraction - could be enhanced
+        words = re.findall(r'\b[A-Z][A-Za-z]*\b', query)  # Capitalized words
+        abbreviations = re.findall(r'\b[A-Z]{2,6}\b', query)  # 2-6 letter abbreviations
+        
+        # Combine and deduplicate
+        potential_terms = list(set(words + abbreviations))
+        
+        # Filter out common English words
+        common_words = {'The', 'What', 'How', 'Where', 'When', 'Why', 'And', 'Or', 'But', 'For', 'Of', 'In', 'On', 'At', 'To', 'From', 'With', 'By'}
+        potential_terms = [term for term in potential_terms if term not in common_words]
+        
+        return potential_terms
+
+    def _safe_search_classes(self, term: str) -> List[str]:
+        """Safely search for classes, handling errors"""
+        try:
+            # Use ontology_tools to search for classes
+            # This is a simplified implementation - the actual search method may vary
+            all_classes = getattr(self.ontology_tools.onto_settings.ontology, 'classes', lambda: [])()
+            
+            matching_classes = []
+            term_lower = term.lower()
+            
+            for cls in all_classes:
+                if hasattr(cls, 'name') and term_lower in cls.name.lower():
+                    matching_classes.append(cls.name)
+                    
+            return matching_classes[:10]  # Return top 10 matches
+            
+        except Exception as e:
+            print(f"[HypotheticalDocumentAgent] Search failed for term '{term}': {e}")
+            return []
+
+    def _safe_get_richness_info(self, class_name: str) -> Optional[Dict]:
+        """Safely get class richness information"""
+        try:
+            return self.ontology_tools.get_class_richness_info(class_name)
+        except Exception as e:
+            print(f"[HypotheticalDocumentAgent] Richness evaluation failed for '{class_name}': {e}")
+            return None
+
+    def _generate_enhanced_hypothetical_document(self, query: str, analysis: Dict, validation_history: Any = None) -> Dict:
+        """Generate hypothetical document using tool analysis results"""
+        
+        # Format validation history info if available
+        validation_info = ""
+        if validation_history:
+            validation_info = "Previous validation issues:\n"
+            if isinstance(validation_history, list):
+                for i, report in enumerate(validation_history):
+                    if hasattr(report, 'message'):
+                        validation_info += f"- Attempt {i+1}: {report.message}\n"
+            elif hasattr(validation_history, 'message'):
+                validation_info += f"- {validation_history.message}\n"
+
+        # Format tool analysis results
+        tool_findings = ""
+        if analysis["detected_terms"]:
+            tool_findings += "Tool Analysis Findings:\n"
+            for term in analysis["detected_terms"]:
+                candidates = analysis["class_candidates"].get(term, [])
+                if candidates:
+                    tool_findings += f"- '{term}' found in classes: {', '.join(candidates[:3])}\n"
+                    
+                    richness = analysis["richness_evaluations"].get(term, {})
+                    if richness:
+                        best_class = max(richness.items(), key=lambda x: x[1])
+                        tool_findings += f"  Most information-rich: {best_class[0]} (score: {best_class[1]:.2f})\n"
+
+        # Create the enhanced prompt
+        user_prompt = f"""As a chemistry expert with tool analysis support, please clarify this query:
+
+"{query}"
+
+{validation_info}
+
+{tool_findings}
+
+Based on both your chemistry expertise and the tool findings above, provide:
+
+1. CHEMISTRY EXPERT'S INTERPRETATION: Your understanding of what this query is asking, incorporating insights from the tool analysis about relevant classes and their information richness.
+
+2. HYPOTHETICAL IDEAL ANSWER: What would a complete, accurate response look like, utilizing the most information-rich classes identified.
+
+3. KEY CHEMISTRY CONCEPTS: Essential concepts for understanding this query, prioritizing those found in information-rich ontology classes.
+
+Format as JSON:
+"interpretation": Your chemistry expert's understanding
+"hypothetical_answer": Complete ideal answer
+"key_concepts": List of essential chemistry concepts (prioritize tool-identified rich classes)
+"""
+
+        # Call the model
+        response = self.model_instance.invoke([
+            ("system", self.system_prompt),
+            ("user", user_prompt)
+        ])
+        
+        # Process the response
+        try:
+            result = json.loads(response.content)
+            # Add tool analysis metadata
+            result["tool_analysis"] = analysis
+            return result
+        except json.JSONDecodeError:
+            print("[HypotheticalDocumentAgent] Warning: Could not parse enhanced response as JSON")
+            return {
+                "interpretation": "Could not parse structured response.",
+                "hypothetical_answer": response.content,
+                "key_concepts": [],
+                "tool_analysis": analysis
+            }
+
+    def _generate_basic_hypothetical_document(self, query: str, validation_history: Any = None) -> Dict:
+        """Fallback method for basic hypothetical document generation"""
         # Format validation history info if available
         validation_info = ""
         if validation_history:
@@ -720,8 +1015,8 @@ Focus ONLY on creating a chemistry expert's interpretation of the question and i
             elif hasattr(validation_history, 'message'):
                 validation_info += f"- {validation_history.message}\n"
         
-        # Create the prompt
-        user_prompt = f"""As a chemistry expert, please help clarify this chemistry query that has been difficult to interpret:
+        # Create the prompt without tool assistance
+        user_prompt = f"""As a chemistry expert, please help clarify this chemistry query:
 
 "{query}"
 

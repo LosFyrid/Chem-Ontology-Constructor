@@ -1202,6 +1202,111 @@ class OntologyTools:
                 return forest
         except Exception as e: error_msg = f"解析层级结构时出错: {e}\n{traceback.format_exc()}"; warnings.warn(error_msg); return {"error": error_msg}
 
+    def get_class_richness_info(self, class_name: str) -> Dict[str, Any]:
+        """快速评估类的信息丰富度
+        
+        用于在查询处理中快速评估候选类的潜在价值，基于：
+        1. 关联的属性数量（restrictions）
+        2. SourcedInformation实例数量
+        3. 层次关系丰富度
+        
+        Args:
+            class_name: 类名
+            
+        Returns:
+            包含丰富度指标的字典：
+            - property_count: 关联的属性数量
+            - sourced_info_count: SourcedInformation实例数量  
+            - restriction_count: 限制条件数量
+            - hierarchy_connections: 层次连接数（父类+子类）
+            - richness_score: 综合丰富度分数 (0-1)
+            - details: 详细信息用于调试
+        """
+        if not self._check_ontology_loaded():
+            return {"error": "本体未加载", "richness_score": 0.0}
+        
+        cls = self._get_class_by_name(class_name)
+        if not cls:
+            return {"error": f"类 '{class_name}' 未找到", "richness_score": 0.0}
+        
+        try:
+            # 1. 获取属性相关信息
+            properties_result = self._get_single_class_properties(class_name)
+            property_count = 0
+            restriction_count = 0
+            
+            if isinstance(properties_result, dict) and "error" not in properties_result:
+                property_count = len(properties_result)
+                # 统计限制条件总数
+                for prop_details in properties_result.values():
+                    if isinstance(prop_details, dict) and "restrictions" in prop_details:
+                        restriction_count += len(prop_details.get("restrictions", []))
+            
+            # 2. 获取SourcedInformation数量
+            sourced_info_count = 0
+            if self.has_information_prop and self.SourcedInformationClass:
+                try:
+                    sourced_infos = self._get_sourced_info(cls)
+                    sourced_info_count = len(sourced_infos)
+                except Exception as e:
+                    warnings.warn(f"获取 '{class_name}' 的SourcedInformation时出错: {e}")
+            
+            # 3. 获取层次关系信息
+            parents_result = self._get_single_parents(class_name)
+            children_result = self._get_single_children(class_name)
+            
+            parent_count = len(parents_result) if isinstance(parents_result, list) else 0
+            children_count = len(children_result) if isinstance(children_result, list) else 0
+            hierarchy_connections = parent_count + children_count
+            
+            # 4. 计算综合丰富度分数
+            # 使用加权评分系统，各指标权重可调整
+            weights = {
+                "properties": 0.4,      # 属性数量权重最高
+                "sourced_info": 0.3,    # 源信息权重次之  
+                "restrictions": 0.2,    # 限制条件权重
+                "hierarchy": 0.1        # 层次关系权重最低
+            }
+            
+            # 归一化各指标到0-1范围（使用经验性的最大值）
+            normalized_scores = {
+                "properties": min(property_count / 10.0, 1.0),  # 假设10个属性为满分
+                "sourced_info": min(sourced_info_count / 5.0, 1.0),  # 假设5个SI为满分
+                "restrictions": min(restriction_count / 15.0, 1.0),  # 假设15个限制为满分
+                "hierarchy": min(hierarchy_connections / 8.0, 1.0)   # 假设8个连接为满分
+            }
+            
+            # 计算加权平均分
+            richness_score = sum(
+                weights[key] * normalized_scores[key] 
+                for key in weights.keys()
+            )
+            
+            return {
+                "property_count": property_count,
+                "sourced_info_count": sourced_info_count,
+                "restriction_count": restriction_count,
+                "hierarchy_connections": hierarchy_connections,
+                "richness_score": round(richness_score, 4),
+                "details": {
+                    "normalized_scores": normalized_scores,
+                    "weights": weights,
+                    "parent_count": parent_count,
+                    "children_count": children_count
+                }
+            }
+            
+        except Exception as e:
+            error_msg = f"评估类 '{class_name}' 丰富度时出错: {e}"
+            warnings.warn(error_msg)
+            return {
+                "error": error_msg,
+                "richness_score": 0.0,
+                "property_count": 0,
+                "sourced_info_count": 0,
+                "restriction_count": 0,
+                "hierarchy_connections": 0
+            }
 
 class OntologyAnalyzer:
     """本体分析工具 - 专注于本体结构分析"""
@@ -1428,3 +1533,5 @@ class OntologyAnalyzer:
                  opportunities.extend([{"type": "innovation", **point} for point in innovation_pts if isinstance(point, dict)])
                 
         return opportunities
+
+    

@@ -168,14 +168,23 @@ class QueryQueueManager:
 class QueryManager:
     """独立的查询管理器，负责处理和管理所有查询请求"""
     
-    def __init__(self, max_workers: int = 4):
-        """初始化查询管理器"""
+    def __init__(self, max_workers: int = 4, ontology_settings=None):
+        """初始化查询管理器
+        
+        Args:
+            max_workers: 最大工作线程数
+            ontology_settings: OntologySettings实例，用于创建ontology_tools
+        """
         self.query_queue_manager = QueryQueueManager()
         self._query_to_state = QueryToStateAdapter()
         self._state_to_query = StateToQueryAdapter()
         self.class_name_cache: List[str] = []
         self.data_property_cache: List[str] = []  # 新增: 数据属性缓存
         self.object_property_cache: List[str] = []  # 新增: 对象属性缓存
+        
+        # 存储ontology_settings用于创建ontology_tools
+        self.ontology_settings = ontology_settings
+        self.ontology_tools = None  # 懒加载
         
         # ADDED Executor and Dispatcher related attributes
         self.executor = ThreadPoolExecutor(max_workers=max_workers) # Executor for query tasks
@@ -190,8 +199,15 @@ class QueryManager:
     def _initialize_graph(self):
         """Initializes the LangGraph query graph if not already done."""
         if self.query_graph is None:
+            # 懒加载ontology_tools
+            if self.ontology_tools is None:
+                if self.ontology_settings is None:
+                    raise RuntimeError("Cannot initialize query graph: ontology_settings not provided")
+                from .ontology_tools import OntologyTools
+                self.ontology_tools = OntologyTools(self.ontology_settings)
+            
             from .query_workflow import create_query_graph # Local import
-            self.query_graph = create_query_graph()
+            self.query_graph = create_query_graph(self.ontology_tools)
 
     def update_class_name_cache(self, ontology: Any):
         """Manually update the class name cache from the ontology."""
