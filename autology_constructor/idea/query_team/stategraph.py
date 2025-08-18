@@ -7,7 +7,7 @@
 from typing import Dict, List, Literal, Optional, Any
 from typing_extensions import Annotated, TypedDict
 from langgraph.graph.message import AnyMessage, add_messages
-from .schemas import NormalizedQuery, ToolPlan, ValidationReport
+from .schemas import NormalizedQuery, ToolPlan, ValidationReport, ToolCallHint
 from config.settings import OntologySettings
 
 
@@ -42,6 +42,7 @@ class QueryState(TypedDict):
     # Retry and Feedback
     retry_count: Optional[int]  # 重试计数
     force_strategy: Optional[str]  # 强制使用不同的策略
+    refiner_hints: Optional[List[ToolCallHint]]  # NEW: QueryRefiner生成的hints，用于重试指导
     hypothetical_document: Optional[Dict]  # 假设性文档（由化学专家生成）
     validation_history: Optional[List]  # 验证报告历史
     formatted_results: Optional[Dict]  # 格式化后的结果

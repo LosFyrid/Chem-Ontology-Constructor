@@ -16,8 +16,11 @@ from .workflow_utils import (
     generate_tool_call_signature, record_tool_call, has_tool_call_been_tried,
     detect_stagnation, handle_stagnation_with_entity_matcher
 )
-from .schemas import NormalizedQuery, ToolPlan, ValidationReport
+from .schemas import NormalizedQuery, ToolPlan, ValidationReport, ValidationClassification
 from .entity_matcher import EntityMatcher
+
+# 统一的重试次数配置 - 允许4轮重试 (retry_count: 0, 1, 2, 3, 4)
+MAX_RETRY_COUNT = 4
 from .stategraph import QueryState
 from autology_constructor.idea.common.llm_provider import get_cached_default_llm
 
@@ -54,19 +57,66 @@ def create_query_graph() -> Graph:
     def normalize_query(state: QueryState) -> Dict:
         """解析并标准化查询，优先使用refined_classes，包含LLM停滞检测"""
         retry_count = state.get("retry_count",0)
+        print(f"[DEBUG-NORMALIZE] Starting normalize_query, retry_count: {retry_count}")
+        print(f"[DEBUG-NORMALIZE] State type: {type(state)}")
+        print(f"[DEBUG-NORMALIZE] State keys: {list(state.keys()) if isinstance(state, dict) else 'Not a dict'}")
+        
+        # 特别检查refiner_hints
+        refiner_hints_in_state = state.get("refiner_hints", "NOT_FOUND")
+        print(f"[DEBUG-NORMALIZE] refiner_hints in state: {refiner_hints_in_state}")
+        print(f"[DEBUG-NORMALIZE] refiner_hints type: {type(refiner_hints_in_state)}")
+        if isinstance(refiner_hints_in_state, list):
+            print(f"[DEBUG-NORMALIZE] refiner_hints length: {len(refiner_hints_in_state)}")
+            for i, hint in enumerate(refiner_hints_in_state):
+                print(f"[DEBUG-NORMALIZE] refiner_hints[{i}]: {hint}")
+        
+        # 检查其他重要字段
+        print(f"[DEBUG-NORMALIZE] refiner_decision in state: {type(state.get('refiner_decision', 'NOT_FOUND'))}")
+        print(f"[DEBUG-NORMALIZE] stage: {state.get('stage', 'NOT_FOUND')}")
+        print(f"[DEBUG-NORMALIZE] status: {state.get('status', 'NOT_FOUND')}")
+        
         try:
             # 从state获取ontology_tools
             ontology_tools = state.get("ontology_tools")
+            print(f"[DEBUG-NORMALIZE] ontology_tools: {type(ontology_tools)}")
             if not ontology_tools:
                 raise ValueError("ontology_tools not found in state")
             
-            query = state["query"]
-            available_classes = state["available_classes"]
-            available_data_properties = state["available_data_properties"]
-            available_object_properties = state["available_object_properties"]
+            # 安全地获取state中的必需字段
+            print(f"[DEBUG-NORMALIZE] Accessing required state fields...")
+            try:
+                query = state["query"]
+                print(f"[DEBUG-NORMALIZE] query: {query}")
+            except KeyError as e:
+                print(f"[DEBUG-NORMALIZE] ERROR: Missing query in state: {e}")
+                raise
+            except Exception as e:
+                print(f"[DEBUG-NORMALIZE] ERROR: Unexpected error accessing query: {e}")
+                raise
+                
+            try:
+                available_classes = state["available_classes"]
+                print(f"[DEBUG-NORMALIZE] available_classes count: {len(available_classes) if available_classes else 'None'}")
+            except KeyError as e:
+                print(f"[DEBUG-NORMALIZE] ERROR: Missing available_classes in state: {e}")
+                raise
+            except Exception as e:
+                print(f"[DEBUG-NORMALIZE] ERROR: Unexpected error accessing available_classes: {e}")
+                raise
+                
+            try:
+                available_data_properties = state["available_data_properties"]
+                available_object_properties = state["available_object_properties"]
+                print(f"[DEBUG-NORMALIZE] properties loaded successfully")
+            except KeyError as e:
+                print(f"[DEBUG-NORMALIZE] ERROR: Missing properties in state: {e}")
+                raise
+            except Exception as e:
+                print(f"[DEBUG-NORMALIZE] ERROR: Unexpected error accessing properties: {e}")
+                raise
             
             # 创建EntityMatcher
-            entity_matcher = EntityMatcher([])
+            entity_matcher = EntityMatcher(available_classes)
             
             # NEW: 检测LLM停滞
             if detect_stagnation(state):
@@ -92,7 +142,31 @@ def create_query_graph() -> Graph:
             
             # NEW: 处理来自refiner的hints - 只处理class相关的hints
             refiner_hints = state.get("refiner_hints", [])
-            class_related_hints = [h for h in refiner_hints if h.action in ["replace_class"]]
+            print(f"[DEBUG-HINTS] Raw refiner_hints: {refiner_hints}")
+            print(f"[DEBUG-HINTS] Type of refiner_hints: {type(refiner_hints)}")
+            print(f"[DEBUG-HINTS] Length of refiner_hints: {len(refiner_hints) if isinstance(refiner_hints, list) else 'Not a list'}")
+            
+            # 安全检查每个hint对象
+            class_related_hints = []
+            if isinstance(refiner_hints, list):
+                for i, h in enumerate(refiner_hints):
+                    print(f"[DEBUG-HINTS] Processing hint {i}: {h}, type: {type(h)}")
+                    if h is None:
+                        print(f"[DEBUG-HINTS] Hint {i} is None, skipping")
+                        continue
+                    try:
+                        if hasattr(h, 'action') and h.action in ["replace_class"]:
+                            class_related_hints.append(h)
+                            print(f"[DEBUG-HINTS] Added class-related hint {i}: action={h.action}")
+                        else:
+                            print(f"[DEBUG-HINTS] Hint {i} not class-related: action={getattr(h, 'action', 'NO_ACTION_ATTR')}")
+                    except Exception as e:
+                        print(f"[DEBUG-HINTS] Error processing hint {i}: {e}")
+                        continue
+            else:
+                print(f"[DEBUG-HINTS] refiner_hints is not a list: {type(refiner_hints)}")
+            
+            print(f"[DEBUG-HINTS] Final class_related_hints count: {len(class_related_hints)}")
             
             # Prepare state for parser agent, including available classes
             if state.get("validation_report"):
@@ -332,8 +406,12 @@ def create_query_graph() -> Graph:
             }
             iteration_history.append(current_iteration_snapshot)
 
-            # Determine final status based on validation
-            final_status = "success" if validation_result.valid else "warning"
+            # Determine final status based on validation - check if all tool classifications are sufficient
+            all_sufficient = all(
+                tc.classification == ValidationClassification.SUFFICIENT 
+                for tc in validation_result.tool_classifications
+            )
+            final_status = "success" if all_sufficient else "warning"
             validation_message = validation_result.message
 
             return {
@@ -599,30 +677,21 @@ def create_query_graph() -> Graph:
             if state.get("iteration_history"):
                 result["iteration_history"] = state["iteration_history"]
             
-            # 基于决策类型进行不同处理
-            if refiner_decision.overall_action == "retry":
-                # 重试：传递hints给下一轮执行
-                result["refiner_hints"] = refiner_decision.tool_call_hints
-                
-            elif refiner_decision.overall_action == "expand":
-                # 扩展搜索：增加更多候选类
-                current_refined = state.get("refined_classes", [])
-                available_classes = state.get("available_classes", [])
-                
-                # 扩展候选类集合
-                if len(current_refined) < 50 and len(available_classes) > len(current_refined):
-                    expanded_classes = available_classes[:min(50, len(available_classes))]
-                    result["refined_classes"] = expanded_classes
-                    logger.info(f"[refine_query_decision] 扩展候选类到 {len(expanded_classes)} 个")
-                
-            elif refiner_decision.overall_action == "continue":
+            # 基于决策类型进行不同处理 - 简化版本
+            if refiner_decision.overall_action == "continue":
                 # 继续：保持当前结果
                 result["validation_success"] = True
-                
             elif refiner_decision.overall_action == "terminate":
                 # 终止：设置终止标志
                 result["should_terminate"] = True
                 result["termination_reason"] = refiner_decision.reason
+            else:
+                # 所有其他情况（主要是retry）：传递hints给下一轮执行
+                result["refiner_hints"] = refiner_decision.tool_call_hints
+                print(f"[refiner_decision] 传递 {len(refiner_decision.tool_call_hints)} 个hints进行重试")
+                print(f"[refiner_decision] 设置的hints: {refiner_decision.tool_call_hints}")
+                print(f"[refiner_decision] result keys: {result.keys()}")
+                print(f"[refiner_decision] result['refiner_hints']: {result['refiner_hints']}")
             
             return result
             
@@ -661,15 +730,22 @@ def create_query_graph() -> Graph:
         print(f"Current stage: {current_stage}, Status: {current_state}, Retry count: {retry_count}")
         
         # 智能终止条件检查
-        if state.get("should_terminate") or retry_count >= 5:
-            termination_reason = state.get("termination_reason", f"Maximum retry limit reached ({retry_count})")
-            print(f"[decide_next_node] 终止工作流: {termination_reason}")
+        if state.get("should_terminate") or retry_count >= MAX_RETRY_COUNT:
+            if retry_count >= MAX_RETRY_COUNT:
+                termination_reason = f"已超出最大重试次数限制 ({MAX_RETRY_COUNT} 轮)，终止查询处理"
+                print(f"[decide_next_node] {termination_reason}")
+            else:
+                termination_reason = state.get("termination_reason", f"Maximum retry limit reached ({retry_count})")
+                print(f"[decide_next_node] 终止工作流: {termination_reason}")
             return "format_results"
         
         # NEW: 增强的Refiner决策路由
         if current_stage == "refiner_decision":
             refiner_decision = state.get("refiner_decision")
             validation_report = state.get("validation_report")
+            
+            print(f"[decide_next_node] State中的refiner_hints: {state.get('refiner_hints', 'NOT_FOUND')}")
+            print(f"[decide_next_node] State keys: {list(state.keys())}")
             
             if refiner_decision:
                 action = refiner_decision.overall_action
@@ -678,12 +754,18 @@ def create_query_graph() -> Graph:
                 if action == "continue":
                     # 验证成功，继续到结果格式化
                     return "format_results"
-                    
-                elif action == "retry":
-                    # 分析hints的action类型来决定路由
+                elif action == "terminate":
+                    # 明确终止
+                    print("[decide_next_node] Refiner决策终止")
+                    return "format_results"
+                else:
+                    # 所有其他情况（主要是retry）：基于hints类型决定路由
                     hints = refiner_decision.tool_call_hints
                     if not hints:
-                        print("[decide_next_node] 无可用hints，正常重试流程")
+                        print("[decide_next_node] 无可用hints，默认路由到normalize")
+                        # 重试路径：递增retry_count
+                        state["retry_count"] = retry_count + 1
+                        print(f"[decide_next_node] 递增retry_count到 {retry_count + 1}")
                         return "normalize"
                     
                     # 统计各种action类型
@@ -693,14 +775,18 @@ def create_query_graph() -> Graph:
                     
                     print(f"[decide_next_node] Hints分析: replace_tool={len(replace_tool_hints)}, replace_class={len(replace_class_hints)}, skip={len(skip_hints)}")
                     
-                    # 如果全部都是skip，看是否还有其他有效hints
+                    # 如果全部都是skip，终止重试
                     if len(skip_hints) == len(hints):
                         print("[decide_next_node] 所有hints都是skip，终止重试")
                         return "format_results"
                     
+                    # 重试路径：递增retry_count
+                    state["retry_count"] = retry_count + 1
+                    print(f"[decide_next_node] 递增retry_count到 {retry_count + 1}")
+                    
                     # 根据hint类型决定路由
                     if replace_class_hints and replace_tool_hints:
-                        # 混合情况：需要改类也需要改工具 → 路由到normalize，给两个agent分别传递hints
+                        # 混合情况：需要改类也需要改工具 → 路由到normalize
                         print("[decide_next_node] 混合hints：同时需要更换类和工具 → normalize")
                         return "normalize"
                     elif replace_class_hints and not replace_tool_hints:
@@ -712,30 +798,9 @@ def create_query_graph() -> Graph:
                         print("[decide_next_node] 仅需更换工具 → strategy")
                         return "strategy"
                     else:
-                        # 其他情况，默认重试
+                        # 其他情况，默认重试normalize
                         print("[decide_next_node] 其他hint情况，默认重试 → normalize")
                         return "normalize"
-                        
-                elif action == "expand":
-                    # 不再有expand逻辑，直接终止
-                    print("[decide_next_node] expand action不再支持，格式化当前结果")
-                    return "format_results"
-                        
-                elif action == "terminate":
-                    # 明确终止：检查是否有部分成功的结果
-                    if validation_report and len(validation_report.tool_classifications) > 0:
-                        # 有部分结果，进行格式化
-                        successful_calls = [tc for tc in validation_report.tool_classifications 
-                                          if tc.classification in ["sufficient", "insufficient_properties"]]
-                        if successful_calls:
-                            print(f"[decide_next_node] 部分成功 ({len(successful_calls)}/{len(validation_report.tool_classifications)})，格式化结果")
-                            return "format_results"
-                    
-                    print("[decide_next_node] 完全失败，直接终止")
-                    return END
-                else:
-                    print(f"[decide_next_node] 未知的refiner action: {action}, 默认格式化")
-                    return "format_results"
             else:
                 print("[decide_next_node] 缺少refiner_decision，继续到format_results")
                 return "format_results"
@@ -747,9 +812,9 @@ def create_query_graph() -> Graph:
         # 传统重试逻辑（保留作为后备，但优先级降低）
         if current_stage == "validated" and current_state == "warning" and not state.get("refiner_decision"):
             print(f"[decide_next_node] 进入传统重试逻辑, Retry count: {retry_count}")
-            if retry_count <= 2:
+            if retry_count <= MAX_RETRY_COUNT - 2:  # 允许到retry_count=2
                 return "normalize"
-            elif retry_count == 3:
+            elif retry_count == MAX_RETRY_COUNT - 1:  # retry_count=3时
                 return "generate_hypothetical_document"
             else:
                 print(f"[decide_next_node] 超出重试次数 ({retry_count})")

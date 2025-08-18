@@ -234,19 +234,59 @@ Given a natural language query, the already identified main query body (intent, 
                 user_content += "\n--- END OF HYPOTHETICAL DOCUMENT INSIGHTS ---"
 
         # NEW: 处理class hints
+        print(f"[DEBUG-CLASS-HINTS] Processing class_hints: {class_hints}")
+        print(f"[DEBUG-CLASS-HINTS] Type of class_hints: {type(class_hints)}")
+        
         if class_hints:
             hints_text = []
-            for hint in class_hints:
-                hints_text.append(f"- Previous attempt with class '{hint.class_name}' had issues: {hint.hint}")
+            print(f"[DEBUG-CLASS-HINTS] class_hints is truthy, length: {len(class_hints) if hasattr(class_hints, '__len__') else 'No length'}")
             
-            hints_section = "\n".join(hints_text)
-            user_content += f"""
+            # 安全地迭代class_hints
+            try:
+                for i, hint in enumerate(class_hints):
+                    print(f"[DEBUG-CLASS-HINTS] Processing hint {i}: {hint}, type: {type(hint)}")
+                    
+                    if hint is None:
+                        print(f"[DEBUG-CLASS-HINTS] Hint {i} is None, skipping")
+                        continue
+                        
+                    try:
+                        # 安全地访问hint的属性
+                        class_name = getattr(hint, 'class_name', None)
+                        hint_text = getattr(hint, 'hint', None)
+                        
+                        print(f"[DEBUG-CLASS-HINTS] Hint {i} - class_name: {class_name}, hint_text: {hint_text}")
+                        
+                        if class_name is not None and hint_text is not None:
+                            hints_text.append(f"- Previous attempt with class '{class_name}' had issues: {hint_text}")
+                            print(f"[DEBUG-CLASS-HINTS] Successfully processed hint {i}")
+                        else:
+                            print(f"[DEBUG-CLASS-HINTS] Hint {i} missing required attributes")
+                            
+                    except Exception as hint_error:
+                        print(f"[DEBUG-CLASS-HINTS] Error accessing attributes of hint {i}: {hint_error}")
+                        continue
+                        
+            except Exception as iterate_error:
+                print(f"[DEBUG-CLASS-HINTS] Error iterating through class_hints: {iterate_error}")
+                hints_text = []
+            
+            print(f"[DEBUG-CLASS-HINTS] Final hints_text: {hints_text}")
+            
+            if hints_text:
+                hints_section = "\n".join(hints_text)
+                user_content += f"""
 
 --- CLASS SELECTION HINTS ---
 {hints_section}
 
 Please consider these hints when selecting relevant_entities. Try to choose different classes that avoid the mentioned issues.
 --- END OF CLASS SELECTION HINTS ---"""
+                print(f"[DEBUG-CLASS-HINTS] Added hints section to user_content")
+            else:
+                print(f"[DEBUG-CLASS-HINTS] No valid hints to add")
+        else:
+            print(f"[DEBUG-CLASS-HINTS] class_hints is falsy")
 
         user_content += f"\n\nAvailable classes: {class_list_str}"
         user_content += "\n\nOutput *only* the JSON object conforming to the NormalizedQueryBody schema."
@@ -623,10 +663,15 @@ You are an expert classifier for ontology query results. Your job is to classify
 
 Classification Categories:
 - "sufficient": Good results with adequate information
-- "insufficient_properties": Results exist but lack property/relationship details  
+- "insufficient_properties": Results exist but lack property/relationship details (ONLY for basic tools like get_class_info)
 - "insufficient": Results are incomplete or inadequate
 - "no_results": No meaningful results returned
 - "error": Execution failed or returned errors
+
+IMPORTANT CLASSIFICATION RULES:
+1. If a tool call used detailed property tools (get_class_properties, parse_class_definition), do NOT classify as "insufficient_properties"
+2. For detailed property tools, use only "sufficient", "insufficient", "no_results", or "error"
+3. Use "insufficient_properties" ONLY when basic tools like get_class_info were used and more detailed property information could be obtained
 
 For each tool call in the results, provide:
 1. Tool name (e.g., "get_class_properties")
@@ -634,11 +679,7 @@ For each tool call in the results, provide:
 3. Classification from the 5 categories above
 4. Brief reason (1 sentence)
 
-Also provide an overall classification based on the worst individual classification.
-
 Your response MUST include:
-- valid: boolean indicating overall validation success
-- overall_classification: the overall classification label
 - tool_classifications: list of individual tool call classifications
 - message: brief summary message describing the overall assessment
 
@@ -675,7 +716,6 @@ Keep your output simple and structured.
         if not results:
             return ValidationReport(
                 valid=False,
-                overall_classification=ValidationClassification.NO_RESULTS,
                 tool_classifications=[],
                 message="No query results to validate"
             )
@@ -686,7 +726,6 @@ Keep your output simple and structured.
         except Exception as e:
             return ValidationReport(
                 valid=False,
-                overall_classification=ValidationClassification.ERROR,
                 tool_classifications=[],
                 message=f"Failed to serialize results: {str(e)}"
             )
@@ -774,7 +813,12 @@ Output a ValidationReport with:
         
         formatted = []
         for i, call in enumerate(tool_call_info, 1):
-            class_name = call["params"].get("class_name", "unknown")
+            # 支持多种参数名称格式
+            params = call.get("params", {})
+            class_name = (params.get("class_name") or 
+                         params.get("class_names") or 
+                         params.get("classes") or 
+                         "unknown")
             formatted.append(f"{i}. {call['tool']}(class_name='{class_name}')")
         
         return "\n".join(formatted)

@@ -131,16 +131,36 @@ def handle_stagnation_with_entity_matcher(state: QueryState, entity_matcher, ont
     try:
         logger.info("[StagnationHandler] 检测到LLM停滞，启动EntityMatcher获取新候选")
         
-        # 获取原始查询
+        # 获取原始查询和实体信息
         original_query = state.get("query", "")
+        normalized_query_obj = state.get("normalized_query")
+        
         if not original_query:
+            logger.warning("[StagnationHandler] 缺少原始查询")
             return {}
         
+        # 从normalized_query中提取实体，如果没有则使用查询本身
+        entities = []
+        if normalized_query_obj and hasattr(normalized_query_obj, 'relevant_entities'):
+            entities = normalized_query_obj.relevant_entities
+        
+        if not entities:
+            # 如果没有标准化的实体，使用原始查询作为单个实体
+            entities = [original_query]
+            logger.info(f"[StagnationHandler] 使用原始查询作为实体: {entities}")
+        
         # 使用EntityMatcher获取新的候选类
-        new_candidates = entity_matcher.extract_ranked_candidate_classes(
-            query=original_query, 
-            top_k=30  # 获取更多候选进行丰富度评估
+        ranked_results = entity_matcher.extract_ranked_candidate_classes(
+            entities=entities, 
+            k=30  # 获取更多候选进行丰富度评估
         )
+        
+        # 从排序结果中提取候选类名
+        new_candidates = set()
+        for entity_candidates in ranked_results.values():
+            for candidate, score in entity_candidates:
+                new_candidates.add(candidate)
+        new_candidates = sorted(list(new_candidates))
         
         if not new_candidates:
             logger.warning("[StagnationHandler] EntityMatcher未返回新候选")

@@ -478,7 +478,7 @@ class OntologyTools:
             for item in raw_linked_items:
                  if self.SourcedInformationClass in item.is_a:
                      if info_type:
-                         item_types = getattr(item, 'type', []); item_types = [item_types] if isinstance(item_types, str) else item_types
+                         item_types = getattr(item, 'type', []) or []; item_types = [item_types] if isinstance(item_types, str) else item_types
                          target_types = [info_type] if isinstance(info_type, str) else info_type
                          if any(t in item_types for t in target_types): linked_info_instances.append(item)
                      else: linked_info_instances.append(item)

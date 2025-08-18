@@ -70,8 +70,6 @@ class ToolCallClassification(BaseModel):
 
 class ValidationReport(BaseModel):
     """简化的验证报告结构"""
-    valid: bool = Field(description="Overall assessment of whether the query result is valid")
-    overall_classification: ValidationClassification = Field(description="Overall classification label")
     tool_classifications: List[ToolCallClassification] = Field(default_factory=list, description="Classification for each tool call")
     message: str = Field(description="Brief summary message")
 

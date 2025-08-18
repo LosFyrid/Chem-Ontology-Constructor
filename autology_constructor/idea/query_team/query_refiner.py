@@ -50,10 +50,20 @@ class QueryRefiner:
             
             # 为每个工具调用生成hints
             tool_call_hints = []
-            for tool_classification in validation_report.tool_classifications:
+            print(f"[DEBUG-REFINER] Starting hint generation for {len(validation_report.tool_classifications)} tool classifications")
+            for i, tool_classification in enumerate(validation_report.tool_classifications):
+                print(f"[DEBUG-REFINER] Processing tool classification {i}: {tool_classification}")
                 hint = self._generate_tool_call_hint(state, tool_classification)
+                print(f"[DEBUG-REFINER] Generated hint {i}: {hint}, type: {type(hint)}")
                 if hint:
                     tool_call_hints.append(hint)
+                    print(f"[DEBUG-REFINER] Added hint {i} to tool_call_hints")
+                else:
+                    print(f"[DEBUG-REFINER] Hint {i} is None, not adding to list")
+            
+            print(f"[DEBUG-REFINER] Final tool_call_hints: {tool_call_hints}")
+            print(f"[DEBUG-REFINER] Final tool_call_hints count: {len(tool_call_hints)}")
+            print(f"[DEBUG-REFINER] Final tool_call_hints types: {[type(h) for h in tool_call_hints]}")
             
             # 基于个别hints决定整体行动
             overall_action = self._determine_overall_action(validation_report, tool_call_hints, retry_count)
@@ -251,26 +261,23 @@ class QueryRefiner:
     
     def _determine_overall_action(self, validation_report: ValidationReport, 
                                 tool_call_hints: List[ToolCallHint], retry_count: int) -> str:
-        """基于工具调用hints确定整体行动"""
+        """基于所有工具调用的validation结果确定整体行动"""
         
-        overall_classification = validation_report.overall_classification
+        # 检查所有工具调用是否都充分
+        all_sufficient = all(
+            tc.classification == ValidationClassification.SUFFICIENT 
+            for tc in validation_report.tool_classifications
+        )
         
-        # 如果所有工具调用都成功，继续
-        if overall_classification == ValidationClassification.SUFFICIENT:
+        # 如果所有工具调用都充分，继续到格式化
+        if all_sufficient:
             return "continue"
         
         # 如果重试次数过多，终止
-        if retry_count >= 3:
+        if retry_count >= 4:  # MAX_RETRY_COUNT = 4
             return "terminate"
         
-        # 检查是否有有效的hints
-        actionable_hints = [h for h in tool_call_hints if h.action != "skip"]
-        
-        if not actionable_hints:
-            # 没有可行的hints，可能需要扩展搜索
-            return "expand" if retry_count < 2 else "terminate"
-        
-        # 有hints可以尝试
+        # 否则就是重试（让decide_next_node基于具体的hints决定路由）
         return "retry"
     
     def _generate_decision_reason(self, validation_report: ValidationReport, 
@@ -291,7 +298,7 @@ class QueryRefiner:
             return f"Insufficient hints generated, expanding search space (retry #{retry_count + 1})"
         
         elif overall_action == "terminate":
-            if retry_count >= 3:
+            if retry_count >= 4:  # MAX_RETRY_COUNT = 4
                 return f"Maximum retry limit reached ({retry_count}), terminating"
             else:
                 return f"No viable improvement options found, terminating"
