@@ -225,7 +225,7 @@ queries = [item["question"] for item in temp_qas[:num]]
 revised_queries = [item["question"] for item in temp_qas[:num]]
 
 query_context = {
-    "ontology": test_ontology_settings,
+    "ontology": ONTOLOGY_SETTINGS,
     "originating_team": "test_notebook",
     "originating_stage": "manual_test",
     "query_type": "information_retrieval" # 对所有查询使用信息检索类型

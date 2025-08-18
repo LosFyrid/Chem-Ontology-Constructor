@@ -173,7 +173,7 @@ class QueryManager:
         
         Args:
             max_workers: 最大工作线程数
-            ontology_settings: OntologySettings实例，用于创建ontology_tools
+            ontology_settings: OntologySettings实例，用于创建ontology_tools (不再使用)
         """
         self.query_queue_manager = QueryQueueManager()
         self._query_to_state = QueryToStateAdapter()
@@ -181,12 +181,6 @@ class QueryManager:
         self.class_name_cache: List[str] = []
         self.data_property_cache: List[str] = []  # 新增: 数据属性缓存
         self.object_property_cache: List[str] = []  # 新增: 对象属性缓存
-        
-        # 存储ontology_settings用于创建ontology_tools
-        self.ontology_settings = ontology_settings
-        
-        # 线程本地存储，每个工作线程将有自己的OntologyTools实例
-        self._thread_local = threading.local()
         
         # ADDED Executor and Dispatcher related attributes
         self.executor = ThreadPoolExecutor(max_workers=max_workers) # Executor for query tasks
@@ -198,36 +192,11 @@ class QueryManager:
         # 推迟 LangGraph 初始化，避免循环导入
         self.query_graph = None
     
-    def _get_thread_ontology_tools(self):
-        """获取当前线程的OntologyTools实例，实现线程安全的本体访问"""
-        if not hasattr(self._thread_local, 'ontology_tools'):
-            if self.ontology_settings is None:
-                raise RuntimeError("Cannot create thread-local ontology_tools: ontology_settings not provided")
-            from .ontology_tools import OntologyTools
-            
-            # 为每个线程创建独立的OntologySettings实例（土办法但有效）
-            # 创建一个新的设置实例，这样每个线程都有独立的本体副本
-            from config.settings import OntologySettings
-            thread_settings = OntologySettings(
-                base_iri=self.ontology_settings.base_iri,
-                ontology_file_name=self.ontology_settings.ontology_file_name,
-                directory_path=self.ontology_settings.directory_path,
-                closed_ontology_file_name=self.ontology_settings.closed_ontology_file_name
-            )
-            
-            self._thread_local.ontology_tools = OntologyTools(thread_settings)
-            print(f"Created thread-local OntologyTools instance for thread: {threading.current_thread().name}")
-        return self._thread_local.ontology_tools
-    
     def _initialize_graph(self):
         """Initializes the LangGraph query graph if not already done."""
         if self.query_graph is None:
-            # 使用线程本地的ontology_tools创建graph
-            # 注意：这个方法主要在主线程调用，所以会为主线程创建一个实例
-            ontology_tools = self._get_thread_ontology_tools()
-            
             from .query_workflow import create_query_graph # Local import
-            self.query_graph = create_query_graph(ontology_tools)
+            self.query_graph = create_query_graph()
 
     def update_class_name_cache(self, ontology: Any):
         """Manually update the class name cache from the ontology."""
@@ -397,14 +366,32 @@ class QueryManager:
         query_state["available_data_properties"] = self.data_property_cache  # 新增: 添加数据属性到状态
         query_state["available_object_properties"] = self.object_property_cache  # 新增: 添加对象属性到状态
 
-        # 获取线程本地的ontology_tools并创建专用的graph
-        thread_ontology_tools = self._get_thread_ontology_tools()
+        # 创建OntologyTools实例并存储到state中
+        from .ontology_tools import OntologyTools
+        from config.settings import OntologySettings
         
-        # 为当前线程创建独立的graph实例，避免工具共享冲突
+        original_settings = query_state["source_ontology"]
+        if not original_settings:
+            raise ValueError("source_ontology is required in query context")
+        
+        # 为每个查询创建完全独立的OntologySettings实例
+        # 这会创建独立的owlready2 World，避免并发冲突
+        independent_settings = OntologySettings(
+            base_iri=original_settings.base_iri,
+            ontology_file_name=original_settings.ontology_file_name,
+            directory_path=original_settings.directory_path,
+            closed_ontology_file_name=original_settings.closed_ontology_file_name
+        )
+        
+        ontology_tools = OntologyTools(independent_settings)
+        query_state["ontology_tools"] = ontology_tools
+        print(f"Created independent OntologySettings with World ID: {id(independent_settings._world)} for query")
+        
+        # 创建query graph（不再需要传递ontology_tools参数）
         from .query_workflow import create_query_graph
-        thread_query_graph = create_query_graph(thread_ontology_tools)
+        query_graph = create_query_graph()
              
-        final_state = thread_query_graph.invoke(query_state)
+        final_state = query_graph.invoke(query_state)
 
         # 将最终的QueryState转换回Query对象（更新状态/结果）
         self._state_to_query.transform(final_state, query)

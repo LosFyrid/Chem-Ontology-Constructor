@@ -24,8 +24,8 @@ from autology_constructor.idea.common.llm_provider import get_cached_default_llm
 logger = logging.getLogger(__name__)
 
 
-def create_query_graph(ontology_tools: OntologyTools) -> Graph:
-    """创建查询工作流 - 通过依赖注入使用ontology_tools实例"""
+def create_query_graph() -> Graph:
+    """创建查询工作流 - ontology_tools现在从QueryState中获取"""
 
     workflow = StateGraph(QueryState)
 
@@ -47,22 +47,26 @@ def create_query_graph(ontology_tools: OntologyTools) -> Graph:
     hypothetical_document_agent = HypotheticalDocumentAgent(model=default_model)
     result_formatter_agent = ResultFormatterAgent(model=default_model)
     
-    # 使用注入的ontology_tools实例初始化组件
-    query_refiner = QueryRefiner(ontology_tools)
-    entity_matcher = EntityMatcher([])  # 将在refine_entities中重新初始化
-    
-    # 为HypotheticalDocumentAgent设置ontology_tools
-    hypothetical_document_agent.set_ontology_tools(ontology_tools)
+    # 注意：ontology_tools现在从state中获取，不再在这里初始化
+    # QueryRefiner和EntityMatcher将在节点函数中按需创建
     
     # 节点实现
     def normalize_query(state: QueryState) -> Dict:
         """解析并标准化查询，优先使用refined_classes，包含LLM停滞检测"""
         retry_count = state.get("retry_count",0)
         try:
+            # 从state获取ontology_tools
+            ontology_tools = state.get("ontology_tools")
+            if not ontology_tools:
+                raise ValueError("ontology_tools not found in state")
+            
             query = state["query"]
             available_classes = state["available_classes"]
             available_data_properties = state["available_data_properties"]
             available_object_properties = state["available_object_properties"]
+            
+            # 创建EntityMatcher
+            entity_matcher = EntityMatcher([])
             
             # NEW: 检测LLM停滞
             if detect_stagnation(state):
@@ -92,7 +96,7 @@ def create_query_graph(ontology_tools: OntologyTools) -> Graph:
             
             # Prepare state for parser agent, including available classes
             if state.get("validation_report"):
-                enhanced_feedback = getattr(state.get("validation_report"), "improvement_suggestions")
+                enhanced_feedback = getattr(state.get("validation_report"), "message", None)
             else:
                 enhanced_feedback = None
                 
@@ -180,8 +184,13 @@ def create_query_graph(ontology_tools: OntologyTools) -> Graph:
             }
     
     def execute_query(state: QueryState) -> Dict:
-        """执行查询 (工具序列或SPARQL) - 使用注入的ontology_tools实例"""
+        """执行查询 (工具序列或SPARQL) - 从state获取ontology_tools实例"""
         try:
+            # 从state获取ontology_tools
+            ontology_tools = state.get("ontology_tools")
+            if not ontology_tools:
+                raise ValueError("ontology_tools not found in state")
+            
             strategy = state.get("query_strategy")
             normalized_query_obj = state["normalized_query"]
             ontology_settings = state["source_ontology"]
@@ -358,6 +367,11 @@ def create_query_graph(ontology_tools: OntologyTools) -> Graph:
     def generate_hypothetical_document(state: QueryState) -> Dict:
         """从专业化学家角度生成假设性答案，帮助查询标准化"""
         try:
+            # 从state获取ontology_tools并设置给agent
+            ontology_tools = state.get("ontology_tools")
+            if ontology_tools:
+                hypothetical_document_agent.set_ontology_tools(ontology_tools)
+            
             query = state.get("query")
             validation_history = state.get("validation_history", [])
             
@@ -537,6 +551,11 @@ def create_query_graph(ontology_tools: OntologyTools) -> Graph:
     def refine_query_decision(state: QueryState) -> Dict:
         """增强QueryRefiner决策节点 - 完善状态传递和记忆利用"""
         try:
+            # 从state获取ontology_tools
+            ontology_tools = state.get("ontology_tools")
+            if not ontology_tools:
+                raise ValueError("ontology_tools not found in state")
+            
             validation_report = state.get("validation_report")
             if not validation_report:
                 # 没有验证报告，跳过refiner
@@ -546,6 +565,9 @@ def create_query_graph(ontology_tools: OntologyTools) -> Graph:
                     "previous_stage": state.get("stage"),
                     "messages": [SystemMessage(content="Refiner skipped: no validation report")]
                 }
+            
+            # 创建QueryRefiner实例
+            query_refiner = QueryRefiner(ontology_tools)
             
             # 传递完整的状态信息给QueryRefiner，包括记忆和历史
             enhanced_state = {

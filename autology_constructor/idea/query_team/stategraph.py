@@ -25,6 +25,9 @@ class QueryState(TypedDict):
     available_object_properties: List[str]
     refined_classes: Optional[List[str]]  # Refined candidate classes for optimization
     
+    # Tools
+    ontology_tools: Optional[Any]  # OntologyTools实例，存储在state中
+    
     # Query Management
     query_results: Dict  # 查询结果
     normalized_query: Optional[NormalizedQuery]  # 标准化的查询结构
