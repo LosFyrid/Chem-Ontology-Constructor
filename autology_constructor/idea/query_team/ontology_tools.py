@@ -1262,17 +1262,17 @@ class OntologyTools:
             # 4. 计算综合丰富度分数
             # 使用加权评分系统，各指标权重可调整
             weights = {
-                "properties": 0.4,      # 属性数量权重最高
-                "sourced_info": 0.3,    # 源信息权重次之  
-                "restrictions": 0.2,    # 限制条件权重
+                "properties": 0.3,      # 属性数量权重
+                "sourced_info": 0.3,    # 源信息权重 
+                "restrictions": 0.3,    # 限制条件权重
                 "hierarchy": 0.1        # 层次关系权重最低
             }
             
             # 归一化各指标到0-1范围（使用经验性的最大值）
             normalized_scores = {
                 "properties": min(property_count / 10.0, 1.0),  # 假设10个属性为满分
-                "sourced_info": min(sourced_info_count / 5.0, 1.0),  # 假设5个SI为满分
-                "restrictions": min(restriction_count / 15.0, 1.0),  # 假设15个限制为满分
+                "sourced_info": min(sourced_info_count / 10.0, 1.0),  # 假设5个SI为满分
+                "restrictions": min(restriction_count / 10.0, 1.0),  # 假设15个限制为满分
                 "hierarchy": min(hierarchy_connections / 8.0, 1.0)   # 假设8个连接为满分
             }
             

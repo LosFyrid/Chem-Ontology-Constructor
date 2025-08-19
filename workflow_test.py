@@ -245,8 +245,11 @@ query_context = {
 
 print(len(queries),len(revised_queries))
 
-queries = [queries[4], queries[6], queries[20]]
-revised_queries =  [revised_queries[4],  revised_queries[6],  revised_queries[20]]
+# queries = [queries[4], queries[6], queries[20]]
+# revised_queries =  [revised_queries[4],  revised_queries[6],  revised_queries[20]]
+
+queries = [queries[4]]
+revised_queries =  [revised_queries[4]]
 
 print(len(queries),len(revised_queries))
 

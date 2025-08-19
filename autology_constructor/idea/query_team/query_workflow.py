@@ -199,8 +199,7 @@ def create_query_graph() -> Graph:
                 "status": "parsing_complete",
                 "stage": "normalized",
                 "previous_stage": state.get("stage"),
-                "messages": [SystemMessage(content=f"Query normalized: {query}")],
-                "retry_count": retry_count + 1
+                "messages": [SystemMessage(content=f"Query normalized: {query}")]
             }
             
             # 如果处理了停滞，保留相关信息
@@ -689,6 +688,9 @@ def create_query_graph() -> Graph:
             
             logger.info(f"[refine_query_decision] Refiner决策: {refiner_decision.overall_action}")
             
+            # 获取当前retry_count
+            current_retry_count = state.get("retry_count", 0)
+            
             # 基于决策更新状态
             result = {
                 "refiner_decision": refiner_decision,
@@ -706,15 +708,20 @@ def create_query_graph() -> Graph:
             
             # 基于决策类型进行不同处理 - 简化版本
             if refiner_decision.overall_action == "continue":
-                # 继续：保持当前结果
+                # 继续：保持当前结果和retry_count
                 result["validation_success"] = True
+                result["retry_count"] = current_retry_count
             elif refiner_decision.overall_action == "terminate":
-                # 终止：设置终止标志
+                # 终止：设置终止标志，保持当前retry_count
                 result["should_terminate"] = True
+                result["retry_count"] = current_retry_count
                 result["termination_reason"] = refiner_decision.reason
             else:
-                # 所有其他情况（主要是retry）：传递hints给下一轮执行
+                # 所有其他情况（主要是retry）：递增retry_count并传递hints给下一轮执行
+                new_retry_count = current_retry_count + 1
+                result["retry_count"] = new_retry_count
                 result["refiner_hints"] = refiner_decision.tool_call_hints
+                print(f"[refiner_decision] 递增retry_count: {current_retry_count} -> {new_retry_count}")
                 print(f"[refiner_decision] 传递 {len(refiner_decision.tool_call_hints)} 个hints进行重试")
                 print(f"[refiner_decision] 设置的hints: {refiner_decision.tool_call_hints}")
                 print(f"[refiner_decision] result keys: {result.keys()}")
@@ -790,9 +797,6 @@ def create_query_graph() -> Graph:
                     hints = refiner_decision.tool_call_hints
                     if not hints:
                         print("[decide_next_node] 无可用hints，默认路由到normalize")
-                        # 重试路径：递增retry_count
-                        state["retry_count"] = retry_count + 1
-                        print(f"[decide_next_node] 递增retry_count到 {retry_count + 1}")
                         return "normalize"
                     
                     # 统计各种action类型
@@ -807,9 +811,6 @@ def create_query_graph() -> Graph:
                         print("[decide_next_node] 所有hints都是skip，终止重试")
                         return "format_results"
                     
-                    # 重试路径：递增retry_count
-                    state["retry_count"] = retry_count + 1
-                    print(f"[decide_next_node] 递增retry_count到 {retry_count + 1}")
                     
                     # 根据hint类型决定路由
                     if replace_class_hints and replace_tool_hints:
