@@ -18,6 +18,18 @@ from typing import Dict, Any, List
 from owlready2 import *
 import asyncio # Needed for owlready2 async operations in some envs
 
+# 控制台输出重定向类
+class Tee:
+    def __init__(self, *files):
+        self.files = files
+    def write(self, obj):
+        for f in self.files:
+            f.write(obj)
+            f.flush()
+    def flush(self):
+        for f in self.files:
+            f.flush()
+
 # Import the OntologySettings class
 from config.settings import OntologySettings # Keep ONTOLOGY_SETTINGS import for potential base_iri access
 
@@ -322,6 +334,17 @@ def query_result_callback(future, query_idx, query_text):
 
 query_manager = QueryManager(max_workers=10, ontology_settings=test_ontology_settings)
 
+# 设置控制台输出重定向 - 在测试开始前设置
+from datetime import datetime
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+results_dir = f"test_results/workflow_runs/{timestamp}_test_run"
+os.makedirs(results_dir, exist_ok=True)
+
+log_file = open(f"{results_dir}/console_output.log", 'w', encoding='utf-8')
+sys.stdout = Tee(sys.stdout, log_file)
+
+print(f"控制台输出将同时保存到: {results_dir}/console_output.log")
+
 # Test code using callback functions to process query results
 
 if not llm:
@@ -408,13 +431,7 @@ else:
 future_list = [future[2].result() for future in callback_futures]
 
 # 自动保存future_list中每个future的iteration_history和formatted_results
-import os
-from datetime import datetime
-
-# 创建时间戳文件夹
-timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-results_dir = f"test_results/workflow_runs/{timestamp}_test_run"
-os.makedirs(results_dir, exist_ok=True)
+# 使用之前已经创建的results_dir和timestamp
 
 print(f"\n保存测试结果到: {results_dir}")
 

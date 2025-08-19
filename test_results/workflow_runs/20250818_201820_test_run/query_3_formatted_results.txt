@@ -1,0 +1,5 @@
+Query 3 - Formatted Results
+==================================================
+Time: 2025-08-18 20:18:20.735424
+
+{'summary': 'Indicator Displacement Assays (IDAs) can detect a variety of molecules, including metal ions, small molecules, and biomacromolecules.', 'key_points': ['IDAs are capable of detecting multiple types of molecules relevant to chemical and biological analysis.', 'The primary molecule categories detectable by IDA include metal ions, small molecules, and biomacromolecules.', 'These molecule types are identified based on their ability to displace an indicator in the assay, which is measurable and indicative of their presence.'], 'relationships': ['IDAs utilize the displacement of indicators to identify specific molecules, with different molecule types potentially requiring different assay conditions.', 'The detection scope of IDA spans both small, low-molecular-weight compounds (small molecules) and larger biological entities (biomacromolecules), as well as inorganic ions (metal ions).']}

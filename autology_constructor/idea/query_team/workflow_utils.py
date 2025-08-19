@@ -4,6 +4,7 @@
 - 工具调用签名生成和记录
 - LLM停滞检测
 - 状态管理相关的辅助函数
+- 内部工具过滤和结果清理
 """
 
 from typing import Dict, List, Literal, Optional, Any, Union, Set
@@ -79,6 +80,68 @@ def has_tool_call_been_tried(state: QueryState, tool_name: str, params: Dict) ->
     tried_calls = state.get("tried_tool_calls", {})
     return signature in tried_calls
 
+def filter_internal_tools(tried_tool_calls: Dict) -> Dict:
+    """过滤内部工具调用，排除用于系统决策而非用户查询的工具
+    
+    Args:
+        tried_tool_calls: 原始工具调用记录
+        
+    Returns:
+        过滤后的工具调用记录
+    """
+    # 定义内部工具列表 - 这些工具用于系统决策，不应包含在格式化结果中
+    internal_tools = {
+        'get_class_richness_info',  # 丰富度评估，用于内部决策
+        'handle_stagnation',        # 停滞处理，系统内部工具
+        'entity_matcher',           # 实体匹配，系统内部工具
+    }
+    
+    filtered_calls = {}
+    filtered_count = 0
+    
+    for signature, call_info in tried_tool_calls.items():
+        tool_name = call_info.get("tool")
+        if tool_name not in internal_tools:
+            filtered_calls[signature] = call_info
+        else:
+            filtered_count += 1
+    
+    if filtered_count > 0:
+        logger.info(f"过滤了 {filtered_count} 个内部工具调用")
+    
+    return filtered_calls
+
+def clean_tool_results(tool_result: Dict) -> Dict:
+    """清理工具结果，移除内部系统信息
+    
+    Args:
+        tool_result: 单个工具调用结果
+        
+    Returns:
+        清理后的工具结果
+    """
+    cleaned_result = tool_result.copy()
+    
+    # 如果result是字典，需要递归清理内部信息
+    if isinstance(cleaned_result.get("result"), dict):
+        result_data = cleaned_result["result"]
+        
+        # 遍历结果中的每个类，移除内部系统信息
+        for class_name, class_data in result_data.items():
+            if isinstance(class_data, dict):
+                # 移除richness_score等内部评估信息
+                internal_keys = {
+                    'richness_score', 'property_count', 'sourced_info_count', 
+                    'restriction_count', 'hierarchy_connections', 'details',
+                    'richness_evaluations', 'class_candidates', 'tool_analysis'
+                }
+                
+                for key in list(class_data.keys()):
+                    if key in internal_keys:
+                        del class_data[key]
+    
+    return cleaned_result
+
 def detect_stagnation(state: QueryState) -> bool:
     """检测LLM是否在实体选择上停滞
     
@@ -93,13 +156,13 @@ def detect_stagnation(state: QueryState) -> bool:
         return False
     
     # 获取最近两次的实体选择
-    current_entities = set(state.get("refined_classes", [])[:5])  # 比较前5个
+    current_entities = set((state.get("refined_classes") or [])[:5])  # 比较前5个
     previous_entities = set()
     
     # 从历史中查找上一次的refined_classes
     for i in range(len(iteration_history) - 1, -1, -1):
         if "refined_classes" in iteration_history[i]:
-            previous_entities = set(iteration_history[i]["refined_classes"][:5])
+            previous_entities = set((iteration_history[i]["refined_classes"] or [])[:5])
             break
     
     if not previous_entities:

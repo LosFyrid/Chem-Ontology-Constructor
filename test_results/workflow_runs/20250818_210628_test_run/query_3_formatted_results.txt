@@ -1,0 +1,5 @@
+Query 3 - Formatted Results
+==================================================
+Time: 2025-08-18 21:08:05.141019
+
+{'summary': 'IDA (Ion Detection Analysis) can detect a wide variety of molecules, including biomolecules, macrocyclic receptors, and other chemical species, though specific molecule types are not explicitly detailed in the available data.', 'key_points': ['IDAs are used for detecting diverse molecules, including biomolecules, macrocyclic receptors, DNA, guest molecules, and hydrated ion clusters.', "Molecules such as water and DNA are relevant in contexts like hydration and solvation, indicating IDA's applicability to biological and chemical species.", 'The specific types of molecules detectable by IDA are not explicitly restricted or detailed in the current data, suggesting broad detection capabilities.'], 'relationships': ['Molecules can be bound by macrocycles, indicating a relationship between macrocyclic receptors and the molecules they detect.', "The hierarchy indicates that molecules are related to biomolecules, DNA, and other specialized entities, implying IDA's potential to detect these classes."]}

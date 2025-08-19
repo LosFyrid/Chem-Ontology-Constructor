@@ -1,0 +1,5 @@
+Query 1 - Formatted Results
+==================================================
+Time: 2025-08-18 20:18:20.729574
+
+{'summary': 'Current evidence suggests that electrochemical sensors utilizing Indicator Displacement Assay (IDA) for the detection of Quinine are being explored, with key components including F-IDA and related IDA systems.', 'key_points': ['Electrochemical sensors incorporating IDA mechanisms are relevant for Quinine detection.', 'F-IDA and F_IDA are specific types of IDA systems associated with this detection approach.', "The entities 'electrochemical_sensor', 'quinine', 'F-IDA', 'F_IDA', and 'ida' are identified as key components in related research.", 'There is ongoing research into using IDA-based electrochemical sensors for Quinine, though specific sensor designs and performance data are not detailed in the results.'], 'relationships': ['IDA systems (including F-IDA and F_IDA) are linked to electrochemical sensors aimed at detecting Quinine.', 'The presence of these entities indicates a potential application of IDA in electrochemical sensing for Quinine, though direct implementation details are not provided.']}

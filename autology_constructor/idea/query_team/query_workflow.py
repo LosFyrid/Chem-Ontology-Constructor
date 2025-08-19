@@ -14,7 +14,8 @@ from .query_manager import Query, QueryStatus
 from .utils import format_sparql_error, format_sparql_results, extract_variables_from_sparql
 from .workflow_utils import (
     generate_tool_call_signature, record_tool_call, has_tool_call_been_tried,
-    detect_stagnation, handle_stagnation_with_entity_matcher
+    detect_stagnation, handle_stagnation_with_entity_matcher,
+    filter_internal_tools, clean_tool_results
 )
 from .schemas import NormalizedQuery, ToolPlan, ValidationReport, ValidationClassification
 from .entity_matcher import EntityMatcher
@@ -299,11 +300,31 @@ def create_query_graph() -> Graph:
                 
                 # 执行计划 - 已经在上面设置了OntologyTools
                 execution_results = tool_agent.execute_plan(plan_result)
+                
+                # NEW: 记录所有工具调用到tried_tool_calls（使用现有去重机制）
+                current_state_for_recording = {"tried_tool_calls": state.get("tried_tool_calls", {})}
+                for result_item in execution_results:
+                    if isinstance(result_item, dict) and "tool" in result_item:
+                        tool_name = result_item["tool"]
+                        params = result_item.get("params", {})
+                        result = result_item.get("result")
+                        
+                        # 记录这次工具调用（自动处理去重）
+                        update_record = record_tool_call(
+                            current_state_for_recording, 
+                            tool_name, 
+                            params, 
+                            result
+                        )
+                        current_state_for_recording.update(update_record)
+                
+                print(f"[execute_query] 记录了 {len(execution_results)} 个工具调用到tried_tool_calls")
 
                 # 处理结果
                 return {
                     "execution_plan": plan_result,
                     "query_results": {"results": execution_results}, # Wrap tool results for consistency
+                    "tried_tool_calls": current_state_for_recording["tried_tool_calls"],  # NEW: 传递更新后的tried_tool_calls
                     "status": "executed",
                     "stage": "executed",
                     "previous_stage": state.get("stage"),
@@ -401,6 +422,7 @@ def create_query_graph() -> Graph:
                 "sparql_query": state.get("sparql_query"),
                 "query_results": state.get("query_results"),
                 "validation_report": validation_result,
+                "tried_tool_calls": state.get("tried_tool_calls"),
                 "timestamp": datetime.now().isoformat(),
                 "messages": state.get("messages")
             }
@@ -492,17 +514,22 @@ def create_query_graph() -> Graph:
             if not query:
                 raise ValueError("Cannot format results: query is missing")
             
-            # NEW: 从tried_tool_calls汇总所有成功的工具调用结果
+            # 过滤内部工具调用
+            filtered_tool_calls = filter_internal_tools(tried_tool_calls)
+            
+            # 从过滤后的tried_tool_calls汇总所有用户相关的工具调用结果
             all_results = {"results": []}
             
-            if tried_tool_calls:
-                for signature, call_info in tried_tool_calls.items():
+            if filtered_tool_calls:
+                for signature, call_info in filtered_tool_calls.items():
                     tool_result = {
                         "tool": call_info.get("tool"),
                         "params": call_info.get("params"),
                         "result": call_info.get("result")
                     }
-                    all_results["results"].append(tool_result)
+                    # 清理工具结果中的内部系统信息
+                    cleaned_tool_result = clean_tool_results(tool_result)
+                    all_results["results"].append(cleaned_tool_result)
                 
                 print(f"[format_results] 从tried_tool_calls汇总了 {len(all_results['results'])} 个工具调用结果")
             
@@ -847,7 +874,7 @@ def create_query_graph() -> Graph:
     workflow.add_conditional_edges("validate", decide_next_node)
     workflow.add_conditional_edges("refine_decision", decide_next_node)  # 修复：添加缺失的refine_decision路由
     workflow.add_conditional_edges("generate_hypothetical_document", decide_next_node)  # 新增边
-    workflow.add_conditional_edges("format_results", decide_next_node)  # 新增边
+    workflow.add_edge("format_results", END)  # 修复：format_results直接连接到END，避免循环
     
     # 编译工作流
     compiled_graph = workflow.compile()

@@ -391,7 +391,9 @@ class QueryManager:
         from .query_workflow import create_query_graph
         query_graph = create_query_graph()
              
-        final_state = query_graph.invoke(query_state)
+        # 配置递归限制以避免GraphRecursionError
+        config = {"recursion_limit": 25}  # 恢复默认递归限制，通过修复死循环来解决问题
+        final_state = query_graph.invoke(query_state, config=config)
 
         # 将最终的QueryState转换回Query对象（更新状态/结果）
         self._state_to_query.transform(final_state, query)
