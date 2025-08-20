@@ -181,7 +181,7 @@ def detect_stagnation(state: QueryState) -> bool:
     return similarity > 0.8
 
 def handle_stagnation_with_entity_matcher(state: QueryState, entity_matcher, ontology_tools) -> Dict:
-    """处理LLM停滞，使用EntityMatcher和丰富度评估获取新候选
+    """处理LLM停滞，使用EntityMatcher为每个refined实体找到信息最丰富的近义词
     
     Args:
         state: 当前QueryState
@@ -192,75 +192,97 @@ def handle_stagnation_with_entity_matcher(state: QueryState, entity_matcher, ont
         包含新候选类的状态更新
     """
     try:
-        logger.info("[StagnationHandler] 检测到LLM停滞，启动EntityMatcher获取新候选")
+        logger.info("[StagnationHandler] 检测到LLM停滞，使用refined实体扩展候选池")
         
-        # 获取原始查询和实体信息
-        original_query = state.get("query", "")
-        normalized_query_obj = state.get("normalized_query")
+        # 获取当前refined_classes作为扩展基础
+        refined_classes = state.get("refined_classes", [])
         
-        if not original_query:
-            logger.warning("[StagnationHandler] 缺少原始查询")
-            return {}
+        if not refined_classes:
+            logger.warning("[StagnationHandler] 没有refined_classes，回退到原始查询")
+            original_query = state.get("query", "")
+            if not original_query:
+                logger.warning("[StagnationHandler] 缺少原始查询和refined_classes")
+                return {}
+            refined_classes = [original_query]
         
-        # 从normalized_query中提取实体，如果没有则使用查询本身
-        entities = []
-        if normalized_query_obj and hasattr(normalized_query_obj, 'relevant_entities'):
-            entities = normalized_query_obj.relevant_entities
+        logger.info(f"[StagnationHandler] 基于 {len(refined_classes)} 个refined实体扩展候选")
         
-        if not entities:
-            # 如果没有标准化的实体，使用原始查询作为单个实体
-            entities = [original_query]
-            logger.info(f"[StagnationHandler] 使用原始查询作为实体: {entities}")
+        # 为每个refined实体找到3个信息最丰富的近义词
+        min_similarity = 0.5  # 降低最小相似度阈值，获取更多有意义的候选
+        max_synonyms_per_entity = 3  # 每个实体最多3个近义词
         
-        # 使用EntityMatcher获取新的候选类
-        ranked_results = entity_matcher.extract_ranked_candidate_classes(
-            entities=entities, 
-            k=30  # 获取更多候选进行丰富度评估
-        )
-        
-        # 从排序结果中提取候选类名
         new_candidates = set()
-        for entity_candidates in ranked_results.values():
-            for candidate, score in entity_candidates:
-                new_candidates.add(candidate)
-        new_candidates = sorted(list(new_candidates))
+        expansion_details = {}
+        
+        for entity in refined_classes:
+            # 使用EntityMatcher找到高相似度的候选，包括替代选项
+            similar_candidates = entity_matcher.find_ranked_candidates_for_entity(
+                entity, k=10, include_alternatives=True  # 启用多样化候选
+            )
+            
+            # 过滤相似度并评估丰富度
+            entity_synonyms = []
+            for candidate, similarity in similar_candidates:
+                if similarity >= min_similarity and candidate != entity:
+                    # 评估候选的丰富度
+                    richness_info = ontology_tools.get_class_richness_info(candidate)
+                    richness_score = richness_info.get("richness_score", 0.0)
+                    entity_synonyms.append((candidate, similarity, richness_score))
+            
+            # 按丰富度降序排序，取前3个
+            entity_synonyms.sort(key=lambda x: x[2], reverse=True)
+            top_synonyms = entity_synonyms[:max_synonyms_per_entity]
+            
+            # 记录扩展详情
+            if top_synonyms:
+                expansion_details[entity] = [
+                    {"synonym": syn[0], "similarity": syn[1], "richness": syn[2]} 
+                    for syn in top_synonyms
+                ]
+                # 添加到候选集合
+                for syn, _, _ in top_synonyms:
+                    new_candidates.add(syn)
+                
+                logger.info(f"[StagnationHandler] 为'{entity}'找到{len(top_synonyms)}个高质量近义词")
+            else:
+                logger.info(f"[StagnationHandler] 为'{entity}'未找到符合要求的近义词")
         
         if not new_candidates:
-            logger.warning("[StagnationHandler] EntityMatcher未返回新候选")
+            logger.warning("[StagnationHandler] 未找到任何高质量的近义词候选")
             return {}
         
-        # 使用丰富度评估对新候选进行排序
-        logger.info(f"[StagnationHandler] 开始评估 {len(new_candidates)} 个新候选的丰富度")
-        
-        scored_candidates = []
+        # 将所有新候选按丰富度重新排序
+        final_candidates = []
         for candidate in new_candidates:
             richness_info = ontology_tools.get_class_richness_info(candidate)
-            score = richness_info.get("richness_score", 0.0)
-            scored_candidates.append((candidate, score))
+            richness_score = richness_info.get("richness_score", 0.0)
+            final_candidates.append((candidate, richness_score))
         
         # 按丰富度排序
-        scored_candidates.sort(key=lambda x: x[1], reverse=True)
-        ranked_candidates = [item[0] for item in scored_candidates]
+        final_candidates.sort(key=lambda x: x[1], reverse=True)
+        ranked_candidates = [item[0] for item in final_candidates]
         
         # 记录这次操作到tried_tool_calls
         stagnation_record = record_tool_call(
             state, 
             "handle_stagnation", 
-            {"method": "entity_matcher_with_richness"}, 
+            {"method": "refined_entity_synonyms", "min_similarity": min_similarity}, 
             {
-                "new_candidates_count": len(new_candidates),
-                "avg_richness_score": sum(item[1] for item in scored_candidates) / len(scored_candidates),
+                "source_entities": len(refined_classes),
+                "new_candidates_count": len(ranked_candidates),
+                "avg_richness_score": sum(item[1] for item in final_candidates) / len(final_candidates),
+                "expansion_details": expansion_details,
                 "top_candidates": ranked_candidates[:10]
             }
         )
         
-        logger.info(f"[StagnationHandler] 成功获取 {len(ranked_candidates)} 个按丰富度排序的候选")
+        logger.info(f"[StagnationHandler] 成功扩展得到 {len(ranked_candidates)} 个按丰富度排序的新候选")
         
-        # 返回状态更新，强制注入最佳候选
+        # 返回状态更新，直接注入最佳候选
         return {
             "refined_classes": ranked_candidates,
             "stagnation_handled": True,
-            "stagnation_method": "entity_matcher_with_richness",
+            "stagnation_method": "refined_entity_synonyms",
             **stagnation_record
         }
         
@@ -318,3 +340,104 @@ def clear_tool_call_history(state: QueryState, tool_name: Optional[str] = None) 
             if call_info.get("tool") != tool_name
         }
         return {"tried_tool_calls": filtered_calls}
+
+
+# ====== 通用实体匹配工具函数 ======
+
+from .entity_matcher import EntityMatcher
+
+
+def auto_fix_entity_mismatch(
+    target_entities: List[str],
+    primary_classes: List[str],
+    fallback_classes: Optional[List[str]] = None,
+    min_score_threshold: float = 0.3,
+    top_k: int = 1
+) -> tuple[List[str], bool, Dict[str, str]]:
+    """
+    通用实体不匹配自动修正工具函数
+    
+    同时适用于：
+    1. 标准化环节：检测实体是否在refined_classes中，不在则在original_classes中找替代
+    2. planner环节：检测toolcall参数是否在相关实体中，不在则找最相似替代
+    
+    Args:
+        target_entities: 待检查的目标实体列表
+        primary_classes: 主要类集合（refined_classes 或 available_entities）
+        fallback_classes: 备选类集合（original_classes，可选）
+        min_score_threshold: 最小匹配分数阈值
+        top_k: 每个实体考虑的候选数量
+    
+    Returns:
+        Tuple of (corrected_entities, has_corrections, correction_mapping)
+        - corrected_entities: 修正后的实体列表
+        - has_corrections: 是否进行了修正
+        - correction_mapping: 原实体 -> 修正实体的映射字典
+    """
+    
+    if not target_entities:
+        return [], False, {}
+    
+    logger.debug(f"[auto_fix_entity_mismatch] Target entities: {target_entities}")
+    logger.debug(f"[auto_fix_entity_mismatch] Primary classes: {len(primary_classes)}, "
+                f"Fallback classes: {len(fallback_classes) if fallback_classes else 0}")
+    
+    corrected_entities = []
+    correction_mapping = {}
+    has_corrections = False
+    
+    # 创建主要EntityMatcher
+    primary_matcher = EntityMatcher(primary_classes)
+    
+    # 如果有fallback，也创建fallback matcher
+    fallback_matcher = None
+    if fallback_classes and len(fallback_classes) > len(primary_classes):
+        fallback_matcher = EntityMatcher(fallback_classes)
+    
+    for entity in target_entities:
+        corrected_entity = entity
+        
+        # Step 1: 检查是否在primary_classes中直接存在
+        if entity in primary_classes:
+            # 直接匹配，无需修正
+            corrected_entities.append(entity)
+            continue
+        
+        # Step 2: 在primary_classes中寻找相似匹配
+        primary_candidates = primary_matcher.find_ranked_candidates_for_entity(entity, k=top_k)
+        
+        if primary_candidates and primary_candidates[0][1] >= min_score_threshold:
+            # 在primary中找到了好的匹配
+            corrected_entity = primary_candidates[0][0]
+            logger.debug(f"[auto_fix] Primary match: '{entity}' -> '{corrected_entity}' "
+                        f"(score: {primary_candidates[0][1]:.3f})")
+        
+        elif fallback_matcher:
+            # Step 3: 如果primary中没找到好的匹配，尝试fallback
+            fallback_candidates = fallback_matcher.find_ranked_candidates_for_entity(entity, k=top_k)
+            
+            if fallback_candidates and fallback_candidates[0][1] >= min_score_threshold:
+                corrected_entity = fallback_candidates[0][0]
+                logger.debug(f"[auto_fix] Fallback match: '{entity}' -> '{corrected_entity}' "
+                            f"(score: {fallback_candidates[0][1]:.3f})")
+            else:
+                logger.warning(f"[auto_fix] No suitable match found for '{entity}'")
+                # 保留原实体，即使没找到匹配
+                corrected_entity = entity
+        
+        else:
+            logger.warning(f"[auto_fix] No match for '{entity}' and no fallback available")
+            # 保留原实体
+            corrected_entity = entity
+        
+        # 记录结果
+        corrected_entities.append(corrected_entity)
+        if corrected_entity != entity:
+            correction_mapping[entity] = corrected_entity
+            has_corrections = True
+    
+    if has_corrections:
+        corrections_str = ", ".join([f"'{orig}' -> '{new}'" for orig, new in correction_mapping.items()])
+        logger.info(f"[auto_fix_entity_mismatch] Applied corrections: {corrections_str}")
+    
+    return corrected_entities, has_corrections, correction_mapping

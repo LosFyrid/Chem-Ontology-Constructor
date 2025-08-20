@@ -113,21 +113,18 @@ class EntityMatcher:
         # 返回排序后的列表
         return sorted(list(all_candidates))
     
-    def find_ranked_candidates_for_entity(self, entity: str, retriever_config: Dict = None, k: int = None) -> List[Tuple[str, float]]:
+    def find_ranked_candidates_for_entity(self, entity: str, retriever_config: Dict = None, k: int = None, include_alternatives: bool = False) -> List[Tuple[str, float]]:
         """为单个实体使用排序检索找到候选类
         
         Args:
             entity: 实体名称
             retriever_config: 排序检索器配置，如果为None则使用settings.yaml中的配置
             k: 返回候选数量，如果为None则使用配置中的top_k
+            include_alternatives: 是否在实体直接存在时也包含其他相似候选，默认False保持向后兼容
             
         Returns:
             (候选类名, 相关性分数)元组列表，按分数降序排列
         """
-        # 如果实体直接存在，返回完美匹配
-        if entity in self.available_classes:
-            return [(entity, 1.0)]
-        
         # 使用settings配置作为默认值
         if retriever_config is None:
             retriever_config = ENTITY_RETRIEVAL_CONFIG
@@ -135,11 +132,26 @@ class EntityMatcher:
         if k is None:
             k = retriever_config.get('top_k', 15)
         
+        # 如果实体直接存在且不需要替代候选，返回完美匹配（保持原有行为）
+        if entity in self.available_classes and not include_alternatives:
+            return [(entity, 1.0)]
+        
         # 初始化排序检索器
         retriever = RankedRetriever(list(self.available_classes), retriever_config)
         
-        # 执行排序检索
-        return retriever.search(entity, k)
+        # 执行排序检索获取所有候选
+        candidates = retriever.search(entity, k)
+        
+        # 如果实体直接存在且需要替代候选，确保它以完美分数排在首位
+        if entity in self.available_classes and include_alternatives:
+            # 从候选中移除直接匹配（如果存在）
+            candidates = [(name, score) for name, score in candidates if name != entity]
+            # 将直接匹配添加到首位
+            candidates.insert(0, (entity, 1.0))
+            # 如果需要，截断到k个结果
+            candidates = candidates[:k]
+        
+        return candidates
     
     def extract_ranked_candidate_classes(self, entities: List[str], retriever_config: Dict = None, k: int = None) -> Dict[str, List[Tuple[str, float]]]:
         """为实体列表使用排序检索提取候选类

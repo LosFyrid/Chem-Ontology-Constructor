@@ -124,14 +124,25 @@ class QueryRefiner:
                 )
             
             elif classification == ValidationClassification.INSUFFICIENT:
-                # 一般信息不足，尝试替代类或更多工具
-                return ToolCallHint(
-                    tool=tool,
-                    class_name=class_name,
-                    action="replace_class",
-                    hint=f"Try different classes from available options. Previously tried classes for {tool}: {tried_classes_str}. Find semantically similar but different classes.",
-                    alternative_tools=["parse_class_definition", "get_class_properties"]
-                )
+                # 一般信息不足，策略取决于当前使用的工具
+                if tool == "parse_class_definition":
+                    # 已经用了最详细的工具，问题在于类本身，只替换类
+                    return ToolCallHint(
+                        tool=tool,
+                        class_name=class_name,
+                        action="replace_class",
+                        hint=f"Used detailed tool '{tool}' but results still insufficient for '{class_name}'. Try different classes with potentially richer information. Previously tried classes: {tried_classes_str}.",
+                        alternative_tools=[]
+                    )
+                else:
+                    # 未用最详细工具，需要既换工具又考虑换类
+                    return ToolCallHint(
+                        tool=tool,
+                        class_name=class_name,
+                        action="replace_both",  # 新的action类型
+                        hint=f"Results insufficient from '{tool}' on '{class_name}'. Try more detailed tools AND consider different classes. Previously tried classes for {tool}: {tried_classes_str}.",
+                        alternative_tools=["parse_class_definition", "get_class_properties"]
+                    )
             
             elif classification == ValidationClassification.NO_RESULTS:
                 # 无结果，优先尝试替代类
@@ -175,9 +186,15 @@ class QueryRefiner:
         for call_info in tried_calls.values():
             if call_info.get("tool") == tool_name:
                 params = call_info.get("params", {})
-                class_name = params.get("class_names") or params.get("class_name")
-                if class_name and class_name not in tried_classes:
-                    tried_classes.append(class_name)
+                class_names = params.get("class_names") or params.get("class_name")
+                
+                # 修复：正确处理列表和单个值
+                if isinstance(class_names, list):
+                    for class_name in class_names:
+                        if class_name and class_name not in tried_classes:
+                            tried_classes.append(class_name)
+                elif class_names and class_names not in tried_classes:
+                    tried_classes.append(class_names)
         
         return tried_classes
     

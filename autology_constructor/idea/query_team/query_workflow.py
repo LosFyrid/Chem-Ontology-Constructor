@@ -156,7 +156,7 @@ def create_query_graph() -> Graph:
                         print(f"[DEBUG-HINTS] Hint {i} is None, skipping")
                         continue
                     try:
-                        if hasattr(h, 'action') and h.action in ["replace_class"]:
+                        if hasattr(h, 'action') and h.action in ["replace_class", "replace_both"]:
                             class_related_hints.append(h)
                             print(f"[DEBUG-HINTS] Added class-related hint {i}: action={h.action}")
                         else:
@@ -278,7 +278,7 @@ def create_query_graph() -> Graph:
             if strategy == "tool_sequence":
                 # NEW: 处理来自refiner的tool相关hints
                 refiner_hints = state.get("refiner_hints", [])
-                tool_related_hints = [h for h in refiner_hints if h.action in ["replace_tool"]]
+                tool_related_hints = [h for h in refiner_hints if h.action in ["replace_tool", "replace_both"]]
                 
                 # 生成执行计划，传递tool hints
                 if tool_related_hints:
@@ -301,7 +301,7 @@ def create_query_graph() -> Graph:
                 execution_results = tool_agent.execute_plan(plan_result)
                 
                 # NEW: 记录所有工具调用到tried_tool_calls（使用现有去重机制）
-                current_state_for_recording = {"tried_tool_calls": state.get("tried_tool_calls", {})}
+                current_state_for_recording = {"tried_tool_calls": state.get("tried_tool_calls", {}), "retry_count": state.get("retry_count", 0)}
                 for result_item in execution_results:
                     if isinstance(result_item, dict) and "tool" in result_item:
                         tool_name = result_item["tool"]
@@ -422,6 +422,7 @@ def create_query_graph() -> Graph:
                 "query_results": state.get("query_results"),
                 "validation_report": validation_result,
                 "tried_tool_calls": state.get("tried_tool_calls"),
+                "refiner_hints": state.get("refiner_hints"),
                 "timestamp": datetime.now().isoformat(),
                 "messages": state.get("messages")
             }
@@ -802,9 +803,10 @@ def create_query_graph() -> Graph:
                     # 统计各种action类型
                     replace_tool_hints = [h for h in hints if h.action == "replace_tool"]
                     replace_class_hints = [h for h in hints if h.action == "replace_class"]
+                    replace_both_hints = [h for h in hints if h.action == "replace_both"]  # 新增
                     skip_hints = [h for h in hints if h.action == "skip"]
                     
-                    print(f"[decide_next_node] Hints分析: replace_tool={len(replace_tool_hints)}, replace_class={len(replace_class_hints)}, skip={len(skip_hints)}")
+                    print(f"[decide_next_node] Hints分析: replace_tool={len(replace_tool_hints)}, replace_class={len(replace_class_hints)}, replace_both={len(replace_both_hints)}, skip={len(skip_hints)}")
                     
                     # 如果全部都是skip，终止重试
                     if len(skip_hints) == len(hints):
@@ -813,9 +815,9 @@ def create_query_graph() -> Graph:
                     
                     
                     # 根据hint类型决定路由
-                    if replace_class_hints and replace_tool_hints:
-                        # 混合情况：需要改类也需要改工具 → 路由到normalize
-                        print("[decide_next_node] 混合hints：同时需要更换类和工具 → normalize")
+                    if replace_both_hints or (replace_class_hints and replace_tool_hints):
+                        # replace_both 或 混合情况：需要改类也需要改工具 → 路由到normalize
+                        print("[decide_next_node] 需要同时更换类和工具 → normalize")
                         return "normalize"
                     elif replace_class_hints and not replace_tool_hints:
                         # 只需要更换类 → 路由到normalize (标准化agent)

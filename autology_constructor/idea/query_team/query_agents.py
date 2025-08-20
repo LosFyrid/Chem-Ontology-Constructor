@@ -50,7 +50,10 @@ Available tools:
                     descriptions.append(desc)
                 except ValueError: # Handles methods without signatures like built-ins if any sneak through
                     descriptions.append(f"- {name}(...): No signature/description available.")
-        return "\n".join(descriptions) if descriptions else "No tools available."
+        
+        # Join descriptions with separator lines for better readability
+        separator = "\n" + "-" * 80 + "\n"
+        return separator.join(descriptions) if descriptions else "No tools available."
 
     def generate_plan(self, normalized_query: Union[Dict, NormalizedQuery], ontology_tools: OntologyTools, tool_hints: List = None) -> Union[ToolPlan, Dict]:
         """Generates the tool execution plan with optional tool hints for refinement."""
@@ -111,10 +114,11 @@ Please incorporate these hints when generating the tool plan. Use the suggested 
                 # This case might indicate an issue with the LLM or LangChain's parsing
                 raise ValueError("LLM did not return a list structure as expected for the plan.")
 
-            # Further optional validation: Ensure all items are ToolCallStep (Pydantic handles this)
-            # Optional: Check if tool names are valid based on ontology_tools? Maybe too strict here.
+            # NEW: 验证和自动修正toolcall参数中的类名
+            if isinstance(normalized_query, NormalizedQuery) and normalized_query.relevant_entities:
+                plan = self._validate_and_fix_plan_entities(plan, normalized_query.relevant_entities)
 
-            return plan # Return the list of Pydantic models
+            return plan # Return the validated and corrected plan
 
         except Exception as e:
             # Catch errors during structured output generation/parsing or validation
@@ -124,6 +128,68 @@ Please incorporate these hints when generating the tool plan. Use the suggested 
             # raw_response = getattr(e, 'response', None) # Example, actual attribute might differ
             # print(f"Raw LLM response (if available): {raw_response}")
             return {"error": error_msg} # Return error dictionary
+
+    def _validate_and_fix_plan_entities(self, plan: ToolPlan, available_entities: List[str]) -> ToolPlan:
+        """验证并修正执行计划中的实体参数"""
+        from .workflow_utils import auto_fix_entity_mismatch
+        
+        corrected_steps = []
+        total_corrections = 0
+        
+        for step in plan.steps:
+            corrected_step = step
+            
+            # 检查params中是否包含class_names参数
+            if hasattr(step, 'params') and isinstance(step.params, dict):
+                step_params = step.params.copy()
+                
+                # 提取类名参数（可能的字段名）
+                class_name_fields = ['class_names', 'class_name', 'entity_names', 'entity_name']
+                
+                for field_name in class_name_fields:
+                    if field_name in step_params:
+                        original_value = step_params[field_name]
+                        
+                        # 转换为字符串列表
+                        if isinstance(original_value, str):
+                            target_entities = [original_value]
+                            is_single_value = True
+                        elif isinstance(original_value, list):
+                            target_entities = original_value
+                            is_single_value = False
+                        else:
+                            continue  # 跳过非字符串/列表类型
+                        
+                        # 使用工具函数进行修正
+                        corrected_entities, has_corrections, correction_mapping = auto_fix_entity_mismatch(
+                            target_entities=target_entities,
+                            primary_classes=available_entities,
+                            fallback_classes=None,  # planner场景不需要fallback
+                            min_score_threshold=0.3,
+                            top_k=1
+                        )
+                        
+                        if has_corrections:
+                            # 将修正后的值放回params
+                            if is_single_value and corrected_entities:
+                                step_params[field_name] = corrected_entities[0]
+                            else:
+                                step_params[field_name] = corrected_entities
+                                
+                            total_corrections += len(correction_mapping)
+                            print(f"[ToolPlannerAgent] Fixed {field_name} in {step.tool}: {correction_mapping}")
+                
+                # 创建修正后的step（如果有修改的话）
+                if step_params != step.params:
+                    corrected_step = ToolCallStep(tool=step.tool, params=step_params)
+            
+            corrected_steps.append(corrected_step)
+        
+        if total_corrections > 0:
+            print(f"[ToolPlannerAgent] Applied {total_corrections} entity corrections to tool plan")
+            return ToolPlan(steps=corrected_steps)
+        
+        return plan
 
 class QueryParserAgent(AgentTemplate):
     def __init__(self, model: BaseLanguageModel):
@@ -445,7 +511,7 @@ Please consider these hints when selecting relevant_entities. Try to choose diff
         if not isinstance(main_body_result, NormalizedQueryBody): # Should be caught by _generate_main_query_body
             return {"error": "Main query body generation returned unexpected type."}
 
-        # Step 1.5: 内部实体验证和重试机制（保留为兜底机制）
+        # Step 1.5: 内部实体验证和程序化重试机制（保留为兜底机制）
         # 仅在使用refined_classes时启动内部重试，确保workflow层面的refine_entities节点能正常工作
         available_classes = state.get("available_classes", [])
         original_available_classes = state.get("original_available_classes", available_classes)
@@ -462,35 +528,33 @@ Please consider these hints when selecting relevant_entities. Try to choose diff
             self._needs_entity_refinement(main_body_result, available_classes)):
             
             print("[QueryParserAgent] Internal fallback refinement triggered - entities not found in refined class set")
-            print(f"[QueryParserAgent] Using original class set for refinement: {len(original_available_classes)} classes")
+            print(f"[QueryParserAgent] Using programmatic entity matching instead of LLM retry")
             
-            # 基于原始全量类集合生成候选集进行一次重试 - 使用新的排序检索
-            entity_matcher = EntityMatcher(original_available_classes)
-            ranked_results = entity_matcher.extract_ranked_candidate_classes(main_body_result.relevant_entities)
+            # 使用新的通用工具进行程序化实体修正，不再调用LLM
+            from .workflow_utils import auto_fix_entity_mismatch
             
-            # 从排序结果中提取候选类名（用于向后兼容）
-            candidate_classes = set()
-            for entity_candidates in ranked_results.values():
-                for candidate, score in entity_candidates:
-                    candidate_classes.add(candidate)
-            candidate_classes = sorted(list(candidate_classes))
+            corrected_entities, has_corrections, correction_mapping = auto_fix_entity_mismatch(
+                target_entities=main_body_result.relevant_entities,
+                primary_classes=available_classes,
+                fallback_classes=original_available_classes,
+                min_score_threshold=0.1,
+                top_k=1
+            )
             
-            print(f"内部候选实体：{candidate_classes} (total: {len(candidate_classes)})")
-
-            if len(candidate_classes) >= 5:  # 安全检查
-                # 创建新的state with refined classes (基于原始类集合的refinement)
-                refined_state = state.copy()
-                refined_state["available_classes"] = candidate_classes
+            if has_corrections:
+                print(f"[QueryParserAgent] Programmatic corrections applied: {correction_mapping}")
                 
-                print(f"[QueryParserAgent] Internal refinement: {len(original_available_classes)} -> {len(candidate_classes)} classes")
+                # 直接更新main_body_result的relevant_entities，不重新调用LLM
+                main_body_result = NormalizedQueryBody(
+                    intent=main_body_result.intent,
+                    relevant_entities=corrected_entities,
+                    filters=main_body_result.filters,
+                    query_type_suggestion=main_body_result.query_type_suggestion
+                )
                 
-                # 重新生成main query body with refined classes
-                main_body_result_refined = self._generate_main_query_body(refined_state)
-                if isinstance(main_body_result_refined, NormalizedQueryBody):
-                    print("[QueryParserAgent] Internal refinement successful")
-                    main_body_result = main_body_result_refined
+                print(f"[QueryParserAgent] Internal refinement successful via programmatic matching")
             else:
-                print(f"[QueryParserAgent] Internal refinement skipped: candidate set too small ({len(candidate_classes)})")
+                print(f"[QueryParserAgent] No corrections needed or no suitable matches found")
 
         # Step 2: Extract relevant properties (Temporarily disabled)
         # properties_result = self._extract_relevant_properties(state, main_body_result)

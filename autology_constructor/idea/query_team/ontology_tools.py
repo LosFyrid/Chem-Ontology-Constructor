@@ -828,13 +828,13 @@ class OntologyTools:
         background context from when the entity was recorded, such as its original,
         unstructured descriptive text.
 
-        [IMPORTANT] Usage Guidelines:
+        Usage Guidelines for get_class_info:
         - Use this function when: You want to understand the origin of a class or view
-        its initial, raw descriptions.
+        its initial, raw descriptions. This function will return less information because the raw descriptions are short sentences or phrases.
         - Do not use this function when: You need structured knowledge, relationships,
         or a complete definition of the class.
 
-        [Alternative Tool Guide]
+        Alternative tools to get_class_info:
         - For comprehensive knowledge (properties, behavior, applications, etc.),
         use `get_class_properties`.
         - For other classes related to the specified class(es),

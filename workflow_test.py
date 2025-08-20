@@ -339,14 +339,25 @@ query_manager = QueryManager(max_workers=10, ontology_settings=test_ontology_set
 
 # 设置控制台输出重定向 - 在测试开始前设置
 from datetime import datetime
+import logging
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 results_dir = f"test_results/workflow_runs/{timestamp}_test_run"
 os.makedirs(results_dir, exist_ok=True)
 
+# 重定向标准输出和标准错误到同一个文件
 log_file = open(f"{results_dir}/console_output.log", 'w', encoding='utf-8')
 sys.stdout = Tee(sys.stdout, log_file)
+sys.stderr = Tee(sys.stderr, log_file)
 
-print(f"控制台输出将同时保存到: {results_dir}/console_output.log")
+# 配置logging只输出到stderr（这样会通过上面的Tee保存到同一个文件）
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    stream=sys.stderr,  # 输出到stderr，会被Tee捕获
+    force=True  # 强制重新配置，覆盖之前的配置
+)
+
+print(f"所有输出（包括print和logger）将按时间顺序保存到: {results_dir}/console_output.log")
 
 # Test code using callback functions to process query results
 
@@ -435,6 +446,17 @@ future_list = [future[2].result() for future in callback_futures]
 
 # 自动保存future_list中每个future的iteration_history和formatted_results
 # 使用之前已经创建的results_dir和timestamp
+
+from langchain_core.messages import AIMessage
+
+results = []
+for idx, answer in answers.items():
+    if isinstance(answer, AIMessage):
+        q = queries[idx-1]
+        print(f"{idx}.查询的最终答案: {answer.content}\n")
+        results.append({"query": q, "response": answer.content})
+    else:
+        print("error")
 
 print(f"\n保存测试结果到: {results_dir}")
 
