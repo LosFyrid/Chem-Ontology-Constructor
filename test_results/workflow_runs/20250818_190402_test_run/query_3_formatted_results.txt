@@ -1,5 +1,0 @@
-Query 3 - Formatted Results
-==================================================
-Time: 2025-08-18 19:04:02.494566
-
-{'summary': 'Indicator Displacement Assays (IDAs) can detect various small organic molecules, including small molecules and organic molecules, making them suitable for identifying a range of organic compounds.', 'key_points': ['IDAs are capable of detecting indicator_displacement_assay, organic_molecule, small_molecule, and small_organic_molecule.', 'The primary target molecules for IDA are small organic molecules and small molecules.', 'IDAs are used for molecule detection involving organic compounds.'], 'relationships': ['The detection scope of IDA includes both small molecules and organic molecules, indicating versatility in detecting organic compounds.', 'The presence of indicator_displacement_assay as a detection method suggests that IDA relies on displacement mechanisms to identify target molecules.']}

@@ -44,6 +44,11 @@ class QueryRefiner:
             RefinerDecision: 包含整体行动和每个工具调用的具体hints
         """
         try:
+            # NEW: 检查边界情况：遗漏概念社区
+            if hasattr(validation_report, 'message') and "Missing conceptual communities detected" in validation_report.message:
+                logger.info("[QueryRefiner] 检测到遗漏概念社区边界情况，生成实体扩展建议")
+                return self._generate_missing_community_decision(state, validation_report)
+            
             logger.info(f"[QueryRefiner] 开始分析 {len(validation_report.tool_classifications)} 个工具调用")
             
             retry_count = state.get("retry_count", 0)
@@ -121,6 +126,16 @@ class QueryRefiner:
                     action="replace_tool",
                     hint=f"Try more detailed tools like parse_class_definition or get_class_properties for class '{class_name}'",
                     alternative_tools=["parse_class_definition", "get_class_properties", "get_related_classes"]
+                )
+            
+            elif classification == ValidationClassification.INSUFFICIENT_CONNECTIONS:
+                # 缺失联系信息，建议使用获取属性和相关类工具
+                return ToolCallHint(
+                    tool=tool,
+                    class_name=class_name,
+                    action="replace_tool",
+                    hint=f"Missing connection information for class '{class_name}'. Try tools that reveal relationships and properties.",
+                    alternative_tools=["get_class_properties", "get_related_classes"]
                 )
             
             elif classification == ValidationClassification.INSUFFICIENT:
@@ -319,5 +334,92 @@ class QueryRefiner:
                 return f"Maximum retry limit reached ({retry_count}), terminating"
             else:
                 return f"No viable improvement options found, terminating"
+        
+    def _generate_missing_community_decision(self, state, validation_report: ValidationReport) -> RefinerDecision:
+        """生成遗漏概念社区的处理决策（基于全局分析和相似类匹配）"""
+        
+        # 1. 从state中获取global_assessment
+        global_assessment = state.get("global_assessment")
+        if not global_assessment:
+            logger.warning("[QueryRefiner] 未找到global_assessment，无法处理缺失社区")
+            return self._fallback_decision()
+        
+        # 2. 获取已使用的类集合，确定topk
+        used_classes = self._get_all_used_classes_from_tool_calls(state)
+        topk = max(len(used_classes) + 3, 10)  # 至少比已用类多3个，最少10个
+        
+        # 3. 用全局分析文本在全量类集合中进行相似度匹配
+        available_classes = state.get("available_classes", [])
+        community_analysis_text = global_assessment.community_analysis
+        
+        candidate_classes = self._find_similar_classes_with_text(
+            community_analysis_text, available_classes, topk
+        )
+        
+        # 4. 排除已使用的类，得到缺失类集合
+        missing_classes = [cls for cls in candidate_classes if cls not in used_classes]
+        
+        # 5. 生成一个hint，建议parse_class_definition
+        if missing_classes:
+            # 只生成一个hint，使用第一个缺失类
+            hint = ToolCallHint(
+                tool="parse_class_definition",
+                class_name=missing_classes[0],
+                action="replace_class",
+                hint=f"Global analysis suggests missing conceptual communities. Try detailed analysis of '{missing_classes[0]}' which appears to be part of missing concept groups.",
+                alternative_tools=["parse_class_definition", "get_class_properties"]
+            )
+            
+            reason = f"Missing conceptual communities detected. Found {len(missing_classes)} candidate classes, focusing on: {missing_classes[0]}"
+            
+            return RefinerDecision(
+                overall_action="retry",
+                reason=reason,
+                tool_call_hints=[hint]
+            )
+        else:
+            return self._fallback_decision()
+    
+    def _find_similar_classes_with_text(self, text: str, available_classes: List[str], topk: int) -> List[str]:
+        """用文本在类集合中进行相似度匹配"""
+        from .entity_matcher import EntityMatcher
+        
+        if not text or not available_classes:
+            return []
+        
+        entity_matcher = EntityMatcher(available_classes)
+        
+        # 使用EntityMatcher的search方法进行相似度匹配
+        matches = entity_matcher.search(text, k=topk)
+        
+        # 返回匹配的类名列表
+        return [match[0] for match in matches]  # match是(class_name, score)元组
+    
+    def _get_all_used_classes_from_tool_calls(self, state) -> List[str]:
+        """获取已经在工具调用中使用的所有类"""
+        used_classes = set()
+        tried_tool_calls = state.get("tried_tool_calls", {})
+        
+        for call_info in tried_tool_calls.values():
+            params = call_info.get("params", {})
+            
+            # 检查各种可能的参数名
+            for param_name in ['class_name', 'class_names', 'classes']:
+                if param_name in params:
+                    value = params[param_name]
+                    if isinstance(value, str):
+                        used_classes.add(value)
+                    elif isinstance(value, list):
+                        used_classes.update(value)
+        
+        return list(used_classes)
+    
+    def _fallback_decision(self) -> RefinerDecision:
+        """备用决策"""
+        return RefinerDecision(
+            overall_action="terminate",
+            reason="Missing community processing failed, terminating",
+            tool_call_hints=[]
+        )
         
         return f"Action: {overall_action}, retry count: {retry_count}"

@@ -3,7 +3,7 @@ from datetime import datetime
 import hashlib
 import json
 import logging
-from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.messages import SystemMessage
 from langgraph.graph import Graph, StateGraph, END, START
@@ -15,7 +15,7 @@ from .utils import format_sparql_error, format_sparql_results, extract_variables
 from .workflow_utils import (
     generate_tool_call_signature, record_tool_call, has_tool_call_been_tried,
     detect_stagnation, handle_stagnation_with_entity_matcher,
-    filter_internal_tools, clean_tool_results
+    filter_internal_tools, clean_tool_results, supplement_parse_definitions
 )
 from .schemas import NormalizedQuery, ToolPlan, ValidationReport, ValidationClassification
 from .entity_matcher import EntityMatcher
@@ -400,15 +400,33 @@ def create_query_graph() -> Graph:
             query_context["query"] = state.get("query")
             query_context["type"] = state.get("query_type", "unknown")
             query_context["strategy"] = state.get("query_strategy")
+            # 添加tried_tool_calls到context中 - 修复关键问题！
+            query_context["tried_tool_calls"] = state.get("tried_tool_calls", {})
+            query_context["retry_count"] = state.get("retry_count", 0)
+            
+            print(f"[DEBUG-QUERY-CONTEXT] tried_tool_calls在validation context中包含 {len(query_context.get('tried_tool_calls', {}))} 个调用")
 
             # Use validation agent
             validation_result = validator_agent.validate(results_to_validate, query_context)
 
-            if isinstance(validation_result, dict) and validation_result.get("error"):
-                print(f"Validation Report: {validation_result.get('validation_report')}")
-                raise ValueError(f"Validation agent failed: {validation_result.get('error')}")
-            elif not isinstance(validation_result, ValidationReport):
-                raise TypeError(f"Validation agent returned unexpected type: {type(validation_result)}")
+            # Handle the new return format with global_assessment
+            if isinstance(validation_result, dict):
+                if validation_result.get("error"):
+                    print(f"Validation Report: {validation_result.get('validation_report')}")
+                    raise ValueError(f"Validation agent failed: {validation_result.get('error')}")
+                
+                # Extract ValidationReport and global_assessment
+                validation_report = validation_result.get("validation_report")
+                global_assessment = validation_result.get("global_assessment")
+                
+                if not isinstance(validation_report, ValidationReport):
+                    raise TypeError(f"Validation report has unexpected type: {type(validation_report)}")
+            else:
+                # Backward compatibility: direct ValidationReport return
+                validation_report = validation_result
+                global_assessment = None
+                if not isinstance(validation_report, ValidationReport):
+                    raise TypeError(f"Validation agent returned unexpected type: {type(validation_result)}")
 
             # Create a snapshot of the current iteration
             current_iteration_snapshot = {
@@ -420,9 +438,10 @@ def create_query_graph() -> Graph:
                 "execution_plan": state.get("execution_plan"),
                 "sparql_query": state.get("sparql_query"),
                 "query_results": state.get("query_results"),
-                "validation_report": validation_result,
+                "validation_report": validation_report,
                 "tried_tool_calls": state.get("tried_tool_calls"),
                 "refiner_hints": state.get("refiner_hints"),
+                "global_assessment": state.get("global_assessment"),
                 "timestamp": datetime.now().isoformat(),
                 "messages": state.get("messages")
             }
@@ -431,19 +450,25 @@ def create_query_graph() -> Graph:
             # Determine final status based on validation - check if all tool classifications are sufficient
             all_sufficient = all(
                 tc.classification == ValidationClassification.SUFFICIENT 
-                for tc in validation_result.tool_classifications
+                for tc in validation_report.tool_classifications
             )
             final_status = "success" if all_sufficient else "warning"
-            validation_message = validation_result.message
+            validation_message = validation_report.message
 
-            return {
-                "validation_report": validation_result,
+            result = {
+                "validation_report": validation_report,
                 "status": final_status,
                 "stage": "validated",
                 "previous_stage": state.get("stage"),
                 "messages": [SystemMessage(content=f"Results validation {final_status}: {validation_message}")],
                 "iteration_history": iteration_history  # Pass the updated history
             }
+            
+            # Save global_assessment to state if available
+            if global_assessment:
+                result["global_assessment"] = global_assessment
+                
+            return result
         except Exception as e:
             error_message = f"Results validation failed: {str(e)}"
             print(error_message)
@@ -504,8 +529,10 @@ def create_query_graph() -> Graph:
             }
     
     def format_results(state: QueryState) -> Dict:
-        """格式化查询结果为用户友好的形式 - 使用tried_tool_calls汇总所有成功的工具调用"""
+        """格式化查询结果为用户友好的形式 - 使用过滤后的tried_tool_calls"""
         try:
+            from .workflow_utils import filter_validated_tool_calls
+            
             query = state.get("query")
             current_results = state.get("query_results")
             normalized_query_obj = state.get("normalized_query")
@@ -514,14 +541,17 @@ def create_query_graph() -> Graph:
             if not query:
                 raise ValueError("Cannot format results: query is missing")
             
-            # 过滤内部工具调用
-            filtered_tool_calls = filter_internal_tools(tried_tool_calls)
+            # 基于验证结果过滤工具调用 - 替代原有的filter_internal_tools
+            filtered_tool_calls = filter_validated_tool_calls(tried_tool_calls)
+            
+            print(f"[format_results] 原始调用: {len(tried_tool_calls)} 个")
+            print(f"[format_results] 过滤后调用: {len(filtered_tool_calls)} 个")
             
             # 从过滤后的tried_tool_calls汇总所有用户相关的工具调用结果
             all_results = {"results": []}
             
             if filtered_tool_calls:
-                for signature, call_info in filtered_tool_calls.items():
+                for call_id, call_info in filtered_tool_calls.items():
                     tool_result = {
                         "tool": call_info.get("tool"),
                         "params": call_info.get("params"),
@@ -531,12 +561,37 @@ def create_query_graph() -> Graph:
                     cleaned_tool_result = clean_tool_results(tool_result)
                     all_results["results"].append(cleaned_tool_result)
                 
-                print(f"[format_results] 从tried_tool_calls汇总了 {len(all_results['results'])} 个工具调用结果")
+                print(f"[format_results] 向formatter发送 {len(all_results['results'])} 个高质量工具调用结果")
             
-            # 如果tried_tool_calls为空，使用当前结果作为fallback
-            if not all_results["results"] and current_results:
-                all_results = current_results
-                print(f"[format_results] 使用当前结果作为fallback")
+            # 如果过滤后的调用为空，使用tried_tool_calls作为fallback（过滤掉失败和无结果的调用）
+            if not all_results["results"] and tried_tool_calls:
+                print(f"[format_results] 过滤机制失效，使用tried_tool_calls作为fallback")
+                
+                # 过滤掉失败和无结果的工具调用
+                for call_id, call_info in tried_tool_calls.items():
+                    result = call_info.get("result", {})
+                    
+                    # 过滤条件：跳过失败和无结果的调用
+                    if not result:  # 无结果
+                        continue
+                    if isinstance(result, dict) and "error" in result:  # 失败的调用
+                        continue
+                    # 检查是否空内容的类信息
+                    if isinstance(result, dict):
+                        for class_name, class_info in result.items():
+                            if isinstance(class_info, dict) and class_info.get("information") == []:
+                                continue
+                    
+                    # 通过过滤的调用加入结果
+                    tool_result = {
+                        "tool": call_info.get("tool"),
+                        "params": call_info.get("params"),
+                        "result": result
+                    }
+                    cleaned_tool_result = clean_tool_results(tool_result)
+                    all_results["results"].append(cleaned_tool_result)
+                
+                print(f"[format_results] Fallback获得 {len(all_results['results'])} 个有效工具调用结果")
             
             # 准备query_context
             query_context = {}
@@ -749,6 +804,7 @@ def create_query_graph() -> Graph:
     workflow.add_node("validate", validate_results)
     workflow.add_node("refine_decision", refine_query_decision)  # NEW: QueryRefiner决策节点
     workflow.add_node("generate_hypothetical_document", generate_hypothetical_document)  # 新增节点
+    workflow.add_node("supplement_parse_definitions", supplement_parse_definitions)  # NEW: 补充节点
     workflow.add_node("format_results", format_results)  # 新增节点
     
     # Define conditional edges for enhanced error handling and intelligent routing
@@ -787,8 +843,8 @@ def create_query_graph() -> Graph:
                 print(f"[decide_next_node] Refiner决策: {action}")
                 
                 if action == "continue":
-                    # 验证成功，继续到结果格式化
-                    return "format_results"
+                    # 验证成功，先补充parse_class_definition再格式化结果
+                    return "supplement_parse_definitions"
                 elif action == "terminate":
                     # 明确终止
                     print("[decide_next_node] Refiner决策终止")
@@ -835,9 +891,16 @@ def create_query_graph() -> Graph:
                 print("[decide_next_node] 缺少refiner_decision，继续到format_results")
                 return "format_results"
         
-        # 验证后统一进入refiner决策节点
+        # 验证后统一进入refiner决策节点，但先检查边界情况
         if current_stage == "validated":
-            return "refine_decision"
+            # 检查是否存在遗漏概念社区的边界情况
+            validation_report = state.get("validation_report")
+            if validation_report and hasattr(validation_report, 'message') and "BOUNDARY_CASE: MISSING_COMMUNITY" in validation_report.message:
+                print("[decide_next_node] 检测到遗漏概念社区边界情况，直接路由到refiner进行实体扩展")
+                # 设置特殊标记，让refiner知道这是实体扩展任务
+                return "refine_decision"
+            else:
+                return "refine_decision"
         
         # 传统重试逻辑（保留作为后备，但优先级降低）
         if current_stage == "validated" and current_state == "warning" and not state.get("refiner_decision"):
@@ -861,6 +924,8 @@ def create_query_graph() -> Graph:
             return "validate"
         elif current_stage == "hypothetical_generated":
             return "normalize"  # 生成假设性文档后返回到标准化阶段
+        elif current_stage == "supplement_completed" or current_stage == "supplement_not_needed" or current_stage == "supplement_skipped":
+            return "format_results"  # 补充完成后进入结果格式化
         elif current_stage == "completed":
             return END
 
@@ -877,6 +942,7 @@ def create_query_graph() -> Graph:
     workflow.add_conditional_edges("validate", decide_next_node)
     workflow.add_conditional_edges("refine_decision", decide_next_node)  # 修复：添加缺失的refine_decision路由
     workflow.add_conditional_edges("generate_hypothetical_document", decide_next_node)  # 新增边
+    workflow.add_conditional_edges("supplement_parse_definitions", decide_next_node)  # NEW: 补充节点路由
     workflow.add_edge("format_results", END)  # 修复：format_results直接连接到END，避免循环
     
     # 编译工作流

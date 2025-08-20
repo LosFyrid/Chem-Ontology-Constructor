@@ -1,5 +1,0 @@
-Query 3 - Formatted Results
-==================================================
-Time: 2025-08-18 11:41:33.450173
-
-{'summary': 'Indicator Displacement Assays (IDAs) can detect specific molecules such as trimethylated lysine, with applications including caffeine sensing. They utilize recognition elements like deep cavitands and components such as carboxylato pillar[6]arene and safranine T.', 'key_points': ['IDAs are capable of detecting specific target molecules, exemplified by trimethylated lysine.', 'Applications include sensing molecules like caffeine.', 'Recognition elements used in IDAs include deep cavitands.', 'Components involved in IDAs include carboxylato pillar[6]arene (WP6) and safranine T (ST).'], 'relationships': ['IDAs employ recognition elements (e.g., deep cavitands) to selectively bind target molecules.', 'Specific molecules detected by IDAs are often related to biological or chemical sensing applications.']}

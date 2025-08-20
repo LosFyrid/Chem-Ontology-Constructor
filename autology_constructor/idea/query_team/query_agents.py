@@ -12,7 +12,7 @@ from config.settings import OntologySettings
 from .entity_matcher import EntityMatcher
 
 # Import Pydantic models
-from .schemas import NormalizedQuery, ToolCallStep, ValidationReport, DimensionReport, ToolPlan, ExtractedProperties, NormalizedQueryBody, ValidationClassification, ToolCallClassification
+from .schemas import NormalizedQuery, ToolCallStep, ValidationReport, DimensionReport, ToolPlan, ExtractedProperties, NormalizedQueryBody, ValidationClassification, ToolCallClassification, GlobalCommunityAssessment, FormattedResult
 
 class ToolPlannerAgent(AgentTemplate):
     """Generates a tool execution plan based on a normalized query using an LLM."""
@@ -720,14 +720,16 @@ Your validation result MUST strictly follow the ValidationReport JSON schema for
 """
 
 class ValidationAgent(AgentTemplate):
-    """查询结果分类器 - 对每个工具调用进行分类"""
+    """双阶段验证Agent：全局概念社区分析 + 细粒度工具调用分类"""
     def __init__(self, model: BaseLanguageModel):
+        # 保持原有细粒度system_prompt
         system_prompt = """
 You are an expert classifier for ontology query results. Your job is to classify each tool call result.
 
 Classification Categories:
 - "sufficient": Good results with adequate information
 - "insufficient_properties": Results exist but lack property/relationship details (ONLY for basic tools like get_class_info)
+- "insufficient_connections": Results lack connection/relationship information to other entities
 - "insufficient": Results are incomplete or inadequate
 - "no_results": No meaningful results returned
 - "error": Execution failed or returned errors
@@ -736,11 +738,20 @@ IMPORTANT CLASSIFICATION RULES:
 1. If a tool call used detailed property tools (get_class_properties, parse_class_definition), do NOT classify as "insufficient_properties"
 2. For detailed property tools, use only "sufficient", "insufficient", "no_results", or "error"
 3. Use "insufficient_properties" ONLY when basic tools like get_class_info were used and more detailed property information could be obtained
+4. Use "insufficient_connections" when results show isolated entities without relationships, hierarchical connections, or contextual links to other concepts
 
-For each tool call in the results, provide:
+Connection Assessment Guidelines:
+- Check if results show relationships to parent/child classes
+- Look for property connections to other entities
+- Assess whether the entity appears isolated or well-connected in the knowledge graph
+- Consider if additional relationship information would significantly improve understanding
+
+Focus ONLY on the specific tool call you are evaluating. The global context is provided for guidance but classify based on this individual tool call's contribution.
+
+For each tool call, provide:
 1. Tool name (e.g., "get_class_properties")
 2. Class name parameter (e.g., "ChemicalCompound") 
-3. Classification from the 5 categories above
+3. Classification from the 6 categories above
 4. Brief reason (1 sentence)
 
 Your response MUST include:
@@ -756,12 +767,15 @@ Keep your output simple and structured.
             system_prompt=system_prompt,
             tools=[]
         )
-        # Configure LLM for structured output using helper
+        
+        # 配置两个结构化LLM实例
         try:
-            self.structured_llm = self._get_structured_llm(ValidationReport)
+            self.global_llm = self._get_structured_llm(GlobalCommunityAssessment)
+            self.detailed_llm = self._get_structured_llm(ValidationReport)
         except RuntimeError as e:
-            print(f"Error initializing structured LLM for ValidationAgent: {e}")
-            self.structured_llm = None
+            print(f"Error initializing ValidationAgent structured LLMs: {e}")
+            self.global_llm = None
+            self.detailed_llm = None
 
     def validate(self, results: Any, query_context: Dict = None) -> Union[ValidationReport, Dict]:
         """对查询结果中的每个工具调用进行分类
@@ -773,84 +787,253 @@ Keep your output simple and structured.
         Returns:
             ValidationReport: 包含每个工具调用的分类结果
         """
-        if not self.structured_llm:
-             return {"error": "ValidationAgent LLM not configured for structured output during init."}
+        if not self.global_llm or not self.detailed_llm:
+             return {"error": "ValidationAgent LLMs not configured for structured output during init."}
 
         # Basic check for empty results
         if not results:
             return ValidationReport(
-                valid=False,
                 tool_classifications=[],
                 message="No query results to validate"
             )
 
-        # Serialize results for analysis
         try:
-            results_str = json.dumps(results, indent=2, ensure_ascii=False, default=str)
-        except Exception as e:
-            return ValidationReport(
-                valid=False,
-                tool_classifications=[],
-                message=f"Failed to serialize results: {str(e)}"
-            )
-
-        # Extract tool call information from results
-        tool_call_info = self._extract_tool_call_info(results)
-
-        # Build the classification prompt
-        user_prompt = f"""Analyze these query results and classify each tool call:
-
-Query Results:
-```json
-{results_str}
-```
-
-Tool Calls Found:
-{self._format_tool_call_info(tool_call_info)}
-"""
-
-        if query_context:
-            user_prompt += f"""
-Query Context:
-- Original Query: "{query_context.get('query', 'Unknown')}"
-- Intent: {query_context.get('intent', 'Unknown')}"
-- Target Entities: {query_context.get('relevant_entities', 'Unknown')}"
-"""
-
-        user_prompt += """
-For each tool call, classify the result quality and provide:
-1. tool: The tool function name
-2. class_name: The class parameter that was passed
-3. classification: One of [sufficient, insufficient_properties, insufficient, no_results, error]
-4. reason: Brief explanation (one sentence)
-
-Also determine the overall classification (use the worst individual classification).
-
-Output a ValidationReport with:
-- valid: boolean (true if overall classification is sufficient)
-- overall_classification: the worst classification from all tool calls
-- tool_classifications: list of individual tool call classifications
-- message: brief summary message describing the overall results quality
-"""
-
-        try:
-            validation_report: ValidationReport = self.structured_llm.invoke([
-                ("system", self.system_prompt),
-                ("user", user_prompt)
-            ])
+            print(f"[ValidationAgent] 开始双阶段验证...")
             
-            # 直接返回LLM分类结果，不进行后处理
-            return validation_report
+            # 第一阶段：全局概念社区分析
+            global_assessment = self._analyze_conceptual_communities(results, query_context)
+            print(f"[ValidationAgent] 全局评估: {'FULFILLED' if global_assessment.requirements_fulfilled else 'NOT_FULFILLED'}")
+            
+            # 第二阶段：细粒度评估（社区指导）
+            detailed_report = self._community_guided_detailed_validation(results, query_context, global_assessment)
+            print(f"[ValidationAgent] 细粒度评估完成: {len(detailed_report.tool_classifications)} 个分类")
+            
+            # 边界情况检测：全局失败但细粒度大部分通过（遗漏概念社区）
+            is_boundary_case = self._detect_missing_community_boundary_case(global_assessment, detailed_report)
+            if is_boundary_case:
+                print(f"[ValidationAgent] 检测到边界情况：遗漏概念社区")
+                # 简单标记，便于工作流识别
+                detailed_report.message += " | BOUNDARY_CASE: MISSING_COMMUNITY"
+                
+            # 将验证结果存储到tried_tool_calls中，并返回更新的state
+            validation_updates = self._store_validation_results_in_tried_calls(detailed_report, query_context)
+            
+            # 返回包含global_assessment和updated tried_tool_calls的扩展信息
+            return {
+                "validation_report": detailed_report,
+                "global_assessment": global_assessment,
+                **validation_updates
+            }
             
         except Exception as e:
-            error_msg = f"Failed to classify tool call results: {str(e)}"
-            print(error_msg)
+            error_msg = f"双阶段验证失败: {str(e)}"
+            print(f"[ValidationAgent] {error_msg}")
             return ValidationReport(
-                valid=False,
-                overall_classification=ValidationClassification.ERROR,
                 tool_classifications=[],
                 message=error_msg
             )
+    
+    def _analyze_conceptual_communities(self, results: Any, query_context: Dict) -> GlobalCommunityAssessment:
+        """第一阶段：全局概念社区分析"""
+        
+        global_system_prompt = """
+You are an expert at analyzing chemistry queries from a conceptual community perspective.
+
+CONCEPTUAL COMMUNITY ANALYSIS:
+1. Identify distinct conceptual communities in the query (e.g., compound classes, method types, device categories)
+2. For each community, assess information completeness and quality from the combined results
+3. Identify cross-community relationships and information gaps
+4. Determine if the overall query requirements are satisfied
+
+IMPORTANT: UNDERSTANDING STRUCTURED QUERY RESULTS
+The query results are fragmented and highly structured, derived from predefined ontological scopes and relationships. Therefore:
+- Results likely contain information that may appear unrelated to the direct query at first glance
+- Critical connections and key relationships for the query are often embedded in details rather than in the main body of results
+- Individual result fragments should be examined carefully for implicit connections and relationships
+- Relationship details, property restrictions, and nested attributes may contain the most relevant connections
+- Do not dismiss results as insufficient based solely on surface-level content - dig deeper into the structural details
+
+Examples of where critical connections and relationships often hide:
+- In property restriction values and relationship targets
+- In nested attribute lists and component specifications  
+- In cross-referenced entity relationships that bridge concepts
+- In detailed property descriptions rather than summary information
+
+Examples of conceptual communities:
+- IDA methods: indicator_displacement_assay, fluorescent_indicator, competition_binding
+- Alkaloid compounds: quinine, antimalarial_compound, alkaloid_structure  
+- Sensor technologies: chemical_sensor, electronic_sensor, electrochemical_sensor
+
+Focus on COMMUNITY-LEVEL information completeness rather than individual tool performance.
+Consider whether the user's query intent can be adequately addressed with the current information by carefully examining all structural details.
+
+Output:
+- community_analysis: Detailed analysis of conceptual communities and their information coverage
+- requirements_fulfilled: Boolean indicating whether the query requirements are satisfied by current results
+"""
+        
+        # 序列化结果
+        try:
+            results_str = json.dumps(results, indent=2, ensure_ascii=False, default=str)
+        except:
+            results_str = str(results)
+        
+        user_prompt = f"""
+QUERY TO ANALYZE:
+- Question: "{query_context.get('query', 'Unknown')}"
+- Intent: {query_context.get('intent', 'Unknown')}
+- Target Entities: {query_context.get('relevant_entities', 'Unknown')}
+- Expected Information: {query_context.get('relevant_properties', 'Unknown')}
+
+CURRENT RESULTS TO EVALUATE:
+{results_str}
+
+ANALYSIS REQUIRED:
+1. What conceptual communities are involved in this query?
+2. For each community: How complete is the current information coverage?
+3. Are there missing communities that should be included to fully answer the query?
+4. Can the user get a satisfactory answer to their question from the current information?
+5. Overall assessment: Are the query requirements fulfilled?
+
+Provide clear analysis focusing on conceptual completeness and whether the user's needs are met.
+"""
+        
+        return self.global_llm.invoke([
+            ("system", global_system_prompt),
+            ("user", user_prompt)
+        ])
+
+    def _community_guided_detailed_validation(self, results: Any, query_context: Dict, 
+                                            global_assessment: GlobalCommunityAssessment) -> ValidationReport:
+        """第二阶段：受社区分析指导的细粒度评估 - 一次一个工具调用"""
+        
+        tool_call_info = self._extract_tool_call_info(results)
+        if not tool_call_info:
+            return ValidationReport(
+                tool_classifications=[],
+                message="No tool calls found"
+            )
+        
+        # 使用缓存优化的评估策略：顺序+并行
+        return self._cache_optimized_individual_evaluation(tool_call_info, query_context, global_assessment)
+
+    def _cache_optimized_individual_evaluation(self, tool_call_info: List[Dict], query_context: Dict, 
+                                             global_assessment: GlobalCommunityAssessment) -> ValidationReport:
+        """缓存优化的个别评估：一次一个工具调用，利用prompt缓存"""
+        
+        # 构造缓存友好的基础prompt（静态内容在前）
+        base_context = f"""
+CONCEPTUAL COMMUNITY ANALYSIS:
+{global_assessment.community_analysis}
+
+GLOBAL REQUIREMENTS ASSESSMENT: {'FULFILLED' if global_assessment.requirements_fulfilled else 'NOT_FULFILLED'}
+
+QUERY CONTEXT:
+- Query: "{query_context.get('query', 'Unknown')}"
+- Intent: {query_context.get('intent', 'Unknown')}
+- Target Entities: {query_context.get('relevant_entities', 'Unknown')}
+
+VALIDATION GUIDANCE:
+Based on the community analysis above, classify this specific tool call.
+Consider its contribution to addressing community-level information needs.
+Focus ONLY on the specific tool call you are evaluating.
+"""
+        
+        if len(tool_call_info) == 1:
+            # 单个工具调用，直接评估
+            classification = self._evaluate_single_tool_with_context(
+                tool_call_info[0], base_context
+            )
+            return ValidationReport(
+                tool_classifications=[classification],
+                message="Single tool evaluation with community guidance"
+            )
+        
+        # 多个工具调用：先评估一个建立缓存，再并行评估其余
+        first_tool = tool_call_info[0]
+        remaining_tools = tool_call_info[1:]
+        
+        # 第一次调用建立缓存
+        first_result = self._evaluate_single_tool_with_context(first_tool, base_context)
+        
+        if not remaining_tools:
+            return ValidationReport(
+                tool_classifications=[first_result],
+                message="Single tool evaluation with community guidance"
+            )
+        
+        # 并行评估剩余工具（利用缓存）
+        import concurrent.futures
+        
+        def evaluate_with_cache(tool_info):
+            return self._evaluate_single_tool_with_context(tool_info, base_context)
+        
+        with concurrent.futures.ThreadPoolExecutor(max_workers=min(len(remaining_tools), 3)) as executor:
+            remaining_results = list(executor.map(evaluate_with_cache, remaining_tools))
+        
+        all_results = [first_result] + remaining_results
+        valid_results = [r for r in all_results if r is not None]
+        
+        return ValidationReport(
+            tool_classifications=valid_results,
+            message=f"Community-guided evaluation: 1 sequential + {len(remaining_results)} parallel"
+        )
+
+    def _evaluate_single_tool_with_context(self, tool_info: Dict, base_context: str) -> ToolCallClassification:
+        """评估单个工具调用"""
+        
+        # 获取类名参数，支持多种参数名称格式
+        params = tool_info.get('params', {})
+        class_name = (params.get('class_name') or 
+                     params.get('class_names') or 
+                     params.get('classes') or 
+                     'unknown')
+        
+        # 工具特定信息放在最后（动态内容）
+        tool_prompt = f"""
+{base_context}
+Tool: {tool_info['tool']}
+Class Parameter: {class_name}
+Result: {json.dumps(tool_info.get('result'), default=str) if tool_info.get('result') else 'No result'}
+Error: {tool_info.get('error', 'None')}
+
+Classify this tool call considering the community analysis guidance above.
+Focus on this specific tool call's contribution to the overall query fulfillment.
+"""
+        
+        try:
+            # 使用ToolCallClassification直接输出
+            structured_llm = self._get_structured_llm(ToolCallClassification)
+            classification = structured_llm.invoke([
+                ("system", self.system_prompt),
+                ("user", tool_prompt)
+            ])
+            return classification
+            
+        except Exception as e:
+            print(f"[ValidationAgent] 工具分类失败: {e}")
+            return ToolCallClassification(
+                tool=tool_info['tool'],
+                class_name=class_name,
+                classification=ValidationClassification.ERROR,
+                reason=f"Classification error: {str(e)}"
+            )
+
+    def _detect_missing_community_boundary_case(self, global_assessment: GlobalCommunityAssessment, 
+                                               detailed_report: ValidationReport) -> bool:
+        """检测边界情况：全局失败但细粒度大部分通过（遗漏概念社区）"""
+        
+        # 全局评估是否认为需求未得到满足
+        global_not_fulfilled = not global_assessment.requirements_fulfilled
+        
+        # 细粒度评估是否大部分通过
+        sufficient_count = sum(1 for tc in detailed_report.tool_classifications 
+                              if tc.classification == ValidationClassification.SUFFICIENT)
+        total_count = len(detailed_report.tool_classifications)
+        detailed_success_rate = sufficient_count / max(total_count, 1)
+        
+        # 边界情况：全局失败但细粒度大部分通过（>70%）
+        return global_not_fulfilled and detailed_success_rate > 0.7
     
     def _extract_tool_call_info(self, results: Any) -> List[Dict]:
         """从结果中提取工具调用信息 - 基于标准格式"""
@@ -886,6 +1069,80 @@ Output a ValidationReport with:
             formatted.append(f"{i}. {call['tool']}(class_name='{class_name}')")
         
         return "\n".join(formatted)
+    
+    def _store_validation_results_in_tried_calls(self, validation_report: ValidationReport, query_context: Dict) -> Dict:
+        """将验证结果存储到tried_tool_calls中"""
+        from datetime import datetime
+        
+        tried_tool_calls = query_context.get("tried_tool_calls", {}).copy()
+        
+        print(f"[DEBUG-STORE-VALIDATION] tried_tool_calls在validation时包含 {len(tried_tool_calls)} 个调用")
+        if tried_tool_calls:
+            for call_id, call_info in list(tried_tool_calls.items())[:3]:  # 只显示前3个
+                print(f"[DEBUG-STORE-VALIDATION] Call {call_id}: tool={call_info.get('tool')}, params={call_info.get('params')}")
+        
+        for i, tool_classification in enumerate(validation_report.tool_classifications):
+            print(f"[DEBUG-STORE-VALIDATION] 处理classification {i}: tool={tool_classification.tool}, class_name={tool_classification.class_name}")
+            
+            # 找到对应的call_id
+            call_id = self._find_matching_call_id(
+                tried_tool_calls, 
+                tool_classification.tool, 
+                tool_classification.class_name
+            )
+            
+            print(f"[DEBUG-STORE-VALIDATION] 匹配call_id: {call_id}")
+            
+            if call_id and call_id in tried_tool_calls:
+                # 检查是否已有validation
+                existing_validation = tried_tool_calls[call_id].get("validation")
+                current_time = datetime.now().isoformat()
+                
+                if existing_validation:
+                    print(f"[ValidationAgent] 更新已有validation: {call_id}")
+                else:
+                    print(f"[ValidationAgent] 添加新validation: {call_id}")
+                
+                # 直接覆盖（保留最新validation）
+                tried_tool_calls[call_id]["validation"] = {
+                    "classification": tool_classification.classification.value,
+                    "reason": tool_classification.reason,
+                    "validated_at": current_time,
+                    "retry_count": query_context.get("retry_count", 0)  # 记录轮次信息
+                }
+                print(f"[DEBUG-STORE-VALIDATION] 成功添加validation到call {call_id}")
+            else:
+                print(f"[DEBUG-STORE-VALIDATION] 警告: 未找到匹配的call_id用于 {tool_classification.tool}({tool_classification.class_name})")
+        
+        print(f"[DEBUG-STORE-VALIDATION] 最终tried_tool_calls包含 {len(tried_tool_calls)} 个调用，其中有validation的: {sum(1 for c in tried_tool_calls.values() if 'validation' in c)}")
+        
+        return {"tried_tool_calls": tried_tool_calls}
+    
+    def _find_matching_call_id(self, tried_tool_calls: Dict, tool_name: str, class_name: str) -> Optional[str]:
+        """查找匹配的工具调用ID - 修复版本"""
+        for call_id, call_info in tried_tool_calls.items():
+            if call_info.get("tool") == tool_name:
+                params = call_info.get("params", {})
+                # 支持三种参数名格式
+                call_class_name = (params.get("class_name") or 
+                                 params.get("class_names") or 
+                                 params.get("classes") or "")
+                
+                # 处理列表和字符串两种情况，要求完全匹配
+                if isinstance(call_class_name, list):
+                    if class_name in call_class_name:
+                        return call_id
+                elif isinstance(call_class_name, str):
+                    if call_class_name == class_name:  # 完全匹配
+                        return call_id
+                        
+        # 如果没有找到匹配，记录调试信息
+        print(f"[_find_matching_call_id] 未找到匹配的工具调用: {tool_name}({class_name})")
+        available_calls = [(cid, cinfo.get('tool'), cinfo.get('params', {}).get('class_names') or cinfo.get('params', {}).get('class_name') or 'N/A') 
+                          for cid, cinfo in tried_tool_calls.items()]
+        print(f"[_find_matching_call_id] 可用的调用: {available_calls}")
+        
+        return None
     
     
     
@@ -1013,8 +1270,12 @@ Focus on creating accurate chemistry interpretations."""
     def _safe_search_classes(self, term: str) -> List[str]:
         """Safely search for classes, handling errors"""
         try:
+            # 安全检查本体是否存在
+            if not self.ontology_tools or not self.ontology_tools.onto_settings.ontology:
+                print(f"[HypotheticalDocumentAgent] Ontology not loaded, cannot search for '{term}'")
+                return []
+            
             # Use ontology_tools to search for classes
-            # This is a simplified implementation - the actual search method may vary
             all_classes = getattr(self.ontology_tools.onto_settings.ontology, 'classes', lambda: [])()
             
             matching_classes = []
@@ -1171,23 +1432,25 @@ Please format your response as a JSON object with these sections:
             }
 
 class ResultFormatterAgent(AgentTemplate):
-    """Formats query results into concise, organized information points."""
+    """Formats query results into expert-level comprehensive reports with background context."""
     def __init__(self, model: BaseLanguageModel):
-        system_prompt = """You are an expert at distilling complex chemistry query results into clear, concise information points.
+        system_prompt = """You are an expert chemistry information analyst specializing in creating comprehensive, expert-level reports from ontology query results.
 
-Your task is to:
-1. Analyze the provided query and its results
-2. Extract the most relevant information that directly addresses the query
-3. Present this information as a well-organized set of key points
-4. Eliminate redundancy and irrelevant details
-5. Ensure technical accuracy while making the information accessible
+Your task is to produce reports with the depth and breadth of expert knowledge that:
+1. Directly answer the specific query with key findings
+2. Provide rich background context that enhances understanding
+3. Organize information in a logical, accessible manner
+4. Include comprehensive technical details while maintaining clarity
 
 When formatting results:
-- Start with the most important findings that directly answer the query
-- Group related information together logically
-- Use consistent, precise terminology
-- Highlight quantitative data, relationships, and definitive facts
-- Include important qualifiers or context when necessary"""
+- Extract the most relevant information that directly addresses the query (key points)
+- Include broader contextual information that provides expert-level depth and understanding (background information)
+- Identify and explain important relationships, patterns, and connections
+- Ensure the final result approaches the comprehensiveness of a specialist-level analysis
+- Include quantitative data, technical specifications, and definitive facts
+- Maintain scientific accuracy and precision in terminology
+
+The goal is to provide information with the richness and context that a domain expert would include in a comprehensive analysis, going beyond just answering the immediate question to provide educational value and deeper understanding."""
 
         super().__init__(
             model=model,
@@ -1195,9 +1458,16 @@ When formatting results:
             system_prompt=system_prompt,
             tools=[]
         )
+        
+        # Initialize structured LLM for FormattedResult
+        try:
+            self.structured_llm = self._get_structured_llm(FormattedResult)
+        except RuntimeError as e:
+            print(f"Error initializing ResultFormatterAgent structured LLM: {e}")
+            self.structured_llm = None
 
     def format_results(self, query: str, results: Dict, query_context: Dict = None) -> Dict:
-        """Format query results into organized information points.
+        """Format query results into comprehensive expert-level reports.
         
         Args:
             query: The original natural language query
@@ -1205,8 +1475,11 @@ When formatting results:
             query_context: Additional context about the query
             
         Returns:
-            Dict containing formatted results with key points
+            Dict containing formatted results with expert-level depth and background information
         """
+        if not self.structured_llm:
+            return self._fallback_format(query, results, query_context)
+        
         # Format context information
         context_info = ""
         if query_context:
@@ -1229,8 +1502,8 @@ When formatting results:
         except:
             results_str = "Error: Could not format results as string"
         
-        # Create the prompt
-        user_prompt = f"""Please format the following chemistry query results into clear, concise information points:
+        # Create the enhanced prompt
+        user_prompt = f"""Please format the following chemistry query results into a comprehensive, expert-level report:
 
 ORIGINAL QUERY:
 "{query}"
@@ -1240,16 +1513,100 @@ ORIGINAL QUERY:
 QUERY RESULTS:
 {results_str}
 
-Please filter out irrelevant content and extract both highly relevant information and moderately relevant information that could be expanded into the answer. Present it as:
+IMPORTANT: DEEP ANALYSIS OF STRUCTURED DATA
+The query results contain highly structured, detailed information where critical data and connections may be embedded in:
+- Property restriction values and technical specifications (look for quantitative data, thresholds, performance metrics)
+- Nested attribute lists and component specifications (examine detailed parameters and measurements)
+- Relationship targets and cross-references (identify implicit connections and dependencies)
+- Detailed property descriptions rather than summary information (mine for specific technical details)
+
+Look carefully beyond surface-level content - the most valuable information is often in the structural details and may require careful examination to surface implicit connections and relationships.
+
+Create a comprehensive analysis that includes:
+
+1. SUMMARY: A direct, concise answer to the main question (1-2 sentences)
+
+2. KEY POINTS: Core information that directly addresses the query
+   - Focus on the most relevant findings from detailed structural analysis
+   - Include specific technical details, quantitative data, and definitive facts discovered in nested attributes
+   - Organize logically and eliminate redundancy
+
+3. BACKGROUND INFORMATION: Broader contextual information that provides expert-level depth
+   - Include related concepts that enhance understanding, surfaced from relationship details
+   - Add technical context that might not directly answer the query but enriches comprehension
+   - Provide information that demonstrates expert-level knowledge of the domain
+   - Include methodological details, related applications, or comparative information found in structured data
+
+4. RELATIONSHIPS: Significant relationships, patterns, or connections found in the data
+   - Identify interdependencies and connections between concepts through detailed property analysis
+   - Explain how different pieces of information relate to each other
+   - Highlight patterns or trends that emerge from careful examination of structured details
+
+When including citations: If information is associated with a DOI in the sourcedInformation, include the DOI reference for proper citation.
+
+The goal is to produce a report with the depth and comprehensiveness that a domain expert would provide, going beyond just answering the immediate question to provide educational value and deeper understanding of the topic through thorough analysis of all structural details."""
+
+        try:
+            # Use structured LLM to get FormattedResult
+            formatted_result = self.structured_llm.invoke([
+                ("system", self.system_prompt),
+                ("user", user_prompt)
+            ])
+            
+            # Convert Pydantic model to dict for consistency with existing code
+            return formatted_result.model_dump()
+            
+        except Exception as e:
+            print(f"Error in structured formatting: {e}")
+            return self._fallback_format(query, results, query_context)
+    
+    def _fallback_format(self, query: str, results: Dict, query_context: Dict = None) -> Dict:
+        """Fallback formatting method when structured LLM is not available."""
+        # Format context information
+        context_info = ""
+        if query_context:
+            if query_context.get('intent'):
+                context_info += f"Query intent: {query_context.get('intent')}\n"
+            if query_context.get('relevant_entities'):
+                context_info += f"Relevant entities: {query_context.get('relevant_entities')}\n"
+            if query_context.get('relevant_properties'):
+                context_info += f"Relevant properties: {query_context.get('relevant_properties')}\n"
+        
+        # Try to convert results to string if not already
+        results_str = ""
+        try:
+            if isinstance(results, str):
+                results_str = results
+            elif isinstance(results, dict):
+                results_str = json.dumps(results, indent=2, ensure_ascii=False, default=str)
+            else:
+                results_str = str(results)
+        except:
+            results_str = "Error: Could not format results as string"
+        
+        # Create the prompt for unstructured output
+        user_prompt = f"""Please format the following chemistry query results into clear, comprehensive information points:
+
+ORIGINAL QUERY:
+"{query}"
+
+{context_info}
+
+QUERY RESULTS:
+{results_str}
+
+Please provide both key findings and background information that enhances understanding. Present it as:
 1. A short summary (1-2 sentences) that directly answers the main question
-2. A set of key information points, organized logically
-3. Any important relationships or patterns found in the data
+2. Key information points that directly address the query
+3. Background information that provides broader context and expert-level depth
+4. Any important relationships or patterns found in the data
 
 When the output information in the QUERY RESULTS is associated with a DOI in the same sourcedInformation, please include the DOI reference in your output for proper citation.
 
 Format your response as a JSON object with:
 "summary": A direct answer to the query
-"key_points": An array of important information points
+"key_points": An array of core information points
+"background_information": An array of broader contextual information 
 "relationships": Any significant relationships or patterns (if applicable)
 
 DO NOT wrap your response in ```json```.
@@ -1264,11 +1621,17 @@ DO NOT wrap your response in ```json```.
         # Process the response
         try:
             formatted_result = json.loads(response.content)
+            # Ensure all required fields exist
+            formatted_result.setdefault("summary", "Could not generate summary.")
+            formatted_result.setdefault("key_points", [])
+            formatted_result.setdefault("background_information", [])
+            formatted_result.setdefault("relationships", [])
             return formatted_result
         except json.JSONDecodeError:
             # If can't parse as JSON, return a simple structure with the raw content
             return {
                 "summary": "Could not generate structured summary.",
                 "key_points": [response.content],
+                "background_information": [],
                 "relationships": []
             }

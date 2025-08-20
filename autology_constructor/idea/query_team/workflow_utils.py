@@ -7,7 +7,7 @@
 - 内部工具过滤和结果清理
 """
 
-from typing import Dict, List, Literal, Optional, Any, Union, Set
+from typing import Dict, List, Literal, Optional, Any, Union, Set, Tuple
 from datetime import datetime
 import hashlib
 import json
@@ -441,3 +441,207 @@ def auto_fix_entity_mismatch(
         logger.info(f"[auto_fix_entity_mismatch] Applied corrections: {corrections_str}")
     
     return corrected_entities, has_corrections, correction_mapping
+
+
+def supplement_parse_definitions(state: QueryState) -> Dict:
+    """全局评估通过后，自动为未使用parse_class_definition的类执行该工具
+    
+    Args:
+        state: 当前QueryState
+        
+    Returns:
+        更新后的状态字典
+    """
+    from langchain_core.messages import SystemMessage
+    
+    try:
+        # 从 state 获取 ontology_tools
+        ontology_tools = state.get("ontology_tools")
+        if not ontology_tools:
+            print("[supplement_parse_definitions] ontology_tools not found")
+            return {
+                "status": state.get("status", "supplement_skipped"),
+                "stage": "supplement_skipped",
+                "previous_stage": state.get("stage"),
+                "messages": [SystemMessage(content="Supplement skipped: no ontology tools")]
+            }
+        
+        # 获取当前的工具调用历史
+        tried_tool_calls = state.get("tried_tool_calls", {})
+        
+        # 找出所有已经查询过的类名
+        queried_classes = set()
+        classes_with_parse_definition = set()
+        
+        for call_info in tried_tool_calls.values():
+            tool_name = call_info.get("tool")
+            params = call_info.get("params", {})
+            class_name = params.get("class_name") or params.get("class_names")
+            
+            if class_name:
+                if isinstance(class_name, list):
+                    queried_classes.update(class_name)
+                    if tool_name == "parse_class_definition":
+                        classes_with_parse_definition.update(class_name)
+                else:
+                    queried_classes.add(class_name)
+                    if tool_name == "parse_class_definition":
+                        classes_with_parse_definition.add(class_name)
+        
+        # 找出需要补充 parse_class_definition 的类
+        classes_need_supplement = queried_classes - classes_with_parse_definition
+        
+        if not classes_need_supplement:
+            print("[supplement_parse_definitions] 所有类已经有parse_class_definition，无需补充")
+            return {
+                "status": state.get("status", "supplement_not_needed"),
+                "stage": "supplement_not_needed",
+                "previous_stage": state.get("stage"),
+                "messages": [SystemMessage(content="Supplement not needed: all classes have parse_class_definition")]
+            }
+        
+        print(f"[supplement_parse_definitions] 需要补充parse_class_definition的类: {classes_need_supplement}")
+        
+        # 执行补充的 parse_class_definition
+        updated_tried_calls = tried_tool_calls.copy()
+        for class_name in classes_need_supplement:
+            try:
+                print(f"[supplement_parse_definitions] 为类 {class_name} 执行parse_class_definition")
+                definition_result = ontology_tools.parse_class_definition(class_name)
+                
+                # 更新工具调用历史
+                call_id = f"supplement_{class_name}_{len(updated_tried_calls)}"
+                updated_tried_calls[call_id] = {
+                    "tool": "parse_class_definition",
+                    "params": {"class_name": class_name},
+                    "result": definition_result
+                }
+                
+            except Exception as e:
+                print(f"[supplement_parse_definitions] 为类 {class_name} 执行parse_class_definition失败: {e}")
+                # 继续处理其他类，不因单个失败而停止
+        
+        return {
+            "status": state.get("status", "supplement_completed"),
+            "stage": "supplement_completed",
+            "previous_stage": state.get("stage"),
+            "tried_tool_calls": updated_tried_calls,
+            "messages": [SystemMessage(content=f"Supplemented parse_class_definition for {len(classes_need_supplement)} classes")]
+        }
+        
+    except Exception as e:
+        print(f"[supplement_parse_definitions] 执行过程中发生错误: {e}")
+        return {
+            "status": "error",
+            "stage": "supplement_error",
+            "previous_stage": state.get("stage"),
+            "error": str(e),
+            "messages": [SystemMessage(content=f"Supplement error: {str(e)}")]
+        }
+
+
+# ====== tried_tool_calls过滤和清理工具函数 ======
+
+def filter_validated_tool_calls(tried_tool_calls: Dict) -> Dict:
+    """基于验证结果过滤工具调用
+    
+    Args:
+        tried_tool_calls: 原始工具调用记录
+        
+    Returns:
+        过滤后的工具调用记录，每个类只保留最有价值的一个调用
+    """
+    
+    # 只保留有验证结果的调用
+    validated_calls = {
+        call_id: call_info 
+        for call_id, call_info in tried_tool_calls.items()
+        if "validation" in call_info
+    }
+    
+    logger.info(f"[filter_validated_tool_calls] 有验证结果的调用: {len(validated_calls)}/{len(tried_tool_calls)}")
+    
+    # 按类名分组
+    calls_by_class = {}
+    for call_id, call_info in validated_calls.items():
+        class_name = extract_class_name_from_params(call_info.get("params", {}))
+        if class_name not in calls_by_class:
+            calls_by_class[class_name] = []
+        calls_by_class[class_name].append((call_id, call_info))
+    
+    # 为每个类选择最佳调用
+    filtered_calls = {}
+    for class_name, class_calls in calls_by_class.items():
+        best_call_id = select_best_call_for_class(class_calls)
+        if best_call_id:
+            filtered_calls[best_call_id] = validated_calls[best_call_id]
+            logger.debug(f"[filter_validated_tool_calls] 为类'{class_name}'选择调用: {best_call_id}")
+    
+    logger.info(f"[filter_validated_tool_calls] 过滤结果: {len(filtered_calls)} 个调用")
+    return filtered_calls
+
+def extract_class_name_from_params(params: Dict) -> str:
+    """从参数中提取类名"""
+    class_name = (params.get("class_name") or 
+                 params.get("class_names") or 
+                 params.get("classes") or "unknown")
+    
+    # 处理列表情况，取第一个
+    if isinstance(class_name, list):
+        return class_name[0] if class_name else "unknown"
+    return str(class_name)
+
+def select_best_call_for_class(class_calls: List[Tuple[str, Dict]]) -> Optional[str]:
+    """为单个类选择最佳工具调用
+    
+    策略：
+    1. 过滤掉error和no_results
+    2. 如果有sufficient的调用，按工具优先级选择最佳的一个
+    3. 如果没有sufficient，保留第一个有效调用（按工具优先级排序）
+    """
+    
+    # 工具优先级顺序
+    TOOL_PRIORITY = {
+        "parse_class_definition": 0,
+        "get_class_properties": 1, 
+        "get_related_classes": 2,
+    }
+    
+    # 过滤掉失败和无结果的调用
+    valid_calls = [
+        (call_id, call_info) for call_id, call_info in class_calls
+        if call_info.get("validation", {}).get("classification") not in ["error", "no_results"]
+    ]
+    
+    if not valid_calls:
+        logger.warning(f"[select_best_call_for_class] 没有有效的调用")
+        return None
+    
+    # 检查是否有SUFFICIENT的调用
+    sufficient_calls = [
+        (call_id, call_info) for call_id, call_info in valid_calls
+        if call_info.get("validation", {}).get("classification") == "sufficient"
+    ]
+    
+    if sufficient_calls:
+        # 有SUFFICIENT调用时，按工具优先级选择最佳的一个
+        def priority_key(item):
+            call_id, call_info = item
+            tool_name = call_info.get("tool", "")
+            return TOOL_PRIORITY.get(tool_name, 999)
+        
+        sufficient_calls.sort(key=priority_key)
+        selected = sufficient_calls[0]
+        logger.debug(f"[select_best_call_for_class] 选择sufficient调用: {selected[1].get('tool')}")
+        return selected[0]
+    else:
+        # 没有SUFFICIENT时，选择工具优先级最高的有效调用
+        def priority_key(item):
+            call_id, call_info = item
+            tool_name = call_info.get("tool", "")
+            return TOOL_PRIORITY.get(tool_name, 999)
+        
+        valid_calls.sort(key=priority_key)
+        selected = valid_calls[0]
+        logger.debug(f"[select_best_call_for_class] 选择最佳有效调用: {selected[1].get('tool')}")
+        return selected[0]

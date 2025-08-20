@@ -9,6 +9,7 @@ class ValidationClassification(str, Enum):
     """验证结果分类标签"""
     SUFFICIENT = "sufficient"                    # 结果充分
     INSUFFICIENT_PROPERTIES = "insufficient_properties"  # 缺乏属性信息
+    INSUFFICIENT_CONNECTIONS = "insufficient_connections"  # 缺失联系信息
     INSUFFICIENT = "insufficient"               # 全面信息不足  
     NO_RESULTS = "no_results"                   # 无结果
     ERROR = "error"                             # 执行错误
@@ -68,6 +69,12 @@ class ToolCallClassification(BaseModel):
     classification: ValidationClassification = Field(description="Classification label for this tool call")
     reason: str = Field(description="Brief reason for the classification")
 
+# NEW: Global conceptual community assessment report
+class GlobalCommunityAssessment(BaseModel):
+    """Global conceptual community assessment report"""
+    community_analysis: str = Field(description="Conceptual community analysis report")
+    requirements_fulfilled: bool = Field(description="Whether query requirements are satisfied")
+
 class ValidationReport(BaseModel):
     """简化的验证报告结构"""
     tool_classifications: List[ToolCallClassification] = Field(default_factory=list, description="Classification for each tool call")
@@ -118,6 +125,20 @@ class ExtractedProperties(BaseModel):
     relevant_properties: List[str] = Field(default_factory=list, description="List of specific property names identified from the query and available property lists.")
 
     @field_validator('relevant_properties', mode='before')
+    @classmethod
+    def convert_none_to_empty_list(cls, value):
+        if value is None:
+            return []
+        return value 
+
+class FormattedResult(BaseModel):
+    """Schema for formatted query results with expert-level depth and breadth."""
+    summary: str = Field(description="A direct, concise answer to the main query (1-2 sentences)")
+    key_points: List[str] = Field(default_factory=list, description="Core information points that directly address the query")
+    background_information: List[str] = Field(default_factory=list, description="Broader contextual information that provides expert-level depth, may have slightly lower direct relevance than key points but enriches understanding")
+    relationships: List[str] = Field(default_factory=list, description="Significant relationships, patterns, or connections found in the data")
+    
+    @field_validator('key_points', 'background_information', 'relationships', mode='before')
     @classmethod
     def convert_none_to_empty_list(cls, value):
         if value is None:

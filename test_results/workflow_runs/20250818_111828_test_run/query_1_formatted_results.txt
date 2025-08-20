@@ -1,5 +1,0 @@
-Query 1 - Formatted Results
-==================================================
-Time: 2025-08-18 11:18:28.641341
-
-{'summary': 'There is no available evidence or documented examples of electrochemical sensors utilizing Indicator Displacement Assay (IDA) for the detection of Quinine.', 'key_points': ["The queried classes 'electrochemical sensors' and 'Indicator Displacement Assay' were not found in the database, indicating a lack of specific documented sensors or methods using these techniques for Quinine detection.", 'Similarly, Quinine itself was not identified as a class or target in the relevant data sources.', 'The absence of direct references suggests that, as of the current data, no established electrochemical IDA-based sensors for Quinine are publicly documented.'], 'relationships': ['The lack of identified classes for both electrochemical sensors and IDA implies that either such sensors are not developed or not publicly reported for Quinine detection.', 'Without specific class information or references, the potential for using IDA in electrochemical sensors for Quinine remains unconfirmed.']}

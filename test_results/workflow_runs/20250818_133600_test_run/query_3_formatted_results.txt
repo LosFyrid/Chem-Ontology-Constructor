@@ -1,5 +1,0 @@
-Query 3 - Formatted Results
-==================================================
-Time: 2025-08-18 13:36:00.455108
-
-{'summary': 'IDAs (Information-Dependent Analyses) are used to detect various molecules, including metal ions, small organic molecules, and biomolecules, although specific details about the molecule types are not explicitly provided in the results.', 'key_points': ['IDAs can detect a range of molecules such as metal ions, small organic molecules, and biomolecules.', 'The specific classes or types of molecules detectable by IDA are not detailed in the provided results.', 'The absence of detailed class information suggests that further research or source-specific data may be needed to clarify the exact molecule types detectable by IDA.'], 'relationships': ['IDAs are associated with detecting different molecule classes, implying versatility in analytical applications.', 'The lack of explicit class definitions indicates that the detection capabilities of IDA may depend on the analytical context or specific implementation.']}
