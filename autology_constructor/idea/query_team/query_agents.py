@@ -1294,7 +1294,14 @@ Focus on creating accurate chemistry interpretations."""
     def _safe_get_richness_info(self, class_name: str) -> Optional[Dict]:
         """Safely get class richness information"""
         try:
-            return self.ontology_tools.get_class_richness_info(class_name)
+            # 使用QueryManager的共享锁保护
+            from .query_manager import QueryManager
+            lock = QueryManager.get_shared_lock()
+            if lock:
+                with lock:
+                    return self.ontology_tools.get_class_richness_info(class_name)
+            else:
+                return self.ontology_tools.get_class_richness_info(class_name)
         except Exception as e:
             print(f"[HypotheticalDocumentAgent] Richness evaluation failed for '{class_name}': {e}")
             return None

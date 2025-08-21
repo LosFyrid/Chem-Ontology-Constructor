@@ -2,9 +2,9 @@
 
 # --- CONFIGURATION START ---
 # 路径配置
-EXCEL_FILE_PATH = r"D:\\\\CursorProj\\\\Chem-Ontology-Constructor\\\\tests\\\\Supramolecular\\\\data\\\\interaction\\\\interaction.xlsx"
-PDF_OUTPUT_DIR = r"D:\\\\CursorProj\\\\Chem-Ontology-Constructor\\\\tests\\\\Supramolecular\\\\data\\\\interaction\\\\pdfs"
-LOG_FILE_PATH = r"D:\\\\CursorProj\\\\Chem-Ontology-Constructor\\\\tests\\\\Supramolecular\\\\src\\\\final\\\\download_log.txt" # Corrected path
+EXCEL_FILE_PATH = r"C:\D\CursorProj\Chem-Ontology-Constructor\tests\Supramolecular\\data\\interaction\\interaction.xlsx"
+PDF_OUTPUT_DIR = r"C:\D\CursorProj\Chem-Ontology-Constructor\tests\Supramolecular\\data\\interaction\\pdfs"
+LOG_FILE_PATH = r"C:\D\CursorProj\Chem-Ontology-Constructor\tests\Supramolecular\\src\\final\\download_log.txt" # Corrected path
 
 # Excel 相关配置
 DOI_COLUMN_NAME = "DOI"

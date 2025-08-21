@@ -271,7 +271,14 @@ class QueryRefiner:
                     tried_calls = state.get("tried_tool_calls", {})
                     richness_info = tried_calls[signature]["result"]
                 else:
-                    richness_info = self.ontology_tools.get_class_richness_info(class_name)
+                    # 使用QueryManager的共享锁保护
+                    from .query_manager import QueryManager
+                    lock = QueryManager.get_shared_lock()
+                    if lock:
+                        with lock:
+                            richness_info = self.ontology_tools.get_class_richness_info(class_name)
+                    else:
+                        richness_info = self.ontology_tools.get_class_richness_info(class_name)
                 
                 score = richness_info.get("richness_score", 0.0)
                 scored_candidates.append((class_name, score))

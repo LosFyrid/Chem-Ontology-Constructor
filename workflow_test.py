@@ -260,7 +260,7 @@ for run_num in range(1, args.runs + 1):
     revised_queries = [item["question"] for item in temp_qas[:num]]
 
     query_context = {
-        "ontology": ONTOLOGY_SETTINGS,
+        # "ontology": ONTOLOGY_SETTINGS,
         "originating_team": "test_notebook",
         "originating_stage": "manual_test",
         "query_type": "information_retrieval" # 对所有查询使用信息检索类型
@@ -366,10 +366,11 @@ for run_num in range(1, args.runs + 1):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     
     # 为每次运行创建带次数的文件夹
+    base_folder_path = r"test_results/final/MOSES/"
     if args.runs > 1:
-        results_dir = f"test_results/final/{timestamp}_test_run_run{run_num}"
+        results_dir = f"{base_folder_path}{timestamp}_test_run_run{run_num}"
     else:
-        results_dir = f"test_results/final/{timestamp}_test_run"
+        results_dir = f"{base_folder_path}{timestamp}_test_run"
     
     os.makedirs(results_dir, exist_ok=True)
 

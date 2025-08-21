@@ -168,12 +168,20 @@ class QueryQueueManager:
 class QueryManager:
     """独立的查询管理器，负责处理和管理所有查询请求"""
     
+    # 类级别的共享锁，供所有实例和静态方法使用
+    _shared_ontology_lock = None
+    
+    @classmethod
+    def get_shared_lock(cls):
+        """获取共享的本体工具锁"""
+        return cls._shared_ontology_lock
+    
     def __init__(self, max_workers: int = 4, ontology_settings=None):
         """初始化查询管理器
         
         Args:
             max_workers: 最大工作线程数
-            ontology_settings: OntologySettings实例，用于创建ontology_tools (不再使用)
+            ontology_settings: OntologySettings实例，用于创建共享ontology_tools
         """
         self.query_queue_manager = QueryQueueManager()
         self._query_to_state = QueryToStateAdapter()
@@ -189,6 +197,12 @@ class QueryManager:
         self._dispatcher_thread: Optional[threading.Thread] = None # Dispatcher thread object
         self._stop_dispatcher_event = threading.Event() # Event to signal dispatcher stop
 
+        # 新增：共享本体工具支持（并发优化）
+        self.shared_ontology_tools = None
+        self.shared_ontology_settings = None
+        if ontology_settings:
+            self._init_shared_ontology_tools(ontology_settings)
+
         # 推迟 LangGraph 初始化，避免循环导入
         self.query_graph = None
     
@@ -197,6 +211,97 @@ class QueryManager:
         if self.query_graph is None:
             from .query_workflow import create_query_graph # Local import
             self.query_graph = create_query_graph()
+
+    def _init_shared_ontology_tools(self, ontology_settings):
+        """初始化共享OntologyTools + 对象级锁
+        
+        Args:
+            ontology_settings: OntologySettings实例
+        """
+        try:
+            print("正在初始化共享本体工具（对象级锁保护）...")
+            
+            # 创建临时SQLite文件支持缓存
+            import tempfile
+            import os
+            from owlready2 import World
+            
+            sqlite_file = os.path.join(tempfile.gettempdir(), f"shared_ontology_object_lock_{os.getpid()}.sqlite3")
+            
+            # 创建共享World
+            shared_world = World()
+            
+            # 检查是否已有缓存
+            if os.path.exists(sqlite_file):
+                print("  使用现有SQLite缓存...")
+                shared_world.set_backend(filename=sqlite_file, exclusive=False)
+                ontology = shared_world.get_ontology(ontology_settings.ontology_iri).load()
+            else:
+                print("  首次加载，创建SQLite缓存...")
+                shared_world.set_backend(filename=sqlite_file, exclusive=False)
+                ontology = shared_world.get_ontology(ontology_settings.ontology_iri).load(only_local=True)
+                shared_world.save()  # 保存到SQLite文件
+            
+            # 创建OntologySettings副本
+            from config.settings import OntologySettings
+            shared_settings = OntologySettings(
+                base_iri=ontology_settings.base_iri,
+                ontology_file_name=ontology_settings.ontology_file_name,
+                directory_path=ontology_settings.directory_path,
+                closed_ontology_file_name=ontology_settings.closed_ontology_file_name
+            )
+            
+            # 替换其内部World为共享的World
+            shared_settings._world = shared_world
+            shared_settings._ontology = ontology
+            
+            # 创建共享的OntologyTools（不启用内部锁）
+            from .ontology_tools import OntologyTools
+            self.shared_ontology_tools = OntologyTools(shared_settings, thread_safe=False)
+            self.shared_ontology_settings = shared_settings
+            
+            # 创建对象级锁保护整个OntologyTools
+            import threading
+            self.ontology_tools_lock = threading.RLock()
+            
+            # 设置类级别的共享锁，供其他模块使用
+            QueryManager._shared_ontology_lock = self.ontology_tools_lock
+            
+            # 同时更新所有缓存
+            self.update_all_caches(ontology)
+            
+            print(f"共享本体工具初始化完成，SQLite文件：{sqlite_file}")
+            print(f"对象级RLock保护已启用，支持最大{self.executor._max_workers}个并发线程")
+            
+        except Exception as e:
+            print(f"共享本体工具初始化失败：{e}")
+            print("将回退到独立实例模式")
+            import traceback
+            traceback.print_exc()
+            self.shared_ontology_tools = None
+            self.shared_ontology_settings = None
+            self.ontology_tools_lock = None
+
+    def _validate_query_ontology(self, query_ontology_settings):
+        """验证查询使用的本体是否与共享本体匹配
+        
+        Args:
+            query_ontology_settings: 查询指定的本体设置
+            
+        Returns:
+            bool: True表示匹配或可以使用共享本体，False表示不匹配
+        """
+        if not query_ontology_settings:
+            # 空值默认使用共享本体
+            return True
+        
+        if not self.shared_ontology_settings:
+            # 共享本体未初始化
+            return False
+        
+        # 检查关键标识符是否匹配
+        return (query_ontology_settings.base_iri == self.shared_ontology_settings.base_iri and 
+                query_ontology_settings.ontology_file_name == self.shared_ontology_settings.ontology_file_name)
 
     def update_class_name_cache(self, ontology: Any):
         """Manually update the class name cache from the ontology."""
@@ -357,48 +462,63 @@ class QueryManager:
         print(f"Query processing error: {str(error)}")
         
     def _execute_query_with_langgraph(self, query: Query) -> Dict:
-        """使用LangGraph执行查询"""
+        """使用共享OntologyTools执行查询（对象级锁保护）"""
         # 将Query转换为QueryState
         query_state = self._query_to_state.transform(query)
         
         # 将所有缓存添加到初始状态
         query_state["available_classes"] = self.class_name_cache
-        query_state["available_data_properties"] = self.data_property_cache  # 新增: 添加数据属性到状态
-        query_state["available_object_properties"] = self.object_property_cache  # 新增: 添加对象属性到状态
+        query_state["available_data_properties"] = self.data_property_cache
+        query_state["available_object_properties"] = self.object_property_cache
 
-        # 创建OntologyTools实例并存储到state中
-        from .ontology_tools import OntologyTools
-        from config.settings import OntologySettings
-        
+        # 获取查询指定的本体设置
         original_settings = query_state["source_ontology"]
-        if not original_settings:
-            raise ValueError("source_ontology is required in query context")
         
-        # 为每个查询创建完全独立的OntologySettings实例
-        # 这会创建独立的owlready2 World，避免并发冲突
-        independent_settings = OntologySettings(
-            base_iri=original_settings.base_iri,
-            ontology_file_name=original_settings.ontology_file_name,
-            directory_path=original_settings.directory_path,
-            closed_ontology_file_name=original_settings.closed_ontology_file_name
-        )
+        # 优先使用共享OntologyTools（对象级锁保护）
+        if self.shared_ontology_tools and self.ontology_tools_lock and self._validate_query_ontology(original_settings):
+            print(f"使用共享本体工具（对象级锁保护），线程：{threading.current_thread().name}")
+            query_state["ontology_tools"] = self.shared_ontology_tools
+            query_state["source_ontology"] = self.shared_ontology_settings
+            query_state["ontology_tools_lock"] = self.ontology_tools_lock  # 传递锁给工作流
+        else:
+            # 回退到独立实例
+            if not original_settings:
+                if self.shared_ontology_tools:
+                    print("使用共享本体工具作为回退选项")
+                    query_state["ontology_tools"] = self.shared_ontology_tools
+                    query_state["source_ontology"] = self.shared_ontology_settings
+                    query_state["ontology_tools_lock"] = self.ontology_tools_lock
+                else:
+                    raise ValueError("source_ontology is required when shared tools unavailable")
+            else:
+                print(f"回退到独立本体工具实例，线程：{threading.current_thread().name}")
+                from .ontology_tools import OntologyTools
+                from config.settings import OntologySettings
+                
+                independent_settings = OntologySettings(
+                    base_iri=original_settings.base_iri,
+                    ontology_file_name=original_settings.ontology_file_name,
+                    directory_path=original_settings.directory_path,
+                    closed_ontology_file_name=original_settings.closed_ontology_file_name
+                )
+                # 创建独立实例（不需要锁）
+                ontology_tools = OntologyTools(independent_settings, thread_safe=False)
+                query_state["ontology_tools"] = ontology_tools
+                query_state["source_ontology"] = independent_settings
+                query_state["ontology_tools_lock"] = None  # 独立实例不需要锁
         
-        ontology_tools = OntologyTools(independent_settings)
-        query_state["ontology_tools"] = ontology_tools
-        print(f"Created independent OntologySettings with World ID: {id(independent_settings._world)} for query")
-        
-        # 创建query graph（不再需要传递ontology_tools参数）
+        # 创建query graph
         from .query_workflow import create_query_graph
         query_graph = create_query_graph()
              
-        # 配置递归限制以避免GraphRecursionError
-        config = {"recursion_limit": 50}  # 恢复默认递归限制，通过修复死循环来解决问题
+        # 配置递归限制
+        config = {"recursion_limit": 50}
         final_state = query_graph.invoke(query_state, config=config)
 
-        # 将最终的QueryState转换回Query对象（更新状态/结果）
+        # 将最终的QueryState转换回Query对象
         self._state_to_query.transform(final_state, query)
 
-        return final_state # Return the final state dictionary
+        return final_state
     
     def submit_query(self, query_text: str, 
                     query_context: Dict = None,

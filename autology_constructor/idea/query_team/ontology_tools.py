@@ -6,10 +6,21 @@ import re
 from collections import deque
 import traceback
 import warnings
+import threading
 
 from autology_constructor.idea.query_team.utils import parse_json, format_sparql_results, extract_variables_from_sparql
 
 from config.settings import ONTOLOGY_SETTINGS, OntologySettings
+
+def thread_safe_method(func):
+    """装饰器：为方法添加线程安全保护"""
+    def wrapper(self, *args, **kwargs):
+        if self._thread_safe and self._ontology_lock:
+            with self._ontology_lock:
+                return func(self, *args, **kwargs)
+        else:
+            return func(self, *args, **kwargs)
+    return wrapper
 
 class SparqlExecutionError(Exception):
     """SPARQL查询执行错误"""
@@ -277,14 +288,22 @@ class OntologyTools:
         29: "VALUE",
     }
 
-    def __init__(self, ontology_settings: OntologySettings):
+    def __init__(self, ontology_settings: OntologySettings, thread_safe: bool = False):
         """初始化 OntologyTools
 
         Args:
             ontology_settings (OntologySettings): 已配置和加载的本体设置对象。
+            thread_safe (bool): 是否启用线程安全模式，默认True
         """
         if not isinstance(ontology_settings, OntologySettings):
             raise TypeError("ontology_settings 必须是 OntologySettings 的实例。")
+
+        # 初始化线程锁（如果启用线程安全）
+        self._thread_safe = thread_safe
+        if thread_safe:
+            self._ontology_lock = threading.RLock()  # 使用可重入锁
+        else:
+            self._ontology_lock = None
 
         self.onto_settings = ontology_settings
         self.onto = self.onto_settings.ontology # 可能为 None
@@ -820,6 +839,7 @@ class OntologyTools:
 
     # --- MODIFIED: Public API methods now call corresponding _get_single_... ---
 
+    @thread_safe_method
     def get_class_info(self, class_names: Union[str, List[str]]) -> Dict[str, Dict]:
         """Get source information for one or more ontology classes.
 
@@ -857,6 +877,7 @@ class OntologyTools:
         if isinstance(class_names, str): class_names = [class_names]
         return {name: self._get_single_class_info(name) for name in class_names}
 
+    @thread_safe_method
     def get_information_sources(self, class_names: Union[str, List[str]]) -> Dict[str, Union[List[str], Dict]]:
         """Get the sources of information associated with one or more ontology classes.
 
@@ -916,6 +937,7 @@ class OntologyTools:
             return list(set(matching_content))
         return {name: _get_single_information_by_source(name, source) for name in class_names}
 
+    @thread_safe_method
     def get_class_properties(self, class_names: Union[str, List[str]]) -> Dict[str, Union[Dict[str, Dict[str, Any]], Dict]]:
         """Get detailed properties for one or more classes, including restrictions and descriptions.
 
@@ -1075,6 +1097,7 @@ class OntologyTools:
          # Remove the internal definition, call the class-level private method
         return {name: self._get_single_disjoint_classes(name) for name in class_names} # Call self!
 
+    @thread_safe_method
     def parse_class_definition(self, class_names: Union[str, List[str]]) -> Dict[str, Dict]:
         """Parse and retrieve a comprehensive definition for one or more classes.
 

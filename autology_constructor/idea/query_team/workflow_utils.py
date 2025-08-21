@@ -225,7 +225,13 @@ def handle_stagnation_with_entity_matcher(state: QueryState, entity_matcher, ont
             for candidate, similarity in similar_candidates:
                 if similarity >= min_similarity and candidate != entity:
                     # 评估候选的丰富度
-                    richness_info = ontology_tools.get_class_richness_info(candidate)
+                    # 使用对象级锁保护ontology_tools调用
+                    lock = state.get("ontology_tools_lock")
+                    if lock:
+                        with lock:
+                            richness_info = ontology_tools.get_class_richness_info(candidate)
+                    else:
+                        richness_info = ontology_tools.get_class_richness_info(candidate)
                     richness_score = richness_info.get("richness_score", 0.0)
                     entity_synonyms.append((candidate, similarity, richness_score))
             
@@ -254,7 +260,13 @@ def handle_stagnation_with_entity_matcher(state: QueryState, entity_matcher, ont
         # 将所有新候选按丰富度重新排序
         final_candidates = []
         for candidate in new_candidates:
-            richness_info = ontology_tools.get_class_richness_info(candidate)
+            # 使用对象级锁保护ontology_tools调用
+            lock = state.get("ontology_tools_lock")
+            if lock:
+                with lock:
+                    richness_info = ontology_tools.get_class_richness_info(candidate)
+            else:
+                richness_info = ontology_tools.get_class_richness_info(candidate)
             richness_score = richness_info.get("richness_score", 0.0)
             final_candidates.append((candidate, richness_score))
         
@@ -507,7 +519,13 @@ def supplement_parse_definitions(state: QueryState) -> Dict:
         for class_name in classes_need_supplement:
             try:
                 print(f"[supplement_parse_definitions] 为类 {class_name} 执行parse_class_definition")
-                definition_result = ontology_tools.parse_class_definition(class_name)
+                # 使用对象级锁保护ontology_tools调用
+                lock = state.get("ontology_tools_lock")
+                if lock:
+                    with lock:
+                        definition_result = ontology_tools.parse_class_definition(class_name)
+                else:
+                    definition_result = ontology_tools.parse_class_definition(class_name)
                 
                 # 更新工具调用历史
                 call_id = f"supplement_{class_name}_{len(updated_tried_calls)}"

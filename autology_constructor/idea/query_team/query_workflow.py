@@ -334,8 +334,13 @@ def create_query_graph() -> Graph:
                 # 生成SPARQL查询
                 sparql_query_str = sparql_agent.generate_sparql(normalized_query_obj.model_dump())
 
-                # 使用创建的OntologyTools实例执行SPARQL
-                results = ontology_tools.execute_sparql(sparql_query_str)
+                # 使用创建的OntologyTools实例执行SPARQL（对象级锁保护）
+                lock = state.get("ontology_tools_lock")
+                if lock:
+                    with lock:
+                        results = ontology_tools.execute_sparql(sparql_query_str)
+                else:
+                    results = ontology_tools.execute_sparql(sparql_query_str)
                 
                 # 错误检查
                 if isinstance(results, dict) and results.get("error"):
