@@ -176,12 +176,14 @@ class QueryManager:
         """获取共享的本体工具锁"""
         return cls._shared_ontology_lock
     
-    def __init__(self, max_workers: int = 4, ontology_settings=None):
+    def __init__(self, max_workers: int = 4, ontology_settings=None, staggered_start: bool = False, start_interval: int = 5):
         """初始化查询管理器
         
         Args:
             max_workers: 最大工作线程数
             ontology_settings: OntologySettings实例，用于创建共享ontology_tools
+            staggered_start: 是否使用错开启动（第一批查询错开提交）
+            start_interval: 查询提交间隔（秒）
         """
         self.query_queue_manager = QueryQueueManager()
         self._query_to_state = QueryToStateAdapter()
@@ -197,6 +199,12 @@ class QueryManager:
         self._dispatcher_thread: Optional[threading.Thread] = None # Dispatcher thread object
         self._stop_dispatcher_event = threading.Event() # Event to signal dispatcher stop
 
+        # 错开启动配置
+        self.staggered_start = staggered_start
+        self.start_interval = start_interval
+        self._first_batch_count = 0  # 第一批查询计数
+        self._first_batch_lock = threading.Lock()  # 保护第一批计数
+        
         # 新增：共享本体工具支持（并发优化）
         self.shared_ontology_tools = None
         self.shared_ontology_settings = None
@@ -537,6 +545,17 @@ class QueryManager:
             priority=priority,
             query_context=query_context or {}
         )
+        
+        # 错开启动逻辑：第一批查询错开提交
+        if self.staggered_start:
+            with self._first_batch_lock:
+                current_batch_index = self._first_batch_count
+                if self._first_batch_count < self.executor._max_workers:
+                    self._first_batch_count += 1
+                    stagger_delay = current_batch_index * self.start_interval
+                    if stagger_delay > 0:
+                        print(f"[StaggeredStart] 查询 {query.query_id} 将延迟 {stagger_delay} 秒提交")
+                        time.sleep(stagger_delay)
         
         # Create and store the Future before enqueuing
         future = Future()

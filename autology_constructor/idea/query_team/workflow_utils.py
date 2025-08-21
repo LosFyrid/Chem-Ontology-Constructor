@@ -561,42 +561,61 @@ def supplement_parse_definitions(state: QueryState) -> Dict:
 # ====== tried_tool_calls过滤和清理工具函数 ======
 
 def filter_validated_tool_calls(tried_tool_calls: Dict) -> Dict:
-    """基于验证结果过滤工具调用
+    """基于新的过滤逻辑过滤工具调用
+    
+    新逻辑：只删除error、无结果和内部调用，其余结果按轮次倒序排列
     
     Args:
         tried_tool_calls: 原始工具调用记录
         
     Returns:
-        过滤后的工具调用记录，每个类只保留最有价值的一个调用
+        过滤后的工具调用记录，按轮次倒序排列
     """
     
-    # 只保留有验证结果的调用
-    validated_calls = {
-        call_id: call_info 
-        for call_id, call_info in tried_tool_calls.items()
-        if "validation" in call_info
-    }
+    # 首先过滤掉内部工具调用
+    non_internal_calls = filter_internal_tools(tried_tool_calls)
     
-    logger.info(f"[filter_validated_tool_calls] 有验证结果的调用: {len(validated_calls)}/{len(tried_tool_calls)}")
-    
-    # 按类名分组
-    calls_by_class = {}
-    for call_id, call_info in validated_calls.items():
-        class_name = extract_class_name_from_params(call_info.get("params", {}))
-        if class_name not in calls_by_class:
-            calls_by_class[class_name] = []
-        calls_by_class[class_name].append((call_id, call_info))
-    
-    # 为每个类选择最佳调用
+    # 过滤掉error和无结果的调用（保留其他所有调用，不管是否有validator评价）
     filtered_calls = {}
-    for class_name, class_calls in calls_by_class.items():
-        best_call_id = select_best_call_for_class(class_calls)
-        if best_call_id:
-            filtered_calls[best_call_id] = validated_calls[best_call_id]
-            logger.debug(f"[filter_validated_tool_calls] 为类'{class_name}'选择调用: {best_call_id}")
     
-    logger.info(f"[filter_validated_tool_calls] 过滤结果: {len(filtered_calls)} 个调用")
-    return filtered_calls
+    for call_id, call_info in non_internal_calls.items():
+        # 检查结果是否为error
+        result = call_info.get("result", {})
+        
+        # 跳过明显的错误结果
+        if not result:  # 无结果
+            continue
+        if isinstance(result, dict) and "error" in result:  # 失败的调用
+            continue
+        
+        # 检查是否是空内容的类信息（无结果）
+        is_empty_result = False
+        if isinstance(result, dict):
+            for class_name, class_info in result.items():
+                if isinstance(class_info, dict) and class_info.get("information") == []:
+                    is_empty_result = True
+                    break
+        
+        if is_empty_result:
+            continue
+            
+        # 通过过滤的调用加入结果
+        filtered_calls[call_id] = call_info
+    
+    # 按轮次（retry_count）倒序排列
+    call_items = list(filtered_calls.items())
+    call_items.sort(key=lambda x: x[1].get("retry_count", 0), reverse=True)
+    
+    # 重新构建有序字典
+    ordered_filtered_calls = {}
+    for call_id, call_info in call_items:
+        ordered_filtered_calls[call_id] = call_info
+    
+    logger.info(f"[filter_validated_tool_calls] 原始调用: {len(tried_tool_calls)} 个")
+    logger.info(f"[filter_validated_tool_calls] 过滤后调用: {len(ordered_filtered_calls)} 个")
+    logger.info(f"[filter_validated_tool_calls] 按轮次倒序排列完成")
+    
+    return ordered_filtered_calls
 
 def extract_class_name_from_params(params: Dict) -> str:
     """从参数中提取类名"""
@@ -610,12 +629,14 @@ def extract_class_name_from_params(params: Dict) -> str:
     return str(class_name)
 
 def select_best_call_for_class(class_calls: List[Tuple[str, Dict]]) -> Optional[str]:
-    """为单个类选择最佳工具调用
+    """为单个类选择最佳工具调用 - 旧逻辑，已被新的filter_validated_tool_calls替代
     
     策略：
     1. 过滤掉error和no_results
     2. 如果有sufficient的调用，按工具优先级选择最佳的一个
     3. 如果没有sufficient，保留第一个有效调用（按工具优先级排序）
+    
+    注意：此函数已不再被新的过滤逻辑使用，保留作为兼容性
     """
     
     # 工具优先级顺序

@@ -366,7 +366,7 @@ for run_num in range(1, args.runs + 1):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     
     # 为每次运行创建带次数的文件夹
-    base_folder_path = r"test_results/final/MOSES/"
+    base_folder_path = r"test_results/final-2/MOSES-nano/"
     if args.runs > 1:
         results_dir = f"{base_folder_path}{timestamp}_test_run_run{run_num}"
     else:
