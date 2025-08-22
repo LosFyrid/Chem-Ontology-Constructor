@@ -15,8 +15,25 @@ from config.settings import ONTOLOGY_SETTINGS, OntologySettings
 def thread_safe_method(func):
     """装饰器：为方法添加线程安全保护"""
     def wrapper(self, *args, **kwargs):
-        if self._thread_safe and self._ontology_lock:
-            with self._ontology_lock:
+        # 优先使用共享锁，然后是实例锁
+        lock_to_use = None
+        
+        # 1. 检查是否有QueryManager的共享锁
+        try:
+            from .query_manager import QueryManager
+            shared_lock = QueryManager.get_shared_lock()
+            if shared_lock:
+                lock_to_use = shared_lock
+        except (ImportError, AttributeError):
+            pass
+        
+        # 2. 回退到实例锁
+        if not lock_to_use and self._thread_safe and self._ontology_lock:
+            lock_to_use = self._ontology_lock
+        
+        # 3. 使用锁保护或直接执行
+        if lock_to_use:
+            with lock_to_use:
                 return func(self, *args, **kwargs)
         else:
             return func(self, *args, **kwargs)
@@ -367,6 +384,7 @@ class OntologyTools:
              return False
         return True
 
+    @thread_safe_method
     def _get_class_by_name(self, class_name: str) -> Optional[ThingClass]:
         """辅助函数：通过名称安全地获取类对象 (首先尝试 classes 命名空间，然后后备搜索 IRI)"""
         if not self._check_ontology_loaded(): return None
@@ -418,6 +436,7 @@ class OntologyTools:
         # Fallback if _classes_ns didn't exist and search failed (should theoretically be covered above)
         # return None
 
+    @thread_safe_method
     def _get_property_by_name(self, property_name: str) -> Optional[Union[ObjectProperty, DataProperty, ObjectPropertyClass, DataPropertyClass]]:
         """辅助函数：通过名称安全地获取属性对象 (尝试 meta, obj props, 然后 data props)
            MODIFIED: Now also checks the meta namespace and accepts metaclasses."""
@@ -486,6 +505,7 @@ class OntologyTools:
         elif isinstance(value, Thing): return getattr(value, 'name', str(value))
         else: return str(value)
 
+    @thread_safe_method
     def _get_sourced_info(self, entity: Union[ThingClass, ObjectProperty, DataProperty], info_type: Optional[Union[str, List[str]]] = None) -> List[Thing]:
         """辅助函数：获取实体关联的 SourcedInformation 实例，可选地按类型过滤"""
         # ... (此函数不变)
@@ -509,6 +529,7 @@ class OntologyTools:
     # --- 内部单类处理函数 ---
     # 这些函数现在首先检查本体是否加载
 
+    @thread_safe_method
     def _get_single_class_info(self, class_name: str) -> Dict:
         if not self._check_ontology_loaded(): return {"error": "本体未加载"}
         cls = self._get_class_by_name(class_name)
@@ -525,6 +546,7 @@ class OntologyTools:
             except Exception as e: warnings.warn(f"处理 SI {getattr(info_instance, 'name', info_instance)} 时出错: {e}")
         return {"name": cls.name, "information": list(set(entity_info_contents))}
 
+    @thread_safe_method
     def _get_single_information_sources(self, class_name: str) -> Union[List[str], Dict]:
          if not self._check_ontology_loaded(): return {"error": "本体未加载"}
          cls = self._get_class_by_name(class_name)
@@ -543,6 +565,7 @@ class OntologyTools:
 
     # --- NEW: Refactored private methods for single class operations ---
 
+    @thread_safe_method
     def _get_single_parents(self, class_name: str) -> Union[List[str], Dict]:
          """Internal: Get direct parents for a single class."""
          if not self._check_ontology_loaded(): return {"error": "本体未加载"}
@@ -559,6 +582,7 @@ class OntologyTools:
          # Return unique sorted list
          return sorted(list(set(parents)))
 
+    @thread_safe_method
     def _get_single_children(self, class_name: str) -> Union[List[str], Dict]:
          """Internal: Get direct children for a single class."""
          if not self._check_ontology_loaded(): return {"error": "本体未加载"}
@@ -572,6 +596,7 @@ class OntologyTools:
          except Exception as e: warnings.warn(f"获取类 '{class_name}' 的子类时出错: {e}")
          return sorted(list(set(children)))
 
+    @thread_safe_method
     def _get_single_ancestors(self, class_name: str) -> Union[List[str], Dict]:
          """Internal: Get all ancestors for a single class."""
          if not self._check_ontology_loaded(): return {"error": "本体未加载"}
@@ -587,6 +612,7 @@ class OntologyTools:
          except Exception as e: warnings.warn(f"获取类 '{class_name}' 的祖先时出错: {e}")
          return sorted(list(set(ancestors)))
 
+    @thread_safe_method
     def _get_single_descendants(self, class_name: str) -> Union[List[str], Dict]:
           """Internal: Get all descendants for a single class."""
           if not self._check_ontology_loaded(): return {"error": "本体未加载"}
@@ -602,6 +628,7 @@ class OntologyTools:
           except Exception as e: warnings.warn(f"获取类 '{class_name}' 的后代时出错: {e}")
           return sorted(list(set(descendants)))
 
+    @thread_safe_method
     def _get_single_related_classes(self, class_name: str) -> Union[Dict[str, List[str]], Dict]:
          """Internal: Get related classes via object properties for a single class."""
          if not self._check_ontology_loaded(): return {"error": "本体未加载"}
@@ -651,6 +678,7 @@ class OntologyTools:
 
          return related_map
 
+    @thread_safe_method
     def _get_single_disjoint_classes(self, class_name: str) -> Union[List[str], Dict]:
           """Internal: Get disjoint classes for a single class."""
           if not self._check_ontology_loaded(): return {"error": "本体未加载"}
@@ -670,6 +698,7 @@ class OntologyTools:
 
     # --- MODIFIED: _get_single_class_properties based on Restrictions ---
     # Returns detailed property info including restrictions and descriptions
+    @thread_safe_method
     def _get_single_class_properties(self, class_name: str) -> Union[Dict[str, Dict[str, Any]], Dict]:
          """Internal: Get detailed properties used in restrictions for a single class, including descriptions."""
          if not self._check_ontology_loaded(): return {"error": "本体未加载"}
@@ -748,6 +777,7 @@ class OntologyTools:
 
 
     # --- MODIFIED: _parse_single_class_definition using new private methods ---
+    @thread_safe_method
     def _parse_single_class_definition(self, class_name: str) -> Dict:
          if not self._check_ontology_loaded(): return {"error": "本体未加载"}
          cls = self._get_class_by_name(class_name)
@@ -898,44 +928,44 @@ class OntologyTools:
         if isinstance(class_names, str): class_names = [class_names]
         return {name: self._get_single_information_sources(name) for name in class_names}
 
-    def get_information_by_source(self, class_names: Union[str, List[str]], source: str) -> Dict[str, Union[List[str], Dict]]:
-        """Get information content associated with specific classes and a specific source.
+    # def get_information_by_source(self, class_names: Union[str, List[str]], source: str) -> Dict[str, Union[List[str], Dict]]:
+    #     """Get information content associated with specific classes and a specific source.
 
-        Retrieves the 'content' from 'SourcedInformation' instances that are linked
-        to the specified class(es) AND have the specified 'source' identifier.
+    #     Retrieves the 'content' from 'SourcedInformation' instances that are linked
+    #     to the specified class(es) AND have the specified 'source' identifier.
 
-        Args:
-            class_names (Union[str, List[str]]): A single class name or a list of class names.
-            source (str): The specific source identifier to filter by.
+    #     Args:
+    #         class_names (Union[str, List[str]]): A single class name or a list of class names.
+    #         source (str): The specific source identifier to filter by.
 
-        Returns:
-            Dict[str, Union[List[str], Dict]]: A dictionary where keys are input class names.
-                                             Each value is either:
-                                             - A list of unique content strings matching the source.
-                                             - A dictionary like {'error': '...'} if the class
-                                               is not found or the ontology is not loaded.
-        """
-        if not self._check_ontology_loaded(): return {name: {"error": "本体未加载"} for name in ([class_names] if isinstance(class_names, str) else class_names)}
-        if isinstance(class_names, str): class_names = [class_names]
-         # Keep the internal function here as it's specific to this method's logic
-        def _get_single_information_by_source(class_name: str, src: str) -> Union[List[str], Dict]:
-            cls = self._get_class_by_name(class_name)
-            if not cls: return {"error": f"类 '{class_name}' 未找到。"}
-            matching_content = []
-            sourced_infos = self._get_sourced_info(cls) # Use the class-level helper
-            for info_instance in sourced_infos:
-                try:
-                    instance_sources = getattr(info_instance, 'source', [])
-                    if isinstance(instance_sources, str): instance_sources = [instance_sources]
-                    if src in instance_sources:
-                        content = getattr(info_instance, 'content', None)
-                        if content is not None:
-                            if isinstance(content, list): matching_content.extend([str(c) for c in content])
-                            else: matching_content.append(str(content))
-                except AttributeError: pass
-                except Exception as e: warnings.warn(f"为 '{class_name}' 和源 '{src}' 查找信息时出错: {e}")
-            return list(set(matching_content))
-        return {name: _get_single_information_by_source(name, source) for name in class_names}
+    #     Returns:
+    #         Dict[str, Union[List[str], Dict]]: A dictionary where keys are input class names.
+    #                                          Each value is either:
+    #                                          - A list of unique content strings matching the source.
+    #                                          - A dictionary like {'error': '...'} if the class
+    #                                            is not found or the ontology is not loaded.
+    #     """
+    #     if not self._check_ontology_loaded(): return {name: {"error": "本体未加载"} for name in ([class_names] if isinstance(class_names, str) else class_names)}
+    #     if isinstance(class_names, str): class_names = [class_names]
+    #      # Keep the internal function here as it's specific to this method's logic
+    #     def _get_single_information_by_source(class_name: str, src: str) -> Union[List[str], Dict]:
+    #         cls = self._get_class_by_name(class_name)
+    #         if not cls: return {"error": f"类 '{class_name}' 未找到。"}
+    #         matching_content = []
+    #         sourced_infos = self._get_sourced_info(cls) # Use the class-level helper
+    #         for info_instance in sourced_infos:
+    #             try:
+    #                 instance_sources = getattr(info_instance, 'source', [])
+    #                 if isinstance(instance_sources, str): instance_sources = [instance_sources]
+    #                 if src in instance_sources:
+    #                     content = getattr(info_instance, 'content', None)
+    #                     if content is not None:
+    #                         if isinstance(content, list): matching_content.extend([str(c) for c in content])
+    #                         else: matching_content.append(str(content))
+    #             except AttributeError: pass
+    #             except Exception as e: warnings.warn(f"为 '{class_name}' 和源 '{src}' 查找信息时出错: {e}")
+    #         return list(set(matching_content))
+    #     return {name: _get_single_information_by_source(name, source) for name in class_names}
 
     @thread_safe_method
     def get_class_properties(self, class_names: Union[str, List[str]]) -> Dict[str, Union[Dict[str, Dict[str, Any]], Dict]]:

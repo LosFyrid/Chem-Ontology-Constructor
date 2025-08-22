@@ -22,9 +22,9 @@ JSON_OUTPUT_FILENAME = "all_model_results.json"
 # 2. 模型配置
 # MODELS_TO_RUN = ["gpt-4.1-nano", "gpt-4.1"]
 
-# MODELS_TO_RUN = ["gpt-4.1-nano"]
+MODELS_TO_RUN = ["gpt-4.1-nano"]
 
-MODELS_TO_RUN = ["gpt-4.1"]
+# MODELS_TO_RUN = ["gpt-4.1"]
 
 # 3. 提示词和问题数据
 USER_PROMPT_TEMPLATE = f"""

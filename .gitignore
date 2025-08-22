@@ -165,3 +165,5 @@ tests/Carbon/pdfs/*
 
 tests/unit_test/query/test/lightrag/temp_rag_storage/
 tests/unit_test/query/test/lightrag/storage_backup/
+
+zzLLMjudge/*.json

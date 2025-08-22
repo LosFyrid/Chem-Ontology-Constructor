@@ -1443,21 +1443,34 @@ class ResultFormatterAgent(AgentTemplate):
     def __init__(self, model: BaseLanguageModel):
         system_prompt = """You are an expert chemistry information analyst specializing in creating comprehensive, expert-level reports from ontology query results.
 
-Your task is to produce reports with the depth and breadth of expert knowledge that:
-1. Directly answer the specific query with key findings
-2. Provide rich background context that enhances understanding
-3. Organize information in a logical, accessible manner
-4. Include comprehensive technical details while maintaining clarity
+Your dual task is to:
+1. FILTER: Intelligently filter out information that is completely irrelevant to the query
+2. FORMAT: Format relevant information while preserving its original depth, breadth, and terminology
+
+FILTERING GUIDELINES:
+- EXCLUDE information that has NO connection to the query topic
+- EXCLUDE generic or redundant information that doesn't add value
+- INCLUDE information that is directly relevant to the query
+- INCLUDE related contextual information that enhances understanding of the query topic
+
+CRITICAL PRESERVATION GUIDELINES (for relevant information):
+- PRESERVE ALL ORIGINAL BREADTH: Include every distinct concept, measurement, method, and finding that relates to the query
+- PRESERVE ALL ORIGINAL DEPTH: Maintain technical specificity, quantitative precision, and detailed parameter descriptions from the original information
+- PRESERVE ALL ORIGINAL TERMINOLOGY: Use exact scientific terms, nomenclature, chemical names, and technical vocabulary as they appear in the source
+- AVOID GENERALIZATION: Do not simplify or summarize technical details that reduce information content
+- MAINTAIN COMPLETENESS: Ensure no important technical details, measurements, or relationships are lost in formatting
 
 When formatting results:
 - Extract the most relevant information that directly addresses the query (key points)
 - Include broader contextual information that provides expert-level depth and understanding (background information)
 - Identify and explain important relationships, patterns, and connections
 - Ensure the final result approaches the comprehensiveness of a specialist-level analysis
-- Include quantitative data, technical specifications, and definitive facts
-- Maintain scientific accuracy and precision in terminology
+- Include ALL quantitative data, technical specifications, and definitive facts from the original source that are relevant
+- Maintain scientific accuracy and precision in terminology - use EXACT terms from the source material
+- Preserve the full spectrum of information breadth and technical depth present in the original data
 
-The goal is to provide information with the richness and context that a domain expert would include in a comprehensive analysis, going beyond just answering the immediate question to provide educational value and deeper understanding."""
+The goal is to provide a focused yet comprehensive analysis that eliminates irrelevant information while preserving the richness, depth, and exact terminology of all relevant information.
+"""
 
         super().__init__(
             model=model,
@@ -1510,7 +1523,7 @@ The goal is to provide information with the richness and context that a domain e
             results_str = "Error: Could not format results as string"
         
         # Create the enhanced prompt
-        user_prompt = f"""Please format the following chemistry query results into a comprehensive, expert-level report:
+        user_prompt = f"""Please analyze and format the following chemistry query results into a comprehensive, expert-level report:
 
 ORIGINAL QUERY:
 "{query}"
@@ -1520,7 +1533,17 @@ ORIGINAL QUERY:
 QUERY RESULTS:
 {results_str}
 
-IMPORTANT: DEEP ANALYSIS OF STRUCTURED DATA
+IMPORTANT: INTELLIGENT FILTERING + PRESERVATION APPROACH
+Your task is two-fold:
+
+1. FILTER RELEVANCE: Carefully identify and exclude information that is completely unrelated to the query topic. Focus only on information that has clear relevance or provides valuable context for understanding the query.
+
+2. PRESERVE ORIGINAL INFORMATION QUALITY: For all relevant information that you include, maintain:
+   - EXACT TERMINOLOGY: Use precise scientific terms, chemical names, and technical vocabulary exactly as they appear
+   - FULL TECHNICAL DEPTH: Include all quantitative data, specific measurements, detailed parameters, and technical specifications
+   - COMPLETE BREADTH: Cover all distinct concepts, methods, findings, and relationships that relate to the query
+   - NO OVERSIMPLIFICATION: Avoid reducing technical complexity or losing information content
+
 The query results contain highly structured, detailed information where critical data and connections may be embedded in:
 - Property restriction values and technical specifications (look for quantitative data, thresholds, performance metrics)
 - Nested attribute lists and component specifications (examine detailed parameters and measurements)
@@ -1529,29 +1552,31 @@ The query results contain highly structured, detailed information where critical
 
 Look carefully beyond surface-level content - the most valuable information is often in the structural details and may require careful examination to surface implicit connections and relationships.
 
-Create a comprehensive analysis that includes:
+Create a focused yet comprehensive analysis that includes:
 
 1. SUMMARY: A direct, concise answer to the main question (1-2 sentences)
 
 2. KEY POINTS: Core information that directly addresses the query
    - Focus on the most relevant findings from detailed structural analysis
    - Include specific technical details, quantitative data, and definitive facts discovered in nested attributes
+   - Use EXACT terminology and maintain full technical precision from the source
    - Organize logically and eliminate redundancy
 
 3. BACKGROUND INFORMATION: Broader contextual information that provides expert-level depth
    - Include related concepts that enhance understanding, surfaced from relationship details
-   - Add technical context that might not directly answer the query but enriches comprehension
+   - Add technical context that enriches comprehension of the query topic
    - Provide information that demonstrates expert-level knowledge of the domain
    - Include methodological details, related applications, or comparative information found in structured data
+   - Maintain original technical depth and terminology
 
 4. RELATIONSHIPS: Significant relationships, patterns, or connections found in the data
    - Identify interdependencies and connections between concepts through detailed property analysis
-   - Explain how different pieces of information relate to each other
+   - Explain how different pieces of information relate to each other within the query context
    - Highlight patterns or trends that emerge from careful examination of structured details
 
 When including citations: If information is associated with a DOI in the sourcedInformation, include the DOI reference for proper citation.
 
-The goal is to produce a report with the depth and comprehensiveness that a domain expert would provide, going beyond just answering the immediate question to provide educational value and deeper understanding of the topic through thorough analysis of all structural details."""
+The goal is to produce a focused report that eliminates irrelevant information while providing the depth and comprehensiveness that a domain expert would include, preserving all original technical terminology, quantitative precision, and information breadth for relevant content."""
 
         try:
             # Use structured LLM to get FormattedResult

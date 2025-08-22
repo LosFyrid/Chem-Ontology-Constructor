@@ -8,7 +8,12 @@ import sys
 import os
 import json
 import time
+import datetime
 from typing import Dict, Any, List
+
+base_folder_path = r"test_results/final-2/MOSES-nano/"
+MAX_WORKERS = 10
+
 
 # Parse command line arguments
 parser = argparse.ArgumentParser(description='Run workflow test with optional LLM override')
@@ -33,25 +38,64 @@ answer_llm = ChatOpenAI(
 print(f"Using Query LLM: {args.query_llm}, Answer LLM: {args.answer_llm}")
 print(f"Will run {args.runs} time(s)")
 
+# 控制台输出重定向类
+class Tee:
+    def __init__(self, *files):
+        self.files = files
+    def write(self, obj):
+        for f in self.files:
+            f.write(obj)
+            f.flush()
+    def flush(self):
+        for f in self.files:
+            f.flush()
+
+# 记录整体开始时间
+overall_start_time = time.time()
+print(f"\n{'='*60}")
+print(f"开始执行测试 - 总共 {args.runs} 次运行")
+print(f"开始时间: {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(overall_start_time))}")
+print(f"{'='*60}")
+
 # 主循环：重复运行测试
 for run_num in range(1, args.runs + 1):
+    run_start_time = time.time()
+    
+    # 设置控制台输出重定向 - 在每次测试开始前设置
+    import logging
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    
+    # 为每次运行创建带次数的文件夹
+    if args.runs > 1:
+        results_dir = f"{base_folder_path}{timestamp}_test_run_run{run_num}"
+    else:
+        results_dir = f"{base_folder_path}{timestamp}_test_run"
+    
+    os.makedirs(results_dir, exist_ok=True)
+
+    # 重定向标准输出和标准错误到同一个文件
+    log_file = open(f"{results_dir}/console_output.log", 'w', encoding='utf-8')
+    original_stdout = sys.stdout
+    original_stderr = sys.stderr
+    sys.stdout = Tee(sys.stdout, log_file)
+    sys.stderr = Tee(sys.stderr, log_file)
+
+    # 配置logging只输出到stderr（这样会通过上面的Tee保存到同一个文件）
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        stream=sys.stderr,  # 输出到stderr，会被Tee捕获
+        force=True  # 强制重新配置，覆盖之前的配置
+    )
+
+    print(f"所有输出（包括print和logger）将按时间顺序保存到: {results_dir}/console_output.log")
     print(f"\n{'='*60}")
     print(f"开始第 {run_num}/{args.runs} 次运行")
+    print(f"运行开始时间: {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(run_start_time))}")
     print(f"{'='*60}")
+    
     from owlready2 import *
     import asyncio # Needed for owlready2 async operations in some envs
-    
-    # 控制台输出重定向类
-    class Tee:
-        def __init__(self, *files):
-            self.files = files
-        def write(self, obj):
-            for f in self.files:
-                f.write(obj)
-                f.flush()
-        def flush(self):
-            for f in self.files:
-                f.flush()
     
     # Import the OntologySettings class
     from config.settings import OntologySettings # Keep ONTOLOGY_SETTINGS import for potential base_iri access
@@ -358,38 +402,7 @@ for run_num in range(1, args.runs + 1):
                 print(f"Future exception details: {future.exception()}")
             return None
 
-    query_manager = QueryManager(max_workers=10, ontology_settings=test_ontology_settings)
-
-    # 设置控制台输出重定向 - 在每次测试开始前设置
-    from datetime import datetime
-    import logging
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    
-    # 为每次运行创建带次数的文件夹
-    base_folder_path = r"test_results/final-2/MOSES-nano/"
-    if args.runs > 1:
-        results_dir = f"{base_folder_path}{timestamp}_test_run_run{run_num}"
-    else:
-        results_dir = f"{base_folder_path}{timestamp}_test_run"
-    
-    os.makedirs(results_dir, exist_ok=True)
-
-    # 重定向标准输出和标准错误到同一个文件
-    log_file = open(f"{results_dir}/console_output.log", 'w', encoding='utf-8')
-    original_stdout = sys.stdout
-    original_stderr = sys.stderr
-    sys.stdout = Tee(sys.stdout, log_file)
-    sys.stderr = Tee(sys.stderr, log_file)
-
-    # 配置logging只输出到stderr（这样会通过上面的Tee保存到同一个文件）
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-        stream=sys.stderr,  # 输出到stderr，会被Tee捕获
-        force=True  # 强制重新配置，覆盖之前的配置
-    )
-
-    print(f"所有输出（包括print和logger）将按时间顺序保存到: {results_dir}/console_output.log")
+    query_manager = QueryManager(max_workers=MAX_WORKERS, ontology_settings=test_ontology_settings)
 
     # Test code using callback functions to process query results
 
@@ -400,7 +413,7 @@ for run_num in range(1, args.runs + 1):
         
         # Re-create query manager if needed
         if 'query_manager' not in locals() or not hasattr(query_manager, 'is_running') or not query_manager.is_running():
-            query_manager = QueryManager(max_workers=10, ontology_settings=test_ontology_settings)
+            query_manager = QueryManager(max_workers=MAX_WORKERS, ontology_settings=test_ontology_settings)
             query_manager.update_all_caches(test_onto)
             query_manager.start()
         
@@ -502,7 +515,7 @@ for run_num in range(1, args.runs + 1):
             with open(history_file, 'w', encoding='utf-8') as f:
                 f.write(f"Query {query_num} - Iteration History\n")
                 f.write("=" * 50 + "\n")
-                f.write(f"Time: {datetime.now()}\n\n")
+                f.write(f"Time: {datetime.datetime.now()}\n\n")
                 if isinstance(result["iteration_history"], str):
                     f.write(result["iteration_history"])
                 else:
@@ -515,7 +528,7 @@ for run_num in range(1, args.runs + 1):
             with open(results_file, 'w', encoding='utf-8') as f:
                 f.write(f"Query {query_num} - Formatted Results\n")
                 f.write("=" * 50 + "\n")
-                f.write(f"Time: {datetime.now()}\n\n")
+                f.write(f"Time: {datetime.datetime.now()}\n\n")
                 if isinstance(result["formatted_results"], str):
                     f.write(result["formatted_results"])
                 else:
@@ -548,6 +561,13 @@ for run_num in range(1, args.runs + 1):
         f.write(markdown_output)
     print(f"已保存 Markdown 结果文件: {md_filename}")
     
+    # 计算运行用时
+    run_end_time = time.time()
+    run_duration = run_end_time - run_start_time
+    print(f"\n第 {run_num}/{args.runs} 次运行结束")
+    print(f"运行结束时间: {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(run_end_time))}")
+    print(f"本次运行用时: {run_duration:.2f} 秒 ({run_duration/60:.2f} 分钟)")
+    
     # 恢复标准输出
     sys.stdout = original_stdout
     sys.stderr = original_stderr
@@ -557,4 +577,12 @@ for run_num in range(1, args.runs + 1):
 
 print(f"\n{'='*60}")
 print(f"所有 {args.runs} 次运行已完成")
+# 计算总用时
+overall_end_time = time.time()
+total_duration = overall_end_time - overall_start_time
+print(f"结束时间: {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(overall_end_time))}")
+print(f"总用时: {total_duration:.2f} 秒 ({total_duration/60:.2f} 分钟)")
+if args.runs > 1:
+    avg_time = total_duration / args.runs
+    print(f"平均每次运行用时: {avg_time:.2f} 秒 ({avg_time/60:.2f} 分钟)")
 print(f"{'='*60}")
