@@ -167,3 +167,5 @@ tests/unit_test/query/test/lightrag/temp_rag_storage/
 tests/unit_test/query/test/lightrag/storage_backup/
 
 zzLLMjudge/*.json
+
+test_results/eva_res/individual/安全前瞻-化学_82_doubao-seed-1.6_安全与前瞻_1755917139543_individual_evaluation_prompts_5x_18900_v1.json

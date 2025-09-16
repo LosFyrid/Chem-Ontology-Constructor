@@ -1,0 +1,19 @@
+{
+  "timestamp": "20250901_155446",
+  "analyses": {
+    "reduced_average": {
+      "error": "'gbk' codec can't encode character '\\u2713' in position 0: illegal multibyte sequence"
+    },
+    "actual": {
+      "error": "'gbk' codec can't encode character '\\u2713' in position 0: illegal multibyte sequence"
+    },
+    "full_average": {
+      "error": "'gbk' codec can't encode character '\\u2713' in position 0: illegal multibyte sequence"
+    }
+  },
+  "comparison": {
+    "human_internal": {},
+    "llm_internal": {},
+    "human_llm_agreement": {}
+  }
+}

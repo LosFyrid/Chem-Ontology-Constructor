@@ -1,0 +1,450 @@
+{
+  "timestamp": "20250902_141838",
+  "analyses": {
+    "reduced_average": {
+      "config": {
+        "name": "Reduced Analysis (4 Dimensions, LLM Average)",
+        "description": "Analysis excluding Logic and Clarity dimensions, using average of 5 LLM evaluation rounds",
+        "dimensions": [
+          "正确性",
+          "完备性",
+          "理论深度",
+          "论述严谨性与信息密度"
+        ],
+        "n_dimensions": 4,
+        "llm_strategy": "average",
+        "llm_round": null
+      },
+      "summary_metrics": {
+        "analysis_config": {
+          "name": "Reduced Analysis (4 Dimensions, LLM Average)",
+          "description": "Analysis excluding Logic and Clarity dimensions, using average of 5 LLM evaluation rounds",
+          "dimensions": [
+            "正确性",
+            "完备性",
+            "理论深度",
+            "论述严谨性与信息密度"
+          ],
+          "llm_strategy": "average",
+          "llm_round": null,
+          "output_suffix": "reduced_average"
+        },
+        "dimensions_analyzed": [
+          "正确性",
+          "完备性",
+          "理论深度",
+          "论述严谨性与信息密度"
+        ],
+        "n_dimensions": 4,
+        "n_systems": 13,
+        "systems": [
+          "gpt-4.1-final",
+          "gpt-4.1-nano-final-815-1",
+          "lightrag-gpt-4_1",
+          "lightrag-gpt-4_1-nano",
+          "o1-final",
+          "o3-final",
+          "gpt-4o-final-815-1",
+          "gpt-4o-mini-final-815-1",
+          "reordered_MOSES-final",
+          "reordered_MOSES-nano-final",
+          "llasmol",
+          "darwin",
+          "chemqa27_from_chem13b_rag_infer_yesthink"
+        ],
+        "human_internal": {
+          "mean_pearson": 0.8237181142762787,
+          "mean_spearman": 0.7236601623368856,
+          "mean_icc": 0.780008994630979,
+          "n_dimensions_analyzed": 4
+        },
+        "llm_internal": {
+          "mean_pearson": 0.9418032719860929,
+          "mean_spearman": 0.9128224584971536,
+          "mean_icc": 0.94149439600559,
+          "n_dimensions_analyzed": 4
+        },
+        "human_llm_agreement": {
+          "mean_pearson": 0.8055300072922615,
+          "mean_spearman": 0.696483961606607,
+          "mean_icc": 0.7828384914528863,
+          "n_dimensions_analyzed": 4
+        }
+      },
+      "output_dir": "c:\\D\\CursorProj\\Chem-Ontology-Constructor\\test_results\\eva_res\\consistency_analysis\\results\\reduced_average_20250902_141838"
+    },
+    "actual": {
+      "config": {
+        "name": "Reduced Analysis (4 Dimensions, Selected Models Only)",
+        "description": "actual analysis",
+        "dimensions": [
+          "正确性",
+          "完备性",
+          "理论深度",
+          "论述严谨性与信息密度"
+        ],
+        "n_dimensions": 4,
+        "llm_strategy": "per_model_round",
+        "llm_round": null
+      },
+      "summary_metrics": {
+        "analysis_config": {
+          "name": "Reduced Analysis (4 Dimensions, Selected Models Only)",
+          "description": "actual analysis",
+          "dimensions": [
+            "正确性",
+            "完备性",
+            "理论深度",
+            "论述严谨性与信息密度"
+          ],
+          "llm_strategy": "per_model_round",
+          "llm_round": null,
+          "output_suffix": "actual"
+        },
+        "dimensions_analyzed": [
+          "正确性",
+          "完备性",
+          "理论深度",
+          "论述严谨性与信息密度"
+        ],
+        "n_dimensions": 4,
+        "n_systems": 7,
+        "systems": [
+          "lightrag-gpt-4_1",
+          "lightrag-gpt-4_1-nano",
+          "reordered_MOSES-final",
+          "reordered_MOSES-nano-final",
+          "llasmol",
+          "darwin",
+          "chemqa27_from_chem13b_rag_infer_yesthink"
+        ],
+        "human_internal": {
+          "mean_pearson": 0.8779897187947948,
+          "mean_spearman": 0.8277860339862161,
+          "mean_icc": 0.8530948457729639,
+          "n_dimensions_analyzed": 4
+        },
+        "llm_internal": {
+          "mean_pearson": 0.9471353460788532,
+          "mean_spearman": 0.9309652963909711,
+          "mean_icc": 0.9467660600333692,
+          "n_dimensions_analyzed": 4
+        },
+        "human_llm_agreement": {
+          "mean_pearson": 0.8373361505587287,
+          "mean_spearman": 0.7892912133550148,
+          "mean_icc": 0.8091902114412702,
+          "n_dimensions_analyzed": 4
+        }
+      },
+      "output_dir": "c:\\D\\CursorProj\\Chem-Ontology-Constructor\\test_results\\eva_res\\consistency_analysis\\results\\actual_20250902_141838"
+    },
+    "reduced_selected_models": {
+      "config": {
+        "name": "Reduced Analysis (4 Dimensions, Selected Models Only)",
+        "description": "Analysis with reduced dimensions for only GPT-4 family models",
+        "dimensions": [
+          "正确性",
+          "完备性",
+          "理论深度",
+          "论述严谨性与信息密度"
+        ],
+        "n_dimensions": 4,
+        "llm_strategy": "average",
+        "llm_round": null
+      },
+      "summary_metrics": {
+        "analysis_config": {
+          "name": "Reduced Analysis (4 Dimensions, Selected Models Only)",
+          "description": "Analysis with reduced dimensions for only GPT-4 family models",
+          "dimensions": [
+            "正确性",
+            "完备性",
+            "理论深度",
+            "论述严谨性与信息密度"
+          ],
+          "llm_strategy": "average",
+          "llm_round": null,
+          "output_suffix": "reduced_selected_models"
+        },
+        "dimensions_analyzed": [
+          "正确性",
+          "完备性",
+          "理论深度",
+          "论述严谨性与信息密度"
+        ],
+        "n_dimensions": 4,
+        "n_systems": 11,
+        "systems": [
+          "gpt-4.1-final",
+          "gpt-4.1-nano-final-815-1",
+          "lightrag-gpt-4_1",
+          "lightrag-gpt-4_1-nano",
+          "o1-final",
+          "o3-final",
+          "gpt-4o-final-815-1",
+          "gpt-4o-mini-final-815-1",
+          "reordered_MOSES-final",
+          "reordered_MOSES-nano-final",
+          "chemqa27_from_chem13b_rag_infer_yesthink"
+        ],
+        "human_internal": {
+          "mean_pearson": 0.6539124527138958,
+          "mean_spearman": 0.5484175911589604,
+          "mean_icc": 0.5709178687128587,
+          "n_dimensions_analyzed": 4
+        },
+        "llm_internal": {
+          "mean_pearson": 0.8825391709511352,
+          "mean_spearman": 0.8615508396400212,
+          "mean_icc": 0.8818861477747613,
+          "n_dimensions_analyzed": 4
+        },
+        "human_llm_agreement": {
+          "mean_pearson": 0.5982178963062988,
+          "mean_spearman": 0.5248637820698997,
+          "mean_icc": 0.542907179624991,
+          "n_dimensions_analyzed": 4
+        }
+      },
+      "output_dir": "c:\\D\\CursorProj\\Chem-Ontology-Constructor\\test_results\\eva_res\\consistency_analysis\\results\\reduced_selected_models_20250902_141838"
+    },
+    "reduced_llasmol_n_darwin": {
+      "config": {
+        "name": "Reduced Analysis (4 Dimensions, Selected Models Only)",
+        "description": "Analysis with reduced dimensions for only GPT-4 family models",
+        "dimensions": [
+          "正确性",
+          "完备性",
+          "理论深度",
+          "论述严谨性与信息密度"
+        ],
+        "n_dimensions": 4,
+        "llm_strategy": "average",
+        "llm_round": null
+      },
+      "summary_metrics": {
+        "analysis_config": {
+          "name": "Reduced Analysis (4 Dimensions, Selected Models Only)",
+          "description": "Analysis with reduced dimensions for only GPT-4 family models",
+          "dimensions": [
+            "正确性",
+            "完备性",
+            "理论深度",
+            "论述严谨性与信息密度"
+          ],
+          "llm_strategy": "average",
+          "llm_round": null,
+          "output_suffix": "reduced_llasmol_n_darwin"
+        },
+        "dimensions_analyzed": [
+          "正确性",
+          "完备性",
+          "理论深度",
+          "论述严谨性与信息密度"
+        ],
+        "n_dimensions": 4,
+        "n_systems": 2,
+        "systems": [
+          "llasmol",
+          "darwin"
+        ],
+        "human_internal": {
+          "mean_pearson": 0.6250130157231492,
+          "mean_spearman": 0.5715994137504478,
+          "mean_icc": 0.45186767399409694,
+          "n_dimensions_analyzed": 4
+        },
+        "llm_internal": {
+          "mean_pearson": 0.8315922151046095,
+          "mean_spearman": 0.8325038758566989,
+          "mean_icc": 0.8309633569155588,
+          "n_dimensions_analyzed": 4
+        },
+        "human_llm_agreement": {
+          "mean_pearson": 0.0313881360075811,
+          "mean_spearman": 0.030374247003352357,
+          "mean_icc": 0.04703317864464172,
+          "n_dimensions_analyzed": 4
+        }
+      },
+      "output_dir": "c:\\D\\CursorProj\\Chem-Ontology-Constructor\\test_results\\eva_res\\consistency_analysis\\results\\reduced_llasmol_n_darwin_20250902_141838"
+    },
+    "full_average": {
+      "config": {
+        "name": "Full Analysis (All Dimensions, LLM Average)",
+        "description": "Complete analysis with all 6 dimensions using average of 5 LLM evaluation rounds",
+        "dimensions": [
+          "正确性",
+          "逻辑性",
+          "清晰度",
+          "完备性",
+          "理论深度",
+          "论述严谨性与信息密度"
+        ],
+        "n_dimensions": 6,
+        "llm_strategy": "average",
+        "llm_round": null
+      },
+      "summary_metrics": {
+        "analysis_config": {
+          "name": "Full Analysis (All Dimensions, LLM Average)",
+          "description": "Complete analysis with all 6 dimensions using average of 5 LLM evaluation rounds",
+          "dimensions": [
+            "正确性",
+            "逻辑性",
+            "清晰度",
+            "完备性",
+            "理论深度",
+            "论述严谨性与信息密度"
+          ],
+          "llm_strategy": "average",
+          "llm_round": null,
+          "output_suffix": "full_average"
+        },
+        "dimensions_analyzed": [
+          "正确性",
+          "逻辑性",
+          "清晰度",
+          "完备性",
+          "理论深度",
+          "论述严谨性与信息密度"
+        ],
+        "n_dimensions": 6,
+        "n_systems": 13,
+        "systems": [
+          "gpt-4.1-final",
+          "gpt-4.1-nano-final-815-1",
+          "lightrag-gpt-4_1",
+          "lightrag-gpt-4_1-nano",
+          "o1-final",
+          "o3-final",
+          "gpt-4o-final-815-1",
+          "gpt-4o-mini-final-815-1",
+          "reordered_MOSES-final",
+          "reordered_MOSES-nano-final",
+          "llasmol",
+          "darwin",
+          "chemqa27_from_chem13b_rag_infer_yesthink"
+        ],
+        "human_internal": {
+          "mean_pearson": 0.823140081947455,
+          "mean_spearman": 0.688335715063208,
+          "mean_icc": 0.791323904840851,
+          "n_dimensions_analyzed": 6
+        },
+        "llm_internal": {
+          "mean_pearson": 0.9522927673240327,
+          "mean_spearman": 0.8958717049644598,
+          "mean_icc": 0.9520584898367792,
+          "n_dimensions_analyzed": 6
+        },
+        "human_llm_agreement": {
+          "mean_pearson": 0.8042287395343437,
+          "mean_spearman": 0.6695597272421695,
+          "mean_icc": 0.7861783234970567,
+          "n_dimensions_analyzed": 6
+        }
+      },
+      "output_dir": "c:\\D\\CursorProj\\Chem-Ontology-Constructor\\test_results\\eva_res\\consistency_analysis\\results\\full_average_20250902_141838"
+    }
+  },
+  "comparison": {
+    "human_internal": {
+      "reduced_average": {
+        "mean_pearson": 0.8237181142762787,
+        "mean_spearman": 0.7236601623368856,
+        "mean_icc": 0.780008994630979,
+        "n_dimensions": 4
+      },
+      "actual": {
+        "mean_pearson": 0.8779897187947948,
+        "mean_spearman": 0.8277860339862161,
+        "mean_icc": 0.8530948457729639,
+        "n_dimensions": 4
+      },
+      "reduced_selected_models": {
+        "mean_pearson": 0.6539124527138958,
+        "mean_spearman": 0.5484175911589604,
+        "mean_icc": 0.5709178687128587,
+        "n_dimensions": 4
+      },
+      "reduced_llasmol_n_darwin": {
+        "mean_pearson": 0.6250130157231492,
+        "mean_spearman": 0.5715994137504478,
+        "mean_icc": 0.45186767399409694,
+        "n_dimensions": 4
+      },
+      "full_average": {
+        "mean_pearson": 0.823140081947455,
+        "mean_spearman": 0.688335715063208,
+        "mean_icc": 0.791323904840851,
+        "n_dimensions": 6
+      }
+    },
+    "llm_internal": {
+      "reduced_average": {
+        "mean_pearson": 0.9418032719860929,
+        "mean_spearman": 0.9128224584971536,
+        "mean_icc": 0.94149439600559,
+        "n_dimensions": 4
+      },
+      "actual": {
+        "mean_pearson": 0.9471353460788532,
+        "mean_spearman": 0.9309652963909711,
+        "mean_icc": 0.9467660600333692,
+        "n_dimensions": 4
+      },
+      "reduced_selected_models": {
+        "mean_pearson": 0.8825391709511352,
+        "mean_spearman": 0.8615508396400212,
+        "mean_icc": 0.8818861477747613,
+        "n_dimensions": 4
+      },
+      "reduced_llasmol_n_darwin": {
+        "mean_pearson": 0.8315922151046095,
+        "mean_spearman": 0.8325038758566989,
+        "mean_icc": 0.8309633569155588,
+        "n_dimensions": 4
+      },
+      "full_average": {
+        "mean_pearson": 0.9522927673240327,
+        "mean_spearman": 0.8958717049644598,
+        "mean_icc": 0.9520584898367792,
+        "n_dimensions": 6
+      }
+    },
+    "human_llm_agreement": {
+      "reduced_average": {
+        "mean_pearson": 0.8055300072922615,
+        "mean_spearman": 0.696483961606607,
+        "mean_icc": 0.7828384914528863,
+        "n_dimensions": 4
+      },
+      "actual": {
+        "mean_pearson": 0.8373361505587287,
+        "mean_spearman": 0.7892912133550148,
+        "mean_icc": 0.8091902114412702,
+        "n_dimensions": 4
+      },
+      "reduced_selected_models": {
+        "mean_pearson": 0.5982178963062988,
+        "mean_spearman": 0.5248637820698997,
+        "mean_icc": 0.542907179624991,
+        "n_dimensions": 4
+      },
+      "reduced_llasmol_n_darwin": {
+        "mean_pearson": 0.0313881360075811,
+        "mean_spearman": 0.030374247003352357,
+        "mean_icc": 0.04703317864464172,
+        "n_dimensions": 4
+      },
+      "full_average": {
+        "mean_pearson": 0.8042287395343437,
+        "mean_spearman": 0.6695597272421695,
+        "mean_icc": 0.7861783234970567,
+        "n_dimensions": 6
+      }
+    }
+  }
+}

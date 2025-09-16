@@ -1,0 +1,19 @@
+{
+  "timestamp": "20250901_155140",
+  "analyses": {
+    "reduced_average": {
+      "error": "'ConsistencyVisualizer' object has no attribute 'create_all_plots'"
+    },
+    "actual": {
+      "error": "'ConsistencyVisualizer' object has no attribute 'create_all_plots'"
+    },
+    "full_average": {
+      "error": "'ConsistencyVisualizer' object has no attribute 'create_all_plots'"
+    }
+  },
+  "comparison": {
+    "human_internal": {},
+    "llm_internal": {},
+    "human_llm_agreement": {}
+  }
+}

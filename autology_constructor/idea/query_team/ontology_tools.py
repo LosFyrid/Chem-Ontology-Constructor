@@ -846,7 +846,7 @@ class OntologyTools:
          definition["hierarchy"] = {
              "parents": parents if isinstance(parents, list) else [],
              "children": children if isinstance(children, list) else [],
-             "sourced_hierarchy_info": [{"content": str(getattr(i, 'content', [''])[0]), "source": str(getattr(i, 'source', [''])[0])} for i in self._get_sourced_info(cls, info_type="hierarchy")]
+             "sourced_hierarchy_info": [{"content": str((getattr(i, 'content', ['']) or [''])[0]), "source": str((getattr(i, 'source', ['']) or [''])[0])} for i in self._get_sourced_info(cls, info_type="hierarchy")]
          }
 
          # Relations (using new private method)

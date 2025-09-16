@@ -11,7 +11,7 @@ import time
 import datetime
 from typing import Dict, Any, List
 
-base_folder_path = r"test_results/final-2/MOSES-nano/"
+base_folder_path = r"test_results/workflow_runs/"
 MAX_WORKERS = 10
 
 
@@ -315,10 +315,10 @@ for run_num in range(1, args.runs + 1):
     # queries = [queries[4], queries[6], queries[20]]
     # revised_queries =  [revised_queries[4],  revised_queries[6],  revised_queries[20]]
 
-    # queries = [queries[4]]
-    # revised_queries =  [revised_queries[4]]
+    # queries = [queries[14]]
+    # revised_queries =  [revised_queries[14]]
 
-    print(len(queries),len(revised_queries))
+    # print(len(queries),len(revised_queries))
 
     # 定义回调函数处理Future结果并使用agent生成回答
 

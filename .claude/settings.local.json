@@ -28,7 +28,8 @@
       "WebFetch(domain:)",
       "Bash(for file in \"C:\\d\\CursorProj\\Chem-Ontology-Constructor\\test_results\\final-2\\MOSES\"/*/gpt-4.1-query_gpt-4.1-answer*.md)",
       "Bash(wc:*)",
-      "Bash(done)"
+      "Bash(done)",
+      "Bash(C:/d/AnacondaEnPs/envs/OntologyConstruction/python.exe -m pip install seaborn)"
     ],
     "deny": [],
     "ask": [],
