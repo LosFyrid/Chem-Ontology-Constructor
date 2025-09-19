@@ -218,16 +218,17 @@ class MasterVisualizationGenerator:
         supp_dir = self.output_dir / 'supplement_figures'
         supp_dir.mkdir(parents=True, exist_ok=True)
 
-        dim_viz = DimensionELORadarVisualizer()
+        from visualization_scripts.supplement_correlation import SupplementCorrelationVisualizer
+        supp_viz = SupplementCorrelationVisualizer()
         # 正文版（Pearson+Spearman）
-        fig, _ = dim_viz.create_comparative_elo_analysis(save_format=[])
+        fig, _ = supp_viz.create_perf_vs_overall_elo_corr(save_format=[])
         for fmt in formats:
             path = supp_dir / f'sup_perf_elo_corr_pearson_spearman.{fmt}'
             fig.savefig(path, dpi=300, bbox_inches='tight')
         plt_close_safe(fig)
 
         # 补充版（再加 Kendall τ）
-        fig, _ = dim_viz.create_comparative_elo_analysis_with_kendall(save_format=[])
+        fig, _ = supp_viz.create_perf_vs_overall_elo_corr_with_kendall(save_format=[])
         for fmt in formats:
             path = supp_dir / f'sup_perf_elo_corr_with_kendall.{fmt}'
             fig.savefig(path, dpi=300, bbox_inches='tight')

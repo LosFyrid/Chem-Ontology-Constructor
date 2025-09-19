@@ -14,14 +14,14 @@ COLOR_SCHEME = {
         # 论文主图常用的6色：红、亮蓝、清新绿、橙/黄、薰衣草紫、薄荷青
         'MOSES': '#E64B35',            # 明亮红（主色）
         'MOSES-nano': '#4DBBD5',       # 亮蓝青
-        'gpt-4.1': '#7FC97F',          # 清新绿（Accent）
+        'gpt-4.1':'#91D1C2',      # 薄荷绿
         'gpt-4.1-nano': '#FDC086',     # 柔和橙（Accent）
         'lightrag-4.1': '#BEAED4',     # 薰衣草
         'lightrag-4.1-nano': '#EFC000',# 鲜黄（微调比 #FFFF99 更稳）
         # 其余模型，保持同系倾向以避免冲突
-        'o3': '#F141A8',               # 品红（与红区别开）
-        'gpt-4o': '#386CB0',           # 蓝（Accent 深蓝）
-        'gpt-4o-mini': '#91D1C2',      # 薄荷绿
+        'o3': '#386CB0',           # 蓝（Accent 深蓝）
+        'gpt-4o': '#F141A8',               # 品红（与红区别开）
+        'gpt-4o-mini': '#7FC97F',          # 清新绿（Accent）
     },
     
     # 维度颜色
@@ -44,6 +44,22 @@ COLOR_SCHEME = {
         'grid': '#CCCCCC',
         'text': '#333333',
         'background': 'white'
+    }
+}
+
+# 统一的标记样式（用于散点与图例映射）
+# 与 MODEL_INFO['order'] 一一对应，避免颜色相近时难以区分
+MARKER_SCHEME = {
+    'models': {
+        'MOSES': 'o',            # circle
+        'o3': 's',               # square
+        'gpt-4.1': 'D',          # diamond
+        'lightrag-4.1-nano': '^',# triangle_up
+        'lightrag-4.1': 'v',     # triangle_down
+        'MOSES-nano': 'P',       # plus (filled)
+        'gpt-4.1-nano': 'X',     # x (filled)
+        'gpt-4o': 'H',           # hexagon
+        'gpt-4o-mini': '*',      # star
     }
 }
 

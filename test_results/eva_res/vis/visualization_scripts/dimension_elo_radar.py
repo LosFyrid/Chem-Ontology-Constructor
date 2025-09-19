@@ -4,6 +4,7 @@
 """
 
 import matplotlib.pyplot as plt
+import seaborn as sns
 import numpy as np
 import pandas as pd
 from math import sqrt
@@ -28,6 +29,7 @@ from vis_config import (
     setup_plot_style,
     style_axes,
     get_heatmap_cmap,
+    MARKER_SCHEME,
 )
 from data_processor import DataProcessor
 
@@ -338,69 +340,104 @@ class DimensionELORadarVisualizer:
         """
         创建各维度排名比较图
         """
-        # 获取数据
-        radar_data = self.processor.create_dimension_elo_radar_data()
-        
-        # 为每个维度创建排名
-        rankings_by_dimension = {}
-        for i, dim in enumerate(DIMENSION_INFO['order']):
-            scores = [(data['model'], data['scores'][i], data['display_name']) 
-                     for data in radar_data]
-            scores.sort(key=lambda x: x[1], reverse=True)
-            rankings_by_dimension[dim] = scores
-        
-        # 创建图形
-        fig, ax = plt.subplots(figsize=(14, 10))
-        
-        # 创建排名矩阵
-        models = MODEL_INFO['order']
-        dimensions = DIMENSION_INFO['order']
-        ranking_matrix = np.zeros((len(models), len(dimensions)))
-        
-        for j, dim in enumerate(dimensions):
-            for rank, (model, score, _) in enumerate(rankings_by_dimension[dim]):
-                model_idx = models.index(model)
-                ranking_matrix[model_idx, j] = rank + 1  # 排名从1开始
-        
-        # 创建热图
-        # 排名数值小更好，因此使用反向色图：rank=1 为深色
-        im = ax.imshow(ranking_matrix, cmap=get_heatmap_cmap(reverse=True), aspect='auto', vmin=1, vmax=len(models))
-        
-        # 设置刻度标签
-        ax.set_xticks(range(len(dimensions)))
-        ax.set_xticklabels([DIMENSION_INFO['short_names'][d] for d in dimensions], 
-                          fontsize=12)
-        ax.set_yticks(range(len(models)))
-        ax.set_yticklabels([MODEL_INFO['display_names'][m] for m in models], 
-                          fontsize=11)
-        
-        # 添加数值标注
-        for i in range(len(models)):
-            for j in range(len(dimensions)):
-                rank = int(ranking_matrix[i, j])
-                ax.text(j, i, str(rank), ha='center', va='center', 
-                       fontsize=12, fontweight='bold', 
-                       color='white' if rank <= 5 else 'black')
-        
-        # 设置标题
-        ax.set_title('AI Model Rankings by Dimension\n(TrueSkill ELO Rankings, 1=Best)', 
-                    fontsize=14, fontweight='bold', pad=20)
-        
-        # 添加颜色条
-        cbar = fig.colorbar(im, ax=ax, shrink=0.6)
-        cbar.set_label('Ranking Position', rotation=270, labelpad=20)
+        # 使用 rep20 JSON 中的 TrueSkill ELO 维度得分，确保与森林图口径一致
+        _, dimension_df = self.processor.load_elo_scores()
+
+        dimensions = [dim for dim in DIMENSION_INFO['order']
+                      if dim in dimension_df['dimension'].unique()]
+        models = [m for m in MODEL_INFO['order']
+                  if m in dimension_df['model'].unique()]
+
+        ranking_records = []
+        for dim in dimensions:
+            dim_scores = dimension_df[dimension_df['dimension'] == dim]
+            dim_scores = dim_scores[dim_scores['model'].isin(models)]
+            if dim_scores.empty:
+                continue
+            ranked = dim_scores.set_index('model')['elo_rating']\
+                                .rank(method='dense', ascending=False)
+            for model, rank_val in ranked.items():
+                ranking_records.append({
+                    'model': model,
+                    'display_model': MODEL_INFO['display_names'].get(model, model),
+                    'dimension': dim,
+                    'display_dimension': DIMENSION_INFO['display_names'].get(dim, dim),
+                    'rank': float(rank_val),
+                })
+
+        ranking_df = pd.DataFrame(ranking_records)
+        if ranking_df.empty:
+            raise ValueError('未能从 rep20 ELO 数据中计算出维度排名矩阵。')
+
+        ranking_df['display_model'] = pd.Categorical(
+            ranking_df['display_model'],
+            categories=[MODEL_INFO['display_names'][m] for m in models],
+            ordered=True,
+        )
+        ranking_df['display_dimension'] = pd.Categorical(
+            ranking_df['display_dimension'],
+            categories=[DIMENSION_INFO['display_names'][d] for d in dimensions],
+            ordered=True,
+        )
+
+        ranking_matrix = ranking_df.pivot(index='display_model',
+                                          columns='display_dimension',
+                                          values='rank')
+
+        avg_ranking = ranking_matrix.mean(axis=1)
+
+        fig, ax = plt.subplots(figsize=(10, 8))
+        # 使用红色序列映射排名：rank=1 显示为最深红色，rank 越大越浅
+        ranking_cmap = sns.light_palette('#E64B35', as_cmap=True).reversed()
+        heatmap = sns.heatmap(
+            ranking_matrix,
+            annot=True,
+            fmt='.0f',
+            cmap=ranking_cmap,
+            cbar_kws={'label': 'Ranking (1 = Best)'},
+            linewidths=0.6,
+            linecolor='white',
+            ax=ax,
+            vmin=1,
+            vmax=len(models),
+            annot_kws={'size': 10, 'weight': 'bold', 'color': '#1f1f1f'},
+            square=True,
+        )
+
+        ax.set_title('AI Model Dimension Rankings\n(TrueSkill ELO rep20, Lower is Better)',
+                     fontsize=16, fontweight='bold', pad=20)
+        ax.set_xlabel('Evaluation Dimensions', fontsize=12, fontweight='bold')
+        ax.set_ylabel('AI Models', fontsize=12, fontweight='bold')
+        ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right')
+        ax.set_yticklabels(ax.get_yticklabels(), rotation=0)
         style_axes(ax)
-        
-        # 调整布局
+
+        cbar = heatmap.collections[0].colorbar
+        cbar.set_label('Ranking (1 = Best)', rotation=270, labelpad=20)
+        cbar.set_ticks(range(1, len(models) + 1))
+
+        for i, (model, rank) in enumerate(avg_ranking.items()):
+            ax.text(
+                ranking_matrix.shape[1] + 0.1,
+                i + 0.5,
+                f'{rank:.2f}',
+                ha='left',
+                va='center',
+                fontweight='bold',
+                fontsize=10,
+                color='#1f1f1f',
+            )
+        ax.text(ranking_matrix.shape[1] + 0.1, -0.5, 'Avg',
+                ha='left', va='center', fontweight='bold', fontsize=11)
+
         plt.tight_layout()
-        
-        # 保存图形
         for fmt in save_format:
             filepath = self.output_dir / f"dimension_ranking_heatmap.{fmt}"
             plt.savefig(filepath, dpi=300, bbox_inches='tight')
-            print(f"维度排名比较图已保存: {filepath}")
-        
+            print(f'维度排名热图已保存: {filepath}')
+
         return fig, ax
+
 
 
 def main():

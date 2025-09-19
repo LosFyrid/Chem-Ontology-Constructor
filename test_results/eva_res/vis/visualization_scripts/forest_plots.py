@@ -295,7 +295,7 @@ class ELOForestPlotVisualizer:
         """基于分维度 ELO 的分层聚类对模型分组，并在森林图中用淡色背景带和分割线表示分组。
         - 点颜色保持模型配色
         - linkage: Ward（若无 SciPy，回退到 PC1 分位数分组）
-        - n_clusters=None 时自动从2..min(6,n)中选择 silhouette 最优的K
+        - n_clusters=None 时自动从2..min(10,n)中选择 silhouette 最优的K
         """
         # 准备数据：使用分维度ELO
         dim_data = self.processor.create_dimension_elo_radar_data()
@@ -334,7 +334,7 @@ class ELOForestPlotVisualizer:
             method_used = 'WARD'
 
         if n_clusters is None:
-            candidate_ks = [k for k in range(2, min(6, len(models)) + 1)]
+            candidate_ks = [k for k in range(2, min(10, len(models)) + 1)]
             best_score, best_k, best_labels = -1, None, None
             for k in candidate_ks:
                 if Z is not None:
